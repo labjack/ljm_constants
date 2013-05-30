@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2013.05.23.A",
+   "version":"2013.05.30.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus/tags"
@@ -72,7 +72,7 @@
    {"address":49260, "name":"WIFI_DHCP_ENABLE_DEFAULT", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9014}], "readwrite":"RW", "tags":["WIFI"], "altnames":[""]},
    {"address":49325, "name":"WIFI_SSID_DEFAULT", "type":"STRING", "devices":["T7"], "readwrite":"RW", "tags":["WIFI"], "altnames":[""]},
    {"address":49350, "name":"WIFI_PASSWORD_DEFAULT", "type":"STRING", "devices":["T7"], "readwrite":"W", "tags":["WIFI"], "altnames":[""]},
-   {"address":49400, "name":"WIFI_APPLY_SETTINGS", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["WIFI"], "altnames":[""]},
+   {"address":49400, "name":"WIFI_APPLY_SETTINGS", "type":"UINT32", "devices":["T7"], "readwrite":"W", "tags":["WIFI"], "altnames":[""]},
 
    {"address":49450, "name":"WIFI_STATUS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.75}], "readwrite":"R", "tags":["WIFI"], "altnames":[""]},
    {"address":49452, "name":"WIFI_RSSI", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.80}], "readwrite":"R", "tags":["WIFI"], "altnames":[""]},
@@ -338,7 +338,7 @@
    {"error":1292, "string":"LJME_CONSTANTS_FILE_NOT_FOUND"},
    {"error":1293, "string":"LJME_INVALID_CONSTANTS_FILE"},
    {"error":1294, "string":"LJME_INVALID_NAME"},
-   {"error":1295, "string":"LJME_OVERSPECIFIED_IDENTIFIER"},
+
    {"error":1296, "string":"LJME_OVERSPECIFIED_PORT"},
    {"error":1297, "string":"LJME_INTENT_NOT_READY"},
    {"error":1298, "string":"LJME_ATTR_LOAD_COMM_FAILURE"},
@@ -510,6 +510,7 @@
     "2013.05.22.A:  Fixed WIFI_SCAN_START address",
     "2013.05.23.A:  Added current source cal value registers",
     "2013.05.26.A:  Added/Updated firmware error and status codes. 2900-2999 are status codes.",
+    "2013.05.30.A:  Changed WIFI_APPLY_SETTINGS to write-only.",
  "End Of Comments"
   ]
 
