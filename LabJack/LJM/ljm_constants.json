@@ -10,7 +10,7 @@
 
  "registers":
  [
-   {"address":0, "name":"AIN#(0:254)", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"R", "tags":["AIN"], "altnames":[""], "displayname":["Analog In #"], "description":["Returns the voltage of the specified analog input."]},
+   {"address":0, "name":"AIN#(0:254)", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"R", "tags":["AIN"], "streamable":true, "altnames":[""], "displayname":["Analog In #"], "description":["Returns the voltage of the specified analog input."]},
    {"address":1000, "name":"DAC#(0:1)", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DAC"], "altnames":[""], "displayname":["Analog Out #"], "description":["Pass a voltage for the specified analog output."]},
    {"address":2000, "name":"FIO#(0:7)", "type":"UINT16", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":["DIO#(0:7)"], "description":["Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."]},
    {"address":2008, "name":"EIO#(0:7)", "type":"UINT16", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":["DIO#(8:15)"], "description":["Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."]},
