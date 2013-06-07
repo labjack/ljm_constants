@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2013.05.30.A",
+   "version":"2013.06.06.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus/tags"
@@ -10,28 +10,28 @@
 
  "registers":
  [
-   {"address":0, "name":"AIN#(0:254)", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"R", "tags":["AIN"], "altnames":[""]},
-   {"address":1000, "name":"DAC#(0:1)", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DAC"], "altnames":[""]},
-   {"address":2000, "name":"FIO#(0:7)", "type":"UINT16", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":["DIO#(0:7)"]},
-   {"address":2008, "name":"EIO#(0:7)", "type":"UINT16", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":["DIO#(8:15)"]},
-   {"address":2016, "name":"CIO#(0:3)", "type":"UINT16", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":["DIO#(16:19)"]},
-   {"address":2020, "name":"MIO#(0:2)", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":["DIO#(20:22)"]},
+   {"address":0, "name":"AIN#(0:254)", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"R", "tags":["AIN"], "altnames":[""], "displayname":["Analog In #"], "description":["Returns the voltage of the specified analog input."]},
+   {"address":1000, "name":"DAC#(0:1)", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DAC"], "altnames":[""], "displayname":["Analog Out #"], "description":["Pass a voltage for the specified analog output."]},
+   {"address":2000, "name":"FIO#(0:7)", "type":"UINT16", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":["DIO#(0:7)"], "description":["Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."]},
+   {"address":2008, "name":"EIO#(0:7)", "type":"UINT16", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":["DIO#(8:15)"], "description":["Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."]},
+   {"address":2016, "name":"CIO#(0:3)", "type":"UINT16", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":["DIO#(16:19)"], "description":["Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."]},
+   {"address":2020, "name":"MIO#(0:2)", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":["DIO#(20:22)"], "description":["Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."]},
 
-   {"address":2500, "name":"FIO_STATE", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""]},
-   {"address":2501, "name":"EIO_STATE", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""]},
-   {"address":2502, "name":"CIO_STATE", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""]},
-   {"address":2503, "name":"MIO_STATE", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""]},
-   {"address":2600, "name":"FIO_DIRECTION", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""]},
-   {"address":2601, "name":"EIO_DIRECTION", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""]},
-   {"address":2602, "name":"CIO_DIRECTION", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""]},
-   {"address":2603, "name":"MIO_DIRECTION", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""]},
-   {"address":2700, "name":"FIO_MASK", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""]},
-   {"address":2701, "name":"EIO_MASK", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""]},
-   {"address":2702, "name":"CIO_MASK", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""]},
-   {"address":2703, "name":"MIO_MASK", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""]},
-   {"address":2800, "name":"DIO_STATE", "type":"UINT32", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""]},
-   {"address":2850, "name":"DIO_DIRECTION", "type":"UINT32", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""]},
-   {"address":2900, "name":"DIO_MASK", "type":"UINT32", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""]},
+   {"address":2500, "name":"FIO_STATE", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""], "displayname":["FIO Port State"], "description":["Read or write the state of the 8 bits of FIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  Writes only apply to bits with mask set."]},
+   {"address":2501, "name":"EIO_STATE", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""], "displayname":["EIO Port State"], "description":["Read or write the state of the 8 bits of EIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  Writes only apply to bits with mask set."]},
+   {"address":2502, "name":"CIO_STATE", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""], "displayname":["CIO Port State"], "description":["Read or write the state of the 4 bits of CIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  Writes only apply to bits with mask set."]},
+   {"address":2503, "name":"MIO_STATE", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""], "displayname":["MIO Port State"], "description":["Read or write the state of the 3 bits of MIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  Writes only apply to bits with mask set."]},
+   {"address":2600, "name":"FIO_DIRECTION", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""], "displayname":["FIO Port Direction"], "description":["Read or write the direction of the 8 bits of FIO in a single binary-encoded value.  0=Input and 1=Output.  Writes only apply to bits with mask set."]},
+   {"address":2601, "name":"EIO_DIRECTION", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""], "displayname":["EIO Port Direction"], "description":["Read or write the direction of the 8 bits of EIO in a single binary-encoded value.  0=Input and 1=Output.  Writes only apply to bits with mask set."]},
+   {"address":2602, "name":"CIO_DIRECTION", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""], "displayname":["CIO Port Direction"], "description":["Read or write the direction of the 4 bits of CIO in a single binary-encoded value.  0=Input and 1=Output.  Writes only apply to bits with mask set."]},
+   {"address":2603, "name":"MIO_DIRECTION", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""], "displayname":["MIO Port Direction"], "description":["Read or write the direction of the 3 bits of MIO in a single binary-encoded value.  0=Input and 1=Output.  Writes only apply to bits with mask set."]},
+   {"address":2700, "name":"FIO_MASK", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""], "displayname":["FIO Port Mask"], "description":["A single binary-encoded 8-bit value where each bit determines whether _STATE or _DIRECTION writes affect that bit of FIO.  0=Ignored, 1=Affected."]},
+   {"address":2701, "name":"EIO_MASK", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""], "displayname":["EIO Port Mask"], "description":["A single binary-encoded 8-bit value where each bit determines whether _STATE or _DIRECTION writes affect that bit of EIO.  0=Ignored, 1=Affected."]},
+   {"address":2702, "name":"CIO_MASK", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""], "displayname":["CIO Port Mask"], "description":["A single binary-encoded 4-bit value where each bit determines whether _STATE or _DIRECTION writes affect that bit of CIO.  0=Ignored, 1=Affected."]},
+   {"address":2703, "name":"MIO_MASK", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""], "displayname":["MIO Port Mask"], "description":["A single binary-encoded 3-bit value where each bit determines whether _STATE or _DIRECTION writes affect that bit of MIO.  0=Ignored, 1=Affected."]},
+   {"address":2800, "name":"DIO_STATE", "type":"UINT32", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""], "description":["Read or write the state of all digital I/O in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  Writes only apply to bits with mask set."]},
+   {"address":2850, "name":"DIO_DIRECTION", "type":"UINT32", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""], "description":["Read or write the direction of all digital I/O in a single binary-encoded value.  0=Input and 1=Output.  Writes only apply to bits with mask set."]},
+   {"address":2900, "name":"DIO_MASK", "type":"UINT32", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":[""], "description":["A single binary-encoded value where each bit determines whether _STATE or _DIRECTION writes affect that bit of digital I/O.  0=Ignored, 1=Affected."]},
 
    {"address":40000, "name":"AIN#(0:254)_RANGE", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "default":0, "tags":["AIN"], "altnames":[""]},
    {"address":41000, "name":"AIN#(0:254)_NEGATIVE_CH", "type":"UINT16", "devices":["U3", "U6", "T7"], "readwrite":"RW", "default":199, "tags":["AIN"], "altnames":[""]},
@@ -159,9 +159,14 @@
  [
    {"address":49410, "name":"WIFI_START_ADHOC", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9308}], "readwrite":"W", "tags":["WIFI"], "altnames":[""]},
 
-   {"address":42500, "name":"AIN#(0:254)_EF_TYPE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["EF, AIN"], "altnames":[""]},
 
-   {"address":42000, "name":"AIN#(0:254)_SETTLING", "type":"UINT16", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "default":0, "tags":["AIN"], "altnames":[""]},
+   {"address":42000, "name":"AIN#(0:254)_SETTLING", "type":"FLOAT32", "devices":["U3", "U6", {"device":"T7", "fwmin":0.9328}, "UE9"], "readwrite":"RW", "default":0, "tags":["AIN"], "altnames":[""]},
+   {"address":43000, "name":"AIN#(0:254)_EF_TYPE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["EF, AIN"], "altnames":[""]},
+
+   {"address":43900, "name":"AIN_ALL_RANGE", "type":"FLOAT32", "devices":["U3", "U6", {"device":"T7", "fwmin":0.9328}, "UE9"], "readwrite":"RW", "default":0, "tags":["AIN"], "altnames":[""]},
+   {"address":43902, "name":"AIN_ALL_NEGATIVE_CH", "type":"UINT16", "devices":["U3", "U6", {"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":199, "tags":["AIN"], "altnames":[""]},
+   {"address":43903, "name":"AIN_ALL_RESOLUTION_INDEX", "type":"UINT16", "devices":["U3", "U6", {"device":"T7", "fwmin":0.9328}, "UE9"], "readwrite":"RW", "default":0, "tags":["AIN"], "altnames":[""]},
+   {"address":43904, "name":"AIN_ALL_SETTLING", "type":"FLOAT32", "devices":["U3", "U6", {"device":"T7", "fwmin":0.9328}, "UE9"], "readwrite":"RW", "default":0, "tags":["AIN"], "altnames":[""]},
 
    {"address":4040, "name":"STREAM_OUT#(0:4)_TARGET ", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"], "altnames":[""]},
    {"address":4050, "name":"STREAM_OUT#(0:4)_BUFFER_SIZE ", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"], "altnames":[""]},
@@ -194,6 +199,16 @@
 
    {"address":4990, "name":"STREAM_START", "type":"UINT32", "devices":["T7"], "readwrite":"W", "tags":["STREAM"], "altnames":[""]},
    {"address":4992, "name":"STREAM_STOP", "type":"UINT32", "devices":["T7"], "readwrite":"W", "tags":["STREAM"], "altnames":[""]},
+
+   {"address":5100, "name":"I2C_SDA", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "altnames":[""]},
+   {"address":5101, "name":"I2C_SCL", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "altnames":[""]},
+   {"address":5102, "name":"I2C_SPEED", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "altnames":[""]},
+   {"address":5103, "name":"I2C_OPTIONS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "altnames":[""]},
+   {"address":5104, "name":"I2C_SLAVE_ADDRESS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "altnames":[""]},
+   {"address":5108, "name":"I2C_NUM_BYTES_TO_TX", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "altnames":[""]},
+   {"address":5109, "name":"I2C_NUM_BYTES_TO_RX", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "altnames":[""]},
+   {"address":5110, "name":"I2C_WRITE", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "altnames":[""]},
+   {"address":5150, "name":"I2C_READ", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "altnames":[""]},
 
    {"address":5200, "name":"SHT_PIN_POWER", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"], "altnames":[""]},
    {"address":5201, "name":"SHT_PIN_ENABLE", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"], "altnames":[""]},
@@ -366,6 +381,8 @@
    {"error":2354, "string":"EXFLASH_KEY_INVALID"},
    {"error":2355, "string":"FLASH_VERIFICATION_FAILED"},
    {"error":2356, "string":"FLASH_ERASE_FAILED"},
+   {"error":2370, "string":"AIN_RANGE_INVALID"},
+   {"error":2371, "string":"AIN_SETTLINE_INVALID"},
    {"error":2380, "string":"LUA_VM_STATE_NO_CHANGE"},
    {"error":2381, "string":"LUA_INITIALIZATION_ERROR"},
    {"error":2382, "string":"LUA_INVALID_NUM_IO_FLOATS"},
@@ -511,6 +528,9 @@
     "2013.05.23.A:  Added current source cal value registers",
     "2013.05.26.A:  Added/Updated firmware error and status codes. 2900-2999 are status codes.",
     "2013.05.30.A:  Changed WIFI_APPLY_SETTINGS to write-only.",
+    "2013.06.03.A:  Added registers for global AIN settings referred to as AIN_ALL_.... Moved AIN configuration registers to make room for changing settling to a float32.",
+    "2013.06.04.A:  Added registers for I2C",
+    "2013.06.06.A:  Fixed typos in I2C section found by jslint.com.  Started adding displayname and description fields.",
  "End Of Comments"
   ]
 
