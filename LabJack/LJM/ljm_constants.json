@@ -520,6 +520,7 @@
     "2013.06.03.A:  Added registers for global AIN settings referred to as AIN_ALL_.... Moved AIN configuration registers to make room for changing settling to a float32.",
     "2013.06.04.A:  Added registers for I2C",
     "2013.06.06.A:  Fixed typos in I2C section found by jslint.com.  Started adding displayname and description fields.",
+    "2013.06.06.A:  Synching the LJM error codes",
  "End Of Comments"
   ]
 
