@@ -177,7 +177,6 @@
 
    {"address":22234, "name":"HUMIDITY_CAL_BAT_OFFSET", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""]},
    {"address":60010, "name":"HARDWARE_INSTALLED", "type":"UINT32", "devices":["T7"], "readwrite":"R", "default":0, "tags":["CONFIG"]},
-   {"address":4990, "name":"STREAM_START", "type":"UINT32", "devices":["T7"], "readwrite":"W", "tags":["STREAM"]},
 
    {"address":4002, "name":"STREAM_SCANRATE_HZ", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"]},
    {"address":4004, "name":"STREAM_NUM_ADDRESSES", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"]},
@@ -196,9 +195,6 @@
 
    {"address":4990, "name":"STREAM_START", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9402}], "readwrite":"W", "tags":["STREAM"]},
    {"address":4992, "name":"STREAM_STOP", "type":"UINT32", "devices":["T7"], "readwrite":"W", "tags":["STREAM"]},
-
-   {"address":5100, "name":"I2C_SDA", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"]},
-   {"address":5101, "name":"I2C_SCL", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"]},
 
    {"address":5100, "name":"I2C_SDA", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"]},
    {"address":5101, "name":"I2C_SCL", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"]},
