@@ -155,6 +155,8 @@
  [
    {"address":49410, "name":"WIFI_START_ADHOC", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9308}], "readwrite":"W", "tags":["WIFI"]},
 
+   {"address":52000, "name":"AIN#(0:254)_AF_FREQUENCY", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9404}], "readwrite":"RW", "default":0, "tags":["AIN"]},
+   {"address":53000, "name":"AIN#(0:254)_AF_NUM_SAMPLES", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9404}], "readwrite":"RW", "default":0, "tags":["AIN"]},
 
    {"address":42000, "name":"AIN#(0:254)_SETTLING_US", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["AIN"]},
    {"address":43000, "name":"AIN#(0:254)_EF_TYPE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["EF, AIN"]},
@@ -214,9 +216,9 @@
    {"address":5212, "name":"SHT_PIN_READ_H", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "default":0, "tags":["STREAM"]},
 
    {"address":30000, "name":"TDAC#(0:22)", "type":"FLOAT32", "devices":["T7"], "readwrite":"W", "default":0, "tags":["TDAC"]},
-   {"address":52000, "name":"TDAC_SCL", "type":"UINT16", "devices":["T7"], "readwrite":"W", "default":0, "tags":["TDAC"]},
-   {"address":52001, "name":"TDAC_SDA", "type":"UINT16", "devices":["T7"], "readwrite":"W", "default":0, "tags":["TDAC"]},
-   {"address":52002, "name":"TDAC_READ", "type":"UINT32", "devices":["T7"], "readwrite":"R", "default":0, "tags":["TDAC"]},
+   {"address":55200, "name":"TDAC_SCL", "type":"UINT16", "devices":["T7"], "readwrite":"W", "default":0, "tags":["TDAC"]},
+   {"address":55201, "name":"TDAC_SDA", "type":"UINT16", "devices":["T7"], "readwrite":"W", "default":0, "tags":["TDAC"]},
+   {"address":55202, "name":"TDAC_READ", "type":"UINT32", "devices":["T7"], "readwrite":"R", "default":0, "tags":["TDAC"]},
 
    {"address":49406, "name":"WIFI_SCAN_START", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"W", "tags":["WIFI"]},
    {"address":49486, "name":"WIFI_SCAN_NUM_BYTES", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"R", "tags":["WIFI"]},
@@ -519,6 +521,7 @@
     "2013.06.07.A:  Synching the LJM error codes.",
     "2013.06.12.A:  Removed port mask registers.  Changed names of some stream registers.",
     "2013.06.12.B:  Removed the empty altnames",
+    "2013.06.13.A:  Added AF frequency and num-samples registers. Moved TDAC reads",
     "2013.06.14.A:  Removed spaces from register names",
     "End Of Comments"
   ]
