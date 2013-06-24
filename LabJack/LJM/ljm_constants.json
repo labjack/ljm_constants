@@ -79,29 +79,29 @@
    {"address":55122, "name":"TEST_INT32", "type":"INT32", "devices":["T7"], "readwrite":"RW", "tags":["CONFIG"], "description":""},
    {"address":55124, "name":"TEST_FLOAT32", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "tags":["CONFIG"], "description":""},
 
-   {"address":60000, "name":"PRODUCT_ID", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"R", "tags":["CONFIG"], "description":""},
-   {"address":60002, "name":"HARDWARE_VERSION", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"R", "tags":["CONFIG"], "description":""},
-   {"address":60004, "name":"FIRMWARE_VERSION", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9", "DIGIT"], "readwrite":"R", "tags":["CONFIG"], "description":""},
-   {"address":60006, "name":"BOOTLOADER_VERSION", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"R", "tags":["CONFIG"], "description":""},
-   {"address":60008, "name":"WIFI_VERSION", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["CONFIG"], "description":""},
-   {"address":60020, "name":"ETHERNET_MAC", "type":"UINT64", "devices":["T7", "UE9"], "readwrite":"R", "tags":["ETHERNET"], "description":""},
-   {"address":60024, "name":"WIFI_MAC", "type":"UINT64", "devices":["T7"], "readwrite":"R", "tags":["WIFI"], "description":""},
-   {"address":60028, "name":"SERIAL_NUMBER", "type":"UINT32", "devices":["U3", "U6", "T7", "UE9", "DIGIT"], "readwrite":"R", "tags":["CONFIG"], "description":""},
-   {"address":60500, "name":"DEVICE_NAME_DEFAULT", "type":"STRING", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["CONFIG"], "description":""},
+   {"address":60000, "name":"PRODUCT_ID", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"R", "tags":["CONFIG"], "description":"The numeric identifier of the device.  Such as 3 for a U3-HV."},
+   {"address":60002, "name":"HARDWARE_VERSION", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"R", "tags":["CONFIG"], "description":"The hardware version of the device."},
+   {"address":60004, "name":"FIRMWARE_VERSION", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9", "DIGIT"], "readwrite":"R", "tags":["CONFIG"], "description":"The current firmware version installed on the main processor."},
+   {"address":60006, "name":"BOOTLOADER_VERSION", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"R", "tags":["CONFIG"], "description":"The bootloader version installed on the main processor."},
+   {"address":60008, "name":"WIFI_VERSION", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["CONFIG"], "description":"The current firmware version of the WiFi module, if available."},
+   {"address":60020, "name":"ETHERNET_MAC", "type":"UINT64", "devices":["T7", "UE9"], "readwrite":"R", "tags":["ETHERNET"], "description":"The MAC address of the wired Ethernet module."},
+   {"address":60024, "name":"WIFI_MAC", "type":"UINT64", "devices":["T7"], "readwrite":"R", "tags":["WIFI"], "description":"The MAC address of the WiFi module."},
+   {"address":60028, "name":"SERIAL_NUMBER", "type":"UINT32", "devices":["U3", "U6", "T7", "UE9", "DIGIT"], "readwrite":"R", "tags":["CONFIG"], "description":"The serial number of the device."},
+   {"address":60500, "name":"DEVICE_NAME_DEFAULT", "type":"STRING", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["CONFIG"], "description":"The current device name. Up to 49 characters, cannot contain periods."},
 
-   {"address":61600, "name":"WATCHDOG_ENABLE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"RW", "tags":["WATCHDOG"]},
-   {"address":61602, "name":"WATCHDOG_OPTIONS_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"RW", "tags":["WATCHDOG"]},
-   {"address":61604, "name":"WATCHDOG_TIMEOUT_S_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"RW", "tags":["WATCHDOG"]},
-   {"address":61606, "name":"WATCHDOG_STARTUP_DELAY_S_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"RW", "tags":["WATCHDOG"]},
+   {"address":61600, "name":"WATCHDOG_ENABLE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The current Enabled/Disabled state of the Watchdog system."},
+   {"address":61602, "name":"WATCHDOG_OPTIONS_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"A single binary-encoded value where each bit is an option. See Watchdog section in datasheet."},
+   {"address":61604, "name":"WATCHDOG_TIMEOUT_S_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The number of seconds before timeout. On timeout, watchdog executes all operations defined in the options register. A clear event will reset the timeout."},
+   {"address":61606, "name":"WATCHDOG_STARTUP_DELAY_S_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"Specify a startup delay after Watchdog timeout."},
 
-   {"address":61610, "name":"WATCHDOG_DIO_STATE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"RW", "tags":["WATCHDOG"]},
-   {"address":61612, "name":"WATCHDOG_DIO_DIRECTION_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"RW", "tags":["WATCHDOG"]},
-   {"address":61614, "name":"WATCHDOG_DIO_MASK_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"RW", "tags":["WATCHDOG"]},
-   {"address":61616, "name":"WATCHDOG_DAC0_DEFAULT", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"RW", "tags":["WATCHDOG"]},
-   {"address":61618, "name":"WATCHDOG_DAC1_DEFAULT", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"RW", "tags":["WATCHDOG"]},
+   {"address":61610, "name":"WATCHDOG_DIO_STATE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The state high/low of the digital I/O after a Watchdog timeout. See DIO_STATE"},
+   {"address":61612, "name":"WATCHDOG_DIO_DIRECTION_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The direction input/output of the digital I/O after a Watchdog timeout. See DIO_DIRECTION"},
+   {"address":61614, "name":"WATCHDOG_DIO_INHIBIT_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The inhibit mask of the digital I/O after a Watchdog timeout. See DIO_INHIBIT"},
+   {"address":61616, "name":"WATCHDOG_DAC0_DEFAULT", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The voltage of DAC0 after a Watchdog timeout."},
+   {"address":61618, "name":"WATCHDOG_DAC1_DEFAULT", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The voltage of DAC1 after a Watchdog timeout."},
 
-   {"address":61620, "name":"WATCHDOG_KEY_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"W", "tags":["WATCHDOG"]},
-   {"address":61640, "name":"WATCHDOG_CLEAR", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"W", "tags":["WATCHDOG"]},
+   {"address":61620, "name":"WATCHDOG_KEY_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"W", "tags":["WATCHDOG"], "description":"When set to strict mode this is the value that much be written to the clear register."},
+   {"address":61640, "name":"WATCHDOG_CLEAR", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"W", "tags":["WATCHDOG"], "description":"When running in strict mode writing the key to this register is the only way to clear the watchdog."},
 
 
    {"address":22000, "name":"LATEST_TEMPERATURE", "type":"UINT16", "devices":["DIGIT"], "readwrite":"R", "tags":[""]},
@@ -368,6 +368,7 @@
    {"error":2354, "string":"EXFLASH_KEY_INVALID"},
    {"error":2355, "string":"FLASH_VERIFICATION_FAILED"},
    {"error":2356, "string":"FLASH_ERASE_FAILED"},
+   {"error":2358, "string":"EXFLASH_UNAVAILABLE"},
    {"error":2370, "string":"AIN_RANGE_INVALID"},
    {"error":2371, "string":"AIN_SETTLINE_INVALID"},
    {"error":2380, "string":"LUA_VM_STATE_NO_CHANGE"},
@@ -481,6 +482,7 @@
    {"error":2925, "string":"WIFI_UPGRADE_FAILED"},
    {"error":2940, "string":"STREAM_AUTO_RECOVER_ACTIVE"},
    {"error":2941, "string":"STREAM_AUTO_RECOVER_END"},
+   {"error":2942, "string":"STREAM_SCAN_OVERLAP"},
    {"error":2950, "string":"SELFDIAG_MAIN_OSC_FAIL"}
  ],
 
@@ -526,6 +528,9 @@
     "2013.06.17.A:  Some EF register names were changed due to a document conflict. Used remote version and changed back to proper names.",
     "2013.06.18.A:  More descriptions added.",
     "2013.06.18.A:  Made descriptions a string rather than a list.",
+    "2013.06.21.A:  Changed some watchdog descriptions.",
+    "2013.06.22.A:  Added error 2942.",
+    "2013.06.24.A:  Added error 2358.",
     "End Of Comments"
   ]
 
