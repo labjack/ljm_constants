@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2013.06.19.A",
+   "version":"2013.06.24.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus/tags"
@@ -29,9 +29,14 @@
    {"address":2850, "name":"DIO_DIRECTION", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["DIO"], "description":"Read or write the direction of all digital I/O in a single binary-encoded value.  0=Input and 1=Output.  Writes only apply to bits with mask set."},
    {"address":2900, "name":"DIO_INHIBIT", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["DIO"], "description":"A single binary-encoded value where each bit determines whether _STATE or _DIRECTION writes affect that bit of digital I/O.  0=Default=Affected, 1=Ignored."},
 
-   {"address":40000, "name":"AIN#(0:254)_RANGE", "type":"FLOAT32", "devices":[{"device":"T7", "description":"Valid values/ranges:  0.0=Default=> +/-10V, 10.0=> +/-10V, 1.0=> +/-1V, 0.1=> +/-0.1V, or 0.01=> +/-0.01V."}], "readwrite":"RW", "default":0, "tags":["AIN"], "description":"The input range of each analog input."},
+   {"address":40000, "name":"AIN#(0:254)_RANGE", "type":"FLOAT32", "devices":[{"device":"T7", "description":"Valid values/ranges:  0.0=Default=> +/-10V, 10.0=> +/-10V, 1.0=> +/-1V, 0.1=> +/-0.1V, or 0.01=> +/-0.01V."}], "readwrite":"RW", "default":0, "tags":["AIN"], "description":"The range/span of each analog input."},
    {"address":41000, "name":"AIN#(0:254)_NEGATIVE_CH", "type":"UINT16", "devices":[{"device":"T7", "description":"For base differential channels, positive must be even channel from 0-12 and negative must be positive+1.  For extended channels 16-127, see Mux80 datasheet."}], "readwrite":"RW", "default":199, "tags":["AIN"], "description":"Specifies the negative channel to be used for each positive channel.  199=Default=> Single-Ended."},
    {"address":41500, "name":"AIN#(0:254)_RESOLUTION_INDEX", "type":"UINT16", "devices":[{"device":"T7", "description":"Valid values:  1-8 for T7, 1-12 for T7-Pro.  0=Default=> 8 (T7) or 9 (T7-Pro)."}], "readwrite":"RW", "default":0, "tags":["AIN"], "description":"The resolution index for each analog input.  A larger resolution index generally results in lower noise and longer sample times."},
+
+   {"address":43900, "name":"AIN_ALL_RANGE", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"W", "default":0, "tags":["AIN"], "description":"A write to this global parameter affects all AIN."},
+   {"address":43902, "name":"AIN_ALL_NEGATIVE_CH", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"W", "default":199, "tags":["AIN"], "description":"A write to this global parameter affects all AIN."},
+   {"address":43903, "name":"AIN_ALL_RESOLUTION_INDEX", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"W", "default":0, "tags":["AIN"], "description":"A write to this global parameter affects all AIN."},
+   {"address":43904, "name":"AIN_ALL_SETTLING", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"W", "default":0, "tags":["AIN"], "description":"A write to this global parameter affects all AIN."},
 
    {"address":48003, "name":"POWER_ETHERNET", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.86}], "readwrite":"RW", "tags":["CONFIG", "ETHERNET"], "description":"The current ON/OFF state of the Ethernet module. Provided to optionally reduce power consumption."},
    {"address":48004, "name":"POWER_WIFI", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.86}], "readwrite":"RW", "tags":["CONFIG", "WIFI"], "description":"The current ON/OFF state of the WiFi module. Provided to optionally reduce power consumption."},
@@ -73,11 +78,11 @@
    {"address":49450, "name":"WIFI_STATUS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.75}], "readwrite":"R", "tags":["WIFI"], "description":"Status Codes: 2900 Associated, 2901 Associating, 2902 Association Failed, 2903 Unpowered, 2904 Booting, 2905 Start failed, 2906 Applying Settings, 2907 DHCP started, 2909 Other, 2920 Configuring, 2921 Upgrading, 2923 Rebooting, 2924 Upgrade success, 2925 Upgrade failed."},
    {"address":49452, "name":"WIFI_RSSI", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.80}], "readwrite":"R", "tags":["WIFI"], "description":"WiFi RSSI (signal strength) 40-70 is good."},
 
-   {"address":55100, "name":"TEST", "type":"UINT32", "devices":["T7"], "readwrite":"R", "default":1122867, "tags":["CONFIG"], "description":""},
-   {"address":55110, "name":"TEST_UINT16", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "tags":["CONFIG"], "description":""},
-   {"address":55120, "name":"TEST_UINT32", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["CONFIG"], "description":""},
-   {"address":55122, "name":"TEST_INT32", "type":"INT32", "devices":["T7"], "readwrite":"RW", "tags":["CONFIG"], "description":""},
-   {"address":55124, "name":"TEST_FLOAT32", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "tags":["CONFIG"], "description":""},
+   {"address":55100, "name":"TEST", "type":"UINT32", "devices":["T7"], "readwrite":"R", "default":1122867, "tags":["CONFIG"], "description":"A read of this test register should always return 0x00112233 or d1122867."},
+   {"address":55110, "name":"TEST_UINT16", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "tags":["CONFIG"], "description":"Write a value and read back to test UINT16 operation."},
+   {"address":55120, "name":"TEST_UINT32", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["CONFIG"], "description":"Write a value and read back to test UINT32 operation."},
+   {"address":55122, "name":"TEST_INT32", "type":"INT32", "devices":["T7"], "readwrite":"RW", "tags":["CONFIG"], "description":"Write a value and read back to test INT32 operation."},
+   {"address":55124, "name":"TEST_FLOAT32", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "tags":["CONFIG"], "description":"Write a value and read back to test FLOAT32 operation."},
 
    {"address":60000, "name":"PRODUCT_ID", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"R", "tags":["CONFIG"], "description":"The numeric identifier of the device.  Such as 3 for a U3-HV."},
    {"address":60002, "name":"HARDWARE_VERSION", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"R", "tags":["CONFIG"], "description":"The hardware version of the device."},
@@ -160,11 +165,6 @@
 
    {"address":42000, "name":"AIN#(0:254)_SETTLING_US", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["AIN"]},
    {"address":43000, "name":"AIN#(0:254)_EF_TYPE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["EF, AIN"]},
-
-   {"address":43900, "name":"AIN_ALL_RANGE", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["AIN"]},
-   {"address":43902, "name":"AIN_ALL_NEGATIVE_CH", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":199, "tags":["AIN"]},
-   {"address":43903, "name":"AIN_ALL_RESOLUTION_INDEX", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["AIN"]},
-   {"address":43904, "name":"AIN_ALL_SETTLING", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["AIN"]},
 
    {"address":4040, "name":"STREAM_OUT#(0:4)_TARGET", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"]},
    {"address":4050, "name":"STREAM_OUT#(0:4)_BUFFER_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"]},
@@ -530,7 +530,7 @@
     "2013.06.18.A:  Made descriptions a string rather than a list.",
     "2013.06.21.A:  Changed some watchdog descriptions.",
     "2013.06.22.A:  Added error 2942.",
-    "2013.06.24.A:  Added error 2358.",
+    "2013.06.24.A:  Added error 2358.  More descriptions added.",
     "End Of Comments"
   ]
 
