@@ -36,7 +36,7 @@
    {"address":43900, "name":"AIN_ALL_RANGE", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"W", "default":0, "tags":["AIN"], "description":"A write to this global parameter affects all AIN."},
    {"address":43902, "name":"AIN_ALL_NEGATIVE_CH", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"W", "default":199, "tags":["AIN"], "description":"A write to this global parameter affects all AIN."},
    {"address":43903, "name":"AIN_ALL_RESOLUTION_INDEX", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"W", "default":0, "tags":["AIN"], "description":"A write to this global parameter affects all AIN."},
-   {"address":43904, "name":"AIN_ALL_SETTLING_US", "type":"FLOAT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"W", "default":0, "tags":["AIN"], "description":"A write to this global parameter affects all AIN."},
+   {"address":43904, "name":"AIN_ALL_SETTLING_US", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"W", "default":0, "tags":["AIN"], "description":"A write to this global parameter affects all AIN."},
    {"address":43906, "name":"AIN_ALL_EF_TYPE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"W", "default":0, "tags":["AIN"], "description":"A write to this global parameter affects all AIN."},
 
    {"address":48003, "name":"POWER_ETHERNET", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.86}], "readwrite":"RW", "tags":["CONFIG", "ETHERNET"], "description":"The current ON/OFF state of the Ethernet module. Provided to optionally reduce power consumption."},
