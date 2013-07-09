@@ -182,6 +182,7 @@
    {"address":60010, "name":"HARDWARE_INSTALLED", "type":"UINT32", "devices":["T7"], "readwrite":"R", "default":0, "tags":["CONFIG"]},
 
    {"address":61520, "name":"CORE_TIMER", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9419}], "readwrite":"R"},
+   {"address":61998, "name":"SYSTEM_REBOOT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9419}], "readwrite":"W"},
 
    {"address":4002, "name":"STREAM_SCANRATE_HZ", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"]},
    {"address":4004, "name":"STREAM_NUM_ADDRESSES", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"]},
@@ -353,6 +354,7 @@
    {"error":1302, "string":"LJME_COULD_NOT_START_STREAM"},
    {"error":1303, "string":"LJME_STREAM_NOT_RUNNING"},
    {"error":1304, "string":"LJME_UNABLE_TO_STOP_STREAM"},
+   {"error":1305, "string":"LJME_INVALID_VALUE"},
 
    {"error":2300, "string":"MODBUS_RSP_OVERFLOW"},
    {"error":2301, "string":"MODBUS_CMD_OVERFLOW"},
@@ -538,6 +540,7 @@
     "2013.06.28.A:  Changed STREAM_BUFFER_SIZE_INDEX to STREAM_BUFFER_SIZE_BYTES.",
     "2013.07.01.A:  Added max firmware version to stream_stop",
     "2013.07.05.A:  Added AIN_ALL_EF_TYPE and CORE_TIMER. Changed AIN_ALL_SETTLING to AIN_ALL_SETTLING_US.",
+    "2013.07.09.A:  Added SYSTEM_REBOOT, LJME_INVALID_VALUE.",
     "End Of Comments"
   ]
 
