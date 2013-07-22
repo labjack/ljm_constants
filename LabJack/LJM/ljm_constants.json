@@ -355,6 +355,7 @@
    {"error":1303, "string":"LJME_STREAM_NOT_RUNNING"},
    {"error":1304, "string":"LJME_UNABLE_TO_STOP_STREAM"},
    {"error":1305, "string":"LJME_INVALID_VALUE"},
+   {"error":1306, "string":"LJME_SYNCHRONIZATION_TIMEOUT"},
 
    {"error":2300, "string":"MODBUS_RSP_OVERFLOW"},
    {"error":2301, "string":"MODBUS_CMD_OVERFLOW"},
@@ -488,6 +489,7 @@
    {"error":2940, "string":"STREAM_AUTO_RECOVER_ACTIVE"},
    {"error":2941, "string":"STREAM_AUTO_RECOVER_END"},
    {"error":2942, "string":"STREAM_SCAN_OVERLAP"},
+   {"error":2943, "string":"STREAM_AUTO_RECOVER_END_OVERFLOW"},
    {"error":2950, "string":"SELFDIAG_MAIN_OSC_FAIL"}
  ],
 
@@ -541,6 +543,8 @@
     "2013.07.01.A:  Added max firmware version to stream_stop",
     "2013.07.05.A:  Added AIN_ALL_EF_TYPE and CORE_TIMER. Changed AIN_ALL_SETTLING to AIN_ALL_SETTLING_US.",
     "2013.07.09.A:  Added SYSTEM_REBOOT, LJME_INVALID_VALUE.",
+    "2013.07.09.A:  STREAM_AUTO_RECOVER_END_OVERFLOW",
+    "2013.07.22.A:  LJME_SYNCHRONIZATION_TIMEOUT",
     "End Of Comments"
   ]
 
