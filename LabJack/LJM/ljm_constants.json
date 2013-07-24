@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2013.06.28.A",
+   "version":"2013.07.24.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus/tags"
@@ -161,11 +161,11 @@
  [
    {"address":49410, "name":"WIFI_START_ADHOC", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9308}], "readwrite":"W", "tags":["WIFI"]},
 
-   {"address":52000, "name":"AIN#(0:254)_EF_FREQUENCY", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9404}], "readwrite":"RW", "default":0, "tags":["AIN"]},
-   {"address":53000, "name":"AIN#(0:254)_EF_NUM_SAMPLES", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9404}], "readwrite":"RW", "default":0, "tags":["AIN"]},
+   {"address":52000, "name":"AIN#(0:254)_EF_SCANRATE_HZ", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9404}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
+   {"address":53000, "name":"AIN#(0:254)_EF_NUM_SCANS", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9404}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
 
    {"address":42000, "name":"AIN#(0:254)_SETTLING_US", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["AIN"]},
-   {"address":43000, "name":"AIN#(0:254)_EF_TYPE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["EF, AIN"]},
+   {"address":43000, "name":"AIN#(0:254)_EF_TYPE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
 
    {"address":4040, "name":"STREAM_OUT#(0:4)_TARGET", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"]},
    {"address":4050, "name":"STREAM_OUT#(0:4)_BUFFER_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"]},
@@ -199,8 +199,7 @@
 
    {"address":4500, "name":"STREAM_DATA_CR", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["STREAM"]},
 
-   {"address":4990, "name":"STREAM_START", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9402}], "readwrite":"W", "tags":["STREAM"]},
-   {"address":4992, "name":"STREAM_STOP", "type":"UINT32", "devices":[{"device":"T7", "fwmax":0.9416}], "readwrite":"W", "tags":["STREAM"]},
+   {"address":4990, "name":"STREAM_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9421}], "readwrite":"W", "tags":["STREAM"]},
 
    {"address":5100, "name":"I2C_SDA", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"]},
    {"address":5101, "name":"I2C_SCL", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"]},
@@ -228,28 +227,28 @@
    {"address":49486, "name":"WIFI_SCAN_NUM_BYTES", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"R", "tags":["WIFI"]},
    {"address":49488, "name":"WIFI_SCAN_DATA", "type":"BYTE", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"R", "tags":["WIFI"]},
 
-   {"address":44900, "name":"DIO_EF_CLOCK0_ENABLE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["EF, DIO"]},
-   {"address":44901, "name":"DIO_EF_CLOCK0_DIVISOR", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9320}], "readwrite":"RW", "tags":["EF, DIO"]},
-   {"address":44902, "name":"DIO_EF_CLOCK0_OPTIONS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["EF, DIO"]},
-   {"address":44904, "name":"DIO_EF_CLOCK0_ROLL_VALUE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["EF, DIOC"]},
-   {"address":44910, "name":"DIO_EF_CLOCK1_ENABLE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["EF, DIO"]},
-   {"address":44911, "name":"DIO_EF_CLOCK1_DIVISOR", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9320}], "readwrite":"RW", "tags":["EF, DIO"]},
-   {"address":44912, "name":"DIO_EF_CLOCK1_OPTIONS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["EF, DIO"]},
-   {"address":44914, "name":"DIO_EF_CLOCK1_ROLL_VALUE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["EF, DIO"]},
-   {"address":44920, "name":"DIO_EF_CLOCK2_ENABLE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["EF, DIO"]},
-   {"address":44921, "name":"DIO_EF_CLOCK2_DIVISOR", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9320}], "readwrite":"RW", "tags":["EF, DIO"]},
-   {"address":44922, "name":"DIO_EF_CLOCK2_OPTIONS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["EF, DIO"]},
-   {"address":44924, "name":"DIO_EF_CLOCK2_ROLL_VALUE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["EF, DIO"]},
+   {"address":44900, "name":"DIO_EF_CLOCK0_ENABLE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44901, "name":"DIO_EF_CLOCK0_DIVISOR", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9320}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44902, "name":"DIO_EF_CLOCK0_OPTIONS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44904, "name":"DIO_EF_CLOCK0_ROLL_VALUE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44910, "name":"DIO_EF_CLOCK1_ENABLE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44911, "name":"DIO_EF_CLOCK1_DIVISOR", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9320}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44912, "name":"DIO_EF_CLOCK1_OPTIONS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44914, "name":"DIO_EF_CLOCK1_ROLL_VALUE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44920, "name":"DIO_EF_CLOCK2_ENABLE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44921, "name":"DIO_EF_CLOCK2_DIVISOR", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9320}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44922, "name":"DIO_EF_CLOCK2_OPTIONS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44924, "name":"DIO_EF_CLOCK2_ROLL_VALUE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
 
-   {"address":44000, "name":"DIO#(0:22)_EF_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["EF, DIO"]},
-   {"address":44100, "name":"DIO#(0:22)_EF_TYPE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["EF, DIO"]},
-   {"address":44200, "name":"DIO#(0:22)_EF_OPTIONS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["EF, DIO"]},
-   {"address":44300, "name":"DIO#(0:22)_EF_VALUE_A", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["EF, DIO"]},
-   {"address":44400, "name":"DIO#(0:22)_EF_VALUE_B", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["EF, DIO"]},
-   {"address":44500, "name":"DIO#(0:22)_EF_VALUE_C", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["EF, DIO"]},
-   {"address":44600, "name":"DIO#(0:22)_EF_VALUE_D", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["EF, DIO"]},
-   {"address":3000, "name":"DIO#(0:22)_EF_READ_A", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["EF, DIO"]},
-   {"address":3100, "name":"DIO#(0:22)_EF_READ_B", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["EF, DIO"]},
+   {"address":44000, "name":"DIO#(0:22)_EF_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44100, "name":"DIO#(0:22)_EF_TYPE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44200, "name":"DIO#(0:22)_EF_OPTIONS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44300, "name":"DIO#(0:22)_EF_VALUE_A", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44400, "name":"DIO#(0:22)_EF_VALUE_B", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44500, "name":"DIO#(0:22)_EF_VALUE_C", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44600, "name":"DIO#(0:22)_EF_VALUE_D", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":3000, "name":"DIO#(0:22)_EF_READ_A", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
+   {"address":3100, "name":"DIO#(0:22)_EF_READ_B", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
 
    {"address":49000, "name":"IO_CONFIG_CHECK_FOR_FACTORY", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["CONFIG"]},
    {"address":49002, "name":"IO_CONFIG_SET_DEFAULT_TO_CURRENT", "type":"UINT32", "devices":["T7"], "readwrite":"W", "tags":["CONFIG"]},
@@ -545,6 +544,7 @@
     "2013.07.09.A:  Added SYSTEM_REBOOT, LJME_INVALID_VALUE.",
     "2013.07.09.A:  STREAM_AUTO_RECOVER_END_OVERFLOW",
     "2013.07.22.A:  LJME_SYNCHRONIZATION_TIMEOUT",
+    "2013.07.23.A:  Changed STREAM_START to STREAM_ENABLE and removed STREAM_STOP.",
     "End Of Comments"
   ]
 
