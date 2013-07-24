@@ -355,6 +355,7 @@
    {"error":1304, "string":"LJME_UNABLE_TO_STOP_STREAM"},
    {"error":1305, "string":"LJME_INVALID_VALUE"},
    {"error":1306, "string":"LJME_SYNCHRONIZATION_TIMEOUT"},
+   {"error":1307, "string":"LJME_OLD_FIRMWARE"},
 
    {"error":2300, "string":"MODBUS_RSP_OVERFLOW"},
    {"error":2301, "string":"MODBUS_CMD_OVERFLOW"},
@@ -545,6 +546,7 @@
     "2013.07.09.A:  STREAM_AUTO_RECOVER_END_OVERFLOW",
     "2013.07.22.A:  LJME_SYNCHRONIZATION_TIMEOUT",
     "2013.07.23.A:  Changed STREAM_START to STREAM_ENABLE and removed STREAM_STOP.",
+    "2013.07.24.A:  LJME_OLD_FIRMWARE.",
     "End Of Comments"
   ]
 
