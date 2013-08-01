@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2013.07.24.A",
+   "version":"2013.07.31.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus/tags"
@@ -275,6 +275,7 @@
    {"error":399, "string":"LJME_WARNINGS_END"},
    {"error":201, "string":"LJME_FRAMES_OMITTED_DUE_TO_PACKET_SIZE"},
    {"error":202, "string":"LJME_LOG_FAILURE"},
+   {"error":203, "string":"LJME_USING_DEFAULT_CALIBRATION"},
 
    {"error":1200, "string":"LJME_MODBUS_ERRORS_BEGIN"},
    {"error":1216, "string":"LJME_MODBUS_ERRORS_END"},
@@ -547,6 +548,7 @@
     "2013.07.22.A:  LJME_SYNCHRONIZATION_TIMEOUT",
     "2013.07.23.A:  Changed STREAM_START to STREAM_ENABLE and removed STREAM_STOP.",
     "2013.07.24.A:  LJME_OLD_FIRMWARE.",
+    "2013.07.31.A:  LJME_USING_DEFAULT_CALIBRATION",
     "End Of Comments"
   ]
 
