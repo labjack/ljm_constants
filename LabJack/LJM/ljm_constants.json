@@ -208,8 +208,8 @@
    {"address":5104, "name":"I2C_SLAVE_ADDRESS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"]},
    {"address":5108, "name":"I2C_NUM_BYTES_TO_TX", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"]},
    {"address":5109, "name":"I2C_NUM_BYTES_TO_RX", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"]},
-   {"address":5110, "name":"I2C_WRITE", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"]},
-   {"address":5150, "name":"I2C_READ", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"]},
+   {"address":5110, "name":"I2C_WRITE", "type":"BYTE", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"]},
+   {"address":5150, "name":"I2C_READ", "type":"BYTE", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"]},
 
    {"address":5200, "name":"SHT_PIN_POWER", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"]},
    {"address":5201, "name":"SHT_PIN_ENABLE", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"]},
@@ -239,6 +239,10 @@
    {"address":44921, "name":"DIO_EF_CLOCK2_DIVISOR", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9320}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
    {"address":44922, "name":"DIO_EF_CLOCK2_OPTIONS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
    {"address":44924, "name":"DIO_EF_CLOCK2_ROLL_VALUE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   
+   {"address":44908, "name":"DIO_EF_CLOCK0_COUNT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9430}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44918, "name":"DIO_EF_CLOCK1_COUNT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9430}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44928, "name":"DIO_EF_CLOCK2_COUNT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9430}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
 
    {"address":44000, "name":"DIO#(0:22)_EF_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
    {"address":44100, "name":"DIO#(0:22)_EF_TYPE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
@@ -549,6 +553,8 @@
     "2013.07.23.A:  Changed STREAM_START to STREAM_ENABLE and removed STREAM_STOP.",
     "2013.07.24.A:  LJME_OLD_FIRMWARE.",
     "2013.07.31.A:  LJME_USING_DEFAULT_CALIBRATION",
+    "2013.08.02.A:  Added clock count registers",
+    "2013.08.20.A:  Changed type of I2C_WRITE and I2C_READ to BYTE",
     "End Of Comments"
   ]
 
