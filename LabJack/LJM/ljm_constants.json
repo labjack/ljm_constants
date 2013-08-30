@@ -157,7 +157,7 @@
    {"address":22841, "name":"DGT_RE_INITIALIZE_CONFIG", "type":"UINT16", "devices":["DIGIT"], "readwrite":"W", "tags":[""], "description":"Re-initializes the Digit to the configuration it had when connected to the computer. Clears out recent settings changes that are not yet saved."},
    {"address":22842, "name":"DGT_LENGTH_USB_SESSION", "type":"UINT32", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"The number of blank readings collected since connection to the computer"},
    {"address":22974, "name":"DGT_WRITE_SN", "type":"UINT32", "devices":["DIGIT"], "readwrite":"W", "tags":["INTERNAL"], "description":"Write a new serial number. Only used by mfr."},
-   {"address":61996, "name":"DGT_REQ_FW_UPDATE", "type":"UINT32", "devices":["DIGIT"], "readwrite":"W", "tags":["INTERNAL"], "description":"Request a firmware update.  Pass a value of 150 (5mS) so that the Digit has time to de-enumerate. Only used by mfr."},
+   {"address":61996, "name":"DGT_REQ_FW_UPDATE", "type":"UINT32", "devices":["DIGIT"], "readwrite":"W", "tags":["INTERNAL"], "description":"Request a firmware update.  Pass a value of 150 (5mS) so that the Digit has time to de-enumerate. Only used by mfr."}
  ],
 
  "registers_beta":
@@ -243,7 +243,7 @@
    {"address":44921, "name":"DIO_EF_CLOCK2_DIVISOR", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9320}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
    {"address":44922, "name":"DIO_EF_CLOCK2_OPTIONS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
    {"address":44924, "name":"DIO_EF_CLOCK2_ROLL_VALUE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
-   
+
    {"address":44908, "name":"DIO_EF_CLOCK0_COUNT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9430}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
    {"address":44918, "name":"DIO_EF_CLOCK1_COUNT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9430}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
    {"address":44928, "name":"DIO_EF_CLOCK2_COUNT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9430}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
