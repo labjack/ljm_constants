@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2013.08.21.A",
+   "version":"2013.08.30.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus/tags"
@@ -349,6 +349,7 @@
    {"error":1284, "string":"LJME_STARTING_REG_ERR"},
    {"error":1285, "string":"LJME_NUM_REGS_ERR"},
    {"error":1286, "string":"LJME_NUM_BYTES_ERR"},
+   {"error":1290, "string":"LJME_CONFIG_FILE_NOT_FOUND"},
    {"error":1291, "string":"LJME_INVALID_NUM_VALUES"},
    {"error":1292, "string":"LJME_CONSTANTS_FILE_NOT_FOUND"},
    {"error":1293, "string":"LJME_INVALID_CONSTANTS_FILE"},
@@ -562,6 +563,7 @@
     "2013.08.20.A:  Changed type of I2C_WRITE and I2C_READ to BYTE.",
     "2013.08.21.A:  Changes to I2C, SHT, and TDAC registers ... still in beta section.",
     "2013.08.24.A:  Updated I2C to use the GO register",
+    "2013.08.30.A:  Added LJME_CONFIG_FILE_NOT_FOUND"
     "End Of Comments"
   ]
 
