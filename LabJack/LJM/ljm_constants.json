@@ -121,6 +121,7 @@
    {"address":22022, "name":"DGT_LOG_HUMIDITY", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"Store humidity readings to memory at the log interval. Requires temperature also logged. 1=Enabled, 0=Disabled"},
    {"address":22040, "name":"DGT_INDEX_LOG_INTERVAL", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The index of the time interval between log events. 0=10s, 1=30s, 2=1m, 3=10m, 4=30m, 5=1h, 6=6h"},
    {"address":22042, "name":"DGT_LOG_START_TIME", "type":"UINT16", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"The start time of the logging session: 22042 Year=0 to 99, 22043 Month=1 to 12, 22044 Day=1 to 31, 22045 Weekday=1 to 7, 22046 Hour=0 to 23, 22047 Minutes=0 to 59, 22048 Second=0 to 59"},
+   {"address":22049, "name":"DGT_nALARM_FLAGS", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"A bitmask of all alarm and error flags. 0=Occured, 1=Did NOT occur. Refer to documentation for more information"},
    {"address":22050, "name":"DGT_nBROWNOUT", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"Brown-out system error flag. 0=Occured, 1=Did NOT occur"},
    {"address":22051, "name":"DGT_nFAULT", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"Fault system error flag. 0=Occured, 1=Did NOT occur"},
    {"address":22052, "name":"DGT_nINVALID_READING", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"Invalid reading system error flag. 0=Occured, 1=Did NOT occur"},
@@ -157,7 +158,7 @@
    {"address":22822, "name":"DGT_EXTERN_FLASH_bkERASE", "type":"UINT16", "devices":["DIGIT"], "readwrite":"W", "tags":[""], "description":"Erase all data on the external flash. KEY=Erase, Other=No effect, KEY=37157 Takes 5seconds to complete, so poll the WIP status flag until =0."},
    {"address":22830, "name":"DGT_pEXTERN_FLASH_WRITE", "type":"UINT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The write pointer for external flash. Auto-incremented, simply initialize with a start address, then use 22832+"},
    {"address":22832, "name":"DGT_EXTERN_FLASH_WRITE", "type":"UINT16", "devices":["DIGIT"], "readwrite":"W", "tags":[""], "description":"Write data to this address and subsequent addresses after pointer is initialized. Used primarily for firmware updates."},
-   {"address":22840, "name":"DGT_SAVE_CHANGES", "type":"UINT16", "devices":["DIGIT"], "readwrite":"W", "tags":[""], "description":"1=Save, 0=Don't save. No configuration is permanent until this register is used."},
+   {"address":22840, "name":"DGT_SAVE_CHANGES", "type":"UINT16", "devices":["DIGIT"], "readwrite":"W", "tags":[""], "description":"1=Save, 0=Don't save. No configuration changes become permanent until this register is used."},
    {"address":22841, "name":"DGT_RE_INITIALIZE_CONFIG", "type":"UINT16", "devices":["DIGIT"], "readwrite":"W", "tags":[""], "description":"Re-initializes the Digit to the configuration it had when connected to the computer. Clears out recent settings changes that are not yet saved."},
    {"address":22842, "name":"DGT_LENGTH_USB_SESSION", "type":"UINT32", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"The number of blank readings collected since connection to the computer"},
    {"address":22844, "name":"DGT_FACTORY_UNLOCK", "type":"UINT16", "devices":["DIGIT"], "readwrite":"W", "tags":[""], "description":"Write a unique passkey to unlock factory settings. Only used by mfr."},
@@ -284,6 +285,8 @@
    {"error":201, "string":"LJME_FRAMES_OMITTED_DUE_TO_PACKET_SIZE"},
    {"error":202, "string":"LJME_LOG_FAILURE"},
    {"error":203, "string":"LJME_USING_DEFAULT_CALIBRATION"},
+
+   {"error":254, "string":"FEATURE_NOT_IMPLEMENTED"},
 
    {"error":1200, "string":"LJME_MODBUS_ERRORS_BEGIN"},
    {"error":1216, "string":"LJME_MODBUS_ERRORS_END"},
@@ -565,6 +568,7 @@
     "2013.08.24.A:  Updated I2C to use the GO register",
     "2013.08.30.A:  Added LJME_CONFIG_FILE_NOT_FOUND",
     "2013.09.05.A:  Moved some entries from registers_beta to registers:  WIFI_RSSI, WIFI_FIRMWARE_UPDATE_STATUS, AIN#(0:254)_SETTLING_US",
+    "2013.09.10.A:  Added comments to the I2C registers.",
     "End Of Comments"
   ]
 
