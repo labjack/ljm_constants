@@ -1,0 +1,46 @@
+{
+  "ljm_startup_configs.json":
+     "This is the configurations file that is loaded when LJM is started up.
+      Distributed with LJM version 0.2.46.
+
+      This file (and the containing folder) may be overwritten when LJM
+      updates, so if you'd like to make changes the configurations that are
+      loaded when LJM starts, use this file as a template to make a different
+      file in a different directory that you control, then load that file using
+      the LJM_LoadConfigurationFile function at the beginning of your program.
+      See LabJackM.h for more info on LJM_LoadConfigurationFile.
+
+      You can use the string \"default\" to load the default hardcoded value
+      for each config parameter. Otherwise, see the description for each config
+      parameter for what kinds of values can be accepted. Please see LabJackM.h
+      for more information about what each config parameter does.
+
+      This file is parsed by LJM case-independently. LJM ignores every
+      top-level entry except for LJM_CONFIG_VALUES, as well as ignoring every
+      \"description\" field. Other fields in LJM_CONFIG_VALUES which are not
+      recognized by LJM will generate errors/warnings.
+
+      Report bugs to support@labjack.com
+      LabJack's LJM driver/library: <http://labjack.com/support/ljm>",
+
+  "LJM_CONFIG_VALUES":
+  [
+    {"LJM_SEND_RECEIVE_TIMEOUT_MS":"default",          "description":"LJM_SEND_RECEIVE_TIMEOUT_MS type: integer."},
+    {"LJM_OPEN_TCP_DEVICE_TIMEOUT_MS":"default",       "description":"LJM_OPEN_TCP_DEVICE_TIMEOUT_MS type: integer."},
+    {"LJM_LOG_MODE":"default",                         "description":"LJM_LOG_MODE type: integer. Also accepts the strings \"LJM_LOG_MODE_NEVER\", \"LJM_LOG_MODE_CONTINUOUS\", and \"LJM_LOG_MODE_ON_ERROR\""},
+    {"LJM_LOG_LEVEL":"default",                        "description":"LJM_LOG_LEVEL type: integer. Also accepts the strings \"LJM_STREAM_PACKET\", \"LJM_TRACE\", \"LJM_DEBUG\", \"LJM_INFO\", \"LJM_PACKET\", \"LJM_WARNING\", \"LJM_USER\", \"LJM_ERROR\", and \"LJM_FATAL\""},
+    {"LJM_ALLOWS_AUTO_MULTIPLE_FEEDBACKS":"default",   "description":"LJM_ALLOWS_AUTO_MULTIPLE_FEEDBACKS type: boolean (true or false with no quotation marks)."},
+    {"LJM_ALLOWS_AUTO_CONDENSE_ADDRESSES":"default",   "description":"LJM_ALLOWS_AUTO_CONDENSE_ADDRESSES type: boolean (true or false with no quotation marks)."},
+    {"LJM_OPEN_MODE":"default",                        "description":"LJM_OPEN_MODE type: integer."},
+    {"LJM_NAME_CONSTANTS_FILE":"default",              "description":"LJM_NAME_CONSTANTS_FILE type: string."},
+    {"LJM_ERROR_CONSTANTS_FILE":"default",             "description":"LJM_ERROR_CONSTANTS_FILE type: string."},
+    {"LJM_LOG_FILE":"default",                         "description":"LJM_LOG_FILE type: string."},
+    {"LJM_MAX_LOG_FILE_SIZE":"default",                "description":"LJM_MAX_LOG_FILE_SIZE type: integer."},
+    {"LJM_LOG_BUFFER_CAPACITY":"default",              "description":"LJM_LOG_BUFFER_CAPACITY type: integer."},
+    {"LJM_LOG_SLEEP_TIME_MS":"default",                "description":"LJM_LOG_SLEEP_TIME_MS type: integer."},
+    {"LJM_STREAM_TRANSFERS_PER_SECOND":"default",      "description":"LJM_STREAM_TRANSFERS_PER_SECOND type: integer."},
+    {"LJM_RETRY_ON_TRANSACTION_ID_MISMATCH":"default", "description":"LJM_RETRY_ON_TRANSACTION_ID_MISMATCH type: boolean (true or false with no quotation marks)."},
+    {"LJM_OLD_FW_CHECK":"default",                     "description":"LJM_OLD_FW_CHECK type: boolean (true or false with no quotation marks)."},
+    {"LJM_MAX_STREAM_BUFFER_NUM_SECONDS":"default",    "description":"LJM_MAX_STREAM_BUFFER_NUM_SECONDS type: integer."}
+  ]
+}
