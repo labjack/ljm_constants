@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2013.08.30.A",
+   "version":"2013.09.05.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus/tags"
@@ -32,6 +32,7 @@
    {"address":40000, "name":"AIN#(0:254)_RANGE", "type":"FLOAT32", "devices":[{"device":"T7", "description":"Valid values/ranges:  0.0=Default=> +/-10V, 10.0=> +/-10V, 1.0=> +/-1V, 0.1=> +/-0.1V, or 0.01=> +/-0.01V."}], "readwrite":"RW", "default":0, "tags":["AIN"], "description":"The range/span of each analog input."},
    {"address":41000, "name":"AIN#(0:254)_NEGATIVE_CH", "type":"UINT16", "devices":[{"device":"T7", "description":"For base differential channels, positive must be even channel from 0-12 and negative must be positive+1.  For extended channels 16-127, see Mux80 datasheet."}], "readwrite":"RW", "default":199, "tags":["AIN"], "description":"Specifies the negative channel to be used for each positive channel.  199=Default=> Single-Ended."},
    {"address":41500, "name":"AIN#(0:254)_RESOLUTION_INDEX", "type":"UINT16", "devices":[{"device":"T7", "description":"Valid values:  1-8 for T7, 1-12 for T7-Pro.  0=Default=> 8 (T7) or 9 (T7-Pro)."}], "readwrite":"RW", "default":0, "tags":["AIN"], "description":"The resolution index for each analog input.  A larger resolution index generally results in lower noise and longer sample times."},
+   {"address":42000, "name":"AIN#(0:254)_SETTLING_US", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["AIN"]},
 
    {"address":43900, "name":"AIN_ALL_RANGE", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"W", "default":0, "tags":["AIN"], "description":"A write to this global parameter affects all AIN."},
    {"address":43902, "name":"AIN_ALL_NEGATIVE_CH", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"W", "default":199, "tags":["AIN"], "description":"A write to this global parameter affects all AIN."},
@@ -76,8 +77,10 @@
    {"address":49350, "name":"WIFI_PASSWORD_DEFAULT", "type":"STRING", "devices":["T7"], "readwrite":"W", "tags":["WIFI"], "description":"Write the password for the WiFi network, then use WIFI_APPLY_SETTINGS."},
    {"address":49400, "name":"WIFI_APPLY_SETTINGS", "type":"UINT32", "devices":["T7"], "readwrite":"W", "tags":["WIFI"], "description":"Apply all new WiFi settings: IP, Subnet, Gateway, DHCP, SSID, Password. 1=Apply"},
 
+   {"address":49402, "name":"WIFI_FIRMWARE_UPDATE_TO_VERSIONX", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9206}], "readwrite":"W", "tags":["WIFI"]},
    {"address":49450, "name":"WIFI_STATUS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.75}], "readwrite":"R", "tags":["WIFI"], "description":"Status Codes: 2900 Associated, 2901 Associating, 2902 Association Failed, 2903 Unpowered, 2904 Booting, 2905 Start failed, 2906 Applying Settings, 2907 DHCP started, 2909 Other, 2920 Configuring, 2921 Updating, 2923 Rebooting, 2924 Update success, 2925 Update failed."},
    {"address":49452, "name":"WIFI_RSSI", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.80}], "readwrite":"R", "tags":["WIFI"], "description":"WiFi RSSI (signal strength) 40-70 is good."},
+   {"address":49454, "name":"WIFI_FIRMWARE_UPDATE_STATUS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9206}], "readwrite":"R", "tags":["WIFI"]},
 
    {"address":55100, "name":"TEST", "type":"UINT32", "devices":["T7"], "readwrite":"R", "default":1122867, "tags":["CONFIG"], "description":"A read of this test register should always return 0x00112233 or d1122867."},
    {"address":55110, "name":"TEST_UINT16", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "tags":["CONFIG"], "description":"Write a value and read back to test UINT16 operation."},
@@ -168,7 +171,6 @@
    {"address":52000, "name":"AIN#(0:254)_EF_SCANRATE_HZ", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9404}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
    {"address":53000, "name":"AIN#(0:254)_EF_NUM_SCANS", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9404}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
 
-   {"address":42000, "name":"AIN#(0:254)_SETTLING_US", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["AIN"]},
    {"address":43000, "name":"AIN#(0:254)_EF_TYPE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
 
    {"address":4040, "name":"STREAM_OUT#(0:4)_TARGET", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"]},
@@ -178,9 +180,6 @@
    {"address":4080, "name":"STREAM_OUT#(0:4)_BUFFER_STATUS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"R", "default":0, "tags":["STREAM"]},
    {"address":4090, "name":"STREAM_OUT#(0:4)_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"]},
    {"address":4400, "name":"STREAM_OUT#(0:4)_BUFFER", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"]},
-
-   {"address":49402, "name":"WIFI_FIRMWARE_UPDATE_TO_VERSIONX", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9206}], "readwrite":"W", "tags":["WIFI"]},
-   {"address":49454, "name":"WIFI_FIRMWARE_UPDATE_STATUS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9206}], "readwrite":"R", "tags":["WIFI"]},
 
    {"address":60010, "name":"HARDWARE_INSTALLED", "type":"UINT32", "devices":["T7"], "readwrite":"R", "default":0, "tags":["CONFIG"]},
 
@@ -204,17 +203,17 @@
 
    {"address":4990, "name":"STREAM_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9421}], "readwrite":"W", "tags":["STREAM"]},
 
-   {"address":5100, "name":"I2C_SDA_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"]},
-   {"address":5101, "name":"I2C_SCL_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"]},
-   {"address":5102, "name":"I2C_SPEED_THROTTLE", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"]},
-   {"address":5103, "name":"I2C_OPTIONS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"]},
-   {"address":5104, "name":"I2C_SLAVE_ADDRESS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"]},
-   {"address":5108, "name":"I2C_NUM_BYTES_TX", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"]},
-   {"address":5109, "name":"I2C_NUM_BYTES_RX", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"]},
-   {"address":5110, "name":"I2C_GO", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9504}], "readwrite":"RW", "default":0, "tags":["I2C"]},
-   {"address":5114, "name":"I2C_ACKS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9504}], "readwrite":"RW", "default":0, "tags":["I2C"]},
-   {"address":5120, "name":"I2C_WRITE_DATA", "type":"BYTE", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"]},
-   {"address":5160, "name":"I2C_READ_DATA", "type":"BYTE", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"]},
+   {"address":5100, "name":"I2C_SDA_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The number of the DIO line that is to used as the I2C data line."},
+   {"address":5101, "name":"I2C_SCL_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The number of the DIO line that is to used as the I2C clock line."},
+   {"address":5102, "name":"I2C_SPEED_THROTTLE", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"This value controls the I2C clock frequency. The value is non-linear, zero is max."},
+   {"address":5103, "name":"I2C_OPTIONS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Advanced. Controls details of the I2C protocol to improve device compatibility."},
+   {"address":5104, "name":"I2C_SLAVE_ADDRESS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The address of the slave device."},
+   {"address":5108, "name":"I2C_NUM_BYTES_TX", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The number of data bytes to transmit."},
+   {"address":5109, "name":"I2C_NUM_BYTES_RX", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The number of data bytes to read."},
+   {"address":5110, "name":"I2C_GO", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9504}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Writing to this register will instruct the LabJack to perform an I2C transaction."},
+   {"address":5114, "name":"I2C_ACKS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9504}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"An array of bits used to observe ACKs from the slave device."},
+   {"address":5120, "name":"I2C_WRITE_DATA", "type":"BYTE", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Data that will be written to the I2C bus."},
+   {"address":5160, "name":"I2C_READ_DATA", "type":"BYTE", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Data that has been read from the I2C bus."},
 
    {"address":5200, "name":"SHT_POWER_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"]},
    {"address":5201, "name":"SHT_ENABLE_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"]},
@@ -564,6 +563,7 @@
     "2013.08.21.A:  Changes to I2C, SHT, and TDAC registers ... still in beta section.",
     "2013.08.24.A:  Updated I2C to use the GO register",
     "2013.08.30.A:  Added LJME_CONFIG_FILE_NOT_FOUND",
+    "2013.09.05.A:  Moved some entries from registers_beta to registers:  WIFI_RSSI, WIFI_FIRMWARE_UPDATE_STATUS, AIN#(0:254)_SETTLING_US",
     "End Of Comments"
   ]
 
