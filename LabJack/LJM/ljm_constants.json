@@ -349,7 +349,7 @@
    {"error":1285, "string":"LJME_NUM_REGS_ERR"},
    {"error":1286, "string":"LJME_NUM_BYTES_ERR"},
    {"error":1289, "string":"LJME_CONFIG_FILE_NOT_FOUND"},
-   {"error":1290, "string":"LJME_INVALID_CONFIG_FILE"},
+   {"error":1290, "string":"LJME_CONFIG_PARSING_ERROR"},
    {"error":1291, "string":"LJME_INVALID_NUM_VALUES"},
    {"error":1292, "string":"LJME_CONSTANTS_FILE_NOT_FOUND"},
    {"error":1293, "string":"LJME_INVALID_CONSTANTS_FILE"},
