@@ -122,9 +122,6 @@
    {"address":22040, "name":"DGT_INDEX_LOG_INTERVAL", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The index of the time interval between log events. 0=10s, 1=30s, 2=1m, 3=10m, 4=30m, 5=1h, 6=6h"},
    {"address":22042, "name":"DGT_LOG_START_TIME", "type":"UINT16", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"The start time of the logging session: 22042 Year=0 to 99, 22043 Month=1 to 12, 22044 Day=1 to 31, 22045 Weekday=1 to 7, 22046 Hour=0 to 23, 22047 Minutes=0 to 59, 22048 Second=0 to 59"},
    {"address":22049, "name":"DGT_nALARM_FLAGS", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"A bitmask of all alarm and error flags. 0=Occured, 1=Did NOT occur. Refer to documentation for more information"},
-   {"address":22050, "name":"DGT_nBROWNOUT", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"Brown-out system error flag. 0=Occured, 1=Did NOT occur"},
-   {"address":22051, "name":"DGT_nFAULT", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"Fault system error flag. 0=Occured, 1=Did NOT occur"},
-   {"address":22052, "name":"DGT_nINVALID_READING", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"Invalid reading system error flag. 0=Occured, 1=Did NOT occur"},
    {"address":22053, "name":"DGT_nTRIG_HIGH_ALARM", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"User high threshold alarm triggered. 0=Occured, 1=Did NOT occur"},
    {"address":22054, "name":"DGT_nTRIG_LOW_ALARM", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"User low threshold alarm triggered. 0=Occured, 1=Did NOT occur"},
    {"address":22055, "name":"DGT_nALARM_ARMED", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"User alarms armed flag. 0=Armed, 1=Not yet armed"},
@@ -245,9 +242,9 @@
    {"address":44922, "name":"DIO_EF_CLOCK2_OPTIONS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
    {"address":44924, "name":"DIO_EF_CLOCK2_ROLL_VALUE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
 
-   {"address":44908, "name":"DIO_EF_CLOCK0_COUNT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9430}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
-   {"address":44918, "name":"DIO_EF_CLOCK1_COUNT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9430}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
-   {"address":44928, "name":"DIO_EF_CLOCK2_COUNT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9430}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44908, "name":"DIO_EF_CLOCK0_COUNT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9430}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "description":"Current count of this clock.  Will read between 0 and ROLL_VALUE-1."},
+   {"address":44918, "name":"DIO_EF_CLOCK1_COUNT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9430}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "description":"Current count of this clock.  Will read between 0 and ROLL_VALUE-1."},
+   {"address":44928, "name":"DIO_EF_CLOCK2_COUNT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9430}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "description":"Current count of this clock.  Will read between 0 and ROLL_VALUE-1."},
 
    {"address":44000, "name":"DIO#(0:22)_EF_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
    {"address":44100, "name":"DIO#(0:22)_EF_TYPE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
