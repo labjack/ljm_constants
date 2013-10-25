@@ -3,7 +3,7 @@
  {
    "filename":"ljm_constants.json",
    "version":"2013.10.25.A",
-   "checksum":"-1",
+   "checksum":"-1", 
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus/tags"
  },
