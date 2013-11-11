@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2013.11.08.A",
+   "version":"2013.11.11.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -18,10 +18,10 @@
    {"address":2020, "name":"MIO#(0:2)", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":["DIO#(20:22)"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
    {"address":50000, "name":"AIN#_BIN(0:254)", "type":"UINT32", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"R", "tags":["AIN"], "streamable":false, "displayname":["Analog In #"], "description":"Returns the binary representation of the specified analog input."},
 
-   {"address":2500, "name":"FIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9402}], "readwrite":"RW", "tags":["DIO"], "displayname":["FIO Port State"], "description":"Read or write the state of the 8 bits of FIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."},
-   {"address":2501, "name":"EIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9402}], "readwrite":"RW", "tags":["DIO"], "displayname":["EIO Port State"], "description":"Read or write the state of the 8 bits of EIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."},
-   {"address":2502, "name":"CIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9402}], "readwrite":"RW", "tags":["DIO"], "displayname":["CIO Port State"], "description":"Read or write the state of the 4 bits of CIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."},
-   {"address":2503, "name":"MIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9402}], "readwrite":"RW", "tags":["DIO"], "displayname":["MIO Port State"], "description":"Read or write the state of the 3 bits of MIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."},
+   {"address":2500, "name":"FIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0005}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["FIO Port State"], "description":"Read or write the state of the 8 bits of FIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."},
+   {"address":2501, "name":"EIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0005}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["EIO Port State"], "description":"Read or write the state of the 8 bits of EIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."},
+   {"address":2502, "name":"CIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0005}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["CIO Port State"], "description":"Read or write the state of the 4 bits of CIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."},
+   {"address":2503, "name":"MIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0005}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["MIO Port State"], "description":"Read or write the state of the 3 bits of MIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."},
    {"address":2600, "name":"FIO_DIRECTION", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9402}], "readwrite":"RW", "tags":["DIO"], "displayname":["FIO Port Direction"], "description":"Read or write the direction of the 8 bits of FIO in a single binary-encoded value.  0=Input and 1=Output.  The upper 8-bits of this value are inhibits."},
    {"address":2601, "name":"EIO_DIRECTION", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9402}], "readwrite":"RW", "tags":["DIO"], "displayname":["EIO Port Direction"], "description":"Read or write the direction of the 8 bits of EIO in a single binary-encoded value.  0=Input and 1=Output.  The upper 8-bits of this value are inhibits."},
    {"address":2602, "name":"CIO_DIRECTION", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9402}], "readwrite":"RW", "tags":["DIO"], "displayname":["CIO Port Direction"], "description":"Read or write the direction of the 4 bits of CIO in a single binary-encoded value.  0=Input and 1=Output.  The upper 8-bits of this value are inhibits."},
@@ -247,6 +247,9 @@
    {"address":53000, "name":"AIN#(0:254)_EF_NUM_SCANS", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9404}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
 
    {"address":43000, "name":"AIN#(0:254)_EF_TYPE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
+
+   {"address":2580, "name":"FIO_EIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0005}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["FIO-EIO Port State"], "description":"Read or write the state of the 16 bits of FIO-EIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written."},
+   {"address":2581, "name":"EIO_CIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0005}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["EIO-CIO Port State"], "description":"Read or write the state of the 12 bits of EIO-CIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written."},
 
    {"address":4040, "name":"STREAM_OUT#(0:4)_TARGET", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Channel that data will be written to."},
    {"address":4050, "name":"STREAM_OUT#(0:4)_BUFFER_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Size of the buffer in bytes. Should be at least twice the size of updates that will be written."},
@@ -579,6 +582,7 @@
     "2013.10.24.A:  Moved DIO_EF to release.",
     "2013.10.25.A:  Moved various to release.",
     "2013.11.08.A:  SPI description edits.",
+    "2013.11.11.A:  Added FIO-EIO and EIO-CIO registers to beta section.",
     "End Of Comments"
   ]
 
