@@ -2,10 +2,10 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2013.10.25.B",
-   "checksum":"-1", 
+   "version":"2013.11.08.A",
+   "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
-   "tags_base_url":"http://labjack.com/support/modbus/tags"
+   "tags_base_url":"http://labjack.com/support/modbus"
  },
 
  "registers":
@@ -16,6 +16,7 @@
    {"address":2008, "name":"EIO#(0:7)", "type":"UINT16", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":["DIO#(8:15)"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
    {"address":2016, "name":"CIO#(0:3)", "type":"UINT16", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":["DIO#(16:19)"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
    {"address":2020, "name":"MIO#(0:2)", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":["DIO#(20:22)"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
+   {"address":50000, "name":"AIN#_BIN(0:254)", "type":"UINT32", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"R", "tags":["AIN"], "streamable":false, "displayname":["Analog In #"], "description":"Returns the binary representation of the specified analog input."},
 
    {"address":2500, "name":"FIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9402}], "readwrite":"RW", "tags":["DIO"], "displayname":["FIO Port State"], "description":"Read or write the state of the 8 bits of FIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."},
    {"address":2501, "name":"EIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9402}], "readwrite":"RW", "tags":["DIO"], "displayname":["EIO Port State"], "description":"Read or write the state of the 8 bits of EIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."},
@@ -74,6 +75,34 @@
    {"address":43904, "name":"AIN_ALL_SETTLING_US", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"W", "default":0, "tags":["AIN"], "description":"A write to this global parameter affects all AIN."},
    {"address":43906, "name":"AIN_ALL_EF_TYPE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"W", "default":0, "tags":["AIN"], "description":"A write to this global parameter affects all AIN. "},
 
+   {"address":44900, "name":"DIO_EF_CLOCK0_ENABLE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44901, "name":"DIO_EF_CLOCK0_DIVISOR", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9320}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44902, "name":"DIO_EF_CLOCK0_OPTIONS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44904, "name":"DIO_EF_CLOCK0_ROLL_VALUE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44910, "name":"DIO_EF_CLOCK1_ENABLE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44911, "name":"DIO_EF_CLOCK1_DIVISOR", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9320}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44912, "name":"DIO_EF_CLOCK1_OPTIONS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44914, "name":"DIO_EF_CLOCK1_ROLL_VALUE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44920, "name":"DIO_EF_CLOCK2_ENABLE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44921, "name":"DIO_EF_CLOCK2_DIVISOR", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9320}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44922, "name":"DIO_EF_CLOCK2_OPTIONS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44924, "name":"DIO_EF_CLOCK2_ROLL_VALUE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+
+   {"address":44908, "name":"DIO_EF_CLOCK0_COUNT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9430}], "readwrite":"R", "tags":["DIO_EF", "DIO"], "description":"Current tick count of this clock.  Will read between 0 and ROLL_VALUE-1."},
+   {"address":44918, "name":"DIO_EF_CLOCK1_COUNT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9430}], "readwrite":"R", "tags":["DIO_EF", "DIO"], "description":"Current tick count of this clock.  Will read between 0 and ROLL_VALUE-1."},
+   {"address":44928, "name":"DIO_EF_CLOCK2_COUNT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9430}], "readwrite":"R", "tags":["DIO_EF", "DIO"], "description":"Current tick count of this clock.  Will read between 0 and ROLL_VALUE-1."},
+
+   {"address":44000, "name":"DIO#(0:22)_EF_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44100, "name":"DIO#(0:22)_EF_TYPE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44200, "name":"DIO#(0:22)_EF_OPTIONS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44300, "name":"DIO#(0:22)_EF_VALUE_A", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44400, "name":"DIO#(0:22)_EF_VALUE_B", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44500, "name":"DIO#(0:22)_EF_VALUE_C", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44600, "name":"DIO#(0:22)_EF_VALUE_D", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":3000, "name":"DIO#(0:22)_EF_READ_A", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
+   {"address":3100, "name":"DIO#(0:22)_EF_READ_A_AND_RESET", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
+   {"address":3200, "name":"DIO#(0:22)_EF_READ_B", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
+
    {"address":48003, "name":"POWER_ETHERNET", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.86}], "readwrite":"RW", "tags":["CONFIG", "ETHERNET"], "description":"The current ON/OFF state of the Ethernet module. Provided to optionally reduce power consumption."},
    {"address":48004, "name":"POWER_WIFI", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.86}], "readwrite":"RW", "tags":["CONFIG", "WIFI"], "description":"The current ON/OFF state of the WiFi module. Provided to optionally reduce power consumption."},
    {"address":48005, "name":"POWER_AIN", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.86}], "readwrite":"RW", "tags":["CONFIG", "AIN"], "description":"The current ON/OFF state of the analog input module. Provided to optionally reduce power consumption."},
@@ -127,34 +156,6 @@
    {"address":49450, "name":"WIFI_STATUS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.75}], "readwrite":"R", "tags":["WIFI"], "description":"Status Codes: 2900 Associated, 2901 Associating, 2902 Association Failed, 2903 Unpowered, 2904 Booting, 2905 Start Failed, 2906 Applying Settings, 2907 DHCP Started, 2909 Other."},
    {"address":49452, "name":"WIFI_RSSI", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.80}], "readwrite":"R", "tags":["WIFI"], "description":"WiFi RSSI (signal strength).  Typical values are -40 for very good, and -75 for very weak."},
    {"address":49454, "name":"WIFI_FIRMWARE_UPDATE_STATUS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9206}], "readwrite":"R", "tags":["WIFI"], "description":"Status Codes: 2920 Configuring, 2921 In Progress, 2923 Rebooting, 2924 Update Success, 2925 Update Failed."},
-
-   {"address":44900, "name":"DIO_EF_CLOCK0_ENABLE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
-   {"address":44901, "name":"DIO_EF_CLOCK0_DIVISOR", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9320}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
-   {"address":44902, "name":"DIO_EF_CLOCK0_OPTIONS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
-   {"address":44904, "name":"DIO_EF_CLOCK0_ROLL_VALUE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
-   {"address":44910, "name":"DIO_EF_CLOCK1_ENABLE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
-   {"address":44911, "name":"DIO_EF_CLOCK1_DIVISOR", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9320}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
-   {"address":44912, "name":"DIO_EF_CLOCK1_OPTIONS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
-   {"address":44914, "name":"DIO_EF_CLOCK1_ROLL_VALUE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
-   {"address":44920, "name":"DIO_EF_CLOCK2_ENABLE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
-   {"address":44921, "name":"DIO_EF_CLOCK2_DIVISOR", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9320}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
-   {"address":44922, "name":"DIO_EF_CLOCK2_OPTIONS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
-   {"address":44924, "name":"DIO_EF_CLOCK2_ROLL_VALUE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
-
-   {"address":44908, "name":"DIO_EF_CLOCK0_COUNT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9430}], "readwrite":"R", "tags":["DIO_EF", "DIO"], "description":"Current tick count of this clock.  Will read between 0 and ROLL_VALUE-1."},
-   {"address":44918, "name":"DIO_EF_CLOCK1_COUNT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9430}], "readwrite":"R", "tags":["DIO_EF", "DIO"], "description":"Current tick count of this clock.  Will read between 0 and ROLL_VALUE-1."},
-   {"address":44928, "name":"DIO_EF_CLOCK2_COUNT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9430}], "readwrite":"R", "tags":["DIO_EF", "DIO"], "description":"Current tick count of this clock.  Will read between 0 and ROLL_VALUE-1."},
-
-   {"address":44000, "name":"DIO#(0:22)_EF_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
-   {"address":44100, "name":"DIO#(0:22)_EF_TYPE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
-   {"address":44200, "name":"DIO#(0:22)_EF_OPTIONS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
-   {"address":44300, "name":"DIO#(0:22)_EF_VALUE_A", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
-   {"address":44400, "name":"DIO#(0:22)_EF_VALUE_B", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
-   {"address":44500, "name":"DIO#(0:22)_EF_VALUE_C", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
-   {"address":44600, "name":"DIO#(0:22)_EF_VALUE_D", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
-   {"address":3000, "name":"DIO#(0:22)_EF_READ_A", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
-   {"address":3100, "name":"DIO#(0:22)_EF_READ_A_AND_RESET", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
-   {"address":3200, "name":"DIO#(0:22)_EF_READ_B", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
 
    {"address":55100, "name":"TEST", "type":"UINT32", "devices":["T7"], "readwrite":"R", "default":1122867, "tags":["CONFIG"], "description":"A read of this test register should always return 0x00112233 or d1122867."},
    {"address":55110, "name":"TEST_UINT16", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "tags":["CONFIG"], "description":"Write a value and read back to test UINT16 operation."},
@@ -267,7 +268,7 @@
    {"address":5005, "name":"SPI_SPEED", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"Controls the clock frequency. Smaller values produce faster clock speeds"},
    {"address":5006, "name":"SPI_OPTIONS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"Controls advanced SPI options."},
    {"address":5009, "name":"SPI_NUM_BYTES", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"The number of bytes to transfer."},
-   {"address":5010, "name":"SPI_DATA_WRITE", "type":"UINT16", "devices":["T7"], "readwrite":"W", "default":0, "tags":["SPI"], "description":"Write data here."},
+   {"address":5010, "name":"SPI_DATA_WRITE", "type":"UINT16", "devices":["T7"], "readwrite":"W", "default":0, "tags":["SPI"], "description":"Write data here.  Doing causes the communication to happen."},
    {"address":5050, "name":"SPI_DATA_READ", "type":"UINT16", "devices":["T7"], "readwrite":"R", "default":0, "tags":["SPI"], "description":"Read data here."},
 
    {"address":49406, "name":"WIFI_SCAN_START", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"W", "tags":["WIFI"]},
@@ -577,6 +578,7 @@
     "2013.10.23.A:  Changed SPI registers. Moved HARDWARE_INSTALLED to release.",
     "2013.10.24.A:  Moved DIO_EF to release.",
     "2013.10.25.A:  Moved various to release.",
+    "2013.11.08.A:  SPI description edits.",
     "End Of Comments"
   ]
 
