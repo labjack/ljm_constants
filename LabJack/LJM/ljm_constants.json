@@ -103,7 +103,7 @@
    {"address":3100, "name":"DIO#(0:22)_EF_READ_A_AND_RESET", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
    {"address":3200, "name":"DIO#(0:22)_EF_READ_B", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
    {"address":3500, "name":"DIO#(0:22)_EF_READ_A_F", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
-   {"address":3600, "name":"DIO#(0:22)_EF_READ_A_AND_RESET_F", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
+   {"address":3600, "name":"DIO#(0:22)_EF_READ_A_F_AND_RESET", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
    {"address":3700, "name":"DIO#(0:22)_EF_READ_B_F", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
 
 
@@ -193,6 +193,13 @@
    {"address":61618, "name":"WATCHDOG_DAC1_DEFAULT", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The voltage of DAC1 after a Watchdog timeout."},
    {"address":61620, "name":"WATCHDOG_KEY_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"W", "tags":["WATCHDOG"], "description":"When set to strict mode this is the value that must be written to the clear register."},
    {"address":61640, "name":"WATCHDOG_CLEAR", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"W", "tags":["WATCHDOG"], "description":"When running in strict mode writing the key to this register is the only way to clear the watchdog."},
+
+   {"address":61800, "name":"EXTERNAL_FLASH_KEY", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "description":"Sets the region of external flash to which access is allowed."},
+   {"address":61810, "name":"EXTERNAL_FLASH_READ_POINTER", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "description":"The address in external flash that reads will start from."},
+   {"address":61812, "name":"EXTERNAL_FLASH_READ", "type":"UINT32", "devices":["T7"], "readwrite":"R", "description":"Data read from external flash."},
+   {"address":61820, "name":"EXTERNAL_FLASH_ERASE", "type":"UINT32", "devices":["T7"], "readwrite":"W", "description":"Erases a 4k section of flash starting at the specified address."},
+   {"address":61830, "name":"EXTERNAL_FLASH_WRITE_POINTER", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "description":"Address in flash where writes will begin."},
+   {"address":61832, "name":"EXTERNAL_FLASH_WRITE", "type":"UINT32", "devices":["T7"], "readwrite":"W", "description":"Data written here will be written to external flash."},
 
    {"address":22000, "name":"DGT_TEMPERATURE_LATEST_RAW", "type":"UINT16", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"Get the latest temperature conversion, and begin a new conversion. Units are described in TMP112 datasheet."},
    {"address":22001, "name":"DGT_HUMIDITY_RAW", "type":"UINT16", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"Craw. Get a new humidity reading from HCH-1000. Units are in 100s fF of capacitance."},
