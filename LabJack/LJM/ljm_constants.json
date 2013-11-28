@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2013.11.12.A",
+   "version":"2013.11.26.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -43,7 +43,7 @@
 
    {"address":5100, "name":"I2C_SDA_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The number of the DIO line that is to used as the I2C data line."},
    {"address":5101, "name":"I2C_SCL_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The number of the DIO line that is to used as the I2C clock line."},
-   {"address":5102, "name":"I2C_SPEED_THROTTLE", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"This value controls the I2C clock frequency. The value is non-linear, zero is max."},
+   {"address":5102, "name":"I2C_SPEED_THROTTLE", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"This value controls the I2C clock frequency.  Pass 0-65535.  Default=0 corresponds to 65536 internally which results in ~450 kHz.  1 results in ~40 Hz."},
    {"address":5103, "name":"I2C_OPTIONS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Advanced. Controls details of the I2C protocol to improve device compatibility."},
    {"address":5104, "name":"I2C_SLAVE_ADDRESS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The address of the slave device."},
    {"address":5108, "name":"I2C_NUM_BYTES_TX", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The number of data bytes to transmit."},
@@ -172,7 +172,7 @@
    {"address":60004, "name":"FIRMWARE_VERSION", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9", "DIGIT"], "readwrite":"R", "tags":["CONFIG"], "description":"The current firmware version installed on the main processor."},
    {"address":60006, "name":"BOOTLOADER_VERSION", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9", "DIGIT"], "readwrite":"R", "tags":["CONFIG"], "description":"The bootloader version installed on the main processor."},
    {"address":60008, "name":"WIFI_VERSION", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["CONFIG"], "description":"The current firmware version of the WiFi module, if available."},
-   {"address":60010, "name":"HARDWARE_INSTALLED", "type":"UINT32", "devices":["T7"], "readwrite":"R", "default":0, "tags":["CONFIG"], "description":"Bitmask indicating installed hardware options."},
+   {"address":60010, "name":"HARDWARE_INSTALLED", "type":"UINT32", "devices":["T7"], "readwrite":"R", "default":0, "tags":["CONFIG"], "description":"Bitmask indicating installed hardware options. 0 = High-Res ADC, 1 = WiFi."},
    {"address":60020, "name":"ETHERNET_MAC", "type":"UINT64", "devices":["T7", "UE9"], "readwrite":"R", "tags":["ETHERNET"], "description":"The MAC address of the wired Ethernet module."},
    {"address":60024, "name":"WIFI_MAC", "type":"UINT64", "devices":["T7"], "readwrite":"R", "tags":["WIFI"], "description":"The MAC address of the WiFi module."},
    {"address":60028, "name":"SERIAL_NUMBER", "type":"UINT32", "devices":["U3", "U6", "T7", "UE9", "DIGIT"], "readwrite":"R", "tags":["CONFIG"], "description":"The serial number of the device."},
@@ -194,12 +194,12 @@
    {"address":61620, "name":"WATCHDOG_KEY_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"W", "tags":["WATCHDOG"], "description":"When set to strict mode this is the value that must be written to the clear register."},
    {"address":61640, "name":"WATCHDOG_CLEAR", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"W", "tags":["WATCHDOG"], "description":"When running in strict mode writing the key to this register is the only way to clear the watchdog."},
 
-   {"address":61800, "name":"EXTERNAL_FLASH_KEY", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "description":"Sets the region of external flash to which access is allowed."},
-   {"address":61810, "name":"EXTERNAL_FLASH_READ_POINTER", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "description":"The address in external flash that reads will start from."},
-   {"address":61812, "name":"EXTERNAL_FLASH_READ", "type":"UINT32", "devices":["T7"], "readwrite":"R", "description":"Data read from external flash."},
-   {"address":61820, "name":"EXTERNAL_FLASH_ERASE", "type":"UINT32", "devices":["T7"], "readwrite":"W", "description":"Erases a 4k section of flash starting at the specified address."},
-   {"address":61830, "name":"EXTERNAL_FLASH_WRITE_POINTER", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "description":"Address in flash where writes will begin."},
-   {"address":61832, "name":"EXTERNAL_FLASH_WRITE", "type":"UINT32", "devices":["T7"], "readwrite":"W", "description":"Data written here will be written to external flash."},
+   {"address":61800, "name":"EXTERNAL_FLASH_KEY", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["EXFLASH"], "description":"Sets the region of external flash to which access is allowed."},
+   {"address":61810, "name":"EXTERNAL_FLASH_READ_POINTER", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["EXFLASH"], "description":"The address in external flash that reads will start from."},
+   {"address":61812, "name":"EXTERNAL_FLASH_READ", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["EXFLASH"], "description":"Data read from external flash."},
+   {"address":61820, "name":"EXTERNAL_FLASH_ERASE", "type":"UINT32", "devices":["T7"], "readwrite":"W", "tags":["EXFLASH"], "description":"Erases a 4k section of flash starting at the specified address."},
+   {"address":61830, "name":"EXTERNAL_FLASH_WRITE_POINTER", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["EXFLASH"], "description":"Address in flash where writes will begin."},
+   {"address":61832, "name":"EXTERNAL_FLASH_WRITE", "type":"UINT32", "devices":["T7"], "readwrite":"W", "tags":["EXFLASH"], "description":"Data written here will be written to external flash."},
 
    {"address":22000, "name":"DGT_TEMPERATURE_LATEST_RAW", "type":"UINT16", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"Get the latest temperature conversion, and begin a new conversion. Units are described in TMP112 datasheet."},
    {"address":22001, "name":"DGT_HUMIDITY_RAW", "type":"UINT16", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"Craw. Get a new humidity reading from HCH-1000. Units are in 100s fF of capacitance."},
@@ -287,7 +287,16 @@
 
    {"address":49406, "name":"WIFI_SCAN_START", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"W", "tags":["WIFI"]},
    {"address":49486, "name":"WIFI_SCAN_NUM_BYTES", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"R", "tags":["WIFI"]},
-   {"address":49488, "name":"WIFI_SCAN_DATA", "type":"BYTE", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"R", "tags":["WIFI"]}
+   {"address":49488, "name":"WIFI_SCAN_DATA", "type":"BYTE", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"R", "tags":["WIFI"]},
+
+
+   {"address":6000, "name":"LUA_MODE", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["LUA"]},
+   {"address":6040, "name":"LUA_NUM_FLOATS", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["LUA"]},
+   {"address":6060, "name":"LUA_DBG_BUFF_SIZE", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["LUA"]},
+   {"address":6010, "name":"LUA_ENABLE", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["LUA"]},
+
+   {"address":6020, "name":"LUA_SOURCE_SIZE", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["LUA"]},
+   {"address":6026, "name":"LUA_SOURCE_DATA", "type":"UINT32", "devices":["T7"], "readwrite":"W", "tags":["LUA"]}
 
  ],
 
@@ -594,6 +603,8 @@
     "2013.10.25.A:  Moved various to release.",
     "2013.11.08.A:  SPI description edits.",
     "2013.11.12.A:  Added FIO-EIO and EIO-CIO registers to beta section.",
+    "2013.11.18.A:  Added External flash registers.",
+    "2013.11.19.A:  Description edits.",
     "End Of Comments"
   ]
 
