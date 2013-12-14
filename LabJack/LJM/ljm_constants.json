@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2013.11.26.A",
+   "version":"2013.12.10.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -40,6 +40,17 @@
    {"address":4020, "name":"STREAM_NUM_SCANS", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of scans to run before automatically stopping."},
    {"address":4100, "name":"STREAM_SCANLIST_ADDRESS#(0:127)", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"], "description":"A list of addresses to read each scan."},
    {"address":4990, "name":"STREAM_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9421}], "readwrite":"W", "tags":["STREAM"],"description":"Write 1 to start stream. Write 0 to stop stream."},
+
+   {"address":5000, "name":"SPI_CS_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"The number of the DIO line that is to used as the Chip-Select line."},
+   {"address":5001, "name":"SPI_CLK_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"The number of the DIO line that is to used as the Clock line."},
+   {"address":5002, "name":"SPI_MISO_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"The number of the DIO line that is to used as the Master In Slave Out line."},
+   {"address":5003, "name":"SPI_MOSI_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"The number of the DIO line that is to used as the Master Out Slave In line."},
+   {"address":5004, "name":"SPI_MODE", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"The SPI mode controls the clock idle state and which edge clocks the data."},
+   {"address":5005, "name":"SPI_SPEED_THROTTLE", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"This value controls the SPI clock frequency.  Pass 0-65535.  Default=0 corresponds to 65536 internally which results in ~1 MHz.  1 results in ~100 Hz."},
+   {"address":5006, "name":"SPI_OPTIONS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"Bit 0 is Auto-CS-Disable."},
+   {"address":5009, "name":"SPI_NUM_BYTES", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"The number of bytes to transfer."},
+   {"address":5010, "name":"SPI_DATA_WRITE", "type":"BYTE", "devices":["T7"], "readwrite":"W", "default":0, "tags":["SPI"], "description":"Write data here.  Doing so causes the communication to happen."},
+   {"address":5050, "name":"SPI_DATA_READ", "type":"BYTE", "devices":["T7"], "readwrite":"R", "default":0, "tags":["SPI"], "description":"Read data here."},
 
    {"address":5100, "name":"I2C_SDA_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The number of the DIO line that is to used as the I2C data line."},
    {"address":5101, "name":"I2C_SCL_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The number of the DIO line that is to used as the I2C clock line."},
@@ -106,7 +117,6 @@
    {"address":3600, "name":"DIO#(0:22)_EF_READ_A_F_AND_RESET", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
    {"address":3700, "name":"DIO#(0:22)_EF_READ_B_F", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
 
-
    {"address":48003, "name":"POWER_ETHERNET", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.86}], "readwrite":"RW", "tags":["CONFIG", "ETHERNET"], "description":"The current ON/OFF state of the Ethernet module. Provided to optionally reduce power consumption."},
    {"address":48004, "name":"POWER_WIFI", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.86}], "readwrite":"RW", "tags":["CONFIG", "WIFI"], "description":"The current ON/OFF state of the WiFi module. Provided to optionally reduce power consumption."},
    {"address":48005, "name":"POWER_AIN", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.86}], "readwrite":"RW", "tags":["CONFIG", "AIN"], "description":"The current ON/OFF state of the analog input module. Provided to optionally reduce power consumption."},
@@ -158,7 +168,7 @@
 
    {"address":49402, "name":"WIFI_FIRMWARE_UPDATE_TO_VERSIONX", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9206}], "readwrite":"W", "tags":["WIFI"], "description":"Start an update by using USB or Ethernet to write the desired version to update to."},
    {"address":49450, "name":"WIFI_STATUS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.75}], "readwrite":"R", "tags":["WIFI"], "description":"Status Codes: 2900 Associated, 2901 Associating, 2902 Association Failed, 2903 Unpowered, 2904 Booting, 2905 Start Failed, 2906 Applying Settings, 2907 DHCP Started, 2909 Other."},
-   {"address":49452, "name":"WIFI_RSSI", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.80}], "readwrite":"R", "tags":["WIFI"], "description":"WiFi RSSI (signal strength).  Typical values are -40 for very good, and -75 for very weak."},
+   {"address":49452, "name":"WIFI_RSSI", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.80}], "readwrite":"R", "tags":["WIFI"], "description":"WiFi RSSI (signal strength).  Typical values are -40 for very good, and -75 for very weak.  The T7 microcontroller only gets a new RSSI value from the WiFi module when WiFi communication occurs."},
    {"address":49454, "name":"WIFI_FIRMWARE_UPDATE_STATUS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9206}], "readwrite":"R", "tags":["WIFI"], "description":"Status Codes: 2920 Configuring, 2921 In Progress, 2923 Rebooting, 2924 Update Success, 2925 Update Failed."},
 
    {"address":55100, "name":"TEST", "type":"UINT32", "devices":["T7"], "readwrite":"R", "default":1122867, "tags":["CONFIG"], "description":"A read of this test register should always return 0x00112233 or d1122867."},
@@ -182,17 +192,22 @@
    {"address":1900, "name":"CURRENT_SOURCE_10UA_CAL_VALUE", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["CONFIG"]},
    {"address":1902, "name":"CURRENT_SOURCE_200UA_CAL_VALUE", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["CONFIG"]},
 
-   {"address":61600, "name":"WATCHDOG_ENABLE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The current Enabled/Disabled state of the Watchdog system."},
-   {"address":61602, "name":"WATCHDOG_OPTIONS_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"A single binary-encoded value where each bit is an option. See section in datasheet."},
-   {"address":61604, "name":"WATCHDOG_TIMEOUT_S_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The number of seconds before timeout. On timeout, watchdog executes all operations defined in the options register. A clear event will reset the timeout."},
-   {"address":61606, "name":"WATCHDOG_STARTUP_DELAY_S_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"Specify a startup delay after Watchdog timeout."},
-   {"address":61610, "name":"WATCHDOG_DIO_STATE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The state high/low of the digital I/O after a Watchdog timeout. See DIO_STATE"},
-   {"address":61612, "name":"WATCHDOG_DIO_DIRECTION_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The direction input/output of the digital I/O after a Watchdog timeout. See DIO_DIRECTION"},
-   {"address":61614, "name":"WATCHDOG_DIO_INHIBIT_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The inhibit mask of the digital I/O after a Watchdog timeout. See DIO_INHIBIT"},
-   {"address":61616, "name":"WATCHDOG_DAC0_DEFAULT", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The voltage of DAC0 after a Watchdog timeout."},
-   {"address":61618, "name":"WATCHDOG_DAC1_DEFAULT", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The voltage of DAC1 after a Watchdog timeout."},
-   {"address":61620, "name":"WATCHDOG_KEY_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"W", "tags":["WATCHDOG"], "description":"When set to strict mode this is the value that must be written to the clear register."},
-   {"address":61640, "name":"WATCHDOG_CLEAR", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.90}], "readwrite":"W", "tags":["WATCHDOG"], "description":"When running in strict mode writing the key to this register is the only way to clear the watchdog."},
+   {"address":61600, "name":"WATCHDOG_ENABLE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The current Enabled/Disabled state of the Watchdog system."},
+   {"address":61602, "name":"WATCHDOG_ADVANCED_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"A single binary-encoded value where each bit is an option. See section in datasheet."},
+   {"address":61604, "name":"WATCHDOG_TIMEOUT_S_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The number of seconds before timeout. On timeout, watchdog executes all operations defined in the options register. A clear event will reset the timeout."},
+   {"address":61606, "name":"WATCHDOG_STARTUP_DELAY_S_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"Specify a startup delay after Watchdog timeout."},
+   {"address":61610, "name":"WATCHDOG_STRICT_ENABLE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"Set to 1 to enabled strict mode."},
+   {"address":61612, "name":"WATCHDOG_STRICT_KEY_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"When set to strict mode this is the value that must be written to the clear register."},
+   {"address":61614, "name":"WATCHDOG_STRICT_CLEAR", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"W", "tags":["WATCHDOG"], "description":"When running in strict mode writing the key to this register is the only way to clear the watchdog."},
+   {"address":61620, "name":"WATCHDOG_RESET_ENABLE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"Set to 1 to reset when the watchdog times out."},
+   {"address":61630, "name":"WATCHDOG_DIO_ENABLE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"Set to 1 to change DIO direction and state when the watchdog times out."},
+   {"address":61632, "name":"WATCHDOG_DIO_STATE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The state high/low of the digital I/O after a Watchdog timeout. See DIO_STATE"},
+   {"address":61634, "name":"WATCHDOG_DIO_DIRECTION_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The direction input/output of the digital I/O after a Watchdog timeout. See DIO_DIRECTION"},
+   {"address":61636, "name":"WATCHDOG_DIO_INHIBIT_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The inhibit mask of the digital I/O after a Watchdog timeout. See DIO_INHIBIT"},
+   {"address":61640, "name":"WATCHDOG_DAC0_ENABLE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"Set to 1 to reset when the watchdog times out."},
+   {"address":61642, "name":"WATCHDOG_DAC0_DEFAULT", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The voltage of DAC0 after a Watchdog timeout."},
+   {"address":61650, "name":"WATCHDOG_DAC1_ENABLE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"Set to 1 to reset when the watchdog times out."},
+   {"address":61652, "name":"WATCHDOG_DAC1_DEFAULT", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The voltage of DAC1 after a Watchdog timeout."},
 
    {"address":61800, "name":"EXTERNAL_FLASH_KEY", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["EXFLASH"], "description":"Sets the region of external flash to which access is allowed."},
    {"address":61810, "name":"EXTERNAL_FLASH_READ_POINTER", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["EXFLASH"], "description":"The address in external flash that reads will start from."},
@@ -233,7 +248,7 @@
    {"address":22231, "name":"DGT_FACTORY_CAL_OFFSET_HUMIDITY", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The factory calibration offset which can be used in the conversion of raw humidity. Write requires unlocked."},
    {"address":22232, "name":"DGT_CAL_OFFSET_HUMIDITY", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"A single point offset used in the conversion of raw humidity. Units in 100s fF"},
    {"address":22233, "name":"DGT_CAL_ISRC_HUMIDITY", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"Read=Constant current source trim value. Write(any value)=Automatically calibrate the current source. The current source is used for humidity readings, and once calibrated, it will not need to be calibrated again."},
-   {"address":22234, "name":"DGT_BATT_DRIFT_HUMIDITY", "type":"INT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"An optional offset used in the conversion of raw humidity. Not fully implemented in Otero. Units are in 100s fF"},
+   {"address":22234, "name":"DGT_HUMIDITY_SLOPE_FACTORY", "type":"FLOAT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The factory slope of humidity which can be used in the conversion of raw humidity. Units in %Rh per 100s fF. Write requires unlocked."},
    {"address":22236, "name":"DGT_HUMIDITY_SLOPE", "type":"FLOAT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The slope of humidity used in the conversion of raw humidity. Units in %Rh per 100s fF."},
    {"address":22238, "name":"DGT_T_SLOPE_HUMIDITY", "type":"FLOAT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The temperature dependent factor used in the conversion of raw humidity. Units in 100s fF per degC"},
    {"address":22242, "name":"DGT_RTCC_TIME", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The current time of the real-time-clock on the Digit. Synchronized with the computer within software. 22242 Year=0 to 99, 22243 Month=1 to 12, 22244 Day=1 to 31, 22245 Weekday=1 to 7, 22246 Hour=0 to 23, 22247 Minutes=0 to 59, 22248 Second=0 to 59"},
@@ -274,29 +289,21 @@
    {"address":4014, "name":"STREAM_CLOCK_SOURCE", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Controls advanced stream options: Immediate scan, external clock, and gated run."},
    {"address":4500, "name":"STREAM_DATA_CR", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["STREAM"],"description":"Addres to read stream data from when operating in C-R mode."},
 
-   {"address":5000, "name":"SPI_CS_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"The number of the DIO line that is to used as the Chip-Select line."},
-   {"address":5001, "name":"SPI_CLK_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"The number of the DIO line that is to used as the Clock line."},
-   {"address":5002, "name":"SPI_MISO_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"The number of the DIO line that is to used as the Master In Slave Out line."},
-   {"address":5003, "name":"SPI_MOSI_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"The number of the DIO line that is to used as the Master Out Slave In line."},
-   {"address":5004, "name":"SPI_MODE", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"The SPI mode controls the clock idle state and which edge clocks the data."},
-   {"address":5005, "name":"SPI_SPEED", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"Controls the clock frequency. Smaller values produce faster clock speeds"},
-   {"address":5006, "name":"SPI_OPTIONS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"Controls advanced SPI options."},
-   {"address":5009, "name":"SPI_NUM_BYTES", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"The number of bytes to transfer."},
-   {"address":5010, "name":"SPI_DATA_WRITE", "type":"UINT16", "devices":["T7"], "readwrite":"W", "default":0, "tags":["SPI"], "description":"Write data here.  Doing causes the communication to happen."},
-   {"address":5050, "name":"SPI_DATA_READ", "type":"UINT16", "devices":["T7"], "readwrite":"R", "default":0, "tags":["SPI"], "description":"Read data here."},
-
    {"address":49406, "name":"WIFI_SCAN_START", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"W", "tags":["WIFI"]},
    {"address":49486, "name":"WIFI_SCAN_NUM_BYTES", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"R", "tags":["WIFI"]},
    {"address":49488, "name":"WIFI_SCAN_DATA", "type":"BYTE", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"R", "tags":["WIFI"]},
 
+   {"address":6000, "name":"LUA_RUN", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
+   {"address":6010, "name":"LUA_COMPILE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
+   {"address":6012, "name":"LUA_SOURCE_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
+   {"address":6014, "name":"LUA_SOURCE_WRITE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
+   {"address":6020, "name":"LUA_DEBUG_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
+   {"address":6022, "name":"LUA_DEBUG_NUM_BYTES", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
+   {"address":6024, "name":"LUA_DEBUG_DATA", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
 
-   {"address":6000, "name":"LUA_MODE", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["LUA"]},
-   {"address":6040, "name":"LUA_NUM_FLOATS", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["LUA"]},
-   {"address":6060, "name":"LUA_DBG_BUFF_SIZE", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["LUA"]},
-   {"address":6010, "name":"LUA_ENABLE", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["LUA"]},
 
-   {"address":6020, "name":"LUA_SOURCE_SIZE", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["LUA"]},
-   {"address":6026, "name":"LUA_SOURCE_DATA", "type":"UINT32", "devices":["T7"], "readwrite":"W", "tags":["LUA"]}
+   {"address":60050, "name":"TEMPERATURE_AMBIENT_K", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0017}], "readwrite":"R", "tags":["AIN"], "streamable":true, "displayname":["Ambient Temperature [deg K]"], "description":"Returns the estimated ambient temperature just outside a T7 in its red plastic enclosure.  This register is simply TEMPERATURE_DEVICE_K - 1.5."},
+   {"address":60052, "name":"TEMPERATURE_DEVICE_K", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0017}], "readwrite":"R", "tags":["AIN"], "streamable":true, "displayname":["Device Temperature [deg K]"], "description":"Takes a reading from AIN14 using range=+/-10V and resolution=8, and applies the formula Volts*-92.379+465.129 to return degrees K.  AIN14 is internally connected to an LM94021 (U24) with GS=10 which is physically located on the bottom of the PCB between the AIN0/1 and AIN2/3 screw-terminals."}
 
  ],
 
@@ -605,6 +612,10 @@
     "2013.11.12.A:  Added FIO-EIO and EIO-CIO registers to beta section.",
     "2013.11.18.A:  Added External flash registers.",
     "2013.11.19.A:  Description edits.",
+    "2013.11.29.A:  Changed SPI DATA types to BYTE.",
+    "2013.12.06.A:  Changes to watchdog registers.",
+    "2013.12.09.A:  Description edits.",
+    "2013.12.10.A:  Changed SPI_SPEED to SPI_SPEED_THROTTLE.  Moved SPI to release.",
     "End Of Comments"
   ]
 
