@@ -187,8 +187,8 @@
    {"address":60024, "name":"WIFI_MAC", "type":"UINT64", "devices":["T7"], "readwrite":"R", "tags":["WIFI"], "description":"The MAC address of the WiFi module."},
    {"address":60028, "name":"SERIAL_NUMBER", "type":"UINT32", "devices":["U3", "U6", "T7", "UE9", "DIGIT"], "readwrite":"R", "tags":["CONFIG"], "description":"The serial number of the device."},
    {"address":60500, "name":"DEVICE_NAME_DEFAULT", "type":"STRING", "devices":["U3", "U6", "T7", "UE9", "DIGIT"], "readwrite":"RW", "tags":["CONFIG"], "description":"The current device name. Up to 49 characters, cannot contain periods."},
-   {"address":61520, "name":"CORE_TIMER", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9419}], "readwrite":"R","description":"Internal 32-bit system timer running at 1/2 core speed, thus normally 80M/2 => 40 MHz."},
-   {"address":61998, "name":"SYSTEM_REBOOT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9419}], "readwrite":"W","description":"Issues a device reboot. Must write 0x4C4Axxxx, where xxxx is number of 50ms ticks to wait before reboot."},
+   {"address":61520, "name":"CORE_TIMER", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9419}], "readwrite":"R", "tags":["CONFIG"], "description":"Internal 32-bit system timer running at 1/2 core speed, thus normally 80M/2 => 40 MHz."},
+   {"address":61998, "name":"SYSTEM_REBOOT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9419}], "readwrite":"W", "tags":["CONFIG"], "description":"Issues a device reboot. Must write 0x4C4Axxxx, where xxxx is number of 50ms ticks to wait before reboot."},
    {"address":1900, "name":"CURRENT_SOURCE_10UA_CAL_VALUE", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["CONFIG"]},
    {"address":1902, "name":"CURRENT_SOURCE_200UA_CAL_VALUE", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["CONFIG"]},
 
@@ -230,7 +230,7 @@
    {"address":22055, "name":"DGT_nALARM_ARMED", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"User alarms armed flag. 0=Armed, 1=Not yet armed"},
    {"address":22056, "name":"DGT_nLOW_BATT", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"Low battery system warning flag. 0=Occured, 1=Did NOT occur. Low battery (<2.73V) can happen at very low temperatures, even if the battery is new, which is why this is only a warning."},
    {"address":22080, "name":"DGT_INDEX_ALARM_ITEM", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"Index of the user alarm item. 0=None, 1=Temperature, 2=Light, 3=Humidity. Valid results require that the corresponding item is being logged."},
-   {"address":22081, "name":"DGT_INDEX_ALARM_ARM_CONDITION", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"Index of the alarm arming condition. 0=Arm once within window, 1=Arm after pure time delay"},
+   {"address":22081, "name":"DGT_INDEX_ALARM_ARM_CONDITION", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"Index of the alarm arming condition. 0=Arm once within threshold window, 1=Arm after pure time delay"},
    {"address":22082, "name":"DGT_HIGH_ALARM_ENABLE", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"User high threshold alarm enable. 0=Disabled, 1=Enabled"},
    {"address":22083, "name":"DGT_LOW_ALARM_ENABLE", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"User low threshold alarm enable. 0=Disabled, 1=Enabled"},
    {"address":22084, "name":"DGT_ALARM_ARM_COUNTER", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"User threshold alarm arming delay counter. The number of consecutive readings (inside window) before arming the alarm-> 0 to 63"},
@@ -245,12 +245,12 @@
    {"address":22210, "name":"DGT_STORED_BYTES", "type":"UINT32", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"Number of bytes of data stored on external flash."},
    {"address":22220, "name":"DGT_LIFETIME_READINGS", "type":"UINT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"Total number of readings saved since last cleared. Typically cleared if new battery is installed."},
    {"address":22222, "name":"DGT_BATTERY_INSTALL_DATE", "type":"UINT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The date that the battery was installed. Timestamp format = Seconds since 1970. This parameter is used to estimate remaining battery life."},
-   {"address":22231, "name":"DGT_FACTORY_CAL_OFFSET_HUMIDITY", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The factory calibration offset which can be used in the conversion of raw humidity. Write requires unlocked."},
-   {"address":22232, "name":"DGT_CAL_OFFSET_HUMIDITY", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"A single point offset used in the conversion of raw humidity. Units in 100s fF"},
-   {"address":22233, "name":"DGT_CAL_ISRC_HUMIDITY", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"Read=Constant current source trim value. Write(any value)=Automatically calibrate the current source. The current source is used for humidity readings, and once calibrated, it will not need to be calibrated again."},
-   {"address":22234, "name":"DGT_HUMIDITY_SLOPE_FACTORY", "type":"FLOAT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The factory slope of humidity which can be used in the conversion of raw humidity. Units in %Rh per 100s fF. Write requires unlocked."},
-   {"address":22236, "name":"DGT_HUMIDITY_SLOPE", "type":"FLOAT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The slope of humidity used in the conversion of raw humidity. Units in %Rh per 100s fF."},
-   {"address":22238, "name":"DGT_T_SLOPE_HUMIDITY", "type":"FLOAT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The temperature dependent factor used in the conversion of raw humidity. Units in 100s fF per degC"},
+   {"address":22231, "name":"DGT_HUMIDITY_CAL_OFFSET_FACTORY", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The factory calibration offset which can be used in the conversion of raw humidity. Write requires unlocked."},
+   {"address":22232, "name":"DGT_HUMIDITY_CAL_OFFSET", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"A single point offset used in the conversion of raw humidity. Units in 100s fF"},
+   {"address":22233, "name":"DGT_HUMIDITY_CAL_I_SOURCE", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"Read=Constant current source trim value. Write(any value)=Automatically calibrate the current source. The current source is used for humidity readings, and once calibrated, it will not need to be calibrated again."},
+   {"address":22234, "name":"DGT_HUMIDITY_CAL_SLOPE_FACTORY", "type":"FLOAT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The factory slope of humidity which can be used in the conversion of raw humidity. Units in %Rh per 100s fF. Write requires unlocked."},
+   {"address":22236, "name":"DGT_HUMIDITY_CAL_SLOPE", "type":"FLOAT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The slope of humidity used in the conversion of raw humidity. Units in %Rh per 100s fF."},
+   {"address":22238, "name":"DGT_HUMIDITY_CAL_TEMPERATURE_SLOPE", "type":"FLOAT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The temperature dependent factor used in the conversion of raw humidity. Units in 100s fF per degC"},
    {"address":22242, "name":"DGT_RTCC_TIME", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The current time of the real-time-clock on the Digit. Synchronized with the computer within software. 22242 Year=0 to 99, 22243 Month=1 to 12, 22244 Day=1 to 31, 22245 Weekday=1 to 7, 22246 Hour=0 to 23, 22247 Minutes=0 to 59, 22248 Second=0 to 59"},
    {"address":22804, "name":"DGT_EXTERN_FLASH_WIP", "type":"UINT16", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"A status flag for the external flash(data storage chip) on the Digit. 1=Write in-progress, 0=Idle"},
    {"address":22810, "name":"DGT_pEXTERN_FLASH_READ", "type":"UINT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The read pointer for external flash. Auto-incremented, simply initialize with a start address, then use 22812+"},
@@ -283,7 +283,9 @@
    {"address":4070, "name":"STREAM_OUT#(0:4)_SET_LOOP", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":""},
    {"address":4080, "name":"STREAM_OUT#(0:4)_BUFFER_STATUS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"R", "default":0, "tags":["STREAM"],"description":""},
    {"address":4090, "name":"STREAM_OUT#(0:4)_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":""},
-   {"address":4400, "name":"STREAM_OUT#(0:4)_BUFFER", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":""},
+   {"address":4400, "name":"STREAM_OUT#(0:4)_BUFFER_F32", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":""},
+   {"address":4410, "name":"STREAM_OUT#(0:4)_BUFFER_U32", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":""},
+   {"address":4420, "name":"STREAM_OUT#(0:4)_BUFFER_U16", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":""},
 
    {"address":4018, "name":"STREAM_DATATYPE", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Currently unavailable."},
    {"address":4014, "name":"STREAM_CLOCK_SOURCE", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Controls advanced stream options: Immediate scan, external clock, and gated run."},
@@ -294,12 +296,15 @@
    {"address":49488, "name":"WIFI_SCAN_DATA", "type":"BYTE", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"R", "tags":["WIFI"]},
 
    {"address":6000, "name":"LUA_RUN", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
-   {"address":6010, "name":"LUA_COMPILE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
+   {"address":6006, "name":"LUA_NUM_IO_FLOATS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA"]},
    {"address":6012, "name":"LUA_SOURCE_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
    {"address":6014, "name":"LUA_SOURCE_WRITE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
    {"address":6020, "name":"LUA_DEBUG_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
    {"address":6022, "name":"LUA_DEBUG_NUM_BYTES", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
    {"address":6024, "name":"LUA_DEBUG_DATA", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
+   {"address":46000, "name":"LUA_IO_R#(0:4)", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA"]},
+   {"address":47000, "name":"LUA_IO_W#(0:4)", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA"]},
+
 
 
    {"address":60050, "name":"TEMPERATURE_AMBIENT_K", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0017}], "readwrite":"R", "tags":["AIN"], "streamable":true, "displayname":["Ambient Temperature [deg K]"], "description":"Returns the estimated ambient temperature just outside a T7 in its red plastic enclosure.  This register is simply TEMPERATURE_DEVICE_K - 1.5."},
@@ -403,6 +408,7 @@
    {"error":1307, "string":"LJME_OLD_FIRMWARE"},
    {"error":1308, "string":"LJME_CANNOT_READ_OUT_ONLY_STREAM"},
 
+
    {"error":2300, "string":"MODBUS_RSP_OVERFLOW"},
    {"error":2301, "string":"MODBUS_CMD_OVERFLOW"},
    {"error":2310, "string":"MODBUS_STRING_CMD_TOO_BIG"},
@@ -486,6 +492,9 @@
    {"error":2618, "string":"STREAM_SAMPLES_PER_PKT_INVALID"},
    {"error":2619, "string":"STREAM_BUFFER_DNE"},
    {"error":2620, "string":"STREAM_NOT_RUNNING"},
+   {"error":2621, "string":"STREAM_SETTLING_INVALID"},
+   {"error":2622, "string":"STREAM_OUT_LOOP_TOO_BIG"},
+   {"error":2623, "string":"STREAM_OUT_DATA_TRGT_MISSMATCH"},
    {"error":2670, "string":"SWDT_ROLLT_INVALID"},
    {"error":2671, "string":"SWDT_ENABLED"},
    {"error":2672, "string":"SWDT_DIO_SETTINGS_INVALID"},
@@ -617,6 +626,8 @@
     "2013.12.06.A:  Changes to watchdog registers.",
     "2013.12.09.A:  Description edits.",
     "2013.12.10.A:  Changed SPI_SPEED to SPI_SPEED_THROTTLE.  Moved SPI to release.",
+    "2013.12.12.A:  Added Lua Regs",
+    "2013.12.14.A:  Split the stream out buffer write register into 3 data type specific registers. Added error codes",
     "End Of Comments"
   ]
 
