@@ -283,9 +283,9 @@
    {"address":4070, "name":"STREAM_OUT#(0:4)_SET_LOOP", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":""},
    {"address":4080, "name":"STREAM_OUT#(0:4)_BUFFER_STATUS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"R", "default":0, "tags":["STREAM"],"description":""},
    {"address":4090, "name":"STREAM_OUT#(0:4)_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":""},
-   {"address":4400, "name":"STREAM_OUT#(0:4)_BUFFER_F32", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":""},
+   {"address":4400, "name":"STREAM_OUT#(0:4)_BUFFER_F32", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":""},
    {"address":4410, "name":"STREAM_OUT#(0:4)_BUFFER_U32", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":""},
-   {"address":4420, "name":"STREAM_OUT#(0:4)_BUFFER_U16", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":""},
+   {"address":4420, "name":"STREAM_OUT#(0:4)_BUFFER_U16", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":""},
 
    {"address":4018, "name":"STREAM_DATATYPE", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Currently unavailable."},
    {"address":4014, "name":"STREAM_CLOCK_SOURCE", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Controls advanced stream options: Immediate scan, external clock, and gated run."},
