@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2013.12.10.A",
+   "version":"2013.12.27.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -16,7 +16,7 @@
    {"address":2008, "name":"EIO#(0:7)", "type":"UINT16", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":["DIO#(8:15)"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
    {"address":2016, "name":"CIO#(0:3)", "type":"UINT16", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":["DIO#(16:19)"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
    {"address":2020, "name":"MIO#(0:2)", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":["DIO#(20:22)"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
-   {"address":50000, "name":"AIN#_BIN(0:254)", "type":"UINT32", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"R", "tags":["AIN"], "streamable":false, "displayname":["Analog In #"], "description":"Returns the binary representation of the specified analog input."},
+   {"address":50000, "name":"AIN#(0:254)_BIN", "type":"UINT32", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"R", "tags":["AIN"], "streamable":false, "displayname":["Analog In #"], "description":"Returns the binary representation of the specified analog input."},
 
    {"address":2500, "name":"FIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0000}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["FIO Port State"], "description":"Read or write the state of the 8 bits of FIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."},
    {"address":2501, "name":"EIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0000}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["EIO Port State"], "description":"Read or write the state of the 8 bits of EIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."},
@@ -52,11 +52,11 @@
    {"address":5010, "name":"SPI_DATA_WRITE", "type":"BYTE", "devices":["T7"], "readwrite":"W", "default":0, "tags":["SPI"], "description":"Write data here.  Doing so causes the communication to happen."},
    {"address":5050, "name":"SPI_DATA_READ", "type":"BYTE", "devices":["T7"], "readwrite":"R", "default":0, "tags":["SPI"], "description":"Read data here."},
 
-   {"address":5100, "name":"I2C_SDA_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The number of the DIO line that is to used as the I2C data line."},
-   {"address":5101, "name":"I2C_SCL_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The number of the DIO line that is to used as the I2C clock line."},
+   {"address":5100, "name":"I2C_SDA_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The number of the DIO line that is to used as the I2C data line. Ex: Writing 0 will force FIO0 to become the I2C-SDA line."},
+   {"address":5101, "name":"I2C_SCL_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The number of the DIO line that is to used as the I2C clock line. Ex: Writing 1 will force FIO1 to become the I2C-SCL line."},
    {"address":5102, "name":"I2C_SPEED_THROTTLE", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"This value controls the I2C clock frequency.  Pass 0-65535.  Default=0 corresponds to 65536 internally which results in ~450 kHz.  1 results in ~40 Hz."},
    {"address":5103, "name":"I2C_OPTIONS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Advanced. Controls details of the I2C protocol to improve device compatibility."},
-   {"address":5104, "name":"I2C_SLAVE_ADDRESS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The address of the slave device."},
+   {"address":5104, "name":"I2C_SLAVE_ADDRESS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The 7-bit address of the slave device. Value is shifted over automatically to allow room for the I2C R/W bit."},
    {"address":5108, "name":"I2C_NUM_BYTES_TX", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The number of data bytes to transmit."},
    {"address":5109, "name":"I2C_NUM_BYTES_RX", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The number of data bytes to read."},
    {"address":5110, "name":"I2C_GO", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9504}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Writing to this register will instruct the LabJack to perform an I2C transaction."},
@@ -172,10 +172,10 @@
    {"address":49454, "name":"WIFI_FIRMWARE_UPDATE_STATUS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9206}], "readwrite":"R", "tags":["WIFI"], "description":"Status Codes: 2920 Configuring, 2921 In Progress, 2923 Rebooting, 2924 Update Success, 2925 Update Failed."},
 
    {"address":55100, "name":"TEST", "type":"UINT32", "devices":["T7"], "readwrite":"R", "default":1122867, "tags":["CONFIG"], "description":"A read of this test register should always return 0x00112233 or d1122867."},
-   {"address":55110, "name":"TEST_UINT16", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "tags":["CONFIG"], "description":"Write a value and read back to test UINT16 operation."},
-   {"address":55120, "name":"TEST_UINT32", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["CONFIG"], "description":"Write a value and read back to test UINT32 operation."},
-   {"address":55122, "name":"TEST_INT32", "type":"INT32", "devices":["T7"], "readwrite":"RW", "tags":["CONFIG"], "description":"Write a value and read back to test INT32 operation."},
-   {"address":55124, "name":"TEST_FLOAT32", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "tags":["CONFIG"], "description":"Write a value and read back to test FLOAT32 operation."},
+   {"address":55110, "name":"TEST_UINT16", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":4386, "tags":["CONFIG"], "description":"Write a value and read back to test UINT16 operation. Default is 0x0011 or d4386."},
+   {"address":55120, "name":"TEST_UINT32", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":287454020, "tags":["CONFIG"], "description":"Write a value and read back to test UINT32 operation. Default is 0x00112233 or d1122867."},
+   {"address":55122, "name":"TEST_INT32", "type":"INT32", "devices":["T7"], "readwrite":"RW", "default":-144288443, "tags":["CONFIG"], "description":"Write a value and read back to test INT32 operation. Default is 0x8899AABB or d-144288443."},
+   {"address":55124, "name":"TEST_FLOAT32", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "default":-9999.9, "tags":["CONFIG"], "description":"Write a value and read back to test FLOAT32 operation. Default is -9999.9."},
 
    {"address":60000, "name":"PRODUCT_ID", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9", "DIGIT"], "readwrite":"R", "tags":["CONFIG"], "description":"The numeric identifier of the device.  Such as 3 for a U3-HV."},
    {"address":60002, "name":"HARDWARE_VERSION", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9", "DIGIT"], "readwrite":"R", "tags":["CONFIG"], "description":"The hardware version of the device."},
@@ -250,7 +250,8 @@
    {"address":22233, "name":"DGT_HUMIDITY_CAL_I_SOURCE", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"Read=Constant current source trim value. Write(any value)=Automatically calibrate the current source. The current source is used for humidity readings, and once calibrated, it will not need to be calibrated again."},
    {"address":22234, "name":"DGT_HUMIDITY_CAL_SLOPE_FACTORY", "type":"FLOAT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The factory slope of humidity which can be used in the conversion of raw humidity. Units in %Rh per 100s fF. Write requires unlocked."},
    {"address":22236, "name":"DGT_HUMIDITY_CAL_SLOPE", "type":"FLOAT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The slope of humidity used in the conversion of raw humidity. Units in %Rh per 100s fF."},
-   {"address":22238, "name":"DGT_HUMIDITY_CAL_TEMPERATURE_SLOPE", "type":"FLOAT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The temperature dependent factor used in the conversion of raw humidity. Units in 100s fF per degC"},
+   {"address":22238, "name":"DGT_HUMIDITY_CAL_T_SLOPE", "type":"FLOAT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The temperature dependent factor used in the conversion of raw humidity. Units in 100s fF per degC"},
+   {"address":22240, "name":"DGT_HUMIDITY_CAL_T_SLOPE_FACTORY", "type":"FLOAT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The factory temperature dependent factor used in the conversion of raw humidity. Units in 100s fF per degC"},
    {"address":22242, "name":"DGT_RTCC_TIME", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The current time of the real-time-clock on the Digit. Synchronized with the computer within software. 22242 Year=0 to 99, 22243 Month=1 to 12, 22244 Day=1 to 31, 22245 Weekday=1 to 7, 22246 Hour=0 to 23, 22247 Minutes=0 to 59, 22248 Second=0 to 59"},
    {"address":22804, "name":"DGT_EXTERN_FLASH_WIP", "type":"UINT16", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"A status flag for the external flash(data storage chip) on the Digit. 1=Write in-progress, 0=Idle"},
    {"address":22810, "name":"DGT_pEXTERN_FLASH_READ", "type":"UINT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The read pointer for external flash. Auto-incremented, simply initialize with a start address, then use 22812+"},
@@ -304,8 +305,6 @@
    {"address":6024, "name":"LUA_DEBUG_DATA", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
    {"address":46000, "name":"LUA_IO_R#(0:4)", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA"]},
    {"address":47000, "name":"LUA_IO_W#(0:4)", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA"]},
-
-
 
    {"address":60050, "name":"TEMPERATURE_AMBIENT_K", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0017}], "readwrite":"R", "tags":["AIN"], "streamable":true, "displayname":["Ambient Temperature [deg K]"], "description":"Returns the estimated ambient temperature just outside a T7 in its red plastic enclosure.  This register is simply TEMPERATURE_DEVICE_K - 1.5."},
    {"address":60052, "name":"TEMPERATURE_DEVICE_K", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0017}], "readwrite":"R", "tags":["AIN"], "streamable":true, "displayname":["Device Temperature [deg K]"], "description":"Takes a reading from AIN14 using range=+/-10V and resolution=8, and applies the formula Volts*-92.379+465.129 to return degrees K.  AIN14 is internally connected to an LM94021 (U24) with GS=10 which is physically located on the bottom of the PCB between the AIN0/1 and AIN2/3 screw-terminals."}
@@ -624,10 +623,12 @@
     "2013.11.19.A:  Description edits.",
     "2013.11.29.A:  Changed SPI DATA types to BYTE.",
     "2013.12.06.A:  Changes to watchdog registers.",
-    "2013.12.09.A:  Description edits.",
+    "2013.12.09.A:  Description edits.  New internal temp sensor registers in beta section.",
     "2013.12.10.A:  Changed SPI_SPEED to SPI_SPEED_THROTTLE.  Moved SPI to release.",
-    "2013.12.12.A:  Added Lua Regs",
-    "2013.12.14.A:  Split the stream out buffer write register into 3 data type specific registers. Added error codes",
+    "2013.12.12.A:  Added Lua Regs.",
+    "2013.12.14.A:  Split the stream out buffer write register into 3 data type specific registers. Added error codes.",
+    "2013.12.19.A:  Version number at top was behind numbers in these comments.",
+    "2013.12.27.A:  Fix to the AIN_BIN register array.",
     "End Of Comments"
   ]
 
