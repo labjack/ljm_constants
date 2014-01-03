@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2013.12.27.A",
+   "version":"2014.01.01.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -16,7 +16,6 @@
    {"address":2008, "name":"EIO#(0:7)", "type":"UINT16", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":["DIO#(8:15)"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
    {"address":2016, "name":"CIO#(0:3)", "type":"UINT16", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":["DIO#(16:19)"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
    {"address":2020, "name":"MIO#(0:2)", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":["DIO#(20:22)"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
-   {"address":50000, "name":"AIN#(0:254)_BIN", "type":"UINT32", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"R", "tags":["AIN"], "streamable":false, "displayname":["Analog In #"], "description":"Returns the binary representation of the specified analog input."},
 
    {"address":2500, "name":"FIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0000}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["FIO Port State"], "description":"Read or write the state of the 8 bits of FIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."},
    {"address":2501, "name":"EIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0000}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["EIO Port State"], "description":"Read or write the state of the 8 bits of EIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."},
@@ -75,10 +74,10 @@
    {"address":30275, "name":"SBUS_ALL_DATA_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SBUS"]},
    {"address":30276, "name":"SBUS_ALL_CLOCK_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SBUS"]},
 
-   {"address":40000, "name":"AIN#(0:254)_RANGE", "type":"FLOAT32", "devices":[{"device":"T7", "description":"Valid values/ranges:  0.0=Default=> +/-10V, 10.0=> +/-10V, 1.0=> +/-1V, 0.1=> +/-0.1V, or 0.01=> +/-0.01V."}], "readwrite":"RW", "default":0, "tags":["AIN"], "description":"The range/span of each analog input."},
-   {"address":41000, "name":"AIN#(0:254)_NEGATIVE_CH", "type":"UINT16", "devices":[{"device":"T7", "description":"For base differential channels, positive must be even channel from 0-12 and negative must be positive+1.  For extended channels 16-127, see Mux80 datasheet."}], "readwrite":"RW", "default":199, "tags":["AIN"], "description":"Specifies the negative channel to be used for each positive channel.  199=Default=> Single-Ended."},
-   {"address":41500, "name":"AIN#(0:254)_RESOLUTION_INDEX", "type":"UINT16", "devices":[{"device":"T7", "description":"Valid values:  1-8 for T7, 1-12 for T7-Pro.  0=Default=> 8 (T7) or 9 (T7-Pro)."}], "readwrite":"RW", "default":0, "tags":["AIN"], "description":"The resolution index for each analog input.  A larger resolution index generally results in lower noise and longer sample times."},
-   {"address":42000, "name":"AIN#(0:254)_SETTLING_US", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9328, "description":"Settling time for command-response readings.  0 = Auto.  Max is 50000 (microseconds)."}], "readwrite":"RW", "default":0, "tags":["AIN"]},
+   {"address":40000, "name":"AIN#(0:254)_RANGE", "type":"FLOAT32", "devices":[{"device":"T7", "description":"Valid values/ranges:  0.0=Default=> +/-10V, 10.0=> +/-10V, 1.0=> +/-1V, 0.1=> +/-0.1V, or 0.01=> +/-0.01V."}], "readwrite":"RW", "default":0, "tags":["AIN"], "description":"The range/span of each analog input. If all channels are the same, this reads the correct value, but otherwise this reads -9999.0."},
+   {"address":41000, "name":"AIN#(0:254)_NEGATIVE_CH", "type":"UINT16", "devices":[{"device":"T7", "description":"For base differential channels, positive must be even channel from 0-12 and negative must be positive+1.  For extended channels 16-127, see Mux80 datasheet."}], "readwrite":"RW", "default":199, "tags":["AIN"], "description":"Specifies the negative channel to be used for each positive channel. 199=Default=> Single-Ended. If all channels are the same, this reads the correct value, but otherwise this reads 0xFFFF."},
+   {"address":41500, "name":"AIN#(0:254)_RESOLUTION_INDEX", "type":"UINT16", "devices":[{"device":"T7", "description":"Valid values:  1-8 for T7, 1-12 for T7-Pro.  0=Default=> 8 (T7) or 9 (T7-Pro)."}], "readwrite":"RW", "default":0, "tags":["AIN"], "description":"The resolution index for each analog input. A larger resolution index generally results in lower noise and longer sample times. If all channels are the same, this reads the correct value, but otherwise this reads 0xFFFF."},
+   {"address":42000, "name":"AIN#(0:254)_SETTLING_US", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9328, "description":"0 = Auto.  Max is 50000 (microseconds)."}], "readwrite":"RW", "default":0, "tags":["AIN"], "description":"Settling time for command-response readings. If all channels are the same, this reads the correct value, but otherwise this reads -9999.0."},
 
    {"address":43900, "name":"AIN_ALL_RANGE", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"W", "default":0, "tags":["AIN"], "description":"A write to this global parameter affects all AIN."},
    {"address":43902, "name":"AIN_ALL_NEGATIVE_CH", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"W", "default":199, "tags":["AIN"], "description":"A write to this global parameter affects all AIN."},
@@ -170,6 +169,8 @@
    {"address":49450, "name":"WIFI_STATUS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.75}], "readwrite":"R", "tags":["WIFI"], "description":"Status Codes: 2900 Associated, 2901 Associating, 2902 Association Failed, 2903 Unpowered, 2904 Booting, 2905 Start Failed, 2906 Applying Settings, 2907 DHCP Started, 2909 Other."},
    {"address":49452, "name":"WIFI_RSSI", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.80}], "readwrite":"R", "tags":["WIFI"], "description":"WiFi RSSI (signal strength).  Typical values are -40 for very good, and -75 for very weak.  The T7 microcontroller only gets a new RSSI value from the WiFi module when WiFi communication occurs."},
    {"address":49454, "name":"WIFI_FIRMWARE_UPDATE_STATUS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9206}], "readwrite":"R", "tags":["WIFI"], "description":"Status Codes: 2920 Configuring, 2921 In Progress, 2923 Rebooting, 2924 Update Success, 2925 Update Failed."},
+
+   {"address":50000, "name":"AIN#(0:254)_BINARY", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["AIN"], "streamable":false, "altnames":["AIN#(0:254)_BIN"], "description":"Returns the binary representation of the specified analog input."},
 
    {"address":55100, "name":"TEST", "type":"UINT32", "devices":["T7"], "readwrite":"R", "default":1122867, "tags":["CONFIG"], "description":"A read of this test register should always return 0x00112233 or d1122867."},
    {"address":55110, "name":"TEST_UINT16", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":4386, "tags":["CONFIG"], "description":"Write a value and read back to test UINT16 operation. Default is 0x0011 or d4386."},
@@ -270,8 +271,20 @@
  [
    {"address":49410, "name":"WIFI_START_ADHOC", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9308}], "readwrite":"W", "tags":["WIFI"]},
 
-   {"address":52000, "name":"AIN#(0:254)_EF_SCANRATE_HZ", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9404}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
-   {"address":53000, "name":"AIN#(0:254)_EF_NUM_SCANS", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9404}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
+   {"address":7000, "name":"AIN#(0:254)_EF_READ_A", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"R", "default":0, "tags":["AIN_EF", "AIN"]},
+   {"address":7300, "name":"AIN#(0:254)_EF_READ_B", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
+   {"address":7600, "name":"AIN#(0:254)_EF_READ_C", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
+   {"address":7900, "name":"AIN#(0:254)_EF_READ_D", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"R", "default":0, "tags":["AIN_EF", "AIN"]},
+
+   {"address":8200, "name":"AIN#(0:254)_EF_MODE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
+   {"address":8500, "name":"AIN#(0:254)_EF_CONFIG_A", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
+   {"address":8800, "name":"AIN#(0:254)_EF_CONFIG_B", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
+   {"address":9100, "name":"AIN#(0:254)_EF_CONFIG_C", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
+   {"address":9400, "name":"AIN#(0:254)_EF_CONFIG_D", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
+   {"address":9700, "name":"AIN#(0:254)_EF_CONFIG_E", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
+   {"address":10000, "name":"AIN#(0:254)_EF_CONFIG_F", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
+
+   {"address":61590, "name":"WAIT_US_BLOCKING", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0026}], "readwrite":"RW", "tags":[""], "description":"Delays for x microseconds. Range is 0-10000."},
 
    {"address":43000, "name":"AIN#(0:254)_EF_TYPE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
 
@@ -629,6 +642,8 @@
     "2013.12.14.A:  Split the stream out buffer write register into 3 data type specific registers. Added error codes.",
     "2013.12.19.A:  Version number at top was behind numbers in these comments.",
     "2013.12.27.A:  Fix to the AIN_BIN register array.",
+    "2013.12.31.A:  Added WAIT and AEF registers. AIN_ALL description edits. Changed AIN#(0:254)_BIN to AIN#(0:254)_BINARY.",
+    "2014.01.01.A:  Changed data type of AIN_EF mode and CONFIG_A to uint 32.",
     "End Of Comments"
   ]
 
