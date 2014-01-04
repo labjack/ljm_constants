@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2014.01.02.A",
+   "version":"2014.01.03.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -27,8 +27,7 @@
    {"address":2603, "name":"MIO_DIRECTION", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9402}], "readwrite":"RW", "tags":["DIO"], "displayname":["MIO Port Direction"], "description":"Read or write the direction of the 3 bits of MIO in a single binary-encoded value.  0=Input and 1=Output.  The upper 8-bits of this value are inhibits."},
    {"address":2800, "name":"DIO_STATE", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["DIO"], "description":"Read or write the state of all digital I/O in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  Writes only apply to bits with mask set."},
    {"address":2850, "name":"DIO_DIRECTION", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["DIO"], "description":"Read or write the direction of all digital I/O in a single binary-encoded value.  0=Input and 1=Output.  Writes only apply to bits with mask set."},
-   {"address":2900, "name":"DIO_INHIBIT", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["DIO"], "description":"A single binary-encoded value where each bit determines whether _STATE or _DIRECTION writes affect that bit of digital I/O.",
-      "constants":[{"name":"AFFECTED_BIT", "value":0, "default":true, "altnames":["bit is affected"]}, {"name":"IGNORED_BIT", "value":1}]},
+   {"address":2900, "name":"DIO_INHIBIT", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["DIO"], "description":"A single binary-encoded value where each bit determines whether _STATE or _DIRECTION writes affect that bit of digital I/O.  0=Default=Affected, 1=Ignored."},
 
    {"address":4002, "name":"STREAM_SCANRATE_HZ", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of times per second that all channels in the scanlist will be read."},
    {"address":4004, "name":"STREAM_NUM_ADDRESSES", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of entries in the scanlist"},
@@ -39,8 +38,7 @@
    {"address":4016, "name":"STREAM_AUTO_TARGET", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Controls where data will be sent."},
    {"address":4020, "name":"STREAM_NUM_SCANS", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of scans to run before automatically stopping."},
    {"address":4100, "name":"STREAM_SCANLIST_ADDRESS#(0:127)", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"], "description":"A list of addresses to read each scan."},
-   {"address":4990, "name":"STREAM_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9421}], "readwrite":"W", "tags":["STREAM"],"description":"Write 1 to start stream. Write 0 to stop stream.",
-      "constants":[{"name":"START", "value":1}, {"name":"STOP", "value":0}]},
+   {"address":4990, "name":"STREAM_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9421}], "readwrite":"W", "tags":["STREAM"],"description":"Write 1 to start stream. Write 0 to stop stream."},
 
    {"address":5000, "name":"SPI_CS_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"The number of the DIO line that is to used as the Chip-Select line."},
    {"address":5001, "name":"SPI_CLK_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"The number of the DIO line that is to used as the Clock line."},
@@ -107,10 +105,10 @@
    {"address":44000, "name":"DIO#(0:22)_EF_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
    {"address":44100, "name":"DIO#(0:22)_EF_TYPE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
    {"address":44200, "name":"DIO#(0:22)_EF_OPTIONS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
-   {"address":44300, "name":"DIO#(0:22)_EF_VALUE_A", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
-   {"address":44400, "name":"DIO#(0:22)_EF_VALUE_B", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
-   {"address":44500, "name":"DIO#(0:22)_EF_VALUE_C", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
-   {"address":44600, "name":"DIO#(0:22)_EF_VALUE_D", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44300, "name":"DIO#(0:22)_EF_CONFIG_A", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "altnames":["DIO#(0:22)_EF_VALUE_A"]},
+   {"address":44400, "name":"DIO#(0:22)_EF_CONFIG_B", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "altnames":["DIO#(0:22)_EF_VALUE_B"]},
+   {"address":44500, "name":"DIO#(0:22)_EF_CONFIG_C", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "altnames":["DIO#(0:22)_EF_VALUE_C"]},
+   {"address":44600, "name":"DIO#(0:22)_EF_CONFIG_D", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "altnames":["DIO#(0:22)_EF_VALUE_D"]},
    {"address":3000, "name":"DIO#(0:22)_EF_READ_A", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
    {"address":3100, "name":"DIO#(0:22)_EF_READ_A_AND_RESET", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
    {"address":3200, "name":"DIO#(0:22)_EF_READ_B", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
@@ -648,7 +646,8 @@
     "2013.12.27.A:  Fix to the AIN_BIN register array.",
     "2013.12.31.A:  Added WAIT and AEF registers. AIN_ALL description edits. Changed AIN#(0:254)_BIN to AIN#(0:254)_BINARY.",
     "2014.01.01.A:  Changed data type of AIN_EF mode and CONFIG_A to uint 32.",
-	"2014.01.02.A:  Adding register-constants to DIO_INHIBIT, STREAM_ENABLE, WIFI_STATUS, and WIFI_FIRMWARE_UPDATE_STATUS.",
+    "2014.01.02.A:  Adding register-constants to DIO_INHIBIT, STREAM_ENABLE, WIFI_STATUS, and WIFI_FIRMWARE_UPDATE_STATUS.",
+    "2014.01.03.A:  Changed DIO#(0:22)_EF_VALUE_# to DIO#(0:22)_EF_CONFIG_#, removed constants from DIO_INHIBIT and STREAM_ENABLE.",
     "End Of Comments"
   ]
 
