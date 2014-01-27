@@ -664,7 +664,7 @@
     "2014.01.09.A:  Updated AIN EF registers.",
     "2014.01.20.A:  Changed TEMPERATURE_AMBIENT_K to TEMPERATURE_APPROXIMATE_AMBIENT_K, updated description, updated T7 datasheet AIN 14 desc.",
     "2014.01.23.A:  Changed TEMPERATURE_APPROXIMATE_AMBIENT_K to TEMPERATURE_AIR_K.",
-    "2014.01.27.A:  Updated SBUS registers."
+    "2014.01.27.A:  Updated SBUS registers.",
     "End Of Comments"
   ]
 
