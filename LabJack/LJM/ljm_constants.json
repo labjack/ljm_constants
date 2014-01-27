@@ -66,13 +66,14 @@
    {"address":30000, "name":"TDAC#(0:22)", "type":"FLOAT32", "devices":["T7"], "readwrite":"W", "default":0, "tags":["TDAC"], "description":"Update a voltage output on an LJTick-DAC.  Even # = DACA, Odd # = DACB."},
    {"address":55200, "name":"TDAC_SERIAL_NUMBER", "type":"UINT32", "devices":["T7"], "readwrite":"R", "default":0, "tags":["TDAC"], "description":"Returns the serial number of an LJTick-DAC, and forces a re-read of the calibration constants. Which LJTDAC is determined by the last write to TDAC# ... whether it was successful or not."},
 
-   {"address":30100, "name":"SBUS#(0:22)_TEMP", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "default":0, "tags":["SBUS"]},
-   {"address":30150, "name":"SBUS#(0:22)_RH", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "default":0, "tags":["SBUS"]},
-   {"address":30200, "name":"SBUS#(0:22)_DATA_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SBUS"]},
-   {"address":30225, "name":"SBUS#(0:22)_CLOCK_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SBUS"]},
-   {"address":30250, "name":"SBUS#(0:22)_BACKGROUND_ENABLE", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SBUS"]},
-   {"address":30275, "name":"SBUS_ALL_DATA_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SBUS"]},
-   {"address":30276, "name":"SBUS_ALL_CLOCK_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SBUS"]},
+   {"address":30100, "name":"SBUS#(0:22)_TEMP", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "default":0, "tags":["SBUS"], "description":"Reads temperature from the sensor, applies calibration and returns Kelvin."},
+   {"address":30150, "name":"SBUS#(0:22)_RH", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "default":0, "tags":["SBUS"], "description":"Reads temperature and RH from the sensor. Calibration is applied and %RH is returned."},
+   {"address":30200, "name":"SBUS#(0:22)_DATA_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SBUS"], "description":"This is the DIO# that the sensor's data line is connected to."},
+   {"address":30225, "name":"SBUS#(0:22)_CLOCK_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SBUS"], "description":"This is the DIO# that the sensor's clock line is connected to."},
+   {"address":30250, "name":"SBUS#(0:22)_BACKGROUND_ENABLE", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SBUS"], "description":"Currently unsupported."},
+   {"address":30275, "name":"SBUS_ALL_DATA_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SBUS"], "description":"Sets all DATA lines. Reading this will return 0xFF if all of the DATA lines are not set to the same value."},
+   {"address":30276, "name":"SBUS_ALL_CLOCK_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SBUS"], "description":"Sets all CLK lines. Reading this will return 0xFF if all of the CLK lines are not set to the same value."},
+   {"address":30277, "name":"SBUS_ALL_POWER_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SBUS"], "description":"Sets all POW lines. Individual sensor connections do not have their own power line setting."},
 
    {"address":40000, "name":"AIN#(0:254)_RANGE", "type":"FLOAT32", "devices":[{"device":"T7", "description":"Valid values/ranges:  0.0=Default=> +/-10V, 10.0=> +/-10V, 1.0=> +/-1V, 0.1=> +/-0.1V, or 0.01=> +/-0.01V."}], "readwrite":"RW", "default":0, "tags":["AIN"], "description":"The range/span of each analog input. If all channels are the same, this reads the correct value, but otherwise this reads -9999.0."},
    {"address":41000, "name":"AIN#(0:254)_NEGATIVE_CH", "type":"UINT16", "devices":[{"device":"T7", "description":"For base differential channels, positive must be even channel from 0-12 and negative must be positive+1.  For extended channels 16-127, see Mux80 datasheet."}], "readwrite":"RW", "default":199, "tags":["AIN"], "description":"Specifies the negative channel to be used for each positive channel. 199=Default=> Single-Ended. If all channels are the same, this reads the correct value, but otherwise this reads 0xFFFF."},
@@ -663,6 +664,7 @@
     "2014.01.09.A:  Updated AIN EF registers.",
     "2014.01.20.A:  Changed TEMPERATURE_AMBIENT_K to TEMPERATURE_APPROXIMATE_AMBIENT_K, updated description, updated T7 datasheet AIN 14 desc.",
     "2014.01.23.A:  Changed TEMPERATURE_APPROXIMATE_AMBIENT_K to TEMPERATURE_AIR_K.",
+    "2014.01.27.A:  Updated SBUS registers."
     "End Of Comments"
   ]
 
