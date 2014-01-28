@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2014.01.23.A",
+   "version":"2014.01.28.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -66,14 +66,14 @@
    {"address":30000, "name":"TDAC#(0:22)", "type":"FLOAT32", "devices":["T7"], "readwrite":"W", "default":0, "tags":["TDAC"], "description":"Update a voltage output on an LJTick-DAC.  Even # = DACA, Odd # = DACB."},
    {"address":55200, "name":"TDAC_SERIAL_NUMBER", "type":"UINT32", "devices":["T7"], "readwrite":"R", "default":0, "tags":["TDAC"], "description":"Returns the serial number of an LJTick-DAC, and forces a re-read of the calibration constants. Which LJTDAC is determined by the last write to TDAC# ... whether it was successful or not."},
 
-   {"address":30100, "name":"SBUS#(0:22)_TEMP", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "default":0, "tags":["SBUS"], "description":"Reads temperature from an SBUS sensor (EI-1050/SHT1x/SHT7x) and returns degrees Kelvin."},
-   {"address":30150, "name":"SBUS#(0:22)_RH", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "default":0, "tags":["SBUS"], "description":"Reads temperature and RH from an he sensor and returns %RH."},
+   {"address":30100, "name":"SBUS#(0:22)_TEMP", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["SBUS"], "description":"Reads temperature in degrees Kelvin from an SBUS sensor (EI-1050/SHT1x/SHT7x).  A read of SBUS3_TEMP, for example, sets FIO3 (enable) to output-high, talks to a sensor using SBUS3_DATA_DIONUM & SBUS3_CLOCK_DIONUM, and then sets FIO3 to output-low."},
+   {"address":30150, "name":"SBUS#(0:22)_RH", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["SBUS"], "description":"Reads humidity in % from an SBUS sensor (EI-1050/SHT1x/SHT7x)."},
    {"address":30200, "name":"SBUS#(0:22)_DATA_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SBUS"], "description":"This is the DIO# that the sensor's data line is connected to. Default = FIO0"},
    {"address":30225, "name":"SBUS#(0:22)_CLOCK_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":1, "tags":["SBUS"], "description":"This is the DIO# that the sensor's clock line is connected to. Default = FIO1"},
    {"address":30250, "name":"SBUS#(0:22)_BACKGROUND_ENABLE", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SBUS"], "description":"Currently unsupported."},
-   {"address":30275, "name":"SBUS_ALL_DATA_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SBUS"], "description":"A write to this global parameter affects all SBUS data line registers. A read will return the correct setting if all channels are set the same, but otherwise will return 0xFF."},
-   {"address":30276, "name":"SBUS_ALL_CLOCK_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":1, "tags":["SBUS"], "description":"A write to this global parameter affects all SBUS clock line registers.. A read will return the correct setting if all channels are set the same, but otherwise will return 0xFF."},
-   {"address":30277, "name":"SBUS_ALL_POWER_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":2, "tags":["SBUS"], "description":"Sets the power line.  This DIO is set to output-high upon any read of SBUS#_TEMP or SBUS#_RH.  Default = FIO2.  Set to 9999 to disable.  An FIO line can power up to 4 sensors, Individual sensor connections do not have their own power line setting."},
+   {"address":30275, "name":"SBUS_ALL_DATA_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SBUS"], "description":"A write to this global parameter sets all SBUS data line registers to the same value. A read will return the correct setting if all channels are set the same, but otherwise will return 0xFF."},
+   {"address":30276, "name":"SBUS_ALL_CLOCK_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":1, "tags":["SBUS"], "description":"A write to this global parameter sets all SBUS clock line registers to the same value. A read will return the correct setting if all channels are set the same, but otherwise will return 0xFF."},
+   {"address":30277, "name":"SBUS_ALL_POWER_DIONUM", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0051}], "readwrite":"RW", "default":2, "tags":["SBUS"], "description":"Sets the power line. This DIO is set to output-high upon any read of SBUS#_TEMP or SBUS#_RH. Default = FIO2. An FIO line can power up to 4 sensors while an EIO/CIO/MIO line or DAC line can power up to 20 sensors. Set to 9999 to disable. To use multiple power lines, use a DAC line for power, or otherwise control power yourself, set this to 9999 and then control power using writes to normal registers such as FIO5, EIO0, or DAC0."},
 
    {"address":40000, "name":"AIN#(0:254)_RANGE", "type":"FLOAT32", "devices":[{"device":"T7", "description":"Valid values/ranges:  0.0=Default=> +/-10V, 10.0=> +/-10V, 1.0=> +/-1V, 0.1=> +/-0.1V, or 0.01=> +/-0.01V."}], "readwrite":"RW", "default":0, "tags":["AIN"], "description":"The range/span of each analog input. If all channels are the same, this reads the correct value, but otherwise this reads -9999.0."},
    {"address":41000, "name":"AIN#(0:254)_NEGATIVE_CH", "type":"UINT16", "devices":[{"device":"T7", "description":"For base differential channels, positive must be even channel from 0-12 and negative must be positive+1.  For extended channels 16-127, see Mux80 datasheet."}], "readwrite":"RW", "default":199, "tags":["AIN"], "description":"Specifies the negative channel to be used for each positive channel. 199=Default=> Single-Ended. If all channels are the same, this reads the correct value, but otherwise this reads 0xFFFF."},
@@ -137,7 +137,7 @@
    {"address":49016, "name":"IO_CONFIG_CURRENT_READ", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["CONFIG"]},
    {"address":61990, "name":"IO_CONFIG_SET_CURRENT_TO_FACTORY", "type":"UINT16", "devices":["T7"], "readwrite":"W", "tags":["CONFIG"]},
    {"address":61991, "name":"IO_CONFIG_SET_CURRENT_TO_DEFAULT", "type":"UINT16", "devices":["T7"], "readwrite":"W", "tags":["CONFIG"]},
-   
+
    {"address":60050, "name":"TEMPERATURE_AIR_K", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0017}], "readwrite":"R", "tags":["AIN"], "streamable":true, "displayname":["Estimated Air Temperature [deg K]"], "description":"Returns the estimated ambient air temperature just outside a T7 in its red plastic enclosure.  This register is calculated based on active peripherals and stablized conditions."},
    {"address":60052, "name":"TEMPERATURE_DEVICE_K", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0017}], "readwrite":"R", "tags":["AIN"], "streamable":true, "displayname":["Device Temperature [deg K]"], "description":"Takes a reading from AIN14 using range=+/-10V and resolution=8, and applies the formula Volts*-92.6?+467.6? to return degrees K.  AIN14 is internally connected to an LM94021 (U24) with GS=10 which is physically located on the bottom of the PCB between the AIN0/1 and AIN2/3 screw-terminals."},
 
@@ -178,11 +178,11 @@
 
    {"address":50000, "name":"AIN#(0:254)_BINARY", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["AIN"], "streamable":false, "altnames":["AIN#(0:254)_BIN"], "description":"Returns the binary representation of the specified analog input."},
 
-   {"address":55100, "name":"TEST", "type":"UINT32", "devices":["T7"], "readwrite":"R", "default":1122867, "tags":["CONFIG"], "description":"A read of this test register should always return 0x00112233 or d1122867."},
-   {"address":55110, "name":"TEST_UINT16", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":4386, "tags":["CONFIG"], "description":"Write a value and read back to test UINT16 operation. Default is 0x0011 or d4386."},
-   {"address":55120, "name":"TEST_UINT32", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":287454020, "tags":["CONFIG"], "description":"Write a value and read back to test UINT32 operation. Default is 0x00112233 or d1122867."},
-   {"address":55122, "name":"TEST_INT32", "type":"INT32", "devices":["T7"], "readwrite":"RW", "default":-144288443, "tags":["CONFIG"], "description":"Write a value and read back to test INT32 operation. Default is 0x8899AABB or d-144288443."},
-   {"address":55124, "name":"TEST_FLOAT32", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "default":-9999.9, "tags":["CONFIG"], "description":"Write a value and read back to test FLOAT32 operation. Default is -9999.9."},
+   {"address":55100, "name":"TEST", "type":"UINT32", "devices":["T7"], "readwrite":"R", "default":1122867, "tags":["CONFIG"], "description":"A read of this test register should always return 0x00112233 or d1122867. If your software has the word swap problem, you will read 0x22330011 or 573767697 (which needs to be handled)."},
+   {"address":55110, "name":"TEST_UINT16", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":17, "tags":["CONFIG"], "description":"Write a value and read back to test UINT16 operation. Default is 0x0011 or d17."},
+   {"address":55120, "name":"TEST_UINT32", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":1122867, "tags":["CONFIG"], "description":"Write a value and read back to test UINT32 operation. Default is 0x00112233 or d1122867. If your software has the word swap problem, the default will read 0x22330011 or 573767697 (which needs to be handled)."},
+   {"address":55122, "name":"TEST_INT32", "type":"INT32", "devices":["T7"], "readwrite":"RW", "default":-2003195205, "tags":["CONFIG"], "description":"Write a value and read back to test INT32 operation. Default is 0x8899AABB or d-2003195205. If your software has the word swap problem, the default will read 0xAABB8899 or -1430550375 (which needs to be handled)."},
+   {"address":55124, "name":"TEST_FLOAT32", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "default":-9999.0, "tags":["CONFIG"], "description":"Write a value and read back to test FLOAT32 operation. Default is 0xC61C3C00 or -9999.0. If your software has the word swap problem, the default will read 0x3C00C61C or 0.00786 (which needs to be handled)."},
 
    {"address":60000, "name":"PRODUCT_ID", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9", "DIGIT"], "readwrite":"R", "tags":["CONFIG"], "description":"The numeric identifier of the device.  Such as 3 for a U3-HV."},
    {"address":60002, "name":"HARDWARE_VERSION", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9", "DIGIT"], "readwrite":"R", "tags":["CONFIG"], "description":"The hardware version of the device."},
@@ -290,8 +290,6 @@
    {"address":10500, "name":"AIN#(0:254)_EF_CONFIG_E", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
    {"address":10800, "name":"AIN#(0:254)_EF_CONFIG_F", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
    {"address":11100, "name":"AIN#(0:254)_EF_CONFIG_G", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
-
-
 
    {"address":61590, "name":"WAIT_US_BLOCKING", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0026}], "readwrite":"RW", "tags":[""], "description":"Delays for x microseconds. Range is 0-10000."},
 
@@ -426,7 +424,6 @@
    {"error":1307, "string":"LJME_OLD_FIRMWARE"},
    {"error":1308, "string":"LJME_CANNOT_READ_OUT_ONLY_STREAM"},
 
-
    {"error":2300, "string":"MODBUS_RSP_OVERFLOW"},
    {"error":2301, "string":"MODBUS_CMD_OVERFLOW"},
    {"error":2310, "string":"MODBUS_STRING_CMD_TOO_BIG"},
@@ -495,7 +492,6 @@
    {"error":2584, "string":"AIN_EF_CALCULATION_OUT_OF_RANGE"},
    {"error":2585, "string":"AIN_EF_INVALID_CHANNEL"},
 
-
    {"error":2600, "string":"STREAM_NEED_AT_LEAST_ONE_CHN"},
    {"error":2601, "string":"STREAM_CLOCK_BASE_NOT_WRITABLE"},
    {"error":2602, "string":"STREAM_EXTCLK_AND_GATE_MX"},
@@ -554,8 +550,6 @@
    {"error":2761, "string":"TDAC_SCL_INVALID"},
    {"error":2762, "string":"TDAC_INVALID_CHANNEL"},
    {"error":2763, "string":"TDAC_CAL_READ_FAILURE"},
-
-
 
    {"error":2900, "string":"WIFI_ASSOCIATED"},
    {"error":2901, "string":"WIFI_ASSOCIATING"},
@@ -664,7 +658,8 @@
     "2014.01.09.A:  Updated AIN EF registers.",
     "2014.01.20.A:  Changed TEMPERATURE_AMBIENT_K to TEMPERATURE_APPROXIMATE_AMBIENT_K, updated description, updated T7 datasheet AIN 14 desc.",
     "2014.01.23.A:  Changed TEMPERATURE_APPROXIMATE_AMBIENT_K to TEMPERATURE_AIR_K.",
-    "2014.01.27.A:  Updated SBUS registers.",
+    "2014.01.27.A:  Added SBUS_ALL_POWER_DIONUM, changed SBUS data & clock defaults, and updated SBUS descriptions.",
+    "2014.01.28.A:  Updated TEST registers descriptions and default values.",
     "End Of Comments"
   ]
 }
