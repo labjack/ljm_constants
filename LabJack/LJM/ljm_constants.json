@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2014.01.28.A",
+   "version":"2014.01.30.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -10,12 +10,12 @@
 
  "registers":
  [
-   {"address":0, "name":"AIN#(0:254)", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"R", "tags":["AIN"], "streamable":true, "displayname":["Analog In #"], "description":"Returns the voltage of the specified analog input."},
-   {"address":1000, "name":"DAC#(0:1)", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DAC"], "displayname":["Analog Out #"], "description":"Pass a voltage for the specified analog output."},
-   {"address":2000, "name":"FIO#(0:7)", "type":"UINT16", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":["DIO#(0:7)"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
-   {"address":2008, "name":"EIO#(0:7)", "type":"UINT16", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":["DIO#(8:15)"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
-   {"address":2016, "name":"CIO#(0:3)", "type":"UINT16", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":["DIO#(16:19)"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
-   {"address":2020, "name":"MIO#(0:2)", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO"], "altnames":["DIO#(20:22)"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
+   {"address":0, "name":"AIN#(0:254)", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"R", "tags":["AIN", "CORE"], "streamable":true, "displayname":["Analog In #"], "description":"Returns the voltage of the specified analog input."},
+   {"address":1000, "name":"DAC#(0:1)", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DAC", "CORE"], "displayname":["Analog Out #"], "description":"Pass a voltage for the specified analog output."},
+   {"address":2000, "name":"FIO#(0:7)", "type":"UINT16", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO", "CORE"], "altnames":["DIO#(0:7)"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
+   {"address":2008, "name":"EIO#(0:7)", "type":"UINT16", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO", "CORE"], "altnames":["DIO#(8:15)"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
+   {"address":2016, "name":"CIO#(0:3)", "type":"UINT16", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO", "CORE"], "altnames":["DIO#(16:19)"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
+   {"address":2020, "name":"MIO#(0:2)", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO", "CORE"], "altnames":["DIO#(20:22)"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
 
    {"address":2500, "name":"FIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0000}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["FIO Port State"], "description":"Read or write the state of the 8 bits of FIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."},
    {"address":2501, "name":"EIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0000}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["EIO Port State"], "description":"Read or write the state of the 8 bits of EIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."},
@@ -63,11 +63,11 @@
    {"address":5120, "name":"I2C_WRITE_DATA", "type":"BYTE", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Data that will be written to the I2C bus."},
    {"address":5160, "name":"I2C_READ_DATA", "type":"BYTE", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Data that has been read from the I2C bus."},
 
-   {"address":30000, "name":"TDAC#(0:22)", "type":"FLOAT32", "devices":["T7"], "readwrite":"W", "default":0, "tags":["TDAC"], "description":"Update a voltage output on an LJTick-DAC.  Even # = DACA, Odd # = DACB."},
+   {"address":30000, "name":"TDAC#(0:22)", "type":"FLOAT32", "devices":["T7"], "readwrite":"W", "default":0, "tags":["TDAC", "CORE"], "description":"Update a voltage output on an LJTick-DAC.  Even # = DACA, Odd # = DACB."},
    {"address":55200, "name":"TDAC_SERIAL_NUMBER", "type":"UINT32", "devices":["T7"], "readwrite":"R", "default":0, "tags":["TDAC"], "description":"Returns the serial number of an LJTick-DAC, and forces a re-read of the calibration constants. Which LJTDAC is determined by the last write to TDAC# ... whether it was successful or not."},
 
-   {"address":30100, "name":"SBUS#(0:22)_TEMP", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["SBUS"], "description":"Reads temperature in degrees Kelvin from an SBUS sensor (EI-1050/SHT1x/SHT7x).  A read of SBUS3_TEMP, for example, sets FIO3 (enable) to output-high, talks to a sensor using SBUS3_DATA_DIONUM & SBUS3_CLOCK_DIONUM, and then sets FIO3 to output-low."},
-   {"address":30150, "name":"SBUS#(0:22)_RH", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["SBUS"], "description":"Reads humidity in % from an SBUS sensor (EI-1050/SHT1x/SHT7x)."},
+   {"address":30100, "name":"SBUS#(0:22)_TEMP", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["SBUS", "CORE"], "description":"Reads temperature in degrees Kelvin from an SBUS sensor (EI-1050/SHT1x/SHT7x).  A read of SBUS3_TEMP, for example, sets FIO3 (enable) to output-high, talks to a sensor using SBUS3_DATA_DIONUM & SBUS3_CLOCK_DIONUM, and then sets FIO3 to output-low."},
+   {"address":30150, "name":"SBUS#(0:22)_RH", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["SBUS", "CORE"], "description":"Reads humidity in % from an SBUS sensor (EI-1050/SHT1x/SHT7x)."},
    {"address":30200, "name":"SBUS#(0:22)_DATA_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SBUS"], "description":"This is the DIO# that the sensor's data line is connected to. Default = FIO0"},
    {"address":30225, "name":"SBUS#(0:22)_CLOCK_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":1, "tags":["SBUS"], "description":"This is the DIO# that the sensor's clock line is connected to. Default = FIO1"},
    {"address":30250, "name":"SBUS#(0:22)_BACKGROUND_ENABLE", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SBUS"], "description":"Currently unsupported."},
@@ -110,7 +110,7 @@
    {"address":44400, "name":"DIO#(0:22)_EF_CONFIG_B", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "altnames":["DIO#(0:22)_EF_VALUE_B"]},
    {"address":44500, "name":"DIO#(0:22)_EF_CONFIG_C", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "altnames":["DIO#(0:22)_EF_VALUE_C"]},
    {"address":44600, "name":"DIO#(0:22)_EF_CONFIG_D", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "altnames":["DIO#(0:22)_EF_VALUE_D"]},
-   {"address":3000, "name":"DIO#(0:22)_EF_READ_A", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
+   {"address":3000, "name":"DIO#(0:22)_EF_READ_A", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO", "CORE"]},
    {"address":3100, "name":"DIO#(0:22)_EF_READ_A_AND_RESET", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
    {"address":3200, "name":"DIO#(0:22)_EF_READ_B", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
    {"address":3500, "name":"DIO#(0:22)_EF_READ_A_F", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
@@ -138,8 +138,8 @@
    {"address":61990, "name":"IO_CONFIG_SET_CURRENT_TO_FACTORY", "type":"UINT16", "devices":["T7"], "readwrite":"W", "tags":["CONFIG"]},
    {"address":61991, "name":"IO_CONFIG_SET_CURRENT_TO_DEFAULT", "type":"UINT16", "devices":["T7"], "readwrite":"W", "tags":["CONFIG"]},
 
-   {"address":60050, "name":"TEMPERATURE_AIR_K", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0017}], "readwrite":"R", "tags":["AIN"], "streamable":true, "displayname":["Estimated Air Temperature [deg K]"], "description":"Returns the estimated ambient air temperature just outside a T7 in its red plastic enclosure.  This register is calculated based on active peripherals and stablized conditions."},
-   {"address":60052, "name":"TEMPERATURE_DEVICE_K", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0017}], "readwrite":"R", "tags":["AIN"], "streamable":true, "displayname":["Device Temperature [deg K]"], "description":"Takes a reading from AIN14 using range=+/-10V and resolution=8, and applies the formula Volts*-92.6?+467.6? to return degrees K.  AIN14 is internally connected to an LM94021 (U24) with GS=10 which is physically located on the bottom of the PCB between the AIN0/1 and AIN2/3 screw-terminals."},
+   {"address":60050, "name":"TEMPERATURE_AIR_K", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0017}], "readwrite":"R", "tags":["AIN", "CORE"], "streamable":true, "displayname":["Estimated Air Temperature [deg K]"], "description":"Returns the estimated ambient air temperature just outside a T7 in its red plastic enclosure.  This register is calculated based on active peripherals and stablized conditions."},
+   {"address":60052, "name":"TEMPERATURE_DEVICE_K", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0017}], "readwrite":"R", "tags":["AIN", "CORE"], "streamable":true, "displayname":["Device Temperature [deg K]"], "description":"Takes a reading from AIN14 using range=+/-10V and resolution=8, and applies the formula Volts*-92.6?+467.6? to return degrees K.  AIN14 is internally connected to an LM94021 (U24) with GS=10 which is physically located on the bottom of the PCB between the AIN0/1 and AIN2/3 screw-terminals."},
 
    {"address":49100, "name":"ETHERNET_IP", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["ETHERNET"], "description":"Read the current IP address of wired Ethernet."},
    {"address":49102, "name":"ETHERNET_SUBNET", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["ETHERNET"], "description":"Read the current subnet of wired Ethernet."},
@@ -291,7 +291,7 @@
    {"address":10800, "name":"AIN#(0:254)_EF_CONFIG_F", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
    {"address":11100, "name":"AIN#(0:254)_EF_CONFIG_G", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
 
-   {"address":61590, "name":"WAIT_US_BLOCKING", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0026}], "readwrite":"RW", "tags":[""], "description":"Delays for x microseconds. Range is 0-10000."},
+   {"address":61590, "name":"WAIT_US_BLOCKING", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0026}], "readwrite":"RW", "tags":[""], "description":"Delays for x microseconds. Range is 0-100000."},
 
    {"address":43000, "name":"AIN#(0:254)_EF_TYPE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
 
@@ -324,8 +324,29 @@
    {"address":6022, "name":"LUA_DEBUG_NUM_BYTES", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
    {"address":6024, "name":"LUA_DEBUG_DATA", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
    {"address":46000, "name":"LUA_IO#(0:127)_R", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA"]},
-   {"address":47000, "name":"LUA_IO#(0:127)_W", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA"]}
+   {"address":47000, "name":"LUA_IO#(0:127)_W", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA"]},
 
+
+   {"address":5300, "name":"ONEWIRE_SENS_DIONUM", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
+   {"address":5301, "name":"ONEWIRE_DPU_DIONUM", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
+   {"address":5302, "name":"ONEWIRE_OPTIONS", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
+   {"address":5307, "name":"ONEWIRE_FUNCTION", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
+   {"address":5308, "name":"ONEWIRE_NUM_BYTES_TX", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
+   {"address":5309, "name":"ONEWIRE_NUM_BYTES_RX", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
+
+   {"address":5310, "name":"ONEWIRE_GO", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
+
+   {"address":5320, "name":"ONEWIRE_ROM_MATCH_H", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
+   {"address":5322, "name":"ONEWIRE_ROM_MATCH_L", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
+   {"address":5332, "name":"ONEWIRE_ROM_BRANCHS_FOUND_H", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"R", "default":0, "tags":["I2C"], "description":""},
+   {"address":5334, "name":"ONEWIRE_ROM_BRANCHS_FOUND_L", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"R", "default":0, "tags":["I2C"], "description":""},
+   {"address":5328, "name":"ONEWIRE_SEARCH_RESULT_H", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"R", "default":0, "tags":["I2C"], "description":""},
+   {"address":5330, "name":"ONEWIRE_SEARCH_RESULT_L", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"R", "default":0, "tags":["I2C"], "description":""},
+   {"address":5324, "name":"ONEWIRE_PATH_H", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
+   {"address":5326, "name":"ONEWIRE_PATH_L", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
+
+   {"address":5340, "name":"ONEWIRE_DATA_TX", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
+   {"address":5370, "name":"ONEWIRE_DATA_RX", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""}
  ],
 
  "errors":
@@ -432,8 +453,11 @@
    {"error":2313, "string":"MODBUS_INVALID_NUM_REGISTERS"},
    {"error":2314, "string":"MODBUS_READ_TOO_LARGE"},
    {"error":2315, "string":"MODBUS_NUM_REGS_MUST_BE_EVEN"},
+   {"error":2316, "string":"MODBUS_STRING_MISSING_NULL"},
+
    {"error":2330, "string":"STARTUP_CONFIG_INVALID_CODE"},
    {"error":2331, "string":"STARTUP_CONFIG_INVALID_READ"},
+
    {"error":2350, "string":"EXFLASH_ADD_INVALID"},
    {"error":2351, "string":"EXFLASH_CODE_INVALID"},
    {"error":2352, "string":"EXFLASH_OP_PROHIBITED"},
@@ -442,15 +466,20 @@
    {"error":2355, "string":"FLASH_VERIFICATION_FAILED"},
    {"error":2356, "string":"FLASH_ERASE_FAILED"},
    {"error":2358, "string":"EXFLASH_UNAVAILABLE"},
+
    {"error":2370, "string":"AIN_RANGE_INVALID"},
    {"error":2371, "string":"AIN_SETTLINE_INVALID"},
    {"error":2732, "string":"AIN_SET_TO_BINARY"},
+
    {"error":2380, "string":"LUA_VM_STATE_NO_CHANGE"},
    {"error":2381, "string":"LUA_INITIALIZATION_ERROR"},
    {"error":2382, "string":"LUA_INVALID_NUM_IO_FLOATS"},
    {"error":2383, "string":"LUA_IO_FLOATMEM_OVERFLOW"},
    {"error":2384, "string":"LUA_INVALID_MODE"},
    {"error":2385, "string":"LUA_IS_RUNNING"},
+   {"error":2386, "string":"LUA_CODE_BUFFER_EMPTY"},
+   {"error":2387, "string":"LUA_DEBUG_IS_DISABLED"},
+
    {"error":2400, "string":"SYSTEM_MEMORY_BEREFT"},
    {"error":2401, "string":"SYSTEM_MEMORY_OVERWRITE"},
    {"error":2402, "string":"SYSTEM_RESTART_CODE_INVALID"},
@@ -458,32 +487,42 @@
    {"error":2404, "string":"SYSTEM_INVALIDE_PIN"},
    {"error":2405, "string":"SYSTEM_NVRAM_UNAVAILABLE"},
    {"error":2406, "string":"SYSTEM_NVRAM_INVALID_ADDRESS"},
+   {"error":2407, "string":"SYSTEM_WAIT_TOO_LONG"},
+
    {"error":2420, "string":"DEVICE_NAME_MUST_BE_ALPHANUM"},
+
    {"error":2450, "string":"POWER_INVALID_SETTING"},
    {"error":2451, "string":"POWER_USB_NEEDS_20MHZ_OR_MORE"},
    {"error":2452, "string":"POWER_NO_CHANGE"},
+
    {"error":2460, "string":"POWER_ANALOG_OFF"},
+
    {"error":2490, "string":"WIFI_NOT_ASSOCIATED"},
+
    {"error":2500, "string":"HW_DIO_NOT_AVAILABLE"},
    {"error":2508, "string":"HW_CNTR0_NOT_AVAILABLE"},
    {"error":2509, "string":"HW_CNTR1_NOT_AVAILABLE"},
    {"error":2510, "string":"HW_CNTR2_NOT_AVAILABLE"},
    {"error":2511, "string":"HW_CNTR3_NOT_AVAILABLE"},
+
    {"error":2520, "string":"HW_CIO0_NOT_AVAILABLE"},
    {"error":2521, "string":"HW_CIO1_NOT_AVAILABLE"},
-   {"error":2550, "string":"TNC_DIO_HAS_NO_TNC_FEATURES"},
-   {"error":2551, "string":"TNC_INVALID_MODE"},
-   {"error":2552, "string":"TNC_MODE_NOT_SUPPORTED"},
-   {"error":2553, "string":"TNC_PIN_MODE_MISMATCH"},
-   {"error":2554, "string":"TNC_TIMER_NOT_ENABLED"},
-   {"error":2555, "string":"TNC_32BIT_DATA_INTO_16BIT_REG"},
-   {"error":2556, "string":"TNC_SET_TO_32BIT"},
-   {"error":2557, "string":"TNC_SMOOTH_VALUE_OUT_OF_RANGE"},
-   {"error":2558, "string":"TNC_32BIT_REQUIRES_BOTH_CNT0n1"},
-   {"error":2559, "string":"TNC_PRESCALE_VALUE_INVALID"},
-   {"error":2560, "string":"TNC_PIN_RESERVED"},
-   {"error":2561, "string":"TNC_INVALID_DIO_NUMBER"},
+
+   {"error":2550, "string":"EF_DIO_HAS_NO_TNC_FEATURES"},
+   {"error":2551, "string":"EF_INVALID_MODE"},
+   {"error":2552, "string":"EF_MODE_NOT_SUPPORTED"},
+   {"error":2553, "string":"EF_PIN_MODE_MISMATCH"},
+   {"error":2554, "string":"EF_TIMER_NOT_ENABLED"},
+   {"error":2555, "string":"EF_32BIT_DATA_INTO_16BIT_REG"},
+   {"error":2556, "string":"EF_SET_TO_32BIT"},
+   {"error":2557, "string":"EF_SMOOTH_VALUE_OUT_OF_RANGE"},
+   {"error":2558, "string":"EF_32BIT_REQUIRES_BOTH_CNT0n1"},
+   {"error":2559, "string":"EF_PRESCALE_VALUE_INVALID"},
+   {"error":2560, "string":"EF_PIN_RESERVED"},
+   {"error":2561, "string":"EF_INVALID_DIO_NUMBER"},
    {"error":2563, "string":"EF_LINE_MUST_BE_LOW_BEFORE_STARTING"},
+   {"error":2564, "string":"EF_INVALID_DIVISOR"},
+   {"error":2565, "string":"EF_VALUE_GREATER_THAN_PERIOD"},
 
    {"error":2580, "string":"AIN_EF_INVALID_TYPE"},
    {"error":2581, "string":"AIN_EF_INVALID_NUM_SAMPLES"},
@@ -516,11 +555,13 @@
    {"error":2621, "string":"STREAM_SETTLING_INVALID"},
    {"error":2622, "string":"STREAM_OUT_LOOP_TOO_BIG"},
    {"error":2623, "string":"STREAM_OUT_DATA_TRGT_MISSMATCH"},
+
    {"error":2670, "string":"SWDT_ROLLT_INVALID"},
    {"error":2671, "string":"SWDT_ENABLED"},
    {"error":2672, "string":"SWDT_DIO_SETTINGS_INVALID"},
    {"error":2673, "string":"SWDT_DAC0_SETTINGS_INVALID"},
    {"error":2674, "string":"SWDT_DAC1_SETTINGS_INVALID"},
+
    {"error":2690, "string":"RTC_TIME_INVALID"},
    {"error":2691, "string":"RTC_SNTP_TIME_INVALID"},
 
@@ -535,6 +576,7 @@
    {"error":2708, "string":"SPI_MISO_PIN_RESERVED"},
    {"error":2709, "string":"SPI_MOSI_PIN_RESERVED"},
    {"error":2710, "string":"SPI_TRANSFER_SIZE_TOO_LARGE"},
+
    {"error":2720, "string":"I2C_BUS_BUSY"},
    {"error":2721, "string":"I2C_NO_DATA_AVAILABLE"},
    {"error":2722, "string":"I2C_SDA_PIN_INVALID"},
@@ -543,13 +585,21 @@
    {"error":2725, "string":"I2C_SCL_PIN_RESERVED"},
    {"error":2726, "string":"I2C_TX_SIZE_TOO_LARGE"},
    {"error":2727, "string":"I2C_RX_SIZE_TOO_LARGE"},
-   {"error":2740, "string":"SHT1x_COMM_TIME_OUT"},
-   {"error":2741, "string":"SHT1x_NO_ACK"},
-   {"error":2742, "string":"SHT1X_CUSTOM_MODE_INVALID"},
+   {"error":2728, "string":"I2C_BUFFER_OVERRUN"},
+
+   {"error":2740, "string":"SBUS_COMM_TIME_OUT"},
+   {"error":2741, "string":"SBUS_NO_ACK"},
+   {"error":2742, "string":"SBUS_CUSTOM_MODE_INVALID"},
+   {"error":2743, "string":"SBUS_INVALID_DIO_NUM"},
+   {"error":2744, "string":"SBUS_BACKGROUND_SERVICE_ON"},
+
    {"error":2760, "string":"TDAC_SDA_SCL_INVALID"},
    {"error":2761, "string":"TDAC_SCL_INVALID"},
    {"error":2762, "string":"TDAC_INVALID_CHANNEL"},
    {"error":2763, "string":"TDAC_CAL_READ_FAILURE"},
+
+   {"error":2770, "string":"ONEWIRE_UNSUPPORETD_FUNCTION"},
+   {"error":2771, "string":"ONEWIRE_NO_PRESENCE_PULSE"},
 
    {"error":2900, "string":"WIFI_ASSOCIATED"},
    {"error":2901, "string":"WIFI_ASSOCIATING"},
@@ -660,6 +710,9 @@
     "2014.01.23.A:  Changed TEMPERATURE_APPROXIMATE_AMBIENT_K to TEMPERATURE_AIR_K.",
     "2014.01.27.A:  Added SBUS_ALL_POWER_DIONUM, changed SBUS data & clock defaults, and updated SBUS descriptions.",
     "2014.01.28.A:  Updated TEST registers descriptions and default values.",
+    "2014.01.29.A:  Added error codes.",
+    "2014.01.30.A:  Added CORE tag to some often used registers.",
+    "2014.02.02.A:  Added 1-wire registers.",
     "End Of Comments"
   ]
 }
