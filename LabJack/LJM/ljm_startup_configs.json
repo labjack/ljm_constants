@@ -25,22 +25,40 @@
 {
   "LJM_CONFIG_VALUES":
   [
-    {"LJM_ALLOWS_AUTO_CONDENSE_ADDRESSES":"default",   "description":"LJM_ALLOWS_AUTO_CONDENSE_ADDRESSES type: boolean (true or false with no quotation marks)."},
-    {"LJM_ALLOWS_AUTO_MULTIPLE_FEEDBACKS":"default",   "description":"LJM_ALLOWS_AUTO_MULTIPLE_FEEDBACKS type: boolean (true or false with no quotation marks)."},
-    {"LJM_DEBUG_LOG_BUFFER_MAX_SIZE":"default",        "description":"LJM_DEBUG_LOG_BUFFER_MAX_SIZE type: integer."},
-    {"LJM_DEBUG_LOG_FILE":"default",                   "description":"LJM_DEBUG_LOG_FILE type: string."},
-    {"LJM_DEBUG_LOG_FILE_MAX_SIZE":"default",          "description":"LJM_DEBUG_LOG_FILE_MAX_SIZE type: integer."},
-    {"LJM_DEBUG_LOG_LEVEL":"default",                  "description":"LJM_DEBUG_LOG_LEVEL type: integer. Also accepts the strings \"LJM_STREAM_PACKET\", \"LJM_TRACE\", \"LJM_DEBUG\", \"LJM_INFO\", \"LJM_PACKET\", \"LJM_WARNING\", \"LJM_USER\", \"LJM_ERROR\", and \"LJM_FATAL\""},
-    {"LJM_DEBUG_LOG_MODE":"default",                   "description":"LJM_DEBUG_LOG_MODE type: integer. Also accepts the strings \"LJM_DEBUG_LOG_MODE_NEVER\", \"LJM_DEBUG_LOG_MODE_CONTINUOUS\", and \"LJM_DEBUG_LOG_MODE_ON_ERROR\""},
-    {"LJM_DEBUG_LOG_SLEEP_TIME_MS":"default",          "description":"LJM_DEBUG_LOG_SLEEP_TIME_MS type: integer."},
-    {"LJM_ERROR_CONSTANTS_FILE":"default",             "description":"LJM_ERROR_CONSTANTS_FILE type: string."},
-    {"LJM_MODBUS_MAP_CONSTANTS_FILE":"default",        "description":"LJM_MODBUS_MAP_CONSTANTS_FILE type: string."},
-    {"LJM_OLD_FIRMWARE_CHECK":"default",               "description":"LJM_OLD_FIRMWARE_CHECK type: boolean (true or false with no quotation marks)."},
-    {"LJM_OPEN_MODE":"default",                        "description":"LJM_OPEN_MODE type: integer."},
-    {"LJM_OPEN_TCP_DEVICE_TIMEOUT_MS":"default",       "description":"LJM_OPEN_TCP_DEVICE_TIMEOUT_MS type: integer."},
-    {"LJM_RETRY_ON_TRANSACTION_ID_MISMATCH":"default", "description":"LJM_RETRY_ON_TRANSACTION_ID_MISMATCH type: boolean (true or false with no quotation marks)."},
-    {"LJM_SEND_RECEIVE_TIMEOUT_MS":"default",          "description":"LJM_SEND_RECEIVE_TIMEOUT_MS type: integer."},
-    {"LJM_STREAM_BUFFER_MAX_NUM_SECONDS":"default",    "description":"LJM_STREAM_BUFFER_MAX_NUM_SECONDS type: integer."},
-    {"LJM_STREAM_TRANSFERS_PER_SECOND":"default",      "description":"LJM_STREAM_TRANSFERS_PER_SECOND type: integer."}
+    {"LJM_ALLOWS_AUTO_CONDENSE_ADDRESSES":"default",   "type":"boolean", "values":[true, false]},
+    {"LJM_ALLOWS_AUTO_MULTIPLE_FEEDBACKS":"default",   "type":"boolean", "values":[true, false]},
+    {"LJM_DEBUG_LOG_BUFFER_MAX_SIZE":"default",        "type":"integer"},
+    {"LJM_DEBUG_LOG_FILE":"default",                   "type":"string"},
+    {"LJM_DEBUG_LOG_FILE_MAX_SIZE":"default",          "type":"integer"},
+    {"LJM_DEBUG_LOG_LEVEL":"default",                  "type":"integer", "values":[
+                                                           "LJM_STREAM_PACKET", "LJM_TRACE",
+                                                           "LJM_DEBUG", "LJM_INFO", "LJM_PACKET",
+                                                           "LJM_WARNING", "LJM_USER", "LJM_ERROR",
+                                                           "LJM_FATAL"
+                                                       ]},
+    {"LJM_DEBUG_LOG_MODE":"default",                   "type":"integer", "values":[
+                                                           "LJM_DEBUG_LOG_MODE_NEVER",
+                                                           "LJM_DEBUG_LOG_MODE_CONTINUOUS",
+                                                           "LJM_DEBUG_LOG_MODE_ON_ERROR"
+                                                       ]},
+    {"LJM_DEBUG_LOG_SLEEP_TIME_MS":"default",          "type":"integer"},
+    {"LJM_ERROR_CONSTANTS_FILE":"default",             "type":"string"},
+    {"LJM_LISTALL_NUM_ATTEMPTS_ETHERNET":"default",    "type":"integer"},
+    {"LJM_LISTALL_NUM_ATTEMPTS_WIFI":"default",        "type":"integer"},
+    {"LJM_LISTALL_THREADED_ETHERNET":"default",        "type":"boolean", "values":[true, false]},
+    {"LJM_LISTALL_THREADED_USB":"default",             "type":"boolean", "values":[true, false]},
+    {"LJM_LISTALL_THREADED_WIFI":"default",            "type":"boolean", "values":[true, false]},
+    {"LJM_LISTALL_TIMEOUT_MS_ETHERNET":"default",      "type":"integer"},
+    {"LJM_LISTALL_TIMEOUT_MS_WIFI":"default",          "type":"integer"},
+    {"LJM_LISTALL_UDP_ETHERNET":"default",             "type":"boolean", "values":[true, false]},
+    {"LJM_LISTALL_UDP_WIFI":"default",                 "type":"boolean", "values":[true, false]},
+    {"LJM_MODBUS_MAP_CONSTANTS_FILE":"default",        "type":"string"},
+    {"LJM_OLD_FIRMWARE_CHECK":"default",               "type":"boolean", "values":[true, false]},
+    {"LJM_OPEN_MODE":"default",                        "type":"integer"},
+    {"LJM_OPEN_TCP_DEVICE_TIMEOUT_MS":"default",       "type":"integer"},
+    {"LJM_RETRY_ON_TRANSACTION_ID_MISMATCH":"default", "type":"boolean", "values":[true, false]},
+    {"LJM_SEND_RECEIVE_TIMEOUT_MS":"default",          "type":"integer"},
+    {"LJM_STREAM_BUFFER_MAX_NUM_SECONDS":"default",    "type":"integer"},
+    {"LJM_STREAM_TRANSFERS_PER_SECOND":"default",      "type":"integer"}
   ]
 }
