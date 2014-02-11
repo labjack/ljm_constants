@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2014.02.10.A",
+   "version":"2014.02.11.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -732,6 +732,7 @@
     "2014.02.02.A:  Added 1-wire registers.",
     "2014.02.10.A:  Changed AIN#(0:254)_EF_INDEX to AIN#(0:254)_EF_INDEX in beta section.  Changed DIO#(0:22)_EF_INDEX to DIO#(0:22)_EF_INDEX, but put TYPE in altnames.",
     "2014.02.10.B:  Added Lua register for startup config and script saving.",
+    "2014.02.11.A:  Edits to watchdog and sbus descriptions.",
     "End Of Comments"
   ]
 }
