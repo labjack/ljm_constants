@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2014.01.30.A",
+   "version":"2014.02.10.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -104,7 +104,7 @@
    {"address":44928, "name":"DIO_EF_CLOCK2_COUNT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9430}], "readwrite":"R", "tags":["DIO_EF", "DIO"], "description":"Current tick count of this clock.  Will read between 0 and ROLL_VALUE-1."},
 
    {"address":44000, "name":"DIO#(0:22)_EF_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
-   {"address":44100, "name":"DIO#(0:22)_EF_TYPE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+   {"address":44100, "name":"DIO#(0:22)_EF_INDEX", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "altnames":["DIO#(0:22)_EF_TYPE"], "description":"An index to specify the feature you want."},
    {"address":44200, "name":"DIO#(0:22)_EF_OPTIONS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
    {"address":44300, "name":"DIO#(0:22)_EF_CONFIG_A", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "altnames":["DIO#(0:22)_EF_VALUE_A"]},
    {"address":44400, "name":"DIO#(0:22)_EF_CONFIG_B", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "altnames":["DIO#(0:22)_EF_VALUE_B"]},
@@ -200,7 +200,7 @@
    {"address":1902, "name":"CURRENT_SOURCE_200UA_CAL_VALUE", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["CONFIG"]},
 
    {"address":61600, "name":"WATCHDOG_ENABLE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The current Enabled/Disabled state of the Watchdog system."},
-   {"address":61602, "name":"WATCHDOG_ADVANCED_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"A single binary-encoded value where each bit is an option. See section in datasheet."},
+   {"address":61602, "name":"WATCHDOG_ADVANCED_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"A single binary-encoded value where each bit is an option. Reserved for future use, so leave this set to 0 for now."},
    {"address":61604, "name":"WATCHDOG_TIMEOUT_S_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The number of seconds before timeout. On timeout, watchdog executes all operations defined in the options register. A clear event will reset the timeout."},
    {"address":61606, "name":"WATCHDOG_STARTUP_DELAY_S_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"Specify a startup delay after Watchdog timeout."},
    {"address":61610, "name":"WATCHDOG_STRICT_ENABLE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"Set to 1 to enabled strict mode."},
@@ -282,7 +282,7 @@
    {"address":7600, "name":"AIN#(0:254)_EF_READ_C", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
    {"address":7900, "name":"AIN#(0:254)_EF_READ_D", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"R", "default":0, "tags":["AIN_EF", "AIN"]},
 
-   {"address":9000, "name":"AIN#(0:254)_EF_TYPE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
+   {"address":9000, "name":"AIN#(0:254)_EF_INDEX", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"], "description":"An index to specify the feature you want."},
    {"address":9300, "name":"AIN#(0:254)_EF_CONFIG_A", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
    {"address":9600, "name":"AIN#(0:254)_EF_CONFIG_B", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
    {"address":9900, "name":"AIN#(0:254)_EF_CONFIG_C", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
@@ -292,8 +292,6 @@
    {"address":11100, "name":"AIN#(0:254)_EF_CONFIG_G", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
 
    {"address":61590, "name":"WAIT_US_BLOCKING", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0026}], "readwrite":"RW", "tags":[""], "description":"Delays for x microseconds. Range is 0-100000."},
-
-   {"address":43000, "name":"AIN#(0:254)_EF_TYPE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
 
    {"address":2580, "name":"FIO_EIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0005}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["FIO-EIO Port State"], "description":"Read or write the state of the 16 bits of FIO-EIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written."},
    {"address":2581, "name":"EIO_CIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0005}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["EIO-CIO Port State"], "description":"Read or write the state of the 12 bits of EIO-CIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written."},
@@ -323,11 +321,17 @@
    {"address":6020, "name":"LUA_DEBUG_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
    {"address":6022, "name":"LUA_DEBUG_NUM_BYTES", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
    {"address":6024, "name":"LUA_DEBUG_DATA", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
+
+   {"address":6032, "name":"LUA_SAVE_TO_FLASH", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
+   {"address":6034, "name":"LUA_LOAD_SAVED", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
+   {"address":6036, "name":"LUA_SAVED_READ_POINTER", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
+   {"address":6038, "name":"LUA_SAVED_READ", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
+   {"address":6040, "name":"LUA_STARTUP_CONFIG", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
+
    {"address":46000, "name":"LUA_IO#(0:127)_R", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA"]},
-   {"address":47000, "name":"LUA_IO#(0:127)_W", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA"]},
 
 
-   {"address":5300, "name":"ONEWIRE_SENS_DIONUM", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
+   {"address":5300, "name":"ONEWIRE_DQ_DIONUM", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
    {"address":5301, "name":"ONEWIRE_DPU_DIONUM", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
    {"address":5302, "name":"ONEWIRE_OPTIONS", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
    {"address":5307, "name":"ONEWIRE_FUNCTION", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
@@ -346,7 +350,20 @@
    {"address":5326, "name":"ONEWIRE_PATH_L", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
 
    {"address":5340, "name":"ONEWIRE_DATA_TX", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
-   {"address":5370, "name":"ONEWIRE_DATA_RX", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""}
+   {"address":5370, "name":"ONEWIRE_DATA_RX", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
+
+
+   {"address":30500, "name":"ONEWIRE#(0:99)_PART_INDEX", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
+   {"address":30600, "name":"ONEWIRE#(0:99)_SENS_DIONUM", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
+   {"address":30700, "name":"ONEWIRE#(0:99)_DPU_DIONUM", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
+   {"address":30800, "name":"ONEWIRE#(0:99)_OPTIONS", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
+
+   {"address":31000, "name":"ONEWIRE#(0:99)_ROM_H", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
+   {"address":31200, "name":"ONEWIRE#(0:99)_ROM_L", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
+   {"address":31400, "name":"ONEWIRE#(0:99)_RESULT_A", "type":"FLOAT", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
+   {"address":31600, "name":"ONEWIRE#(0:99)_RESULT_B", "type":"FLOAT", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""}
+
+
  ],
 
  "errors":
@@ -713,6 +730,7 @@
     "2014.01.29.A:  Added error codes.",
     "2014.01.30.A:  Added CORE tag to some often used registers.",
     "2014.02.02.A:  Added 1-wire registers.",
+    "2014.02.10.A:  Changed AIN#(0:254)_EF_INDEX to AIN#(0:254)_EF_INDEX in beta section.  Changed DIO#(0:22)_EF_INDEX to DIO#(0:22)_EF_INDEX, but put TYPE in altnames.",
     "End Of Comments"
   ]
 }
