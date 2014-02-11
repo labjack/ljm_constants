@@ -13,6 +13,6 @@ with open(json_file_path) as f:
 
 print 'Saving to Git repository...'
 subprocess.check_call('git pull', shell=True)
-subprocess.check_call('git commit -a -m "Incremental JSON update."', shell=True)
-subprocess.check_call('git push', shell=True)
+subprocess.call('git commit -a -m "Incremental JSON update."', shell=True)
+subprocess.call('git push', shell=True)
 print 'Finished!'
