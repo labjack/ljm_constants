@@ -138,8 +138,8 @@
    {"address":61990, "name":"IO_CONFIG_SET_CURRENT_TO_FACTORY", "type":"UINT16", "devices":["T7"], "readwrite":"W", "tags":["CONFIG"]},
    {"address":61991, "name":"IO_CONFIG_SET_CURRENT_TO_DEFAULT", "type":"UINT16", "devices":["T7"], "readwrite":"W", "tags":["CONFIG"]},
 
-   {"address":60050, "name":"TEMPERATURE_AIR_K", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0017}], "readwrite":"R", "tags":["AIN", "CORE"], "streamable":true, "displayname":["Estimated Air Temperature [deg K]"], "description":"Returns the estimated ambient air temperature just outside a T7 in its red plastic enclosure.  This register is calculated based on active peripherals and stablized conditions."},
-   {"address":60052, "name":"TEMPERATURE_DEVICE_K", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0017}], "readwrite":"R", "tags":["AIN", "CORE"], "streamable":true, "displayname":["Device Temperature [deg K]"], "description":"Takes a reading from AIN14 using range=+/-10V and resolution=8, and applies the formula Volts*-92.6?+467.6? to return degrees K.  AIN14 is internally connected to an LM94021 (U24) with GS=10 which is physically located on the bottom of the PCB between the AIN0/1 and AIN2/3 screw-terminals."},
+   {"address":60050, "name":"TEMPERATURE_AIR_K", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0017}], "readwrite":"R", "tags":["AIN", "CORE"], "streamable":true, "displayname":["Estimated Air Temperature [deg K]"], "description":"Returns the estimated ambient air temperature just outside a T7 in its red plastic enclosure.  This register is equal to TEMPERATURE_DEVICE_K - 4.3.  If Ethernet and/or WiFi is enabled, subtract an extra 0.6 for each."},
+   {"address":60052, "name":"TEMPERATURE_DEVICE_K", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0017}], "readwrite":"R", "tags":["AIN", "CORE"], "streamable":true, "displayname":["Device Temperature [deg K]"], "description":"Takes a reading from AIN14 using range=+/-10V and resolution=8, and applies the formula Volts*-92.6+467.6 to return degrees K.  AIN14 is internally connected to an LM94021 (U24) with GS=10 which is physically located on the bottom of the PCB between the AIN0/1 and AIN2/3 screw-terminals."},
 
    {"address":49100, "name":"ETHERNET_IP", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["ETHERNET"], "description":"Read the current IP address of wired Ethernet."},
    {"address":49102, "name":"ETHERNET_SUBNET", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["ETHERNET"], "description":"Read the current subnet of wired Ethernet."},
@@ -199,22 +199,22 @@
    {"address":1900, "name":"CURRENT_SOURCE_10UA_CAL_VALUE", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["CONFIG"]},
    {"address":1902, "name":"CURRENT_SOURCE_200UA_CAL_VALUE", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["CONFIG"]},
 
-   {"address":61600, "name":"WATCHDOG_ENABLE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The current Enabled/Disabled state of the Watchdog system."},
-   {"address":61602, "name":"WATCHDOG_ADVANCED_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"A single binary-encoded value where each bit is an option. Reserved for future use, so leave this set to 0 for now."},
-   {"address":61604, "name":"WATCHDOG_TIMEOUT_S_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The number of seconds before timeout. On timeout, watchdog executes all operations defined in the options register. A clear event will reset the timeout."},
-   {"address":61606, "name":"WATCHDOG_STARTUP_DELAY_S_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"Specify a startup delay after Watchdog timeout."},
-   {"address":61610, "name":"WATCHDOG_STRICT_ENABLE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"Set to 1 to enabled strict mode."},
-   {"address":61612, "name":"WATCHDOG_STRICT_KEY_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"When set to strict mode this is the value that must be written to the clear register."},
-   {"address":61614, "name":"WATCHDOG_STRICT_CLEAR", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"W", "tags":["WATCHDOG"], "description":"When running in strict mode writing the key to this register is the only way to clear the watchdog."},
-   {"address":61620, "name":"WATCHDOG_RESET_ENABLE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"Set to 1 to reset when the watchdog times out."},
-   {"address":61630, "name":"WATCHDOG_DIO_ENABLE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"Set to 1 to change DIO direction and state when the watchdog times out."},
-   {"address":61632, "name":"WATCHDOG_DIO_STATE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The state high/low of the digital I/O after a Watchdog timeout. See DIO_STATE"},
+   {"address":61600, "name":"WATCHDOG_ENABLE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "default":0, "tags":["WATCHDOG"], "description":"Write a 1 to enable the watchdog or a 0 to disable.  The watchdog must be disabled before writing any of the other watchdog registers (except for WATCHDOG_STRICT_CLEAR)."},
+   {"address":61602, "name":"WATCHDOG_ADVANCED_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "default":0, "tags":["WATCHDOG"], "description":"A single binary-encoded value where each bit is an advanced option. Reserved for future use, so leave this set to 0 for now."},
+   {"address":61604, "name":"WATCHDOG_TIMEOUT_S_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "default":0, "tags":["WATCHDOG"], "description":"When the device receives any communication over USB/Ethernet/WiFi, the watchdog timer is cleared.  If the watchdog timer is not cleared within the timeout period, the enabled actions will be done."},
+   {"address":61606, "name":"WATCHDOG_STARTUP_DELAY_S_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "default":0, "tags":["WATCHDOG"], "description":"Specify a startup delay after Watchdog timeout."},
+   {"address":61610, "name":"WATCHDOG_STRICT_ENABLE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "default":0, "tags":["WATCHDOG"], "description":"Set to 1 to enable strict mode."},
+   {"address":61612, "name":"WATCHDOG_STRICT_KEY_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "default":0, "tags":["WATCHDOG"], "description":"When set to strict mode, this is the value that must be written to the clear register."},
+   {"address":61614, "name":"WATCHDOG_STRICT_CLEAR", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"W", "default":0, "tags":["WATCHDOG"], "description":"When running in strict mode, writing the key to this register is the only way to clear the watchdog."},
+   {"address":61620, "name":"WATCHDOG_RESET_ENABLE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "default":0, "tags":["WATCHDOG"], "description":"Set to 1 to enable device reset on watchdog timeout."},
+   {"address":61630, "name":"WATCHDOG_DIO_ENABLE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "default":0, "tags":["WATCHDOG"], "description":"Set to 1 to enable DIO update on watchdog timeout."},
+   {"address":61632, "name":"WATCHDOG_DIO_STATE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "default":0, "tags":["WATCHDOG"], "description":"The state high/low of the digital I/O after a Watchdog timeout. See DIO_STATE"},
    {"address":61634, "name":"WATCHDOG_DIO_DIRECTION_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The direction input/output of the digital I/O after a Watchdog timeout. See DIO_DIRECTION"},
-   {"address":61636, "name":"WATCHDOG_DIO_INHIBIT_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The inhibit mask of the digital I/O after a Watchdog timeout. See DIO_INHIBIT"},
-   {"address":61640, "name":"WATCHDOG_DAC0_ENABLE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"Set to 1 to reset when the watchdog times out."},
-   {"address":61642, "name":"WATCHDOG_DAC0_DEFAULT", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The voltage of DAC0 after a Watchdog timeout."},
-   {"address":61650, "name":"WATCHDOG_DAC1_ENABLE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"Set to 1 to reset when the watchdog times out."},
-   {"address":61652, "name":"WATCHDOG_DAC1_DEFAULT", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "tags":["WATCHDOG"], "description":"The voltage of DAC1 after a Watchdog timeout."},
+   {"address":61636, "name":"WATCHDOG_DIO_INHIBIT_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "default":0, "tags":["WATCHDOG"], "description":"The inhibit mask of the digital I/O after a Watchdog timeout. See DIO_INHIBIT"},
+   {"address":61640, "name":"WATCHDOG_DAC0_ENABLE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "default":0, "tags":["WATCHDOG"], "description":"Set to 1 to enable DAC0 update on watchdog timeout."},
+   {"address":61642, "name":"WATCHDOG_DAC0_DEFAULT", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "default":0, "tags":["WATCHDOG"], "description":"The voltage of DAC0 after a Watchdog timeout."},
+   {"address":61650, "name":"WATCHDOG_DAC1_ENABLE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "default":0, "tags":["WATCHDOG"], "description":"Set to 1 to enable DAC1 update on watchdog timeout."},
+   {"address":61652, "name":"WATCHDOG_DAC1_DEFAULT", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "default":0, "tags":["WATCHDOG"], "description":"The voltage of DAC1 after a Watchdog timeout."},
 
    {"address":61800, "name":"EXTERNAL_FLASH_KEY", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["EXFLASH"], "description":"Sets the region of external flash to which access is allowed."},
    {"address":61810, "name":"EXTERNAL_FLASH_READ_POINTER", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["EXFLASH"], "description":"The address in external flash that reads will start from."},
@@ -322,11 +322,11 @@
    {"address":6022, "name":"LUA_DEBUG_NUM_BYTES", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
    {"address":6024, "name":"LUA_DEBUG_DATA", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
 
-   {"address":6032, "name":"LUA_SAVE_TO_FLASH", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
-   {"address":6034, "name":"LUA_LOAD_SAVED", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
-   {"address":6036, "name":"LUA_SAVED_READ_POINTER", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
-   {"address":6038, "name":"LUA_SAVED_READ", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
-   {"address":6040, "name":"LUA_STARTUP_CONFIG", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
+   {"address":6032, "name":"LUA_SAVE_TO_FLASH", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0059}], "readwrite":"RW", "tags":["LUA"]},
+   {"address":6034, "name":"LUA_LOAD_SAVED", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0059}], "readwrite":"RW", "tags":["LUA"]},
+   {"address":6036, "name":"LUA_SAVED_READ_POINTER", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0060}], "readwrite":"RW", "tags":["LUA"]},
+   {"address":6038, "name":"LUA_SAVED_READ", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0060}], "readwrite":"RW", "tags":["LUA"]},
+   {"address":6040, "name":"LUA_STARTUP_CONFIG", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0059}], "readwrite":"RW", "tags":["LUA"]},
 
    {"address":46000, "name":"LUA_IO#(0:127)_R", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA"]},
 
@@ -731,6 +731,7 @@
     "2014.01.30.A:  Added CORE tag to some often used registers.",
     "2014.02.02.A:  Added 1-wire registers.",
     "2014.02.10.A:  Changed AIN#(0:254)_EF_INDEX to AIN#(0:254)_EF_INDEX in beta section.  Changed DIO#(0:22)_EF_INDEX to DIO#(0:22)_EF_INDEX, but put TYPE in altnames.",
+    "2014.02.10.B:  Added Lua register for startup config and script saving.",
     "End Of Comments"
   ]
 }
