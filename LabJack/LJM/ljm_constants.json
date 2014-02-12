@@ -202,7 +202,7 @@
    {"address":61600, "name":"WATCHDOG_ENABLE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "default":0, "tags":["WATCHDOG"], "description":"Write a 1 to enable the watchdog or a 0 to disable.  The watchdog must be disabled before writing any of the other watchdog registers (except for WATCHDOG_STRICT_CLEAR)."},
    {"address":61602, "name":"WATCHDOG_ADVANCED_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "default":0, "tags":["WATCHDOG"], "description":"A single binary-encoded value where each bit is an advanced option. If bit 0 is set, IO_CONFIG_SET_CURRENT_TO_FACTORY will be done on timeout.  If bit 1 is set, IO_CONFIG_SET_CURRENT_TO_DEFAULT will be done on timeout."},
    {"address":61604, "name":"WATCHDOG_TIMEOUT_S_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "default":0, "tags":["WATCHDOG"], "description":"When the device receives any communication over USB/Ethernet/WiFi, the watchdog timer is cleared.  If the watchdog timer is not cleared within the timeout period, the enabled actions will be done."},
-   {"address":61606, "name":"WATCHDOG_STARTUP_DELAY_S_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "default":0, "tags":["WATCHDOG"], "description":"Specify a startup delay after Watchdog timeout."},
+   {"address":61606, "name":"WATCHDOG_STARTUP_DELAY_S_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "default":0, "tags":["WATCHDOG"], "description":"This specifies the initial timeout period at device bootup.  This is used until the first time the watchdog is cleared or timeout ... after that the normal timeout is used."},
    {"address":61610, "name":"WATCHDOG_STRICT_ENABLE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "default":0, "tags":["WATCHDOG"], "description":"Set to 1 to enable strict mode."},
    {"address":61612, "name":"WATCHDOG_STRICT_KEY_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "default":0, "tags":["WATCHDOG"], "description":"When set to strict mode, this is the value that must be written to the clear register."},
    {"address":61614, "name":"WATCHDOG_STRICT_CLEAR", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"W", "default":0, "tags":["WATCHDOG"], "description":"When running in strict mode, writing the key to this register is the only way to clear the watchdog."},
@@ -329,6 +329,32 @@
    {"address":6040, "name":"LUA_STARTUP_CONFIG", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0059}], "readwrite":"RW", "tags":["LUA"]},
 
    {"address":46000, "name":"LUA_IO#(0:127)_R", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA"]},
+
+
+   {"address":60600, "name":"FILE_IO_OPEN", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60601, "name":"FILE_IO_READ", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60602, "name":"FILE_IO_WRITE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60603, "name":"FILE_IO_DELETE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60604, "name":"FILE_IO_ATTRIBUTES", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60608, "name":"FILE_IO_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+
+   {"address":60610, "name":"FILE_IO_DIR_CHANGE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60611, "name":"FILE_IO_DIR_CURRENT", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60612, "name":"FILE_IO_DIR_MAKE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60613, "name":"FILE_IO_DIR_REMOVE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+
+   {"address":60620, "name":"FILE_IO_DIR_FIRST", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60621, "name":"FILE_IO_DIR_NEXT", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+
+   {"address":60630, "name":"FILE_IO_DRIVE_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60631, "name":"FILE_IO_DRIVE_FREE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+
+   {"address":60640, "name":"FILE_IO_DRIVE_FORMAT", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+
+   {"address":60650, "name":"FILE_IO_NAME_WRITE_LEN", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60652, "name":"FILE_IO_NAME_WRITE", "type":"BYTE", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60654, "name":"FILE_IO_NAME_READ_LEN", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60656, "name":"FILE_IO_NAME_READ", "type":"BYTE", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
 
 
    {"address":5300, "name":"ONEWIRE_DQ_DIONUM", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
