@@ -331,30 +331,33 @@
    {"address":46000, "name":"LUA_IO#(0:127)_R", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA"]},
 
 
-   {"address":60600, "name":"FILE_IO_OPEN", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60601, "name":"FILE_IO_READ", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60602, "name":"FILE_IO_WRITE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60603, "name":"FILE_IO_DELETE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60604, "name":"FILE_IO_ATTRIBUTES", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60608, "name":"FILE_IO_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60600, "name":"FILE_IO_DIR_CHANGE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60601, "name":"FILE_IO_DIR_CURRENT", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60602, "name":"FILE_IO_DIR_MAKE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60603, "name":"FILE_IO_DIR_REMOVE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
 
-   {"address":60610, "name":"FILE_IO_DIR_CHANGE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60611, "name":"FILE_IO_DIR_CURRENT", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60612, "name":"FILE_IO_DIR_MAKE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60613, "name":"FILE_IO_DIR_REMOVE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60610, "name":"FILE_IO_DIR_FIRST", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60611, "name":"FILE_IO_DIR_NEXT", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
 
-   {"address":60620, "name":"FILE_IO_DIR_FIRST", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60621, "name":"FILE_IO_DIR_NEXT", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60620, "name":"FILE_IO_OPEN", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60621, "name":"FILE_IO_CLOSE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60622, "name":"FILE_IO_DELETE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60623, "name":"FILE_IO_ATTRIBUTES", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60628, "name":"FILE_IO_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
 
-   {"address":60630, "name":"FILE_IO_DRIVE_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60631, "name":"FILE_IO_DRIVE_FREE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60630, "name":"FILE_IO_DISK_SECTOR_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60632, "name":"FILE_IO_DISK_SECTORS_PER_CLUSTER", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60634, "name":"FILE_IO_DISK_TOTAL_CLUSTERS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60636, "name":"FILE_IO_DISK_FREE_CLUSTERS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60638, "name":"FILE_IO_DISK_FORMAT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
 
-   {"address":60640, "name":"FILE_IO_DRIVE_FORMAT", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60640, "name":"FILE_IO_NAME_WRITE_LEN", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60642, "name":"FILE_IO_NAME_READ_LEN", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
 
-   {"address":60650, "name":"FILE_IO_NAME_WRITE_LEN", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60652, "name":"FILE_IO_NAME_WRITE", "type":"BYTE", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60654, "name":"FILE_IO_NAME_READ_LEN", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60656, "name":"FILE_IO_NAME_READ", "type":"BYTE", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60650, "name":"FILE_IO_NAME_WRITE", "type":"BYTE", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60652, "name":"FILE_IO_NAME_READ", "type":"BYTE", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60654, "name":"FILE_IO_READ", "type":"BYTE", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60656, "name":"FILE_IO_WRITE", "type":"BYTE", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
 
 
    {"address":5300, "name":"ONEWIRE_DQ_DIONUM", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
@@ -760,6 +763,7 @@
     "2014.02.10.B:  Added Lua register for startup config and script saving.",
     "2014.02.11.A:  Edits to watchdog and sbus descriptions.",
     "2014.02.12.A:  SPI description edits.",
+    "2014.02.14.A:  Added file IO registers.",
     "End Of Comments"
   ]
 }
