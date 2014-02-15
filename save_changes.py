@@ -7,7 +7,7 @@ import ljmmm
 print 'Checking JSON file...'
 json_file_path = os.path.join('LabJack', 'LJM', 'ljm_constants.json')
 try:
-    ljmmm.get_raw_registers_data(json_file_path)
+    ljmmm.get_device_modbus_maps(json_file_path)
 except Exception as e:
     print '[ERROR] JSON file could not be parsed. Please check. (' + str(e) + ')'
     exit(1)

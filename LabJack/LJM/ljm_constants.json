@@ -383,7 +383,7 @@
 
 
    {"address":30500, "name":"ONEWIRE#(0:99)_PART_INDEX", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
-   {"address":30600, "name":"ONEWIRE#(0:99)_SENS_DIONUM", "type":"UasdfsINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
+   {"address":30600, "name":"ONEWIRE#(0:99)_SENS_DIONUM", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
    {"address":30700, "name":"ONEWIRE#(0:99)_DPU_DIONUM", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
    {"address":30800, "name":"ONEWIRE#(0:99)_OPTIONS", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
 
