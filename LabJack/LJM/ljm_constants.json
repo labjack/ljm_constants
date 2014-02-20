@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2014.02.19.A",
+   "version":"2014.02.20.B",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -217,12 +217,12 @@
    {"address":61650, "name":"WATCHDOG_DAC1_ENABLE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "default":0, "tags":["WATCHDOG"], "description":"Timeout action:  Set to 1 to enable DAC1 update on watchdog timeout."},
    {"address":61652, "name":"WATCHDOG_DAC1_DEFAULT", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0016}], "readwrite":"RW", "default":0, "tags":["WATCHDOG"], "description":"The voltage of DAC1 after a Watchdog timeout."},
 
-   {"address":61800, "name":"EXTERNAL_FLASH_KEY", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["EXFLASH"], "description":"Sets the region of external flash to which access is allowed."},
-   {"address":61810, "name":"EXTERNAL_FLASH_READ_POINTER", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["EXFLASH"], "description":"The address in external flash that reads will start from."},
-   {"address":61812, "name":"EXTERNAL_FLASH_READ", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["EXFLASH"], "description":"Data read from external flash."},
-   {"address":61820, "name":"EXTERNAL_FLASH_ERASE", "type":"UINT32", "devices":["T7"], "readwrite":"W", "tags":["EXFLASH"], "description":"Erases a 4k section of flash starting at the specified address."},
-   {"address":61830, "name":"EXTERNAL_FLASH_WRITE_POINTER", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["EXFLASH"], "description":"Address in flash where writes will begin."},
-   {"address":61832, "name":"EXTERNAL_FLASH_WRITE", "type":"UINT32", "devices":["T7"], "readwrite":"W", "tags":["EXFLASH"], "description":"Data written here will be written to external flash."},
+   {"address":61800, "name":"INTERNAL_FLASH_KEY", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["INTFLASH"], "description":"Sets the region of internal flash to which access is allowed."},
+   {"address":61810, "name":"INTERNAL_FLASH_READ_POINTER", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["INTFLASH"], "description":"The address in internal flash that reads will start from."},
+   {"address":61812, "name":"INTERNAL_FLASH_READ", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["INTFLASH"], "description":"Data read from internal flash."},
+   {"address":61820, "name":"INTERNAL_FLASH_ERASE", "type":"UINT32", "devices":["T7"], "readwrite":"W", "tags":["INTFLASH"], "description":"Erases a 4k section of internal flash starting at the specified address."},
+   {"address":61830, "name":"INTERNAL_FLASH_WRITE_POINTER", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["INTFLASH"], "description":"Address in internal flash where writes will begin."},
+   {"address":61832, "name":"INTERNAL_FLASH_WRITE", "type":"UINT32", "devices":["T7"], "readwrite":"W", "tags":["INTFLASH"], "description":"Data written here will be written to internal flash."},
 
    {"address":22000, "name":"DGT_TEMPERATURE_LATEST_RAW", "type":"UINT16", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"Get the latest temperature conversion, and begin a new conversion. Units are described in TMP112 datasheet."},
    {"address":22001, "name":"DGT_HUMIDITY_RAW", "type":"UINT16", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"Craw. Get a new humidity reading from HCH-1000. Units are in 100s fF of capacitance."},
@@ -250,7 +250,7 @@
    {"address":22190, "name":"DGT_pLOW_THRESH_LIGHT", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"Low light threshold pointer(because light alarms require an array of count values)-> 0 to 255. Auto-incremented"},
    {"address":22191, "name":"DGT_LOW_THRESH_LIGHT", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"Low light threshold array start."},
    {"address":22200, "name":"DGT_INSTALLED_OPTIONS", "type":"UINT16", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"Number of things installed on the Digit 2=TL, 3=TLH"},
-   {"address":22210, "name":"DGT_STORED_BYTES", "type":"UINT32", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"Number of bytes of data stored on external flash."},
+   {"address":22210, "name":"DGT_STORED_BYTES", "type":"UINT32", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"Number of bytes of data stored on flasH."},
    {"address":22220, "name":"DGT_LIFETIME_READINGS", "type":"UINT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"Total number of readings saved since last cleared. Typically cleared if new battery is installed."},
    {"address":22222, "name":"DGT_BATTERY_INSTALL_DATE", "type":"UINT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The date that the battery was installed. Timestamp format = Seconds since 1970. This parameter is used to estimate remaining battery life."},
    {"address":22231, "name":"DGT_HUMIDITY_CAL_OFFSET_FACTORY", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The factory calibration offset which can be used in the conversion of raw humidity. Write requires unlocked."},
@@ -261,12 +261,12 @@
    {"address":22238, "name":"DGT_HUMIDITY_CAL_T_SLOPE", "type":"FLOAT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The temperature dependent factor used in the conversion of raw humidity. Units in 100s fF per degC"},
    {"address":22240, "name":"DGT_HUMIDITY_CAL_T_SLOPE_FACTORY", "type":"FLOAT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The factory temperature dependent factor used in the conversion of raw humidity. Units in 100s fF per degC"},
    {"address":22242, "name":"DGT_RTCC_TIME", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The current time of the real-time-clock on the Digit. Synchronized with the computer within software. 22242 Year=0 to 99, 22243 Month=1 to 12, 22244 Day=1 to 31, 22245 Weekday=1 to 7, 22246 Hour=0 to 23, 22247 Minutes=0 to 59, 22248 Second=0 to 59"},
-   {"address":22804, "name":"DGT_EXTERN_FLASH_WIP", "type":"UINT16", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"A status flag for the external flash(data storage chip) on the Digit. 1=Write in-progress, 0=Idle"},
-   {"address":22810, "name":"DGT_pEXTERN_FLASH_READ", "type":"UINT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The read pointer for external flash. Auto-incremented, simply initialize with a start address, then use 22812+"},
-   {"address":22812, "name":"DGT_EXTERN_FLASH_READ", "type":"UINT16", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"Read data from this address and subsequent addresses after pointer is initialized. Used to download data from the Digit."},
-   {"address":22822, "name":"DGT_EXTERN_FLASH_bkERASE", "type":"UINT16", "devices":["DIGIT"], "readwrite":"W", "tags":[""], "description":"Erase all data on the external flash. KEY=Erase, Other=No effect, KEY=37157 Takes 5seconds to complete, so poll the WIP status flag until =0."},
-   {"address":22830, "name":"DGT_pEXTERN_FLASH_WRITE", "type":"UINT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The write pointer for external flash. Auto-incremented, simply initialize with a start address, then use 22832+"},
-   {"address":22832, "name":"DGT_EXTERN_FLASH_WRITE", "type":"UINT16", "devices":["DIGIT"], "readwrite":"W", "tags":[""], "description":"Write data to this address and subsequent addresses after pointer is initialized. Used primarily for firmware updates."},
+   {"address":22804, "name":"DGT_FLASH_WIP", "type":"UINT16", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"A status flag for the flash(data storage chip) on the Digit. 1=Write in-progress, 0=Idle"},
+   {"address":22810, "name":"DGT_pFLASH_READ", "type":"UINT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The read pointer for flash. Auto-incremented, simply initialize with a start address, then use 22812+"},
+   {"address":22812, "name":"DGT_FLASH_READ", "type":"UINT16", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"Read data from this address and subsequent addresses after pointer is initialized. Used to download data from the Digit."},
+   {"address":22822, "name":"DGT_FLASH_bkERASE", "type":"UINT16", "devices":["DIGIT"], "readwrite":"W", "tags":[""], "description":"Erase all data on the flash. KEY=Erase, Other=No effect, KEY=37157 Takes 5seconds to complete, so poll the WIP status flag until =0."},
+   {"address":22830, "name":"DGT_pFLASH_WRITE", "type":"UINT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The write pointer for flash. Auto-incremented, simply initialize with a start address, then use 22832+"},
+   {"address":22832, "name":"DGT_FLASH_WRITE", "type":"UINT16", "devices":["DIGIT"], "readwrite":"W", "tags":[""], "description":"Write data to this address and subsequent addresses after pointer is initialized. Used primarily for firmware updates."},
    {"address":22840, "name":"DGT_SAVE_CHANGES", "type":"UINT16", "devices":["DIGIT"], "readwrite":"W", "tags":[""], "description":"1=Save, 0=Don't save. No configuration changes become permanent until this register is used."},
    {"address":22841, "name":"DGT_RE_INITIALIZE_CONFIG", "type":"UINT16", "devices":["DIGIT"], "readwrite":"W", "tags":[""], "description":"Re-initializes the Digit to the configuration it had when connected to the computer. Clears out recent settings changes that are not yet saved."},
    {"address":22842, "name":"DGT_LENGTH_USB_SESSION", "type":"UINT32", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"The number of blank readings collected since connection to the computer"},
@@ -308,7 +308,7 @@
    {"address":4420, "name":"STREAM_OUT#(0:4)_BUFFER_U16", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":""},
 
    {"address":4018, "name":"STREAM_DATATYPE", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Currently unavailable."},
-   {"address":4014, "name":"STREAM_CLOCK_SOURCE", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Controls advanced stream options: Immediate scan, external clock, and gated run."},
+   {"address":4014, "name":"STREAM_OPTIONS", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Controls advanced stream options: Immediate scan, external clock, and gated run."},
    {"address":4500, "name":"STREAM_DATA_CR", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["STREAM"],"description":"Addres to read stream data from when operating in C-R mode."},
 
    {"address":49406, "name":"WIFI_SCAN_START", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"W", "tags":["WIFI"]},
@@ -361,26 +361,26 @@
    {"address":60654, "name":"FILE_IO_WRITE", "type":"BYTE", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
 
 
-   {"address":5300, "name":"ONEWIRE_DQ_DIONUM", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
-   {"address":5301, "name":"ONEWIRE_DPU_DIONUM", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
-   {"address":5302, "name":"ONEWIRE_OPTIONS", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
-   {"address":5307, "name":"ONEWIRE_FUNCTION", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
-   {"address":5308, "name":"ONEWIRE_NUM_BYTES_TX", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
-   {"address":5309, "name":"ONEWIRE_NUM_BYTES_RX", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
+   {"address":5300, "name":"ONEWIRE_DQ_DIONUM", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The data-line DIO number"},
+   {"address":5301, "name":"ONEWIRE_DPU_DIONUM", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The dynamic pullup control DIO number"},
+   {"address":5302, "name":"ONEWIRE_OPTIONS", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Control advanced features"},
+   {"address":5307, "name":"ONEWIRE_FUNCTION", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Set the ROM function to use, such as match, skip, search."},
+   {"address":5308, "name":"ONEWIRE_NUM_BYTES_TX", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Number of data bytes to be send"},
+   {"address":5309, "name":"ONEWIRE_NUM_BYTES_RX", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Number of data bytes to be received"},
 
-   {"address":5310, "name":"ONEWIRE_GO", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
+   {"address":5310, "name":"ONEWIRE_GO", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"W", "default":0, "tags":["I2C"], "description":"Instructs the T7 to perform the configured 1-wire transaction."},
 
-   {"address":5320, "name":"ONEWIRE_ROM_MATCH_H", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
-   {"address":5322, "name":"ONEWIRE_ROM_MATCH_L", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
-   {"address":5332, "name":"ONEWIRE_ROM_BRANCHS_FOUND_H", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"R", "default":0, "tags":["I2C"], "description":""},
-   {"address":5334, "name":"ONEWIRE_ROM_BRANCHS_FOUND_L", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"R", "default":0, "tags":["I2C"], "description":""},
-   {"address":5328, "name":"ONEWIRE_SEARCH_RESULT_H", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"R", "default":0, "tags":["I2C"], "description":""},
-   {"address":5330, "name":"ONEWIRE_SEARCH_RESULT_L", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"R", "default":0, "tags":["I2C"], "description":""},
-   {"address":5324, "name":"ONEWIRE_PATH_H", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
-   {"address":5326, "name":"ONEWIRE_PATH_L", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
+   {"address":5320, "name":"ONEWIRE_ROM_MATCH_H", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Upper 32-bits of the ROM to match"},
+   {"address":5322, "name":"ONEWIRE_ROM_MATCH_L", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Lower 32-bits of the ROM to match"},
+   {"address":5332, "name":"ONEWIRE_ROM_BRANCHS_FOUND_H", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"R", "default":0, "tags":["I2C"], "description":"Upper 32-bits of the branches detected during a search."},
+   {"address":5334, "name":"ONEWIRE_ROM_BRANCHS_FOUND_L", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"R", "default":0, "tags":["I2C"], "description":"Lower 32-bits of the branches detected during a search."},
+   {"address":5328, "name":"ONEWIRE_SEARCH_RESULT_H", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"R", "default":0, "tags":["I2C"], "description":"Upper 32-bits of the search result."},
+   {"address":5330, "name":"ONEWIRE_SEARCH_RESULT_L", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"R", "default":0, "tags":["I2C"], "description":"Lower 32-bites of the search result."},
+   {"address":5324, "name":"ONEWIRE_PATH_H", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Upper 32-bits of the path to take during a search"},
+   {"address":5326, "name":"ONEWIRE_PATH_L", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Lower 32-bits of the path to take during a search"},
 
-   {"address":5340, "name":"ONEWIRE_DATA_TX", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
-   {"address":5370, "name":"ONEWIRE_DATA_RX", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""}
+   {"address":5340, "name":"ONEWIRE_DATA_TX", "type":"BYTE", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""},
+   {"address":5370, "name":"ONEWIRE_DATA_RX", "type":"BYTE", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":""}
 
  ],
 
@@ -481,6 +481,7 @@
    {"error":1308, "string":"LJME_CANNOT_READ_OUT_ONLY_STREAM"},
    {"error":1309, "string":"LJME_NO_SCANS_RETURNED"},
 
+
    {"error":2300, "string":"MODBUS_RSP_OVERFLOW"},
    {"error":2301, "string":"MODBUS_CMD_OVERFLOW"},
    {"error":2310, "string":"MODBUS_STRING_CMD_TOO_BIG"},
@@ -494,14 +495,14 @@
    {"error":2330, "string":"STARTUP_CONFIG_INVALID_CODE"},
    {"error":2331, "string":"STARTUP_CONFIG_INVALID_READ"},
 
-   {"error":2350, "string":"EXFLASH_ADD_INVALID"},
-   {"error":2351, "string":"EXFLASH_CODE_INVALID"},
-   {"error":2352, "string":"EXFLASH_OP_PROHIBITED"},
-   {"error":2353, "string":"EXFLASH_SECTION_OVERWRITE"},
-   {"error":2354, "string":"EXFLASH_KEY_INVALID"},
+   {"error":2350, "string":"INTFLASH_ADD_INVALID"},
+   {"error":2351, "string":"INTFLASH_CODE_INVALID"},
+   {"error":2352, "string":"INTFLASH_OP_PROHIBITED"},
+   {"error":2353, "string":"INTFLASH_SECTION_OVERWRITE"},
+   {"error":2354, "string":"INTFLASH_KEY_INVALID"},
    {"error":2355, "string":"FLASH_VERIFICATION_FAILED"},
    {"error":2356, "string":"FLASH_ERASE_FAILED"},
-   {"error":2358, "string":"EXFLASH_UNAVAILABLE"},
+   {"error":2358, "string":"INTFLASH_UNAVAILABLE"},
 
    {"error":2370, "string":"AIN_RANGE_INVALID"},
    {"error":2371, "string":"AIN_SETTLINE_INVALID"},
@@ -749,12 +750,14 @@
     "2014.01.29.A:  Added error codes.",
     "2014.01.30.A:  Added CORE tag to some often used registers.",
     "2014.02.02.A:  Added 1-wire registers.",
-    "2014.02.10.A:  Changed AIN#(0:254)_EF_TYPE to AIN#(0:254)_EF_INDEX in beta section.  Changed DIO#(0:22)_EF_TYPE to DIO#(0:22)_EF_INDEX, but put TYPE in altnames.",
+    "2014.02.10.A:  Changed AIN#(0:254)_EF_INDEX to AIN#(0:254)_EF_INDEX in beta section.  Changed DIO#(0:22)_EF_INDEX to DIO#(0:22)_EF_INDEX, but put TYPE in altnames.",
     "2014.02.10.B:  Added Lua register for startup config and script saving.",
     "2014.02.11.A:  Edits to watchdog and sbus descriptions.",
     "2014.02.12.A:  SPI description edits.",
     "2014.02.14.A:  Added file IO registers.",
     "2014.02.19.A:  Edit to SPI mode description.",
+    "2014.02.20.A:  Added stream register for external clock divisor. Changed register 4014 name.",
+    "2014.02.20.B:  Changed all references to external flash to INTFLASH, and INTERNAL_ Therein adopting name scheme used by cell phones, cameras etc.",
     "End Of Comments"
   ]
 }
