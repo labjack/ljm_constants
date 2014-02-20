@@ -490,6 +490,7 @@
    {"error":1306, "string":"LJME_SYNCHRONIZATION_TIMEOUT"},
    {"error":1307, "string":"LJME_OLD_FIRMWARE"},
    {"error":1308, "string":"LJME_CANNOT_READ_OUT_ONLY_STREAM"},
+   {"error":1309, "string":"LJME_NO_SCANS_RETURNED"},
 
    {"error":2300, "string":"MODBUS_RSP_OVERFLOW"},
    {"error":2301, "string":"MODBUS_CMD_OVERFLOW"},
