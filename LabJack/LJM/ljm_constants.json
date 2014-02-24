@@ -379,6 +379,7 @@
    {"error":1223, "string":"LJME_INVALID_HANDLE"},
    {"error":1224, "string":"LJME_DEVICE_NOT_OPEN"},
    {"error":1225, "string":"LJME_STREAM_NOT_INITIALIZED"},
+   {"error":1226, "string":"LJME_DEVICE_DISCONNECTED"},
    {"error":1227, "string":"LJME_DEVICE_NOT_FOUND"},
    {"error":1229, "string":"LJME_DEVICE_ALREADY_OPEN"},
    {"error":1230, "string":"LJME_COULD_NOT_CLAIM_DEVICE"},
