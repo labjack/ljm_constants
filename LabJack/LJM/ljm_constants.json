@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2014.02.20.B",
+   "version":"2014.02.27.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -758,6 +758,7 @@
     "2014.02.19.A:  Edit to SPI mode description.",
     "2014.02.20.A:  Added stream register for external clock divisor. Changed register 4014 name.",
     "2014.02.20.B:  Changed all references to external flash to INTFLASH, and INTERNAL_ Therein adopting name scheme used by cell phones, cameras etc.",
+    "2014.02.27.A:  IO Config description edits.",
     "End Of Comments"
   ]
 }
