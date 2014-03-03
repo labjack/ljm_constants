@@ -388,7 +388,7 @@
    {"error":1236, "string":"LJME_CANNOT_OPEN_DEVICE"},
    {"error":1237, "string":"LJME_CANNOT_DISCONNECT"},
    {"error":1238, "string":"LJME_WINSOCK_FAILURE"},
-   {"error":1239, "string":"LJME_DEVICE_RECONNECT_FAILED"},
+   {"error":1239, "string":"LJME_RECONNECT_FAILED"},
    {"error":1250, "string":"LJME_INVALID_ADDRESS"},
    {"error":1251, "string":"LJME_INVALID_CONNECTION_TYPE"},
    {"error":1252, "string":"LJME_INVALID_DIRECTION"},

@@ -43,6 +43,10 @@
                                                        ]},
     {"LJM_DEBUG_LOG_SLEEP_TIME_MS":"default",          "type":"integer"},
     {"LJM_ERROR_CONSTANTS_FILE":"default",             "type":"string"},
+    {"LJM_HEAL_CONNECTION_MODE":"default",             "type":"integer", "values":[
+                                                           "LJM_HEAL_CONNECTION_NEVER",
+                                                           "LJM_HEAL_CONNECTION_MODE_BY_OPEN_PARAMETERS"
+                                                       ]},
     {"LJM_LISTALL_NUM_ATTEMPTS_ETHERNET":"default",    "type":"integer"},
     {"LJM_LISTALL_NUM_ATTEMPTS_WIFI":"default",        "type":"integer"},
     {"LJM_LISTALL_THREADED_ETHERNET":"default",        "type":"boolean", "values":[true, false]},
