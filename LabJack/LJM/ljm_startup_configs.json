@@ -63,6 +63,15 @@
     {"LJM_RETRY_ON_TRANSACTION_ID_MISMATCH":"default", "type":"boolean", "values":[true, false]},
     {"LJM_SEND_RECEIVE_TIMEOUT_MS":"default",          "type":"integer"},
     {"LJM_STREAM_BUFFER_MAX_NUM_SECONDS":"default",    "type":"integer"},
+    {"LJM_STREAM_SCANS_RETURN":"default",              "type":"integer", "values":[
+                                                           "LJM_STREAM_SCANS_RETURN_ALL",
+                                                           "LJM_STREAM_SCANS_RETURN_ALL_OR_NONE"
+                                                       ]},
+    {"LJM_STREAM_RECEIVE_TIMEOUT_MODE":"default",      "type":"integer", "values":[
+                                                           "LJM_STREAM_RECEIVE_TIMEOUT_MODE_CALCULATED",
+                                                           "LJM_STREAM_RECEIVE_TIMEOUT_MODE_MANUAL"
+                                                       ]},
+    {"LJM_STREAM_RECEIVE_TIMEOUT_MS":"default",        "type":"integer"},
     {"LJM_STREAM_TRANSFERS_PER_SECOND":"default",      "type":"integer"}
   ]
 }
