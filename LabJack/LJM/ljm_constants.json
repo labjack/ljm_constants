@@ -127,7 +127,7 @@
    {"address":48055, "name":"POWER_AIN_DEFAULT", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.86}], "readwrite":"RW", "tags":["CONFIG", "AIN"], "description":"The ON/OFF state of the analog input module after a power-cycle to the device."},
    {"address":48056, "name":"POWER_LED_DEFAULT", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.86}], "readwrite":"RW", "tags":["CONFIG", "WIFI"], "description":"The ON/OFF state of the LEDs after a power-cycle to the device."},
 
-   {"address":49000, "name":"IO_CONFIG_CHECK_FOR_FACTORY", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["CONFIG"]},
+   {"address":49000, "name":"IO_CONFIG_CHECK_FOR_FACTORY", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["CONFIG"], "description":"Returns 1 if default settings are the same as factory settings."},
    {"address":49002, "name":"IO_CONFIG_SET_DEFAULT_TO_CURRENT", "type":"UINT32", "devices":["T7"], "readwrite":"W", "tags":["CONFIG"], "description":"Write a 1 to cause new default (reboot/power-up) values to be saved to flash.  Current values are retrieved and saved as the new defaults."},
    {"address":49004, "name":"IO_CONFIG_SET_DEFAULT_TO_FACTORY", "type":"UINT32", "devices":["T7"], "readwrite":"W", "tags":["CONFIG"], "description":"Write a 1 to cause new default (reboot/power-up) values to be saved to flash.  Factory values are retrieved and saved as the new defaults."},
    {"address":49006, "name":"IO_CONFIG_FACTORY_pREAD", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["CONFIG"]},
@@ -195,7 +195,6 @@
    {"address":60024, "name":"WIFI_MAC", "type":"UINT64", "devices":["T7"], "readwrite":"R", "tags":["WIFI"], "description":"The MAC address of the WiFi module."},
    {"address":60028, "name":"SERIAL_NUMBER", "type":"UINT32", "devices":["U3", "U6", "T7", "UE9", "DIGIT"], "readwrite":"R", "tags":["CONFIG"], "description":"The serial number of the device."},
    {"address":60500, "name":"DEVICE_NAME_DEFAULT", "type":"STRING", "devices":["U3", "U6", "T7", "UE9", "DIGIT"], "readwrite":"RW", "tags":["CONFIG"], "description":"The current device name. Up to 49 characters, cannot contain periods."},
-   {"address":61520, "name":"CORE_TIMER", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9419}], "readwrite":"R", "tags":["CONFIG"], "description":"Internal 32-bit system timer running at 1/2 core speed, thus normally 80M/2 => 40 MHz."},
    {"address":61998, "name":"SYSTEM_REBOOT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9419}], "readwrite":"W", "tags":["CONFIG"], "description":"Issues a device reboot. Must write 0x4C4Axxxx, where xxxx is number of 50ms ticks to wait before reboot."},
    {"address":1900, "name":"CURRENT_SOURCE_10UA_CAL_VALUE", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["CONFIG"]},
    {"address":1902, "name":"CURRENT_SOURCE_200UA_CAL_VALUE", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["CONFIG"]},
@@ -276,6 +275,10 @@
 
  "registers_beta":
  [
+   {"address":4899, "name":"STREAM_DATA_CAPTURE_16", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0071}], "readwrite":"W", "tags":["STREAM"], "streamable":true, "description":"If a channel produces 32-bits of data the upper 16 will be saved here."},
+   {"address":61520, "name":"CORE_TIMER", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0071}], "readwrite":"R", "tags":["CONFIG"], "streamable":true, "description":"Internal 32-bit system timer running at 1/2 core speed, thus normally 80M/2 => 40 MHz."},
+   {"address":61522, "name":"SYSTEM_TIMER_20HZ", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0071}], "readwrite":"R", "tags":["CONFIG"], "streamable":true, "description":"Internal 32-bit system timer running at 20Hz."},
+
    {"address":49410, "name":"WIFI_START_ADHOC", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9308}], "readwrite":"W", "tags":["WIFI"]},
 
    {"address":7000, "name":"AIN#(0:254)_EF_READ_A", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"R", "default":0, "tags":["AIN_EF", "AIN"]},
