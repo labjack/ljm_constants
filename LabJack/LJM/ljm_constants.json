@@ -333,21 +333,22 @@
    {"address":49486, "name":"WIFI_SCAN_NUM_BYTES", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"R", "tags":["WIFI"]},
    {"address":49488, "name":"WIFI_SCAN_DATA", "type":"BYTE", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"R", "tags":["WIFI"]},
 
-   {"address":6000, "name":"LUA_RUN", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
-   {"address":6006, "name":"LUA_NUM_IO_FLOATS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA"]},
-   {"address":6012, "name":"LUA_SOURCE_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
-   {"address":6014, "name":"LUA_SOURCE_WRITE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
-   {"address":6020, "name":"LUA_DEBUG_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
-   {"address":6022, "name":"LUA_DEBUG_NUM_BYTES", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
-   {"address":6024, "name":"LUA_DEBUG_DATA", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"]},
+   {"address":6000, "name":"LUA_RUN", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"], "description":"Writing 1 compiles and runs the loaded lua script. Writing zero stops the script and begins cleaning up memory."},
+   {"address":6006, "name":"LUA_NUM_IO_FLOATS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA"], "description":"Allocates memory for x input-output floats."},
+   {"address":6012, "name":"LUA_SOURCE_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"], "description":"Allocates memory for the source code."},
+   {"address":6014, "name":"LUA_SOURCE_WRITE", "type":"BYTE", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"], "description":"Location for source code to be written to."},
+   {"address":6020, "name":"LUA_DEBUG_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"], "description":"White 1 to this regster to enable debugging."},
+   {"address":6022, "name":"LUA_DEBUG_NUM_BYTES", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"], "description":"The number of data bytes in the debug buffer waiting to be read."},
+   {"address":6024, "name":"LUA_DEBUG_DATA", "type":"BYTE", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"], "description":"Read debug data from here."},
 
-   {"address":6032, "name":"LUA_SAVE_TO_FLASH", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0059}], "readwrite":"RW", "tags":["LUA"]},
-   {"address":6034, "name":"LUA_LOAD_SAVED", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0059}], "readwrite":"RW", "tags":["LUA"]},
-   {"address":6036, "name":"LUA_SAVED_READ_POINTER", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0060}], "readwrite":"RW", "tags":["LUA"]},
-   {"address":6038, "name":"LUA_SAVED_READ", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0060}], "readwrite":"RW", "tags":["LUA"]},
-   {"address":6040, "name":"LUA_STARTUP_CONFIG", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0059}], "readwrite":"RW", "tags":["LUA"]},
+   {"address":6032, "name":"LUA_SAVE_TO_FLASH", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0059}], "readwrite":"RW", "tags":["LUA"], "description":"Write 1 to save the loaded source code to flash."},
+   {"address":6034, "name":"LUA_LOAD_SAVED", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0059}], "readwrite":"RW", "tags":["LUA"], "description":""},
+   {"address":6036, "name":"LUA_SAVED_READ_POINTER", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0060}], "readwrite":"RW", "tags":["LUA"], "description":""},
+   {"address":6038, "name":"LUA_SAVED_READ", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0060}], "readwrite":"RW", "tags":["LUA"], "description":""},
+   {"address":6040, "name":"LUA_STARTUP_CONFIG", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0059}], "readwrite":"RW", "tags":["LUA"], "description":""},
 
-   {"address":46000, "name":"LUA_IO#(0:127)_R", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA"]},
+   {"address":46000, "name":"LUA_IO#(0:127)_READ", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA"], "description":""},
+   {"address":47000, "name":"LUA_IO#(0:127)_WRITE", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA"], "description":""},
 
 
    {"address":60600, "name":"FILE_IO_DIR_CHANGE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
@@ -791,6 +792,7 @@
     "2014.02.28.A:  Added stream register descriptions.",
     "2014.03.12.A:  Added ASYNCH registers.",
     "2014.03.14.A:  Added error code descriptions.",
+    "2014.03.14.A:  Added lua register descriptions and changed lua types. Types were changed before, but those changes were lost.",
     "End Of Comments"
   ]
 }
