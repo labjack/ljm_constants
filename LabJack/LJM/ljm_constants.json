@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2014.02.28.A",
+   "version":"2014.04.07.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -50,8 +50,8 @@
    {"address":5006, "name":"SPI_OPTIONS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"Bit 0 is Auto-CS-Disable."},
    {"address":5007, "name":"SPI_GO", "type":"UINT16", "devices":["T7"], "readwrite":"W", "default":0, "tags":["SPI"], "description":"Write 1 to begin the configured SPI transaction."},
    {"address":5009, "name":"SPI_NUM_BYTES", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"The number of bytes to transfer."},
-   {"address":5010, "name":"SPI_DATA_WRITE", "type":"BYTE", "devices":["T7"], "readwrite":"W", "default":0, "tags":["SPI"], "altnames":["SPI_DATA_TX"], "description":"Write data here."},
-   {"address":5050, "name":"SPI_DATA_READ", "type":"BYTE", "devices":["T7"], "readwrite":"R", "default":0, "tags":["SPI"], "altnames":["SPI_DATA_RX"], "description":"Read data here."},
+   {"address":5010, "name":"SPI_DATA_TX", "type":"BYTE", "devices":["T7"], "readwrite":"W", "default":0, "tags":["SPI"], "altnames":["SPI_DATA_WRITE"], "description":"Write data here."},
+   {"address":5050, "name":"SPI_DATA_RX", "type":"BYTE", "devices":["T7"], "readwrite":"R", "default":0, "tags":["SPI"], "altnames":["SPI_DATA_READ"], "description":"Read data here."},
 
    {"address":5100, "name":"I2C_SDA_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The number of the DIO line that is to used as the I2C data line. Ex: Writing 0 will force FIO0 to become the I2C-SDA line."},
    {"address":5101, "name":"I2C_SCL_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The number of the DIO line that is to used as the I2C clock line. Ex: Writing 1 will force FIO1 to become the I2C-SCL line."},
@@ -62,8 +62,8 @@
    {"address":5109, "name":"I2C_NUM_BYTES_RX", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The number of data bytes to read."},
    {"address":5110, "name":"I2C_GO", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9504}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Writing to this register will instruct the LabJack to perform an I2C transaction."},
    {"address":5114, "name":"I2C_ACKS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9504}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"An array of bits used to observe ACKs from the slave device."},
-   {"address":5120, "name":"I2C_WRITE_DATA", "type":"BYTE", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "altnames":["I2C_DATA_TX"], "description":"Data that will be written to the I2C bus."},
-   {"address":5160, "name":"I2C_READ_DATA", "type":"BYTE", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "altnames":["I2C_DATA_RX"], "description":"Data that has been read from the I2C bus."},
+   {"address":5120, "name":"I2C_DATA_TX", "type":"BYTE", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "altnames":["I2C_WRITE_DATA"], "description":"Data that will be written to the I2C bus."},
+   {"address":5160, "name":"I2C_DATA_RX", "type":"BYTE", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "altnames":["I2C_READ_DATA"], "description":"Data that has been read from the I2C bus."},
 
    {"address":30000, "name":"TDAC#(0:22)", "type":"FLOAT32", "devices":["T7"], "readwrite":"W", "default":0, "tags":["TDAC", "CORE"], "description":"Update a voltage output on an LJTick-DAC.  Even # = DACA, Odd # = DACB."},
    {"address":55200, "name":"TDAC_SERIAL_NUMBER", "type":"UINT32", "devices":["T7"], "readwrite":"R", "default":0, "tags":["TDAC"], "description":"Returns the serial number of an LJTick-DAC, and forces a re-read of the calibration constants. Which LJTDAC is determined by the last write to TDAC# ... whether it was successful or not."},
@@ -112,9 +112,9 @@
    {"address":44400, "name":"DIO#(0:22)_EF_CONFIG_B", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "altnames":["DIO#(0:22)_EF_VALUE_B"]},
    {"address":44500, "name":"DIO#(0:22)_EF_CONFIG_C", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "altnames":["DIO#(0:22)_EF_VALUE_C"]},
    {"address":44600, "name":"DIO#(0:22)_EF_CONFIG_D", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "altnames":["DIO#(0:22)_EF_VALUE_D"]},
-   {"address":3000, "name":"DIO#(0:22)_EF_READ_A", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO", "CORE"]},
-   {"address":3100, "name":"DIO#(0:22)_EF_READ_A_AND_RESET", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
-   {"address":3200, "name":"DIO#(0:22)_EF_READ_B", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
+   {"address":3000, "name":"DIO#(0:22)_EF_READ_A", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO", "CORE"], "streamable":true},
+   {"address":3100, "name":"DIO#(0:22)_EF_READ_A_AND_RESET", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"], "streamable":true},
+   {"address":3200, "name":"DIO#(0:22)_EF_READ_B", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"], "streamable":true},
    {"address":3500, "name":"DIO#(0:22)_EF_READ_A_F", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
    {"address":3600, "name":"DIO#(0:22)_EF_READ_A_F_AND_RESET", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
    {"address":3700, "name":"DIO#(0:22)_EF_READ_B_F", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
