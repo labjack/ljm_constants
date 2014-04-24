@@ -351,7 +351,7 @@
    {"address":6120, "name":"LUA_DEBUG_ENABLE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0078}], "readwrite":"RW", "tags":["LUA"], "description":"This is the value that will be loaded into LUA_DEBUG_ENABLE when the LabJack boots up."},
    {"address":6122, "name":"LUA_DEBUG_NUM_BYTES_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0078}], "readwrite":"RW", "tags":["LUA"], "description":"This is the value that will be loaded into LUA_DEBUG_NUM_BYTES when the LabJack boots up."},
 
-   {"address":46000, "name":"LUA_IO#(0:127)_READ", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA"], "description":""},
+   {"address":46000, "name":"LUA_IO#(0:127)_READ", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA"], "description":"User Configurable Registers for Lua scripts."},
    {"address":47000, "name":"LUA_IO#(0:127)_WRITE", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA"], "description":""},
 
 
@@ -402,8 +402,8 @@
    {"address":5324, "name":"ONEWIRE_PATH_H", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Upper 32-bits of the path to take during a search."},
    {"address":5326, "name":"ONEWIRE_PATH_L", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Lower 32-bits of the path to take during a search."},
 
-   {"address":5340, "name":"ONEWIRE_DATA_WRITE", "type":"BYTE", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Data to be transmitted over the 1-wire bus."},
-   {"address":5370, "name":"ONEWIRE_DATA_READ", "type":"BYTE", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Data received over the 1-wire bus."}
+   {"address":5340, "name":"ONEWIRE_DATA_TX", "type":"BYTE", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Data to be transmitted over the 1-wire bus."},
+   {"address":5370, "name":"ONEWIRE_DATA_RX", "type":"BYTE", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Data received over the 1-wire bus."}
 
  ],
 
