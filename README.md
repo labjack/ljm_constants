@@ -1,18 +1,14 @@
+#ljm_constants
 
-    ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+[LabJack](http://labjack.com/)'s [LJM](http://labjack.com/ljm)  constants files.
+
+###Contents
+* ljm_constants.json
+ - Register descriptions for LJM-compatible LabJack devices
+ - Error codes for LJM and LJM-compatible LabJack devices
+
+* ljm_startup_configs.json
+ - The file that LJM parses at startup to load user-specifed LJM configurations
 
 
-Hi there! Welcome to Cloud9 IDE!
-
-To get you started, create some files, play with the terminal,
-or visit http://docs.c9.io for our documentation.
-If you want, you can also go watch some training videos at
-http://www.youtube.com/user/c9ide.
-
-Happy coding!
-The Cloud9 IDE team
+And nothing else matters for most people.

@@ -12,10 +12,10 @@
  [
    {"address":0, "name":"AIN#(0:254)", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"R", "tags":["AIN", "CORE"], "streamable":true, "displayname":["Analog In #"], "description":"Returns the voltage of the specified analog input."},
    {"address":1000, "name":"DAC#(0:1)", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DAC", "CORE"], "displayname":["Analog Out #"], "description":"Pass a voltage for the specified analog output."},
-   {"address":2000, "name":"FIO#(0:7)", "type":"UINT16", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO", "CORE"], "altnames":["DIO#(0:7)"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
-   {"address":2008, "name":"EIO#(0:7)", "type":"UINT16", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO", "CORE"], "altnames":["DIO#(8:15)"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
-   {"address":2016, "name":"CIO#(0:3)", "type":"UINT16", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO", "CORE"], "altnames":["DIO#(16:19)"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
-   {"address":2020, "name":"MIO#(0:2)", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO", "CORE"], "altnames":["DIO#(20:22)"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
+   {"address":2000, "name":"FIO#(0:7)", "type":"UINT16", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO", "CORE"], "altnames":["DIO#(0:7)"], "displayname":["FIO Bit #"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
+   {"address":2008, "name":"EIO#(0:7)", "type":"UINT16", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO", "CORE"], "altnames":["DIO#(8:15)"], "displayname":["EIO Bit #"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
+   {"address":2016, "name":"CIO#(0:3)", "type":"UINT16", "devices":["U3", "U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO", "CORE"], "altnames":["DIO#(16:19)"], "displayname":["CIO Bit #"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
+   {"address":2020, "name":"MIO#(0:2)", "type":"UINT16", "devices":["U6", "T7", "UE9"], "readwrite":"RW", "tags":["DIO", "CORE"], "altnames":["DIO#(20:22)"], "displayname":["MIO Bit #"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
 
    {"address":2500, "name":"FIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0000}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["FIO Port State"], "description":"Read or write the state of the 8 bits of FIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."},
    {"address":2501, "name":"EIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0000}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["EIO Port State"], "description":"Read or write the state of the 8 bits of EIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."},
@@ -65,11 +65,11 @@
    {"address":5120, "name":"I2C_DATA_TX", "type":"BYTE", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "altnames":["I2C_WRITE_DATA"], "description":"Data that will be written to the I2C bus."},
    {"address":5160, "name":"I2C_DATA_RX", "type":"BYTE", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "altnames":["I2C_READ_DATA"], "description":"Data that has been read from the I2C bus."},
 
-   {"address":30000, "name":"TDAC#(0:22)", "type":"FLOAT32", "devices":["T7"], "readwrite":"W", "default":0, "tags":["TDAC", "CORE"], "description":"Update a voltage output on an LJTick-DAC.  Even # = DACA, Odd # = DACB."},
+   {"address":30000, "name":"TDAC#(0:22)", "type":"FLOAT32", "devices":["T7"], "readwrite":"W", "default":0, "tags":["TDAC", "CORE"], "displayname":["LJTick-DAC #"], "description":"Update a voltage output on an LJTick-DAC.  Even # = DACA, Odd # = DACB."},
    {"address":55200, "name":"TDAC_SERIAL_NUMBER", "type":"UINT32", "devices":["T7"], "readwrite":"R", "default":0, "tags":["TDAC"], "description":"Returns the serial number of an LJTick-DAC, and forces a re-read of the calibration constants. Which LJTDAC is determined by the last write to TDAC# ... whether it was successful or not."},
 
-   {"address":30100, "name":"SBUS#(0:22)_TEMP", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"R", "tags":["SBUS", "CORE"], "description":"Reads temperature in degrees Kelvin from an SBUS sensor (EI-1050/SHT1x/SHT7x).  # is the DIO line for the EI-1050 enable.  If # is the same as the value specified for data or clock line, there will be no control of an enable line."},
-   {"address":30150, "name":"SBUS#(0:22)_RH", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"R", "tags":["SBUS", "CORE"], "description":"Reads humidity in % from an SBUS sensor (EI-1050/SHT1x/SHT7x).  # is the DIO line for the EI-1050 enable.  If # is the same as the value specified for data or clock line, there will be no control of an enable line."},
+   {"address":30100, "name":"SBUS#(0:22)_TEMP", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"R", "tags":["SBUS", "CORE"], "displayname":["SBUS # Temp"], "description":"Reads temperature in degrees Kelvin from an SBUS sensor (EI-1050/SHT1x/SHT7x).  # is the DIO line for the EI-1050 enable.  If # is the same as the value specified for data or clock line, there will be no control of an enable line."},
+   {"address":30150, "name":"SBUS#(0:22)_RH", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"R", "tags":["SBUS", "CORE"], "displayname":["SBUS # RH"], "description":"Reads humidity in % from an SBUS sensor (EI-1050/SHT1x/SHT7x).  # is the DIO line for the EI-1050 enable.  If # is the same as the value specified for data or clock line, there will be no control of an enable line."},
    {"address":30200, "name":"SBUS#(0:22)_DATA_DIONUM", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["SBUS"], "description":"This is the DIO# that the sensor's data line is connected to. Default = FIO0"},
    {"address":30225, "name":"SBUS#(0:22)_CLOCK_DIONUM", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":1, "tags":["SBUS"], "description":"This is the DIO# that the sensor's clock line is connected to. Default = FIO1"},
    {"address":30250, "name":"SBUS#(0:22)_BACKGROUND_ENABLE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["SBUS"], "description":"Currently unsupported."},
@@ -112,7 +112,7 @@
    {"address":44400, "name":"DIO#(0:22)_EF_CONFIG_B", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "altnames":["DIO#(0:22)_EF_VALUE_B"]},
    {"address":44500, "name":"DIO#(0:22)_EF_CONFIG_C", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "altnames":["DIO#(0:22)_EF_VALUE_C"]},
    {"address":44600, "name":"DIO#(0:22)_EF_CONFIG_D", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "altnames":["DIO#(0:22)_EF_VALUE_D"]},
-   {"address":3000, "name":"DIO#(0:22)_EF_READ_A", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO", "CORE"], "streamable":true},
+   {"address":3000, "name":"DIO#(0:22)_EF_READ_A", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO", "CORE"], "streamable":true, "displayname":["DIO-EF Read A"], "description":"Reads an unsigned integer value."},
    {"address":3100, "name":"DIO#(0:22)_EF_READ_A_AND_RESET", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"], "streamable":true},
    {"address":3200, "name":"DIO#(0:22)_EF_READ_B", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"], "streamable":true},
    {"address":3500, "name":"DIO#(0:22)_EF_READ_A_F", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
@@ -288,9 +288,6 @@
    {"address":5490, "name":"ASYNCH_DATA_TX", "type":"BYTE", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"Write data to be transmitted here."},
    {"address":5495, "name":"ASYNCH_DATA_RX", "type":"BYTE", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"Read received data from here."},
 
-
-
-
    {"address":4899, "name":"STREAM_DATA_CAPTURE_16", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0071}], "readwrite":"W", "tags":["STREAM"], "streamable":true, "description":"If a channel produces 32-bits of data the upper 16 will be saved here."},
    {"address":61520, "name":"CORE_TIMER", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0071}], "readwrite":"R", "tags":["CONFIG"], "streamable":true, "description":"Internal 32-bit system timer running at 1/2 core speed, thus normally 80M/2 => 40 MHz."},
    {"address":61522, "name":"SYSTEM_TIMER_20HZ", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0071}], "readwrite":"R", "tags":["CONFIG"], "streamable":true, "description":"Internal 32-bit system timer running at 20Hz."},
@@ -402,8 +399,8 @@
    {"address":5324, "name":"ONEWIRE_PATH_H", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Upper 32-bits of the path to take during a search."},
    {"address":5326, "name":"ONEWIRE_PATH_L", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Lower 32-bits of the path to take during a search."},
 
-   {"address":5340, "name":"ONEWIRE_DATA_WRITE", "type":"BYTE", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Data to be transmitted over the 1-wire bus."},
-   {"address":5370, "name":"ONEWIRE_DATA_READ", "type":"BYTE", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Data received over the 1-wire bus."}
+   {"address":5340, "name":"ONEWIRE_DATA_TX", "type":"BYTE", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Data to be transmitted over the 1-wire bus."},
+   {"address":5370, "name":"ONEWIRE_DATA_RX", "type":"BYTE", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Data received over the 1-wire bus."}
 
  ],
 
@@ -799,6 +796,8 @@
     "2014.03.14.A:  Added lua register descriptions and changed lua types. Types were changed before, but those changes were lost.",
     "2014.03.30.A:  Changed Lua starupt configuration registers to DEFAULT.",
     "2014.04.07.A:  Added SPI_GO register.",
+    "2014.04.09.A:  SPI, I2C, and ONEWIRE _DATA_WRITE and _DATA_READ changed to _DATA_TX and _DATA_RX.",
+    "2014.04.24.A:  Added display names and other changes back in that were overwritten on April 9th.",
     "End Of Comments"
   ]
 }
