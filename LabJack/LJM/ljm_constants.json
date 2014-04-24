@@ -328,7 +328,7 @@
 
    {"address":4018, "name":"STREAM_DATATYPE", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Currently unavailable."},
    {"address":4014, "name":"STREAM_OPTIONS", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Controls advanced stream options: Immediate scan, external clock, and gated run."},
-   {"address":4500, "name":"STREAM_DATA_CR", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["STREAM"],"description":"Addres to read stream data from when operating in C-R mode."},
+   {"address":4500, "name":"STREAM_DATA_CR", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["STREAM"],"description":"Address to read stream data from when operating in C-R mode."},
 
    {"address":49406, "name":"WIFI_SCAN_START", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"W", "tags":["WIFI"]},
    {"address":49486, "name":"WIFI_SCAN_NUM_BYTES", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"R", "tags":["WIFI"]},
@@ -351,7 +351,7 @@
    {"address":6120, "name":"LUA_DEBUG_ENABLE_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0078}], "readwrite":"RW", "tags":["LUA"], "description":"This is the value that will be loaded into LUA_DEBUG_ENABLE when the LabJack boots up."},
    {"address":6122, "name":"LUA_DEBUG_NUM_BYTES_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0078}], "readwrite":"RW", "tags":["LUA"], "description":"This is the value that will be loaded into LUA_DEBUG_NUM_BYTES when the LabJack boots up."},
 
-   {"address":46000, "name":"LUA_IO#(0:127)_READ", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA"], "description":""},
+   {"address":46000, "name":"LUA_IO#(0:127)_READ", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA"], "description":"User configurable registers for Lua scripts."},
    {"address":47000, "name":"LUA_IO#(0:127)_WRITE", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA"], "description":""},
 
 
