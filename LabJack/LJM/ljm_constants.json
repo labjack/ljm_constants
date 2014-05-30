@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2014.04.24.A",
+   "version":"2014.05.23.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -29,14 +29,14 @@
    {"address":2850, "name":"DIO_DIRECTION", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["DIO"], "description":"Read or write the direction of all digital I/O in a single binary-encoded value.  0=Input and 1=Output.  Writes only apply to bits with mask set."},
    {"address":2900, "name":"DIO_INHIBIT", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["DIO"], "description":"A single binary-encoded value where each bit determines whether _STATE or _DIRECTION writes affect that bit of digital I/O.  0=Default=Affected, 1=Ignored."},
 
-   {"address":4002, "name":"STREAM_SCANRATE_HZ", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of times per second that all channels in the scanlist will be read."},
+   {"address":4002, "name":"STREAM_SCANRATE_HZ", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of times per second that all channels in the scanlist will be read. Has no effect when using and external clock."},
    {"address":4004, "name":"STREAM_NUM_ADDRESSES", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of entries in the scanlist"},
-   {"address":4006, "name":"STREAM_SAMPLES_PER_PACKET", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Specifies the number of data points to be sent in the data packet."},
-   {"address":4008, "name":"STREAM_SETTLING_US", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Time in microseconds to allow signals to settle after switching the mux. Default 10 us."},
+   {"address":4006, "name":"STREAM_SAMPLES_PER_PACKET", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Specifies the number of data points to be sent in the data packet. Only applies to spontaneous mode."},
+   {"address":4008, "name":"STREAM_SETTLING_US", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Time in microseconds to allow signals to settle after switching the mux. Default 10 us. Max is 5000."},
    {"address":4010, "name":"STREAM_RESOLUTION_INDEX", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Index specifying the resolution of the data. High settings will have lower max speeds."},
    {"address":4012, "name":"STREAM_BUFFER_SIZE_BYTES", "type":"UINT32", "devices":[{"device":"T7", "default":0, "description":"Max size is 32768. Default size is 4096."}], "readwrite":"RW", "default":0, "tags":["STREAM"], "description":"Size of the stream data buffer in bytes. Must be a power of 2. 0 is updated to the default size upon stream starting. Changes while stream is running do not affect the currently running stream."},
-   {"address":4016, "name":"STREAM_AUTO_TARGET", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9108}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Controls where data will be sent."},
-   {"address":4020, "name":"STREAM_NUM_SCANS", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of scans to run before automatically stopping."},
+   {"address":4016, "name":"STREAM_AUTO_TARGET", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9108}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Controls where data will be sent. Value is a bitmask. bit 0: 1 = Send to Ethernet 702 sockets, bit 1: 1 = Send to USB, bit 4: 1 = Command-Response mode. All other bits are reserved."},
+   {"address":4020, "name":"STREAM_NUM_SCANS", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of scans to run before automatically stopping. 0 = run continuously."},
    {"address":4022, "name":"STREAM_EXTERNAL_CLOCK_DIVISOR", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of pulses per scan when using an external clock."},
    {"address":4100, "name":"STREAM_SCANLIST_ADDRESS#(0:127)", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"], "description":"A list of addresses to read each scan."},
    {"address":4990, "name":"STREAM_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9421}], "readwrite":"W", "tags":["STREAM"],"description":"Write 1 to start stream. Write 0 to stop stream."},
@@ -156,6 +156,7 @@
    {"address":49156, "name":"ETHERNET_DNS_DEFAULT", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["ETHERNET"], "description":"The DNS of wired Ethernet after a power-cycle to the device."},
    {"address":49158, "name":"ETHERNET_ALTDNS_DEFAULT", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["ETHERNET"], "description":"The Alt DNS of wired Ethernet after a power-cycle to the device."},
    {"address":49160, "name":"ETHERNET_DHCP_ENABLE_DEFAULT", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "tags":["ETHERNET"], "description":"The Enabled/Disabled state of Ethernet DHCP after a power-cycle to the device."},
+   {"address":49190, "name":"ETHERNET_APPLY_SETTINGS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0103}], "readwrite":"W", "tags":["ETHERNET"], "description":"Writing 0 to this register power cycles ethernet.  It tells the T7 to waits 1s before turning off Ethernet and then 500ms before turning it back on."},
 
    {"address":49200, "name":"WIFI_IP", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["WIFI"], "description":"Read the current IP address of WiFi."},
    {"address":49202, "name":"WIFI_SUBNET", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["WIFI"], "description":"Read the current subnet of WiFi."},
@@ -313,15 +314,16 @@
    {"address":2580, "name":"FIO_EIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0005}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["FIO-EIO Port State"], "description":"Read or write the state of the 16 bits of FIO-EIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written."},
    {"address":2581, "name":"EIO_CIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0005}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["EIO-CIO Port State"], "description":"Read or write the state of the 12 bits of EIO-CIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written."},
 
-   {"address":4040, "name":"STREAM_OUT#(0:4)_TARGET", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Channel that data will be written to."},
-   {"address":4050, "name":"STREAM_OUT#(0:4)_BUFFER_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Size of the buffer in bytes. Should be at least twice the size of updates that will be written."},
-   {"address":4060, "name":"STREAM_OUT#(0:4)_LOOP_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of value that will be repeated after reaching the end of supplied data."},
-   {"address":4070, "name":"STREAM_OUT#(0:4)_SET_LOOP", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":"Controls when new data and loop size are used."},
-   {"address":4080, "name":"STREAM_OUT#(0:4)_BUFFER_STATUS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"R", "default":0, "tags":["STREAM"],"description":"The number of entries in the buffer that are not currently being used."},
-   {"address":4090, "name":"STREAM_OUT#(0:4)_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Write 1 to enable, 0 to disable."},
-   {"address":4400, "name":"STREAM_OUT#(0:4)_BUFFER_F32", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":"Data destination when sending floating point data."},
-   {"address":4410, "name":"STREAM_OUT#(0:4)_BUFFER_U32", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":"Data destination when sending 32-bit integer data."},
-   {"address":4420, "name":"STREAM_OUT#(0:4)_BUFFER_U16", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":"Data destination when sending 16-bit integer data."},
+   {"address":4800, "name":"STREAM_OUT#(0:3)", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0012}], "readwrite":"R", "default":0, "tags":["STREAM"],"description":"Include one or more of these registers in STREAM_SCANLIST_ADDRESS#(0:127) to trigger stream out updates. This register returns null data when read via command-response."},
+   {"address":4040, "name":"STREAM_OUT#(0:3)_TARGET", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0012}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Channel that data will be written to."},
+   {"address":4050, "name":"STREAM_OUT#(0:3)_BUFFER_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Size of the buffer in bytes. Should be at least twice the size of updates that will be written."},
+   {"address":4060, "name":"STREAM_OUT#(0:3)_LOOP_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of value that will be repeated after reaching the end of supplied data."},
+   {"address":4070, "name":"STREAM_OUT#(0:3)_SET_LOOP", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":"Controls when new data and loop size are used."},
+   {"address":4080, "name":"STREAM_OUT#(0:3)_BUFFER_STATUS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"R", "default":0, "tags":["STREAM"],"description":"The number of entries in the buffer that are not currently being used."},
+   {"address":4090, "name":"STREAM_OUT#(0:3)_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Write 1 to enable, 0 to disable."},
+   {"address":4400, "name":"STREAM_OUT#(0:3)_BUFFER_F32", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":"Data destination when sending floating point data."},
+   {"address":4410, "name":"STREAM_OUT#(0:3)_BUFFER_U32", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":"Data destination when sending 32-bit integer data."},
+   {"address":4420, "name":"STREAM_OUT#(0:3)_BUFFER_U16", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":"Data destination when sending 16-bit integer data."},
 
    {"address":4018, "name":"STREAM_DATATYPE", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Currently unavailable."},
    {"address":4014, "name":"STREAM_OPTIONS", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Controls advanced stream options: Immediate scan, external clock, and gated run."},
@@ -527,7 +529,8 @@
 
    {"error":2370, "string":"AIN_RANGE_INVALID", "description":"Specified range not available on this device."},
    {"error":2371, "string":"AIN_SETTLING_INVALID", "description":"Specified settling is greater than device max."},
-   {"error":2732, "string":"AIN_SET_TO_BINARY", "description":"Analog input system currently set to binary. Some operations, such as AIN_EF, will fail."},
+   {"error":2372, "string":"AIN_SET_TO_BINARY", "description":"Analog input system currently set to binary. Some operations, such as AIN_EF, will fail."},
+   {"error":2373, "string":"AIN_NEGATIVE_CHANNEL_INVALID", "description":"For channel range 0-13: Negative channel must be even channel number + 1.  For extended channel range 48-127: Negative channel must be channel number + 8."},
 
    {"error":2380, "string":"LUA_VM_STATE_NO_CHANGE"},
    {"error":2381, "string":"LUA_INITIALIZATION_ERROR"},
@@ -798,6 +801,9 @@
     "2014.04.07.A:  Added SPI_GO register.",
     "2014.04.09.A:  SPI, I2C, and ONEWIRE _DATA_WRITE and _DATA_READ changed to _DATA_TX and _DATA_RX.",
     "2014.04.24.A:  Added display names and other changes back in that were overwritten on April 9th.",
+    "2014.05.15.A:  Added ETHERNET_APPLY_SETTINGS register so T7 can be configured over ethernet connection w/o rebooting.",
+    "2014.05.21.A:  Added STREAM_OUT#(0:3) register, and set as UINT16, and readable in FW 1.0103 or greater, also corrected (0:4) to (0:3), because there are only 4 stream out buffers, not 5.",
+    "2014.05.23.A:  Added error code 2373, and description.",
     "End Of Comments"
   ]
 }
