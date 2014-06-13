@@ -693,7 +693,7 @@
    {"error":2941, "string":"STREAM_AUTO_RECOVER_END"},
    {"error":2942, "string":"STREAM_SCAN_OVERLAP"},
    {"error":2943, "string":"STREAM_AUTO_RECOVER_END_OVERFLOW"},
-   {"error":2943, "string":"STREAM_BURST_COMPLETE"},
+   {"error":2944, "string":"STREAM_BURST_COMPLETE"},
    {"error":2950, "string":"SELFDIAG_MAIN_OSC_FAIL"}
  ],
 
