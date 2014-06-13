@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2014.05.23.A",
+   "version":"2014.06.13.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -53,11 +53,11 @@
    {"address":5010, "name":"SPI_DATA_TX", "type":"BYTE", "devices":["T7"], "readwrite":"W", "default":0, "tags":["SPI"], "altnames":["SPI_DATA_WRITE"], "description":"Write data here."},
    {"address":5050, "name":"SPI_DATA_RX", "type":"BYTE", "devices":["T7"], "readwrite":"R", "default":0, "tags":["SPI"], "altnames":["SPI_DATA_READ"], "description":"Read data here."},
 
-   {"address":5100, "name":"I2C_SDA_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The number of the DIO line that is to used as the I2C data line. Ex: Writing 0 will force FIO0 to become the I2C-SDA line."},
-   {"address":5101, "name":"I2C_SCL_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The number of the DIO line that is to used as the I2C clock line. Ex: Writing 1 will force FIO1 to become the I2C-SCL line."},
+   {"address":5100, "name":"I2C_SDA_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The number of the DIO line to be used as the I2C data line. Ex: Writing 0 will force FIO0 to become the I2C-SDA line."},
+   {"address":5101, "name":"I2C_SCL_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The number of the DIO line to be used as the I2C clock line. Ex: Writing 1 will force FIO1 to become the I2C-SCL line."},
    {"address":5102, "name":"I2C_SPEED_THROTTLE", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"This value controls the I2C clock frequency.  Pass 0-65535.  Default=0 corresponds to 65536 internally which results in ~450 kHz.  1 results in ~40 Hz."},
-   {"address":5103, "name":"I2C_OPTIONS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Advanced. Controls details of the I2C protocol to improve device compatibility."},
-   {"address":5104, "name":"I2C_SLAVE_ADDRESS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The 7-bit address of the slave device. Value is shifted over automatically to allow room for the I2C R/W bit."},
+   {"address":5103, "name":"I2C_OPTIONS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Advanced. Controls details of the I2C protocol to improve device compatibility. bit 0: 1 = Reset the I2C bus before attempting communication. bit 1: 0 = Restarts will use a stop and a start, 1 = Resetarts will not use a stop. bit 2: 1 = disable clock stretching."},
+   {"address":5104, "name":"I2C_SLAVE_ADDRESS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The 7-bit address of the slave device. Value is shifted left by firmware to allow room for the I2C R/W bit. "},
    {"address":5108, "name":"I2C_NUM_BYTES_TX", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The number of data bytes to transmit."},
    {"address":5109, "name":"I2C_NUM_BYTES_RX", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The number of data bytes to read."},
    {"address":5110, "name":"I2C_GO", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9504}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Writing to this register will instruct the LabJack to perform an I2C transaction."},
@@ -118,11 +118,13 @@
    {"address":3500, "name":"DIO#(0:22)_EF_READ_A_F", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
    {"address":3600, "name":"DIO#(0:22)_EF_READ_A_F_AND_RESET", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
    {"address":3700, "name":"DIO#(0:22)_EF_READ_B_F", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"]},
+   {"address":45000, "name":"DIO#(0:22)_EF_EASY_FREQUENCY_IN", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0105}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
+
 
    {"address":48003, "name":"POWER_ETHERNET", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.86}], "readwrite":"RW", "tags":["CONFIG", "ETHERNET"], "description":"The current ON/OFF state of the Ethernet module. Provided to optionally reduce power consumption."},
    {"address":48004, "name":"POWER_WIFI", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.86}], "readwrite":"RW", "tags":["CONFIG", "WIFI"], "description":"The current ON/OFF state of the WiFi module. Provided to optionally reduce power consumption."},
    {"address":48005, "name":"POWER_AIN", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.86}], "readwrite":"RW", "tags":["CONFIG", "AIN"], "description":"The current ON/OFF state of the analog input module. Provided to optionally reduce power consumption."},
-   {"address":48006, "name":"POWER_LED", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.86}], "readwrite":"RW", "tags":["CONFIG"], "description":"The current ON/OFF state of the LEDs. Provided to optionally reduce power consumption."},
+   {"address":48006, "name":"POWER_LED", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.86}], "readwrite":"RW", "tags":["CONFIG"], "description":"Sets the LED operation: 0 = Off. Useful for lower power applications. 1 = normal. 2 = Lower power, LEDs will still blink but will normally be off. 3 = Reserved. 4 = Manual, in this mode the LEDs can be user controlled."},
    {"address":48053, "name":"POWER_ETHERNET_DEFAULT", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.86}], "readwrite":"RW", "tags":["CONFIG", "ETHERNET"], "description":"The ON/OFF state of the Ethernet module after a power-cycle to the device."},
    {"address":48054, "name":"POWER_WIFI_DEFAULT", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.86}], "readwrite":"RW", "tags":["CONFIG", "WIFI"], "description":"The ON/OFF state of the WiFi module after a power-cycle to the device."},
    {"address":48055, "name":"POWER_AIN_DEFAULT", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.86}], "readwrite":"RW", "tags":["CONFIG", "AIN"], "description":"The ON/OFF state of the analog input module after a power-cycle to the device."},
@@ -140,8 +142,8 @@
    {"address":61990, "name":"IO_CONFIG_SET_CURRENT_TO_FACTORY", "type":"UINT16", "devices":["T7"], "readwrite":"W", "tags":["CONFIG"], "description":"Write a 1 to set current values to factory configuration.  The factory values are retrieved from flash and written to the current configuration registers."},
    {"address":61991, "name":"IO_CONFIG_SET_CURRENT_TO_DEFAULT", "type":"UINT16", "devices":["T7"], "readwrite":"W", "tags":["CONFIG"], "description":"Write a 1 to set current values to default configuration.  The default values are retrieved from flash and written to the current configuration registers, thus this behaves similar to reboot/power-up."},
 
-   {"address":60050, "name":"TEMPERATURE_AIR_K", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0017}], "readwrite":"R", "tags":["AIN", "CORE"], "streamable":true, "displayname":["Estimated Air Temperature [deg K]"], "description":"Returns the estimated ambient air temperature just outside a T7 in its red plastic enclosure.  This register is equal to TEMPERATURE_DEVICE_K - 4.3.  If Ethernet and/or WiFi is enabled, subtract an extra 0.6 for each."},
-   {"address":60052, "name":"TEMPERATURE_DEVICE_K", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0017}], "readwrite":"R", "tags":["AIN", "CORE"], "streamable":true, "displayname":["Device Temperature [deg K]"], "description":"Takes a reading from AIN14 using range=+/-10V and resolution=8, and applies the formula Volts*-92.6+467.6 to return degrees K.  AIN14 is internally connected to an LM94021 (U24) with GS=10 which is physically located on the bottom of the PCB between the AIN0/1 and AIN2/3 screw-terminals."},
+   {"address":60050, "name":"TEMPERATURE_AIR_K", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0105}], "readwrite":"R", "tags":["AIN", "CORE"], "streamable":true, "displayname":["Estimated Air Temperature [deg K]"], "description":"Returns the estimated ambient air temperature just outside a T7 in its red plastic enclosure.  This register is equal to TEMPERATURE_DEVICE_K - 4.3.  If Ethernet and/or WiFi is enabled, subtract an extra 0.6 for each."},
+   {"address":60052, "name":"TEMPERATURE_DEVICE_K", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0105}], "readwrite":"R", "tags":["AIN", "CORE"], "streamable":true, "displayname":["Device Temperature [deg K]"], "description":"Takes a reading from AIN14 using range=+/-10V and resolution=8, and applies the formula Volts*-92.6+467.6 to return degrees K.  AIN14 is internally connected to an LM94021 (U24) with GS=10 which is physically located on the bottom of the PCB between the AIN0/1 and AIN2/3 screw-terminals."},
 
    {"address":49100, "name":"ETHERNET_IP", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["ETHERNET"], "description":"Read the current IP address of wired Ethernet."},
    {"address":49102, "name":"ETHERNET_SUBNET", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["ETHERNET"], "description":"Read the current subnet of wired Ethernet."},
@@ -173,10 +175,10 @@
    {"address":49400, "name":"WIFI_APPLY_SETTINGS", "type":"UINT32", "devices":["T7"], "readwrite":"W", "tags":["WIFI"], "description":"Apply all new WiFi settings: IP, Subnet, Gateway, DHCP, SSID, Password. 1=Apply"},
 
    {"address":49402, "name":"WIFI_FIRMWARE_UPDATE_TO_VERSIONX", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9206}], "readwrite":"W", "tags":["WIFI"], "description":"Start an update by using USB or Ethernet to write the desired version to update to."},
-   {"address":49450, "name":"WIFI_STATUS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.75}], "readwrite":"R", "tags":["WIFI"], "description":"Status Codes.",
+   {"address":49450, "name":"WIFI_STATUS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.75}], "readwrite":"R", "tags":["WIFI"], "description":"Status Codes: ASSOCIATED = 2900, ASSOCIATING = 2901, ASSOCIATION_FAILED = 2902, UNPOWERED = 2903, BOOTING = 2904, START_FAILED = 2905, APPLYING_SETTINGS = 2906, DHCP_STARTED = 2907, OTHER = 2909",
       "constants":[{"name":"ASSOCIATED", "value":2900}, {"name":"ASSOCIATING", "value":2901}, {"name":"ASSOCIATION_FAILED", "value":2902}, {"name":"UNPOWERED", "value":2903}, {"name":"BOOTING", "value":2904}, {"name":"START_FAILED", "value":2905}, {"name":"APPLYING_SETTINGS", "value":2906}, {"name":"DHCP_STARTED", "value":2907}, {"name":"OTHER", "value":2909}]},
    {"address":49452, "name":"WIFI_RSSI", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.80}], "readwrite":"R", "tags":["WIFI"], "description":"WiFi RSSI (signal strength).  Typical values are -40 for very good, and -75 for very weak.  The T7 microcontroller only gets a new RSSI value from the WiFi module when WiFi communication occurs."},
-   {"address":49454, "name":"WIFI_FIRMWARE_UPDATE_STATUS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9206}], "readwrite":"R", "tags":["WIFI"], "description":"See status codes in the constants array.",
+   {"address":49454, "name":"WIFI_FIRMWARE_UPDATE_STATUS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9206}], "readwrite":"R", "tags":["WIFI"], "description":"CONFIGURING = 2920, IN_PROGRESS = 2921, REBOOTING = 2923, UPDATE_SUCCESS = 2924, UPDATE_FAILED = 2925",
       "constants":[{"name":"CONFIGURING", "value":2920}, {"name":"IN_PROGRESS", "value":2921}, {"name":"REBOOTING", "value":2923}, {"name":"UPDATE_SUCCESS", "value":2924}, {"name":"UPDATE_FAILED", "value":2925}]},
 
    {"address":50000, "name":"AIN#(0:254)_BINARY", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["AIN"], "streamable":false, "altnames":["AIN#(0:254)_BIN"], "description":"Returns the binary representation of the specified analog input."},
@@ -555,6 +557,7 @@
    {"error":2450, "string":"POWER_INVALID_SETTING", "description":"Unknown value specified."},
    {"error":2451, "string":"POWER_USB_NEEDS_20MHZ_OR_MORE", "description":"Core must be running at atleast 20MHz for USB to operate."},
    {"error":2452, "string":"POWER_NO_CHANGE"},
+   {"error":2456, "string":"POWER_CAN_NOT_CHANGE_USED_CONNECTION", "description":"Can not change the power level of the connnected medium."},
 
    {"error":2460, "string":"POWER_ANALOG_OFF", "description":"Analog input system is powered down."},
 
@@ -690,6 +693,7 @@
    {"error":2941, "string":"STREAM_AUTO_RECOVER_END"},
    {"error":2942, "string":"STREAM_SCAN_OVERLAP"},
    {"error":2943, "string":"STREAM_AUTO_RECOVER_END_OVERFLOW"},
+   {"error":2943, "string":"STREAM_BURST_COMPLETE"},
    {"error":2950, "string":"SELFDIAG_MAIN_OSC_FAIL"}
  ],
 
@@ -804,6 +808,7 @@
     "2014.05.15.A:  Added ETHERNET_APPLY_SETTINGS register so T7 can be configured over ethernet connection w/o rebooting.",
     "2014.05.21.A:  Added STREAM_OUT#(0:3) register, and set as UINT16, and readable in FW 1.0103 or greater, also corrected (0:4) to (0:3), because there are only 4 stream out buffers, not 5.",
     "2014.05.23.A:  Added error code 2373, and description.",
+    "2014.06.13.A:  Adding status codes back into description field until automated tools are updated.",
     "End Of Comments"
   ]
 }
