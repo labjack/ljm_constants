@@ -14,7 +14,7 @@ if len(sys.argv) == 2:
     commit_message = sys.argv[1]
 
 print 'Checking JSON file...'
-json_file_path = os.path.join('LabJack', 'LJM', 'ljm_constants.json')
+json_file_path = os.path.join('MANUAL_LJM_CONSTANTS', 'LabJack', 'LJM', 'ljm_constants.json')
 try:
     json_map = ljmmm.get_device_modbus_maps(json_file_path)
 except Exception as e:
