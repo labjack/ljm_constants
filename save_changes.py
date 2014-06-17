@@ -35,12 +35,12 @@ for device in json_map:
             exit(1)
         previous_names.append(reg_name)
 
-print "HERE"
+# print "HERE"
 gitCommand = 'cd MANUAL_LJM_CONSTANTS && git '
 gitFooter = ' && cd ..'
-p = subprocess.Popen("pwd", stdout=subprocess.PIPE)
-result = p.communicate()[0]
-print result
+# p = subprocess.Popen("pwd", stdout=subprocess.PIPE)
+# result = p.communicate()[0]
+# print result
 print 'Saving to Git repository...'
 subprocess.check_call(gitCommand + 'pull' + gitFooter, shell=True)
 subprocess.call((gitCommand + 'commit -a -m "%s"' + gitFooter) % commit_message, shell=True)
