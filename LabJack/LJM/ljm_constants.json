@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2014.06.13.A",
+   "version":"2014.06.17.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -320,7 +320,7 @@
    {"address":4040, "name":"STREAM_OUT#(0:3)_TARGET", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0012}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Channel that data will be written to."},
    {"address":4050, "name":"STREAM_OUT#(0:3)_BUFFER_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Size of the buffer in bytes. Should be at least twice the size of updates that will be written."},
    {"address":4060, "name":"STREAM_OUT#(0:3)_LOOP_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of value that will be repeated after reaching the end of supplied data."},
-   {"address":4070, "name":"STREAM_OUT#(0:3)_SET_LOOP", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":"Controls when new data and loop size are used."},
+   {"address":4070, "name":"STREAM_OUT#(0:3)_SET_LOOP", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":"Controls when new data and loop size are used. 1=Use new data immediately. 2=Wait for synch. New data will not be used until a different Stream-Out channel is set to Synch. 3=Synch. This Stream-Out# as well as any Stream-Outs set to synch will start using new data immediately."},
    {"address":4080, "name":"STREAM_OUT#(0:3)_BUFFER_STATUS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"R", "default":0, "tags":["STREAM"],"description":"The number of entries in the buffer that are not currently being used."},
    {"address":4090, "name":"STREAM_OUT#(0:3)_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Write 1 to enable, 0 to disable."},
    {"address":4400, "name":"STREAM_OUT#(0:3)_BUFFER_F32", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":"Data destination when sending floating point data."},
@@ -809,6 +809,8 @@
     "2014.05.21.A:  Added STREAM_OUT#(0:3) register, and set as UINT16, and readable in FW 1.0103 or greater, also corrected (0:4) to (0:3), because there are only 4 stream out buffers, not 5.",
     "2014.05.23.A:  Added error code 2373, and description.",
     "2014.06.13.A:  Adding status codes back into description field until automated tools are updated.",
+    "2014.06.17.A:  Added additional description to STREAM_OUT#(0:3)_SET_LOOP.",
     "End Of Comments"
   ]
 }
+
