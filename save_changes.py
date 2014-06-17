@@ -35,8 +35,14 @@ for device in json_map:
             exit(1)
         previous_names.append(reg_name)
 
+print "HERE"
+gitCommand = 'cd MANUAL_LJM_CONSTANTS && git '
+gitFooter = ' && cd ..'
+p = subprocess.Popen("pwd", stdout=subprocess.PIPE)
+result = p.communicate()[0]
+print result
 print 'Saving to Git repository...'
-subprocess.check_call('git pull', shell=True)
-subprocess.call('git commit -a -m "%s"' % commit_message, shell=True)
-subprocess.call('git push', shell=True)
+subprocess.check_call(gitCommand + 'pull' + gitFooter, shell=True)
+subprocess.call((gitCommand + 'commit -a -m "%s"' + gitFooter) % commit_message, shell=True)
+subprocess.call(gitCommand + 'push' + gitFooter, shell=True)
 print 'Finished!'
