@@ -1,3 +1,8 @@
+"""save_changes.py
+
+Verifies that ljm_constants.json is not obviously invalid, git commits all, and
+pushes to origin.
+"""
 import json
 import os
 import subprocess
@@ -12,9 +17,15 @@ if len(sys.argv) > 2:
 commit_message = "Incremental JSON update."
 if len(sys.argv) == 2:
     commit_message = sys.argv[1]
+    
+constants_repo_dir = \
+    '/var/lib/stickshift/53a6becd50044688100003d8/app-root/data/451301/MANUAL_LJM_CONSTANTS'
+    # Essentially '~/451301/MANUAL_LJM_CONSTANTS'
+
+starting_dir = os.path.dirname(os.path.realpath(__file__))
 
 print 'Checking JSON file...'
-json_file_path = os.path.join('MANUAL_LJM_CONSTANTS', 'LabJack', 'LJM', 'ljm_constants.json')
+json_file_path = os.path.join(constants_repo_dir, 'LabJack', 'LJM', 'ljm_constants.json')
 try:
     json_map = ljmmm.get_device_modbus_maps(json_file_path)
 except Exception as e:
@@ -35,14 +46,20 @@ for device in json_map:
             exit(1)
         previous_names.append(reg_name)
 
-# print "HERE"
-gitCommand = 'cd MANUAL_LJM_CONSTANTS && git '
-gitFooter = ' && cd ..'
 # p = subprocess.Popen("pwd", stdout=subprocess.PIPE)
 # result = p.communicate()[0]
 # print result
 print 'Saving to Git repository...'
-subprocess.check_call(gitCommand + 'pull' + gitFooter, shell=True)
-subprocess.call((gitCommand + 'commit -a -m "%s"' + gitFooter) % commit_message, shell=True)
-subprocess.call(gitCommand + 'push' + gitFooter, shell=True)
+
+# Move to the repo
+os.chdir(constants_repo_dir)
+
+try:
+    subprocess.check_call('git pull', shell=True)
+    subprocess.call('git commit -a -m "%s"' % commit_message, shell=True)
+    subprocess.call('git push', shell=True)
+finally:
+    # Move back to where we were
+    os.chdir(starting_dir)
+    
 print 'Finished!'
