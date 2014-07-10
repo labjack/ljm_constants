@@ -280,10 +280,10 @@
  "registers_beta":
  [
    {"address":5400, "name":"ASYNCH_ENABLE", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"1 = Turn on Asynch. Configures timing hardware, DIO lines and allocates the receiving buffer."},
-   {"address":5420, "name":"ASYNCH_BAUD", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"The symbol rate that will be used for communcation."},
+   {"address":5420, "name":"ASYNCH_BAUD", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"The symbol rate that will be used for communcation. Up to 38400 works, but heavily loads the T7's processor."},
    {"address":5405, "name":"ASYNCH_RX_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"The DIO line that will receive data. (RX)"},
    {"address":5410, "name":"ASYNCH_TX_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"The DIO line that will transmit data. (TX)"},
-   {"address":5415, "name":"ASYNCH_NUM_BITS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"The number of data bits per frame. 0-9, 0=8."},
+   {"address":5415, "name":"ASYNCH_NUM_DATA_BITS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"The number of data bits per frame. 0-8, 0=8."},
    {"address":5430, "name":"ASYNCH_RX_BUFFER_SIZE_BYTES", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"Number of bytes to use for the receiving buffer. Max is 2048. 0 = 200"},
    {"address":5435, "name":"ASYNCH_NUM_BYTES_RX", "type":"UINT16", "devices":["T7"], "readwrite":"R", "default":0, "tags":["ASYNCH"], "description":"The number of data bytes that have been received."},
    {"address":5440, "name":"ASYNCH_NUM_BYTES_TX", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"The number of bytes to be transmitted after writing to GO. Max is 256."},
@@ -291,8 +291,8 @@
    {"address":5455, "name":"ASYNCH_NUM_STOP_BITS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"The number of stop bits. 1 or 2. 0 = 1."},
    {"address":5460, "name":"ASYNCH_PARITY", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"Parity setting: 0=none, 1=odd, 2=even."},
    {"address":5465, "name":"ASYNCH_NUM_PARITY_ERRORS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"The number of parity errors that have been detected. Cleared when UART is enabled. Can also be cleared by writing 0."},
-   {"address":5490, "name":"ASYNCH_DATA_TX", "type":"BYTE", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"Write data to be transmitted here."},
-   {"address":5495, "name":"ASYNCH_DATA_RX", "type":"BYTE", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"Read received data from here."},
+   {"address":5490, "name":"ASYNCH_DATA_TX", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"Write data to be transmitted here."},
+   {"address":5495, "name":"ASYNCH_DATA_RX", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"Read received data from here."},
 
 
    {"address":4899, "name":"STREAM_DATA_CAPTURE_16", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0071}], "readwrite":"W", "tags":["STREAM"], "streamable":true, "description":"If a channel produces 32-bits of data the upper 16 will be saved here."},
@@ -322,7 +322,7 @@
 
    {"address":4800, "name":"STREAM_OUT#(0:3)", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0012}], "readwrite":"R", "default":0, "tags":["STREAM"],"description":"Include one or more of these registers in STREAM_SCANLIST_ADDRESS#(0:127) to trigger stream out updates. This register returns null data when read via command-response."},
    {"address":4040, "name":"STREAM_OUT#(0:3)_TARGET", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0012}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Channel that data will be written to."},
-   {"address":4050, "name":"STREAM_OUT#(0:3)_BUFFER_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Size of the buffer in bytes. Should be at least twice the size of updates that will be written."},
+   {"address":4050, "name":"STREAM_OUT#(0:3)_BUFFER_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Size of the buffer in bytes. Should be at least twice the size of updates that will be written. Max is 16384."},
    {"address":4060, "name":"STREAM_OUT#(0:3)_LOOP_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of value that will be repeated after reaching the end of supplied data."},
    {"address":4070, "name":"STREAM_OUT#(0:3)_SET_LOOP", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":"Controls when new data and loop size are used. 1=Use new data immediately. 2=Wait for synch. New data will not be used until a different Stream-Out channel is set to Synch. 3=Synch. This Stream-Out# as well as any Stream-Outs set to synch will start using new data immediately."},
    {"address":4080, "name":"STREAM_OUT#(0:3)_BUFFER_STATUS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"R", "default":0, "tags":["STREAM"],"description":"The number of entries in the buffer that are not currently being used."},
@@ -815,7 +815,8 @@
     "2014.06.13.A:  Adding status codes back into description field until automated tools are updated.",
     "2014.06.17.A:  Added additional description to STREAM_OUT#(0:3)_SET_LOOP.",
     "2014.06.17.B:  Added additional description STREAM_SCANLIST_ADDRESS#(0:127).",
-    "2014.06.24.B:  Added UART registers and descriptions.",
+    "2014.06.24.A:  Added UART registers and descriptions.",
+    "2014.06.27.A:  Changed UART data registers to UINT16.",
     "End Of Comments"
   ]
 }

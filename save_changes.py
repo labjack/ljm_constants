@@ -18,11 +18,7 @@ commit_message = "Incremental JSON update."
 if len(sys.argv) == 2:
     commit_message = sys.argv[1]
     
-constants_repo_dir = \
-    '/var/lib/stickshift/53a6becd50044688100003d8/app-root/data/451301/MANUAL_LJM_CONSTANTS'
-    # Essentially '~/451301/MANUAL_LJM_CONSTANTS'
-
-starting_dir = os.path.dirname(os.path.realpath(__file__))
+constants_repo_dir = os.path.dirname(os.path.abspath(__file__))
 
 print 'Checking JSON file...'
 json_file_path = os.path.join(constants_repo_dir, 'LabJack', 'LJM', 'ljm_constants.json')
@@ -46,20 +42,13 @@ for device in json_map:
             exit(1)
         previous_names.append(reg_name)
 
-# p = subprocess.Popen("pwd", stdout=subprocess.PIPE)
-# result = p.communicate()[0]
-# print result
 print 'Saving to Git repository...'
 
 # Move to the repo
 os.chdir(constants_repo_dir)
 
-try:
-    subprocess.check_call('git pull', shell=True)
-    subprocess.call('git commit -a -m "%s"' % commit_message, shell=True)
-    subprocess.call('git push', shell=True)
-finally:
-    # Move back to where we were
-    os.chdir(starting_dir)
+subprocess.check_call('git pull', shell=True)
+subprocess.call('git commit -a -m "%s"' % commit_message, shell=True)
+subprocess.call('git push', shell=True)
     
 print 'Finished!'
