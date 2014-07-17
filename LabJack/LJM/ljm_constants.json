@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2014.07.16.A",
+   "version":"2014.07.17.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -86,7 +86,7 @@
    {"address":43902, "name":"AIN_ALL_NEGATIVE_CH", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":199, "tags":["AIN"], "description":"A write to this global parameter affects all AIN.  A read will return the correct setting if all channels are set the same, but otherwise will return 0xFFFF."},
    {"address":43903, "name":"AIN_ALL_RESOLUTION_INDEX", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["AIN"], "description":"A write to this global parameter affects all AIN.  A read will return the correct setting if all channels are set the same, but otherwise will return 0xFFFF."},
    {"address":43904, "name":"AIN_ALL_SETTLING_US", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["AIN"], "description":"A write to this global parameter affects all AIN.  A read will return the correct setting if all channels are set the same, but otherwise will return -9999."},
-   {"address":43906, "name":"AIN_ALL_EF_INDEX", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["AIN"], "altnames":["AIN_ALL_EF_TYPE"], "description":"A write to this global parameter affects all AIN.  A read will return the correct setting if all channels are set the same, but otherwise will return 0xFFFFFFFF."},
+   {"address":43906, "name":"AIN_ALL_EF_INDEX", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["AIN"], "altnames":["AIN_ALL_EF_TYPE"], "description":"Specify the desired extended feature for all analog inputs with the index value. List of index values: 0=None(disabled), 1=Slope/Offset, 20=Thermocouple type E, 21=Thermocouple type J, 22=Thermocouple type K, 23=Thermocouple type R, 24=Thermocouple type T. A write to this global parameter affects all AIN.  A read will return the correct setting if all channels are set the same, but otherwise will return 0xFFFFFFFF."},
 
    {"address":44900, "name":"DIO_EF_CLOCK0_ENABLE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
    {"address":44901, "name":"DIO_EF_CLOCK0_DIVISOR", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9320}], "readwrite":"RW", "tags":["DIO_EF", "DIO"]},
@@ -306,7 +306,7 @@
    {"address":7600, "name":"AIN#(0:254)_EF_READ_C", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
    {"address":7900, "name":"AIN#(0:254)_EF_READ_D", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"R", "default":0, "tags":["AIN_EF", "AIN"]},
 
-   {"address":9000, "name":"AIN#(0:254)_EF_INDEX", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"], "description":"An index to specify the feature you want."},
+   {"address":9000, "name":"AIN#(0:254)_EF_INDEX", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"], "description":"Specify the desired extended feature for this analog input with the index value. List of index values: 0=None(disabled), 1=Slope/Offset, 20=Thermocouple type E, 21=Thermocouple type J, 22=Thermocouple type K, 23=Thermocouple type R, 24=Thermocouple type T."},
    {"address":9300, "name":"AIN#(0:254)_EF_CONFIG_A", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
    {"address":9600, "name":"AIN#(0:254)_EF_CONFIG_B", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
    {"address":9900, "name":"AIN#(0:254)_EF_CONFIG_C", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
@@ -818,6 +818,7 @@
     "2014.06.24.A:  Added UART registers and descriptions.",
     "2014.06.27.A:  Changed UART data registers to UINT16.",
     "2014.07.16.A:  Removed wrong pieces of descriptions for AIN#(0:254)_RANGE, AIN#(0:254)_NEGATIVE_CH, AIN#(0:254)_RESOLUTION_INDEX, and AIN#(0:254)_SETTLING_US. --If all channels are the same, this reads the correct value, but otherwise this reads -9999.0-- --If all channels are the same, this reads the correct value, but otherwise this reads 0xFFFF-- Also changed name of AIN_ALL_EF_TYPE to AIN_ALL_EF_INDEX, added AIN_ALL_EF_TYPE as an altname.",
+    "2014.07.17.A:  Added additional description to AIN#(0:254)_EF_INDEX, and AIN_ALL_EF_INDEX.",
     "End Of Comments"
   ]
 }
