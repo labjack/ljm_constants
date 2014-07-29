@@ -62,6 +62,7 @@
     {"LJM_SEND_RECEIVE_TIMEOUT_MS":"default",          "type":"integer"},
     {"LJM_STREAM_BUFFER_MAX_NUM_SECONDS":"default",    "type":"integer"},
     {"LJM_STREAM_CAL_LOAD_MAX_NUM_ATTEMPTS":"default", "type":"integer"},
+    {"LJM_STREAM_CONVERT_AIN14": "default",            "type":"boolean", "values":[true, false]},
     {"LJM_STREAM_SCANS_RETURN":"default",              "type":"integer", "values":[
                                                            "LJM_STREAM_SCANS_RETURN_ALL",
                                                            "LJM_STREAM_SCANS_RETURN_ALL_OR_NONE"
