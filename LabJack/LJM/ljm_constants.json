@@ -32,11 +32,11 @@
    {"address":4002, "name":"STREAM_SCANRATE_HZ", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of times per second that all channels in the scanlist will be read. Has no effect when using and external clock."},
    {"address":4004, "name":"STREAM_NUM_ADDRESSES", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of entries in the scanlist"},
    {"address":4006, "name":"STREAM_SAMPLES_PER_PACKET", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Specifies the number of data points to be sent in the data packet. Only applies to spontaneous mode."},
-   {"address":4008, "name":"STREAM_SETTLING_US", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Time in microseconds to allow signals to settle after switching the mux. Default 10 us. Max is 5000."},
+   {"address":4008, "name":"STREAM_SETTLING_US", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Time in microseconds to allow signals to settle after switching the mux. Default=0 equates to 10 us if sample rate <80k, and 6 us for higher sample rates. Max is 5000."},
    {"address":4010, "name":"STREAM_RESOLUTION_INDEX", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Index specifying the resolution of the data. High settings will have lower max speeds."},
-   {"address":4012, "name":"STREAM_BUFFER_SIZE_BYTES", "type":"UINT32", "devices":[{"device":"T7", "default":0, "description":"Max size is 32768. Default size is 4096."}], "readwrite":"RW", "default":0, "tags":["STREAM"], "description":"Size of the stream data buffer in bytes. Must be a power of 2. 0 is updated to the default size upon stream starting. Changes while stream is running do not affect the currently running stream."},
+   {"address":4012, "name":"STREAM_BUFFER_SIZE_BYTES", "type":"UINT32", "devices":[{"device":"T7", "default":0, "description":"Max size is 32768. Default size is 4096."}], "readwrite":"RW", "default":0, "tags":["STREAM"], "description":"Size of the stream data buffer in bytes. A value of 0 equates to the default value.  Must be a power of 2, as it takes 2 bytes to hold 1 sample.  Changes while stream is running do not affect the currently running stream."},
    {"address":4016, "name":"STREAM_AUTO_TARGET", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9108}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Controls where data will be sent. Value is a bitmask. bit 0: 1 = Send to Ethernet 702 sockets, bit 1: 1 = Send to USB, bit 4: 1 = Command-Response mode. All other bits are reserved."},
-   {"address":4020, "name":"STREAM_NUM_SCANS", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of scans to run before automatically stopping. 0 = run continuously."},
+   {"address":4020, "name":"STREAM_NUM_SCANS", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of scans to run before automatically stopping (stream-burst). 0 = run continuously.  Max number of samples is STREAM_BUFFER_SIZE_BYTES/2.  Max number of scans is (STREAM_BUFFER_SIZE_BYTES/2)/STREAM_NUM_ADDRESSES."},
    {"address":4022, "name":"STREAM_EXTERNAL_CLOCK_DIVISOR", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of pulses per scan when using an external clock."},
    {"address":4100, "name":"STREAM_SCANLIST_ADDRESS#(0:127)", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"], "description":"A list of addresses to read each scan. In the case of Stream-Out enabled, the list may also include something to write each scan."},
    {"address":4990, "name":"STREAM_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9421}], "readwrite":"W", "tags":["STREAM"],"description":"Write 1 to start stream. Write 0 to stop stream."},
@@ -183,7 +183,7 @@
 
    {"address":50000, "name":"AIN#(0:254)_BINARY", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["AIN"], "streamable":false, "altnames":["AIN#(0:254)_BIN"], "description":"Returns the binary representation of the specified analog input."},
 
-   {"address":55100, "name":"TEST", "type":"UINT32", "devices":["T7"], "readwrite":"R", "default":1122867, "tags":["CONFIG"], "description":"A read of this test register should always return 0x00112233 or d1122867. If your software has the word swap quirk, you will incorrectly read 0x22330011 or 573767697.  If your software has the address-1 quirk, a UINT16 (1-register) read from 55101 will incorrectly return 0x0011 (should read 0x2233)."},
+   {"address":55100, "name":"TEST", "type":"UINT32", "devices":["T7"], "readwrite":"R", "default":1122867, "tags":["CONFIG"], "description":"A read of this test register should always return 0x00112233 or d1122867. If your software has the word swap quirk, you will incorrectly read 0x22330011 or 573767697.  If your software has the address-1 quirk, a UINT16 (1-register) read from 55101 will incorrectly return 0x0011 (should read 0x2233).  This register is unlike others, in that it allows you can read a single word from 55100 or 55101, or of course 2 words from 55100."},
    {"address":55110, "name":"TEST_UINT16", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":17, "tags":["CONFIG"], "description":"Write a value and read back to test UINT16 operation. Default is 0x0011 or d17."},
    {"address":55120, "name":"TEST_UINT32", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":1122867, "tags":["CONFIG"], "description":"Write a value and read back to test UINT32 operation. Default is 0x00112233 or d1122867. If your software has the word swap quirk, the default will incorrectly read 0x22330011 or 573767697."},
    {"address":55122, "name":"TEST_INT32", "type":"INT32", "devices":["T7"], "readwrite":"RW", "default":-2003195205, "tags":["CONFIG"], "description":"Write a value and read back to test INT32 operation. Default is 0x8899AABB or d-2003195205. If your software has the word swap quirk, the default will incorrectly read 0xAABB8899 or -1430550375."},
@@ -676,8 +676,9 @@
    {"error":2783, "string":"ASYNCH_BAUD_TOO_HIGH", "description":"Baud rate too high for this device."},
    {"error":2784, "string":"ASYNCH_IS_ENABLED", "description":"Specified operation can not be performed while enabled."},
    {"error":2785, "string":"ASYNCH_IS_NOT_ENABLED", "description":"Specified operation can not be performed while disabled."},
-   {"error":2786, "string":"ASYNCH_TX_TIMEOUT", "description":"Transmission timed out. Do not write more than 100 ms at a time."},
-   {"error":2787, "string":"ASYNCH_BAUD_ZERO", "description":"Baud rate is zero. Please specify a baud rate."},
+   {"error":2786, "string":"ASYNCH_TX_BUFFER_FULL", "description":"Transmit buffer is full."},
+   {"error":2787, "string":"ASYNCH_TX_TIMEOUT", "description":"Transmission timed out. Do not write more than 100 ms at a time."},
+   {"error":2788, "string":"ASYNCH_BAUD_ZERO", "description":"Baud rate is zero. Please specify a baud rate."},
 
 
    {"error":2900, "string":"WIFI_ASSOCIATED"},
@@ -822,6 +823,7 @@
     "2014.07.17.A:  Added additional description to AIN#(0:254)_EF_INDEX, and AIN_ALL_EF_INDEX.",
     "2014.07.22.A:  Added additional description to LJTDAC, and SBUS regs.  Clarified that LJTick-DAC is an accessory device, and also clarified that 'Even #' refers to register 'TDAC#', not the modbus address of a register.",
     "2014.07.24.A:  Changed streamable status of TEMPERATURE_AIR_K and TEMPERATURE_DEVICE_K to false.",
+    "2014.09.22.A:  Updated UART error codes.",
     "End Of Comments"
   ]
 }
