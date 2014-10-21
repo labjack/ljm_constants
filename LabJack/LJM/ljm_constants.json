@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2014.10.21.A",
+   "version":"2014.10.21.B",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -388,10 +388,10 @@
    {"address":60656, "name":"FILE_IO_READ", "type":"BYTE", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
    {"address":60654, "name":"FILE_IO_WRITE", "type":"BYTE", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
 
-   {"address":61500, "name":"RTC_SYSTEM_TIME_S", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0128}], "readwrite":"R", "tags":["RTC"], "description":"Read the current time on the RTC in seconds since Jan, 1970, aka Epoch or Unix time."},
-   {"address":61502, "name":"RTC_SYSTEM_TIME_MS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0128}], "readwrite":"R", "tags":["RTC"], "description":"Read the current time on the RTC in miliseconds."},
-   {"address":61504, "name":"RTC_SET_SYSTEM_TIME_S", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0128}], "readwrite":"W", "tags":["RTC"], "description":"Write a new timestamp to the RTC in seconds since Jan, 1970, aka Epoch or Unix timestamp."},
-   {"address":61510, "name":"RTC_CALENDAR_TIME", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0128}], "readwrite":"R", "tags":["RTC"], "description":"Read six consecutive addresses of type UINT16, starting with this address. The result will be in year, month, day, hour, minute, second calendar format. i.e. 2014, 10, 21, 18, 55, 35"},
+   {"address":61500, "name":"RTC_TIME_S", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0128}], "readwrite":"R", "tags":["RTC"], "description":"Read the current time on the RTC in seconds since Jan, 1970, aka Epoch or Unix time."},
+   {"address":61502, "name":"RTC_TIME_MS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0128}], "readwrite":"R", "tags":["RTC"], "description":"Read the current time on the RTC in miliseconds."},
+   {"address":61504, "name":"RTC_SET_TIME_S", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0128}], "readwrite":"W", "tags":["RTC"], "description":"Write a new timestamp to the RTC in seconds since Jan, 1970, aka Epoch or Unix timestamp."},
+   {"address":61510, "name":"RTC_TIME_CALENDAR", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0128}], "readwrite":"R", "tags":["RTC"], "description":"Read six consecutive addresses of type UINT16, starting with this address. The result will be in year, month, day, hour, minute, second calendar format. i.e. [2014, 10, 21, 18, 55, 35]"},
 
    {"address":5300, "name":"ONEWIRE_DQ_DIONUM", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["ONEWIRE"], "description":"The data-line DIO number."},
    {"address":5301, "name":"ONEWIRE_DPU_DIONUM", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["ONEWIRE"], "description":"The dynamic pullup control DIO number."},
@@ -830,6 +830,7 @@
     "2014.09.22.A:  Updated UART error codes.",
     "2014.09.28.A:  Updated I2C throttle description.",
     "2014.10.21.A:  Added RTC registers, also updated onewire tag to be ONEWIRE instead of I2C. Also added a bit of descriptions to onewire regs",
+    "2014.10.21.B:  Updated RTC register names",
     "End Of Comments"
   ]
 }
