@@ -19,6 +19,8 @@ if [ "$OS" != 'Linux' ] && [ "$OS" != 'Darwin' ]; then
 	exit 1
 fi
 
+chmod 666 ${FILE_DIR}/${TARGET}/LJM/ljm.log
+
 test -z $DESTINATION || mkdir -p $DESTINATION
 cp --recursive --preserve=mode "${FILE_DIR}/${TARGET}" "$DESTINATION/${TARGET}"
 
