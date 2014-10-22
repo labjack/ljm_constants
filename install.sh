@@ -1,25 +1,26 @@
-#! /bin/sh
+#! /usr/bin/env bash
 #
-# Installs the LabJack constant files for Linux and Mac. Run with sudo.
-#
+# Installs the LabJack constant files on a Linux or Mac system.
 
-# So that you can call this script from a different directory
+set -e
+set -u
+
 FILE_DIR=`dirname $0`
-
 DESTINATION=/usr/local/share
 TARGET=LabJack
 OS=`uname -s`
+
+if [ $UID != 0 ]; then
+	echo "Warning: This script should probably be run as root or using sudo."
+fi
 
 if [ "$OS" != 'Linux' ] && [ "$OS" != 'Darwin' ]; then
 	echo "Unknown operating system $OS"
 	exit 1
 fi
 
-echo "Installing LabJack constant files..."
-
 test -z $DESTINATION || mkdir -p $DESTINATION
-cp -R "${FILE_DIR}/${TARGET}" $DESTINATION
-
-echo "Done"
+cp --recursive --preserve=mode "${FILE_DIR}/${TARGET}" "$DESTINATION/${TARGET}"
 
 exit 0
+
