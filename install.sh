@@ -22,7 +22,20 @@ fi
 chmod 666 ${FILE_DIR}/${TARGET}/LJM/ljm.log
 
 test -z $DESTINATION || mkdir -p $DESTINATION
-cp --recursive --preserve=mode "${FILE_DIR}/${TARGET}" "$DESTINATION/${TARGET}"
+
+
+oldinstall ()
+{
+	echo "$0 - Attempting to catch and handle an error for older machines (mostly Mac 10.5)..."
+	cp -vR "${FILE_DIR}/${TARGET}" "${DESTINATION}/"
+	chmod 666 "${DESTINATION}/${TARGET}/LJM/ljm.log"
+	echo "$0 - Error caught and handled successfully. Exiting now with success."
+	exit 0
+}
+
+trap oldinstall EXIT
+cp -v --recursive --preserve=mode "${FILE_DIR}/${TARGET}" "${DESTINATION}/"
+trap - EXIT
 
 exit 0
 
