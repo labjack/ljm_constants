@@ -508,7 +508,7 @@
    {"error":1303, "string":"LJME_STREAM_NOT_RUNNING", "description":"LJM is not streaming data from the device."},
    {"error":1304, "string":"LJME_UNABLE_TO_STOP_STREAM", "description":"The stream could not be stopped."},
    {"error":1305, "string":"LJME_INVALID_VALUE", "description":"LJM received a value that was not expected."},
-   {"error":1306, "string":"LJME_SYNCHRONIZATION_TIMEOUT", "description":"LJM did not receive data from the stream for long enough that reading from the LJM buffer timed out."},
+   {"error":1306, "string":"LJME_SYNCHRONIZATION_TIMEOUT", "description":"LJM did not receive data from the stream for long enough that reading form the LJM buffer timed out."},
    {"error":1307, "string":"LJME_OLD_FIRMWARE", "description":"The current firmware version of the device was not sufficient to read/write a requested register, as according to the loaded LJM constants file."},
    {"error":1308, "string":"LJME_CANNOT_READ_OUT_ONLY_STREAM", "description":"The stream running is out-only and does not produce data values."},
    {"error":1309, "string":"LJME_NO_SCANS_RETURNED", "description":"The LJM configuration LJM_STREAM_SCANS_RETURN is set to LJM_STREAM_SCANS_RETURN_ALL_OR_NONE and the full ScansPerRead scans have not be received."},
@@ -834,3 +834,4 @@
     "End Of Comments"
   ]
 }
+
