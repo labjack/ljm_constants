@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2014.10.21.C",
+   "version":"2014.11.26.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -301,7 +301,7 @@
 
    {"address":49410, "name":"WIFI_START_ADHOC", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9308}], "readwrite":"W", "tags":["WIFI"]},
 
-   {"address":7000, "name":"AIN#(0:254)_EF_READ_A", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"R", "default":0, "tags":["AIN_EF", "AIN"]},
+   {"address":7000, "name":"AIN#(0:254)_EF_READ_A", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"R", "default":0, "tags":["AIN_EF", "AIN", "CORE"]},
    {"address":7300, "name":"AIN#(0:254)_EF_READ_B", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
    {"address":7600, "name":"AIN#(0:254)_EF_READ_C", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
    {"address":7900, "name":"AIN#(0:254)_EF_READ_D", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"R", "default":0, "tags":["AIN_EF", "AIN"]},
@@ -360,36 +360,37 @@
    {"address":47000, "name":"LUA_IO#(0:127)_WRITE", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA"], "description":""},
 
 
-   {"address":60600, "name":"FILE_IO_DIR_CHANGE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60601, "name":"FILE_IO_DIR_CURRENT", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60602, "name":"FILE_IO_DIR_MAKE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60603, "name":"FILE_IO_DIR_REMOVE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60600, "name":"FILE_IO_DIR_CHANGE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":99.0}], "readwrite":"W"},
+   {"address":60601, "name":"FILE_IO_DIR_CURRENT", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0134}], "readwrite":"W"},
+   {"address":60602, "name":"FILE_IO_DIR_MAKE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":99.0}], "readwrite":"W"},
+   {"address":60603, "name":"FILE_IO_DIR_REMOVE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":99.0}], "readwrite":"W"},
 
-   {"address":60610, "name":"FILE_IO_DIR_FIRST", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60611, "name":"FILE_IO_DIR_NEXT", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60610, "name":"FILE_IO_DIR_FIRST", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0134}], "readwrite":"W"},
+   {"address":60611, "name":"FILE_IO_DIR_NEXT", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0134}], "readwrite":"W"},
 
-   {"address":60620, "name":"FILE_IO_OPEN", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60621, "name":"FILE_IO_CLOSE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60622, "name":"FILE_IO_DELETE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60623, "name":"FILE_IO_ATTRIBUTES", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60628, "name":"FILE_IO_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60620, "name":"FILE_IO_OPEN", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0134}], "readwrite":"W"},
+   {"address":60621, "name":"FILE_IO_CLOSE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0134}], "readwrite":"W"},
+   {"address":60622, "name":"FILE_IO_DELETE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0134}], "readwrite":"W"},
+   {"address":60623, "name":"FILE_IO_ATTRIBUTES", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0134}], "readwrite":"R"},
+   {"address":60628, "name":"FILE_IO_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0134}], "readwrite":"R"},
 
-   {"address":60630, "name":"FILE_IO_DISK_SECTOR_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60632, "name":"FILE_IO_DISK_SECTORS_PER_CLUSTER", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60634, "name":"FILE_IO_DISK_TOTAL_CLUSTERS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60636, "name":"FILE_IO_DISK_FREE_CLUSTERS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60638, "name":"FILE_IO_DISK_FORMAT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60630, "name":"FILE_IO_DISK_SECTOR_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.0134}], "readwrite":"R"},
+   {"address":60632, "name":"FILE_IO_DISK_SECTORS_PER_CLUSTER", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.0134}], "readwrite":"R"},
+   {"address":60634, "name":"FILE_IO_DISK_TOTAL_CLUSTERS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.0134}], "readwrite":"R"},
+   {"address":60636, "name":"FILE_IO_DISK_FREE_CLUSTERS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.0134}], "readwrite":"R"},
+   {"address":60638, "name":"FILE_IO_DISK_FORMAT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.0134}], "readwrite":"R"},
 
-   {"address":60640, "name":"FILE_IO_NAME_WRITE_LEN", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60642, "name":"FILE_IO_NAME_READ_LEN", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60640, "name":"FILE_IO_NAME_WRITE_LEN", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.0134}], "readwrite":"W"},
+   {"address":60642, "name":"FILE_IO_NAME_READ_LEN", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.0134}], "readwrite":"R"},
 
-   {"address":60650, "name":"FILE_IO_NAME_WRITE", "type":"BYTE", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60652, "name":"FILE_IO_NAME_READ", "type":"BYTE", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60656, "name":"FILE_IO_READ", "type":"BYTE", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
-   {"address":60654, "name":"FILE_IO_WRITE", "type":"BYTE", "devices":[{"device":"T7", "fwmin":1.0062}], "readwrite":"R"},
+   {"address":60650, "name":"FILE_IO_NAME_WRITE", "type":"BYTE", "devices":[{"device":"T7", "fwmin":0.0134}], "readwrite":"W"},
+   {"address":60652, "name":"FILE_IO_NAME_READ", "type":"BYTE", "devices":[{"device":"T7", "fwmin":0.0134}], "readwrite":"R"},
+   {"address":60654, "name":"FILE_IO_WRITE", "type":"BYTE", "devices":[{"device":"T7", "fwmin":99.0}], "readwrite":"W"},
+   {"address":60656, "name":"FILE_IO_READ", "type":"BYTE", "devices":[{"device":"T7", "fwmin":0.0134}], "readwrite":"R"},
 
    {"address":61500, "name":"RTC_TIME_S", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0128}], "readwrite":"R", "tags":["RTC"], "description":"Read the current time on the RTC in seconds since Jan, 1970, aka Epoch or Unix time."},
    {"address":61504, "name":"RTC_SET_TIME_S", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0128}], "readwrite":"W", "tags":["RTC"], "description":"Write a new timestamp to the RTC in seconds since Jan, 1970, aka Epoch or Unix timestamp."},
+   {"address":61506, "name":"RTC_SET_TIME_SNTP", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0128}], "readwrite":"W", "tags":["RTC"], "description":"Write any value to instruct the T7 to update its clock from a SNTP server."},
    {"address":61510, "name":"RTC_TIME_CALENDAR", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0128}], "readwrite":"R", "tags":["RTC"], "description":"Read six consecutive addresses of type UINT16, starting with this address. The result will be in year, month, day, hour, minute, second calendar format. i.e. [2014, 10, 21, 18, 55, 35]"},
 
    {"address":5300, "name":"ONEWIRE_DQ_DIONUM", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["ONEWIRE"], "description":"The data-line DIO number."},
@@ -535,11 +536,13 @@
    {"error":2355, "string":"FLASH_VERIFICATION_FAILED", "description":"A write to flash failed to set one or more bits to the desired values."},
    {"error":2356, "string":"FLASH_ERASE_FAILED", "description":"One or more bits failed to set during a flash erase operation."},
    {"error":2358, "string":"INTFLASH_UNAVAILABLE", "description":"Flash can not be accessed due to the WiFi module booting up."},
+   {"error":2359, "string":"FILEIO_UNAVAILABLE", "description":"The file system can not be accessed due to the WiFi module booting up."},
 
    {"error":2370, "string":"AIN_RANGE_INVALID", "description":"Specified range not available on this device."},
    {"error":2371, "string":"AIN_SETTLING_INVALID", "description":"Specified settling is greater than device max."},
    {"error":2372, "string":"AIN_SET_TO_BINARY", "description":"Analog input system currently set to binary. Some operations, such as AIN_EF, will fail."},
    {"error":2373, "string":"AIN_NEGATIVE_CHANNEL_INVALID", "description":"For channel range 0-13: Negative channel must be even channel number + 1.  For extended channel range 48-127: Negative channel must be channel number + 8."},
+   {"error":2374, "string":"AIN_ALL_ZERO_ONLY", "description":"Only a value of zero may be written to this address."},
 
    {"error":2380, "string":"LUA_VM_STATE_NO_CHANGE"},
    {"error":2381, "string":"LUA_INITIALIZATION_ERROR"},
@@ -602,6 +605,8 @@
    {"error":2584, "string":"AIN_EF_CALCULATION_OUT_OF_RANGE"},
    {"error":2585, "string":"AIN_EF_INVALID_CHANNEL"},
    {"error":2586, "string":"AIN_EF_INVALID_CJC_REGISTER"},
+   {"error":2587, "string":"AIN_EF_STREAM_START_FAILURE", "description":"Could not start the data collection stream."},
+   {"error":2588, "string":"AIN_COULD_NOT_FIND_PERIOD", "description":"Failed to detect a period to perform calculations over."},
 
    {"error":2600, "string":"STREAM_NEED_AT_LEAST_ONE_CHN", "description":"The list of channels to stream is empty."},
    {"error":2601, "string":"STREAM_CLOCK_BASE_NOT_WRITABLE", "description":"Stream clock base is read only."},
@@ -626,7 +631,9 @@
    {"error":2620, "string":"STREAM_NOT_RUNNING", "description":""},
    {"error":2621, "string":"STREAM_SETTLING_INVALID", "description":"Specified settling time is greater than the max possible."},
    {"error":2622, "string":"STREAM_OUT_LOOP_TOO_BIG", "description":"Loop size to big for the current buffer size."},
-   {"error":2623, "string":"STREAM_OUT_DATA_TRGT_MISSMATCH"},
+   {"error":2623, "string":"STREAM_OUT_DATA_TRGT_MISSMATCH", "description":""},
+   {"error":2624, "string":"STREAM_INVALID_DIVISOR", "description":"Selected divisor can not be used."},
+   {"error":2625, "string":"STREAM_CHN_CAN_NOT_BE_STREAMED", "description":"The requested channel can not be streamed."},
 
    {"error":2670, "string":"SWDT_ROLLT_INVALID"},
    {"error":2671, "string":"SWDT_ENABLED", "description":"The watchdog must be disabled before the requested operation can be performed."},
@@ -664,6 +671,7 @@
    {"error":2742, "string":"SBUS_CUSTOM_MODE_INVALID"},
    {"error":2743, "string":"SBUS_INVALID_DIO_NUM", "description":"Attempted to set an invalid pin."},
    {"error":2744, "string":"SBUS_BACKGROUND_SERVICE_ON", "description":"Command-response reads can not be used while the backgroud service is running."},
+   {"error":2745, "string":"SBUS_CHECKSUM_ERROR", "description":"SHT communication checksum failed."},
 
    {"error":2760, "string":"TDAC_SDA_SCL_INVALID", "description":"SCL must be even and SDA must be SCL+1."},
    {"error":2761, "string":"TDAC_SCL_INVALID", "description":"Attempted to set an invalid pin."},
@@ -683,6 +691,25 @@
    {"error":2787, "string":"ASYNCH_TX_TIMEOUT", "description":"Transmission timed out. Do not write more than 100 ms at a time."},
    {"error":2788, "string":"ASYNCH_BAUD_ZERO", "description":"Baud rate is zero. Please specify a baud rate."},
 
+   {"error":2801, "string":"FILE_IO_DISK_ERROR", "description":"A hard error occurred in the low level disk I/O layer."},
+   {"error":2802, "string":"FILE_IO_INTERNAL_ERROR", "description":"Assertion failed."},
+   {"error":2803, "string":"FILE_IO_NOT_READY", "description":"The physical drive cannot work."},
+   {"error":2804, "string":"FILE_IO_NO_FILE", "description":"Could not find the file."},
+   {"error":2805, "string":"FILE_IO_NO_PATH", "description":"Could not find the path."},
+   {"error":2806, "string":"FILE_IO_INVALID_NAME", "description":"The path name format is invalid."},
+   {"error":2807, "string":"FILE_IO_DENIED", "description":"Access denied due to prohibited access or directory full."},
+   {"error":2808, "string":"FILE_IO_EXIST", "description":"Access denied due to prohibited access."},
+   {"error":2809, "string":"FILE_IO_INVALID_OBJECT", "description":"The file/directory object is invalid."},
+   {"error":2810, "string":"FILE_IO_WRITE_PROTECTED", "description":"The physical drive is write protected."},
+   {"error":2811, "string":"FILE_IO_INVALID_DRIVE", "description":"The logical drive number is invalid."},
+   {"error":2812, "string":"FILE_IO_NOT_ENABLED", "description":"The volume has no work area."},
+   {"error":2813, "string":"FILE_IO_NO_FILESYSTEM", "description":"There is no valid FAT12, FAT16, or FAT32 volume."},
+   {"error":2814, "string":"FILE_IO_MKFS_ABORTED", "description":"The f_mkfs() aborted due to any parameter error."},
+   {"error":2815, "string":"FILE_IO_TIMEOUT", "description":"Could not get a grant to access the volume within defined period."},
+   {"error":2816, "string":"FILE_IO_LOCKED", "description":"The operation is rejected according to the file sharing policy."},
+   {"error":2817, "string":"FILE_IO_NOT_ENOUGH_CORE", "description":"LFN working buffer could not be allocated."},
+   {"error":2818, "string":"FILE_IO_TOO_MANY_OPEN_FILES", "description":"Number of open files greater than allowable limit (files > _FS_SHARE)."},
+   {"error":2819, "string":"FILE_IO_INVALID_PARAMETER", "description":"Given parameter is invalid."},
 
    {"error":2900, "string":"WIFI_ASSOCIATED"},
    {"error":2901, "string":"WIFI_ASSOCIATING"},
@@ -831,6 +858,9 @@
     "2014.10.21.A:  Added RTC registers, also updated onewire tag to be ONEWIRE instead of I2C. Also added a bit of descriptions to onewire regs",
     "2014.10.21.B:  Updated RTC register names",
     "2014.10.21.C:  Removed RTC_TIME_MS since it didn't work anymore, and the functionality is covered by CORE_TIMER",
+    "2014.11.12.A:  Updated File IO registers.",
+    "2014.11.17.A:  Added some missing error codes.",
+    "2014.11.26.A:  Added SHT Csum error code. Added RTC SNTP update register. Added error codes 2801 through 2819 for FILE_IO errors.",
     "End Of Comments"
   ]
 }
