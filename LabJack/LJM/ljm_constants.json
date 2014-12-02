@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2014.11.26.A",
+   "version":"2014.12.02.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -861,6 +861,7 @@
     "2014.11.12.A:  Updated File IO registers.",
     "2014.11.17.A:  Added some missing error codes.",
     "2014.11.26.A:  Added SHT Csum error code. Added RTC SNTP update register. Added error codes 2801 through 2819 for FILE_IO errors.",
+    "2014.12.02.A:  Updated 60010 HARDWARE_INSTALLED register to include full bitmask information.",
     "End Of Comments"
   ]
 }

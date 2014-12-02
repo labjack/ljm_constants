@@ -7,7 +7,6 @@ import json
 import os
 import subprocess
 import sys
-
 import ljmmm
 
 if len(sys.argv) > 2:
