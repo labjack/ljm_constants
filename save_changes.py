@@ -1,13 +1,13 @@
 """save_changes.py
 
-Verifies that ljm_constants.json is not obviously invalid, git commits all, and
+Verifies that ljm_constants.json using validate.py, git commits all, and
 pushes to origin.
 """
-import json
 import os
 import subprocess
 import sys
-import ljmmm
+
+import validate
 
 if len(sys.argv) > 2:
     print 'Too many args. Commit message may be arg 0.'
@@ -18,28 +18,8 @@ if len(sys.argv) == 2:
     commit_message = sys.argv[1]
     
 constants_repo_dir = os.path.dirname(os.path.abspath(__file__))
-
-print 'Checking JSON file...'
 json_file_path = os.path.join(constants_repo_dir, 'LabJack', 'LJM', 'ljm_constants.json')
-try:
-    json_map = ljmmm.get_device_modbus_maps(json_file_path)
-except Exception as e:
-    print '[ERROR] JSON file could not be parsed. Please check. (' + str(e) + ')'
-    exit(1)
-
-print 'Checking register map duplicates...'
-for device in json_map:
-    previous_names = []
-    previous_addresses = []
-    device_registers = json_map[device]
-    
-    for register in device_registers:
-        reg_name = register['name']
-        
-        if reg_name in previous_names:
-            print 'Duplicate entries for %s found.' % reg_name
-            exit(1)
-        previous_names.append(reg_name)
+validate.validate(json_file_path)
 
 print 'Saving to Git repository...'
 
