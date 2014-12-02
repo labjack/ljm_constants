@@ -194,7 +194,7 @@
    {"address":60004, "name":"FIRMWARE_VERSION", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9", "DIGIT"], "readwrite":"R", "tags":["CONFIG"], "description":"The current firmware version installed on the main processor."},
    {"address":60006, "name":"BOOTLOADER_VERSION", "type":"FLOAT32", "devices":["U3", "U6", "T7", "UE9", "DIGIT"], "readwrite":"R", "tags":["CONFIG"], "description":"The bootloader version installed on the main processor."},
    {"address":60008, "name":"WIFI_VERSION", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["CONFIG"], "description":"The current firmware version of the WiFi module, if available."},
-   {"address":60010, "name":"HARDWARE_INSTALLED", "type":"UINT32", "devices":["T7"], "readwrite":"R", "default":0, "tags":["CONFIG"], "description":"Bitmask indicating installed hardware options. 0 = High-Res ADC, 1 = WiFi."},
+   {"address":60010, "name":"HARDWARE_INSTALLED", "type":"UINT32", "devices":["T7"], "readwrite":"R", "default":0, "tags":["CONFIG"], "description":"Bitmask indicating installed hardware options. bit0: High Resolution ADC, bit1: WiFi, bit2: RTC, bit3: uSD."},
    {"address":60020, "name":"ETHERNET_MAC", "type":"UINT64", "devices":["T7", "UE9"], "readwrite":"R", "tags":["ETHERNET"], "description":"The MAC address of the wired Ethernet module."},
    {"address":60024, "name":"WIFI_MAC", "type":"UINT64", "devices":["T7"], "readwrite":"R", "tags":["WIFI"], "description":"The MAC address of the WiFi module."},
    {"address":60028, "name":"SERIAL_NUMBER", "type":"UINT32", "devices":["U3", "U6", "T7", "UE9", "DIGIT"], "readwrite":"R", "tags":["CONFIG"], "description":"The serial number of the device."},
