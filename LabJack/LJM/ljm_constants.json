@@ -306,7 +306,7 @@
    {"address":7600, "name":"AIN#(0:254)_EF_READ_C", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
    {"address":7900, "name":"AIN#(0:254)_EF_READ_D", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"R", "default":0, "tags":["AIN_EF", "AIN"]},
 
-   {"address":9000, "name":"AIN#(0:254)_EF_INDEX", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"], "description":"Specify the desired extended feature for this analog input with the index value. List of index values: 0=None(disabled), 1=Slope/Offset, 20=Thermocouple type E, 21=Thermocouple type J, 22=Thermocouple type K, 23=Thermocouple type R, 24=Thermocouple type T."},
+   {"address":9000, "name":"AIN#(0:254)_EF_INDEX", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"], "description":"Specify the desired extended feature for this analog input with the index value. List of index values: 0=None(disabled), 1=Slope/Offset, 11=AutoRMS, 20=Thermocouple type E, 21=Thermocouple type J, 22=Thermocouple type K, 23=Thermocouple type R, 24=Thermocouple type T, 40=RTD model PT100, 41=RTD model PT500, 42=RTD model PT1000."},
    {"address":9300, "name":"AIN#(0:254)_EF_CONFIG_A", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
    {"address":9600, "name":"AIN#(0:254)_EF_CONFIG_B", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
    {"address":9900, "name":"AIN#(0:254)_EF_CONFIG_C", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
@@ -861,7 +861,8 @@
     "2014.11.12.A:  Updated File IO registers.",
     "2014.11.17.A:  Added some missing error codes.",
     "2014.11.26.A:  Added SHT Csum error code. Added RTC SNTP update register. Added error codes 2801 through 2819 for FILE_IO errors.",
-    "2014.12.02.A:  Updated 60010 HARDWARE_INSTALLED register to include full bitmask information, such as bit4:uSD",
+    "2014.12.02.A:  Updated 60010 HARDWARE_INSTALLED register to include full bitmask information.",
+    "2014.12.02.B:  Updated 9000 AIN#(0:254)_EF_INDEX description to include AutoRMS and RTDs",
     "End Of Comments"
   ]
 }
