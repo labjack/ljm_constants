@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2014.12.06.A",
+   "version":"2014.12.13.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -35,6 +35,7 @@
    {"address":4008, "name":"STREAM_SETTLING_US", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Time in microseconds to allow signals to settle after switching the mux. Default=0 equates to 10 us if sample rate <80k, and 6 us for higher sample rates. Max is 5000."},
    {"address":4010, "name":"STREAM_RESOLUTION_INDEX", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Index specifying the resolution of the data. High settings will have lower max speeds."},
    {"address":4012, "name":"STREAM_BUFFER_SIZE_BYTES", "type":"UINT32", "devices":[{"device":"T7", "default":0, "description":"Max size is 32768. Default size is 4096."}], "readwrite":"RW", "default":0, "tags":["STREAM"], "description":"Size of the stream data buffer in bytes. A value of 0 equates to the default value.  Must be a power of 2, as it takes 2 bytes to hold 1 sample.  Changes while stream is running do not affect the currently running stream."},
+   {"address":4014, "name":"STREAM_CLOCK_SOURCE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0110}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Controlls which clock source will be used to run the main stream clock. 0 = Internal crystal, 2 = External clock Source. T7 can accept an external clock on CIO3. All other values reserved."},
    {"address":4016, "name":"STREAM_AUTO_TARGET", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9108}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Controls where data will be sent. Value is a bitmask. bit 0: 1 = Send to Ethernet 702 sockets, bit 1: 1 = Send to USB, bit 4: 1 = Command-Response mode. All other bits are reserved."},
    {"address":4020, "name":"STREAM_NUM_SCANS", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of scans to run before automatically stopping (stream-burst). 0 = run continuously.  Max number of samples is STREAM_BUFFER_SIZE_BYTES/2.  Max number of scans is (STREAM_BUFFER_SIZE_BYTES/2)/STREAM_NUM_ADDRESSES."},
    {"address":4022, "name":"STREAM_EXTERNAL_CLOCK_DIVISOR", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of pulses per scan when using an external clock."},
@@ -865,6 +866,7 @@
     "2014.12.02.B:  Updated 9000 AIN#(0:254)_EF_INDEX description to include AutoRMS and RTDs",
     "2014.12.03.A:  Updated 9000 AIN#(0:254)_EF_INDEX description, AutoRMS is now called FlexRMS",
     "2014.12.06.A:  Updated AIN_EF address ranges.",
+    "2014.12.13.A:  Added stream clock source register.",
     "End Of Comments"
   ]
 }
