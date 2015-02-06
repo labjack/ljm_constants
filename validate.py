@@ -19,16 +19,20 @@ def validate(json_file_path):
         previous_names = []
         previous_addresses = []
         device_registers = json_map[device]
-        
+
         for register in device_registers:
             reg_name = register['name']
-            
+
             if reg_name in previous_names:
                 print 'Duplicate entries for %s found.' % reg_name
                 exit(1)
             previous_names.append(reg_name)
-    
+
     print json_file_path + ' seems fine.'
 
 if __name__ == '__main__':
+    if len(sys.argv) < 2:
+        print 'Usage: %s json_file_path' % sys.argv[0]
+        exit(1)
+
     validate(sys.argv[1])
