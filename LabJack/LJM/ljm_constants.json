@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2015.01.27.A",
+   "version":"2015.02.23.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -452,6 +452,9 @@
    {"error":1237, "string":"LJME_CANNOT_DISCONNECT", "description":"An error occurred while attempting to disconnect."},
    {"error":1238, "string":"LJME_WINSOCK_FAILURE", "description":"A Windows WINSOCK error occurred."},
    {"error":1239, "string":"LJME_RECONNECT_FAILED", "description":"The device could not be contacted. LJM is configured to heal device connections and the reconnection attempt failed."},
+   {"error":1243, "string":"LJME_U3_CANNOT_BE_OPENED_BY_LJM", "description":"LJM cannot open UD-series LabJack devices; use the UD driver (http://labjack.com/support/ud)"},
+   {"error":1246, "string":"LJME_U6_CANNOT_BE_OPENED_BY_LJM", "description":"LJM cannot open UD-series LabJack devices; use the UD driver (http://labjack.com/support/ud)"},
+   {"error":1249, "string":"LJME_UE9_CANNOT_BE_OPENED_BY_LJM", "description":"LJM cannot open UD-series LabJack devices; use the UD driver (http://labjack.com/support/ud)"},
    {"error":1250, "string":"LJME_INVALID_ADDRESS", "description":"The requested address was not found."},
    {"error":1251, "string":"LJME_INVALID_CONNECTION_TYPE", "description":"LJM received an unexpected connection type."},
    {"error":1252, "string":"LJME_INVALID_DIRECTION", "description":"LJM received an unexpected read/write direction."},
@@ -867,6 +870,7 @@
     "2015.01.19.A:  Removed Digit-TL/TLH modbus addresses 22840, 22841, 22842, 22020, 22021, 22022, 22040, so parsing for fwmax token not needed.",
     "2015.01.20.A:  Changed Digit-TL/TLH registers 22049, 22053, 22054, 22055 to read-only to reflect firmware 1.21 behavior change.",
     "2015.01.27.A:  Changes typo for error code 1300 and others with 'received''.",
+    "2015.02.23.A:  Added LJME_U3_CANNOT_BE_OPENED_BY_LJM, LJME_U6_CANNOT_BE_OPENED_BY_LJM, and LJME_UE9_CANNOT_BE_OPENED_BY_LJM.",
     "End Of Comments"
   ]
 }
