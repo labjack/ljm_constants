@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2015.02.23.A",
+   "version":"2015.02.26.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -47,7 +47,7 @@
    {"address":5002, "name":"SPI_MISO_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"The DIO line for Master-In-Slave-Out."},
    {"address":5003, "name":"SPI_MOSI_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"The DIO line for Master-Out-Slave-In."},
    {"address":5004, "name":"SPI_MODE", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"The SPI mode controls the clock idle state and which edge clocks the data. Bit 1 is CPOL and Bit 0 is CPHA, so CPOL/CPHA for different decimal values: 0 = 0/0 = b00, 1 = 0/1 = b01, 2 = 1/0 = b10, 3 = 1/1 = b11."},
-   {"address":5005, "name":"SPI_SPEED_THROTTLE", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"This value controls the SPI clock frequency.  Pass 0-65535.  Default=0 corresponds to 65536 internally which results in ~1 MHz.  1 results in ~100 Hz."},
+   {"address":5005, "name":"SPI_SPEED_THROTTLE", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"This value controls the SPI clock frequency.  Pass 0-65535.  Default=0 corresponds to 65536 internally which results in ~800 kHz.  65500 = ~100 kHz, 65100 = ~10 kHz, 61100 = ~1 kHz, 21000 = ~100 Hz, and 1 = ~67 Hz.  Avoid setting too low such that the entire transaction lasts longer than the 250 millisecond timeout of the internal watchdog timer."},
    {"address":5006, "name":"SPI_OPTIONS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"Bit 0 is Auto-CS-Disable."},
    {"address":5007, "name":"SPI_GO", "type":"UINT16", "devices":["T7"], "readwrite":"W", "default":0, "tags":["SPI"], "description":"Write 1 to begin the configured SPI transaction."},
    {"address":5009, "name":"SPI_NUM_BYTES", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"The number of bytes to transfer."},
@@ -421,6 +421,7 @@
    {"error":201, "string":"LJME_FRAMES_OMITTED_DUE_TO_PACKET_SIZE", "description":"Some read/write operation(s) were not sent to the device because the Feedback command being created was too large for the device, given the current connection type."},
    {"error":202, "string":"LJME_DEBUG_LOG_FAILURE", "description":"The debug log file could not be written to. Check the LJM_DEBUG_LOG_FILE and related LJM configurations."},
    {"error":203, "string":"LJME_USING_DEFAULT_CALIBRATION", "description":"The device's calibration could not be read, so the nominal calibration values were used."},
+   {"error":204, "string":"LJME_DEBUG_LOG_FILE_NOT_OPEN", "description":"The message could not be logged because the debug log file has not been opened."},
 
    {"error":254, "string":"FEATURE_NOT_IMPLEMENTED"},
 
@@ -500,7 +501,7 @@
 
    {"error":1296, "string":"LJME_OVERSPECIFIED_PORT", "description":"The requested connection type is ANY and port is specified."},
    {"error":1297, "string":"LJME_INTENT_NOT_READY", "description":"The internal operation object was not prepared correctly. Please contact LabJack support if you've received this error."},
-   {"error":1298, "string":"LJME_ATTR_LOAD_COMM_FAILURE", "description":"A device matching the requested device parameters was found, claimed, and connected, but a communcation error prevented device attributes from being loaded to LJM. The device was not opened."},
+   {"error":1298, "string":"LJME_ATTR_LOAD_COMM_FAILURE", "description":"A device matching the requested device parameters was found, claimed, and connected, but a communication error prevented device attributes from being loaded to LJM. The device was not opened."},
    {"error":1299, "string":"LJME_INVALID_CONFIG_NAME", "description":"LJM received an unknown configuration name."},
    {"error":1300, "string":"LJME_ERROR_RETRIEVAL_FAILURE", "description":"An error occurred on the device and LJM was unable to retrieve more information about that error. Please contact LabJack support if you've received this error."},
    {"error":1301, "string":"LJME_LJM_BUFFER_FULL", "description":"The LJM stream buffer was filled with stream data and stream was stopped."},
@@ -871,6 +872,7 @@
     "2015.01.20.A:  Changed Digit-TL/TLH registers 22049, 22053, 22054, 22055 to read-only to reflect firmware 1.21 behavior change.",
     "2015.01.27.A:  Changes typo for error code 1300 and others with 'received''.",
     "2015.02.23.A:  Added LJME_U3_CANNOT_BE_OPENED_BY_LJM, LJME_U6_CANNOT_BE_OPENED_BY_LJM, and LJME_UE9_CANNOT_BE_OPENED_BY_LJM.",
+    "2015.02.26.A:  Added LJME_DEBUG_LOG_FILE_NOT_OPEN.",
     "End Of Comments"
   ]
 }
