@@ -45,6 +45,8 @@
                                                        ]},
     {"LJM_DEBUG_LOG_SLEEP_TIME_MS":"default",          "type":"integer"},
     {"LJM_ERROR_CONSTANTS_FILE":"default",             "type":"string"},
+    {"LJM_ETHERNET_OPEN_TIMEOUT_MS":"default",         "type":"integer"},
+    {"LJM_ETHERNET_SEND_RECEIVE_TIMEOUT_MS":"default", "type":"integer"},
     {"LJM_LISTALL_NUM_ATTEMPTS_ETHERNET":"default",    "type":"integer"},
     {"LJM_LISTALL_NUM_ATTEMPTS_WIFI":"default",        "type":"integer"},
     {"LJM_LISTALL_THREADED_ETHERNET":"default",        "type":"boolean", "values":[true, false]},
@@ -57,9 +59,7 @@
     {"LJM_MODBUS_MAP_CONSTANTS_FILE":"default",        "type":"string"},
     {"LJM_OLD_FIRMWARE_CHECK":"default",               "type":"boolean", "values":[true, false]},
     {"LJM_OPEN_MODE":"default",                        "type":"integer"},
-    {"LJM_OPEN_TCP_DEVICE_TIMEOUT_MS":"default",       "type":"integer"},
     {"LJM_RETRY_ON_TRANSACTION_ID_MISMATCH":"default", "type":"boolean", "values":[true, false]},
-    {"LJM_SEND_RECEIVE_TIMEOUT_MS":"default",          "type":"integer"},
     {"LJM_STREAM_BUFFER_MAX_NUM_SECONDS":"default",    "type":"integer"},
     {"LJM_STREAM_CAL_LOAD_MAX_NUM_ATTEMPTS":"default", "type":"integer"},
     {"LJM_STREAM_CONVERT_AIN14": "default",            "type":"boolean", "values":[true, false]},
@@ -73,6 +73,9 @@
                                                        ]},
     {"LJM_STREAM_RECEIVE_TIMEOUT_MS":"default",        "type":"integer"},
     {"LJM_STREAM_TRANSFERS_PER_SECOND":"default",      "type":"integer"},
+    {"LJM_USB_SEND_RECEIVE_TIMEOUT_MS":"default",      "type":"integer"},
+    {"LJM_WIFI_OPEN_TIMEOUT_MS":"default",             "type":"integer"},
+    {"LJM_WIFI_SEND_RECEIVE_TIMEOUT_MS":"default",     "type":"integer"},
     {"LJM_ZERO_LENGTH_ARRAY_MODE":"default",           "type":"integer", "values":[
                                                            "LJM_ZERO_LENGTH_ARRAY_ERROR",
                                                            "LJM_ZERO_LENGTH_ARRAY_IGNORE_OPERATION"
