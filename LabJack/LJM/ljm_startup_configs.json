@@ -19,6 +19,11 @@
 //   "description" field. Other fields in LJM_CONFIG_VALUES which are not
 //   recognized by LJM will generate errors/warnings.
 //
+//   Windows file paths must escape \ characters with \. For example, the path
+//       C:\ljm.log
+//   must be escaped as
+//       C:\\ljm.log
+//
 //   Report bugs to support@labjack.com
 //   LabJack's LJM driver/library: <http://labjack.com/support/ljm>,
 
