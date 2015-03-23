@@ -4,7 +4,7 @@ LJM Special Addresses are IP addresses that LJM will check whenever a ListAll or
 
 By default, LJM parses `ljm_special_addresses.config` on startup and adds all IP addresses contained within with as LJM Scan Addresses. `ljm_special_addresses.config` is located in the same directory as this file. If it does not exist, you may create it.
 
-Contact your network administrator to ensure that the LJM Special Addresseses will be reachable via TCP. You can also ping those addresses to ensure that they are reachable. See the `LJM_SPECIAL_ADDRESSES_STATUS` section below for error information.
+Contact your network administrator to ensure that the LJM Special Addresses will be reachable via TCP. You can also ping those addresses to ensure that they are reachable. See the `LJM_SPECIAL_ADDRESSES_STATUS` section below for error information.
 
 
 
