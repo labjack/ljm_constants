@@ -34,7 +34,7 @@ type: string
 
 `LJM_SPECIAL_ADDRESSES_FILE` determines which file is used by LJM for the Special Addresses. Upon writing, the specified file is parsed and the contents are added as LJM Special Addresses. By default, the file path specified by `LJM_SPECIAL_ADDRESSES_FILE` is only parsed on LJM startup, so changes made to the file will not affect running LJM processes unless `LJM_WriteLibraryConfigStringS(LJM_SPECIAL_ADDRESSES_FILE, ...)` is called.
 
-Using "default" as the value will set `LJM_SPECIAL_ADDRESSES_FILE` to the default location. For example:
+Using "default" or an empty string as the value will set `LJM_SPECIAL_ADDRESSES_FILE` to the default location. For example:
 
     error = LJM_WriteLibraryConfigStringS(LJM_SPECIAL_ADDRESSES_FILE, "default");
 
