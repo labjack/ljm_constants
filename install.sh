@@ -50,7 +50,7 @@ remove_artifacts ${TARGET}/LJM
 
 chmod 666 ${FILE_DIR}/${TARGET}/LJM/ljm.log
 
-test -z $DESTINATION || mkdir -p $DESTINATION
+test -d $DESTINATION || mkdir -p $DESTINATION
 
 
 oldinstall ()
@@ -65,6 +65,9 @@ oldinstall ()
 trap oldinstall EXIT
 cp -v --recursive --preserve=mode "${FILE_DIR}/${TARGET}" "${DESTINATION}/"
 trap - EXIT
+
+SPEC_ADDRS=${DESTINATION}/LabJack/LJM/ljm_special_addresses.config
+test -f ${SPEC_ADDRS} || touch ${SPEC_ADDRS}
 
 exit 0
 
