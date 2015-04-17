@@ -2,11 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-<<<<<<< HEAD
    "version":"2015.04.16.C",
-=======
-   "version":"2015.02.26.A",
->>>>>>> 255932eda52983f21a429d078e11047a7c0841c5
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -280,7 +276,6 @@
 
  "registers_beta":
  [
-<<<<<<< HEAD
    {"address":47000, "name":"USER_RAM_FIFO#(0:3)_DATA_U16", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0163}], "readwrite":"RW", "default":0, "tags":["LUA", "USER_RAM"], "description":"Generic FIFO buffer.  Useful for passing ORDERED or SEQUENTIAL data between various endpoints, such as between a host and a Lua script. Use up to 4 FIFO buffers simultaneously->1 of each data type, all 4 different data types, or a mixture."},
    {"address":47010, "name":"USER_RAM_FIFO#(0:3)_DATA_U32", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0163}], "readwrite":"RW", "default":0, "tags":["LUA", "USER_RAM"], "description":"Generic FIFO buffer.  Useful for passing ORDERED or SEQUENTIAL data between various endpoints, such as between a host and a Lua script. Use up to 4 FIFO buffers simultaneously->1 of each data type, all 4 different data types, or a mixture."},
    {"address":47020, "name":"USER_RAM_FIFO#(0:3)_DATA_I32", "type":"INT32", "devices":[{"device":"T7", "fwmin":1.0163}], "readwrite":"RW", "default":0, "tags":["LUA", "USER_RAM"], "description":"Generic FIFO buffer.  Useful for passing ORDERED or SEQUENTIAL data between various endpoints, such as between a host and a Lua script. Use up to 4 FIFO buffers simultaneously->1 of each data type, all 4 different data types, or a mixture."},
@@ -303,22 +298,6 @@
    {"address":5465, "name":"ASYNCH_NUM_PARITY_ERRORS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH", "UART"], "description":"The number of parity errors that have been detected. Cleared when UART is enabled. Can also be cleared by writing 0."},
    {"address":5490, "name":"ASYNCH_DATA_TX", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH", "UART"], "description":"Write data to be transmitted here."},
    {"address":5495, "name":"ASYNCH_DATA_RX", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH", "UART"], "description":"Read received data from here."},
-=======
-   {"address":5400, "name":"ASYNCH_ENABLE", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"1 = Turn on Asynch. Configures timing hardware, DIO lines and allocates the receiving buffer."},
-   {"address":5420, "name":"ASYNCH_BAUD", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"The symbol rate that will be used for communication. 9600 is typical. Up to 38400 works, but heavily loads the T7's processor."},
-   {"address":5405, "name":"ASYNCH_RX_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"The DIO line that will receive data. (RX)"},
-   {"address":5410, "name":"ASYNCH_TX_DIONUM", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"The DIO line that will transmit data. (TX)"},
-   {"address":5415, "name":"ASYNCH_NUM_DATA_BITS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"The number of data bits per frame. 0-8, 0=8."},
-   {"address":5430, "name":"ASYNCH_RX_BUFFER_SIZE_BYTES", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"Number of bytes to use for the receiving buffer. Max is 2048. 0 = 200"},
-   {"address":5435, "name":"ASYNCH_NUM_BYTES_RX", "type":"UINT16", "devices":["T7"], "readwrite":"R", "default":0, "tags":["ASYNCH"], "description":"The number of data bytes that have been received."},
-   {"address":5440, "name":"ASYNCH_NUM_BYTES_TX", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"The number of bytes to be transmitted after writing to GO. Max is 256."},
-   {"address":5450, "name":"ASYNCH_TX_GO", "type":"UINT16", "devices":["T7"], "readwrite":"W", "default":0, "tags":["ASYNCH"], "description":"Write a 1 to this register to initiate a transmission."},
-   {"address":5455, "name":"ASYNCH_NUM_STOP_BITS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"The number of stop bits. 1 or 2. 0 = 1."},
-   {"address":5460, "name":"ASYNCH_PARITY", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"Parity setting: 0=none, 1=odd, 2=even."},
-   {"address":5465, "name":"ASYNCH_NUM_PARITY_ERRORS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"The number of parity errors that have been detected. Cleared when UART is enabled. Can also be cleared by writing 0."},
-   {"address":5490, "name":"ASYNCH_DATA_TX", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"Write data to be transmitted here."},
-   {"address":5495, "name":"ASYNCH_DATA_RX", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH"], "description":"Read received data from here."},
->>>>>>> 255932eda52983f21a429d078e11047a7c0841c5
 
 
    {"address":4899, "name":"STREAM_DATA_CAPTURE_16", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0071}], "readwrite":"W", "tags":["STREAM"], "streamable":true, "description":"If a channel produces 32-bits of data the upper 16 will be saved here."},
@@ -920,7 +899,6 @@
     "2015.01.27.A:  Changes typo for error code 1300 and others with 'received''.",
     "2015.02.23.A:  Added LJME_U3_CANNOT_BE_OPENED_BY_LJM, LJME_U6_CANNOT_BE_OPENED_BY_LJM, and LJME_UE9_CANNOT_BE_OPENED_BY_LJM.",
     "2015.02.26.A:  Added LJME_DEBUG_LOG_FILE_NOT_OPEN.",
-<<<<<<< HEAD
     "2015.03.18.A:  Changed LUA_IO_READ to IO_RAM. Changed fwmin: of FILE_IO_DIR_CHANGE to 1.0156",
     "2015.03.20.A:  STREAM_OUT#(0:3)_BUFFER_SIZE => STREAM_OUT#(0:3)_BUFFER_NUM_BYTES, STREAM_OUT#(0:3)_LOOP_SIZE => STREAM_OUT#(0:3)_LOOP_NUM_VALUES",
     "2015.03.21.A:  Added Modbus FILE_IO error codes 2960-2964",
@@ -935,8 +913,6 @@
     "2015.04.16.A:  Added FIFO error codes.",
     "2015.04.16.B:  Changed name of USER_RAM_FIFO#(0:3)_FLUSH to USER_RAM_FIFO#(0:3)_EMPTY, added fwmin field",
     "2015:04.16.C:  Added many FILE_IO descriptions.  Updated some FILE_IO names. Added FILE_IO_LUA_SWITCH_FILE",
-=======
->>>>>>> 255932eda52983f21a429d078e11047a7c0841c5
     "End Of Comments"
   ]
 }
