@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2015.04.16.C",
+   "version":"2015.04.17.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -372,7 +372,7 @@
 
 
    {"address":60600, "name":"FILE_IO_DIR_CHANGE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0156}], "readwrite":"W", "tags":["FILE_IO"], "description":"Write any value to this register to change the current working directory (CWD). Must first designate which directory to open by writing to FILE_IO_PATH_WRITE_LEN_BYTES then FILE_IO_PATH_WRITE."},
-   {"address":60601, "name":"FILE_IO_DIR_CURRENT", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0134}], "readwrite":"W", "tags":["FILE_IO"], "description":"Unknown. 2day"},
+   {"address":60601, "name":"FILE_IO_DIR_CURRENT", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0134}], "readwrite":"W", "tags":["FILE_IO"], "description":"Write any value to this register to load the current working directory into FILE_IO_PATH_READ, and its length into FILE_IO_PATH_READ_LEN_BYTES. Can be used to identify current position in a file tree."},
    {"address":60602, "name":"FILE_IO_DIR_MAKE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":99.0}], "readwrite":"W", "tags":["FILE_IO"], "description":"Unimplemented."},
    {"address":60603, "name":"FILE_IO_DIR_REMOVE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":99.0}], "readwrite":"W", "tags":["FILE_IO"], "description":"Unimplemented."},
 
@@ -389,7 +389,7 @@
    {"address":60632, "name":"FILE_IO_DISK_SECTORS_PER_CLUSTER", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0134}], "readwrite":"R", "tags":["FILE_IO"], "description":"The number of sectors in each cluster. Captured on read of FILE_IO_DISK_SECTOR_SIZE_BYTES."},
    {"address":60634, "name":"FILE_IO_DISK_TOTAL_CLUSTERS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0134}], "readwrite":"R", "tags":["FILE_IO"], "description":"The total number of clusters in the SD card. Captured on read of FILE_IO_DISK_SECTOR_SIZE_BYTES."},
    {"address":60636, "name":"FILE_IO_DISK_FREE_CLUSTERS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0134}], "readwrite":"R", "tags":["FILE_IO"], "description":"Free (available) clusters in the SD card. Used to determine free space. Captured on read of FILE_IO_DISK_SECTOR_SIZE_BYTES."},
-   {"address":60638, "name":"FILE_IO_DISK_FORMAT_INDEX", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0160}], "readwrite":"R", "tags":["FILE_IO"], "altnames": ["FILE_IO_DISK_FORMAT"], "description":"Used to determine the format of the SD card. 0=Reserved, 1=Reserved, 2=FAT, 3=FAT32"},
+   {"address":60638, "name":"FILE_IO_DISK_FORMAT_INDEX", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0160}], "readwrite":"R", "tags":["FILE_IO"], "altnames": ["FILE_IO_DISK_FORMAT"], "description":"Used to determine the format of the SD card. 0=None or Unknown, 1=FAT12, 2=FAT16(Windows FAT), 3=FAT32"},
 
    {"address":60640, "name":"FILE_IO_PATH_WRITE_LEN_BYTES", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0134}], "readwrite":"W", "tags":["FILE_IO"], "altnames": ["FILE_IO_NAME_WRITE_LEN"], "description":"Write the length(in bytes) of the filepath or directory to access."},
    {"address":60642, "name":"FILE_IO_PATH_READ_LEN_BYTES", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0134}], "readwrite":"R", "tags":["FILE_IO"], "altnames": ["FILE_IO_NAME_READ_LEN"], "description":"Read the length(in bytes) of the next filepath or directory to access."},
@@ -913,7 +913,7 @@
     "2015.04.16.A:  Added FIFO error codes.",
     "2015.04.16.B:  Changed name of USER_RAM_FIFO#(0:3)_FLUSH to USER_RAM_FIFO#(0:3)_EMPTY, added fwmin field",
     "2015:04.16.C:  Added many FILE_IO descriptions.  Updated some FILE_IO names. Added FILE_IO_LUA_SWITCH_FILE",
+    "2015.04.17.A:  Added description for FILE_IO_DIR_CURRENT, updated description of FILE_IO_DISK_FORMAT_INDEX",
     "End Of Comments"
   ]
 }
-
