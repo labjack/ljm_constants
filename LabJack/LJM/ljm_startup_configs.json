@@ -1,6 +1,6 @@
 // ljm_startup_configs.json:
 //   This is the configurations file that is loaded when LJM is started up.
-//   Distributed with LJM version 1.0707.
+//   Distributed with LJM version 1.0800.
 //
 //   This file (and the containing folder) may be overwritten when LJM
 //   updates, so if you'd like to make changes to the configurations that are
@@ -18,6 +18,11 @@
 //   top-level entry except for LJM_CONFIG_VALUES, as well as ignoring every
 //   "description" field. Other fields in LJM_CONFIG_VALUES which are not
 //   recognized by LJM will generate errors/warnings.
+//
+//   Windows file paths must escape \ characters with \. For example, the path
+//       C:\ljm.log
+//   must be escaped as
+//       C:\\ljm.log
 //
 //   Report bugs to support@labjack.com
 //   LabJack's LJM driver/library: <http://labjack.com/support/ljm>,
@@ -45,6 +50,8 @@
                                                        ]},
     {"LJM_DEBUG_LOG_SLEEP_TIME_MS":"default",          "type":"integer"},
     {"LJM_ERROR_CONSTANTS_FILE":"default",             "type":"string"},
+    {"LJM_ETHERNET_OPEN_TIMEOUT_MS":"default",         "type":"integer"},
+    {"LJM_ETHERNET_SEND_RECEIVE_TIMEOUT_MS":"default", "type":"integer"},
     {"LJM_LISTALL_NUM_ATTEMPTS_ETHERNET":"default",    "type":"integer"},
     {"LJM_LISTALL_NUM_ATTEMPTS_WIFI":"default",        "type":"integer"},
     {"LJM_LISTALL_THREADED_ETHERNET":"default",        "type":"boolean", "values":[true, false]},
@@ -57,9 +64,7 @@
     {"LJM_MODBUS_MAP_CONSTANTS_FILE":"default",        "type":"string"},
     {"LJM_OLD_FIRMWARE_CHECK":"default",               "type":"boolean", "values":[true, false]},
     {"LJM_OPEN_MODE":"default",                        "type":"integer"},
-    {"LJM_OPEN_TCP_DEVICE_TIMEOUT_MS":"default",       "type":"integer"},
     {"LJM_RETRY_ON_TRANSACTION_ID_MISMATCH":"default", "type":"boolean", "values":[true, false]},
-    {"LJM_SEND_RECEIVE_TIMEOUT_MS":"default",          "type":"integer"},
     {"LJM_STREAM_BUFFER_MAX_NUM_SECONDS":"default",    "type":"integer"},
     {"LJM_STREAM_CAL_LOAD_MAX_NUM_ATTEMPTS":"default", "type":"integer"},
     {"LJM_STREAM_CONVERT_AIN14": "default",            "type":"boolean", "values":[true, false]},
@@ -73,6 +78,9 @@
                                                        ]},
     {"LJM_STREAM_RECEIVE_TIMEOUT_MS":"default",        "type":"integer"},
     {"LJM_STREAM_TRANSFERS_PER_SECOND":"default",      "type":"integer"},
+    {"LJM_USB_SEND_RECEIVE_TIMEOUT_MS":"default",      "type":"integer"},
+    {"LJM_WIFI_OPEN_TIMEOUT_MS":"default",             "type":"integer"},
+    {"LJM_WIFI_SEND_RECEIVE_TIMEOUT_MS":"default",     "type":"integer"},
     {"LJM_ZERO_LENGTH_ARRAY_MODE":"default",           "type":"integer", "values":[
                                                            "LJM_ZERO_LENGTH_ARRAY_ERROR",
                                                            "LJM_ZERO_LENGTH_ARRAY_IGNORE_OPERATION"
