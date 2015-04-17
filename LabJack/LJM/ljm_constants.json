@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2015.04.17.A",
+   "version":"2015.04.17.B",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -276,12 +276,12 @@
 
  "registers_beta":
  [
-   {"address":47000, "name":"USER_RAM_FIFO#(0:3)_DATA_U16", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0163}], "readwrite":"RW", "default":0, "tags":["LUA", "USER_RAM"], "description":"Generic FIFO buffer.  Useful for passing ORDERED or SEQUENTIAL data between various endpoints, such as between a host and a Lua script. Use up to 4 FIFO buffers simultaneously->1 of each data type, all 4 different data types, or a mixture."},
-   {"address":47010, "name":"USER_RAM_FIFO#(0:3)_DATA_U32", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0163}], "readwrite":"RW", "default":0, "tags":["LUA", "USER_RAM"], "description":"Generic FIFO buffer.  Useful for passing ORDERED or SEQUENTIAL data between various endpoints, such as between a host and a Lua script. Use up to 4 FIFO buffers simultaneously->1 of each data type, all 4 different data types, or a mixture."},
-   {"address":47020, "name":"USER_RAM_FIFO#(0:3)_DATA_I32", "type":"INT32", "devices":[{"device":"T7", "fwmin":1.0163}], "readwrite":"RW", "default":0, "tags":["LUA", "USER_RAM"], "description":"Generic FIFO buffer.  Useful for passing ORDERED or SEQUENTIAL data between various endpoints, such as between a host and a Lua script. Use up to 4 FIFO buffers simultaneously->1 of each data type, all 4 different data types, or a mixture."},
-   {"address":47030, "name":"USER_RAM_FIFO#(0:3)_DATA_F32", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0163}], "readwrite":"RW", "default":0, "tags":["LUA", "USER_RAM"], "description":"Generic FIFO buffer.  Useful for passing ORDERED or SEQUENTIAL data between various endpoints, such as between a host and a Lua script. Use up to 4 FIFO buffers simultaneously->1 of each data type, all 4 different data types, or a mixture."},
-   {"address":47900, "name":"USER_RAM_FIFO#(0:3)_ALLOCATE_NUM_BYTES", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0163}], "readwrite":"RW", "default":0, "tags":["LUA", "USER_RAM"], "description":"Allocate memory for the FIFO buffer system. Number of bytes should be sufficient to store users max transfer array size.  Note that FLOAT32, INT32, and UINT32 require 4 bytes per value, and UINT16 require 2 bytes per value."},
-   {"address":47910, "name":"USER_RAM_FIFO#(0:3)_NUM_BYTES_IN_FIFO", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0163}], "readwrite":"R", "default":0, "tags":["LUA", "USER_RAM"], "description":"Poll this register to see when new data is available/ready. Each read of the FIFO buffer decreases this value, and each write to the FIFO buffer increases this value. At any point in time, the following equation holds: Nbytes = Nwritten - Nread"},
+   {"address":47000, "name":"USER_RAM_FIFO#(0:3)_DATA_U16", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0163}], "readwrite":"RW", "default":0, "tags":["LUA", "USER_RAM"], "description":"Generic FIFO buffer.  Useful for passing ORDERED or SEQUENTIAL data between various endpoints, such as between a host and a Lua script. Use up to 4 FIFO buffers simultaneously->1 of each data type, all 4 different data types, or a mixture. e.g. FIFO0_DATA_U16 points to the same memory as other FIFO0 registers, such that there are a total of 4 memory blocks: FIFO0, FIFO1, FIFO2 and FIFO3.  It is possible to write into a FIFO buffer using a different datatype than is bieng used to read out of it."},
+   {"address":47010, "name":"USER_RAM_FIFO#(0:3)_DATA_U32", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0163}], "readwrite":"RW", "default":0, "tags":["LUA", "USER_RAM"], "description":"Generic FIFO buffer.  Useful for passing ORDERED or SEQUENTIAL data between various endpoints, such as between a host and a Lua script. Use up to 4 FIFO buffers simultaneously->1 of each data type, all 4 different data types, or a mixture. e.g. FIFO0_DATA_U16 points to the same memory as other FIFO0 registers, such that there are a total of 4 memory blocks: FIFO0, FIFO1, FIFO2 and FIFO3.  It is possible to write into a FIFO buffer using a different datatype than is bieng used to read out of it."},
+   {"address":47020, "name":"USER_RAM_FIFO#(0:3)_DATA_I32", "type":"INT32", "devices":[{"device":"T7", "fwmin":1.0163}], "readwrite":"RW", "default":0, "tags":["LUA", "USER_RAM"], "description":"Generic FIFO buffer.  Useful for passing ORDERED or SEQUENTIAL data between various endpoints, such as between a host and a Lua script. Use up to 4 FIFO buffers simultaneously->1 of each data type, all 4 different data types, or a mixture. e.g. FIFO0_DATA_U16 points to the same memory as other FIFO0 registers, such that there are a total of 4 memory blocks: FIFO0, FIFO1, FIFO2 and FIFO3.  It is possible to write into a FIFO buffer using a different datatype than is bieng used to read out of it."},
+   {"address":47030, "name":"USER_RAM_FIFO#(0:3)_DATA_F32", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0163}], "readwrite":"RW", "default":0, "tags":["LUA", "USER_RAM"], "description":"Generic FIFO buffer.  Useful for passing ORDERED or SEQUENTIAL data between various endpoints, such as between a host and a Lua script. Use up to 4 FIFO buffers simultaneously->1 of each data type, all 4 different data types, or a mixture. e.g. FIFO0_DATA_U16 points to the same memory as other FIFO0 registers, such that there are a total of 4 memory blocks: FIFO0, FIFO1, FIFO2 and FIFO3.  It is possible to write into a FIFO buffer using a different datatype than is bieng used to read out of it."},
+   {"address":47900, "name":"USER_RAM_FIFO#(0:3)_ALLOCATE_NUM_BYTES", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0163}], "readwrite":"RW", "default":0, "tags":["LUA", "USER_RAM"], "description":"Allocate memory for a FIFO buffer. Number of bytes should be sufficient to store users max transfer array size.  Note that FLOAT32, INT32, and UINT32 require 4 bytes per value, and UINT16 require 2 bytes per value."},
+   {"address":47910, "name":"USER_RAM_FIFO#(0:3)_NUM_BYTES_IN_FIFO", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0163}], "readwrite":"R", "default":0, "tags":["LUA", "USER_RAM"], "description":"Poll this register to see when new data is available/ready. Each read of the FIFO buffer decreases this value, and each write to the FIFO buffer increases this value. At any point in time, the following equation holds: Nbytes = Nwritten - Nread."},
    {"address":47930, "name":"USER_RAM_FIFO#(0:3)_EMPTY", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0163}], "readwrite":"W", "default":0, "tags":["LUA", "USER_RAM"], "description":"Write any value to this register to efficiently empty, flush, or otherwise clear data from the FIFO."},
 
    {"address":5400, "name":"ASYNCH_ENABLE", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH", "UART"], "description":"1 = Turn on Asynch. Configures timing hardware, DIO lines and allocates the receiving buffer."},
@@ -347,7 +347,7 @@
 
 
    {"address":6000, "name":"LUA_RUN", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"], "description":"Writing 1 compiles and runs the loaded lua script. Writing zero stops the script and begins cleaning up memory."},
-   {"address":6006, "name":"LUA_NUM_IO_FLOATS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA"], "description":"Allocates memory for x input-output floats. Do not need to use this in FW 1.0163+."},
+   {"address":6006, "name":"LUA_NUM_IO_FLOATS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA"], "description":"Deprecated. Do not need to use this in FW 1.0163+, as 200 bytes of USER_RAM are pre-allocated. Allocates memory for x input-output floats."},
    {"address":6012, "name":"LUA_SOURCE_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"], "description":"Allocates memory for the source code."},
    {"address":6014, "name":"LUA_SOURCE_WRITE", "type":"BYTE", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"], "description":"Location for source code to be written to."},
    {"address":6020, "name":"LUA_DEBUG_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"], "description":"White 1 to this regster to enable debugging."},
@@ -911,9 +911,11 @@
     "2015.04.10.A:  Changed STREAM_ENABLE's readwrite from W to RW.",
     "2015.04.15.A:  Added SNTP interval register. Updated FIFO registers.",
     "2015.04.16.A:  Added FIFO error codes.",
-    "2015.04.16.B:  Changed name of USER_RAM_FIFO#(0:3)_FLUSH to USER_RAM_FIFO#(0:3)_EMPTY, added fwmin field",
-    "2015:04.16.C:  Added many FILE_IO descriptions.  Updated some FILE_IO names. Added FILE_IO_LUA_SWITCH_FILE",
-    "2015.04.17.A:  Added description for FILE_IO_DIR_CURRENT, updated description of FILE_IO_DISK_FORMAT_INDEX",
+    "2015.04.16.B:  Changed name of USER_RAM_FIFO#(0:3)_FLUSH to USER_RAM_FIFO#(0:3)_EMPTY, added fwmin field.",
+    "2015:04.16.C:  Added many FILE_IO descriptions.  Updated some FILE_IO names. Added FILE_IO_LUA_SWITCH_FILE.",
+    "2015.04.17.A:  Added description for FILE_IO_DIR_CURRENT, updated description of FILE_IO_DISK_FORMAT_INDEX.",
+    "2015.04.17.B:  Updated description of USER_RAM_FIFO#(0:3)_DATA registers.",
     "End Of Comments"
   ]
 }
+
