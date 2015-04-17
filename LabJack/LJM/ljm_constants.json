@@ -372,7 +372,7 @@
 
 
    {"address":60600, "name":"FILE_IO_DIR_CHANGE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0156}], "readwrite":"W", "tags":["FILE_IO"], "description":"Write any value to this register to change the current working directory (CWD). Must first designate which directory to open by writing to FILE_IO_PATH_WRITE_LEN_BYTES then FILE_IO_PATH_WRITE."},
-   {"address":60601, "name":"FILE_IO_DIR_CURRENT", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0134}], "readwrite":"W", "tags":["FILE_IO"], "description":"Unknown."},
+   {"address":60601, "name":"FILE_IO_DIR_CURRENT", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0134}], "readwrite":"W", "tags":["FILE_IO"], "description":"Unknown. 2day"},
    {"address":60602, "name":"FILE_IO_DIR_MAKE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":99.0}], "readwrite":"W", "tags":["FILE_IO"], "description":"Unimplemented."},
    {"address":60603, "name":"FILE_IO_DIR_REMOVE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":99.0}], "readwrite":"W", "tags":["FILE_IO"], "description":"Unimplemented."},
 
