@@ -21,6 +21,8 @@
    {"address":2501, "name":"EIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0000}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["EIO Port State"], "description":"Read or write the state of the 8 bits of EIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current l99ogic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."},
    {"address":2502, "name":"CIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0000}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["CIO Port State"], "description":"Read or write the state of the 4 bits of CIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."},
    {"address":2503, "name":"MIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0000}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["MIO Port State"], "description":"Read or write the state of the 3 bits of MIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."},
+   {"address":2580, "name":"FIO_EIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0005}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["FIO-EIO Port State"], "description":"Read or write the state of the 16 bits of FIO-EIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written."},
+   {"address":2581, "name":"EIO_CIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0005}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["EIO-CIO Port State"], "description":"Read or write the state of the 12 bits of EIO-CIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written."},
    {"address":2600, "name":"FIO_DIRECTION", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9402}], "readwrite":"RW", "tags":["DIO"], "displayname":["FIO Port Direction"], "description":"Read or write the direction of the 8 bits of FIO in a single binary-encoded value.  0=Input and 1=Output.  The upper 8-bits of this value are inhibits."},
    {"address":2601, "name":"EIO_DIRECTION", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9402}], "readwrite":"RW", "tags":["DIO"], "displayname":["EIO Port Direction"], "description":"Read or write the direction of the 8 bits of EIO in a single binary-encoded value.  0=Input and 1=Output.  The upper 8-bits of this value are inhibits."},
    {"address":2602, "name":"CIO_DIRECTION", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9402}], "readwrite":"RW", "tags":["DIO"], "displayname":["CIO Port Direction"], "description":"Read or write the direction of the 4 bits of CIO in a single binary-encoded value.  0=Input and 1=Output.  The upper 8-bits of this value are inhibits."},
@@ -414,9 +416,6 @@
  [
 
    {"address":49410, "name":"WIFI_START_ADHOC", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9308}], "readwrite":"W", "tags":["WIFI"]},
-
-   {"address":2580, "name":"FIO_EIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0005}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["FIO-EIO Port State"], "description":"Read or write the state of the 16 bits of FIO-EIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written."},
-   {"address":2581, "name":"EIO_CIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0005}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["EIO-CIO Port State"], "description":"Read or write the state of the 12 bits of EIO-CIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written."},
 
    {"address":49406, "name":"WIFI_SCAN_START", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"W", "tags":["WIFI"]},
    {"address":49486, "name":"WIFI_SCAN_NUM_BYTES", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"R", "tags":["WIFI"]},
@@ -919,7 +918,7 @@
     "2015.04.17.B:  Updated description of USER_RAM_FIFO#(0:3)_DATA registers.",
     "2015.04.17.C:  Moved ASYNCH, USER_RAM, FILE_IO, RTC, STREAM_OUT, AIN_EF, ONEWIRE, LUA, and a few CONFIG registers out of beta.",
     "2015.04.22.A:  Added error code for RTC not installed. Removed the stream_data_type register. Added error description for STREAM_SCAN_OVERLAP.",
-    "2015.04.27.A:  Added descriptions for CURRENT_SOURCE_10UA_CAL_VALUE and CURRENT_SOURCE_200UA_CAL_VALUE.",
+    "2015.04.27.A:  Added descriptions for CURRENT_SOURCE_10UA_CAL_VALUE and CURRENT_SOURCE_200UA_CAL_VALUE, moved FIO_EIO_STATE, EIO_CIO_STATE out of beta.",
     "End Of Comments"
   ]
 }
