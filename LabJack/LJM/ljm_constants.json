@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2015.05.06.A",
+   "version":"2015.05.14.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -528,6 +528,8 @@
    {"error":1307, "string":"LJME_OLD_FIRMWARE", "description":"The current firmware version of the device was not sufficient to read/write a requested register, as according to the loaded LJM constants file."},
    {"error":1308, "string":"LJME_CANNOT_READ_OUT_ONLY_STREAM", "description":"The stream running is out-only and does not produce data values."},
    {"error":1309, "string":"LJME_NO_SCANS_RETURNED", "description":"The LJM configuration LJM_STREAM_SCANS_RETURN is set to LJM_STREAM_SCANS_RETURN_ALL_OR_NONE and the full ScansPerRead scans have not be received."},
+   {"error":1310, "string":"LJME_TEMPERATURE_OUT_OF_RANGE", "description":"LJM_TCVoltsToTemp recieved a temperature that was out of range for the given thermocouple type."},
+   {"error":1311, "string":"LJME_VOLTAGE_OUT_OF_RANGE", "description":"LJM_TCVoltsToTemp recieved a voltage that was out of range for the given thermocouple type."},
 
 
    {"error":2300, "string":"MODBUS_RSP_OVERFLOW", "description":"Response packet greater than max packet size."},
@@ -922,6 +924,7 @@
     "2015.04.28.A:  Updated description of SNTP_UPDATE_INTERVAL, and RTC_SET_TIME_SNTP.",
     "2015.05.04.A:  Added isBuffer attribute to many registers.",
     "2015.05.06.A:  Removed U3, U6, and UE9 as device types.",
+    "2015.05.14.A:  Added LJME_TEMPERATURE_OUT_OF_RANGE and LJME_VOLTAGE_OUT_OF_RANGE.",
     "End Of Comments"
   ]
 }
