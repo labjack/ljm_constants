@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2015.05.14.A",
+   "version":"2015.05.29.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -37,22 +37,22 @@
    {"address":4008, "name":"STREAM_SETTLING_US", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Time in microseconds to allow signals to settle after switching the mux. Default=0. If set to a value <= 5 the T7 will automatically determine the necessary settling time. When the sample rate is above 60kHz settling time will be set to ~5 us. Max is 5000."},
    {"address":4010, "name":"STREAM_RESOLUTION_INDEX", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Index specifying the resolution of the data. High settings will have lower max speeds."},
    {"address":4012, "name":"STREAM_BUFFER_SIZE_BYTES", "type":"UINT32", "devices":[{"device":"T7", "default":0, "description":"Max size is 32768. Default size is 4096."}], "readwrite":"RW", "default":0, "tags":["STREAM"], "description":"Size of the stream data buffer in bytes. A value of 0 equates to the default value.  Must be a power of 2, as it takes 2 bytes to hold 1 sample.  Changes while stream is running do not affect the currently running stream."},
-   {"address":4014, "name":"STREAM_CLOCK_SOURCE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0110}], "readwrite":"RW", "default":0, "tags":["STREAM"], "altnames":["STREAM_OPTIONS"], "description":"Controls which clock source will be used to run the main stream clock. 0 = Internal crystal, 2 = External clock Source. T7 can accept an external clock on CIO3. All other values reserved."},
+   {"address":4014, "name":"STREAM_CLOCK_SOURCE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0110}], "readwrite":"RW", "default":0, "tags":["STREAM"], "altnames":["STREAM_OPTIONS"], "description":"Controls which clock source will be used to run the main stream clock. 0 = Internal crystal, 2 = External clock source on CIO3 (T7 will expect external stream clock on CIO3). All other values reserved."},
    {"address":4016, "name":"STREAM_AUTO_TARGET", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9108}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Controls where data will be sent. Value is a bitmask. bit 0: 1 = Send to Ethernet 702 sockets, bit 1: 1 = Send to USB, bit 4: 1 = Command-Response mode. All other bits are reserved."},
    {"address":4020, "name":"STREAM_NUM_SCANS", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of scans to run before automatically stopping (stream-burst). 0 = run continuously.  Max number of samples is STREAM_BUFFER_SIZE_BYTES/2.  Max number of scans is (STREAM_BUFFER_SIZE_BYTES/2)/STREAM_NUM_ADDRESSES."},
-   {"address":4022, "name":"STREAM_EXTERNAL_CLOCK_DIVISOR", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of pulses per scan when using an external clock."},
+   {"address":4022, "name":"STREAM_EXTERNAL_CLOCK_DIVISOR", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of pulses per stream scan when using an external clock."},
    {"address":4100, "name":"STREAM_SCANLIST_ADDRESS#(0:127)", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"], "description":"A list of addresses to read each scan. In the case of Stream-Out enabled, the list may also include something to write each scan."},
 
-   {"address":4800, "name":"STREAM_OUT#(0:3)", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0012}], "readwrite":"R", "default":0, "tags":["STREAM"],"description":"Include one or more of these registers in STREAM_SCANLIST_ADDRESS#(0:127) to trigger stream out updates. This register returns null data when read via command-response."},
-   {"address":4040, "name":"STREAM_OUT#(0:3)_TARGET", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0012}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Channel that data will be written to."},
-   {"address":4050, "name":"STREAM_OUT#(0:3)_BUFFER_ALLOCATE_NUM_BYTES", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"], "altnames": ["STREAM_OUT#(0:3)_BUFFER_SIZE"], "description":"Size of the buffer in bytes as a power of 2. Should be at least twice the size of updates that will be written. Max is 16384."},
-   {"address":4060, "name":"STREAM_OUT#(0:3)_LOOP_NUM_VALUES", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"], "altnames": ["STREAM_OUT#(0:3)_LOOP_SIZE"], "description":"The number of values that will be repeated after reaching the end of supplied data."},
-   {"address":4070, "name":"STREAM_OUT#(0:3)_SET_LOOP", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":"Controls when new data and loop size are used. 1=Use new data immediately. 2=Wait for synch. New data will not be used until a different Stream-Out channel is set to Synch. 3=Synch. This Stream-Out# as well as any Stream-Outs set to synch will start using new data immediately."},
-   {"address":4080, "name":"STREAM_OUT#(0:3)_BUFFER_STATUS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"R", "default":0, "tags":["STREAM"],"description":"The number of entries in the buffer that are not currently being used."},
-   {"address":4090, "name":"STREAM_OUT#(0:3)_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Write 1 to enable, 0 to disable."},
-   {"address":4400, "name":"STREAM_OUT#(0:3)_BUFFER_F32", "type":"FLOAT32", "isBuffer":true, "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":"Data destination when sending floating point data. Takes up 2 bytes of the stream out buffer."},
-   {"address":4410, "name":"STREAM_OUT#(0:3)_BUFFER_U32", "type":"UINT32", "isBuffer":true, "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":"Data destination when sending 32-bit integer data. Takes up 2 bytes of the stream out buffer."},
-   {"address":4420, "name":"STREAM_OUT#(0:3)_BUFFER_U16", "type":"UINT16", "isBuffer":true, "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":"Data destination when sending 16-bit integer data."},
+   {"address":4800, "name":"STREAM_OUT#(0:3)", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0012}], "readwrite":"R", "default":0, "tags":["STREAM"],"description":"Include one or more of these registers in STREAM_SCANLIST_ADDRESS#(0:127) to trigger stream-out updates.  When added to the scan list these do count against the max scan rate just like normal input addresses, but they do not return any data in the stream read."},
+   {"address":4040, "name":"STREAM_OUT#(0:3)_TARGET", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0012}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Channel that data will be written to.  Before writing data to _BUFFER_###, you must write to _TARGET so the device knows how to interpret and store values."},
+   {"address":4050, "name":"STREAM_OUT#(0:3)_BUFFER_ALLOCATE_NUM_BYTES", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"], "altnames": ["STREAM_OUT#(0:3)_BUFFER_SIZE"], "description":"Size of the buffer in bytes as a power of 2. Should be at least twice the size of updates that will be written. Before writing data to _BUFFER_###, you must write to _BUFFER_ALLOCATE_NUM_BYTES to allocate RAM for the data. Max is 16384."},
+   {"address":4060, "name":"STREAM_OUT#(0:3)_LOOP_NUM_VALUES", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"], "altnames": ["STREAM_OUT#(0:3)_LOOP_SIZE"], "description":"The number of values, from the end of the array, that will be repeated after reaching the end of supplied data array."},
+   {"address":4070, "name":"STREAM_OUT#(0:3)_SET_LOOP", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":"Controls when new data and loop size are used. 1=Use new data immediately. 2=Wait for synch. New data will not be used until a different stream-out channel is set to Synch. 3=Synch. This stream-out# as well as any stream-outs set to synch will start using new data immediately."},
+   {"address":4080, "name":"STREAM_OUT#(0:3)_BUFFER_STATUS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"R", "default":0, "tags":["STREAM"],"description":"The number of values in the buffer that are not currently being used."},
+   {"address":4090, "name":"STREAM_OUT#(0:3)_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Write 1 to enable, 0 to disable.  When enabled, you get 1 update per target per stream scan, so a stream must be active for updates to happen."},
+   {"address":4400, "name":"STREAM_OUT#(0:3)_BUFFER_F32", "type":"FLOAT32", "isBuffer":true, "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":"Data destination when sending floating point data. Appropriate cal constants are used to convert F32 values to 16-bit binary data, and thus each of these values uses 2 bytes of the stream-out buffer."},
+   {"address":4410, "name":"STREAM_OUT#(0:3)_BUFFER_U32", "type":"UINT32", "isBuffer":true, "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":"Not used at this time.  There are no U32 registers supported in stream-out."},
+   {"address":4420, "name":"STREAM_OUT#(0:3)_BUFFER_U16", "type":"UINT16", "isBuffer":true, "devices":[{"device":"T7", "fwmin":0.9300}], "readwrite":"W", "default":0, "tags":["STREAM"],"description":"Data destination when sending 16-bit integer data. Each value uses 2 bytes of the stream-out buffer."},
 
    {"address":4500, "name":"STREAM_DATA_CR", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["STREAM"],"description":"Address to read stream data from when operating in C-R mode."},
    {"address":4899, "name":"STREAM_DATA_CAPTURE_16", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0071}], "readwrite":"W", "tags":["STREAM"], "streamable":true, "description":"If a channel produces 32-bits of data the upper 16 will be saved here."},
@@ -628,7 +628,9 @@
    {"error":2585, "string":"AIN_EF_INVALID_CHANNEL"},
    {"error":2586, "string":"AIN_EF_INVALID_CJC_REGISTER"},
    {"error":2587, "string":"AIN_EF_STREAM_START_FAILURE", "description":"Could not start the data collection stream."},
-   {"error":2588, "string":"AIN_COULD_NOT_FIND_PERIOD", "description":"Failed to detect a period to perform calculations over."},
+   {"error":2588, "string":"AIN_EF_COULD_NOT_FIND_PERIOD", "description":"Failed to detect a period to perform calculations over."},
+   {"error":2589, "string":"AIN_EF_MUST_BE_DIFFERENTIAL", "description":"The selected AIN must be set to differential."},
+   {"error":2590, "string":"AIN_EF_SCAN_TIME_TOO_LONG", "description":"The data collection time (number of samples / scan_rate) is too big. Limit is set to 180 ms as of firmware 1.0170 "},
 
    {"error":2600, "string":"STREAM_NEED_AT_LEAST_ONE_CHN", "description":"The list of channels to stream is empty."},
    {"error":2601, "string":"STREAM_CLOCK_BASE_NOT_WRITABLE", "description":"Stream clock base is read only."},
@@ -925,6 +927,7 @@
     "2015.05.04.A:  Added isBuffer attribute to many registers.",
     "2015.05.06.A:  Removed U3, U6, and UE9 as device types.",
     "2015.05.14.A:  Added LJME_TEMPERATURE_OUT_OF_RANGE and LJME_VOLTAGE_OUT_OF_RANGE.",
+    "2015.05.29.A:  Altered descriptions of STREAM_CLOCK_SOURCE and STREAM_EXTERNAL_CLOCK_DIVISOR.",
     "End Of Comments"
   ]
 }
