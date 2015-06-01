@@ -1,6 +1,6 @@
 // ljm_startup_configs.json:
 //   This is the configurations file that is loaded when LJM is started up.
-//   Distributed with LJM version 1.0802.
+//   Distributed with LJM version 1.0803.
 //
 //   This file (and the containing folder) may be overwritten when LJM
 //   updates, so if you'd like to make changes to the configurations that are
@@ -65,7 +65,6 @@
     {"LJM_OLD_FIRMWARE_CHECK":"default",               "type":"boolean", "values":[true, false]},
     {"LJM_OPEN_MODE":"default",                        "type":"integer"},
     {"LJM_RETRY_ON_TRANSACTION_ID_MISMATCH":"default", "type":"boolean", "values":[true, false]},
-    {"LJM_SPECIAL_ADDRESSES_FILE":"default",           "type":"string"},
     {"LJM_STREAM_BUFFER_MAX_NUM_SECONDS":"default",    "type":"integer"},
     {"LJM_STREAM_CAL_LOAD_MAX_NUM_ATTEMPTS":"default", "type":"integer"},
     {"LJM_STREAM_CONVERT_AIN14": "default",            "type":"boolean", "values":[true, false]},
