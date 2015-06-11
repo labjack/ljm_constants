@@ -1,6 +1,6 @@
 // ljm_startup_configs.json:
 //   This is the configurations file that is loaded when LJM is started up.
-//   Distributed with LJM version 1.0804.
+//   Distributed with LJM version 1.0805.
 //
 //   This file (and the containing folder) may be overwritten when LJM
 //   updates, so if you'd like to make changes to the configurations that are
