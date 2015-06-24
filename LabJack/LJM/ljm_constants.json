@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2015.05.29.A",
+   "version":"2015.06.16.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -22,7 +22,8 @@
    {"address":2502, "name":"CIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0000}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["CIO Port State"], "description":"Read or write the state of the 4 bits of CIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."},
    {"address":2503, "name":"MIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0000}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["MIO Port State"], "description":"Read or write the state of the 3 bits of MIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."},
    {"address":2580, "name":"FIO_EIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0005}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["FIO-EIO Port State"], "description":"Read or write the state of the 16 bits of FIO-EIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written."},
-   {"address":2581, "name":"EIO_CIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0005}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["EIO-CIO Port State"], "description":"Read or write the state of the 12 bits of EIO-CIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written."},
+   {"address":2581, "name":"EIO_CIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0005}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["EIO-CIO Port State"], "description":"Read or write the state of the 12 bits of EIO-CIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written. As of firmware 1.0172 MIO states are inclided in the upper nibble of the CIO byte."},
+   {"address":2582, "name":"CIO_MIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0172}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["EIO-CIO Port State"], "description":"Read or write the state of the 12 bits of CIO-MIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written."},
    {"address":2600, "name":"FIO_DIRECTION", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9402}], "readwrite":"RW", "tags":["DIO"], "displayname":["FIO Port Direction"], "description":"Read or write the direction of the 8 bits of FIO in a single binary-encoded value.  0=Input and 1=Output.  The upper 8-bits of this value are inhibits."},
    {"address":2601, "name":"EIO_DIRECTION", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9402}], "readwrite":"RW", "tags":["DIO"], "displayname":["EIO Port Direction"], "description":"Read or write the direction of the 8 bits of EIO in a single binary-encoded value.  0=Input and 1=Output.  The upper 8-bits of this value are inhibits."},
    {"address":2602, "name":"CIO_DIRECTION", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9402}], "readwrite":"RW", "tags":["DIO"], "displayname":["CIO Port Direction"], "description":"Read or write the direction of the 4 bits of CIO in a single binary-encoded value.  0=Input and 1=Output.  The upper 8-bits of this value are inhibits."},
@@ -80,8 +81,8 @@
    {"address":5109, "name":"I2C_NUM_BYTES_RX", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"The number of data bytes to read."},
    {"address":5110, "name":"I2C_GO", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9504}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"Writing to this register will instruct the LabJack to perform an I2C transaction."},
    {"address":5114, "name":"I2C_ACKS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9504}], "readwrite":"RW", "default":0, "tags":["I2C"], "description":"An array of bits used to observe ACKs from the slave device."},
-   {"address":5120, "name":"I2C_DATA_TX", "type":"BYTE", "isBuffer":true, "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "altnames":["I2C_WRITE_DATA"], "description":"Data that will be written to the I2C bus."},
-   {"address":5160, "name":"I2C_DATA_RX", "type":"BYTE", "isBuffer":true, "devices":["T7"], "readwrite":"RW", "default":0, "tags":["I2C"], "altnames":["I2C_READ_DATA"], "description":"Data that has been read from the I2C bus."},
+   {"address":5120, "name":"I2C_DATA_TX", "type":"BYTE", "isBuffer":true, "devices":["T7"], "readwrite":"W", "default":0, "tags":["I2C"], "altnames":["I2C_WRITE_DATA"], "description":"Data that will be written to the I2C bus."},
+   {"address":5160, "name":"I2C_DATA_RX", "type":"BYTE", "isBuffer":true, "devices":["T7"], "readwrite":"R", "default":0, "tags":["I2C"], "altnames":["I2C_READ_DATA"], "description":"Data that has been read from the I2C bus."},
 
    {"address":5300, "name":"ONEWIRE_DQ_DIONUM", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["ONEWIRE"], "description":"The data-line DIO number."},
    {"address":5301, "name":"ONEWIRE_DPU_DIONUM", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["ONEWIRE"], "description":"The dynamic pullup control DIO number."},
@@ -101,8 +102,8 @@
    {"address":5324, "name":"ONEWIRE_PATH_H", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["ONEWIRE"], "description":"Upper 32-bits of the path to take during a search."},
    {"address":5326, "name":"ONEWIRE_PATH_L", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["ONEWIRE"], "description":"Lower 32-bits of the path to take during a search."},
 
-   {"address":5340, "name":"ONEWIRE_DATA_TX", "type":"BYTE", "isBuffer":true, "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["ONEWIRE"], "description":"Data to be transmitted over the 1-wire bus."},
-   {"address":5370, "name":"ONEWIRE_DATA_RX", "type":"BYTE", "isBuffer":true, "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"RW", "default":0, "tags":["ONEWIRE"], "description":"Data received over the 1-wire bus."},
+   {"address":5340, "name":"ONEWIRE_DATA_TX", "type":"BYTE", "isBuffer":true, "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"W", "default":0, "tags":["ONEWIRE"], "description":"Data to be transmitted over the 1-wire bus."},
+   {"address":5370, "name":"ONEWIRE_DATA_RX", "type":"BYTE", "isBuffer":true, "devices":[{"device":"T7", "fwmin":1.0056}], "readwrite":"R", "default":0, "tags":["ONEWIRE"], "description":"Data received over the 1-wire bus."},
 
    {"address":5400, "name":"ASYNCH_ENABLE", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH", "UART"], "description":"1 = Turn on Asynch. Configures timing hardware, DIO lines and allocates the receiving buffer."},
    {"address":5420, "name":"ASYNCH_BAUD", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH", "UART"], "description":"The symbol rate that will be used for communication. 9600 is typical. Up to 38400 works, but heavily loads the T7's processor."},
@@ -116,15 +117,15 @@
    {"address":5455, "name":"ASYNCH_NUM_STOP_BITS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH", "UART"], "description":"The number of stop bits. 1 or 2. 0 = 1."},
    {"address":5460, "name":"ASYNCH_PARITY", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH", "UART"], "description":"Parity setting: 0=none, 1=odd, 2=even."},
    {"address":5465, "name":"ASYNCH_NUM_PARITY_ERRORS", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH", "UART"], "description":"The number of parity errors that have been detected. Cleared when UART is enabled. Can also be cleared by writing 0."},
-   {"address":5490, "name":"ASYNCH_DATA_TX", "type":"UINT16", "isBuffer":true, "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH", "UART"], "description":"Write data to be transmitted here."},
-   {"address":5495, "name":"ASYNCH_DATA_RX", "type":"UINT16", "isBuffer":true, "devices":["T7"], "readwrite":"RW", "default":0, "tags":["ASYNCH", "UART"], "description":"Read received data from here."},
+   {"address":5490, "name":"ASYNCH_DATA_TX", "type":"UINT16", "isBuffer":true, "devices":["T7"], "readwrite":"W", "default":0, "tags":["ASYNCH", "UART"], "description":"Write data to be transmitted here."},
+   {"address":5495, "name":"ASYNCH_DATA_RX", "type":"UINT16", "isBuffer":true, "devices":["T7"], "readwrite":"R", "default":0, "tags":["ASYNCH", "UART"], "description":"Read received data from here."},
 
    {"address":6000, "name":"LUA_RUN", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"], "description":"Writing 1 compiles and runs the loaded lua script. Writing zero stops the script and begins cleaning up memory. Users may poll the register after writing a value of 0 to verify that the VM is unloaded, and garbage collection is complete. 0 = VM fully unloaded.  1 = Running/in-progress"},
    {"address":6012, "name":"LUA_SOURCE_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"], "description":"Allocates memory for the source code."},
-   {"address":6014, "name":"LUA_SOURCE_WRITE", "type":"BYTE", "isBuffer":true, "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"], "description":"Location for source code to be written to."},
+   {"address":6014, "name":"LUA_SOURCE_WRITE", "type":"BYTE", "isBuffer":true, "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"W", "tags":["LUA"], "description":"Location for source code to be written to."},
    {"address":6020, "name":"LUA_DEBUG_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"], "description":"White 1 to this regster to enable debugging."},
    {"address":6022, "name":"LUA_DEBUG_NUM_BYTES", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"], "description":"The number of data bytes in the debug buffer waiting to be read."},
-   {"address":6024, "name":"LUA_DEBUG_DATA", "type":"BYTE", "isBuffer":true, "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"], "description":"Read debug data from here."},
+   {"address":6024, "name":"LUA_DEBUG_DATA", "type":"BYTE", "isBuffer":true, "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"R", "tags":["LUA"], "description":"Read debug data from here."},
 
    {"address":6032, "name":"LUA_SAVE_TO_FLASH", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0059}], "readwrite":"RW", "tags":["LUA"], "description":"Write 1 to save the loaded source code to flash."},
    {"address":6034, "name":"LUA_LOAD_SAVED", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0059}], "readwrite":"RW", "tags":["LUA"], "description":""},
@@ -169,7 +170,7 @@
    {"address":43900, "name":"AIN_ALL_RANGE", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["AIN"], "description":"A write to this global parameter affects all AIN.  A read will return the correct setting if all channels are set the same, but otherwise will return -9999."},
    {"address":43902, "name":"AIN_ALL_NEGATIVE_CH", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":199, "tags":["AIN"], "description":"A write to this global parameter affects all AIN.  A read will return the correct setting if all channels are set the same, but otherwise will return 0xFFFF."},
    {"address":43903, "name":"AIN_ALL_RESOLUTION_INDEX", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["AIN"], "description":"A write to this global parameter affects all AIN.  A read will return the correct setting if all channels are set the same, but otherwise will return 0xFFFF."},
-   {"address":43904, "name":"AIN_ALL_SETTLING_US", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["AIN"], "description":"A write to this global parameter affects all AIN.  A read will return the correct setting if all channels are set the same, but otherwise will return -9999."},
+   {"address":43904, "name":"AIN_ALL_SETTLING_US", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9328, "description":"0 = Auto.  Max is 50000 (microseconds)."}], "readwrite":"RW", "default":0, "tags":["AIN"], "description":"A write to this global parameter affects all AIN.  A read will return the correct setting if all channels are set the same, but otherwise will return -9999. Max is 50,000 us."},
    {"address":43906, "name":"AIN_ALL_EF_INDEX", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0115}], "readwrite":"RW", "default":0, "tags":["AIN"], "altnames":["AIN_ALL_EF_TYPE"], "description":"Write 0 to deactivate AIN_EF on all AINs. No other values may be written to this register. Reads will return the AIN_EF index if all 128 AINs are set to the same value. If values are not the same retuns 0xFFFF (65535)."},
 
    {"address":44900, "name":"DIO_EF_CLOCK0_ENABLE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "description":"1 = enabled. 0 = disabled. Must be disabled during configuration."},
@@ -278,7 +279,7 @@
    {"address":49454, "name":"WIFI_FIRMWARE_UPDATE_STATUS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9206}], "readwrite":"R", "tags":["WIFI"], "description":"CONFIGURING = 2920, IN_PROGRESS = 2921, REBOOTING = 2923, UPDATE_SUCCESS = 2924, UPDATE_FAILED = 2925",
       "constants":[{"name":"CONFIGURING", "value":2920}, {"name":"IN_PROGRESS", "value":2921}, {"name":"REBOOTING", "value":2923}, {"name":"UPDATE_SUCCESS", "value":2924}, {"name":"UPDATE_FAILED", "value":2925}]},
 
-   {"address":50000, "name":"AIN#(0:254)_BINARY", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["AIN"], "streamable":false, "altnames":["AIN#(0:254)_BIN"], "description":"Returns the binary representation of the specified analog input."},
+   {"address":50000, "name":"AIN#(0:254)_BINARY", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["AIN"], "streamable":false, "altnames":["AIN#(0:254)_BIN"], "description":"Returns the 24-bit binary representation of the specified analog input. If you prefer 16-bit representation, simply divide this by 256. This is for command-response only.  Stream always returns binary and LJM applies cal constants, so the LJM config flag LJM_STREAM_AIN_BINARY is used to get binary values."},
 
    {"address":46000, "name":"USER_RAM#(0:39)_F32", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA", "USER_RAM"], "altnames":["LUA_IO#(0:39)_READ"], "description":"Generic RAM registers. Useful for passing data between a host computer and a Lua script. Will not return an error if alternate data types are used."},
    {"address":46080, "name":"USER_RAM#(0:9)_I32", "type":"INT32", "devices":[{"device":"T7", "fwmin":1.0162}], "readwrite":"RW", "tags":["LUA", "USER_RAM"], "description":"Generic RAM registers. Useful for passing data between a host computer and a Lua script. Will not return an error if alternate data types are used."},
@@ -423,8 +424,9 @@
 
    {"address":6006, "name":"LUA_NUM_IO_FLOATS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA"], "description":"Deprecated. Do not need to use this in FW 1.0163+, as 200 bytes of USER_RAM are pre-allocated. Allocates memory for x input-output floats in FW<1.0163."},
 
-   {"address":6500, "name":"FILE_IO_LUA_SWITCH_FILE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0150}], "readwrite":"RW", "tags":["LUA", "FILE_IO"], "description":"Write any value to this register to instruct Lua scripts to switch to a new file. Lua script should periodically check LJ.CheckFileFlag() to receive instruction, then call LJ.ClearFileFlag() after file switch is complete. Useful for applications that require continuous logging in a Lua script, and on-demand file access from a host."}
+   {"address":60662, "name":"FILE_IO_LUA_SWITCH_FILE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0168}], "readwrite":"RW", "tags":["LUA", "FILE_IO"], "description":"Write any value to this register to instruct Lua scripts to switch to a new file. Lua script should periodically check LJ.CheckFileFlag() to receive instruction, then call LJ.ClearFileFlag() after file switch is complete. Useful for applications that require continuous logging in a Lua script, and on-demand file access from a host."},
 
+   {"address":61200, "name":"BATTERY_RAM#(0:16)", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0000}], "readwrite":"RW", "default":0, "tags":["LUA", "USER_RAM"], "description":"Saves or recalls data form the battery backed SRAM. Only available on T7-Pros."}
  ],
 
  "errors":
@@ -761,7 +763,8 @@
    {"error":2961, "string":"FILE_IO_NO_DISK", "description":"No SD card present or SC card could not be initialized."},
    {"error":2962, "string":"FILE_IO_INVALID_NAME", "description":"The file name is invalid."},
    {"error":2963, "string":"FILE_IO_FILE_NOT_OPEN", "description":"An open file is requrired to perform the requsted operation."},
-   {"error":2964, "string":"FILE_IO_TOO_MANY_OPEN", "description":"There are too many files open."}
+   {"error":2964, "string":"FILE_IO_TOO_MANY_OPEN", "description":"There are too many files open."},
+   {"error":2964, "string":"FILE_IO_SD_CARD_NOT_FOUND", "description":"Failed to mount the SD card. Card may be bad or incompatible."}
  ],
 
 
@@ -928,6 +931,7 @@
     "2015.05.06.A:  Removed U3, U6, and UE9 as device types.",
     "2015.05.14.A:  Added LJME_TEMPERATURE_OUT_OF_RANGE and LJME_VOLTAGE_OUT_OF_RANGE.",
     "2015.05.29.A:  Altered descriptions of STREAM_CLOCK_SOURCE and STREAM_EXTERNAL_CLOCK_DIVISOR.",
+    "2015.06.16.A:  Addition of CIO_MIO_STATE/BATTERY_RAM#(0:16)/FILE_IO_SD_CARD_NOT_FOUND. Altered descriptions of EIO_CIO_STATE/AIN_ALL_SETTLING_US/AIN#(0:254)_BINARY. I2C_DATA_TX/I2C_DATA_RX/ASYNCH_DATA_TX/ASYNCH_DATA_RX/ONEWIRE_DATA_TX/ONEWIRE_DATA_RX/LUA_SOURCE_WRITE/LUA_DEBUG_DATA readwrite fixes. Changed FILE_IO_LUA_SWITCH_FILE to address 60662.",
     "End Of Comments"
   ]
 }
