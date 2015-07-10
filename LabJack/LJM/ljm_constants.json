@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2015.06.16.A",
+   "version":"2015.07.10.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -22,7 +22,7 @@
    {"address":2502, "name":"CIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0000}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["CIO Port State"], "description":"Read or write the state of the 4 bits of CIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."},
    {"address":2503, "name":"MIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0000}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["MIO Port State"], "description":"Read or write the state of the 3 bits of MIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."},
    {"address":2580, "name":"FIO_EIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0005}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["FIO-EIO Port State"], "description":"Read or write the state of the 16 bits of FIO-EIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written."},
-   {"address":2581, "name":"EIO_CIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0005}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["EIO-CIO Port State"], "description":"Read or write the state of the 12 bits of EIO-CIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written. As of firmware 1.0172 MIO states are inclided in the upper nibble of the CIO byte."},
+   {"address":2581, "name":"EIO_CIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0005}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["EIO-CIO Port State"], "description":"Read or write the state of the 12 bits of EIO-CIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written. As of firmware 1.0172, MIO states are included in the upper nibble of the CIO byte."},
    {"address":2582, "name":"CIO_MIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0172}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["EIO-CIO Port State"], "description":"Read or write the state of the 12 bits of CIO-MIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written."},
    {"address":2600, "name":"FIO_DIRECTION", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9402}], "readwrite":"RW", "tags":["DIO"], "displayname":["FIO Port Direction"], "description":"Read or write the direction of the 8 bits of FIO in a single binary-encoded value.  0=Input and 1=Output.  The upper 8-bits of this value are inhibits."},
    {"address":2601, "name":"EIO_DIRECTION", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9402}], "readwrite":"RW", "tags":["DIO"], "displayname":["EIO Port Direction"], "description":"Read or write the direction of the 8 bits of EIO in a single binary-encoded value.  0=Input and 1=Output.  The upper 8-bits of this value are inhibits."},
@@ -120,10 +120,10 @@
    {"address":5490, "name":"ASYNCH_DATA_TX", "type":"UINT16", "isBuffer":true, "devices":["T7"], "readwrite":"W", "default":0, "tags":["ASYNCH", "UART"], "description":"Write data to be transmitted here."},
    {"address":5495, "name":"ASYNCH_DATA_RX", "type":"UINT16", "isBuffer":true, "devices":["T7"], "readwrite":"R", "default":0, "tags":["ASYNCH", "UART"], "description":"Read received data from here."},
 
-   {"address":6000, "name":"LUA_RUN", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"], "description":"Writing 1 compiles and runs the loaded lua script. Writing zero stops the script and begins cleaning up memory. Users may poll the register after writing a value of 0 to verify that the VM is unloaded, and garbage collection is complete. 0 = VM fully unloaded.  1 = Running/in-progress"},
+   {"address":6000, "name":"LUA_RUN", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"], "description":"Writing 1 compiles and runs the loaded Lua script. Writing zero stops the script and begins cleaning up memory. Users may poll the register after writing a value of 0 to verify that the VM is unloaded, and garbage collection is complete. 0 = VM fully unloaded.  1 = Running/in-progress"},
    {"address":6012, "name":"LUA_SOURCE_SIZE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"], "description":"Allocates memory for the source code."},
    {"address":6014, "name":"LUA_SOURCE_WRITE", "type":"BYTE", "isBuffer":true, "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"W", "tags":["LUA"], "description":"Location for source code to be written to."},
-   {"address":6020, "name":"LUA_DEBUG_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"], "description":"White 1 to this regster to enable debugging."},
+   {"address":6020, "name":"LUA_DEBUG_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"], "description":"Write 1 to this register to enable debugging."},
    {"address":6022, "name":"LUA_DEBUG_NUM_BYTES", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"RW", "tags":["LUA"], "description":"The number of data bytes in the debug buffer waiting to be read."},
    {"address":6024, "name":"LUA_DEBUG_DATA", "type":"BYTE", "isBuffer":true, "devices":[{"device":"T7", "fwmin":1.0018}], "readwrite":"R", "tags":["LUA"], "description":"Read debug data from here."},
 
@@ -171,7 +171,7 @@
    {"address":43902, "name":"AIN_ALL_NEGATIVE_CH", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":199, "tags":["AIN"], "description":"A write to this global parameter affects all AIN.  A read will return the correct setting if all channels are set the same, but otherwise will return 0xFFFF."},
    {"address":43903, "name":"AIN_ALL_RESOLUTION_INDEX", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["AIN"], "description":"A write to this global parameter affects all AIN.  A read will return the correct setting if all channels are set the same, but otherwise will return 0xFFFF."},
    {"address":43904, "name":"AIN_ALL_SETTLING_US", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9328, "description":"0 = Auto.  Max is 50000 (microseconds)."}], "readwrite":"RW", "default":0, "tags":["AIN"], "description":"A write to this global parameter affects all AIN.  A read will return the correct setting if all channels are set the same, but otherwise will return -9999. Max is 50,000 us."},
-   {"address":43906, "name":"AIN_ALL_EF_INDEX", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0115}], "readwrite":"RW", "default":0, "tags":["AIN"], "altnames":["AIN_ALL_EF_TYPE"], "description":"Write 0 to deactivate AIN_EF on all AINs. No other values may be written to this register. Reads will return the AIN_EF index if all 128 AINs are set to the same value. If values are not the same retuns 0xFFFF (65535)."},
+   {"address":43906, "name":"AIN_ALL_EF_INDEX", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0115}], "readwrite":"RW", "default":0, "tags":["AIN"], "altnames":["AIN_ALL_EF_TYPE"], "description":"Write 0 to deactivate AIN_EF on all AINs. No other values may be written to this register. Reads will return the AIN_EF index if all 128 AINs are set to the same value. If values are not the same returns 0xFFFF (65535)."},
 
    {"address":44900, "name":"DIO_EF_CLOCK0_ENABLE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.87}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "description":"1 = enabled. 0 = disabled. Must be disabled during configuration."},
    {"address":44901, "name":"DIO_EF_CLOCK0_DIVISOR", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9320}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "description":"Divides the core clock. Valid options: 1,2,4,8,16,32,64,256."},
@@ -192,17 +192,17 @@
 
    {"address":44000, "name":"DIO#(0:22)_EF_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "description":"1 = enabled. 0 = disabled. Must be disabled during configuration."},
    {"address":44100, "name":"DIO#(0:22)_EF_INDEX", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "altnames":["DIO#(0:22)_EF_TYPE"], "description":"An index to specify the feature you want."},
-   {"address":44200, "name":"DIO#(0:22)_EF_OPTIONS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "description":"Function dependant on selected feature index."},
-   {"address":44300, "name":"DIO#(0:22)_EF_CONFIG_A", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "altnames":["DIO#(0:22)_EF_VALUE_A"], "description":"Function dependant on selected feature index."},
-   {"address":44400, "name":"DIO#(0:22)_EF_CONFIG_B", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "altnames":["DIO#(0:22)_EF_VALUE_B"], "description":"Function dependant on selected feature index."},
-   {"address":44500, "name":"DIO#(0:22)_EF_CONFIG_C", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "altnames":["DIO#(0:22)_EF_VALUE_C"], "description":"Function dependant on selected feature index."},
-   {"address":44600, "name":"DIO#(0:22)_EF_CONFIG_D", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "altnames":["DIO#(0:22)_EF_VALUE_D"], "description":"Function dependant on selected feature index."},
-   {"address":3000, "name":"DIO#(0:22)_EF_READ_A", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO", "CORE"], "streamable":true, "displayname":["DIO-EF Read A"], "description":"Reads an unsigned integer value. The meaning of the integer is dependant on selected feature index."},
+   {"address":44200, "name":"DIO#(0:22)_EF_OPTIONS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "description":"Function dependent on selected feature index."},
+   {"address":44300, "name":"DIO#(0:22)_EF_CONFIG_A", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "altnames":["DIO#(0:22)_EF_VALUE_A"], "description":"Function dependent on selected feature index."},
+   {"address":44400, "name":"DIO#(0:22)_EF_CONFIG_B", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "altnames":["DIO#(0:22)_EF_VALUE_B"], "description":"Function dependent on selected feature index."},
+   {"address":44500, "name":"DIO#(0:22)_EF_CONFIG_C", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "altnames":["DIO#(0:22)_EF_VALUE_C"], "description":"Function dependent on selected feature index."},
+   {"address":44600, "name":"DIO#(0:22)_EF_CONFIG_D", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "altnames":["DIO#(0:22)_EF_VALUE_D"], "description":"Function dependent on selected feature index."},
+   {"address":3000, "name":"DIO#(0:22)_EF_READ_A", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO", "CORE"], "streamable":true, "displayname":["DIO-EF Read A"], "description":"Reads an unsigned integer value. The meaning of the integer is dependent on selected feature index."},
    {"address":3100, "name":"DIO#(0:22)_EF_READ_A_AND_RESET", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"], "streamable":true, "description":"Reads the same value as DIO#(0:22)_EF_READ_A and forces a reset."},
-   {"address":3200, "name":"DIO#(0:22)_EF_READ_B", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"], "streamable":true, "description":"Reads an unsigned integer value. The meaning of the integer is dependant on selected feature index."},
-   {"address":3500, "name":"DIO#(0:22)_EF_READ_A_F", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"], "description":"Reads a floating point value. The meaning of value is dependant on selected feature index."},
-   {"address":3600, "name":"DIO#(0:22)_EF_READ_A_F_AND_RESET", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"], "description":"Reads a floating point value and forces a reset. The meaning of value is dependant on selected feature index."},
-   {"address":3700, "name":"DIO#(0:22)_EF_READ_B_F", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"], "description":"Reads a floating point value. The meaning of value is dependant on selected feature index."},
+   {"address":3200, "name":"DIO#(0:22)_EF_READ_B", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"], "streamable":true, "description":"Reads an unsigned integer value. The meaning of the integer is dependent on selected feature index."},
+   {"address":3500, "name":"DIO#(0:22)_EF_READ_A_F", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"], "description":"Reads a floating point value. The meaning of value is dependent on selected feature index."},
+   {"address":3600, "name":"DIO#(0:22)_EF_READ_A_F_AND_RESET", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"], "description":"Reads a floating point value and forces a reset. The meaning of value is dependent on selected feature index."},
+   {"address":3700, "name":"DIO#(0:22)_EF_READ_B_F", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["DIO_EF", "DIO"], "description":"Reads a floating point value. The meaning of value is dependent on selected feature index."},
    {"address":45000, "name":"DIO#(0:22)_EF_EASY_FREQUENCY_IN", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0105}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "description":"Automatically configures the associated DIO_EF for feature index 11. If already configure for index 11 reads the result and resets the DIO_EF."},
 
 
@@ -231,7 +231,7 @@
    {"address":61990, "name":"IO_CONFIG_SET_CURRENT_TO_FACTORY", "type":"UINT16", "devices":["T7"], "readwrite":"W", "tags":["CONFIG"], "description":"Write a 1 to set current values to factory configuration.  The factory values are retrieved from flash and written to the current configuration registers."},
    {"address":61991, "name":"IO_CONFIG_SET_CURRENT_TO_DEFAULT", "type":"UINT16", "devices":["T7"], "readwrite":"W", "tags":["CONFIG"], "description":"Write a 1 to set current values to default configuration.  The default values are retrieved from flash and written to the current configuration registers, thus this behaves similar to reboot/power-up."},
 
-   {"address":61998, "name":"SYSTEM_REBOOT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9419}], "readwrite":"W", "tags":["CONFIG"], "description":"Issues a device reboot. Must write 0x4C4Axxxx, where xxxx is number of 50ms ticks to wait before reboot."},
+   {"address":61998, "name":"SYSTEM_REBOOT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9419}], "readwrite":"W", "tags":["CONFIG"], "description":"Issues a device reboot. Must write 0x4C4Axxxx, where xxxx is number of 50ms ticks to wait before reboot.  To reboot immediately write 0x4C4A0000 (d1279918080)."},
 
    {"address":60050, "name":"TEMPERATURE_AIR_K", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0105}], "readwrite":"R", "tags":["AIN", "CORE"], "streamable":false, "displayname":["Estimated Air Temperature [deg K]"], "description":"Returns the estimated ambient air temperature just outside a T7 in its red plastic enclosure.  This register is equal to TEMPERATURE_DEVICE_K - 4.3.  If Ethernet and/or WiFi is enabled, subtract an extra 0.6 for each."},
    {"address":60052, "name":"TEMPERATURE_DEVICE_K", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0105}], "readwrite":"R", "tags":["AIN", "CORE"], "streamable":false, "displayname":["Device Temperature [deg K]"], "description":"Takes a reading from AIN14 using range=+/-10V and resolution=8, and applies the formula Volts*-92.6+467.6 to return degrees K.  AIN14 is internally connected to an LM94021 (U24) with GS=10 which is physically located on the bottom of the PCB between the AIN0/1 and AIN2/3 screw-terminals."},
@@ -256,7 +256,7 @@
    {"address":49156, "name":"ETHERNET_DNS_DEFAULT", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["ETHERNET"], "description":"The DNS of wired Ethernet after a power-cycle to the device."},
    {"address":49158, "name":"ETHERNET_ALTDNS_DEFAULT", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["ETHERNET"], "description":"The Alt DNS of wired Ethernet after a power-cycle to the device."},
    {"address":49160, "name":"ETHERNET_DHCP_ENABLE_DEFAULT", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "tags":["ETHERNET"], "description":"The Enabled/Disabled state of Ethernet DHCP after a power-cycle to the device."},
-   {"address":49190, "name":"ETHERNET_APPLY_SETTINGS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0103}], "readwrite":"W", "tags":["ETHERNET"], "description":"Writing 0 to this register power cycles ethernet.  It tells the T7 to waits 1s before turning off Ethernet and then 500ms before turning it back on."},
+   {"address":49190, "name":"ETHERNET_APPLY_SETTINGS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0103}], "readwrite":"W", "tags":["ETHERNET"], "description":"Writing 0 to this register power cycles Ethernet.  It tells the T7 to waits 1s before turning off Ethernet and then 500ms before turning it back on."},
 
    {"address":49200, "name":"WIFI_IP", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["WIFI"], "description":"Read the current IP address of WiFi."},
    {"address":49202, "name":"WIFI_SUBNET", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["WIFI"], "description":"Read the current subnet of WiFi."},
@@ -286,10 +286,10 @@
    {"address":46100, "name":"USER_RAM#(0:39)_U32", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0162}], "readwrite":"RW", "tags":["LUA", "USER_RAM"], "description":"Generic RAM registers. Useful for passing data between a host computer and a Lua script. Will not return an error if alternate data types are used."},
    {"address":46180, "name":"USER_RAM#(0:19)_U16", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0162}], "readwrite":"RW", "tags":["LUA", "USER_RAM"], "description":"Generic RAM registers. Useful for passing data between a host computer and a Lua script. Will not return an error if alternate data types are used."},
 
-   {"address":47000, "name":"USER_RAM_FIFO#(0:3)_DATA_U16", "type":"UINT16", "isBuffer":true, "devices":[{"device":"T7", "fwmin":1.0163}], "readwrite":"RW", "default":0, "tags":["LUA", "USER_RAM"], "description":"Generic FIFO buffer.  Useful for passing ORDERED or SEQUENTIAL data between various endpoints, such as between a host and a Lua script. Use up to 4 FIFO buffers simultaneously->1 of each data type, all 4 different data types, or a mixture. e.g. FIFO0_DATA_U16 points to the same memory as other FIFO0 registers, such that there are a total of 4 memory blocks: FIFO0, FIFO1, FIFO2 and FIFO3.  It is possible to write into a FIFO buffer using a different datatype than is bieng used to read out of it."},
-   {"address":47010, "name":"USER_RAM_FIFO#(0:3)_DATA_U32", "type":"UINT32", "isBuffer":true, "devices":[{"device":"T7", "fwmin":1.0163}], "readwrite":"RW", "default":0, "tags":["LUA", "USER_RAM"], "description":"Generic FIFO buffer.  Useful for passing ORDERED or SEQUENTIAL data between various endpoints, such as between a host and a Lua script. Use up to 4 FIFO buffers simultaneously->1 of each data type, all 4 different data types, or a mixture. e.g. FIFO0_DATA_U16 points to the same memory as other FIFO0 registers, such that there are a total of 4 memory blocks: FIFO0, FIFO1, FIFO2 and FIFO3.  It is possible to write into a FIFO buffer using a different datatype than is bieng used to read out of it."},
-   {"address":47020, "name":"USER_RAM_FIFO#(0:3)_DATA_I32", "type":"INT32", "isBuffer":true, "devices":[{"device":"T7", "fwmin":1.0163}], "readwrite":"RW", "default":0, "tags":["LUA", "USER_RAM"], "description":"Generic FIFO buffer.  Useful for passing ORDERED or SEQUENTIAL data between various endpoints, such as between a host and a Lua script. Use up to 4 FIFO buffers simultaneously->1 of each data type, all 4 different data types, or a mixture. e.g. FIFO0_DATA_U16 points to the same memory as other FIFO0 registers, such that there are a total of 4 memory blocks: FIFO0, FIFO1, FIFO2 and FIFO3.  It is possible to write into a FIFO buffer using a different datatype than is bieng used to read out of it."},
-   {"address":47030, "name":"USER_RAM_FIFO#(0:3)_DATA_F32", "type":"FLOAT32", "isBuffer":true, "devices":[{"device":"T7", "fwmin":1.0163}], "readwrite":"RW", "default":0, "tags":["LUA", "USER_RAM"], "description":"Generic FIFO buffer.  Useful for passing ORDERED or SEQUENTIAL data between various endpoints, such as between a host and a Lua script. Use up to 4 FIFO buffers simultaneously->1 of each data type, all 4 different data types, or a mixture. e.g. FIFO0_DATA_U16 points to the same memory as other FIFO0 registers, such that there are a total of 4 memory blocks: FIFO0, FIFO1, FIFO2 and FIFO3.  It is possible to write into a FIFO buffer using a different datatype than is bieng used to read out of it."},
+   {"address":47000, "name":"USER_RAM_FIFO#(0:3)_DATA_U16", "type":"UINT16", "isBuffer":true, "devices":[{"device":"T7", "fwmin":1.0163}], "readwrite":"RW", "default":0, "tags":["LUA", "USER_RAM"], "description":"Generic FIFO buffer.  Useful for passing ORDERED or SEQUENTIAL data between various endpoints, such as between a host and a Lua script. Use up to 4 FIFO buffers simultaneously->1 of each data type, all 4 different data types, or a mixture. e.g. FIFO0_DATA_U16 points to the same memory as other FIFO0 registers, such that there are a total of 4 memory blocks: FIFO0, FIFO1, FIFO2 and FIFO3.  It is possible to write into a FIFO buffer using a different datatype than is being used to read out of it."},
+   {"address":47010, "name":"USER_RAM_FIFO#(0:3)_DATA_U32", "type":"UINT32", "isBuffer":true, "devices":[{"device":"T7", "fwmin":1.0163}], "readwrite":"RW", "default":0, "tags":["LUA", "USER_RAM"], "description":"Generic FIFO buffer.  Useful for passing ORDERED or SEQUENTIAL data between various endpoints, such as between a host and a Lua script. Use up to 4 FIFO buffers simultaneously->1 of each data type, all 4 different data types, or a mixture. e.g. FIFO0_DATA_U16 points to the same memory as other FIFO0 registers, such that there are a total of 4 memory blocks: FIFO0, FIFO1, FIFO2 and FIFO3.  It is possible to write into a FIFO buffer using a different datatype than is being used to read out of it."},
+   {"address":47020, "name":"USER_RAM_FIFO#(0:3)_DATA_I32", "type":"INT32", "isBuffer":true, "devices":[{"device":"T7", "fwmin":1.0163}], "readwrite":"RW", "default":0, "tags":["LUA", "USER_RAM"], "description":"Generic FIFO buffer.  Useful for passing ORDERED or SEQUENTIAL data between various endpoints, such as between a host and a Lua script. Use up to 4 FIFO buffers simultaneously->1 of each data type, all 4 different data types, or a mixture. e.g. FIFO0_DATA_U16 points to the same memory as other FIFO0 registers, such that there are a total of 4 memory blocks: FIFO0, FIFO1, FIFO2 and FIFO3.  It is possible to write into a FIFO buffer using a different datatype than is being used to read out of it."},
+   {"address":47030, "name":"USER_RAM_FIFO#(0:3)_DATA_F32", "type":"FLOAT32", "isBuffer":true, "devices":[{"device":"T7", "fwmin":1.0163}], "readwrite":"RW", "default":0, "tags":["LUA", "USER_RAM"], "description":"Generic FIFO buffer.  Useful for passing ORDERED or SEQUENTIAL data between various endpoints, such as between a host and a Lua script. Use up to 4 FIFO buffers simultaneously->1 of each data type, all 4 different data types, or a mixture. e.g. FIFO0_DATA_U16 points to the same memory as other FIFO0 registers, such that there are a total of 4 memory blocks: FIFO0, FIFO1, FIFO2 and FIFO3.  It is possible to write into a FIFO buffer using a different datatype than is being used to read out of it."},
    {"address":47900, "name":"USER_RAM_FIFO#(0:3)_ALLOCATE_NUM_BYTES", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0163}], "readwrite":"RW", "default":0, "tags":["LUA", "USER_RAM"], "description":"Allocate memory for a FIFO buffer. Number of bytes should be sufficient to store users max transfer array size.  Note that FLOAT32, INT32, and UINT32 require 4 bytes per value, and UINT16 require 2 bytes per value."},
    {"address":47910, "name":"USER_RAM_FIFO#(0:3)_NUM_BYTES_IN_FIFO", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0163}], "readwrite":"R", "default":0, "tags":["LUA", "USER_RAM"], "description":"Poll this register to see when new data is available/ready. Each read of the FIFO buffer decreases this value, and each write to the FIFO buffer increases this value. At any point in time, the following equation holds: Nbytes = Nwritten - Nread."},
    {"address":47930, "name":"USER_RAM_FIFO#(0:3)_EMPTY", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0163}], "readwrite":"W", "default":0, "tags":["LUA", "USER_RAM"], "description":"Write any value to this register to efficiently empty, flush, or otherwise clear data from the FIFO."},
@@ -309,7 +309,7 @@
    {"address":60020, "name":"ETHERNET_MAC", "type":"UINT64", "devices":["T7"], "readwrite":"R", "tags":["ETHERNET"], "description":"The MAC address of the wired Ethernet module."},
    {"address":60024, "name":"WIFI_MAC", "type":"UINT64", "devices":["T7"], "readwrite":"R", "tags":["WIFI"], "description":"The MAC address of the WiFi module."},
    {"address":60028, "name":"SERIAL_NUMBER", "type":"UINT32", "devices":["T7", "DIGIT"], "readwrite":"R", "tags":["CONFIG"], "description":"The serial number of the device."},
-   {"address":60500, "name":"DEVICE_NAME_DEFAULT", "type":"STRING", "devices":["T7", "DIGIT"], "readwrite":"RW", "tags":["CONFIG"], "description":"Reads return the current device name. Writes update the default and current device name. A reset is necessary to update the name reported by NBNS. Up to 49 characters, cannot contain periods."},
+   {"address":60500, "name":"DEVICE_NAME_DEFAULT", "type":"STRING", "devices":["T7", "DIGIT"], "readwrite":"RW", "tags":["CONFIG"], "description":"Reads return the current device name. Writes update the default and current device name. A reboot is necessary to update the name reported by NBNS. Up to 49 characters, cannot contain periods."},
 
    {"address":1900, "name":"CURRENT_SOURCE_10UA_CAL_VALUE", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["CONFIG"], "description":"Fixed current source value in Amps for the 10UA terminal. This value is stored during factory calibration, it is not a current reading. Using the equation V=IR, with a known current and voltage, it is possible to calculate resistance of RTDs."},
    {"address":1902, "name":"CURRENT_SOURCE_200UA_CAL_VALUE", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["CONFIG"], "description":"Fixed current source value in Amps for the 200UA terminal. This value is stored during factory calibration, it is not a current reading. Using the equation V=IR, with a known current and voltage, it is possible to calculate resistance of RTDs."},
@@ -405,10 +405,10 @@
    {"address":22242, "name":"DGT_RTCC_TIME", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The current time of the real-time-clock on the Digit. Synchronized with the computer within software. 22242 Year=0 to 99, 22243 Month=1 to 12, 22244 Day=1 to 31, 22245 Weekday=1 to 7, 22246 Hour=0 to 23, 22247 Minutes=0 to 59, 22248 Second=0 to 59"},
    {"address":22804, "name":"DGT_FLASH_WIP", "type":"UINT16", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"A status flag for the flash(data storage chip) on the Digit. 1=Write in-progress, 0=Idle"},
    {"address":22810, "name":"DGT_pFLASH_READ", "type":"UINT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The read pointer for flash. Auto-incremented, simply initialize with a start address, then use 22812+"},
-   {"address":22812, "name":"DGT_FLASH_READ", "type":"UINT16", "isBuffer":true, "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"Read data from this address and subsequent addresses after pointer is initialized. Used to download data from the Digit."},
-   {"address":22822, "name":"DGT_FLASH_bkERASE", "type":"UINT16", "devices":["DIGIT"], "readwrite":"W", "tags":[""], "description":"Erase all data on the flash. KEY=Erase, Other=No effect, KEY=37157 Takes 5seconds to complete, so poll the WIP status flag until =0. After erase, logging will begin immediately."},
+   {"address":22812, "name":"DGT_FLASH_READ", "type":"UINT16", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"Read data from this address and subsequent addresses after pointer is initialized. Used to download data from the Digit."},
+   {"address":22822, "name":"DGT_FLASH_bkERASE", "type":"UINT16", "devices":["DIGIT"], "readwrite":"W", "tags":[""], "description":"Erase all data on the flash. KEY=Erase, Other=No effect, KEY=37157 Takes 5 seconds to complete, so poll the WIP status flag until =0. After erase, logging will begin immediately."},
    {"address":22830, "name":"DGT_pFLASH_WRITE", "type":"UINT32", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"The write pointer for flash. Auto-incremented, simply initialize with a start address, then use 22832+"},
-   {"address":22832, "name":"DGT_FLASH_WRITE", "type":"UINT16", "isBuffer":true, "devices":["DIGIT"], "readwrite":"W", "tags":[""], "description":"Write data to this address and subsequent addresses after pointer is initialized. Used primarily for firmware updates."},
+   {"address":22832, "name":"DGT_FLASH_WRITE", "type":"UINT16", "devices":["DIGIT"], "readwrite":"W", "tags":[""], "description":"Write data to this address and subsequent addresses after pointer is initialized. Used primarily for firmware updates."},
    {"address":22844, "name":"DGT_FACTORY_UNLOCK", "type":"UINT16", "devices":["DIGIT"], "readwrite":"W", "tags":[""], "description":"Write a unique passkey to unlock factory settings. Only used by mfr."},
    {"address":61996, "name":"DGT_REQ_FW_UPDATE", "type":"UINT32", "devices":["DIGIT"], "readwrite":"W", "tags":[""], "description":"Request a firmware update.  Pass a value of 150 (5mS) so that the Digit has time to de-enumerate. Only used by mfr."}
  ],
@@ -530,8 +530,8 @@
    {"error":1307, "string":"LJME_OLD_FIRMWARE", "description":"The current firmware version of the device was not sufficient to read/write a requested register, as according to the loaded LJM constants file."},
    {"error":1308, "string":"LJME_CANNOT_READ_OUT_ONLY_STREAM", "description":"The stream running is out-only and does not produce data values."},
    {"error":1309, "string":"LJME_NO_SCANS_RETURNED", "description":"The LJM configuration LJM_STREAM_SCANS_RETURN is set to LJM_STREAM_SCANS_RETURN_ALL_OR_NONE and the full ScansPerRead scans have not be received."},
-   {"error":1310, "string":"LJME_TEMPERATURE_OUT_OF_RANGE", "description":"LJM_TCVoltsToTemp recieved a temperature that was out of range for the given thermocouple type."},
-   {"error":1311, "string":"LJME_VOLTAGE_OUT_OF_RANGE", "description":"LJM_TCVoltsToTemp recieved a voltage that was out of range for the given thermocouple type."},
+   {"error":1310, "string":"LJME_TEMPERATURE_OUT_OF_RANGE", "description":"LJM_TCVoltsToTemp received a temperature that was out of range for the given thermocouple type."},
+   {"error":1311, "string":"LJME_VOLTAGE_OUT_OF_RANGE", "description":"LJM_TCVoltsToTemp received a voltage that was out of range for the given thermocouple type."},
 
 
    {"error":2300, "string":"MODBUS_RSP_OVERFLOW", "description":"Response packet greater than max packet size."},
@@ -541,7 +541,7 @@
    {"error":2312, "string":"MODBUS_STRING_BAD_NUM_PARAMS"},
    {"error":2313, "string":"MODBUS_INVALID_NUM_REGISTERS", "description":"Register data types does not match the number of registers in the request."},
    {"error":2314, "string":"MODBUS_READ_TOO_LARGE"},
-   {"error":2315, "string":"MODBUS_NUM_REGS_MUST_BE_EVEN", "description":"Register or group of registers requires tha access be in an even number of registers."},
+   {"error":2315, "string":"MODBUS_NUM_REGS_MUST_BE_EVEN", "description":"Register or group of registers requires the access be in an even number of registers."},
    {"error":2316, "string":"MODBUS_STRING_MISSING_NULL", "description":"Strings must be terminated with a null (\\0, 0x00)."},
 
    {"error":2330, "string":"STARTUP_CONFIG_INVALID_CODE"},
@@ -554,9 +554,9 @@
 
    {"error":2350, "string":"INTFLASH_ADD_INVALID"},
    {"error":2351, "string":"INTFLASH_CODE_INVALID"},
-   {"error":2352, "string":"INTFLASH_OP_PROHIBITED", "description":"Attemted to read or write a section that is not allowed."},
+   {"error":2352, "string":"INTFLASH_OP_PROHIBITED", "description":"Attempted to read or write a section that is not allowed."},
    {"error":2353, "string":"INTFLASH_SECTION_OVERWRITE", "description":"Attempted to write or read beyond the currently selected section."},
-   {"error":2354, "string":"INTFLASH_KEY_INVALID", "description":"Specified Key and Address missmatch."},
+   {"error":2354, "string":"INTFLASH_KEY_INVALID", "description":"Specified Key and Address mismatch."},
    {"error":2355, "string":"FLASH_VERIFICATION_FAILED", "description":"A write to flash failed to set one or more bits to the desired values."},
    {"error":2356, "string":"FLASH_ERASE_FAILED", "description":"One or more bits failed to set during a flash erase operation."},
    {"error":2358, "string":"INTFLASH_UNAVAILABLE", "description":"Flash can not be accessed due to the WiFi module booting up."},
@@ -579,7 +579,7 @@
 
    {"error":2400, "string":"SYSTEM_MEMORY_BEREFT", "description":"Insufficient memory to perform the requested action."},
    {"error":2401, "string":"SYSTEM_MEMORY_OVERWRITE", "description":"Attempted to overwrite a buffer."},
-   {"error":2402, "string":"SYSTEM_RESTART_CODE_INVALID", "description":"Invalid code supplied when issuing a restart."},
+   {"error":2402, "string":"SYSTEM_REBOOT_CODE_INVALID", "description":"Invalid code supplied when issuing a reboot."},
    {"error":2403, "string":"SYSTEM_READ_OVERRUN"},
    {"error":2404, "string":"SYSTEM_INVALID_PIN"},
    {"error":2405, "string":"SYSTEM_NVRAM_UNAVAILABLE", "description":"NVRAM is not available on this device."},
@@ -589,13 +589,13 @@
    {"error":2420, "string":"DEVICE_NAME_MUST_BE_ALPHANUM", "description":"Attempted to write a device name with invalid characters."},
 
    {"error":2450, "string":"POWER_INVALID_SETTING", "description":"Unknown value specified."},
-   {"error":2451, "string":"POWER_USB_NEEDS_20MHZ_OR_MORE", "description":"Core must be running at atleast 20MHz for USB to operate."},
+   {"error":2451, "string":"POWER_USB_NEEDS_20MHZ_OR_MORE", "description":"Core must be running at at least 20MHz for USB to operate."},
    {"error":2452, "string":"POWER_NO_CHANGE"},
-   {"error":2456, "string":"POWER_CAN_NOT_CHANGE_USED_CONNECTION", "description":"Can not change the power level of the connnected medium."},
+   {"error":2456, "string":"POWER_CAN_NOT_CHANGE_USED_CONNECTION", "description":"Can not change the power level of the connected medium."},
 
    {"error":2460, "string":"POWER_ANALOG_OFF", "description":"Analog input system is powered down."},
 
-   {"error":2490, "string":"WIFI_NOT_ASSOCIATED", "description":"Wifi needs to be connected to a network before the requested action can be perfomred."},
+   {"error":2490, "string":"WIFI_NOT_ASSOCIATED", "description":"Wifi needs to be connected to a network before the requested action can be performed."},
 
    {"error":2500, "string":"HW_DIO_NOT_AVAILABLE"},
    {"error":2508, "string":"HW_CNTRA_NOT_AVAILABLE", "description":"Counter A is being used by another system."},
@@ -644,9 +644,9 @@
    {"error":2607, "string":"STREAM_CHN_LIST_INVALID", "description":"The channel list contains an unstreamable address."},
    {"error":2608, "string":"STREAM_SCAN_RATE_INVALID", "description":"The scan rate times the number of channels per scan is too great for this device."},
    {"error":2609, "string":"STREAM_OUT_BUFF_TOO_BIG"},
-   {"error":2610, "string":"STREAM_OUT_NUM_INVALID", "description":"An invlid stream out number was specified."},
-   {"error":2611, "string":"STREAM_DATA_TYPE_INVALID", "description":"An unsopported data types was specified."},
-   {"error":2612, "string":"STREAM_TARGET_CONFIG_INVALID", "description":"Stream must be set to either spontaineous or command-response."},
+   {"error":2610, "string":"STREAM_OUT_NUM_INVALID", "description":"An invalid stream out number was specified."},
+   {"error":2611, "string":"STREAM_DATA_TYPE_INVALID", "description":"An unsupported data types was specified."},
+   {"error":2612, "string":"STREAM_TARGET_CONFIG_INVALID", "description":"Stream must be set to either spontaneous or command-response."},
    {"error":2613, "string":"STREAM_OUT_BUFF_FULL", "description":"Attempted to write more data than the buffer can hold. Extra data was discarded."},
    {"error":2614, "string":"STREAM_OUT_TARGET_INVALID", "description":"Specified address can not be a stream out target."},
    {"error":2615, "string":"STREAM_BUFF_SIZE_INVALID", "description":"Specified buffer was either too large or not a power of 2."},
@@ -660,6 +660,7 @@
    {"error":2623, "string":"STREAM_OUT_DATA_TRGT_MISSMATCH", "description":""},
    {"error":2624, "string":"STREAM_INVALID_DIVISOR", "description":"Selected divisor can not be used."},
    {"error":2625, "string":"STREAM_CHN_CAN_NOT_BE_STREAMED", "description":"The requested channel can not be streamed."},
+   {"error":2625, "string":"STREAM_OUT_DAC_IN_USE", "description":"The high resolution converter can not be used while stream out is sending data to the high-resolution converter."},
 
    {"error":2670, "string":"SWDT_ROLLT_INVALID"},
    {"error":2671, "string":"SWDT_ENABLED", "description":"The watchdog must be disabled before the requested operation can be performed."},
@@ -671,7 +672,7 @@
    {"error":2691, "string":"RTC_SNTP_TIME_INVALID"},
    {"error":2692, "string":"RTC_NOT_PRESENT", "description": "The requested operation can not be performed on units without a real-time-clock."},
 
-   {"error":2700, "string":"SPI_MODE_INVALID", "description":"Valid modex are 0-3."},
+   {"error":2700, "string":"SPI_MODE_INVALID", "description":"Valid modes are 0-3."},
    {"error":2701, "string":"SPI_NO_DATA_AVAILABLE"},
    {"error":2702, "string":"SPI_CS_PIN_INVALID", "description":"Attempted to set an invalid pin."},
    {"error":2703, "string":"SPI_CLK_PIN_INVALID", "description":"Attempted to set an invalid pin."},
@@ -697,7 +698,7 @@
    {"error":2741, "string":"SBUS_NO_ACK", "description":"Slave device did not acknowledge the data transfer."},
    {"error":2742, "string":"SBUS_CUSTOM_MODE_INVALID"},
    {"error":2743, "string":"SBUS_INVALID_DIO_NUM", "description":"Attempted to set an invalid pin."},
-   {"error":2744, "string":"SBUS_BACKGROUND_SERVICE_ON", "description":"Command-response reads can not be used while the backgroud service is running."},
+   {"error":2744, "string":"SBUS_BACKGROUND_SERVICE_ON", "description":"Command-response reads can not be used while the background service is running."},
    {"error":2745, "string":"SBUS_CHECKSUM_ERROR", "description":"SHT communication checksum failed."},
 
    {"error":2760, "string":"TDAC_SDA_SCL_INVALID", "description":"SCL must be even and SDA must be SCL+1."},
@@ -706,7 +707,7 @@
    {"error":2763, "string":"TDAC_CAL_READ_FAILURE", "description":"Failed to read TDAC calibration."},
 
    {"error":2770, "string":"ONEWIRE_UNSUPPORETD_FUNCTION", "description":"Unknown function specified."},
-   {"error":2771, "string":"ONEWIRE_NO_PRESENCE_PULSE", "description":"Unable to detect any devcies on the bus."},
+   {"error":2771, "string":"ONEWIRE_NO_PRESENCE_PULSE", "description":"Unable to detect any devices on the bus."},
 
    {"error":2780, "string":"ASYNCH_NUM_DATA_BITS_INVALID", "description":"The specified number of data bits is not supported."},
    {"error":2781, "string":"ASYNCH_NUM_TO_WRITE_INVALID", "description":"The number of bytes to send is invalid."},
@@ -762,7 +763,7 @@
    {"error":2960, "string":"FILE_IO_NOT_FOUND", "description":"The requested file was not found."},
    {"error":2961, "string":"FILE_IO_NO_DISK", "description":"No SD card present or SC card could not be initialized."},
    {"error":2962, "string":"FILE_IO_INVALID_NAME", "description":"The file name is invalid."},
-   {"error":2963, "string":"FILE_IO_FILE_NOT_OPEN", "description":"An open file is requrired to perform the requsted operation."},
+   {"error":2963, "string":"FILE_IO_FILE_NOT_OPEN", "description":"An open file is required to perform the requested operation."},
    {"error":2964, "string":"FILE_IO_TOO_MANY_OPEN", "description":"There are too many files open."},
    {"error":2964, "string":"FILE_IO_SD_CARD_NOT_FOUND", "description":"Failed to mount the SD card. Card may be bad or incompatible."}
  ],
@@ -870,12 +871,12 @@
     "2014.02.28.A:  Added stream register descriptions.",
     "2014.03.12.A:  Added ASYNCH registers.",
     "2014.03.14.A:  Added error code descriptions.",
-    "2014.03.14.A:  Added lua register descriptions and changed lua types. Types were changed before, but those changes were lost.",
+    "2014.03.14.A:  Added Lua register descriptions and changed Lua types. Types were changed before, but those changes were lost.",
     "2014.03.30.A:  Changed Lua starupt configuration registers to DEFAULT.",
     "2014.04.07.A:  Added SPI_GO register.",
     "2014.04.09.A:  SPI, I2C, and ONEWIRE _DATA_WRITE and _DATA_READ changed to _DATA_TX and _DATA_RX.",
     "2014.04.24.A:  Added display names and other changes back in that were overwritten on April 9th.",
-    "2014.05.15.A:  Added ETHERNET_APPLY_SETTINGS register so T7 can be configured over ethernet connection w/o rebooting.",
+    "2014.05.15.A:  Added ETHERNET_APPLY_SETTINGS register so T7 can be configured over Ethernet connection w/o rebooting.",
     "2014.05.21.A:  Added STREAM_OUT#(0:3) register, and set as UINT16, and readable in FW 1.0103 or greater, also corrected (0:4) to (0:3), because there are only 4 stream out buffers, not 5.",
     "2014.05.23.A:  Added error code 2373, and description.",
     "2014.06.13.A:  Adding status codes back into description field until automated tools are updated.",
@@ -932,6 +933,7 @@
     "2015.05.14.A:  Added LJME_TEMPERATURE_OUT_OF_RANGE and LJME_VOLTAGE_OUT_OF_RANGE.",
     "2015.05.29.A:  Altered descriptions of STREAM_CLOCK_SOURCE and STREAM_EXTERNAL_CLOCK_DIVISOR.",
     "2015.06.16.A:  Addition of CIO_MIO_STATE/BATTERY_RAM#(0:16)/FILE_IO_SD_CARD_NOT_FOUND. Altered descriptions of EIO_CIO_STATE/AIN_ALL_SETTLING_US/AIN#(0:254)_BINARY. I2C_DATA_TX/I2C_DATA_RX/ASYNCH_DATA_TX/ASYNCH_DATA_RX/ONEWIRE_DATA_TX/ONEWIRE_DATA_RX/LUA_SOURCE_WRITE/LUA_DEBUG_DATA readwrite fixes. Changed FILE_IO_LUA_SWITCH_FILE to address 60662.",
+    "2015.07.10.A:  Typo corrections.",
     "End Of Comments"
   ]
 }
