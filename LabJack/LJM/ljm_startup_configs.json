@@ -65,6 +65,7 @@
     {"LJM_OLD_FIRMWARE_CHECK":"default",               "type":"boolean", "values":[true, false]},
     {"LJM_OPEN_MODE":"default",                        "type":"integer"},
     {"LJM_RETRY_ON_TRANSACTION_ID_MISMATCH":"default", "type":"boolean", "values":[true, false]},
+    {"LJM_SPECIAL_ADDRESSES_FILE":"default",           "type":"string"},
     {"LJM_STREAM_AIN_BINARY":"default",                "type":"boolean", "values":[true, false]},
     {"LJM_STREAM_BUFFER_MAX_NUM_SECONDS":"default",    "type":"integer"},
     {"LJM_STREAM_CAL_LOAD_MAX_NUM_ATTEMPTS":"default", "type":"integer"},
