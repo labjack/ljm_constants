@@ -1,6 +1,6 @@
 // ljm_startup_configs.json:
 //   This is the configurations file that is loaded when LJM is started up.
-//   Distributed with LJM version 1.0900.
+//   Distributed with LJM version 1.0901.
 //
 //   This file (and the containing folder) may be overwritten when LJM
 //   updates, so if you'd like to make changes to the configurations that are
@@ -34,6 +34,7 @@
     {"LJM_ALLOWS_AUTO_MULTIPLE_FEEDBACKS":"default",   "type":"boolean", "values":[true, false]},
     {"LJM_AUTO_RECONNECT_STICKY_CONNECTION":"default", "type":"boolean", "values":[true, false]},
     {"LJM_AUTO_RECONNECT_STICKY_SERIAL":"default",     "type":"boolean", "values":[true, false]},
+    {"LJM_AUTO_RECONNECT_WAIT_MS":"default",           "type":"integer"},
     {"LJM_DEBUG_LOG_BUFFER_MAX_SIZE":"default",        "type":"integer"},
     {"LJM_DEBUG_LOG_FILE":"default",                   "type":"string"},
     {"LJM_DEBUG_LOG_FILE_MAX_SIZE":"default",          "type":"integer"},
