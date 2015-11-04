@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2015.08.17.A",
+   "version":"2015.10.04.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -35,12 +35,12 @@
    {"address":4002, "name":"STREAM_SCANRATE_HZ", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of times per second that all channels in the scanlist will be read. SampleRate=NumChannels*ScanRate.  Has no effect when using and external clock."},
    {"address":4004, "name":"STREAM_NUM_ADDRESSES", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of entries in the scanlist"},
    {"address":4006, "name":"STREAM_SAMPLES_PER_PACKET", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Specifies the number of data points to be sent in the data packet. Only applies to spontaneous mode."},
-   {"address":4008, "name":"STREAM_SETTLING_US", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Time in microseconds to allow signals to settle after switching the mux. Default=0. If set to a value <= 5 the T7 will automatically determine the necessary settling time. When the sample rate is above 60kHz settling time will be set to ~5 us. Max is 5000."},
+   {"address":4008, "name":"STREAM_SETTLING_US", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Time in microseconds to allow signals to settle after switching the mux. Default=0. If set to a value <= 5 the T7 will automatically determine the necessary settling time. When the sample rate is above 60kHz settling time will be set to ~5 us. Max is 4400."},
    {"address":4010, "name":"STREAM_RESOLUTION_INDEX", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Index specifying the resolution of the data. High settings will have lower max speeds."},
-   {"address":4012, "name":"STREAM_BUFFER_SIZE_BYTES", "type":"UINT32", "devices":[{"device":"T7", "default":0, "description":"Max size is 32768. Default size is 4096."}], "readwrite":"RW", "default":0, "tags":["STREAM"], "description":"Size of the stream data buffer in bytes. A value of 0 equates to the default value.  Must be a power of 2, as it takes 2 bytes to hold 1 sample.  Changes while stream is running do not affect the currently running stream."},
+   {"address":4012, "name":"STREAM_BUFFER_SIZE_BYTES", "type":"UINT32", "devices":[{"device":"T7", "default":0, "description":"Max size is 32768. Default size is 4096."}], "readwrite":"RW", "default":0, "tags":["STREAM"], "description":"Size of the stream data buffer in bytes. A value of 0 equates to the default value.  Must be a power of 2, as it takes 2 bytes to hold 1 sample. Size in samples is STREAM_BUFFER_SIZE_BYTES/2.  Size in scans is (STREAM_BUFFER_SIZE_BYTES/2)/STREAM_NUM_ADDRESSES. Changes while stream is running do not affect the currently running stream."},
    {"address":4014, "name":"STREAM_CLOCK_SOURCE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0110}], "readwrite":"RW", "default":0, "tags":["STREAM"], "altnames":["STREAM_OPTIONS"], "description":"Controls which clock source will be used to run the main stream clock. 0 = Internal crystal, 2 = External clock source on CIO3 (T7 will expect external stream clock on CIO3). All other values reserved."},
    {"address":4016, "name":"STREAM_AUTO_TARGET", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9108}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Controls where data will be sent. Value is a bitmask. bit 0: 1 = Send to Ethernet 702 sockets, bit 1: 1 = Send to USB, bit 4: 1 = Command-Response mode. All other bits are reserved."},
-   {"address":4020, "name":"STREAM_NUM_SCANS", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of scans to run before automatically stopping (stream-burst). 0 = run continuously.  Max number of samples is STREAM_BUFFER_SIZE_BYTES/2.  Max number of scans is (STREAM_BUFFER_SIZE_BYTES/2)/STREAM_NUM_ADDRESSES."},
+   {"address":4020, "name":"STREAM_NUM_SCANS", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of scans to run before automatically stopping (stream-burst). 0 = run continuously. Limit for STREAM_NUM_SCANS is 2^32-1, but if the host is not reading data as fast as it is acquired you also need to consider STREAM_BUFFER_SIZE_BYTES."},
    {"address":4022, "name":"STREAM_EXTERNAL_CLOCK_DIVISOR", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of pulses per stream scan when using an external clock."},
    {"address":4024, "name":"STREAM_TRIGGER_INDEX", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0186}], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Controls when stream scanning will start. 0 = Start when stream is enabled, 2000 = Start when DIO_EF0 detects an edge, 2001 = Start when DIO_EF1 detects an edge."},
    {"address":4100, "name":"STREAM_SCANLIST_ADDRESS#(0:127)", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"], "description":"A list of addresses to read each scan. In the case of Stream-Out enabled, the list may also include something to write each scan."},
@@ -937,6 +937,7 @@
     "2015.06.16.A:  Addition of CIO_MIO_STATE/BATTERY_RAM#(0:16)/FILE_IO_SD_CARD_NOT_FOUND. Altered descriptions of EIO_CIO_STATE/AIN_ALL_SETTLING_US/AIN#(0:254)_BINARY. I2C_DATA_TX/I2C_DATA_RX/ASYNCH_DATA_TX/ASYNCH_DATA_RX/ONEWIRE_DATA_TX/ONEWIRE_DATA_RX/LUA_SOURCE_WRITE/LUA_DEBUG_DATA readwrite fixes. Changed FILE_IO_LUA_SWITCH_FILE to address 60662.",
     "2015.07.10.A:  Typo corrections.",
     "2015.08.17.A:  Added STREAM_TRIGGER_INDEX register. Changed LJME_COULD_NOT_CLAIM_DEVICE to LJME_DEVICE_CURRENTLY_CLAIMED_BY_ANOTHER_PROCESS.",
+    "2015.10.04.A:  Clarifications in some descriptions.",
     "End Of Comments"
   ]
 }
