@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2015.10.04.A",
+   "version":"2015.12.02.A",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -483,7 +483,7 @@
    {"error":1255, "string":"LJME_INVALID_PARAMETER", "description":"LJM received an unexpected parameter. Please check the LabJackM.h description of the function that returned this error for an explanation."},
    {"error":1256, "string":"LJME_INVALID_PROTOCOL_ID", "description":"LJM received an unexpected Modbus protocol ID."},
    {"error":1257, "string":"LJME_INVALID_TRANSACTION_ID", "description":"LJM received an unexpected Modbus transaction ID."},
-   {"error":1259, "string":"LJME_INVALID_VALUE_TYPE", "description":"LJM received an unexpected data type."},
+   {"error":1259, "string":"LJME_UNKNOWN_VALUE_TYPE", "description":"LJM received an unexpected data type."},
    {"error":1260, "string":"LJME_MEMORY_ALLOCATION_FAILURE", "description":"LJM was unable to allocate needed memory."},
    {"error":1261, "string":"LJME_NO_COMMAND_BYTES_SENT", "description":"No Modbus command bytes could be sent to the device."},
    {"error":1262, "string":"LJME_INCORRECT_NUM_COMMAND_BYTES_SENT", "description":"An incorrect number of Modbus command bytes were sent to the device, as reported by the underlying driver."},
@@ -534,6 +534,7 @@
    {"error":1309, "string":"LJME_NO_SCANS_RETURNED", "description":"The LJM configuration LJM_STREAM_SCANS_RETURN is set to LJM_STREAM_SCANS_RETURN_ALL_OR_NONE and the full ScansPerRead scans have not be received."},
    {"error":1310, "string":"LJME_TEMPERATURE_OUT_OF_RANGE", "description":"LJM_TCVoltsToTemp received a temperature that was out of range for the given thermocouple type."},
    {"error":1311, "string":"LJME_VOLTAGE_OUT_OF_RANGE", "description":"LJM_TCVoltsToTemp received a voltage that was out of range for the given thermocouple type."},
+   {"error":1312, "string":"LJME_FUNCTION_DOES_NOT_SUPPORT_THIS_TYPE", "description":"The function does not support the given data type. For example, LJM_eReadName and LJM_eReadAddress do not support reading LJM_STRING values, which are too large."},
 
 
    {"error":2300, "string":"MODBUS_RSP_OVERFLOW", "description":"Response packet greater than max packet size."},
@@ -938,6 +939,7 @@
     "2015.07.10.A:  Typo corrections.",
     "2015.08.17.A:  Added STREAM_TRIGGER_INDEX register. Changed LJME_COULD_NOT_CLAIM_DEVICE to LJME_DEVICE_CURRENTLY_CLAIMED_BY_ANOTHER_PROCESS.",
     "2015.10.04.A:  Clarifications in some descriptions.",
+    "2015.12.02.A:  Added LJME_FUNCTION_DOES_NOT_SUPPORT_THIS_TYPE. Changed LJME_INVALID_VALUE_TYPE to LJME_UNKNOWN_VALUE_TYPE.",
     "End Of Comments"
   ]
 }
