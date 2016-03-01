@@ -30,6 +30,13 @@ DATATYPE_SIZES_IN_REGISTERS = {
 }
 
 
+def read_file(src):
+    """Read a file and return the contents."""
+    with open(src) as f:
+        contents = f.read().decode("utf-8","ignore")
+    return contents
+
+
 def get_raw_registers_data(src=DEFAULT_FILE_NAME):
     """Load information about registers from constants JSON file.
 
@@ -38,8 +45,7 @@ def get_raw_registers_data(src=DEFAULT_FILE_NAME):
     @return: Raw JSON data dictionary loaded from source file.
     @rtype: dict
     """
-    with open(src) as f:
-        contents = f.read().decode("utf-8","ignore")
+    contents = read_file(src)
     regular_registers = json.loads(contents)["registers"]
     beta_registers = json.loads(contents)["registers_beta"]
     regular_registers.extend(beta_registers)
@@ -446,3 +452,8 @@ def get_device_modbus_maps(src=DEFAULT_FILE_NAME, expand_names=False,
                 device_reg_list.append(new_entry)
 
     return device_maps
+
+def get_errors(src=DEFAULT_FILE_NAME):
+    """Load LJM and LJM-supported-device errors."""
+    contents = read_file(src)
+    return json.loads(contents)["errors"]

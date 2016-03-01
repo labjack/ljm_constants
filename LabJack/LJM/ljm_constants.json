@@ -730,7 +730,7 @@
    {"error":2806, "string":"FILE_IO_INVALID_NAME", "description":"The path name format is invalid."},
    {"error":2807, "string":"FILE_IO_DENIED", "description":"Access denied due to prohibited access or directory full."},
    {"error":2808, "string":"FILE_IO_EXIST", "description":"Access denied due to prohibited access."},
-   {"error":2809, "string":"FILE_IO_INVALID_OBJECT", "description":"The file/directory object is invalid."},
+   {"error":2809, "string":"FILE_IO_INVALID_OBJECT", "description":"The file/directory object is invalid. Under the context of getting performing a \"ls\" command 2809 indicates that there are no more files."},
    {"error":2810, "string":"FILE_IO_WRITE_PROTECTED", "description":"The physical drive is write protected."},
    {"error":2811, "string":"FILE_IO_INVALID_DRIVE", "description":"The logical drive number is invalid."},
    {"error":2812, "string":"FILE_IO_NOT_ENABLED", "description":"The volume has no work area."},
@@ -768,7 +768,7 @@
    {"error":2962, "string":"FILE_IO_INVALID_NAME", "description":"The file name is invalid."},
    {"error":2963, "string":"FILE_IO_FILE_NOT_OPEN", "description":"An open file is required to perform the requested operation."},
    {"error":2964, "string":"FILE_IO_TOO_MANY_OPEN", "description":"There are too many files open."},
-   {"error":2964, "string":"FILE_IO_SD_CARD_NOT_FOUND", "description":"Failed to mount the SD card. Card may be bad or incompatible."}
+   {"error":2965, "string":"FILE_IO_SD_CARD_NOT_FOUND", "description":"Failed to mount the SD card. Card may be bad or incompatible."}
  ],
 
 
@@ -941,6 +941,7 @@
     "2015.10.04.A:  Clarifications in some descriptions.",
     "2015.12.02.A:  Added LJME_FUNCTION_DOES_NOT_SUPPORT_THIS_TYPE. Changed LJME_INVALID_VALUE_TYPE to LJME_UNKNOWN_VALUE_TYPE.",
     "2016.02.10.A:  Changed internal flash read and write registers to buffered.",
+    "2016.03.01.A:  Fixed the duplicate error code 2964. The second should have been 2965.",
     "End Of Comments"
   ]
 }

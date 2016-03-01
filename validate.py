@@ -15,7 +15,13 @@ def validate(json_file_path):
             inc_orig=True
         )
     except Exception as e:
-        print '[ERROR] JSON file could not be parsed. Please check. (' + str(e) + ')'
+        print '[ERROR] JSON file registers could not be parsed. (' + str(e) + ')'
+        exit(1)
+
+    try:
+        errors = ljmmm.get_errors(json_file_path)
+    except Exception as e:
+        print '[ERROR] JSON file errors could not be parsed. (' + str(e) + ')'
         exit(1)
 
     print 'Checking register map duplicates...'
@@ -39,6 +45,23 @@ def validate(json_file_path):
                 print '  %s' % str(register[1]['name'])
                 exit(1)
             previous_addresses[reg_addr] = register[0]
+
+    print 'Checking error duplicates...'
+    dup_ierrs = []
+    dup_jerrs = []
+    for i_it in range(0, len(errors)):
+        for j_it in range(i_it + 1, len(errors)):
+            ierr = errors[i_it]
+            jerr = errors[j_it]
+            if ierr['error'] == jerr['error'] and ierr['error'] not in dup_ierrs:
+                dup_ierrs.append(ierr)
+                dup_jerrs.append(jerr)
+
+    if dup_ierrs:
+        print 'Duplicate errors:'
+        for err in range(0, len(dup_ierrs)):
+            print '  ' + str(dup_ierrs[err]['error'])
+        exit(1)
 
     print json_file_path + ' seems fine.'
 
