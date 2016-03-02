@@ -663,7 +663,7 @@
    {"error":2623, "string":"STREAM_OUT_DATA_TRGT_MISSMATCH", "description":""},
    {"error":2624, "string":"STREAM_INVALID_DIVISOR", "description":"Selected divisor can not be used."},
    {"error":2625, "string":"STREAM_CHN_CAN_NOT_BE_STREAMED", "description":"The requested channel can not be streamed."},
-   {"error":2625, "string":"STREAM_OUT_DAC_IN_USE", "description":"The high resolution converter can not be used while stream out is sending data to the high-resolution converter."},
+   {"error":2626, "string":"STREAM_OUT_DAC_IN_USE", "description":"The high resolution converter can not be used while stream out is sending data to the high-resolution converter."},
 
    {"error":2670, "string":"SWDT_ROLLT_INVALID"},
    {"error":2671, "string":"SWDT_ENABLED", "description":"The watchdog must be disabled before the requested operation can be performed."},
@@ -768,7 +768,8 @@
    {"error":2962, "string":"FILE_IO_INVALID_NAME", "description":"The file name is invalid."},
    {"error":2963, "string":"FILE_IO_FILE_NOT_OPEN", "description":"An open file is required to perform the requested operation."},
    {"error":2964, "string":"FILE_IO_TOO_MANY_OPEN", "description":"There are too many files open."},
-   {"error":2965, "string":"FILE_IO_SD_CARD_NOT_FOUND", "description":"Failed to mount the SD card. Card may be bad or incompatible."}
+   {"error":2965, "string":"FILE_IO_SD_CARD_NOT_FOUND", "description":"Failed to mount the SD card. Card may be bad or incompatible."},
+   {"error":2966, "string":"FILE_IO_END_OF_CWD", "description":"There are no more files in the current working directory."}
  ],
 
 
