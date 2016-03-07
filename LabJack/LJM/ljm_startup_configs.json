@@ -1,23 +1,11 @@
 // ljm_startup_configs.json:
 //   This is the configurations file that is loaded when LJM is started up.
-//   Distributed with LJM version 1.1100.
+//   Distributed with LJM version 1.1200.
 //
-//   This file (and the containing folder) may be overwritten when LJM
-//   updates, so if you'd like to make changes to the configurations that are
-//   loaded when LJM starts, use this file as a template to make a different
-//   file in a different directory that you control, then load that file using
-//   the LJM_LoadConfigurationFile function at the beginning of your program.
-//   See LabJackM.h for more info on LJM_LoadConfigurationFile.
-//
-//   You can use the string "default" to load the default hardcoded value
-//   for each config parameter. Otherwise, see the description for each config
-//   parameter for what kinds of values can be accepted. Please see LabJackM.h
-//   for more information about what each config parameter does.
-//
-//   This file is parsed by LJM case-independently. LJM ignores every
-//   top-level entry except for LJM_CONFIG_VALUES, as well as ignoring every
-//   "description" field. Other fields in LJM_CONFIG_VALUES which are not
-//   recognized by LJM will generate errors/warnings.
+//   Use the string "default" to load the default value for each config
+//   parameter. Otherwise, see the "type" for each config parameter for what
+//   kinds of values can be accepted. Please see LabJackM.h for more information
+//   about what each config parameter does.
 //
 //   Windows file paths must escape \ characters with \. For example, the path
 //       C:\ljm.log
@@ -25,7 +13,7 @@
 //       C:\\ljm.log
 //
 //   Report bugs to support@labjack.com
-//   LabJack's LJM driver/library: <http://labjack.com/support/ljm>,
+//   LabJack's LJM driver/library: http://labjack.com/support/ljm
 
 {
   "LJM_CONFIG_VALUES":
@@ -66,7 +54,7 @@
     {"LJM_OLD_FIRMWARE_CHECK":"default",               "type":"boolean", "values":[true, false]},
     {"LJM_OPEN_MODE":"default",                        "type":"integer"},
     {"LJM_RETRY_ON_TRANSACTION_ID_MISMATCH":"default", "type":"boolean", "values":[true, false]},
-    {"LJM_SPECIAL_ADDRESSES_FILE":"default",           "type":"string"},
+    {"LJM_SPECIFIC_IPS_FILE":"default",                "type":"string"},
     {"LJM_STREAM_AIN_BINARY":"default",                "type":"boolean", "values":[true, false]},
     {"LJM_STREAM_BUFFER_MAX_NUM_SECONDS":"default",    "type":"integer"},
     {"LJM_STREAM_CAL_LOAD_MAX_NUM_ATTEMPTS":"default", "type":"integer"},

@@ -45,23 +45,53 @@ remove_artifacts ()
     done
 }
 
+# Remove ljm_special_addresses.config or move it to ljm_specific_ips.config
+deprecate_special_addresses()
+{
+    if [ -f "${DESTINATION}/${TARGET}/LJM/ljm_special_addresses.config" ]; then
+        if [ `cat ${DESTINATION}/${TARGET}/LJM/ljm_specific_ips.config | wc -c` -gt 1 ]; then
+            echo "[Deprecation warning] Removing deprecated file:"
+            echo "        ${DESTINATION}/${TARGET}/LJM/ljm_special_addresses.config"
+            echo "    Contents were:"
+            cat ${DESTINATION}/${TARGET}/LJM/ljm_special_addresses.config
+            echo
+            echo
+            rm -f ${DESTINATION}/${TARGET}/LJM/ljm_special_addresses.config
+        else
+            echo "[Deprecation warning] Moving:"
+            echo "        ${DESTINATION}/${TARGET}/LJM/ljm_special_addresses.config"
+            echo "    to:"
+            echo "        ${DESTINATION}/${TARGET}/LJM/ljm_specific_ips.config"
+            mv -f \
+                ${DESTINATION}/${TARGET}/LJM/ljm_special_addresses.config \
+                ${DESTINATION}/${TARGET}/LJM/ljm_specific_ips.config
+        fi
+    fi
+}
+
+# Handle installation on older Macs
+oldinstall ()
+{
+    echo "$0 - Attempting to catch and handle an error for older machines (mostly Mac 10.5)..."
+    cp -vR "${FILE_DIR}/${TARGET}" "${DESTINATION}/"
+    chmod 666 "${DESTINATION}/${TARGET}/LJM/ljm.log"
+    echo "$0 - Error caught and handled successfully. Exiting now with success."
+    exit 0
+}
+
 remove_artifacts ${TARGET}
 remove_artifacts ${TARGET}/LJM
 
 chmod 666 ${FILE_DIR}/${TARGET}/LJM/ljm.log
-chmod 666 ${FILE_DIR}/${TARGET}/LJM/ljm_special_addresses.config
+
+rm -f ${DESTINATION}/${TARGET}/LJM/readme_ljm_special_addressess.md
 
 test -d $DESTINATION || mkdir -p $DESTINATION
 
+touch ${DESTINATION}/${TARGET}/LJM/ljm_specific_ips.config
+chmod 666 ${DESTINATION}/${TARGET}/LJM/ljm_specific_ips.config
 
-oldinstall ()
-{
-	echo "$0 - Attempting to catch and handle an error for older machines (mostly Mac 10.5)..."
-	cp -vR "${FILE_DIR}/${TARGET}" "${DESTINATION}/"
-	chmod 666 "${DESTINATION}/${TARGET}/LJM/ljm.log"
-	echo "$0 - Error caught and handled successfully. Exiting now with success."
-	exit 0
-}
+deprecate_special_addresses
 
 trap oldinstall EXIT
 cp -v --recursive --preserve=mode "${FILE_DIR}/${TARGET}" "${DESTINATION}/"

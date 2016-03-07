@@ -16,9 +16,11 @@ ljm_constants.json is the default LJM constants file. It contains a JSON descrip
 
 
 
-## [ljm_special_addresses.config](https://labjack.com/support/software/api/ljm/constants/SpecialAddressesConfigs)
+## [ljm_specific_ips.config](https://labjack.com/support/software/api/ljm/constants/SpecificIPsConfigs)
 
-ljm_special_addresses.config is a configuration file for forcing LJM to manually check specified IP addresses during Open calls or ListAll calls.
+ljm_specific_ips.config is a configuration file for forcing LJM to manually check specified IP addresses during Open calls or ListAll calls.
+
+ljm_specific_ips.config used to be ljm_special_addresses.config.
 
 
 
