@@ -24,6 +24,6 @@ ljm_specific_ips.config used to be ljm_special_addresses.config.
 
 
 
-## ljm_startup_configs.json
+## [ljm_startup_configs.json](https://labjack.com/support/software/api/ljm/function-reference/LJMStartupConfigs)
 
-ljm_startup_configs.json is parsed for LJM configurations upon LJM startup. For more, see ljm_startup_configs.json itself, or see the [LJM configurations page](https://labjack.com/support/software/api/ljm/function-reference/library-configuration-functions#constantsfiles).
+ljm_startup_configs.json is parsed for LJM configurations upon LJM startup.
