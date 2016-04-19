@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2016.02.10.A",
+   "version":"2016.03.15.B",
    "checksum":"-1",
    "support_url":"http://labjack.com/support/modbus",
    "tags_base_url":"http://labjack.com/support/modbus"
@@ -12,10 +12,10 @@
  [
    {"address":0, "name":"AIN#(0:254)", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["AIN", "CORE"], "streamable":true, "displayname":["Analog In #"], "description":"Returns the voltage of the specified analog input."},
    {"address":1000, "name":"DAC#(0:1)", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "tags":["DAC", "CORE"], "displayname":["Analog Out #"], "description":"Pass a voltage for the specified analog output."},
-   {"address":2000, "name":"FIO#(0:7)", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "tags":["DIO", "CORE"], "altnames":["DIO#(0:7)"], "displayname":["FIO Bit #"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
-   {"address":2008, "name":"EIO#(0:7)", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "tags":["DIO", "CORE"], "altnames":["DIO#(8:15)"], "displayname":["EIO Bit #"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
-   {"address":2016, "name":"CIO#(0:3)", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "tags":["DIO", "CORE"], "altnames":["DIO#(16:19)"], "displayname":["CIO Bit #"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
-   {"address":2020, "name":"MIO#(0:2)", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "tags":["DIO", "CORE"], "altnames":["DIO#(20:22)"], "displayname":["MIO Bit #"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output."},
+   {"address":2000, "name":"FIO#(0:7)", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "tags":["DIO", "CORE"], "altnames":["DIO#(0:7)"], "displayname":["FIO Bit #"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output. Read 0 = low, 1 = high. Write 0 = low, 1 = high."},
+   {"address":2008, "name":"EIO#(0:7)", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "tags":["DIO", "CORE"], "altnames":["DIO#(8:15)"], "displayname":["EIO Bit #"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output. Read 0 = low, 1 = high. Write 0 = low, 1 = high."},
+   {"address":2016, "name":"CIO#(0:3)", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "tags":["DIO", "CORE"], "altnames":["DIO#(16:19)"], "displayname":["CIO Bit #"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output. Read 0 = low, 1 = high. Write 0 = low, 1 = high."},
+   {"address":2020, "name":"MIO#(0:2)", "type":"UINT16", "devices":["T7"], "readwrite":"RW", "tags":["DIO", "CORE"], "altnames":["DIO#(20:22)"], "displayname":["MIO Bit #"], "description":"Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output. Read 0 = low, 1 = high. Write 0 = low, 1 = high."},
 
    {"address":2500, "name":"FIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0000}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["FIO Port State"], "description":"Read or write the state of the 8 bits of FIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."},
    {"address":2501, "name":"EIO_STATE", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0000}], "readwrite":"RW", "tags":["DIO"], "streamable":true, "displayname":["EIO Port State"], "description":"Read or write the state of the 8 bits of EIO in a single binary-encoded value.  Does not configure direction.  A read of an output returns the current l99ogic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."},
@@ -170,7 +170,7 @@
    {"address":42000, "name":"AIN#(0:254)_SETTLING_US", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9328, "description":"0 = Auto.  Max is 50000 (microseconds)."}], "readwrite":"RW", "default":0, "tags":["AIN"], "description":"Settling time for command-response readings."},
 
    {"address":43900, "name":"AIN_ALL_RANGE", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["AIN"], "description":"A write to this global parameter affects all AIN.  A read will return the correct setting if all channels are set the same, but otherwise will return -9999."},
-   {"address":43902, "name":"AIN_ALL_NEGATIVE_CH", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":199, "tags":["AIN"], "description":"A write to this global parameter affects all AIN.  A read will return the correct setting if all channels are set the same, but otherwise will return 0xFFFF."},
+   {"address":43902, "name":"AIN_ALL_NEGATIVE_CH", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":199, "tags":["AIN"], "description":"A write to this global parameter affects all AIN. Writing 1 will set all AINs to differential. Writing 199 will set all AINs to single-ended. A read will return 1 if all AINs are set to differential and 199 if all AINs are set to single-ended. If AIN configgurations are not consistent 0xFFFF will be returned."},
    {"address":43903, "name":"AIN_ALL_RESOLUTION_INDEX", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["AIN"], "description":"A write to this global parameter affects all AIN.  A read will return the correct setting if all channels are set the same, but otherwise will return 0xFFFF."},
    {"address":43904, "name":"AIN_ALL_SETTLING_US", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9328, "description":"0 = Auto.  Max is 50000 (microseconds)."}], "readwrite":"RW", "default":0, "tags":["AIN"], "description":"A write to this global parameter affects all AIN.  A read will return the correct setting if all channels are set the same, but otherwise will return -9999. Max is 50,000 us."},
    {"address":43906, "name":"AIN_ALL_EF_INDEX", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0115}], "readwrite":"RW", "default":0, "tags":["AIN"], "altnames":["AIN_ALL_EF_TYPE"], "description":"Write 0 to deactivate AIN_EF on all AINs. No other values may be written to this register. Reads will return the AIN_EF index if all 128 AINs are set to the same value. If values are not the same returns 0xFFFF (65535)."},
@@ -238,7 +238,7 @@
    {"address":60050, "name":"TEMPERATURE_AIR_K", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0105}], "readwrite":"R", "tags":["AIN", "CORE"], "streamable":false, "displayname":["Estimated Air Temperature [deg K]"], "description":"Returns the estimated ambient air temperature just outside a T7 in its red plastic enclosure.  This register is equal to TEMPERATURE_DEVICE_K - 4.3.  If Ethernet and/or WiFi is enabled, subtract an extra 0.6 for each."},
    {"address":60052, "name":"TEMPERATURE_DEVICE_K", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0105}], "readwrite":"R", "tags":["AIN", "CORE"], "streamable":false, "displayname":["Device Temperature [deg K]"], "description":"Takes a reading from AIN14 using range=+/-10V and resolution=8, and applies the formula Volts*-92.6+467.6 to return degrees K.  AIN14 is internally connected to an LM94021 (U24) with GS=10 which is physically located on the bottom of the PCB between the AIN0/1 and AIN2/3 screw-terminals."},
 
-   {"address":49702, "name":"SNTP_UPDATE_INTERVAL", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0150}], "readwrite":"RW", "tags":["RTC"],"description":"Sets the SNTP retry time in milliseconds. A value of zero will disable SNTP(0=default)."},
+   {"address":49702, "name":"SNTP_UPDATE_INTERVAL", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0150}], "readwrite":"RW", "tags":["RTC"],"description":"Sets the SNTP retry time in seconds. A value of zero will disable SNTP(0=default). Values must be 10 or greater."},
 
    {"address":61500, "name":"RTC_TIME_S", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0128}], "readwrite":"R", "tags":["RTC"], "description":"Read the current time on the RTC in seconds since Jan, 1970, aka Epoch or Unix time."},
    {"address":61504, "name":"RTC_SET_TIME_S", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0128}], "readwrite":"W", "tags":["RTC"], "description":"Write a new timestamp to the RTC in seconds since Jan, 1970, aka Epoch or Unix timestamp."},
@@ -307,7 +307,7 @@
    {"address":60004, "name":"FIRMWARE_VERSION", "type":"FLOAT32", "devices":["T7", "DIGIT"], "readwrite":"R", "tags":["CONFIG"], "description":"The current firmware version installed on the main processor."},
    {"address":60006, "name":"BOOTLOADER_VERSION", "type":"FLOAT32", "devices":["T7", "DIGIT"], "readwrite":"R", "tags":["CONFIG"], "description":"The bootloader version installed on the main processor."},
    {"address":60008, "name":"WIFI_VERSION", "type":"FLOAT32", "devices":["T7"], "readwrite":"R", "tags":["CONFIG"], "description":"The current firmware version of the WiFi module, if available."},
-   {"address":60010, "name":"HARDWARE_INSTALLED", "type":"UINT32", "devices":["T7"], "readwrite":"R", "default":0, "tags":["CONFIG"], "description":"Bitmask indicating installed hardware options. bit0: High Resolution ADC, bit1: WiFi, bit2: RTC, bit3: uSD."},
+   {"address":60010, "name":"HARDWARE_INSTALLED", "type":"UINT32", "devices":["T7"], "readwrite":"R", "default":0, "tags":["CONFIG"], "description":"Bitmask indicating installed hardware options. bit0: High Resolution ADC, bit1: WiFi, bit2: RTC, bit3: microSD."},
    {"address":60020, "name":"ETHERNET_MAC", "type":"UINT64", "devices":["T7"], "readwrite":"R", "tags":["ETHERNET"], "description":"The MAC address of the wired Ethernet module."},
    {"address":60024, "name":"WIFI_MAC", "type":"UINT64", "devices":["T7"], "readwrite":"R", "tags":["WIFI"], "description":"The MAC address of the WiFi module."},
    {"address":60028, "name":"SERIAL_NUMBER", "type":"UINT32", "devices":["T7", "DIGIT"], "readwrite":"R", "tags":["CONFIG"], "description":"The serial number of the device."},
@@ -377,9 +377,9 @@
    {"address":22038, "name":"DGT_CHANGE_LOG_INTERVAL_INDEX", "type":"UINT16", "devices":[{"device":"DIGIT", "fwmin":1.2100}], "readwrite":"RW", "tags":[""], "description":"Set the time interval between log events. Index 0=10s, 1=30s, 2=1m, 3=10m, 4=30m, 5=1h, 6=6h Change implemented on next erase of dataset."},
    {"address":22039, "name":"DGT_LOG_INTERVAL_INDEX_DATASET", "type":"UINT16", "devices":[{"device":"DIGIT", "fwmin":1.2100}], "readwrite":"R", "tags":[""], "description":"Read time interval between log events in the dataset. Index 0=10s, 1=30s, 2=1m, 3=10m, 4=30m, 5=1h, 6=6h"},
    {"address":22042, "name":"DGT_LOG_START_TIME", "type":"UINT16", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"The start time of the logging session: 22042 Year=0 to 99, 22043 Month=1 to 12, 22044 Day=1 to 31, 22045 Weekday=1 to 7, 22046 Hour=0 to 23, 22047 Minutes=0 to 59, 22048 Second=0 to 59"},
-   {"address":22049, "name":"DGT_nALARM_FLAGS", "type":"UINT16", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"A bitmask of all alarm and error flags. 0=Occured, 1=Did NOT occur. Refer to documentation for more information"},
-   {"address":22053, "name":"DGT_nTRIG_HIGH_ALARM", "type":"UINT16", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"User high threshold alarm triggered. 0=Occured, 1=Did NOT occur"},
-   {"address":22054, "name":"DGT_nTRIG_LOW_ALARM", "type":"UINT16", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"User low threshold alarm triggered. 0=Occured, 1=Did NOT occur"},
+   {"address":22049, "name":"DGT_nALARM_FLAGS", "type":"UINT16", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"A bitmask of all alarm and error flags. 0=Occurred, 1=Did NOT occur. Refer to documentation for more information"},
+   {"address":22053, "name":"DGT_nTRIG_HIGH_ALARM", "type":"UINT16", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"User high threshold alarm triggered. 0=Occurred, 1=Did NOT occur"},
+   {"address":22054, "name":"DGT_nTRIG_LOW_ALARM", "type":"UINT16", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"User low threshold alarm triggered. 0=Occurred, 1=Did NOT occur"},
    {"address":22055, "name":"DGT_nALARM_ARMED", "type":"UINT16", "devices":["DIGIT"], "readwrite":"R", "tags":[""], "description":"User alarms armed flag. 0=Armed, 1=Not yet armed"},
    {"address":22080, "name":"DGT_INDEX_ALARM_ITEM", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"Index of the user alarm item. 0=None, 1=Temperature, 2=Light, 3=Humidity. Valid results require that the corresponding item is being logged."},
    {"address":22081, "name":"DGT_INDEX_ALARM_ARM_CONDITION", "type":"UINT16", "devices":["DIGIT"], "readwrite":"RW", "tags":[""], "description":"Index of the alarm arming condition. 0=Arm once within threshold window, 1=Arm after pure time delay"},
@@ -598,7 +598,7 @@
 
    {"error":2460, "string":"POWER_ANALOG_OFF", "description":"Analog input system is powered down."},
 
-   {"error":2490, "string":"WIFI_NOT_ASSOCIATED", "description":"Wifi needs to be connected to a network before the requested action can be performed."},
+   {"error":2490, "string":"WIFI_NOT_ASSOCIATED", "description":"WiFi needs to be connected to a network before the requested action can be performed."},
 
    {"error":2500, "string":"HW_DIO_NOT_AVAILABLE"},
    {"error":2508, "string":"HW_CNTRA_NOT_AVAILABLE", "description":"Counter A is being used by another system."},
@@ -663,7 +663,7 @@
    {"error":2623, "string":"STREAM_OUT_DATA_TRGT_MISSMATCH", "description":""},
    {"error":2624, "string":"STREAM_INVALID_DIVISOR", "description":"Selected divisor can not be used."},
    {"error":2625, "string":"STREAM_CHN_CAN_NOT_BE_STREAMED", "description":"The requested channel can not be streamed."},
-   {"error":2626, "string":"STREAM_OUT_DAC_IN_USE", "description":"The high resolution converter can not be used while stream out is sending data to the high-resolution converter."},
+   {"error":2626, "string":"STREAM_OUT_DAC_IN_USE", "description":"The high resolution converter can not be used while stream out is used to update a DAC."},
 
    {"error":2670, "string":"SWDT_ROLLT_INVALID"},
    {"error":2671, "string":"SWDT_ENABLED", "description":"The watchdog must be disabled before the requested operation can be performed."},
@@ -890,7 +890,7 @@
     "2014.06.27.A:  Changed UART data registers to UINT16.",
     "2014.07.16.A:  Removed wrong pieces of descriptions for AIN#(0:254)_RANGE, AIN#(0:254)_NEGATIVE_CH, AIN#(0:254)_RESOLUTION_INDEX, and AIN#(0:254)_SETTLING_US. --If all channels are the same, this reads the correct value, but otherwise this reads -9999.0-- --If all channels are the same, this reads the correct value, but otherwise this reads 0xFFFF-- Also changed name of AIN_ALL_EF_TYPE to AIN_ALL_EF_INDEX, added AIN_ALL_EF_TYPE as an altname.",
     "2014.07.17.A:  Added additional description to AIN#(0:254)_EF_INDEX, and AIN_ALL_EF_INDEX.",
-    "2014.07.22.A:  Added additional description to LJTDAC, and SBUS regs.  Clarified that LJTick-DAC is an accessory device, and also clarified that 'Even #' refers to register 'TDAC#', not the modbus address of a register.",
+    "2014.07.22.A:  Added additional description to LJTDAC, and SBUS regs.  Clarified that LJTick-DAC is an accessory device, and also clarified that 'Even #' refers to register 'TDAC#', not the Modbus address of a register.",
     "2014.07.24.A:  Changed streamable status of TEMPERATURE_AIR_K and TEMPERATURE_DEVICE_K to false.",
     "2014.09.22.A:  Updated UART error codes.",
     "2014.09.28.A:  Updated I2C throttle description.",
@@ -907,7 +907,7 @@
     "2014.12.13.A:  Added stream clock source register.",
     "2014.12.30.A:  Added SBUS_ALL_CLOCK_SPEED register.",
     "2015.01.15.A:  Added FW max 1.2000 to Digit-TL/TLH address 22840, 22841, 22842, 22020, 22021, 22022, 22040. Added DGT_CHANGE_LOG_INTERVAL_INDEX, DGT_LOG_INTERVAL_INDEX_DATASET, DGT_CHANGE_LOG_ITEMS, DGT_LOG_ITEMS_DATASET.",
-    "2015.01.19.A:  Removed Digit-TL/TLH modbus addresses 22840, 22841, 22842, 22020, 22021, 22022, 22040, so parsing for fwmax token not needed.",
+    "2015.01.19.A:  Removed Digit-TL/TLH Modbus addresses 22840, 22841, 22842, 22020, 22021, 22022, 22040, so parsing for fwmax token not needed.",
     "2015.01.20.A:  Changed Digit-TL/TLH registers 22049, 22053, 22054, 22055 to read-only to reflect firmware 1.21 behavior change.",
     "2015.01.27.A:  Changes typo for error code 1300 and others with 'received''.",
     "2015.02.23.A:  Added LJME_U3_CANNOT_BE_OPENED_BY_LJM, LJME_U6_CANNOT_BE_OPENED_BY_LJM, and LJME_UE9_CANNOT_BE_OPENED_BY_LJM.",
@@ -943,6 +943,9 @@
     "2015.12.02.A:  Added LJME_FUNCTION_DOES_NOT_SUPPORT_THIS_TYPE. Changed LJME_INVALID_VALUE_TYPE to LJME_UNKNOWN_VALUE_TYPE.",
     "2016.02.10.A:  Changed internal flash read and write registers to buffered.",
     "2016.03.01.A:  Fixed the duplicate error code 2964. The second should have been 2965.",
+    "2016.03.09.A:  Updated description of the AIN_ALL_NEGATIVE_CH register.",
+    "2016.03.15.A:  Updated description of the HARDWARE_INSTALLED register, changing uSD to microSD.",
+    "2016.03.15.B:  Spelling corrections.",
     "End Of Comments"
   ]
 }
