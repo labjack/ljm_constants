@@ -24,27 +24,45 @@ def validate(json_file_path):
         print '[ERROR] JSON file errors could not be parsed. (' + str(e) + ')'
         exit(1)
 
-    print 'Checking register map duplicates...'
+    err_msgs = []
+
+    print 'Checking register map duplicates and streamable validity...'
     for device in json_map:
         previous_names = []
         previous_addresses = {}
         device_registers = json_map[device]
 
         for register in device_registers:
-            reg_name = register[1]['name']
+            unresolved = register[0]
+            resolved = register[1]
+            if \
+                unresolved.has_key('streamable') and \
+                unresolved['streamable'] and \
+                not resolved['read']:
+                    err_msgs.append(
+                        "Register is streamable but not readable: %s" % (
+                            resolved['name']
+                        )
+                    )
+
+            reg_name = resolved['name']
 
             if reg_name in previous_names:
-                print 'Duplicate entries for %s found.' % reg_name
-                exit(1)
+                err_msgs.append('Duplicate entries for %s found.' % reg_name)
             previous_names.append(reg_name)
 
-            reg_addr = register[1]['address']
-            if previous_addresses.has_key(reg_addr) and previous_addresses[reg_addr]['name'] != register[0]['name']:
-                print 'Duplicate address for %s found:' % reg_addr
-                print '  %s' % str(previous_addresses[reg_addr]['name'])
-                print '  %s' % str(register[1]['name'])
-                exit(1)
-            previous_addresses[reg_addr] = register[0]
+            reg_addr = resolved['address']
+            if previous_addresses.has_key(reg_addr) and previous_addresses[reg_addr]['name'] != unresolved['name']:
+                err_msgs.append(
+                    'Duplicate address for %s found:\n'
+                    '  %s\n'
+                    '  %s' % (
+                        reg_addr,
+                        str(previous_addresses[reg_addr]['name']),
+                        str(resolved['name'])
+                    )
+                )
+            previous_addresses[reg_addr] = unresolved
 
     print 'Checking error duplicates...'
     dup_ierrs = []
@@ -61,6 +79,12 @@ def validate(json_file_path):
         print 'Duplicate errors:'
         for err in range(0, len(dup_ierrs)):
             print '  ' + str(dup_ierrs[err]['error'])
+        err_msgs.append('Duplication errors were found (see above)')
+
+    for err in err_msgs:
+        print err
+
+    if len(err_msgs) != 0:
         exit(1)
 
     print json_file_path + ' seems fine.'
