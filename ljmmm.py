@@ -208,10 +208,20 @@ def parse_register_data(raw_register_dict, expand_names=False):
         "name": str,
         "type": str,
         "devices": [
-            {"device": str, "fwmin": float / int}
+            {
+                "device": str,
+                "fwmin": float / int,
+                "description": str
+            }
         ],
         "readwrite": {"read": bool, "write": bool},
-        "tags": list of str
+        "tags": list of str,
+        "default": float / int,
+        "isBuffer": bool,
+        "streamable": bool,
+        "constants": [
+            {"name": str, "value": float / int}
+        ]
     }
 
     If expand_names == True, all names will be enumerated such that
@@ -269,7 +279,11 @@ def parse_register_data(raw_register_dict, expand_names=False):
                 "devices": devices,
                 "readwrite": access_restrictions,
                 "tags": tags,
-                "description": description
+                "description": description,
+                # "default": float / int,
+                # "isBuffer": bool,
+                # "streamable": bool,
+                # "constants": []
             }
         )
 
@@ -311,22 +325,10 @@ def get_registers_data(src=DEFAULT_FILE_NAME, expand_names=False,
     """Load and parse information about registers from JSON constants file.
 
     Loads and interprets registers information from the given JSON constants
-    file. The dictionaries in the resulting list will be in the form of:
-    {
-        "address": int,
-        "name": str,
-        "type": str,
-        "devices": [
-            {"device": str, "fwmin": float / int}
-        ],
-        "readwrite": {"read": bool, "write": bool},
-        "tags": list of str,
-    }
+    file, in the form output by parse_register_data.
 
-    TODO: Add param to specify this (currenly doesn't expand the register
-    names in this way):
-    All names will be enumerated such that DAC#(0:1) will result in two
-    dictionaries, one with ret_dict["name"] == "DAC#0" and another with
+    If expand_names, names will be enumerated such that DAC#(0:1) will result in
+    two dictionaries, one with ret_dict["name"] == "DAC#0" and another with
     ret_dict["name"] == "DAC#1"
 
     For more information see LabJack Modbus Map Markup notation
@@ -374,6 +376,7 @@ def get_device_modbus_maps(src=DEFAULT_FILE_NAME, expand_names=False,
                 "read": bool,
                 "write": bool,
                 "tags": list of str,
+                ...
             }
         ]
     }
@@ -413,7 +416,6 @@ def get_device_modbus_maps(src=DEFAULT_FILE_NAME, expand_names=False,
         preped_registers_data = registers_data
 
     for register in preped_registers_data:
-        
         if inc_orig: reg_devices = register[1]["devices"]
         else: reg_devices = register["devices"]
 
@@ -429,6 +431,7 @@ def get_device_modbus_maps(src=DEFAULT_FILE_NAME, expand_names=False,
 
             min_firmware = device.get("fwmin", 0)
             new_entry["fwmin"] = min_firmware
+            new_entry["deviceDescription"] = device.get("description", "")
             del new_entry["devices"]
 
             access_permissions = new_entry["readwrite"]
@@ -440,8 +443,10 @@ def get_device_modbus_maps(src=DEFAULT_FILE_NAME, expand_names=False,
 
             if inc_orig:
                 new_entry["description"] = register[1].get("description", "")
+                new_entry["constants"] = register[0].get("constants", [])
             else:
                 new_entry["description"] = register.get("description", "")
+                new_entry["constants"] = register.get("constants", [])
 
             # TODO: Something better
             new_entry.pop("numregs", None)
