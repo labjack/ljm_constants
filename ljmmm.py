@@ -45,10 +45,10 @@ def get_raw_registers_data(src=DEFAULT_FILE_NAME):
     @return: Raw JSON data dictionary loaded from source file.
     @rtype: dict
     """
-    contents = read_file(src)
-    regular_registers = json.loads(contents)["registers"]
-    beta_registers = json.loads(contents)["registers_beta"]
-    regular_registers.extend(beta_registers)
+    json_contents = json.loads(read_file(src))
+    regular_registers = json_contents["registers"]
+    if "registers_beta" in json_contents:
+        regular_registers.extend(json_contents["registers_beta"])
     return regular_registers
 
 
