@@ -1,11 +1,14 @@
 """Generate a C header file for the LabJack LJM Modbus Map.
 """
 import json
+import os
+import subprocess
 
 import ljmmm
 
 SRC_FILE = 'LabJack/LJM/ljm_constants.json'
 OUTPUT_FILE = 'gen_output/LabJackMModbusMap.h'
+SANITY_TEST_FILE = 'gen_test/test_c_header.c'
 
 def init(file, constants_version):
     file.write("// LabJack LJM Modbus Map constants\n")
@@ -44,6 +47,18 @@ def output_reg(file, reg):
     file.write("enum { LJM_%s_TYPE = %d };\n" % (name, get_reg_enum(reg)))
     file.write("\n")
 
+def sanity_test():
+    include_dir = os.path.split(OUTPUT_FILE)[0]
+    subprocess.check_call([
+        'gcc',
+        '-o', 'gen_test/test_c_header',
+        SANITY_TEST_FILE,
+        '-I%s' % include_dir
+    ])
+
+    ret = subprocess.call(['gen_test/test_c_header'])
+    if ret != 0:
+        raise Exception("Expected output to be 0, but was: %d" % ret)
 
 def generate():
     modbus_maps_expanded = ljmmm.get_device_modbus_maps(
@@ -69,6 +84,8 @@ def generate():
                 #     print "Duplicate: %s" % reg["name"]
 
         finish(file)
+
+    sanity_test()
 
 if __name__ == "__main__":
     generate()
