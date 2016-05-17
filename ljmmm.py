@@ -216,7 +216,7 @@ def parse_register_data(raw_register_dict, expand_names=False):
         ],
         "readwrite": {"read": bool, "write": bool},
         "tags": list of str,
-        "default": float / int,
+        "default": float / int / None,
         "isBuffer": bool,
         "streamable": bool,
         "constants": [
@@ -266,6 +266,9 @@ def parse_register_data(raw_register_dict, expand_names=False):
     name_address_pairs = zip(names, addresses)
 
     description = raw_register_dict.get("description", "")
+    default = raw_register_dict.get("default", None)
+    streamable = raw_register_dict.get("streamable", False)
+    isBuffer = raw_register_dict.get("isBuffer", False)
 
     # Generate resulting dicts
     ret_list = []
@@ -280,9 +283,9 @@ def parse_register_data(raw_register_dict, expand_names=False):
                 "readwrite": access_restrictions,
                 "tags": tags,
                 "description": description,
-                # "default": float / int,
-                # "isBuffer": bool,
-                # "streamable": bool,
+                "default": default,
+                "streamable": streamable,
+                "isBuffer": isBuffer,
                 # "constants": []
             }
         )
