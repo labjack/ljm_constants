@@ -269,6 +269,7 @@ def parse_register_data(raw_register_dict, expand_names=False):
     default = raw_register_dict.get("default", None)
     streamable = raw_register_dict.get("streamable", False)
     isBuffer = raw_register_dict.get("isBuffer", False)
+    constants = raw_register_dict.get("constants", [])
 
     # Generate resulting dicts
     ret_list = []
@@ -286,7 +287,7 @@ def parse_register_data(raw_register_dict, expand_names=False):
                 "default": default,
                 "streamable": streamable,
                 "isBuffer": isBuffer,
-                # "constants": []
+                "constants": constants
             }
         )
 

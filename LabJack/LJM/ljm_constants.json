@@ -2,10 +2,10 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2016.05.05.A",
+   "version":"2016.05.16.A",
    "checksum":"-1",
-   "support_url":"http://labjack.com/support/modbus",
-   "tags_base_url":"http://labjack.com/support/modbus"
+   "support_url":"https://labjack.com/support/modbus",
+   "tags_base_url":"https://labjack.com/support/modbus"
  },
 
  "registers":
@@ -170,7 +170,7 @@
    {"address":42000, "name":"AIN#(0:254)_SETTLING_US", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9328, "description":"0 = Auto.  Max is 50000 (microseconds)."}], "readwrite":"RW", "default":0, "tags":["AIN"], "description":"Settling time for command-response readings."},
 
    {"address":43900, "name":"AIN_ALL_RANGE", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["AIN"], "description":"A write to this global parameter affects all AIN.  A read will return the correct setting if all channels are set the same, but otherwise will return -9999."},
-   {"address":43902, "name":"AIN_ALL_NEGATIVE_CH", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":199, "tags":["AIN"], "description":"A write to this global parameter affects all AIN. Writing 1 will set all AINs to differential. Writing 199 will set all AINs to single-ended. A read will return 1 if all AINs are set to differential and 199 if all AINs are set to single-ended. If AIN configgurations are not consistent 0xFFFF will be returned."},
+   {"address":43902, "name":"AIN_ALL_NEGATIVE_CH", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":199, "tags":["AIN"], "description":"A write to this global parameter affects all AIN. Writing 1 will set all AINs to differential. Writing 199 will set all AINs to single-ended. A read will return 1 if all AINs are set to differential and 199 if all AINs are set to single-ended. If AIN configurations are not consistent 0xFFFF will be returned."},
    {"address":43903, "name":"AIN_ALL_RESOLUTION_INDEX", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.9328}], "readwrite":"RW", "default":0, "tags":["AIN"], "description":"A write to this global parameter affects all AIN.  A read will return the correct setting if all channels are set the same, but otherwise will return 0xFFFF."},
    {"address":43904, "name":"AIN_ALL_SETTLING_US", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":0.9328, "description":"0 = Auto.  Max is 50000 (microseconds)."}], "readwrite":"RW", "default":0, "tags":["AIN"], "description":"A write to this global parameter affects all AIN.  A read will return the correct setting if all channels are set the same, but otherwise will return -9999. Max is 50,000 us."},
    {"address":43906, "name":"AIN_ALL_EF_INDEX", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0115}], "readwrite":"RW", "default":0, "tags":["AIN"], "altnames":["AIN_ALL_EF_TYPE"], "description":"Write 0 to deactivate AIN_EF on all AINs. No other values may be written to this register. Reads will return the AIN_EF index if all 128 AINs are set to the same value. If values are not the same returns 0xFFFF (65535)."},
@@ -472,9 +472,9 @@
    {"error":1237, "string":"LJME_CANNOT_DISCONNECT", "description":"An error occurred while attempting to disconnect."},
    {"error":1238, "string":"LJME_WINSOCK_FAILURE", "description":"A Windows WINSOCK error occurred."},
    {"error":1239, "string":"LJME_RECONNECT_FAILED", "description":"The device could not be contacted. LJM is configured to heal device connections and the reconnection attempt failed."},
-   {"error":1243, "string":"LJME_U3_CANNOT_BE_OPENED_BY_LJM", "description":"LJM cannot open UD-series LabJack devices; use the UD driver (http://labjack.com/support/ud)"},
-   {"error":1246, "string":"LJME_U6_CANNOT_BE_OPENED_BY_LJM", "description":"LJM cannot open UD-series LabJack devices; use the UD driver (http://labjack.com/support/ud)"},
-   {"error":1249, "string":"LJME_UE9_CANNOT_BE_OPENED_BY_LJM", "description":"LJM cannot open UD-series LabJack devices; use the UD driver (http://labjack.com/support/ud)"},
+   {"error":1243, "string":"LJME_U3_CANNOT_BE_OPENED_BY_LJM", "description":"LJM cannot open UD-series LabJack devices; use the UD driver (https://labjack.com/support/ud)"},
+   {"error":1246, "string":"LJME_U6_CANNOT_BE_OPENED_BY_LJM", "description":"LJM cannot open UD-series LabJack devices; use the UD driver (https://labjack.com/support/ud)"},
+   {"error":1249, "string":"LJME_UE9_CANNOT_BE_OPENED_BY_LJM", "description":"LJM cannot open UD-series LabJack devices; use the UD driver (https://labjack.com/support/ud)"},
    {"error":1250, "string":"LJME_INVALID_ADDRESS", "description":"The requested address was not found."},
    {"error":1251, "string":"LJME_INVALID_CONNECTION_TYPE", "description":"LJM received an unexpected connection type."},
    {"error":1252, "string":"LJME_INVALID_DIRECTION", "description":"LJM received an unexpected read/write direction."},
@@ -948,6 +948,7 @@
     "2016.03.15.B:  Spelling corrections.",
     "2016.05.04.A:  BATTERY_RAM typo fix.",
     "2016.05.05.A:  STREAM_DATA_CAPTURE_16 access fix.",
+    "2016.05.16.A:  Updated links to use https.",
     "End Of Comments"
   ]
 }
