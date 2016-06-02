@@ -32,10 +32,10 @@
    {"address":2850, "name":"DIO_DIRECTION", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["DIO"], "description":"Read or write the direction of all digital I/O in a single binary-encoded value.  0=Input and 1=Output.  Writes only apply to bits with mask set."},
    {"address":2900, "name":"DIO_INHIBIT", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["DIO"], "description":"A single binary-encoded value where each bit determines whether _STATE or _DIRECTION writes affect that bit of digital I/O.  0=Default=Affected, 1=Ignored."},
 
-   {"address":4002, "name":"STREAM_SCANRATE_HZ", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of times per second that all channels in the scanlist will be read. SampleRate=NumChannels*ScanRate.  Has no effect when using and external clock."},
+   {"address":4002, "name":"STREAM_SCANRATE_HZ", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Write a value to specify the number of times per second that all channels in the stream scanlist will be read. A read of this register returns the actual scan rate, which can be slightly different due to rounding. SampleRate=NumChannels*ScanRate.  Has no effect when using and external clock."},
    {"address":4004, "name":"STREAM_NUM_ADDRESSES", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of entries in the scanlist"},
    {"address":4006, "name":"STREAM_SAMPLES_PER_PACKET", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Specifies the number of data points to be sent in the data packet. Only applies to spontaneous mode."},
-   {"address":4008, "name":"STREAM_SETTLING_US", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Time in microseconds to allow signals to settle after switching the mux. Default=0. If set to a value <= 5 the T7 will automatically determine the necessary settling time. When the sample rate is above 60kHz settling time will be set to ~5 us. Max is 4400."},
+   {"address":4008, "name":"STREAM_SETTLING_US", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Time in microseconds to allow signals to settle after switching the mux. Default=0. If set to a value < 1 the T7 will automatically determine the necessary settling time. When the sample rate is above 60kHz settling time will be set to ~5 us. Max is 4400."},
    {"address":4010, "name":"STREAM_RESOLUTION_INDEX", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Index specifying the resolution of the data. High settings will have lower max speeds."},
    {"address":4012, "name":"STREAM_BUFFER_SIZE_BYTES", "type":"UINT32", "devices":[{"device":"T7", "default":0, "description":"Max size is 32768. Default size is 4096."}], "readwrite":"RW", "default":0, "tags":["STREAM"], "description":"Size of the stream data buffer in bytes. A value of 0 equates to the default value.  Must be a power of 2, as it takes 2 bytes to hold 1 sample. Size in samples is STREAM_BUFFER_SIZE_BYTES/2.  Size in scans is (STREAM_BUFFER_SIZE_BYTES/2)/STREAM_NUM_ADDRESSES. Changes while stream is running do not affect the currently running stream."},
    {"address":4014, "name":"STREAM_CLOCK_SOURCE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0110}], "readwrite":"RW", "default":0, "tags":["STREAM"], "altnames":["STREAM_OPTIONS"], "description":"Controls which clock source will be used to run the main stream clock. 0 = Internal crystal, 2 = External clock source on CIO3 (T7 will expect external stream clock on CIO3). All other values reserved."},
@@ -131,7 +131,7 @@
 
    {"address":6032, "name":"LUA_SAVE_TO_FLASH", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0059}], "readwrite":"RW", "tags":["LUA"], "description":"Write 1 to save the loaded source code to flash."},
    {"address":6034, "name":"LUA_LOAD_SAVED", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0059}], "readwrite":"RW", "tags":["LUA"], "description":"Reads the script from Flash and loads it in RAM. The script can now be compiled and run."},
-   {"address":6036, "name":"LUA_SAVED_READ_POINTER", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0060}], "readwrite":"RW", "tags":["LUA"], "description":"Address within the saved lua script in Flash to begin reading from."},
+   {"address":6036, "name":"LUA_SAVED_READ_POINTER", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0060}], "readwrite":"RW", "tags":["LUA"], "description":"Address within the saved Lua script in Flash to begin reading from."},
    {"address":6038, "name":"LUA_SAVED_READ", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0060}], "readwrite":"R", "tags":["LUA"], "description":"Read script saved to flash from here."},
 
    {"address":6100, "name":"LUA_RUN_DEFAULT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0078}], "readwrite":"RW", "tags":["LUA"], "description":"If set to 1 the script saved in flash will be loaded and run when the LabJack boots up."},
@@ -535,6 +535,7 @@
    {"error":1310, "string":"LJME_TEMPERATURE_OUT_OF_RANGE", "description":"LJM_TCVoltsToTemp received a temperature that was out of range for the given thermocouple type."},
    {"error":1311, "string":"LJME_VOLTAGE_OUT_OF_RANGE", "description":"LJM_TCVoltsToTemp received a voltage that was out of range for the given thermocouple type."},
    {"error":1312, "string":"LJME_FUNCTION_DOES_NOT_SUPPORT_THIS_TYPE", "description":"The function does not support the given data type. For example, LJM_eReadName and LJM_eReadAddress do not support reading LJM_STRING values, which are too large."},
+   {"error":1313, "string":"LJME_INVALID_INFO_HANDLE", "description":"The given info handle did not exist. (It may have been passed to LJM_CleanInfo already.)"},
 
 
    {"error":2300, "string":"MODBUS_RSP_OVERFLOW", "description":"Response packet greater than max packet size."},
@@ -579,6 +580,7 @@
    {"error":2385, "string":"LUA_IS_RUNNING", "description":"A running script is preventing the requested operation."},
    {"error":2386, "string":"LUA_CODE_BUFFER_EMPTY", "description":"Attempted to run a program that is not present."},
    {"error":2387, "string":"LUA_DEBUG_IS_DISABLED", "description":"Attempted to read from debug buffer while debug is disabled."},
+   {"error":2389, "string":"LUA_IS_CLOSING", "description":"The Lua VM is being closed, usually takes less than 100 ms."},
 
    {"error":2400, "string":"SYSTEM_MEMORY_BEREFT", "description":"Insufficient memory to perform the requested action."},
    {"error":2401, "string":"SYSTEM_MEMORY_OVERWRITE", "description":"Attempted to overwrite a buffer."},
@@ -949,6 +951,8 @@
     "2016.05.04.A:  BATTERY_RAM typo fix.",
     "2016.05.05.A:  STREAM_DATA_CAPTURE_16 access fix.",
     "2016.05.16.A:  Updated links to use https.",
+    "2016.05.25.A:  Fixed an incorrect number in the description of the stream settling description.",
+    "2016.05.31.A:  Added error codes: LUA_IS_CLOSING and LJME_INVALID_INFO_HANDLE.",
     "End Of Comments"
   ]
 }
