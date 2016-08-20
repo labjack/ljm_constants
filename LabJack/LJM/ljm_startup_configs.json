@@ -1,6 +1,6 @@
 // ljm_startup_configs.json:
 //   This is the configurations file that is loaded when LJM is started up.
-//   Distributed with LJM version 1.1301.
+//   Distributed with LJM version 1.1400.
 //
 //   Use the string "default" to load the default value for each config
 //   parameter. Otherwise, see the "type" for each config parameter for what
