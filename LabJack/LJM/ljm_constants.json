@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2016.09.12.A",
+   "version":"2016.09.14.A",
    "checksum":"-1",
    "support_url":"https://labjack.com/support/modbus",
    "tags_base_url":"https://labjack.com/support/modbus"
@@ -67,7 +67,7 @@
    {"address":5001, "name":"SPI_CLK_DIONUM", "type":"UINT16", "devices":["T7", "T4"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"The DIO line for Clock."},
    {"address":5002, "name":"SPI_MISO_DIONUM", "type":"UINT16", "devices":["T7", "T4"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"The DIO line for Master-In-Slave-Out."},
    {"address":5003, "name":"SPI_MOSI_DIONUM", "type":"UINT16", "devices":["T7", "T4"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"The DIO line for Master-Out-Slave-In."},
-   {"address":5004, "name":"SPI_MODE", "type":"UINT16", "devices":["T7", "T4"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"The SPI mode controls the clock idle state and which edge clocks the data. Bit 1 is CPOL and Bit 0 is CPHA, so CPOL/CPHA for different decimal values: 0 = 0/0 = b00, 1 = 0/1 = b01, 2 = 1/0 = b10, 3 = 1/1 = b11."},
+   {"address":5004, "name":"SPI_MODE", "type":"UINT16", "devices":["T7", "T4"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"The SPI mode controls the clock idle state and which edge clocks the data. Bit 1 is CPOL and Bit 0 is CPHA, so CPOL/CPHA for different decimal values: 0 = 0/0 = b00, 1 = 0/1 = b01, 2 = 1/0 = b10, 3 = 1/1 = b11. CPOL(0): CLock is active High. CPOL(1): Clock is active Low. CPHA(0): Data sampled on Rising edge.  CPHA(1): Data sampled on Falling edge."},
    {"address":5005, "name":"SPI_SPEED_THROTTLE", "type":"UINT16", "devices":["T7", "T4"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"This value controls the SPI clock frequency.  Pass 0-65535.  Default=0 corresponds to 65536 internally which results in ~800 kHz.  65500 = ~100 kHz, 65100 = ~10 kHz, 61100 = ~1 kHz, 21000 = ~100 Hz, and 1 = ~67 Hz.  Avoid setting too low such that the entire transaction lasts longer than the 250 millisecond timeout of the internal watchdog timer."},
    {"address":5006, "name":"SPI_OPTIONS", "type":"UINT16", "devices":["T7", "T4"], "readwrite":"RW", "default":0, "tags":["SPI"], "description":"Bit 0 is Auto-CS-Disable."},
    {"address":5007, "name":"SPI_GO", "type":"UINT16", "devices":["T7", "T4"], "readwrite":"W", "default":0, "tags":["SPI"], "description":"Write 1 to begin the configured SPI transaction."},
@@ -476,9 +476,9 @@
    {"error":1237, "string":"LJME_CANNOT_DISCONNECT", "description":"An error occurred while attempting to disconnect."},
    {"error":1238, "string":"LJME_WINSOCK_FAILURE", "description":"A Windows WINSOCK error occurred."},
    {"error":1239, "string":"LJME_RECONNECT_FAILED", "description":"The device could not be contacted. LJM is configured to heal device connections and the reconnection attempt failed."},
-   {"error":1243, "string":"LJME_U3_CANNOT_BE_OPENED_BY_LJM", "description":"LJM cannot open UD-series LabJack devices; use the UD driver (https://labjack.com/support/ud)"},
-   {"error":1246, "string":"LJME_U6_CANNOT_BE_OPENED_BY_LJM", "description":"LJM cannot open UD-series LabJack devices; use the UD driver (https://labjack.com/support/ud)"},
-   {"error":1249, "string":"LJME_UE9_CANNOT_BE_OPENED_BY_LJM", "description":"LJM cannot open UD-series LabJack devices; use the UD driver (https://labjack.com/support/ud)"},
+   {"error":1243, "string":"LJME_U3_NOT_SUPPORTED_BY_LJM", "description":"LJM does not support UD-series LabJack devices; use the UD driver (https://labjack.com/support/ud)"},
+   {"error":1246, "string":"LJME_U6_NOT_SUPPORTED_BY_LJM", "description":"LJM does not support UD-series LabJack devices; use the UD driver (https://labjack.com/support/ud)"},
+   {"error":1249, "string":"LJME_UE9_NOT_SUPPORTED_BY_LJM", "description":"LJM does not support UD-series LabJack devices; use the UD driver (https://labjack.com/support/ud)"},
    {"error":1250, "string":"LJME_INVALID_ADDRESS", "description":"The requested address was not found."},
    {"error":1251, "string":"LJME_INVALID_CONNECTION_TYPE", "description":"LJM received an unexpected connection type."},
    {"error":1252, "string":"LJME_INVALID_DIRECTION", "description":"LJM received an unexpected read/write direction."},
@@ -965,6 +965,7 @@
     "2016.09.01.A:  Added a note to the description of WATCHDOG_STRICT_CLEAR.",
     "2016.09.07.A:  Added DIO_ANALOG_ENABLE.",
     "2016.09.12.A:  Added T4 to SPI registers.",
+    "2016.09.14.A:  Added Description to SPI_MODE register. Changed LJME_U3_CANNOT_BE_OPENED_BY_LJM to LJME_U3_NOT_SUPPORTED_BY_LJM, LJME_U6_CANNOT_BE_OPENED_BY_LJM to LJME_U6_NOT_SUPPORTED_BY_LJM, and LJME_UE9_CANNOT_BE_OPENED_BY_LJM to LJME_UE9_NOT_SUPPORTED_BY_LJM.",
     "End Of Comments"
   ]
 }
