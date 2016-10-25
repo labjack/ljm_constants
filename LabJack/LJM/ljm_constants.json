@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2016.09.16.A",
+   "version":"2016.10.25.A",
    "checksum":"-1",
    "support_url":"https://labjack.com/support/modbus",
    "tags_base_url":"https://labjack.com/support/modbus"
@@ -704,7 +704,7 @@
    {"error":2727, "string":"I2C_RX_SIZE_TOO_LARGE"},
    {"error":2728, "string":"I2C_BUFFER_OVERRUN"},
    {"error":2729, "string":"I2C_SPEED_TOO_LOW", "description":"The throttle setting is too low, watchdog may fire. Minimum value = 46000"},
-   
+
 
    {"error":2740, "string":"SBUS_COMM_TIME_OUT", "description":"Slave device did not respond."},
    {"error":2741, "string":"SBUS_NO_ACK", "description":"Slave device did not acknowledge the data transfer."},
@@ -968,6 +968,7 @@
     "2016.09.12.A:  Added T4 to SPI registers.",
     "2016.09.14.A:  Added Description to SPI_MODE register. Changed LJME_U3_CANNOT_BE_OPENED_BY_LJM to LJME_U3_NOT_SUPPORTED_BY_LJM, LJME_U6_CANNOT_BE_OPENED_BY_LJM to LJME_U6_NOT_SUPPORTED_BY_LJM, and LJME_UE9_CANNOT_BE_OPENED_BY_LJM to LJME_UE9_NOT_SUPPORTED_BY_LJM.",
     "2016.09.16.A:  Added SPC_FREQUENCY_OUT register.",
+    "2016.10.25.A:  LJME_USING_DEFAULT_CALIBRATION description update and Windows line endings.",
     "End Of Comments"
   ]
 }
