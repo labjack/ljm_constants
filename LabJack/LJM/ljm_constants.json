@@ -444,7 +444,7 @@
    {"error":399, "string":"LJME_WARNINGS_END", "description":"This indicates where the warning codes end is not a real warning code."},
    {"error":201, "string":"LJME_FRAMES_OMITTED_DUE_TO_PACKET_SIZE", "description":"Some read/write operation(s) were not sent to the device because the Feedback command being created was too large for the device, given the current connection type."},
    {"error":202, "string":"LJME_DEBUG_LOG_FAILURE", "description":"The debug log file could not be written to. Check the LJM_DEBUG_LOG_FILE and related LJM configurations."},
-   {"error":203, "string":"LJME_USING_DEFAULT_CALIBRATION", "description":"The device's calibration could not be read, so the nominal calibration values were used."},
+   {"error":203, "string":"LJME_USING_DEFAULT_CALIBRATION", "description":"The device's calibration could not be read, so the nominal calibration values were used. Possible Cause: Incompatible microSD card installed. See SD Card section of T7 Datasheet."},
    {"error":204, "string":"LJME_DEBUG_LOG_FILE_NOT_OPEN", "description":"The message could not be logged because the debug log file has not been opened."},
 
    {"error":254, "string":"FEATURE_NOT_IMPLEMENTED"},
