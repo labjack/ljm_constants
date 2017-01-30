@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2016.12.22.A",
+   "version":"2017.01.30.A",
    "checksum":"-1",
    "support_url":"https://labjack.com/support/modbus",
    "tags_base_url":"https://labjack.com/support/modbus"
@@ -241,17 +241,17 @@
    {"address":61990, "name":"IO_CONFIG_SET_CURRENT_TO_FACTORY", "type":"UINT16", "devices":["T7", "T4"], "readwrite":"W", "tags":["CONFIG"], "description":"Write a 1 to set current values to factory configuration.  The factory values are retrieved from flash and written to the current configuration registers."},
    {"address":61991, "name":"IO_CONFIG_SET_CURRENT_TO_DEFAULT", "type":"UINT16", "devices":["T7", "T4"], "readwrite":"W", "tags":["CONFIG"], "description":"Write a 1 to set current values to default configuration.  The default values are retrieved from flash and written to the current configuration registers, thus this behaves similar to reboot/power-up."},
 
-   {"address":61998, "name":"SYSTEM_REBOOT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9419}], "readwrite":"W", "tags":["CONFIG"], "description":"Issues a device reboot. Must write 0x4C4Axxxx, where xxxx is number of 50ms ticks to wait before reboot.  To reboot immediately write 0x4C4A0000 (d1279918080)."},
+   {"address":61998, "name":"SYSTEM_REBOOT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9419}, {"device":"T4", "fwmin":0.202}], "readwrite":"W", "tags":["CONFIG"], "description":"Issues a device reboot. Must write 0x4C4Axxxx, where xxxx is number of 50ms ticks to wait before reboot.  To reboot immediately write 0x4C4A0000 (d1279918080)."},
 
-   {"address":60050, "name":"TEMPERATURE_AIR_K", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0105}], "readwrite":"R", "tags":["AIN", "CORE"], "streamable":false, "displayname":["Estimated Air Temperature [deg K]"], "description":"Returns the estimated ambient air temperature just outside a T7 in its red plastic enclosure.  This register is equal to TEMPERATURE_DEVICE_K - 4.3.  If Ethernet and/or WiFi is enabled, subtract an extra 0.6 for each."},
-   {"address":60052, "name":"TEMPERATURE_DEVICE_K", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0105}], "readwrite":"R", "tags":["AIN", "CORE"], "streamable":false, "displayname":["Device Temperature [deg K]"], "description":"Takes a reading from AIN14 using range=+/-10V and resolution=8, and applies the formula Volts*-92.6+467.6 to return degrees K.  AIN14 is internally connected to an LM94021 (U24) with GS=10 which is physically located on the bottom of the PCB between the AIN0/1 and AIN2/3 screw-terminals."},
+   {"address":60050, "name":"TEMPERATURE_AIR_K", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0105}, {"device":"T4", "fwmin":0.202}], "readwrite":"R", "tags":["AIN", "CORE"], "streamable":false, "displayname":["Estimated Air Temperature [deg K]"], "description":"Returns the estimated ambient air temperature just outside a T7 in its red plastic enclosure.  This register is equal to TEMPERATURE_DEVICE_K - 4.3.  If Ethernet and/or WiFi is enabled, subtract an extra 0.6 for each."},
+   {"address":60052, "name":"TEMPERATURE_DEVICE_K", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0105}, {"device":"T4", "fwmin":0.202}], "readwrite":"R", "tags":["AIN", "CORE"], "streamable":false, "displayname":["Device Temperature [deg K]"], "description":"Takes a reading from AIN14 using range=+/-10V and resolution=8, and applies the formula Volts*-92.6+467.6 to return degrees K.  AIN14 is internally connected to an LM94021 (U24) with GS=10 which is physically located on the bottom of the PCB between the AIN0/1 and AIN2/3 screw-terminals."},
 
-   {"address":49702, "name":"SNTP_UPDATE_INTERVAL", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0150}], "readwrite":"RW", "tags":["RTC"],"description":"Sets the SNTP retry time in seconds. A value of zero will disable SNTP(0=default). Values must be 10 or greater."},
+   {"address":49702, "name":"SNTP_UPDATE_INTERVAL", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0150}, {"device":"T4", "fwmin":0.202}], "readwrite":"RW", "tags":["RTC"],"description":"Sets the SNTP retry time in seconds. A value of zero will disable SNTP(0=default). Values must be 10 or greater."},
 
-   {"address":61500, "name":"RTC_TIME_S", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0128}], "readwrite":"R", "tags":["RTC"], "description":"Read the current time on the RTC in seconds since Jan, 1970, aka Epoch or Unix time."},
-   {"address":61504, "name":"RTC_SET_TIME_S", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0128}], "readwrite":"W", "tags":["RTC"], "description":"Write a new timestamp to the RTC in seconds since Jan, 1970, aka Epoch or Unix timestamp."},
-   {"address":61506, "name":"RTC_SET_TIME_SNTP", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0128}], "readwrite":"W", "tags":["RTC"], "description":"Write any value to instruct the T7 to update its clock from a SNTP server. Requires that SNTP_UPDATE_INTERVAL is non-zero."},
-   {"address":61510, "name":"RTC_TIME_CALENDAR", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0128}], "readwrite":"R", "tags":["RTC"], "description":"Read six consecutive addresses of type UINT16, starting with this address. The result will be in year, month, day, hour, minute, second calendar format. i.e. [2014, 10, 21, 18, 55, 35]"},
+   {"address":61500, "name":"RTC_TIME_S", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0128}, {"device":"T4", "fwmin":0.202}], "readwrite":"R", "tags":["RTC"], "description":"Read the current time on the RTC in seconds since Jan, 1970, aka Epoch or Unix time."},
+   {"address":61504, "name":"RTC_SET_TIME_S", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0128}, {"device":"T4", "fwmin":0.202}], "readwrite":"W", "tags":["RTC"], "description":"Write a new timestamp to the RTC in seconds since Jan, 1970, aka Epoch or Unix timestamp."},
+   {"address":61506, "name":"RTC_SET_TIME_SNTP", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0128}, {"device":"T4", "fwmin":0.202}], "readwrite":"W", "tags":["RTC"], "description":"Write any value to instruct the T7 to update its clock from a SNTP server. Requires that SNTP_UPDATE_INTERVAL is non-zero."},
+   {"address":61510, "name":"RTC_TIME_CALENDAR", "type":"UINT16", "devices":[{"device":"T7", "fwmin":1.0128}, {"device":"T4", "fwmin":0.202}], "readwrite":"R", "tags":["RTC"], "description":"Read six consecutive addresses of type UINT16, starting with this address. The result will be in year, month, day, hour, minute, second calendar format. i.e. [2014, 10, 21, 18, 55, 35]"},
 
    {"address":49100, "name":"ETHERNET_IP", "type":"UINT32", "devices":["T7", "T4"], "readwrite":"R", "tags":["ETHERNET"], "description":"Read the current IP address of wired Ethernet."},
    {"address":49102, "name":"ETHERNET_SUBNET", "type":"UINT32", "devices":["T7", "T4"], "readwrite":"R", "tags":["ETHERNET"], "description":"Read the current subnet of wired Ethernet."},
@@ -598,7 +598,8 @@
    {"error":2405, "string":"SYSTEM_NVRAM_UNAVAILABLE", "description":"NVRAM is not available on this device."},
    {"error":2406, "string":"SYSTEM_NVRAM_INVALID_ADDRESS", "description":"The specified NVRAM location is not available on this device."},
    {"error":2407, "string":"SYSTEM_WAIT_TOO_LONG", "description":"The requested wait time is beyond the max allowed."},
-
+   {"error":2408, "string":"SYSTEM_INCOMPATIBLE_FIRMWARE_VERSION", "description":"The firmware image is not compatible with this device."},
+   
    {"error":2420, "string":"DEVICE_NAME_MUST_BE_ALPHANUM", "description":"Attempted to write a device name with invalid characters."},
 
    {"error":2450, "string":"POWER_INVALID_SETTING", "description":"Unknown value specified."},
@@ -611,6 +612,7 @@
    {"error":2490, "string":"WIFI_NOT_ASSOCIATED", "description":"WiFi needs to be connected to a network before the requested action can be performed."},
 
    {"error":2500, "string":"HW_DIO_NOT_AVAILABLE"},
+   {"error":2501, "string":"DIO_SET_TO_ANALOG", "description":"The digital line addressed is set to analog. Digital operations can not be performed."},
    {"error":2508, "string":"HW_CNTRA_NOT_AVAILABLE", "description":"Counter A is being used by another system."},
    {"error":2509, "string":"HW_CNTRB_NOT_AVAILABLE", "description":"Counter B is being used by another system."},
    {"error":2510, "string":"HW_CNTRC_NOT_AVAILABLE", "description":"Counter C is being used by another system."},
@@ -973,6 +975,7 @@
     "2016.09.16.A:  Added SPC_FREQUENCY_OUT register.",
     "2016.10.25.A:  LJME_USING_DEFAULT_CALIBRATION description update and Windows line endings.",
     "2016.12.22.A:  Aadded DIO_PULLUP_DISABLE and STREAM_START_TIME_STAMP, fixed DIO_ANALOG_ENABLE address, and various other description updates.",
+    "2017.01.30.A:  Added T4 to SYSTEM_REBOOT, TEMPERATURE_AIR_K, TEMPERATURE_DEVICE_K, SNTP_UPDATE_INTERVAL, RTC_TIME_S, RTC_SET_TIME_S, RTC_SET_TIME_SNTP, and RTC_TIME_CALENDAR. Added errors SYSTEM_INCOMPATIBLE_FIRMWARE_VERSION and DIO_SET_TO_ANALOG.",
     "End Of Comments"
   ]
 }
