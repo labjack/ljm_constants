@@ -2,7 +2,7 @@
  "header":
  {
    "filename":"ljm_constants.json",
-   "version":"2017.01.30.A",
+   "version":"2017.03.09.A",
    "checksum":"-1",
    "support_url":"https://labjack.com/support/modbus",
    "tags_base_url":"https://labjack.com/support/modbus"
@@ -34,7 +34,7 @@
    {"address":2890, "name":"DIO_PULLUP_DISABLE", "type":"UINT32", "devices":["T4"], "readwrite":"RW", "tags":["DIO"], "description":"This register will pevent pullups from being enabled on lines set to digital input. 1 = pullup disabled, 0 = pullup enabled. This register only affects flex-lines which can be configured as analog or digital. This register is not affected by the inhibit register."},
    {"address":2900, "name":"DIO_INHIBIT", "type":"UINT32", "devices":["T7", "T4"], "readwrite":"RW", "tags":["DIO"], "description":"A single binary-encoded value where each bit determines whether _STATE or _DIRECTION writes affect that bit of digital I/O.  0=Default=Affected, 1=Ignored."},
 
-   {"address":4002, "name":"STREAM_SCANRATE_HZ", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Write a value to specify the number of times per second that all channels in the stream scanlist will be read. A read of this register returns the actual scan rate, which can be slightly different due to rounding. SampleRate=NumChannels*ScanRate.  Has no effect when using and external clock."},
+   {"address":4002, "name":"STREAM_SCANRATE_HZ", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Write a value to specify the number of times per second that all channels in the stream scanlist will be read.  Max stream speeds are based on Sample Rate which is NumChannels*ScanRate.  Has no effect when using and external clock.  A read of this register returns the actual scan rate, which can be slightly different due to rounding.  For scan rates >152.588, the actual scan interval is multiples of 100 ns.  Assuming a core clock of 80 MHz the internal roll value is (80M/(8*DesiredScanRate))-1 and the actual scan rate is then 80M/(8*(RollValue+1).  For slower scan rates the scan interval resolution is changed to 1 us, 10 us, 100 us, or 1 ms as needed to achieve the longer intervals."},
    {"address":4004, "name":"STREAM_NUM_ADDRESSES", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"The number of entries in the scanlist"},
    {"address":4006, "name":"STREAM_SAMPLES_PER_PACKET", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Specifies the number of data points to be sent in the data packet. Only applies to spontaneous mode."},
    {"address":4008, "name":"STREAM_SETTLING_US", "type":"FLOAT32", "devices":["T7"], "readwrite":"RW", "default":0, "tags":["STREAM"],"description":"Time in microseconds to allow signals to settle after switching the mux. Default=0. If set to a value < 1 the T7 will automatically determine the necessary settling time. When the sample rate is above 60kHz settling time will be set to ~5 us. Max is 4400."},
@@ -156,6 +156,7 @@
    {"address":11100, "name":"AIN#(0:149)_EF_CONFIG_G", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
    {"address":11400, "name":"AIN#(0:149)_EF_CONFIG_H", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
    {"address":11700, "name":"AIN#(0:149)_EF_CONFIG_I", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
+   {"address":12000, "name":"AIN#(0:149)_EF_CONFIG_J", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0030}], "readwrite":"RW", "default":0, "tags":["AIN_EF", "AIN"]},
 
    {"address":30000, "name":"TDAC#(0:22)", "type":"FLOAT32", "devices":["T7", "T4"], "readwrite":"W", "default":0, "tags":["TDAC", "CORE"], "displayname":["LJTick-DAC #"], "description":"Update a voltage output on a connected LJTick-DAC accessory.  Even TDAC# = DACA, Odd TDAC# = DACB. For instance, if LJTick-DAC accessory is connected to FIO2/FIO3 block on main device, TDAC2 corresponds with DACA, and TDAC3 corresponds with DACB."},
    {"address":55200, "name":"TDAC_SERIAL_NUMBER", "type":"UINT32", "devices":["T7", "T4"], "readwrite":"R", "default":0, "tags":["TDAC"], "description":"Returns the serial number of an LJTick-DAC, and forces a re-read of the calibration constants. Which LJTDAC is determined by the last write to TDAC# ... whether it was successful or not."},
@@ -199,7 +200,7 @@
    {"address":44918, "name":"DIO_EF_CLOCK1_COUNT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9430}], "readwrite":"R", "tags":["DIO_EF", "DIO"], "description":"Current tick count of this clock.  Will read between 0 and ROLL_VALUE-1."},
    {"address":44928, "name":"DIO_EF_CLOCK2_COUNT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9430}], "readwrite":"R", "tags":["DIO_EF", "DIO"], "description":"Current tick count of this clock.  Will read between 0 and ROLL_VALUE-1."},
 
-   {"address":44000, "name":"DIO#(0:22)_EF_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "description":"1 = enabled. 0 = disabled. Must be disabled during configuration."},
+   {"address":44000, "name":"DIO#(0:22)_EF_ENABLE", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "description":"1 = enabled. 0 = disabled. Must be disabled during configuration. Note that DIO-EF reads work when disabled and do not return an error."},
    {"address":44100, "name":"DIO#(0:22)_EF_INDEX", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "altnames":["DIO#(0:22)_EF_TYPE"], "description":"An index to specify the feature you want."},
    {"address":44200, "name":"DIO#(0:22)_EF_OPTIONS", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "description":"Function dependent on selected feature index."},
    {"address":44300, "name":"DIO#(0:22)_EF_CONFIG_A", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.88}], "readwrite":"RW", "tags":["DIO_EF", "DIO"], "altnames":["DIO#(0:22)_EF_VALUE_A"], "description":"Function dependent on selected feature index."},
@@ -225,21 +226,22 @@
    {"address":48056, "name":"POWER_LED_DEFAULT", "type":"UINT16", "devices":[{"device":"T7", "fwmin":0.86}], "readwrite":"RW", "tags":["CONFIG"], "description":"The ON/OFF state of the LEDs after a power-cycle to the device."},
 
    {"address":49000, "name":"IO_CONFIG_CHECK_FOR_FACTORY", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["CONFIG"], "description":"Returns 1 if default settings are the same as factory settings."},
-   {"address":49002, "name":"IO_CONFIG_SET_DEFAULT_TO_CURRENT", "type":"UINT32", "devices":["T7"], "readwrite":"W", "tags":["CONFIG"], "description":"Write a 1 to cause new default (reboot/power-up) values to be saved to flash.  Current values are retrieved and saved as the new defaults."},
-   {"address":49004, "name":"IO_CONFIG_SET_DEFAULT_TO_FACTORY", "type":"UINT32", "devices":["T7"], "readwrite":"W", "tags":["CONFIG"], "description":"Write a 1 to cause new default (reboot/power-up) values to be saved to flash.  Factory values are retrieved and saved as the new defaults."},
+   {"address":49002, "name":"IO_CONFIG_SET_DEFAULT_TO_CURRENT", "type":"UINT32", "devices":["T7"], "readwrite":"W", "tags":["CONFIG"], "description":"Write a 1 to cause new default (reboot/power-up) values to be saved to flash.  Current values are retrieved and saved as the new defaults. Systems affected: AIN, DIO, DAC, AIN_EF, DIO_EF."},
+   {"address":49004, "name":"IO_CONFIG_SET_DEFAULT_TO_FACTORY", "type":"UINT32", "devices":["T7"], "readwrite":"W", "tags":["CONFIG"], "description":"Write a 1 to cause new default (reboot/power-up) values to be saved to flash.  Factory values are retrieved and saved as the new defaults. Systems affected: AIN, DIO, DAC, AIN_EF, DIO_EF."},
    {"address":49006, "name":"IO_CONFIG_FACTORY_pREAD", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["CONFIG"]},
    {"address":49008, "name":"IO_CONFIG_FACTORY_READ", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["CONFIG"]},
    {"address":49010, "name":"IO_CONFIG_DEFAULT_pREAD", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["CONFIG"]},
    {"address":49012, "name":"IO_CONFIG_DEFAULT_READ", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["CONFIG"]},
    {"address":49014, "name":"IO_CONFIG_CURRENT_pREAD", "type":"UINT32", "devices":["T7"], "readwrite":"RW", "tags":["CONFIG"]},
    {"address":49016, "name":"IO_CONFIG_CURRENT_READ", "type":"UINT32", "devices":["T7"], "readwrite":"R", "tags":["CONFIG"]},
+   {"address":4902, "name":"IO_CONFIG_CURRENT_CRC32", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0220}], "readwrite":"R", "tags":["CONFIG"], "description":"Collects the current IO configuration and calculates of a CRC32."},
 
    {"address":61520, "name":"CORE_TIMER", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0071}], "readwrite":"R", "tags":["CONFIG"], "streamable":true, "description":"Internal 32-bit system timer running at 1/2 core speed, thus normally 80M/2 => 40 MHz."},
    {"address":61522, "name":"SYSTEM_TIMER_20HZ", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0071}], "readwrite":"R", "tags":["CONFIG"], "streamable":true, "description":"Internal 32-bit system timer running at 20Hz."},
    {"address":61530, "name":"SPC_FREQUENCY_OUT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0210}], "readwrite":"RW", "description":"0 = off, 1 = output 10 Hz signal on SPC."},
    {"address":61590, "name":"WAIT_US_BLOCKING", "type":"UINT32", "devices":[{"device":"T7", "fwmin":1.0026}], "readwrite":"RW", "tags":["CONFIG"], "description":"Delays for x microseconds. Range is 0-100000."},
-   {"address":61990, "name":"IO_CONFIG_SET_CURRENT_TO_FACTORY", "type":"UINT16", "devices":["T7", "T4"], "readwrite":"W", "tags":["CONFIG"], "description":"Write a 1 to set current values to factory configuration.  The factory values are retrieved from flash and written to the current configuration registers."},
-   {"address":61991, "name":"IO_CONFIG_SET_CURRENT_TO_DEFAULT", "type":"UINT16", "devices":["T7", "T4"], "readwrite":"W", "tags":["CONFIG"], "description":"Write a 1 to set current values to default configuration.  The default values are retrieved from flash and written to the current configuration registers, thus this behaves similar to reboot/power-up."},
+   {"address":61990, "name":"IO_CONFIG_SET_CURRENT_TO_FACTORY", "type":"UINT16", "devices":["T7", "T4"], "readwrite":"W", "tags":["CONFIG"], "description":"Write a 1 to set current values to factory configuration.  The factory values are retrieved from flash and written to the current configuration registers. Systems affected: AIN, DIO, DAC, AIN_EF, DIO_EF."},
+   {"address":61991, "name":"IO_CONFIG_SET_CURRENT_TO_DEFAULT", "type":"UINT16", "devices":["T7", "T4"], "readwrite":"W", "tags":["CONFIG"], "description":"Write a 1 to set current values to default configuration.  The default values are retrieved from flash and written to the current configuration registers, thus this behaves similar to reboot/power-up. Systems affected: AIN, DIO, DAC, AIN_EF, DIO_EF."},
 
    {"address":61998, "name":"SYSTEM_REBOOT", "type":"UINT32", "devices":[{"device":"T7", "fwmin":0.9419}, {"device":"T4", "fwmin":0.202}], "readwrite":"W", "tags":["CONFIG"], "description":"Issues a device reboot. Must write 0x4C4Axxxx, where xxxx is number of 50ms ticks to wait before reboot.  To reboot immediately write 0x4C4A0000 (d1279918080)."},
 
@@ -290,6 +292,8 @@
       "constants":[{"name":"CONFIGURING", "value":2920}, {"name":"IN_PROGRESS", "value":2921}, {"name":"REBOOTING", "value":2923}, {"name":"UPDATE_SUCCESS", "value":2924}, {"name":"UPDATE_FAILED", "value":2925}]},
 
    {"address":50000, "name":"AIN#(0:254)_BINARY", "type":"UINT32", "devices":["T7", "T4"], "readwrite":"R", "tags":["AIN"], "streamable":false, "altnames":["AIN#(0:254)_BIN"], "description":"Returns the 24-bit binary representation of the specified analog input. If you prefer 16-bit representation, simply divide this by 256. This is for command-response only.  Stream always returns binary and LJM applies cal constants, so the LJM config flag LJM_STREAM_AIN_BINARY is used to get binary values."},
+   
+   {"address":51000, "name":"DAC#(0:1)_BINARY", "type":"UINT32", "devices":["T7", "T4"], "readwrite":"W", "tags":["DAC"], "streamable":false, "description":"Writes binary values to the DACs. 0 = lowest output, 65535 = highest output."},
 
    {"address":46000, "name":"USER_RAM#(0:39)_F32", "type":"FLOAT32", "devices":[{"device":"T7", "fwmin":1.0023}], "readwrite":"RW", "tags":["LUA", "USER_RAM"], "altnames":["LUA_IO#(0:39)_READ"], "description":"Generic RAM registers. Useful for passing data between a host computer and a Lua script. Will not return an error if alternate data types are used."},
    {"address":46080, "name":"USER_RAM#(0:9)_I32", "type":"INT32", "devices":[{"device":"T7", "fwmin":1.0162}], "readwrite":"RW", "tags":["LUA", "USER_RAM"], "description":"Generic RAM registers. Useful for passing data between a host computer and a Lua script. Will not return an error if alternate data types are used."},
@@ -544,6 +548,7 @@
    {"error":1311, "string":"LJME_VOLTAGE_OUT_OF_RANGE", "description":"LJM_TCVoltsToTemp received a voltage that was out of range for the given thermocouple type."},
    {"error":1312, "string":"LJME_FUNCTION_DOES_NOT_SUPPORT_THIS_TYPE", "description":"The function does not support the given data type. For example, LJM_eReadName and LJM_eReadAddress do not support reading LJM_STRING values, which are too large."},
    {"error":1313, "string":"LJME_INVALID_INFO_HANDLE", "description":"The given info handle did not exist. (It may have been passed to LJM_CleanInfo already.)"},
+   {"error":1314, "string":"LJME_NO_DEVICES_FOUND", "description":"An Open/OpenS call was called - with any device type, any connection type, and any identifier - but no devices were found."},
 
 
    {"error":2300, "string":"MODBUS_RSP_OVERFLOW", "description":"Response packet greater than max packet size."},
@@ -976,6 +981,7 @@
     "2016.10.25.A:  LJME_USING_DEFAULT_CALIBRATION description update and Windows line endings.",
     "2016.12.22.A:  Aadded DIO_PULLUP_DISABLE and STREAM_START_TIME_STAMP, fixed DIO_ANALOG_ENABLE address, and various other description updates.",
     "2017.01.30.A:  Added T4 to SYSTEM_REBOOT, TEMPERATURE_AIR_K, TEMPERATURE_DEVICE_K, SNTP_UPDATE_INTERVAL, RTC_TIME_S, RTC_SET_TIME_S, RTC_SET_TIME_SNTP, and RTC_TIME_CALENDAR. Added errors SYSTEM_INCOMPATIBLE_FIRMWARE_VERSION and DIO_SET_TO_ANALOG.",
+    "2017.03.09.A   Added LJME_NO_DEVICES_FOUND.",
     "End Of Comments"
   ]
 }
