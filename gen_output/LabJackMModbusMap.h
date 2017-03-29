@@ -2,7 +2,7 @@
 #ifndef LABJACKM_MODBUS_MAP_HEADER
 #define LABJACKM_MODBUS_MAP_HEADER
 
-#define LABJACKM_CONSTANTS_VERSION "2016.12.22.A"
+#define LABJACKM_CONSTANTS_VERSION "2017.03.09.A"
 
 #ifdef __cplusplus
 extern "C" {
@@ -10724,6 +10724,606 @@ static const char * const LJM_AIN149_EF_CONFIG_I = "AIN149_EF_CONFIG_I";
 enum { LJM_AIN149_EF_CONFIG_I_ADDRESS = 11998 };
 enum { LJM_AIN149_EF_CONFIG_I_TYPE = 3 };
 
+static const char * const LJM_AIN0_EF_CONFIG_J = "AIN0_EF_CONFIG_J";
+enum { LJM_AIN0_EF_CONFIG_J_ADDRESS = 12000 };
+enum { LJM_AIN0_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN1_EF_CONFIG_J = "AIN1_EF_CONFIG_J";
+enum { LJM_AIN1_EF_CONFIG_J_ADDRESS = 12002 };
+enum { LJM_AIN1_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN2_EF_CONFIG_J = "AIN2_EF_CONFIG_J";
+enum { LJM_AIN2_EF_CONFIG_J_ADDRESS = 12004 };
+enum { LJM_AIN2_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN3_EF_CONFIG_J = "AIN3_EF_CONFIG_J";
+enum { LJM_AIN3_EF_CONFIG_J_ADDRESS = 12006 };
+enum { LJM_AIN3_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN4_EF_CONFIG_J = "AIN4_EF_CONFIG_J";
+enum { LJM_AIN4_EF_CONFIG_J_ADDRESS = 12008 };
+enum { LJM_AIN4_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN5_EF_CONFIG_J = "AIN5_EF_CONFIG_J";
+enum { LJM_AIN5_EF_CONFIG_J_ADDRESS = 12010 };
+enum { LJM_AIN5_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN6_EF_CONFIG_J = "AIN6_EF_CONFIG_J";
+enum { LJM_AIN6_EF_CONFIG_J_ADDRESS = 12012 };
+enum { LJM_AIN6_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN7_EF_CONFIG_J = "AIN7_EF_CONFIG_J";
+enum { LJM_AIN7_EF_CONFIG_J_ADDRESS = 12014 };
+enum { LJM_AIN7_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN8_EF_CONFIG_J = "AIN8_EF_CONFIG_J";
+enum { LJM_AIN8_EF_CONFIG_J_ADDRESS = 12016 };
+enum { LJM_AIN8_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN9_EF_CONFIG_J = "AIN9_EF_CONFIG_J";
+enum { LJM_AIN9_EF_CONFIG_J_ADDRESS = 12018 };
+enum { LJM_AIN9_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN10_EF_CONFIG_J = "AIN10_EF_CONFIG_J";
+enum { LJM_AIN10_EF_CONFIG_J_ADDRESS = 12020 };
+enum { LJM_AIN10_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN11_EF_CONFIG_J = "AIN11_EF_CONFIG_J";
+enum { LJM_AIN11_EF_CONFIG_J_ADDRESS = 12022 };
+enum { LJM_AIN11_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN12_EF_CONFIG_J = "AIN12_EF_CONFIG_J";
+enum { LJM_AIN12_EF_CONFIG_J_ADDRESS = 12024 };
+enum { LJM_AIN12_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN13_EF_CONFIG_J = "AIN13_EF_CONFIG_J";
+enum { LJM_AIN13_EF_CONFIG_J_ADDRESS = 12026 };
+enum { LJM_AIN13_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN14_EF_CONFIG_J = "AIN14_EF_CONFIG_J";
+enum { LJM_AIN14_EF_CONFIG_J_ADDRESS = 12028 };
+enum { LJM_AIN14_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN15_EF_CONFIG_J = "AIN15_EF_CONFIG_J";
+enum { LJM_AIN15_EF_CONFIG_J_ADDRESS = 12030 };
+enum { LJM_AIN15_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN16_EF_CONFIG_J = "AIN16_EF_CONFIG_J";
+enum { LJM_AIN16_EF_CONFIG_J_ADDRESS = 12032 };
+enum { LJM_AIN16_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN17_EF_CONFIG_J = "AIN17_EF_CONFIG_J";
+enum { LJM_AIN17_EF_CONFIG_J_ADDRESS = 12034 };
+enum { LJM_AIN17_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN18_EF_CONFIG_J = "AIN18_EF_CONFIG_J";
+enum { LJM_AIN18_EF_CONFIG_J_ADDRESS = 12036 };
+enum { LJM_AIN18_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN19_EF_CONFIG_J = "AIN19_EF_CONFIG_J";
+enum { LJM_AIN19_EF_CONFIG_J_ADDRESS = 12038 };
+enum { LJM_AIN19_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN20_EF_CONFIG_J = "AIN20_EF_CONFIG_J";
+enum { LJM_AIN20_EF_CONFIG_J_ADDRESS = 12040 };
+enum { LJM_AIN20_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN21_EF_CONFIG_J = "AIN21_EF_CONFIG_J";
+enum { LJM_AIN21_EF_CONFIG_J_ADDRESS = 12042 };
+enum { LJM_AIN21_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN22_EF_CONFIG_J = "AIN22_EF_CONFIG_J";
+enum { LJM_AIN22_EF_CONFIG_J_ADDRESS = 12044 };
+enum { LJM_AIN22_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN23_EF_CONFIG_J = "AIN23_EF_CONFIG_J";
+enum { LJM_AIN23_EF_CONFIG_J_ADDRESS = 12046 };
+enum { LJM_AIN23_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN24_EF_CONFIG_J = "AIN24_EF_CONFIG_J";
+enum { LJM_AIN24_EF_CONFIG_J_ADDRESS = 12048 };
+enum { LJM_AIN24_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN25_EF_CONFIG_J = "AIN25_EF_CONFIG_J";
+enum { LJM_AIN25_EF_CONFIG_J_ADDRESS = 12050 };
+enum { LJM_AIN25_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN26_EF_CONFIG_J = "AIN26_EF_CONFIG_J";
+enum { LJM_AIN26_EF_CONFIG_J_ADDRESS = 12052 };
+enum { LJM_AIN26_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN27_EF_CONFIG_J = "AIN27_EF_CONFIG_J";
+enum { LJM_AIN27_EF_CONFIG_J_ADDRESS = 12054 };
+enum { LJM_AIN27_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN28_EF_CONFIG_J = "AIN28_EF_CONFIG_J";
+enum { LJM_AIN28_EF_CONFIG_J_ADDRESS = 12056 };
+enum { LJM_AIN28_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN29_EF_CONFIG_J = "AIN29_EF_CONFIG_J";
+enum { LJM_AIN29_EF_CONFIG_J_ADDRESS = 12058 };
+enum { LJM_AIN29_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN30_EF_CONFIG_J = "AIN30_EF_CONFIG_J";
+enum { LJM_AIN30_EF_CONFIG_J_ADDRESS = 12060 };
+enum { LJM_AIN30_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN31_EF_CONFIG_J = "AIN31_EF_CONFIG_J";
+enum { LJM_AIN31_EF_CONFIG_J_ADDRESS = 12062 };
+enum { LJM_AIN31_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN32_EF_CONFIG_J = "AIN32_EF_CONFIG_J";
+enum { LJM_AIN32_EF_CONFIG_J_ADDRESS = 12064 };
+enum { LJM_AIN32_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN33_EF_CONFIG_J = "AIN33_EF_CONFIG_J";
+enum { LJM_AIN33_EF_CONFIG_J_ADDRESS = 12066 };
+enum { LJM_AIN33_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN34_EF_CONFIG_J = "AIN34_EF_CONFIG_J";
+enum { LJM_AIN34_EF_CONFIG_J_ADDRESS = 12068 };
+enum { LJM_AIN34_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN35_EF_CONFIG_J = "AIN35_EF_CONFIG_J";
+enum { LJM_AIN35_EF_CONFIG_J_ADDRESS = 12070 };
+enum { LJM_AIN35_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN36_EF_CONFIG_J = "AIN36_EF_CONFIG_J";
+enum { LJM_AIN36_EF_CONFIG_J_ADDRESS = 12072 };
+enum { LJM_AIN36_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN37_EF_CONFIG_J = "AIN37_EF_CONFIG_J";
+enum { LJM_AIN37_EF_CONFIG_J_ADDRESS = 12074 };
+enum { LJM_AIN37_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN38_EF_CONFIG_J = "AIN38_EF_CONFIG_J";
+enum { LJM_AIN38_EF_CONFIG_J_ADDRESS = 12076 };
+enum { LJM_AIN38_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN39_EF_CONFIG_J = "AIN39_EF_CONFIG_J";
+enum { LJM_AIN39_EF_CONFIG_J_ADDRESS = 12078 };
+enum { LJM_AIN39_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN40_EF_CONFIG_J = "AIN40_EF_CONFIG_J";
+enum { LJM_AIN40_EF_CONFIG_J_ADDRESS = 12080 };
+enum { LJM_AIN40_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN41_EF_CONFIG_J = "AIN41_EF_CONFIG_J";
+enum { LJM_AIN41_EF_CONFIG_J_ADDRESS = 12082 };
+enum { LJM_AIN41_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN42_EF_CONFIG_J = "AIN42_EF_CONFIG_J";
+enum { LJM_AIN42_EF_CONFIG_J_ADDRESS = 12084 };
+enum { LJM_AIN42_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN43_EF_CONFIG_J = "AIN43_EF_CONFIG_J";
+enum { LJM_AIN43_EF_CONFIG_J_ADDRESS = 12086 };
+enum { LJM_AIN43_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN44_EF_CONFIG_J = "AIN44_EF_CONFIG_J";
+enum { LJM_AIN44_EF_CONFIG_J_ADDRESS = 12088 };
+enum { LJM_AIN44_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN45_EF_CONFIG_J = "AIN45_EF_CONFIG_J";
+enum { LJM_AIN45_EF_CONFIG_J_ADDRESS = 12090 };
+enum { LJM_AIN45_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN46_EF_CONFIG_J = "AIN46_EF_CONFIG_J";
+enum { LJM_AIN46_EF_CONFIG_J_ADDRESS = 12092 };
+enum { LJM_AIN46_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN47_EF_CONFIG_J = "AIN47_EF_CONFIG_J";
+enum { LJM_AIN47_EF_CONFIG_J_ADDRESS = 12094 };
+enum { LJM_AIN47_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN48_EF_CONFIG_J = "AIN48_EF_CONFIG_J";
+enum { LJM_AIN48_EF_CONFIG_J_ADDRESS = 12096 };
+enum { LJM_AIN48_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN49_EF_CONFIG_J = "AIN49_EF_CONFIG_J";
+enum { LJM_AIN49_EF_CONFIG_J_ADDRESS = 12098 };
+enum { LJM_AIN49_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN50_EF_CONFIG_J = "AIN50_EF_CONFIG_J";
+enum { LJM_AIN50_EF_CONFIG_J_ADDRESS = 12100 };
+enum { LJM_AIN50_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN51_EF_CONFIG_J = "AIN51_EF_CONFIG_J";
+enum { LJM_AIN51_EF_CONFIG_J_ADDRESS = 12102 };
+enum { LJM_AIN51_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN52_EF_CONFIG_J = "AIN52_EF_CONFIG_J";
+enum { LJM_AIN52_EF_CONFIG_J_ADDRESS = 12104 };
+enum { LJM_AIN52_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN53_EF_CONFIG_J = "AIN53_EF_CONFIG_J";
+enum { LJM_AIN53_EF_CONFIG_J_ADDRESS = 12106 };
+enum { LJM_AIN53_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN54_EF_CONFIG_J = "AIN54_EF_CONFIG_J";
+enum { LJM_AIN54_EF_CONFIG_J_ADDRESS = 12108 };
+enum { LJM_AIN54_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN55_EF_CONFIG_J = "AIN55_EF_CONFIG_J";
+enum { LJM_AIN55_EF_CONFIG_J_ADDRESS = 12110 };
+enum { LJM_AIN55_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN56_EF_CONFIG_J = "AIN56_EF_CONFIG_J";
+enum { LJM_AIN56_EF_CONFIG_J_ADDRESS = 12112 };
+enum { LJM_AIN56_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN57_EF_CONFIG_J = "AIN57_EF_CONFIG_J";
+enum { LJM_AIN57_EF_CONFIG_J_ADDRESS = 12114 };
+enum { LJM_AIN57_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN58_EF_CONFIG_J = "AIN58_EF_CONFIG_J";
+enum { LJM_AIN58_EF_CONFIG_J_ADDRESS = 12116 };
+enum { LJM_AIN58_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN59_EF_CONFIG_J = "AIN59_EF_CONFIG_J";
+enum { LJM_AIN59_EF_CONFIG_J_ADDRESS = 12118 };
+enum { LJM_AIN59_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN60_EF_CONFIG_J = "AIN60_EF_CONFIG_J";
+enum { LJM_AIN60_EF_CONFIG_J_ADDRESS = 12120 };
+enum { LJM_AIN60_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN61_EF_CONFIG_J = "AIN61_EF_CONFIG_J";
+enum { LJM_AIN61_EF_CONFIG_J_ADDRESS = 12122 };
+enum { LJM_AIN61_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN62_EF_CONFIG_J = "AIN62_EF_CONFIG_J";
+enum { LJM_AIN62_EF_CONFIG_J_ADDRESS = 12124 };
+enum { LJM_AIN62_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN63_EF_CONFIG_J = "AIN63_EF_CONFIG_J";
+enum { LJM_AIN63_EF_CONFIG_J_ADDRESS = 12126 };
+enum { LJM_AIN63_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN64_EF_CONFIG_J = "AIN64_EF_CONFIG_J";
+enum { LJM_AIN64_EF_CONFIG_J_ADDRESS = 12128 };
+enum { LJM_AIN64_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN65_EF_CONFIG_J = "AIN65_EF_CONFIG_J";
+enum { LJM_AIN65_EF_CONFIG_J_ADDRESS = 12130 };
+enum { LJM_AIN65_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN66_EF_CONFIG_J = "AIN66_EF_CONFIG_J";
+enum { LJM_AIN66_EF_CONFIG_J_ADDRESS = 12132 };
+enum { LJM_AIN66_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN67_EF_CONFIG_J = "AIN67_EF_CONFIG_J";
+enum { LJM_AIN67_EF_CONFIG_J_ADDRESS = 12134 };
+enum { LJM_AIN67_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN68_EF_CONFIG_J = "AIN68_EF_CONFIG_J";
+enum { LJM_AIN68_EF_CONFIG_J_ADDRESS = 12136 };
+enum { LJM_AIN68_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN69_EF_CONFIG_J = "AIN69_EF_CONFIG_J";
+enum { LJM_AIN69_EF_CONFIG_J_ADDRESS = 12138 };
+enum { LJM_AIN69_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN70_EF_CONFIG_J = "AIN70_EF_CONFIG_J";
+enum { LJM_AIN70_EF_CONFIG_J_ADDRESS = 12140 };
+enum { LJM_AIN70_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN71_EF_CONFIG_J = "AIN71_EF_CONFIG_J";
+enum { LJM_AIN71_EF_CONFIG_J_ADDRESS = 12142 };
+enum { LJM_AIN71_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN72_EF_CONFIG_J = "AIN72_EF_CONFIG_J";
+enum { LJM_AIN72_EF_CONFIG_J_ADDRESS = 12144 };
+enum { LJM_AIN72_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN73_EF_CONFIG_J = "AIN73_EF_CONFIG_J";
+enum { LJM_AIN73_EF_CONFIG_J_ADDRESS = 12146 };
+enum { LJM_AIN73_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN74_EF_CONFIG_J = "AIN74_EF_CONFIG_J";
+enum { LJM_AIN74_EF_CONFIG_J_ADDRESS = 12148 };
+enum { LJM_AIN74_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN75_EF_CONFIG_J = "AIN75_EF_CONFIG_J";
+enum { LJM_AIN75_EF_CONFIG_J_ADDRESS = 12150 };
+enum { LJM_AIN75_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN76_EF_CONFIG_J = "AIN76_EF_CONFIG_J";
+enum { LJM_AIN76_EF_CONFIG_J_ADDRESS = 12152 };
+enum { LJM_AIN76_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN77_EF_CONFIG_J = "AIN77_EF_CONFIG_J";
+enum { LJM_AIN77_EF_CONFIG_J_ADDRESS = 12154 };
+enum { LJM_AIN77_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN78_EF_CONFIG_J = "AIN78_EF_CONFIG_J";
+enum { LJM_AIN78_EF_CONFIG_J_ADDRESS = 12156 };
+enum { LJM_AIN78_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN79_EF_CONFIG_J = "AIN79_EF_CONFIG_J";
+enum { LJM_AIN79_EF_CONFIG_J_ADDRESS = 12158 };
+enum { LJM_AIN79_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN80_EF_CONFIG_J = "AIN80_EF_CONFIG_J";
+enum { LJM_AIN80_EF_CONFIG_J_ADDRESS = 12160 };
+enum { LJM_AIN80_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN81_EF_CONFIG_J = "AIN81_EF_CONFIG_J";
+enum { LJM_AIN81_EF_CONFIG_J_ADDRESS = 12162 };
+enum { LJM_AIN81_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN82_EF_CONFIG_J = "AIN82_EF_CONFIG_J";
+enum { LJM_AIN82_EF_CONFIG_J_ADDRESS = 12164 };
+enum { LJM_AIN82_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN83_EF_CONFIG_J = "AIN83_EF_CONFIG_J";
+enum { LJM_AIN83_EF_CONFIG_J_ADDRESS = 12166 };
+enum { LJM_AIN83_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN84_EF_CONFIG_J = "AIN84_EF_CONFIG_J";
+enum { LJM_AIN84_EF_CONFIG_J_ADDRESS = 12168 };
+enum { LJM_AIN84_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN85_EF_CONFIG_J = "AIN85_EF_CONFIG_J";
+enum { LJM_AIN85_EF_CONFIG_J_ADDRESS = 12170 };
+enum { LJM_AIN85_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN86_EF_CONFIG_J = "AIN86_EF_CONFIG_J";
+enum { LJM_AIN86_EF_CONFIG_J_ADDRESS = 12172 };
+enum { LJM_AIN86_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN87_EF_CONFIG_J = "AIN87_EF_CONFIG_J";
+enum { LJM_AIN87_EF_CONFIG_J_ADDRESS = 12174 };
+enum { LJM_AIN87_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN88_EF_CONFIG_J = "AIN88_EF_CONFIG_J";
+enum { LJM_AIN88_EF_CONFIG_J_ADDRESS = 12176 };
+enum { LJM_AIN88_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN89_EF_CONFIG_J = "AIN89_EF_CONFIG_J";
+enum { LJM_AIN89_EF_CONFIG_J_ADDRESS = 12178 };
+enum { LJM_AIN89_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN90_EF_CONFIG_J = "AIN90_EF_CONFIG_J";
+enum { LJM_AIN90_EF_CONFIG_J_ADDRESS = 12180 };
+enum { LJM_AIN90_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN91_EF_CONFIG_J = "AIN91_EF_CONFIG_J";
+enum { LJM_AIN91_EF_CONFIG_J_ADDRESS = 12182 };
+enum { LJM_AIN91_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN92_EF_CONFIG_J = "AIN92_EF_CONFIG_J";
+enum { LJM_AIN92_EF_CONFIG_J_ADDRESS = 12184 };
+enum { LJM_AIN92_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN93_EF_CONFIG_J = "AIN93_EF_CONFIG_J";
+enum { LJM_AIN93_EF_CONFIG_J_ADDRESS = 12186 };
+enum { LJM_AIN93_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN94_EF_CONFIG_J = "AIN94_EF_CONFIG_J";
+enum { LJM_AIN94_EF_CONFIG_J_ADDRESS = 12188 };
+enum { LJM_AIN94_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN95_EF_CONFIG_J = "AIN95_EF_CONFIG_J";
+enum { LJM_AIN95_EF_CONFIG_J_ADDRESS = 12190 };
+enum { LJM_AIN95_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN96_EF_CONFIG_J = "AIN96_EF_CONFIG_J";
+enum { LJM_AIN96_EF_CONFIG_J_ADDRESS = 12192 };
+enum { LJM_AIN96_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN97_EF_CONFIG_J = "AIN97_EF_CONFIG_J";
+enum { LJM_AIN97_EF_CONFIG_J_ADDRESS = 12194 };
+enum { LJM_AIN97_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN98_EF_CONFIG_J = "AIN98_EF_CONFIG_J";
+enum { LJM_AIN98_EF_CONFIG_J_ADDRESS = 12196 };
+enum { LJM_AIN98_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN99_EF_CONFIG_J = "AIN99_EF_CONFIG_J";
+enum { LJM_AIN99_EF_CONFIG_J_ADDRESS = 12198 };
+enum { LJM_AIN99_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN100_EF_CONFIG_J = "AIN100_EF_CONFIG_J";
+enum { LJM_AIN100_EF_CONFIG_J_ADDRESS = 12200 };
+enum { LJM_AIN100_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN101_EF_CONFIG_J = "AIN101_EF_CONFIG_J";
+enum { LJM_AIN101_EF_CONFIG_J_ADDRESS = 12202 };
+enum { LJM_AIN101_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN102_EF_CONFIG_J = "AIN102_EF_CONFIG_J";
+enum { LJM_AIN102_EF_CONFIG_J_ADDRESS = 12204 };
+enum { LJM_AIN102_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN103_EF_CONFIG_J = "AIN103_EF_CONFIG_J";
+enum { LJM_AIN103_EF_CONFIG_J_ADDRESS = 12206 };
+enum { LJM_AIN103_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN104_EF_CONFIG_J = "AIN104_EF_CONFIG_J";
+enum { LJM_AIN104_EF_CONFIG_J_ADDRESS = 12208 };
+enum { LJM_AIN104_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN105_EF_CONFIG_J = "AIN105_EF_CONFIG_J";
+enum { LJM_AIN105_EF_CONFIG_J_ADDRESS = 12210 };
+enum { LJM_AIN105_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN106_EF_CONFIG_J = "AIN106_EF_CONFIG_J";
+enum { LJM_AIN106_EF_CONFIG_J_ADDRESS = 12212 };
+enum { LJM_AIN106_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN107_EF_CONFIG_J = "AIN107_EF_CONFIG_J";
+enum { LJM_AIN107_EF_CONFIG_J_ADDRESS = 12214 };
+enum { LJM_AIN107_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN108_EF_CONFIG_J = "AIN108_EF_CONFIG_J";
+enum { LJM_AIN108_EF_CONFIG_J_ADDRESS = 12216 };
+enum { LJM_AIN108_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN109_EF_CONFIG_J = "AIN109_EF_CONFIG_J";
+enum { LJM_AIN109_EF_CONFIG_J_ADDRESS = 12218 };
+enum { LJM_AIN109_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN110_EF_CONFIG_J = "AIN110_EF_CONFIG_J";
+enum { LJM_AIN110_EF_CONFIG_J_ADDRESS = 12220 };
+enum { LJM_AIN110_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN111_EF_CONFIG_J = "AIN111_EF_CONFIG_J";
+enum { LJM_AIN111_EF_CONFIG_J_ADDRESS = 12222 };
+enum { LJM_AIN111_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN112_EF_CONFIG_J = "AIN112_EF_CONFIG_J";
+enum { LJM_AIN112_EF_CONFIG_J_ADDRESS = 12224 };
+enum { LJM_AIN112_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN113_EF_CONFIG_J = "AIN113_EF_CONFIG_J";
+enum { LJM_AIN113_EF_CONFIG_J_ADDRESS = 12226 };
+enum { LJM_AIN113_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN114_EF_CONFIG_J = "AIN114_EF_CONFIG_J";
+enum { LJM_AIN114_EF_CONFIG_J_ADDRESS = 12228 };
+enum { LJM_AIN114_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN115_EF_CONFIG_J = "AIN115_EF_CONFIG_J";
+enum { LJM_AIN115_EF_CONFIG_J_ADDRESS = 12230 };
+enum { LJM_AIN115_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN116_EF_CONFIG_J = "AIN116_EF_CONFIG_J";
+enum { LJM_AIN116_EF_CONFIG_J_ADDRESS = 12232 };
+enum { LJM_AIN116_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN117_EF_CONFIG_J = "AIN117_EF_CONFIG_J";
+enum { LJM_AIN117_EF_CONFIG_J_ADDRESS = 12234 };
+enum { LJM_AIN117_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN118_EF_CONFIG_J = "AIN118_EF_CONFIG_J";
+enum { LJM_AIN118_EF_CONFIG_J_ADDRESS = 12236 };
+enum { LJM_AIN118_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN119_EF_CONFIG_J = "AIN119_EF_CONFIG_J";
+enum { LJM_AIN119_EF_CONFIG_J_ADDRESS = 12238 };
+enum { LJM_AIN119_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN120_EF_CONFIG_J = "AIN120_EF_CONFIG_J";
+enum { LJM_AIN120_EF_CONFIG_J_ADDRESS = 12240 };
+enum { LJM_AIN120_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN121_EF_CONFIG_J = "AIN121_EF_CONFIG_J";
+enum { LJM_AIN121_EF_CONFIG_J_ADDRESS = 12242 };
+enum { LJM_AIN121_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN122_EF_CONFIG_J = "AIN122_EF_CONFIG_J";
+enum { LJM_AIN122_EF_CONFIG_J_ADDRESS = 12244 };
+enum { LJM_AIN122_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN123_EF_CONFIG_J = "AIN123_EF_CONFIG_J";
+enum { LJM_AIN123_EF_CONFIG_J_ADDRESS = 12246 };
+enum { LJM_AIN123_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN124_EF_CONFIG_J = "AIN124_EF_CONFIG_J";
+enum { LJM_AIN124_EF_CONFIG_J_ADDRESS = 12248 };
+enum { LJM_AIN124_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN125_EF_CONFIG_J = "AIN125_EF_CONFIG_J";
+enum { LJM_AIN125_EF_CONFIG_J_ADDRESS = 12250 };
+enum { LJM_AIN125_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN126_EF_CONFIG_J = "AIN126_EF_CONFIG_J";
+enum { LJM_AIN126_EF_CONFIG_J_ADDRESS = 12252 };
+enum { LJM_AIN126_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN127_EF_CONFIG_J = "AIN127_EF_CONFIG_J";
+enum { LJM_AIN127_EF_CONFIG_J_ADDRESS = 12254 };
+enum { LJM_AIN127_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN128_EF_CONFIG_J = "AIN128_EF_CONFIG_J";
+enum { LJM_AIN128_EF_CONFIG_J_ADDRESS = 12256 };
+enum { LJM_AIN128_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN129_EF_CONFIG_J = "AIN129_EF_CONFIG_J";
+enum { LJM_AIN129_EF_CONFIG_J_ADDRESS = 12258 };
+enum { LJM_AIN129_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN130_EF_CONFIG_J = "AIN130_EF_CONFIG_J";
+enum { LJM_AIN130_EF_CONFIG_J_ADDRESS = 12260 };
+enum { LJM_AIN130_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN131_EF_CONFIG_J = "AIN131_EF_CONFIG_J";
+enum { LJM_AIN131_EF_CONFIG_J_ADDRESS = 12262 };
+enum { LJM_AIN131_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN132_EF_CONFIG_J = "AIN132_EF_CONFIG_J";
+enum { LJM_AIN132_EF_CONFIG_J_ADDRESS = 12264 };
+enum { LJM_AIN132_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN133_EF_CONFIG_J = "AIN133_EF_CONFIG_J";
+enum { LJM_AIN133_EF_CONFIG_J_ADDRESS = 12266 };
+enum { LJM_AIN133_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN134_EF_CONFIG_J = "AIN134_EF_CONFIG_J";
+enum { LJM_AIN134_EF_CONFIG_J_ADDRESS = 12268 };
+enum { LJM_AIN134_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN135_EF_CONFIG_J = "AIN135_EF_CONFIG_J";
+enum { LJM_AIN135_EF_CONFIG_J_ADDRESS = 12270 };
+enum { LJM_AIN135_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN136_EF_CONFIG_J = "AIN136_EF_CONFIG_J";
+enum { LJM_AIN136_EF_CONFIG_J_ADDRESS = 12272 };
+enum { LJM_AIN136_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN137_EF_CONFIG_J = "AIN137_EF_CONFIG_J";
+enum { LJM_AIN137_EF_CONFIG_J_ADDRESS = 12274 };
+enum { LJM_AIN137_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN138_EF_CONFIG_J = "AIN138_EF_CONFIG_J";
+enum { LJM_AIN138_EF_CONFIG_J_ADDRESS = 12276 };
+enum { LJM_AIN138_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN139_EF_CONFIG_J = "AIN139_EF_CONFIG_J";
+enum { LJM_AIN139_EF_CONFIG_J_ADDRESS = 12278 };
+enum { LJM_AIN139_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN140_EF_CONFIG_J = "AIN140_EF_CONFIG_J";
+enum { LJM_AIN140_EF_CONFIG_J_ADDRESS = 12280 };
+enum { LJM_AIN140_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN141_EF_CONFIG_J = "AIN141_EF_CONFIG_J";
+enum { LJM_AIN141_EF_CONFIG_J_ADDRESS = 12282 };
+enum { LJM_AIN141_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN142_EF_CONFIG_J = "AIN142_EF_CONFIG_J";
+enum { LJM_AIN142_EF_CONFIG_J_ADDRESS = 12284 };
+enum { LJM_AIN142_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN143_EF_CONFIG_J = "AIN143_EF_CONFIG_J";
+enum { LJM_AIN143_EF_CONFIG_J_ADDRESS = 12286 };
+enum { LJM_AIN143_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN144_EF_CONFIG_J = "AIN144_EF_CONFIG_J";
+enum { LJM_AIN144_EF_CONFIG_J_ADDRESS = 12288 };
+enum { LJM_AIN144_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN145_EF_CONFIG_J = "AIN145_EF_CONFIG_J";
+enum { LJM_AIN145_EF_CONFIG_J_ADDRESS = 12290 };
+enum { LJM_AIN145_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN146_EF_CONFIG_J = "AIN146_EF_CONFIG_J";
+enum { LJM_AIN146_EF_CONFIG_J_ADDRESS = 12292 };
+enum { LJM_AIN146_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN147_EF_CONFIG_J = "AIN147_EF_CONFIG_J";
+enum { LJM_AIN147_EF_CONFIG_J_ADDRESS = 12294 };
+enum { LJM_AIN147_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN148_EF_CONFIG_J = "AIN148_EF_CONFIG_J";
+enum { LJM_AIN148_EF_CONFIG_J_ADDRESS = 12296 };
+enum { LJM_AIN148_EF_CONFIG_J_TYPE = 3 };
+
+static const char * const LJM_AIN149_EF_CONFIG_J = "AIN149_EF_CONFIG_J";
+enum { LJM_AIN149_EF_CONFIG_J_ADDRESS = 12298 };
+enum { LJM_AIN149_EF_CONFIG_J_TYPE = 3 };
+
 static const char * const LJM_TDAC0 = "TDAC0";
 enum { LJM_TDAC0_ADDRESS = 30000 };
 enum { LJM_TDAC0_TYPE = 3 };
@@ -17280,6 +17880,10 @@ static const char * const LJM_IO_CONFIG_CURRENT_READ = "IO_CONFIG_CURRENT_READ";
 enum { LJM_IO_CONFIG_CURRENT_READ_ADDRESS = 49016 };
 enum { LJM_IO_CONFIG_CURRENT_READ_TYPE = 1 };
 
+static const char * const LJM_IO_CONFIG_CURRENT_CRC32 = "IO_CONFIG_CURRENT_CRC32";
+enum { LJM_IO_CONFIG_CURRENT_CRC32_ADDRESS = 4902 };
+enum { LJM_IO_CONFIG_CURRENT_CRC32_TYPE = 1 };
+
 static const char * const LJM_CORE_TIMER = "CORE_TIMER";
 enum { LJM_CORE_TIMER_ADDRESS = 61520 };
 enum { LJM_CORE_TIMER_TYPE = 1 };
@@ -19491,6 +20095,14 @@ enum { LJM_AIN253_BIN_TYPE = 1 };
 static const char * const LJM_AIN254_BIN = "AIN254_BIN";
 enum { LJM_AIN254_BIN_ADDRESS = 50508 };
 enum { LJM_AIN254_BIN_TYPE = 1 };
+
+static const char * const LJM_DAC0_BINARY = "DAC0_BINARY";
+enum { LJM_DAC0_BINARY_ADDRESS = 51000 };
+enum { LJM_DAC0_BINARY_TYPE = 1 };
+
+static const char * const LJM_DAC1_BINARY = "DAC1_BINARY";
+enum { LJM_DAC1_BINARY_ADDRESS = 51002 };
+enum { LJM_DAC1_BINARY_TYPE = 1 };
 
 static const char * const LJM_USER_RAM0_F32 = "USER_RAM0_F32";
 enum { LJM_USER_RAM0_F32_ADDRESS = 46000 };
