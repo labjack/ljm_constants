@@ -219,7 +219,7 @@ class LJMMMTests(unittest.TestCase):
                 ],
                 "readwrite": {"read": True, "write": True},
                 "tags": ["DIO"],
-                "description": "test",
+                "description": "test <a href=\"https://labjack.com/support/\">https://labjack.com/support/</a>. <a href=\"http://imgur.com/gallery/zwK7XG6\">http://imgur.com/gallery/zwK7XG6</a>, end.",
                 "constants": [],
                 "streamable": False,
                 "default": None,
@@ -237,7 +237,7 @@ class LJMMMTests(unittest.TestCase):
                 ],
                 "readwrite": {"read": True, "write": True},
                 "tags": ["DIO"],
-                "description": "test",
+                "description": "test <a href=\"https://labjack.com/support/\">https://labjack.com/support/</a>. <a href=\"http://imgur.com/gallery/zwK7XG6\">http://imgur.com/gallery/zwK7XG6</a>, end.",
                 "constants": [],
                 "streamable": False,
                 "default": None,
@@ -259,7 +259,7 @@ class LJMMMTests(unittest.TestCase):
                 "readwrite":"RW",
                 "tags":["DIO"],
                 "altnames":["DIO#(0:2)"],
-                "description": "test",
+                "description": "test https://labjack.com/support/. http://imgur.com/gallery/zwK7XG6, end."
             },
             expand_names = False
         )
