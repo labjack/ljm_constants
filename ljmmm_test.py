@@ -84,7 +84,11 @@ class LJMMMTests(unittest.TestCase):
                 ],
                 "readwrite": {"read": True, "write": True},
                 "tags": ["DIO"],
-                "description": "test"
+                "description": "test",
+                "constants": [],
+                "streamable": False,
+                "default": None,
+                "isBuffer": False
             },
             {
                 "address": 2001,
@@ -98,7 +102,11 @@ class LJMMMTests(unittest.TestCase):
                 ],
                 "readwrite": {"read": True, "write": True},
                 "tags": ["DIO"],
-                "description": "test"
+                "description": "test",
+                "constants": [],
+                "streamable": False,
+                "default": None,
+                "isBuffer": False
             },
             {
                 "address": 2002,
@@ -112,7 +120,11 @@ class LJMMMTests(unittest.TestCase):
                 ],
                 "readwrite": {"read": True, "write": True},
                 "tags": ["DIO"],
-                "description": "test"
+                "description": "test",
+                "constants": [],
+                "streamable": False,
+                "default": None,
+                "isBuffer": False
             },
                         {
                 "address": 2000,
@@ -126,7 +138,11 @@ class LJMMMTests(unittest.TestCase):
                 ],
                 "readwrite": {"read": True, "write": True},
                 "tags": ["DIO"],
-                "description": "test"
+                "description": "test",
+                "constants": [],
+                "streamable": False,
+                "default": None,
+                "isBuffer": False
             },
             {
                 "address": 2001,
@@ -140,7 +156,11 @@ class LJMMMTests(unittest.TestCase):
                 ],
                 "readwrite": {"read": True, "write": True},
                 "tags": ["DIO"],
-                "description": "test"
+                "description": "test",
+                "constants": [],
+                "streamable": False,
+                "default": None,
+                "isBuffer": False
             },
             {
                 "address": 2002,
@@ -154,7 +174,11 @@ class LJMMMTests(unittest.TestCase):
                 ],
                 "readwrite": {"read": True, "write": True},
                 "tags": ["DIO"],
-                "description": "test"
+                "description": "test",
+                "constants": [],
+                "streamable": False,
+                "default": None,
+                "isBuffer": False
             }
         ]
 
@@ -195,7 +219,11 @@ class LJMMMTests(unittest.TestCase):
                 ],
                 "readwrite": {"read": True, "write": True},
                 "tags": ["DIO"],
-                "description": "test"
+                "description": "test",
+                "constants": [],
+                "streamable": False,
+                "default": None,
+                "isBuffer": False
             },
             {
                 "address": 2000,
@@ -209,7 +237,11 @@ class LJMMMTests(unittest.TestCase):
                 ],
                 "readwrite": {"read": True, "write": True},
                 "tags": ["DIO"],
-                "description": "test"
+                "description": "test",
+                "constants": [],
+                "streamable": False,
+                "default": None,
+                "isBuffer": False
             }
         ]
 
@@ -227,7 +259,7 @@ class LJMMMTests(unittest.TestCase):
                 "readwrite":"RW",
                 "tags":["DIO"],
                 "altnames":["DIO#(0:2)"],
-                "description": "test"
+                "description": "test",
             },
             expand_names = False
         )
