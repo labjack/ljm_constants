@@ -8,6 +8,7 @@
 import copy
 import json
 import re
+import string
 from sets import Set
 
 DEFAULT_FILE_NAME = "ljm_constants/LabJack/LJM/ljm_constants.json"
@@ -29,6 +30,27 @@ DATATYPE_SIZES_IN_REGISTERS = {
     "STRING": None
 }
 
+# http://stackoverflow.com/questions/9760588/how-do-you-extract-a-url-from-a-string-using-python
+URL_REGEX = r'('
+# Scheme (HTTP, HTTPS, FTP and SFTP):
+URL_REGEX += r'(?:(https?|s?ftp):\/\/)?'
+# www:
+URL_REGEX += r'(?:www\.)?'
+URL_REGEX += r'('
+# Host and domain (including ccSLD):
+URL_REGEX += r'(?:(?:[A-Z0-9][A-Z0-9-]{0,61}[A-Z0-9]\.)+)'
+# TLD:
+URL_REGEX += r'([A-Z]{2,6})'
+# IP Address:
+URL_REGEX += r'|(?:\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})'
+URL_REGEX += r')'
+# Port:
+URL_REGEX += r'(?::(\d{1,5}))?'
+# Query path:
+URL_REGEX += r'(?:(\/\S+)*)'
+URL_REGEX += r')'
+FIND_URLS = re.compile(URL_REGEX, re.IGNORECASE)
+FIND_ENDING_PUNCTUATION = re.compile('.*([.,;])$')
 
 def read_file(src):
     """Read a file and return the contents."""
@@ -193,6 +215,35 @@ def interpret_access_descriptor(descriptor):
     return ACCESS_RESTRICTIONS_STRS[descriptor]
 
 
+def apply_anchors(text):
+    """Parses the given text, applying <a> tags to URLs and returning the result
+
+    E.g.: If text is:
+        "test https://labjack.com/support/. End."
+    returns:
+        "test <a href=\"https://labjack.com/support/\">https://labjack.com/support/</a>. End."
+
+    URLs are not allowed to contain a trailing comma, period, or semi-colon.
+
+    @param text: text to apply anchor tags to
+    @type text: str
+    """
+    url_tuples = FIND_URLS.findall(text)
+    for url_tuple in url_tuples:
+        url = url_tuple[0]
+        end_punc = FIND_ENDING_PUNCTUATION.search(url)
+        if end_punc:
+            url = string.rsplit(url, end_punc.group(1), 1)[0]
+
+        # pos = text.find(url)
+        # if pos == -1:
+        #     raise ValueError('expected to find URL %s in text %s' % (url, text))
+        parts = string.split(text, url, 1)
+        text = parts[0] + '<a target="_blank" href="%s">%s</a>' % (url, url) + parts[1]
+
+    return text
+
+
 def parse_register_data(raw_register_dict, expand_names=False):
     """Parse information about a single register.
 
@@ -265,7 +316,7 @@ def parse_register_data(raw_register_dict, expand_names=False):
         )
     name_address_pairs = zip(names, addresses)
 
-    description = raw_register_dict.get("description", "")
+    description = apply_anchors(raw_register_dict.get("description", ""))
     default = raw_register_dict.get("default", None)
     streamable = raw_register_dict.get("streamable", False)
     isBuffer = raw_register_dict.get("isBuffer", False)
