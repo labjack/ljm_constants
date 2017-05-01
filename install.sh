@@ -79,14 +79,27 @@ oldinstall ()
     exit 0
 }
 
+# Install empty, valid, and world read/writable auto IPs file
+install_auto_ips_file ()
+{
+    AIPS_FILE='/usr/local/share/LabJack/LJM/ljm_auto_ips.json'
+    if [ ! -f ${AIPS_FILE} ]; then
+        echo "creating new ${AIPS_FILE}"
+        echo '{"autoIPs":[]}' > ${AIPS_FILE}
+    fi
+    chmod a+rw ${AIPS_FILE}
+}
+
 remove_artifacts ${TARGET}
 remove_artifacts ${TARGET}/LJM
 
-chmod 666 ${FILE_DIR}/${TARGET}/LJM/ljm.log
-
 rm -f ${DESTINATION}/${TARGET}/LJM/readme_ljm_special_addressess.md
 
-test -d $DESTINATION || mkdir -p $DESTINATION
+test -d ${DESTINATION}/LabJack/LJM || mkdir -p ${DESTINATION}/LabJack/LJM
+
+chmod 666 ${FILE_DIR}/${TARGET}/LJM/ljm.log
+
+install_auto_ips_file
 
 touch ${DESTINATION}/${TARGET}/LJM/ljm_specific_ips.config
 chmod 666 ${DESTINATION}/${TARGET}/LJM/ljm_specific_ips.config

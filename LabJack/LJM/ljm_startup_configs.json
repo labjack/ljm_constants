@@ -20,6 +20,8 @@
   [
     {"LJM_ALLOWS_AUTO_CONDENSE_ADDRESSES":"default",   "type":"boolean", "values":[true, false]},
     {"LJM_ALLOWS_AUTO_MULTIPLE_FEEDBACKS":"default",   "type":"boolean", "values":[true, false]},
+    {"LJM_AUTO_IPS":"default",                         "type":"boolean", "values":[true, false]},
+    {"LJM_AUTO_IPS_FILE":"default",                    "type":"string"},
     {"LJM_AUTO_RECONNECT_STICKY_CONNECTION":"default", "type":"boolean", "values":[true, false]},
     {"LJM_AUTO_RECONNECT_STICKY_SERIAL":"default",     "type":"boolean", "values":[true, false]},
     {"LJM_AUTO_RECONNECT_WAIT_MS":"default",           "type":"integer"},
@@ -69,6 +71,7 @@
                                                        ]},
     {"LJM_STREAM_RECEIVE_TIMEOUT_MS":"default",        "type":"integer"},
     {"LJM_STREAM_TRANSFERS_PER_SECOND":"default",      "type":"integer"},
+    {"LJM_USE_TCP_INIT_FOR_T7_WIFI_TCP":"default",     "type":"boolean", "values":[true, false]},
     {"LJM_USB_SEND_RECEIVE_TIMEOUT_MS":"default",      "type":"integer"},
     {"LJM_WIFI_OPEN_TIMEOUT_MS":"default",             "type":"integer"},
     {"LJM_WIFI_SEND_RECEIVE_TIMEOUT_MS":"default",     "type":"integer"},

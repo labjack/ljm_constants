@@ -10,6 +10,12 @@ ljm.log is the default log output file for LJM's logging functionality.
 
 
 
+## [ljm_auto_ips.json](https://labjack.com/support/software/api/ljm/function-reference/AutoIPsConfigs)
+
+ljm_auto_ips.json automatically stores LabJack network connection information.
+
+
+
 ## [ljm_constants.json](https://labjack.com/support/software/api/ljm/constants/ljmconstantsfile)
 
 ljm_constants.json is the default LJM constants file. It contains a JSON description of the LabJack ecosystem. Most importantly, it contains a "registers" array, which describes the registers of LabJack devices, and an "errors" array, which describes LJM and device error codes. There is also an on-line representation of the [device registers](https://labjack.com/support/software/api/modbus/modbus-map).
