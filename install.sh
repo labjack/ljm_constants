@@ -96,6 +96,7 @@ remove_artifacts ${TARGET}/LJM
 rm -f ${DESTINATION}/${TARGET}/LJM/readme_ljm_special_addressess.md
 
 test -d ${DESTINATION}/LabJack/LJM || mkdir -p ${DESTINATION}/LabJack/LJM
+chmod 777 ${DESTINATION}/LabJack/LJM
 
 chmod 666 ${FILE_DIR}/${TARGET}/LJM/ljm.log
 
