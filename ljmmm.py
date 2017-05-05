@@ -245,7 +245,7 @@ def apply_anchors(text):
             '</a>'
             '<img '
             'style="margin-right: -1;" '
-            'src="../static/images/ui-icons-extlink.png" />'
+            'src="https://ljsimpleregisterlookup.herokuapp.com/static/images/ui-icons-extlink.png" />'
         )  % (url, url) + parts[1]
 
 

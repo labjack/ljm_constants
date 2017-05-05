@@ -208,7 +208,7 @@ class LJMMMTests(unittest.TestCase):
         """Test parsing a sample ljmmm register description."""
 
         # Jeez. I should make this test less fragile.
-        EXTLINK_ICON = '<img style="margin-right: -1;" src="../static/images/ui-icons-extlink.png" />'
+        EXTLINK_ICON = '<img style="margin-right: -1;" src="https://ljsimpleregisterlookup.herokuapp.com/static/images/ui-icons-extlink.png" />'
 
         expected = [
             {
