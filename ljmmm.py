@@ -239,7 +239,15 @@ def apply_anchors(text):
         # if pos == -1:
         #     raise ValueError('expected to find URL %s in text %s' % (url, text))
         parts = string.split(text, url, 1)
-        text = parts[0] + '<a target="_blank" href="%s">%s</a>' % (url, url) + parts[1]
+        text = parts[0] + (
+            '<a target="_blank" href="%s">'
+            '%s'
+            '</a>'
+            '<img '
+            'style="margin-right: -1;" '
+            'src="../static/images/ui-icons-extlink.png" />'
+        )  % (url, url) + parts[1]
+
 
     return text
 

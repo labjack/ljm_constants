@@ -206,6 +206,10 @@ class LJMMMTests(unittest.TestCase):
 
     def test_parse_register_data_compressed(self):
         """Test parsing a sample ljmmm register description."""
+
+        # Jeez. I should make this test less fragile.
+        EXTLINK_ICON = '<img style="margin-right: -1;" src="../static/images/ui-icons-extlink.png" />'
+
         expected = [
             {
                 "address": 2000,
@@ -219,7 +223,8 @@ class LJMMMTests(unittest.TestCase):
                 ],
                 "readwrite": {"read": True, "write": True},
                 "tags": ["DIO"],
-                "description": "test <a target=\"_blank\" href=\"https://labjack.com/support/\">https://labjack.com/support/</a>. <a target=\"_blank\" href=\"http://imgur.com/gallery/zwK7XG6\">http://imgur.com/gallery/zwK7XG6</a>, end.",
+                "description": "test <a target=\"_blank\" href=\"https://labjack.com/support/\">https://labjack.com/support/</a>%s. <a target=\"_blank\" href=\"http://imgur.com/gallery/zwK7XG6\">http://imgur.com/gallery/zwK7XG6</a>%s, end." %
+                    (EXTLINK_ICON, EXTLINK_ICON),
                 "constants": [],
                 "streamable": False,
                 "default": None,
@@ -237,7 +242,8 @@ class LJMMMTests(unittest.TestCase):
                 ],
                 "readwrite": {"read": True, "write": True},
                 "tags": ["DIO"],
-                "description": "test <a target=\"_blank\" href=\"https://labjack.com/support/\">https://labjack.com/support/</a>. <a target=\"_blank\" href=\"http://imgur.com/gallery/zwK7XG6\">http://imgur.com/gallery/zwK7XG6</a>, end.",
+                "description": "test <a target=\"_blank\" href=\"https://labjack.com/support/\">https://labjack.com/support/</a>%s. <a target=\"_blank\" href=\"http://imgur.com/gallery/zwK7XG6\">http://imgur.com/gallery/zwK7XG6</a>%s, end." %
+                    (EXTLINK_ICON, EXTLINK_ICON),
                 "constants": [],
                 "streamable": False,
                 "default": None,
