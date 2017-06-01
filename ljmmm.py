@@ -40,7 +40,7 @@ URL_REGEX += r'('
 # Host and domain (including ccSLD):
 URL_REGEX += r'(?:(?:[A-Z0-9][A-Z0-9-]{0,61}[A-Z0-9]\.)+)'
 # TLD:
-URL_REGEX += r'([A-Z]{2,6})'
+URL_REGEX += r'(com|org|co\.uk|gov|edu|net)' # URL_REGEX += r'([A-Z]{2,6})'
 # IP Address:
 URL_REGEX += r'|(?:\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})'
 URL_REGEX += r')'

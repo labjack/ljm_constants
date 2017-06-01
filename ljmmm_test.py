@@ -273,5 +273,45 @@ class LJMMMTests(unittest.TestCase):
         self.assertIterableContentsEqual(expected, result)
 
 
+    def test_description_with_dots_should_not_yield_links(self):
+        expected = [{
+            "address":60662,
+            "name":"FILE_IO_LUA_SWITCH_FILE",
+            "type":"UINT32",
+            "devices":[
+                {"device":"T7", "fwmin":1.0168}
+            ],
+            "readwrite": {"read": True, "write": True},
+            "tags":["LUA", "FILE_IO"],
+            "description":"Write any value to this register to instruct Lua scripts to switch to a new file. Lua script should periodically check LJ.CheckFileFlag() to receive instruction, then call LJ.ClearFileFlag() after file switch is complete. Useful for applications that require continuous logging in a Lua script, and on-demand file access from a host.",
+            "constants": [],
+            "streamable": False,
+            "default": None,
+            "isBuffer": False
+        }]
+
+        result = ljmmm.parse_register_data({
+            "address":60662,
+            "name":"FILE_IO_LUA_SWITCH_FILE",
+            "type":"UINT32",
+            "devices":[
+                {"device":"T7", "fwmin":1.0168}
+            ],
+            "readwrite":"RW",
+            "tags":["LUA", "FILE_IO"],
+            "description":"Write any value to this register to instruct Lua scripts to switch to a new file. Lua script should periodically check LJ.CheckFileFlag() to receive instruction, then call LJ.ClearFileFlag() after file switch is complete. Useful for applications that require continuous logging in a Lua script, and on-demand file access from a host."
+        })
+
+        self.assertIterableContentsEqual(expected, result)
+
+        self.assertEqual(1, len(ljmmm.FIND_URLS.findall('this desc has website.org as the single link')))
+        self.assertEqual(1, len(ljmmm.FIND_URLS.findall('this desc has website.co.uk as the single link')))
+        self.assertEqual(1, len(ljmmm.FIND_URLS.findall('this desc has website.net as the single link')))
+        self.assertEqual(1, len(ljmmm.FIND_URLS.findall('this desc has website.edu as the single link')))
+        self.assertEqual(1, len(ljmmm.FIND_URLS.findall('this desc has website.gov as the single link')))
+        self.assertEqual(0, len(ljmmm.FIND_URLS.findall('this desc has website.fake as the not a link')))
+        self.assertEqual(0, len(ljmmm.FIND_URLS.findall('this desc has https://labjack.nope as the not a link')))
+
+
 if __name__ == "__main__":
     unittest.main()
