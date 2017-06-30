@@ -76,6 +76,7 @@ class LJMMMTests(unittest.TestCase):
                 "address": 2000,
                 "name": "FIO0",
                 "type": "UINT16",
+                "type_index":"0",
                 "devices":[
                     {"device":"U3", "fwmin":0},
                     {"device":"U6", "fwmin":0},
@@ -94,6 +95,7 @@ class LJMMMTests(unittest.TestCase):
                 "address": 2001,
                 "name": "FIO1",
                 "type": "UINT16",
+                "type_index":"0",
                 "devices":[
                     {"device":"U3", "fwmin":0},
                     {"device":"U6", "fwmin":0},
@@ -112,6 +114,7 @@ class LJMMMTests(unittest.TestCase):
                 "address": 2002,
                 "name": "FIO2",
                 "type": "UINT16",
+                "type_index":"0",
                 "devices":[
                     {"device":"U3", "fwmin":0},
                     {"device":"U6", "fwmin":0},
@@ -130,6 +133,7 @@ class LJMMMTests(unittest.TestCase):
                 "address": 2000,
                 "name": "DIO0",
                 "type": "UINT16",
+                "type_index":"0",
                 "devices":[
                     {"device":"U3", "fwmin":0},
                     {"device":"U6", "fwmin":0},
@@ -148,6 +152,7 @@ class LJMMMTests(unittest.TestCase):
                 "address": 2001,
                 "name": "DIO1",
                 "type": "UINT16",
+                "type_index":"0",
                 "devices":[
                     {"device":"U3", "fwmin":0},
                     {"device":"U6", "fwmin":0},
@@ -166,6 +171,7 @@ class LJMMMTests(unittest.TestCase):
                 "address": 2002,
                 "name": "DIO2",
                 "type": "UINT16",
+                "type_index":"0",
                 "devices":[
                     {"device":"U3", "fwmin":0},
                     {"device":"U6", "fwmin":0},
@@ -215,6 +221,7 @@ class LJMMMTests(unittest.TestCase):
                 "address": 2000,
                 "name": "FIO#(0:2)",
                 "type": "UINT16",
+                "type_index":"0",
                 "devices":[
                     {"device":"U3", "fwmin":0},
                     {"device":"U6", "fwmin":0},
@@ -234,6 +241,7 @@ class LJMMMTests(unittest.TestCase):
                 "address": 2000,
                 "name": "DIO#(0:2)",
                 "type": "UINT16",
+                "type_index":"0",
                 "devices":[
                     {"device":"U3", "fwmin":0},
                     {"device":"U6", "fwmin":0},
@@ -278,6 +286,7 @@ class LJMMMTests(unittest.TestCase):
             "address":60662,
             "name":"FILE_IO_LUA_SWITCH_FILE",
             "type":"UINT32",
+            "type_index":"1",
             "devices":[
                 {"device":"T7", "fwmin":1.0168}
             ],

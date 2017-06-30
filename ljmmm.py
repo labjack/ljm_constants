@@ -29,6 +29,16 @@ DATATYPE_SIZES_IN_REGISTERS = {
     "INT64": 4,
     "STRING": None
 }
+DATATYPE_TYPE_INDEX = {
+    "UINT16": "0",
+    "UINT32": "1",
+    "INT32": "2",
+    "FLOAT32": "3",
+    "BYTE": "99",
+    "STRING": "98",
+
+    "UINT64": "N/A",
+}
 
 # http://stackoverflow.com/questions/9760588/how-do-you-extract-a-url-from-a-string-using-python
 URL_REGEX = r'('
@@ -164,6 +174,23 @@ def get_datatype_size(datatype_name):
         )
 
     return DATATYPE_SIZES_IN_REGISTERS[datatype_name]
+
+
+def get_datatype_type_index(datatype_name):
+    """Get the type index of a datatype (generally an integer).
+
+    @param datatype_name: The name of the datatype to get the type index of.
+    @type datatype_name: str
+    @return: String the type index.
+    @rtype: str
+    @raise ValueError: Raised if datatype_name is not recognized.
+    """
+    if not datatype_name in DATATYPE_TYPE_INDEX:
+        raise ValueError(
+            "%s is not a known data type." % datatype_name
+        )
+
+    return DATATYPE_TYPE_INDEX[datatype_name]
 
 
 def interpret_firmware(firmware):
@@ -304,6 +331,7 @@ def parse_register_data(raw_register_dict, expand_names=False):
 
     datatype_str = raw_register_dict["type"]
     datatype_size = get_datatype_size(datatype_str)
+    type_index = get_datatype_type_index(datatype_str)
     devices = map(lambda x: interpret_firmware(x), raw_register_dict["devices"])
     access_restrictions = interpret_access_descriptor(
         raw_register_dict["readwrite"]
@@ -338,6 +366,7 @@ def parse_register_data(raw_register_dict, expand_names=False):
                 "address": address,
                 "name": name,
                 "type": datatype_str,
+                "type_index": type_index,
                 #"numregs": datatype_size,
                 "devices": devices,
                 "readwrite": access_restrictions,
@@ -346,7 +375,7 @@ def parse_register_data(raw_register_dict, expand_names=False):
                 "default": default,
                 "streamable": streamable,
                 "isBuffer": isBuffer,
-                "constants": constants
+                "constants": constants,
             }
         )
 
