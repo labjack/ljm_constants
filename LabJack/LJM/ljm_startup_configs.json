@@ -1,6 +1,6 @@
 // ljm_startup_configs.json:
 //   This is the configurations file that is loaded when LJM is started up.
-//   Distributed with LJM version 1.1500.
+//   Distributed with LJM version 1.1600.
 //
 //   Use the string "default" to load the default value for each config
 //   parameter. Otherwise, see the "type" for each config parameter for what
@@ -54,8 +54,10 @@
     {"LJM_LISTALL_UDP_WIFI":"default",                 "type":"boolean", "values":[true, false]},
     {"LJM_MODBUS_MAP_CONSTANTS_FILE":"default",        "type":"string"},
     {"LJM_OLD_FIRMWARE_CHECK":"default",               "type":"boolean", "values":[true, false]},
-    {"LJM_OPEN_MODE":"default",                        "type":"integer"},
     {"LJM_RETRY_ON_TRANSACTION_ID_MISMATCH":"default", "type":"boolean", "values":[true, false]},
+    {"LJM_RPC_HEARTBEAT_PORT":"default",               "type":"integer"},
+    {"LJM_RPC_ENABLE":"default",                       "type":"boolean", "values":[true, false]},
+    {"LJM_RPC_TIMEOUT_MS":"default",                   "type":"integer"},
     {"LJM_SPECIFIC_IPS_FILE":"default",                "type":"string"},
     {"LJM_STREAM_AIN_BINARY":"default",                "type":"boolean", "values":[true, false]},
     {"LJM_STREAM_BUFFER_MAX_NUM_SECONDS":"default",    "type":"integer"},
