@@ -357,10 +357,19 @@ def parse_register_data(raw_register_dict, expand_names=False):
     streamable = raw_register_dict.get("streamable", False)
     isBuffer = raw_register_dict.get("isBuffer", False)
     constants = raw_register_dict.get("constants", [])
+    altnames = raw_register_dict.get("altnames", [])
+    if expand_names:
+        altnames = map(lambda x: interpret_ljmmm_field(x), altnames)
 
     # Generate resulting dicts
     ret_list = []
+    altnames_count = 0
     for (name, address) in name_address_pairs:
+        inner_altnames = altnames
+        if expand_names:
+            inner_altnames = map(lambda x: x[altnames_count], altnames)
+            altnames_count = altnames_count + 1
+
         ret_list.append(
             {
                 "address": address,
@@ -376,17 +385,9 @@ def parse_register_data(raw_register_dict, expand_names=False):
                 "streamable": streamable,
                 "isBuffer": isBuffer,
                 "constants": constants,
+                "altnames": inner_altnames,
             }
         )
-
-    # Handle alternative names
-    alt_names = raw_register_dict.get("altnames", [])
-    if len(alt_names) > 0:
-        alt_names_dict = copy.deepcopy(raw_register_dict)
-        del alt_names_dict["altnames"]
-        for name in filter(lambda x: x != "", alt_names):
-            alt_names_dict["name"] = name
-            ret_list.extend(parse_register_data(alt_names_dict, expand_names))
 
     return ret_list
 
