@@ -360,6 +360,8 @@ def parse_register_data(raw_register_dict, expand_names=False):
     altnames = raw_register_dict.get("altnames", [])
     if expand_names:
         altnames = map(lambda x: interpret_ljmmm_field(x), altnames)
+        if len(altnames) and isinstance(altnames[0], basestring):
+            altnames = [altnames]
 
     # Generate resulting dicts
     ret_list = []

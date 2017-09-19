@@ -155,6 +155,46 @@ class LJMMMTests(unittest.TestCase):
 
         self.assertIterableContentsEqual(expected, result)
 
+    def test_parse_register_data_expand_with_nothing_to_expand(self):
+        expected = [
+            {
+                "address": 5010,
+                "name": "SPI_DATA_TX",
+                "type": "BYTE",
+                "type_index":"99",
+                "devices":[
+                    {"device":"T7", "fwmin":0.80},
+                ],
+                "readwrite": {"read": False, "write": True},
+                "tags": ["SPI"],
+                "description": "test",
+                "constants": [],
+                "streamable": False,
+                "default": None,
+                "isBuffer": True,
+                "altnames": ["SPI_DATA_WRITE"],
+            },
+        ]
+
+        result = ljmmm.parse_register_data(
+            {
+                "address":5010,
+                "name":"SPI_DATA_TX",
+                "type":"BYTE",
+                "devices":[
+                    {"device":"T7", "fwmin":0.80},
+                ],
+                "readwrite":"W",
+                "tags":["SPI"],
+                "altnames":["SPI_DATA_WRITE"],
+                "description": "test",
+                "isBuffer": True,
+            },
+            expand_names = False
+        )
+
+        self.assertIterableContentsEqual(expected, result)
+
 
     def test_parse_register_data_compressed(self):
         """Test parsing a sample ljmmm register description."""
