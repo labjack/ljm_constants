@@ -63,7 +63,8 @@ def sanity_test():
 def generate():
     modbus_maps_expanded = ljmmm.get_device_modbus_maps(
         src=SRC_FILE,
-        expand_names=True
+        expand_names=True,
+        expand_alt_names=True
     )
 
     constants_contents = json.loads(ljmmm.read_file(src=SRC_FILE))

@@ -279,7 +279,8 @@ def apply_anchors(text):
     return text
 
 
-def parse_register_data(raw_register_dict, expand_names=False):
+def parse_register_data(raw_register_dict, expand_names=False,
+    expand_alt_names=False):
     """Parse information about a single register.
 
     Loads and interprets register information from the given dictionary
@@ -391,6 +392,15 @@ def parse_register_data(raw_register_dict, expand_names=False):
             }
         )
 
+    if expand_alt_names:
+        alt_names = raw_register_dict.get("altnames", [])
+        if len(alt_names) > 0:
+            alt_names_dict = copy.deepcopy(raw_register_dict)
+            del alt_names_dict["altnames"]
+            for name in filter(lambda x: x != "", alt_names):
+                alt_names_dict["name"] = name
+                ret_list.extend(parse_register_data(alt_names_dict, expand_names))
+
     return ret_list
 
 
@@ -416,7 +426,7 @@ def interpret_tags(tags, tags_base_url='http://labjack.com/support/modbus/tags')
 
 
 def get_registers_data(src=DEFAULT_FILE_NAME, expand_names=False,
-    inc_orig=False):
+    inc_orig=False, expand_alt_names=False):
     """Load and parse information about registers from JSON constants file.
 
     Loads and interprets registers information from the given JSON constants
@@ -444,9 +454,9 @@ def get_registers_data(src=DEFAULT_FILE_NAME, expand_names=False,
     ret_list = []
     for entry in raw_data:
         if inc_orig:
-            ret_list.append(parse_register_data(entry, expand_names))
+            ret_list.append(parse_register_data(entry, expand_names, expand_alt_names))
         else:
-            ret_list.extend(parse_register_data(entry, expand_names))
+            ret_list.extend(parse_register_data(entry, expand_names, expand_alt_names))
 
     if inc_orig:
         return zip(raw_data, ret_list)
@@ -455,7 +465,7 @@ def get_registers_data(src=DEFAULT_FILE_NAME, expand_names=False,
 
 
 def get_device_modbus_maps(src=DEFAULT_FILE_NAME, expand_names=False,
-    inc_orig=False):
+    inc_orig=False, expand_alt_names=False):
     """Load register info from JSON constants file and structure by device.
 
     Loads and interprets registers information from the given JSON constants
@@ -499,7 +509,7 @@ def get_device_modbus_maps(src=DEFAULT_FILE_NAME, expand_names=False,
     @return: dict
     """
     registers_data = get_registers_data(src=src, expand_names=expand_names,
-        inc_orig=inc_orig)
+        inc_orig=inc_orig, expand_alt_names=expand_alt_names)
     device_maps = {}
 
     if inc_orig:
