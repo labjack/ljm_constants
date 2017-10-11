@@ -89,7 +89,8 @@ class LJMMMTests(unittest.TestCase):
                 "constants": [],
                 "streamable": False,
                 "default": None,
-                "isBuffer": False
+                "isBuffer": False,
+                "altnames": ["DIO0", "TEST0"],
             },
             {
                 "address": 2001,
@@ -108,7 +109,8 @@ class LJMMMTests(unittest.TestCase):
                 "constants": [],
                 "streamable": False,
                 "default": None,
-                "isBuffer": False
+                "isBuffer": False,
+                "altnames": ["DIO1", "TEST1"],
             },
             {
                 "address": 2002,
@@ -127,65 +129,9 @@ class LJMMMTests(unittest.TestCase):
                 "constants": [],
                 "streamable": False,
                 "default": None,
-                "isBuffer": False
+                "isBuffer": False,
+                "altnames": ["DIO2", "TEST2"],
             },
-                        {
-                "address": 2000,
-                "name": "DIO0",
-                "type": "UINT16",
-                "type_index":"0",
-                "devices":[
-                    {"device":"U3", "fwmin":0},
-                    {"device":"U6", "fwmin":0},
-                    {"device":"T7", "fwmin":0.80},
-                    {"device":"UE9", "fwmin":0}
-                ],
-                "readwrite": {"read": True, "write": True},
-                "tags": ["DIO"],
-                "description": "test",
-                "constants": [],
-                "streamable": False,
-                "default": None,
-                "isBuffer": False
-            },
-            {
-                "address": 2001,
-                "name": "DIO1",
-                "type": "UINT16",
-                "type_index":"0",
-                "devices":[
-                    {"device":"U3", "fwmin":0},
-                    {"device":"U6", "fwmin":0},
-                    {"device":"T7", "fwmin":0.80},
-                    {"device":"UE9", "fwmin":0}
-                ],
-                "readwrite": {"read": True, "write": True},
-                "tags": ["DIO"],
-                "description": "test",
-                "constants": [],
-                "streamable": False,
-                "default": None,
-                "isBuffer": False
-            },
-            {
-                "address": 2002,
-                "name": "DIO2",
-                "type": "UINT16",
-                "type_index":"0",
-                "devices":[
-                    {"device":"U3", "fwmin":0},
-                    {"device":"U6", "fwmin":0},
-                    {"device":"T7", "fwmin":0.80},
-                    {"device":"UE9", "fwmin":0}
-                ],
-                "readwrite": {"read": True, "write": True},
-                "tags": ["DIO"],
-                "description": "test",
-                "constants": [],
-                "streamable": False,
-                "default": None,
-                "isBuffer": False
-            }
         ]
 
         result = ljmmm.parse_register_data(
@@ -201,10 +147,50 @@ class LJMMMTests(unittest.TestCase):
                 ],
                 "readwrite":"RW",
                 "tags":["DIO"],
-                "altnames":["DIO#(0:2)"],
+                "altnames":["DIO#(0:2)", "TEST#(0:2)"],
                 "description": "test"
             },
             expand_names = True
+        )
+
+        self.assertIterableContentsEqual(expected, result)
+
+    def test_parse_register_data_expand_with_nothing_to_expand(self):
+        expected = [
+            {
+                "address": 5010,
+                "name": "SPI_DATA_TX",
+                "type": "BYTE",
+                "type_index":"99",
+                "devices":[
+                    {"device":"T7", "fwmin":0.80},
+                ],
+                "readwrite": {"read": False, "write": True},
+                "tags": ["SPI"],
+                "description": "test",
+                "constants": [],
+                "streamable": False,
+                "default": None,
+                "isBuffer": True,
+                "altnames": ["SPI_DATA_WRITE"],
+            },
+        ]
+
+        result = ljmmm.parse_register_data(
+            {
+                "address":5010,
+                "name":"SPI_DATA_TX",
+                "type":"BYTE",
+                "devices":[
+                    {"device":"T7", "fwmin":0.80},
+                ],
+                "readwrite":"W",
+                "tags":["SPI"],
+                "altnames":["SPI_DATA_WRITE"],
+                "description": "test",
+                "isBuffer": True,
+            },
+            expand_names = False
         )
 
         self.assertIterableContentsEqual(expected, result)
@@ -235,28 +221,9 @@ class LJMMMTests(unittest.TestCase):
                 "constants": [],
                 "streamable": False,
                 "default": None,
-                "isBuffer": False
+                "isBuffer": False,
+                "altnames": ["DIO#(0:2)", "TEST#(0:2)"],
             },
-            {
-                "address": 2000,
-                "name": "DIO#(0:2)",
-                "type": "UINT16",
-                "type_index":"0",
-                "devices":[
-                    {"device":"U3", "fwmin":0},
-                    {"device":"U6", "fwmin":0},
-                    {"device":"T7", "fwmin":0.80},
-                    {"device":"UE9", "fwmin":0}
-                ],
-                "readwrite": {"read": True, "write": True},
-                "tags": ["DIO"],
-                "description": "test <a target=\"_blank\" href=\"https://labjack.com/support/\">https://labjack.com/support/</a>%s. <a target=\"_blank\" href=\"http://imgur.com/gallery/zwK7XG6\">http://imgur.com/gallery/zwK7XG6</a>%s, end." %
-                    (EXTLINK_ICON, EXTLINK_ICON),
-                "constants": [],
-                "streamable": False,
-                "default": None,
-                "isBuffer": False
-            }
         ]
 
         result = ljmmm.parse_register_data(
@@ -272,7 +239,7 @@ class LJMMMTests(unittest.TestCase):
                 ],
                 "readwrite":"RW",
                 "tags":["DIO"],
-                "altnames":["DIO#(0:2)"],
+                "altnames":["DIO#(0:2)", "TEST#(0:2)"],
                 "description": "test https://labjack.com/support/. http://imgur.com/gallery/zwK7XG6, end."
             },
             expand_names = False
@@ -296,7 +263,8 @@ class LJMMMTests(unittest.TestCase):
             "constants": [],
             "streamable": False,
             "default": None,
-            "isBuffer": False
+            "isBuffer": False,
+            "altnames": [],
         }]
 
         result = ljmmm.parse_register_data({
