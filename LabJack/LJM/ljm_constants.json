@@ -1,7 +1,7 @@
 {
   "header": {
     "filename": "ljm_constants.json",
-    "version": "2017.08.31.A",
+    "version": "2017.10.19.A",
     "checksum": "-1",
     "support_url": "https://labjack.com/support/modbus",
     "tags_base_url": "https://labjack.com/support/modbus"
@@ -82,8 +82,7 @@
       "name": "MIO#(0:2)",
       "type": "UINT16",
       "devices": [
-        "T7",
-        "T4"
+        "T7"
       ],
       "readwrite": "RW",
       "tags": ["DIO", "CORE"],
@@ -109,7 +108,7 @@
       "tags": ["DIO"],
       "streamable": true,
       "displayname": ["FIO Port State"],
-      "description": "Read or write the state of the 8 bits of FIO in a single binary-encoded value. 0=Low AND 1=High.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."
+      "description": "Read or write the state of the 8 bits of FIO in a single binary-encoded value. 0=Low AND 1=High.  Does not configure direction.  Reading lines set to output returns the current logic levels on the terminals, not necessarily the output states written.  The upper 8-bits of this value are inhibits."
     },
     {
       "address": 2501,
@@ -129,7 +128,7 @@
       "tags": ["DIO"],
       "streamable": true,
       "displayname": ["EIO Port State"],
-      "description": "Read or write the state of the 8 bits of EIO in a single binary-encoded value. 0=Low AND 1=High.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."
+      "description": "Read or write the state of the 8 bits of EIO in a single binary-encoded value. 0=Low AND 1=High.  Does not configure direction.  Reading lines set to output returns the current logic levels on the terminals, not necessarily the output states written.  The upper 8-bits of this value are inhibits."
     },
     {
       "address": 2502,
@@ -149,7 +148,7 @@
       "tags": ["DIO"],
       "streamable": true,
       "displayname": ["CIO Port State"],
-      "description": "Read or write the state of the 4 bits of CIO in a single binary-encoded value. 0=Low AND 1=High.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."
+      "description": "Read or write the state of the 4 bits of CIO in a single binary-encoded value. 0=Low AND 1=High.  Does not configure direction.  Reading lines set to output returns the current logic levels on the terminals, not necessarily the output states written.  The upper 8-bits of this value are inhibits."
     },
     {
       "address": 2503,
@@ -169,7 +168,7 @@
       "tags": ["DIO"],
       "streamable": true,
       "displayname": ["MIO Port State"],
-      "description": "Read or write the state of the 3 bits of MIO in a single binary-encoded value. 0=Low AND 1=High.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written.  The upper 8-bits of this value are inhibits."
+      "description": "Read or write the state of the 3 bits of MIO in a single binary-encoded value. 0=Low AND 1=High.  Does not configure direction.  Reading lines set to output returns the current logic levels on the terminals, not necessarily the output states written.  The upper 8-bits of this value are inhibits."
     },
     {
       "address": 2580,
@@ -189,7 +188,7 @@
       "tags": ["DIO"],
       "streamable": true,
       "displayname": ["FIO-EIO Port State"],
-      "description": "Read or write the state of the 16 bits of FIO-EIO in a single binary-encoded value. 0=Low AND 1=High.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written."
+      "description": "Read or write the state of the 16 bits of FIO-EIO in a single binary-encoded value. 0=Low AND 1=High.  Does not configure direction.  Reading lines set to output returns the current logic levels on the terminals, not necessarily the output states written."
     },
     {
       "address": 2581,
@@ -209,7 +208,7 @@
       "tags": ["DIO"],
       "streamable": true,
       "displayname": ["EIO-CIO Port State"],
-      "description": "Read or write the state of the 12 bits of EIO-CIO in a single binary-encoded value. 0=Low AND 1=High.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written. As of firmware 1.0172, MIO states are included in the upper nibble of the CIO byte."
+      "description": "Read or write the state of the 12 bits of EIO-CIO in a single binary-encoded value. 0=Low AND 1=High.  Does not configure direction.  Reading lines set to output returns the current logic levels on the terminals, not necessarily the output states written. As of firmware 1.0172, MIO states are included in the upper nibble of the CIO byte."
     },
     {
       "address": 2582,
@@ -229,7 +228,7 @@
       "tags": ["DIO"],
       "streamable": true,
       "displayname": ["EIO-CIO Port State"],
-      "description": "Read or write the state of the 12 bits of CIO-MIO in a single binary-encoded value. 0=Low AND 1=High.  Does not configure direction.  A read of an output returns the current logic level on the terminal, not necessarily the output state written."
+      "description": "Read or write the state of the 12 bits of CIO-MIO in a single binary-encoded value. 0=Low AND 1=High.  Does not configure direction.  Reading lines set to output returns the current logic levels on the terminals, not necessarily the output states written."
     },
     {
       "address": 2600,
@@ -363,7 +362,7 @@
       ],
       "readwrite": "RW",
       "tags": ["DIO"],
-      "description": "This register will pevent pullups from being enabled on lines set to digital input. This is a binary coded value where bit 0 represent FIO0 and bit 11 represents EIO3. 1 = pullup disabled, 0 = pullup enabled. This register only affects flex-lines which can be configured as analog or digital. This register is not affected by the inhibit register."
+      "description": "This register will prevent pullups from being enabled on lines set to digital input. This is a binary coded value where bit 0 represent FIO0 and bit 11 represents EIO3. 1 = pullup disabled, 0 = pullup enabled. This register only affects flex-lines which can be configured as analog or digital. This register is not affected by the inhibit register."
     },
     {
       "address": 2900,
@@ -376,7 +375,7 @@
       "readwrite": "RW",
       "tags": ["DIO"],
       "default": 0,
-      "description": "A single binary-encoded value where each bit determines whether _STATE or _DIRECTION writes affect that bit of digital I/O.  0=Default=Affected, 1=Ignored.",
+      "description": "A single binary-encoded value where each bit determines whether _STATE, _DIRECTION or _ANALOG_ENABLE writes affect that bit of digital I/O.  0=Default=Affected, 1=Ignored.",
       "constants": [
         {"value": 0, "name": "Affected"},
         {"value": 1, "name": "Ignored"}
@@ -387,7 +386,8 @@
       "name": "STREAM_SCANRATE_HZ",
       "type": "FLOAT32",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "default": 0,
@@ -399,7 +399,8 @@
       "name": "STREAM_NUM_ADDRESSES",
       "type": "UINT32",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "default": 0,
@@ -411,7 +412,8 @@
       "name": "STREAM_SAMPLES_PER_PACKET",
       "type": "UINT32",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "default": 0,
@@ -423,12 +425,19 @@
       "name": "STREAM_SETTLING_US",
       "type": "FLOAT32",
       "devices": [
-        "T7"
+        {
+          "device": "T7",
+          "description": "The T7 will select the settling time based on resolution and gain settings. When the sample rate is above 60 kHz, settling time will be set to ~5 us. Max is 4400."
+        },
+        {
+          "device": "T4",
+          "description": "The T4 will default to 10 us. When the scan rate is above 20 kHz, settling time will be set to 5 us."
+        }
       ],
       "readwrite": "RW",
       "default": 0,
       "tags": ["STREAM"],
-      "description": "Time in microseconds to allow signals to settle after switching the mux. Default=0. If set to a value < 1 the T7 will automatically determine the necessary settling time. When the sample rate is above 60kHz settling time will be set to ~5 us. Max is 4400."
+      "description": "Time in microseconds to allow signals to settle after switching the mux. Default=0. When set to less than 1, automatic settling will be used. The automatic settling behavior varies by device." 
     },
     {
       "address": 4010,
@@ -438,6 +447,10 @@
         {
           "device": "T7",
           "description": "Valid values: 0-8. Default value of 0 corresponds to an index of 1."
+        },
+        {
+          "device": "T4",
+          "description": "Valid values: 0-5. Default value of 0 corresponds to an index of 1."
         }
       ],
       "readwrite": "RW",
@@ -450,6 +463,11 @@
       "name": "STREAM_BUFFER_SIZE_BYTES",
       "type": "UINT32",
       "devices": [
+        {
+          "device": "T4",
+          "default": 0,
+          "description": "Max size is 32768. Default size is 8192."
+        },
         {
           "device": "T7",
           "default": 0,
@@ -469,6 +487,9 @@
         {
           "device": "T7",
           "fwmin": 1.011
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -485,6 +506,9 @@
         {
           "device": "T7",
           "fwmin": 0.9108
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -497,7 +521,8 @@
       "name": "STREAM_NUM_SCANS",
       "type": "UINT32",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "default": 0,
@@ -539,6 +564,9 @@
         {
           "device": "T7",
           "fwmin": 1.0214
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "R",
@@ -551,7 +579,8 @@
       "name": "STREAM_SCANLIST_ADDRESS#(0:127)",
       "type": "UINT32",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "default": 0,
@@ -566,6 +595,9 @@
         {
           "device": "T7",
           "fwmin": 1.0012
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "R",
@@ -581,6 +613,9 @@
         {
           "device": "T7",
           "fwmin": 1.0012
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -596,6 +631,9 @@
         {
           "device": "T7",
           "fwmin": 0.93
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -612,6 +650,9 @@
         {
           "device": "T7",
           "fwmin": 0.93
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -628,6 +669,9 @@
         {
           "device": "T7",
           "fwmin": 0.93
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "W",
@@ -643,6 +687,9 @@
         {
           "device": "T7",
           "fwmin": 0.93
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "R",
@@ -658,6 +705,9 @@
         {
           "device": "T7",
           "fwmin": 0.93
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -674,6 +724,9 @@
         {
           "device": "T7",
           "fwmin": 0.93
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "W",
@@ -690,6 +743,9 @@
         {
           "device": "T7",
           "fwmin": 0.93
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "W",
@@ -706,6 +762,9 @@
         {
           "device": "T7",
           "fwmin": 0.93
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "W",
@@ -718,7 +777,8 @@
       "name": "STREAM_DATA_CR",
       "type": "UINT32",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "R",
       "tags": ["STREAM"],
@@ -732,6 +792,9 @@
         {
           "device": "T7",
           "fwmin": 1.0071
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "R",
@@ -747,6 +810,9 @@
         {
           "device": "T7",
           "fwmin": 0.9421
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -905,7 +971,8 @@
       "name": "I2C_SDA_DIONUM",
       "type": "UINT16",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "default": 0,
@@ -917,7 +984,8 @@
       "name": "I2C_SCL_DIONUM",
       "type": "UINT16",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "default": 0,
@@ -929,7 +997,8 @@
       "name": "I2C_SPEED_THROTTLE",
       "type": "UINT16",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "default": 0,
@@ -941,7 +1010,8 @@
       "name": "I2C_OPTIONS",
       "type": "UINT16",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "default": 0,
@@ -953,7 +1023,8 @@
       "name": "I2C_SLAVE_ADDRESS",
       "type": "UINT16",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "default": 0,
@@ -965,7 +1036,8 @@
       "name": "I2C_NUM_BYTES_TX",
       "type": "UINT16",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "default": 0,
@@ -977,7 +1049,8 @@
       "name": "I2C_NUM_BYTES_RX",
       "type": "UINT16",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "default": 0,
@@ -992,6 +1065,9 @@
         {
           "device": "T7",
           "fwmin": 0.9504
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1007,6 +1083,9 @@
         {
           "device": "T7",
           "fwmin": 0.9504
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1020,7 +1099,8 @@
       "type": "BYTE",
       "isBuffer": true,
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "W",
       "default": 0,
@@ -1034,7 +1114,8 @@
       "type": "BYTE",
       "isBuffer": true,
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "R",
       "default": 0,
@@ -1050,6 +1131,9 @@
         {
           "device": "T7",
           "fwmin": 1.0056
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1065,6 +1149,9 @@
         {
           "device": "T7",
           "fwmin": 1.0056
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1080,6 +1167,9 @@
         {
           "device": "T7",
           "fwmin": 1.0056
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1095,6 +1185,9 @@
         {
           "device": "T7",
           "fwmin": 1.0056
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1110,6 +1203,9 @@
         {
           "device": "T7",
           "fwmin": 1.0056
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1125,6 +1221,9 @@
         {
           "device": "T7",
           "fwmin": 1.0056
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1140,6 +1239,9 @@
         {
           "device": "T7",
           "fwmin": 1.0056
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "W",
@@ -1155,6 +1257,9 @@
         {
           "device": "T7",
           "fwmin": 1.0056
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1170,6 +1275,9 @@
         {
           "device": "T7",
           "fwmin": 1.0056
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1185,6 +1293,9 @@
         {
           "device": "T7",
           "fwmin": 1.0056
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "R",
@@ -1200,6 +1311,9 @@
         {
           "device": "T7",
           "fwmin": 1.0056
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "R",
@@ -1215,6 +1329,9 @@
         {
           "device": "T7",
           "fwmin": 1.0056
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "R",
@@ -1230,6 +1347,9 @@
         {
           "device": "T7",
           "fwmin": 1.0056
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "R",
@@ -1245,6 +1365,9 @@
         {
           "device": "T7",
           "fwmin": 1.0056
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1260,6 +1383,9 @@
         {
           "device": "T7",
           "fwmin": 1.0056
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1276,6 +1402,9 @@
         {
           "device": "T7",
           "fwmin": 1.0056
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "W",
@@ -1292,6 +1421,9 @@
         {
           "device": "T7",
           "fwmin": 1.0056
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "R",
@@ -1304,7 +1436,8 @@
       "name": "ASYNCH_ENABLE",
       "type": "UINT16",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "default": 0,
@@ -1316,7 +1449,8 @@
       "name": "ASYNCH_BAUD",
       "type": "UINT32",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "default": 0,
@@ -1328,7 +1462,8 @@
       "name": "ASYNCH_RX_DIONUM",
       "type": "UINT16",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "default": 0,
@@ -1340,7 +1475,8 @@
       "name": "ASYNCH_TX_DIONUM",
       "type": "UINT16",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "default": 0,
@@ -1352,7 +1488,8 @@
       "name": "ASYNCH_NUM_DATA_BITS",
       "type": "UINT16",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "default": 0,
@@ -1364,7 +1501,8 @@
       "name": "ASYNCH_RX_BUFFER_SIZE_BYTES",
       "type": "UINT16",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "default": 0,
@@ -1376,7 +1514,8 @@
       "name": "ASYNCH_NUM_BYTES_RX",
       "type": "UINT16",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "R",
       "default": 0,
@@ -1388,7 +1527,8 @@
       "name": "ASYNCH_NUM_BYTES_TX",
       "type": "UINT16",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "default": 0,
@@ -1400,7 +1540,8 @@
       "name": "ASYNCH_TX_GO",
       "type": "UINT16",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "W",
       "default": 0,
@@ -1412,7 +1553,8 @@
       "name": "ASYNCH_NUM_STOP_BITS",
       "type": "UINT16",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "default": 0,
@@ -1424,7 +1566,8 @@
       "name": "ASYNCH_PARITY",
       "type": "UINT16",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "default": 0,
@@ -1436,7 +1579,8 @@
       "name": "ASYNCH_NUM_PARITY_ERRORS",
       "type": "UINT16",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "default": 0,
@@ -1449,7 +1593,8 @@
       "type": "UINT16",
       "isBuffer": true,
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "W",
       "default": 0,
@@ -1462,7 +1607,8 @@
       "type": "UINT16",
       "isBuffer": true,
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "R",
       "default": 0,
@@ -1477,6 +1623,9 @@
         {
           "device": "T7",
           "fwmin": 1.0018
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1491,6 +1640,9 @@
         {
           "device": "T7",
           "fwmin": 1.0018
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1506,6 +1658,9 @@
         {
           "device": "T7",
           "fwmin": 1.0018
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "W",
@@ -1520,6 +1675,9 @@
         {
           "device": "T7",
           "fwmin": 1.0018
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1534,6 +1692,9 @@
         {
           "device": "T7",
           "fwmin": 1.0018
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1549,6 +1710,9 @@
         {
           "device": "T7",
           "fwmin": 1.0018
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "R",
@@ -1563,6 +1727,9 @@
         {
           "device": "T7",
           "fwmin": 1.0059
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1577,6 +1744,9 @@
         {
           "device": "T7",
           "fwmin": 1.0059
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "W",
@@ -1591,6 +1761,9 @@
         {
           "device": "T7",
           "fwmin": 1.006
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1605,6 +1778,9 @@
         {
           "device": "T7",
           "fwmin": 1.006
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "R",
@@ -1619,6 +1795,9 @@
         {
           "device": "T7",
           "fwmin": 1.0078
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1633,6 +1812,9 @@
         {
           "device": "T7",
           "fwmin": 1.0078
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1647,6 +1829,9 @@
         {
           "device": "T7",
           "fwmin": 1.0078
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1661,6 +1846,9 @@
         {
           "device": "T7",
           "fwmin": 1.003
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "R",
@@ -1675,6 +1863,9 @@
         {
           "device": "T7",
           "fwmin": 1.003
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1689,6 +1880,9 @@
         {
           "device": "T7",
           "fwmin": 1.003
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1703,6 +1897,9 @@
         {
           "device": "T7",
           "fwmin": 1.003
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "R",
@@ -1736,6 +1933,9 @@
         {
           "device": "T7",
           "fwmin": 1.003
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1750,6 +1950,9 @@
         {
           "device": "T7",
           "fwmin": 1.003
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1764,6 +1967,9 @@
         {
           "device": "T7",
           "fwmin": 1.003
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1778,6 +1984,9 @@
         {
           "device": "T7",
           "fwmin": 1.003
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1792,6 +2001,9 @@
         {
           "device": "T7",
           "fwmin": 1.003
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1806,6 +2018,9 @@
         {
           "device": "T7",
           "fwmin": 1.003
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1820,6 +2035,9 @@
         {
           "device": "T7",
           "fwmin": 1.003
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1834,6 +2052,9 @@
         {
           "device": "T7",
           "fwmin": 1.003
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1848,6 +2069,9 @@
         {
           "device": "T7",
           "fwmin": 1.003
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1862,6 +2086,9 @@
         {
           "device": "T7",
           "fwmin": 1.003
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1922,6 +2149,9 @@
         {
           "device": "T7",
           "fwmin": 1.0056
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "R",
@@ -1937,6 +2167,9 @@
         {
           "device": "T7",
           "fwmin": 1.0056
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "R",
@@ -1951,13 +2184,18 @@
       "devices": [
         {
           "device": "T7",
-          "fwmin": 1.0056
+          "fwmin": 1.0056,
+          "description": "Default = FIO0"
+        },
+        {
+          "device": "T4",
+          "description": "Default = FIO4"
         }
       ],
       "readwrite": "RW",
       "default": 0,
       "tags": ["SBUS"],
-      "description": "This is the DIO# that the external sensor's data line is connected to. Default = FIO0"
+      "description": "This is the DIO# that the external sensor's data line is connected to."
     },
     {
       "address": 30225,
@@ -1966,13 +2204,18 @@
       "devices": [
         {
           "device": "T7",
-          "fwmin": 1.0056
+          "fwmin": 1.0056,
+          "description": "Default = FIO1"
+        },
+        {
+          "device": "T4",
+          "description": "Default = FIO5"
         }
       ],
       "readwrite": "RW",
       "default": 1,
       "tags": ["SBUS"],
-      "description": "This is the DIO# that the external sensor's clock line is connected to. Default = FIO1"
+      "description": "This is the DIO# that the external sensor's clock line is connected to."
     },
     {
       "address": 30250,
@@ -1982,6 +2225,9 @@
         {
           "device": "T7",
           "fwmin": 1.0056
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -1997,6 +2243,9 @@
         {
           "device": "T7",
           "fwmin": 1.0056
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -2012,6 +2261,9 @@
         {
           "device": "T7",
           "fwmin": 1.0056
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -2027,6 +2279,9 @@
         {
           "device": "T7",
           "fwmin": 1.0056
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -2042,6 +2297,9 @@
         {
           "device": "T7",
           "fwmin": 1.0142
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -2057,6 +2315,10 @@
         {
           "device": "T7",
           "description": "Valid values/ranges:  0.0=Default=> +/-10V, 10.0=> +/-10V, 1.0=> +/-1V, 0.1=> +/-0.1V, or 0.01=> +/-0.01V."
+        },
+        {
+          "device": "T4",
+          "description": "Valid values/ranges:  0.0=Default=> 0-2.5 V on LV lines and ±10 V on HV lines."
         }
       ],
       "readwrite": "RW",
@@ -2072,6 +2334,9 @@
         {
           "device": "T7",
           "description": "For base differential channels, positive must be even channel from 0-12 and negative must be positive+1.  For extended channels 16-127, see Mux80 datasheet."
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -2126,6 +2391,9 @@
         {
           "device": "T7",
           "fwmin": 0.9328
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -2141,6 +2409,9 @@
         {
           "device": "T7",
           "fwmin": 0.9328
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -2592,7 +2863,8 @@
       "name": "DIO#(0:22)_EF_READ_A",
       "type": "UINT32",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "R",
       "tags": ["DIO_EF", "DIO", "CORE"],
@@ -2605,7 +2877,8 @@
       "name": "DIO#(0:22)_EF_READ_A_AND_RESET",
       "type": "UINT32",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "R",
       "tags": ["DIO_EF", "DIO"],
@@ -2617,7 +2890,8 @@
       "name": "DIO#(0:22)_EF_READ_B",
       "type": "UINT32",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "R",
       "tags": ["DIO_EF", "DIO"],
@@ -2629,7 +2903,8 @@
       "name": "DIO#(0:22)_EF_READ_A_F",
       "type": "FLOAT32",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "R",
       "tags": ["DIO_EF", "DIO"],
@@ -2640,7 +2915,8 @@
       "name": "DIO#(0:22)_EF_READ_A_F_AND_RESET",
       "type": "FLOAT32",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "R",
       "tags": ["DIO_EF", "DIO"],
@@ -2651,7 +2927,8 @@
       "name": "DIO#(0:22)_EF_READ_B_F",
       "type": "FLOAT32",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "R",
       "tags": ["DIO_EF", "DIO"],
@@ -2796,7 +3073,8 @@
       "name": "IO_CONFIG_CHECK_FOR_FACTORY",
       "type": "UINT32",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "R",
       "tags": ["CONFIG"],
@@ -2807,7 +3085,8 @@
       "name": "IO_CONFIG_SET_DEFAULT_TO_CURRENT",
       "type": "UINT32",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "W",
       "tags": ["CONFIG"],
@@ -2818,7 +3097,8 @@
       "name": "IO_CONFIG_SET_DEFAULT_TO_FACTORY",
       "type": "UINT32",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "W",
       "tags": ["CONFIG"],
@@ -2829,7 +3109,8 @@
       "name": "IO_CONFIG_FACTORY_pREAD",
       "type": "UINT32",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "tags": ["CONFIG"]
@@ -2839,7 +3120,8 @@
       "name": "IO_CONFIG_FACTORY_READ",
       "type": "UINT32",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "R",
       "tags": ["CONFIG"]
@@ -2849,7 +3131,8 @@
       "name": "IO_CONFIG_DEFAULT_pREAD",
       "type": "UINT32",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "tags": ["CONFIG"]
@@ -2859,7 +3142,8 @@
       "name": "IO_CONFIG_DEFAULT_READ",
       "type": "UINT32",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "R",
       "tags": ["CONFIG"]
@@ -2869,7 +3153,8 @@
       "name": "IO_CONFIG_CURRENT_pREAD",
       "type": "UINT32",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "tags": ["CONFIG"]
@@ -2879,7 +3164,8 @@
       "name": "IO_CONFIG_CURRENT_READ",
       "type": "UINT32",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "R",
       "tags": ["CONFIG"]
@@ -2889,7 +3175,8 @@
       "name": "IO_CONFIG_CHECK_FOR_DEFAULT",
       "type": "UINT32",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "R",
       "tags": ["CONFIG"]
@@ -2902,6 +3189,9 @@
         {
           "device": "T7",
           "fwmin": 1.022
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "R",
@@ -2913,7 +3203,8 @@
       "name": "CLEANSE",
       "type": "UINT32",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "W",
       "tags": ["CONFIG"],
@@ -2927,6 +3218,9 @@
         {
           "device": "T7",
           "fwmin": 1.0071
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "R",
@@ -2942,6 +3236,9 @@
         {
           "device": "T7",
           "fwmin": 1.0071
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "R",
@@ -2957,6 +3254,9 @@
         {
           "device": "T7",
           "fwmin": 1.022
+        },
+        {
+          "device": "T4"
         }
       ],
       "altnames": ["SPC_FREQUENCY_OUT_ENABLE", "SPC_FREQUENCY_OUT"],
@@ -2971,6 +3271,9 @@
         {
           "device": "T7",
           "fwmin": 1.0234
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "W",
@@ -2984,6 +3287,9 @@
         {
           "device": "T7",
           "fwmin": 1.0026
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -3116,6 +3422,9 @@
         {
           "device": "T7",
           "fwmin": 1.0229
+        },
+        {
+          "device": "T4"
         }
       ],
       "readwrite": "R",
@@ -3782,7 +4091,8 @@
       "name": "TEST",
       "type": "UINT32",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "R",
       "default": 1122867,
@@ -3794,7 +4104,8 @@
       "name": "TEST_UINT16",
       "type": "UINT16",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "default": 17,
@@ -3806,7 +4117,8 @@
       "name": "TEST_UINT32",
       "type": "UINT32",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "default": 1122867,
@@ -3818,7 +4130,8 @@
       "name": "TEST_INT32",
       "type": "INT32",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "default": -2003195205,
@@ -3830,7 +4143,8 @@
       "name": "TEST_FLOAT32",
       "type": "FLOAT32",
       "devices": [
-        "T7"
+        "T7",
+        "T4"
       ],
       "readwrite": "RW",
       "default": -9999,
@@ -4311,6 +4625,9 @@
         {
           "device": "T7",
           "fwmin": 1.0016
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -4326,6 +4643,9 @@
         {
           "device": "T7",
           "fwmin": 1.0016
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -4341,6 +4661,9 @@
         {
           "device": "T7",
           "fwmin": 1.0016
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -4356,6 +4679,9 @@
         {
           "device": "T7",
           "fwmin": 1.0016
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -4371,6 +4697,9 @@
         {
           "device": "T7",
           "fwmin": 1.0016
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -4386,6 +4715,9 @@
         {
           "device": "T7",
           "fwmin": 1.0016
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -4401,6 +4733,9 @@
         {
           "device": "T7",
           "fwmin": 1.0016
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "W",
@@ -4416,6 +4751,9 @@
         {
           "device": "T7",
           "fwmin": 1.0016
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -4431,6 +4769,9 @@
         {
           "device": "T7",
           "fwmin": 1.0016
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -4446,6 +4787,9 @@
         {
           "device": "T7",
           "fwmin": 1.0016
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -4461,6 +4805,9 @@
         {
           "device": "T7",
           "fwmin": 1.0016
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -4475,6 +4822,9 @@
         {
           "device": "T7",
           "fwmin": 1.0016
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -4490,6 +4840,9 @@
         {
           "device": "T7",
           "fwmin": 1.0016
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -4505,6 +4858,9 @@
         {
           "device": "T7",
           "fwmin": 1.0016
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -4520,6 +4876,9 @@
         {
           "device": "T7",
           "fwmin": 1.0016
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -4535,6 +4894,9 @@
         {
           "device": "T7",
           "fwmin": 1.0016
+        },
+        {
+            "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -6940,6 +7302,7 @@
     "2017.09.20.A   Added T4 to AIN#(0:254)_RESOLUTION_INDEX, AIN#(0:254)_SETTLING_US, AIN_ALL_RESOLUTION_INDEX, AIN_ALL_SETTLING_US, and AIN_ALL_EF_INDEX.",
     "2017.09.21.A   Added error code 2375.",
     "2017.09.29.A   Re-indented.",
+    "2017.10.19.A   Updated register support for T4. Modified descriptions to support the T4.",
     "End Of Comments"
   ]
 }
