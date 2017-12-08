@@ -1,7 +1,7 @@
 {
   "header": {
     "filename": "ljm_constants.json",
-    "version": "2017.10.19.A",
+    "version": "2017.11.28.A",
     "checksum": "-1",
     "support_url": "https://labjack.com/support/modbus",
     "tags_base_url": "https://labjack.com/support/modbus"
@@ -347,7 +347,7 @@
       ],
       "readwrite": "RW",
       "tags": ["DIO"],
-      "description": "Read or write the analog configuration of all digital I/O in a single binary-encoded value.  1=Analog mode and 0=Digital mode.  Writes are filtered by the value in DIO_INHIBIT.",
+      "description": "Read or write the analog configuration of all digital I/O in a single binary-encoded value.  1=Analog mode and 0=Digital mode. When switching fron analog to digital, the lines will be set to input. Writes are filtered by the value in DIO_INHIBIT.",
       "constants": [
         {"value": 0, "name": "Digital mode"},
         {"value": 1, "name": "Analog mode"}
@@ -496,7 +496,7 @@
       "default": 0,
       "tags": ["STREAM"],
       "altnames": ["STREAM_OPTIONS"],
-      "description": "Controls which clock source will be used to run the main stream clock. 0 = Internal crystal, 2 = External clock source on CIO3. Rising edges will incrememnt a counter and trigger a stream scan after the number of edges specified in STREAM_EXTERNAL_CLOCK_DIVISOR. T7 will expect external stream clock on CIO3. All other values reserved."
+      "description": "Controls which clock source will be used to run the main stream clock. 0 = Internal crystal, 2 = External clock source on CIO3. Rising edges will increment a counter and trigger a stream scan after the number of edges specified in STREAM_EXTERNAL_CLOCK_DIVISOR. T7 will expect external stream clock on CIO3. All other values reserved."
     },
     {
       "address": 4016,
@@ -908,7 +908,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["SPI"],
-      "description": "Bit 0 is Auto-CS-Disable. When bit 0 is 0, CS is enabled.  When bit 0 is 1, CS is disabled."
+      "description": "Bit 0 is Auto-CS-Disable. When bit 0 is 0, CS is enabled.  When bit 0 is 1, CS is disabled. Bit 1: 0 = Set DIO directions before starting the SPI operations, 1 = Do not set DIO directions. Bit 2: 0 = Transmit data MSB first, 1 = LSB first. Bits 4-7: This value sets the number of bits that will be transmitted during the last byte of the SPI operation. Default is 8, valid options are 1-8."
     },
     {
       "address": 5007,
@@ -1042,7 +1042,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["I2C"],
-      "description": "The number of data bytes to transmit."
+      "description": "The number of data bytes to transmit. Zero is valid and will result in a read-only I2C operation."
     },
     {
       "address": 5109,
@@ -1055,7 +1055,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["I2C"],
-      "description": "The number of data bytes to read."
+      "description": "The number of data bytes to read. Zero is valid and will result in a write-only I2C operation."
     },
     {
       "address": 5110,
@@ -1853,7 +1853,8 @@
       ],
       "readwrite": "R",
       "default": 0,
-      "tags": ["AIN_EF", "AIN", "CORE"]
+      "tags": ["AIN_EF", "AIN", "CORE"],
+      "description": "Function dependent on selected feature index."
     },
     {
       "address": 7300,
@@ -1870,7 +1871,8 @@
       ],
       "readwrite": "RW",
       "default": 0,
-      "tags": ["AIN_EF", "AIN"]
+      "tags": ["AIN_EF", "AIN"],
+      "description": "Function dependent on selected feature index."
     },
     {
       "address": 7600,
@@ -1887,7 +1889,8 @@
       ],
       "readwrite": "RW",
       "default": 0,
-      "tags": ["AIN_EF", "AIN"]
+      "tags": ["AIN_EF", "AIN"],
+      "description": "Function dependent on selected feature index."
     },
     {
       "address": 7900,
@@ -1904,7 +1907,8 @@
       ],
       "readwrite": "R",
       "default": 0,
-      "tags": ["AIN_EF", "AIN"]
+      "tags": ["AIN_EF", "AIN"],
+      "description": "Function dependent on selected feature index."
     },
     {
       "address": 9000,
@@ -1923,7 +1927,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["AIN_EF", "AIN"],
-      "description": "Specify the desired extended feature for this analog input with the index value. List of index values: 0=None(disabled), 1=Slope/Offset, 11=FlexRMS, 20=Thermocouple type E, 21=Thermocouple type J, 22=Thermocouple type K, 23=Thermocouple type R, 24=Thermocouple type T, 40=RTD model PT100, 41=RTD model PT500, 42=RTD model PT1000."
+      "description": "Specify the desired extended feature for this analog input with the index value. List of index values: 0=None(disabled); 1=Offset and Slope; 3=Max/Min/Avg; 4=Resistance; 5=Average and Threshold; 10=RMS Flex; 11=FlexRMS; 20=Thermocouple type E; 21=Thermocouple type J; 22=Thermocouple type K; 23=Thermocouple type R; 24=Thermocouple type T; 25=Thermocouple type S; 30=Thermocouple type C; 40=RTD model PT100; 41=RTD model PT500; 42=RTD model PT1000."
     },
     {
       "address": 9300,
@@ -1940,7 +1944,8 @@
       ],
       "readwrite": "RW",
       "default": 0,
-      "tags": ["AIN_EF", "AIN"]
+      "tags": ["AIN_EF", "AIN"],
+      "description": "Function dependent on selected feature index."
     },
     {
       "address": 9600,
@@ -1957,7 +1962,8 @@
       ],
       "readwrite": "RW",
       "default": 0,
-      "tags": ["AIN_EF", "AIN"]
+      "tags": ["AIN_EF", "AIN"],
+      "description": "Function dependent on selected feature index."
     },
     {
       "address": 9900,
@@ -1974,7 +1980,8 @@
       ],
       "readwrite": "RW",
       "default": 0,
-      "tags": ["AIN_EF", "AIN"]
+      "tags": ["AIN_EF", "AIN"],
+      "description": "Function dependent on selected feature index."
     },
     {
       "address": 10200,
@@ -1991,7 +1998,8 @@
       ],
       "readwrite": "RW",
       "default": 0,
-      "tags": ["AIN_EF", "AIN"]
+      "tags": ["AIN_EF", "AIN"],
+      "description": "Function dependent on selected feature index."
     },
     {
       "address": 10500,
@@ -2008,7 +2016,8 @@
       ],
       "readwrite": "RW",
       "default": 0,
-      "tags": ["AIN_EF", "AIN"]
+      "tags": ["AIN_EF", "AIN"],
+      "description": "Function dependent on selected feature index."
     },
     {
       "address": 10800,
@@ -2025,7 +2034,8 @@
       ],
       "readwrite": "RW",
       "default": 0,
-      "tags": ["AIN_EF", "AIN"]
+      "tags": ["AIN_EF", "AIN"],
+      "description": "Function dependent on selected feature index."
     },
     {
       "address": 11100,
@@ -2042,7 +2052,8 @@
       ],
       "readwrite": "RW",
       "default": 0,
-      "tags": ["AIN_EF", "AIN"]
+      "tags": ["AIN_EF", "AIN"],
+      "description": "Function dependent on selected feature index."
     },
     {
       "address": 11400,
@@ -2059,7 +2070,8 @@
       ],
       "readwrite": "RW",
       "default": 0,
-      "tags": ["AIN_EF", "AIN"]
+      "tags": ["AIN_EF", "AIN"],
+      "description": "Function dependent on selected feature index."
     },
     {
       "address": 11700,
@@ -2076,7 +2088,8 @@
       ],
       "readwrite": "RW",
       "default": 0,
-      "tags": ["AIN_EF", "AIN"]
+      "tags": ["AIN_EF", "AIN"],
+      "description": "Function dependent on selected feature index."
     },
     {
       "address": 12000,
@@ -2093,7 +2106,8 @@
       ],
       "readwrite": "RW",
       "default": 0,
-      "tags": ["AIN_EF", "AIN"]
+      "tags": ["AIN_EF", "AIN"],
+      "description": "Function dependent on selected feature index."
     },
     {
       "address": 30000,
@@ -2157,7 +2171,7 @@
       "readwrite": "R",
       "tags": ["SBUS", "CORE"],
       "displayname": ["SBUS # Temp"],
-      "description": "Reads temperature in degrees Kelvin from an SBUS sensor (EI-1050/SHT1x/SHT7x).  SBUS# is the DIO line for the EI-1050 enable.  If SBUS# is the same as the value specified for data or clock line, there will be no control of an enable line."
+      "description": "Reads temperature in Kelvin from an SBUS sensor (EI-1050/SHT1x/SHT7x).  SBUS# is the DIO line for the EI-1050 enable.  If SBUS# is the same as the value specified for data or clock line, there will be no control of an enable line."
     },
     {
       "address": 30150,
@@ -2278,16 +2292,17 @@
       "devices": [
         {
           "device": "T7",
-          "fwmin": 1.0056
+          "fwmin": 1.0056,
+          "default": 2
         },
         {
-          "device": "T4"
+          "device": "T4",
+          "default": 6
         }
       ],
       "readwrite": "RW",
-      "default": 2,
       "tags": ["SBUS"],
-      "description": "Sets the power line. This DIO is set to output-high upon any read of SBUS#_TEMP or SBUS#_RH. Default = FIO2. An FIO line can power up to 4 sensors while an EIO/CIO/MIO line or DAC line can power up to 20 sensors. Set to 9999 to disable. To use multiple power lines, use a DAC line for power, or otherwise control power yourself, set this to 9999 and then control power using writes to normal registers such as FIO5, EIO0, or DAC0."
+      "description": "Sets the power line. This DIO is set to output-high upon any read of SBUS#_TEMP or SBUS#_RH. Default is FIO6 for the T4 and FIO2 for the T7. An FIO line can power up to 4 sensors while an EIO/CIO/MIO line or DAC line can power up to 20 sensors. Set to 9999 to disable. To use multiple power lines, use a DAC line for power, or otherwise control power yourself, set this to 9999 and then control power using writes to normal registers such as FIO5, EIO0, or DAC0."
     },
     {
       "address": 30278,
@@ -2545,7 +2560,7 @@
       ],
       "readwrite": "RW",
       "tags": ["DIO_EF", "DIO"],
-      "description": "The number of clock pulses to count before starting over at zero. The clock pulses counted are those after the divisor."
+      "description": "The clock will count to this value and then start over at zero. The clock pulses counted are those after the divisor. 0 results in the max roll value possible. This is a 32-bit value (0-4294967295) if using a 32-bit clock, and a 16-bit value (0-65535) if using a 16-bit clock."
     },
     {
       "address": 44910,
@@ -2613,7 +2628,7 @@
       ],
       "readwrite": "RW",
       "tags": ["DIO_EF", "DIO"],
-      "description": "The number of clock pulses to count before starting over at zero. The clock pulses counted are those after the divisor."
+      "description": "The clock will count to this value and then start over at zero. The clock pulses counted are those after the divisor. 0 results in the max roll value possible. This is a 32-bit value (0-4294967295) if using a 32-bit clock, and a 16-bit value (0-65535) if using a 16-bit clock."
     },
     {
       "address": 44920,
@@ -2681,7 +2696,7 @@
       ],
       "readwrite": "RW",
       "tags": ["DIO_EF", "DIO"],
-      "description": "The number of clock pulses to count before starting over at zero. The clock pulses counted are those after the divisor."
+      "description": "The clock will count to this value and then start over at zero. The clock pulses counted are those after the divisor. 0 results in the max roll value possible. This is a 32-bit value (0-4294967295) if using a 32-bit clock, and a 16-bit value (0-65535) if using a 16-bit clock."
     },
     {
       "address": 44908,
@@ -2946,7 +2961,7 @@
       ],
       "readwrite": "RW",
       "tags": ["DIO_EF", "DIO"],
-      "description": "Automatically configures the associated DIO_EF for feature index 11. If already configure for index 11 reads the result and resets the DIO_EF."
+      "description": "Deprecated. Automatically configures the associated DIO_EF for feature index 11. If already configured for index 11, reads the result and resets the DIO_EF."
     },
     {
       "address": 48003,
@@ -2964,7 +2979,7 @@
       ],
       "readwrite": "RW",
       "tags": ["CONFIG", "ETHERNET"],
-      "description": "The current ON/OFF state of the Ethernet module. Provided to optionally reduce power consumption."
+      "description": "The current ON/OFF state of the Ethernet module."
     },
     {
       "address": 48004,
@@ -2978,7 +2993,7 @@
       ],
       "readwrite": "RW",
       "tags": ["CONFIG", "WIFI"],
-      "description": "The current ON/OFF state of the WiFi module. Provided to optionally reduce power consumption."
+      "description": "The current ON/OFF state of the WiFi module."
     },
     {
       "address": 48005,
@@ -2992,7 +3007,7 @@
       ],
       "readwrite": "RW",
       "tags": ["CONFIG", "AIN"],
-      "description": "The current ON/OFF state of the analog input module. Provided to optionally reduce power consumption."
+      "description": "The current ON/OFF state of the analog input module."
     },
     {
       "address": 48006,
@@ -3024,7 +3039,7 @@
       ],
       "readwrite": "RW",
       "tags": ["CONFIG", "ETHERNET"],
-      "description": "The ON/OFF state of the Ethernet module after a power-cycle to the device."
+      "description": "The ON/OFF state of the Ethernet module after a power-cycle to the device. Provided to optionally reduce power consumption."
     },
     {
       "address": 48054,
@@ -3038,7 +3053,7 @@
       ],
       "readwrite": "RW",
       "tags": ["CONFIG", "WIFI"],
-      "description": "The ON/OFF state of the WiFi module after a power-cycle to the device."
+      "description": "The ON/OFF state of the WiFi module after a power-cycle to the device. Provided to optionally reduce power consumption."
     },
     {
       "address": 48055,
@@ -3052,7 +3067,7 @@
       ],
       "readwrite": "RW",
       "tags": ["CONFIG", "AIN"],
-      "description": "The ON/OFF state of the analog input module after a power-cycle to the device."
+      "description": "The ON/OFF state of the analog input module after a power-cycle to the device. Provided to optionally reduce power consumption."
     },
     {
       "address": 48056,
@@ -3355,8 +3370,8 @@
       "readwrite": "R",
       "tags": ["AIN", "CORE"],
       "streamable": false,
-      "displayname": ["Estimated Air Temperature [deg K]"],
-      "description": "Returns the estimated ambient air temperature just outside a T7 in its red plastic enclosure.  This register is equal to TEMPERATURE_DEVICE_K - 4.3.  If Ethernet and/or WiFi is enabled, subtract an extra 0.6 for each."
+      "displayname": ["Estimated Air Temperature [K]"],
+      "description": "Returns the estimated ambient air temperature just outside of the device in its red plastic enclosure.  This register is equal to TEMPERATURE_DEVICE_K - 4.3.  If Ethernet and/or WiFi is enabled, subtract an extra 0.6 for each."
     },
     {
       "address": 60052,
@@ -3365,18 +3380,20 @@
       "devices": [
         {
           "device": "T7",
-          "fwmin": 1.0105
+          "fwmin": 1.0105,
+          "description": "The internal temperature sensor, AIN14, is internally connected to an LM94021 (U24) with GS=10 which is physically located on the bottom of the PCB between the AIN0/1 and AIN2/3 screw-terminals."
         },
         {
           "device": "T4",
-          "fwmin": 0.202
+          "fwmin": 0.202,
+          "description": "The internal temperature sensor is internally connected to an LM94021 (U24) with GS=10 which is physically located on the top of the PCB behind the VS screw terminal of the FIO4 and FIO5 screw terminal block."
         }
       ],
       "readwrite": "R",
       "tags": ["AIN", "CORE"],
       "streamable": false,
-      "displayname": ["Device Temperature [deg K]"],
-      "description": "Takes a reading from AIN14 using range=+/-10V and resolution=8, and applies the formula Volts*-92.6+467.6 to return degrees K.  AIN14 is internally connected to an LM94021 (U24) with GS=10 which is physically located on the bottom of the PCB between the AIN0/1 and AIN2/3 screw-terminals."
+      "displayname": ["Device Temperature [K]"],
+      "description": "Takes a reading from the internal temperature sensor using range=+/-10V and resolution=8, and applies the formula Volts*-92.6+467.6 to return kelvins."
     },
     {
       "address": 49702,
@@ -3412,7 +3429,7 @@
       ],
       "readwrite": "R",
       "tags": ["RTC"],
-      "description": "Read the current time in seconds since Jan, 1970, aka Epoch or Unix time. This value is calculated from the 80 MHz crystal, not the RTC 32 kHz crystal. Non-pro devices do not have a real time clock, so the the reported time is either seconds since device startup or the time reported by the network time protocol over Ethernet. Pro devices have a real time clock that will be used to initialize this register at startup, the time can then be updated by NTP."
+      "description": "Read the current time in seconds since Jan, 1970, aka Epoch or Unix time. This value is calculated from the 80 MHz crystal, not the RTC 32 kHz crystal. Non-pro devices do not have a real time clock, so the reported time is either seconds since device startup or the time reported by the network time protocol over Ethernet. Pro devices have a real time clock that will be used to initialize this register at startup, the time can then be updated by NTP."
     },
     {
       "address": 61502,
@@ -3646,7 +3663,7 @@
       ],
       "readwrite": "W",
       "tags": ["ETHERNET"],
-      "description": "Writing 0 to this register power cycles Ethernet.  It tells the T7 to waits 1s before turning off Ethernet and then 500ms before turning it back on."
+      "description": "Writing 1 to this register power-cycles Ethernet.  It tells the device to waits 1s before turning off Ethernet and then 500ms before turning it back on."
     },
     {
       "address": 49200,
@@ -7289,20 +7306,22 @@
     "2016.09.14.A:  Added Description to SPI_MODE register. Changed LJME_U3_CANNOT_BE_OPENED_BY_LJM to LJME_U3_NOT_SUPPORTED_BY_LJM, LJME_U6_CANNOT_BE_OPENED_BY_LJM to LJME_U6_NOT_SUPPORTED_BY_LJM, and LJME_UE9_CANNOT_BE_OPENED_BY_LJM to LJME_UE9_NOT_SUPPORTED_BY_LJM.",
     "2016.09.16.A:  Added SPC_FREQUENCY_OUT register.",
     "2016.10.25.A:  LJME_USING_DEFAULT_CALIBRATION description update and Windows line endings.",
-    "2016.12.22.A:  Aadded DIO_PULLUP_DISABLE and STREAM_START_TIME_STAMP, fixed DIO_ANALOG_ENABLE address, and various other description updates.",
+    "2016.12.22.A:  Added DIO_PULLUP_DISABLE and STREAM_START_TIME_STAMP, fixed DIO_ANALOG_ENABLE address, and various other description updates.",
     "2017.01.30.A:  Added T4 to SYSTEM_REBOOT, TEMPERATURE_AIR_K, TEMPERATURE_DEVICE_K, SNTP_UPDATE_INTERVAL, RTC_TIME_S, RTC_SET_TIME_S, RTC_SET_TIME_SNTP, and RTC_TIME_CALENDAR. Added errors SYSTEM_INCOMPATIBLE_FIRMWARE_VERSION and DIO_SET_TO_ANALOG.",
     "2017.03.09.A   Added LJME_NO_DEVICES_FOUND.",
     "2017.04.28.A   Fixed IO_CONFIG_CURRENT_CRC32 address. Added IO_CONFIG_CHECK_FOR_DEFAULT and CLEANSE. Added errors LJME_AUTO_IPS_FILE_NOT_FOUND and LJME_AUTO_IPS_FILE_INVALID.",
-    "2017.06.21.A   added SYSTEM_COUNTER_10KHZ, and updated RTC_TIME_S register.",
+    "2017.06.21.A   Added SYSTEM_COUNTER_10KHZ, and updated RTC_TIME_S register.",
     "2017.07.20.A   Changed SPC_FREQUENCY_OUT to SPC_FREQUENCY_OUT_ENABLE. Added error #2388.",
     "2018.08.03.A   Added DAC1_FREQUENCY_OUT_ENABLE register. Added error code 2523.",
     "2017.08.15.A   Added T4 to USER_RAM registers. USER_RAM#(0:39)_F32, USER_RAM#(0:9)_I32, USER_RAM#(0:39)_U32, USER_RAM#(0:19)_U16, USER_RAM_FIFO#(0:3)_DATA_U16, USER_RAM_FIFO#(0:3)_DATA_U32, USER_RAM_FIFO#(0:3)_DATA_I32, USER_RAM_FIFO#(0)_DATA_F32, USER_RAM_FIFO#(0:3)_ALLOCATE_NUM_BYTES, USER_RAM_FIFO#(0:3)_NUM_BYTES_IN_FIFO, USER_RAM_FIFO#(0:3)_EMPTY",
-    "2017.08.15.B   Added T4 to DIO_EF_CLOCK resgisters and to DIO#(0:22)_EF registers (44900-44924 and 44000-44644, approx)",
+    "2017.08.15.B   Added T4 to DIO_EF_CLOCK registers and to DIO#(0:22)_EF registers (44900-44924 and 44000-44644, approx)",
     "2017.08.29.A   Updated DIO_PULLUP_DISABLE description.",
     "2017.09.20.A   Added T4 to AIN#(0:254)_RESOLUTION_INDEX, AIN#(0:254)_SETTLING_US, AIN_ALL_RESOLUTION_INDEX, AIN_ALL_SETTLING_US, and AIN_ALL_EF_INDEX.",
     "2017.09.21.A   Added error code 2375.",
     "2017.09.29.A   Re-indented.",
     "2017.10.19.A   Updated register support for T4. Modified descriptions to support the T4.",
+    "2017.10.25.A   Added descriptions for the AIN#(0:13)_EF_CONFIG_x and AIN#(0:13)_EF_READ_x registers.",
+    "2017.11.28.A   Updated descriptions for TEMPERATURE_AIR_K and TEMPERATURE_DEVICE_K.",
     "End Of Comments"
   ]
 }
