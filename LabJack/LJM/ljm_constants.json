@@ -1,7 +1,7 @@
 {
   "header": {
     "filename": "ljm_constants.json",
-    "version": "2017.11.28.A",
+    "version": "2017.12.08.A",
     "checksum": "-1",
     "support_url": "https://labjack.com/support/modbus",
     "tags_base_url": "https://labjack.com/support/modbus"
@@ -379,6 +379,52 @@
       "constants": [
         {"value": 0, "name": "Affected"},
         {"value": 1, "name": "Ignored"}
+      ]
+    },
+    {
+      "address": 2990,
+      "name": "LED_COMM",
+      "type": "UINT16",
+      "devices": [
+        {
+          "device": "T7",
+          "fwmin": 1
+        },
+        {
+          "device": "T4",
+          "fwmin": 1.1
+        }
+      ],
+      "readwrite": "RW",
+      "tags": ["DIO"],
+      "default": 0,
+      "description": "Sets the state of the COMM LED when the LEDs are set to manual, see the POWER_LED register.",
+      "constants": [
+        {"value": 0, "name": "Off"},
+        {"value": 1, "name": "On"}
+      ]
+    },
+    {
+      "address": 2991,
+      "name": "LED_STATUS",
+      "type": "UINT16",
+      "devices": [
+        {
+          "device": "T7",
+          "fwmin": 1
+        },
+        {
+          "device": "T4",
+          "fwmin": 1.1
+        }
+      ],
+      "readwrite": "RW",
+      "tags": ["DIO"],
+      "default": 0,
+      "description": "Sets the state of the STATUS LED when the LEDs are set to manual, see the POWER_LED register.",
+      "constants": [
+        {"value": 0, "name": "Off"},
+        {"value": 1, "name": "On"}
       ]
     },
     {
@@ -3017,6 +3063,10 @@
         {
           "device": "T7",
           "fwmin": 0.86
+        },
+        {
+          "device": "T4",
+          "fwmin": 1.1
         }
       ],
       "readwrite": "RW",
@@ -3077,6 +3127,10 @@
         {
           "device": "T7",
           "fwmin": 0.86
+        },
+        {
+          "device": "T4",
+          "fwmin": 1.1
         }
       ],
       "readwrite": "RW",
@@ -7322,6 +7376,7 @@
     "2017.10.19.A   Updated register support for T4. Modified descriptions to support the T4.",
     "2017.10.25.A   Added descriptions for the AIN#(0:13)_EF_CONFIG_x and AIN#(0:13)_EF_READ_x registers.",
     "2017.11.28.A   Updated descriptions for TEMPERATURE_AIR_K and TEMPERATURE_DEVICE_K.",
+    "2017.12.08.A   Added registers 2990 and 2991; LED control.",
     "End Of Comments"
   ]
 }

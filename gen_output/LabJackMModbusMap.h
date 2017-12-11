@@ -2,7 +2,7 @@
 #ifndef LABJACKM_MODBUS_MAP_HEADER
 #define LABJACKM_MODBUS_MAP_HEADER
 
-#define LABJACKM_CONSTANTS_VERSION "2017.08.31.A"
+#define LABJACKM_CONSTANTS_VERSION "2017.12.08.A"
 
 #ifdef __cplusplus
 extern "C" {
@@ -1275,6 +1275,14 @@ enum { LJM_DIO_DIRECTION_TYPE = 1 };
 static const char * const LJM_DIO_INHIBIT = "DIO_INHIBIT";
 enum { LJM_DIO_INHIBIT_ADDRESS = 2900 };
 enum { LJM_DIO_INHIBIT_TYPE = 1 };
+
+static const char * const LJM_LED_COMM = "LED_COMM";
+enum { LJM_LED_COMM_ADDRESS = 2990 };
+enum { LJM_LED_COMM_TYPE = 0 };
+
+static const char * const LJM_LED_STATUS = "LED_STATUS";
+enum { LJM_LED_STATUS_ADDRESS = 2991 };
+enum { LJM_LED_STATUS_TYPE = 0 };
 
 static const char * const LJM_STREAM_SCANRATE_HZ = "STREAM_SCANRATE_HZ";
 enum { LJM_STREAM_SCANRATE_HZ_ADDRESS = 4002 };
