@@ -4,6 +4,8 @@
 @license GNU GPL v2
 """
 
+import os
+
 import unittest
 
 import ljmmm
@@ -288,6 +290,100 @@ class LJMMMTests(unittest.TestCase):
         self.assertEqual(1, len(ljmmm.FIND_URLS.findall('this desc has website.gov as the single link')))
         self.assertEqual(0, len(ljmmm.FIND_URLS.findall('this desc has website.fake as the not a link')))
         self.assertEqual(0, len(ljmmm.FIND_URLS.findall('this desc has https://labjack.nope as the not a link')))
+
+
+    def test_get_device_modbus_maps(self):
+        EXPECTED_MAPS = {
+            'T7': [
+                (
+                    {
+                        'name': 'LED_COMM',
+                        'tags': ['DIO'],
+                        'readwrite': 'RW',
+                        'devices': [
+                            {'device': 'T7', 'fwmin': 1.7777},
+                            {'device': 'T4', 'fwmin': 1.4444}
+                        ],
+                        'default': 0,
+                        'address': 2990,
+                        'type': 'UINT16',
+                        'constants': [
+                            {'name': 'Off', 'value': 0},
+                            {'name': 'On', 'value': 1}
+                        ],
+                        'description': 'Sets the state of the COMM LED when the LEDs are set to manual, see the POWER_LED register.'
+                    },
+                    {
+                        'streamable': False,
+                        'description': 'Sets the state of the COMM LED when the LEDs are set to manual, see the POWER_LED register.',
+                        'fwmin': 1.7777,
+                        'tags': ['DIO'],
+                        'default': 0,
+                        'deviceDescription': '',
+                        'altnames': [],
+                        'write': True,
+                        'type_index': '0',
+                        'read': True,
+                        'constants': [
+                            {'name': 'Off', 'value': 0},
+                            {'name': 'On', 'value': 1}
+                        ],
+                        'address': 2990,
+                        'type': 'UINT16',
+                        'isBuffer': False,
+                        'name': 'LED_COMM'
+                    }
+                )
+            ],
+            'T4': [
+                (
+                    {
+                        'name': 'LED_COMM',
+                        'tags': ['DIO'],
+                        'readwrite': 'RW',
+                        'devices': [
+                            {'device': 'T7', 'fwmin': 1.7777},
+                            {'device': 'T4', 'fwmin': 1.4444}
+                        ],
+                        'default': 0,
+                        'address': 2990,
+                        'type': 'UINT16',
+                        'constants': [
+                            {'name': 'Off', 'value': 0},
+                            {'name': 'On', 'value': 1}
+                        ],
+                        'description': 'Sets the state of the COMM LED when the LEDs are set to manual, see the POWER_LED register.'
+                    },
+                    {
+                        'streamable': False,
+                        'description': 'Sets the state of the COMM LED when the LEDs are set to manual, see the POWER_LED register.',
+                        'fwmin': 1.4444,
+                        'tags': ['DIO'],
+                        'default': 0,
+                        'deviceDescription': '',
+                        'altnames': [],
+                        'write': True,
+                        'type_index': '0',
+                        'read': True,
+                        'constants': [
+                            {'name': 'Off', 'value': 0},
+                            {'name': 'On', 'value': 1}
+                        ],
+                        'address': 2990,
+                        'type': 'UINT16',
+                        'isBuffer': False,
+                        'name': 'LED_COMM'
+                    }
+                )
+            ]
+        }
+
+        maps = ljmmm.get_device_modbus_maps(
+            src=os.path.join(os.path.split(os.path.realpath(__file__))[0], "ljmmm_test.json"),
+            expand_names=True,
+            inc_orig=True
+        )
+        self.assertEqual(EXPECTED_MAPS, maps)
 
 
 if __name__ == "__main__":
