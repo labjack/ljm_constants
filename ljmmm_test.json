@@ -1,0 +1,27 @@
+{
+  "registers": [
+    {
+      "address": 2990,
+      "name": "LED_COMM",
+      "type": "UINT16",
+      "devices": [
+        {
+          "device": "T7",
+          "fwmin": 1.7777
+        },
+        {
+          "device": "T4",
+          "fwmin": 1.4444
+        }
+      ],
+      "readwrite": "RW",
+      "tags": ["DIO"],
+      "default": 0,
+      "description": "Sets the state of the COMM LED when the LEDs are set to manual, see the POWER_LED register.",
+      "constants": [
+        {"value": 0, "name": "Off"},
+        {"value": 1, "name": "On"}
+      ]
+    }
+  ]
+}
