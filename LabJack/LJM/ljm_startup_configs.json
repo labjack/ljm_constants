@@ -1,6 +1,6 @@
 // ljm_startup_configs.json:
 //   This is the configurations file that is loaded when LJM is started up.
-//   Distributed with LJM version 1.1700.
+//   Distributed with LJM version 1.1701.
 //
 //   Use the string "default" to load the default value for each config
 //   parameter. Otherwise, see the "type" for each config parameter for what
@@ -52,6 +52,7 @@
     {"LJM_LISTALL_TIMEOUT_MS_WIFI":"default",          "type":"integer"},
     {"LJM_LISTALL_UDP_ETHERNET":"default",             "type":"boolean", "values":[true, false]},
     {"LJM_LISTALL_UDP_WIFI":"default",                 "type":"boolean", "values":[true, false]},
+    {"LJM_MAX_NUM_BYTES_PER_PACKET":"default",         "type":"integer"},
     {"LJM_MODBUS_MAP_CONSTANTS_FILE":"default",        "type":"string"},
     {"LJM_OLD_FIRMWARE_CHECK":"default",               "type":"boolean", "values":[true, false]},
     {"LJM_RETRY_ON_TRANSACTION_ID_MISMATCH":"default", "type":"boolean", "values":[true, false]},
