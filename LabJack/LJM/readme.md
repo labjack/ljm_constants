@@ -22,11 +22,23 @@ ljm_constants.json is the default LJM constants file. It contains a JSON descrip
 
 
 
+## [ljm_deep_search.config](https://labjack.com/support/software/api/ljm/constants/DeepSearchConfigs)
+
+ljm_deep_search.config is a configuration file for forcing LJM to manually check specified IP address ranges during Open calls or ListAll calls. This file is meant to discover devices with DHCP configurations, especially for networks where a UDP broadcast will not reach those IPs. IP ranges are specified, one per line, in the form:
+
+192.168.2.100-254
+
+Such a line would search 155 IP addresses, including 192.168.2.100 and 192.168.2.254.
+
+
+
 ## [ljm_specific_ips.config](https://labjack.com/support/software/api/ljm/constants/SpecificIPsConfigs)
 
-ljm_specific_ips.config is a configuration file for forcing LJM to manually check specified IP addresses during Open calls or ListAll calls.
+ljm_specific_ips.config is a configuration file for forcing LJM to manually check specified IP addresses during Open calls or ListAll calls. This file is meant to discover devices with static IP configurations, especially for networks where a UDP broadcast will not reach those IPs. IPs are specified, one per line, in the form:
 
-ljm_specific_ips.config used to be ljm_special_addresses.config.
+192.168.2.25
+
+ljm_specific_ips.config used to be named ljm_special_addresses.config.
 
 
 
