@@ -384,7 +384,36 @@ class LJMMMTests(unittest.TestCase):
             inc_orig=True
         )
         self.assertEqual(EXPECTED_MAPS, maps)
-
+        
+        
+    def test_get_errors(self):
+        EXPECTED_ERRORS = [
+            {
+              "error": 0,
+              "string": "LJ_SUCCESS"
+            },
+            {
+              "error": 200,
+              "string": "LJME_WARNINGS_BEGIN",
+              "description": "test01"
+            },
+            {
+              "error": 399,
+              "string": "LJME_WARNINGS_END",
+              "description": "test02"
+            },
+            {
+              "error": 201,
+              "string": "LJME_FRAMES_OMITTED_DUE_TO_PACKET_SIZE",
+              "description": "test03"
+            }
+        ]
+        
+        errors = ljmmm.get_errors(
+            src=os.path.join(os.path.split(os.path.realpath(__file__))[0], "ljmmm_test.json"),
+        )
+        self.assertEqual(EXPECTED_ERRORS, errors)
+        
 
 if __name__ == "__main__":
     unittest.main()
