@@ -107,6 +107,9 @@ chmod 666 ${DESTINATION}/${TARGET}/LJM/ljm_specific_ips.config
 
 deprecate_special_addresses
 
+touch ${DESTINATION}/${TARGET}/LJM/ljm_deep_search.config
+chmod 666 ${DESTINATION}/${TARGET}/LJM/ljm_deep_search.config
+
 trap oldinstall EXIT
 cp -v --recursive --preserve=mode "${FILE_DIR}/${TARGET}" "${DESTINATION}/"
 trap - EXIT
