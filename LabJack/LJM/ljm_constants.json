@@ -759,7 +759,8 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["STREAM"],
-      "description": "Write 1 to enable, 0 to disable.  When enabled, you get 1 update per target per stream scan, so a stream must be active for updates to happen."
+      "description": "Write 1 to enable, 0 to disable.  When enabled, you get 1 update per target per stream scan, so a stream must be active for updates to happen.",
+      "usesRAM": true
     },
     {
       "address": 4400,
@@ -863,7 +864,8 @@
       ],
       "readwrite": "RW",
       "tags": ["STREAM"],
-      "description": "Write 1 to start stream. Write 0 to stop stream."
+      "description": "Write 1 to start stream. Write 0 to stop stream.",
+      "usesRAM": true
     },
     {
       "address": 5000,
@@ -967,7 +969,8 @@
       "readwrite": "W",
       "default": 0,
       "tags": ["SPI"],
-      "description": "Write 1 to begin the configured SPI transaction."
+      "description": "Write 1 to begin the configured SPI transaction.",
+      "usesRAM": true
     },
     {
       "address": 5009,
@@ -1488,7 +1491,8 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["ASYNCH", "UART"],
-      "description": "1 = Turn on Asynch. Configures timing hardware, DIO lines and allocates the receiving buffer."
+      "description": "1 = Turn on Asynch. Configures timing hardware, DIO lines and allocates the receiving buffer.",
+      "usesRAM": true
     },
     {
       "address": 5420,
@@ -1579,7 +1583,8 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["ASYNCH", "UART"],
-      "description": "The number of bytes to be transmitted after writing to GO. Max is 256."
+      "description": "The number of bytes to be transmitted after writing to GO. Max is 256.",
+      "usesRAM": true
     },
     {
       "address": 5450,
@@ -1676,7 +1681,8 @@
       ],
       "readwrite": "RW",
       "tags": ["LUA"],
-      "description": "Writing 1 compiles and runs the Lua script that is loaded in RAM. Writing zero stops the script and begins cleaning up memory. Users may poll the register after writing a value of 0 to verify that the VM is unloaded, and garbage collection is complete. 0 = VM fully unloaded.  1 = Running/in-progress"
+      "description": "Writing 1 compiles and runs the Lua script that is loaded in RAM. Writing zero stops the script and begins cleaning up memory. Users may poll the register after writing a value of 0 to verify that the VM is unloaded, and garbage collection is complete. 0 = VM fully unloaded.  1 = Running/in-progress",
+      "usesRAM": true
     },
     {
       "address": 6012,
@@ -1693,7 +1699,8 @@
       ],
       "readwrite": "RW",
       "tags": ["LUA"],
-      "description": "Allocates RAM for the source code."
+      "description": "Allocates RAM for the source code.",
+      "usesRAM": true
     },
     {
       "address": 6014,
@@ -1728,7 +1735,8 @@
       ],
       "readwrite": "RW",
       "tags": ["LUA"],
-      "description": "Write 1 to this register to enable debugging."
+      "description": "Write 1 to this register to enable debugging.",
+      "usesRAM": true
     },
     {
       "address": 6022,
@@ -1900,7 +1908,8 @@
       "readwrite": "R",
       "default": 0,
       "tags": ["AIN_EF", "AIN", "CORE"],
-      "description": "Function dependent on selected feature index."
+      "description": "Function dependent on selected feature index.",
+      "usesRAM": true
     },
     {
       "address": 7300,
@@ -1973,7 +1982,8 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["AIN_EF", "AIN"],
-      "description": "Specify the desired extended feature for this analog input with the index value. List of index values: 0=None(disabled); 1=Offset and Slope; 3=Max/Min/Avg; 4=Resistance; 5=Average and Threshold; 10=RMS Flex; 11=FlexRMS; 20=Thermocouple type E; 21=Thermocouple type J; 22=Thermocouple type K; 23=Thermocouple type R; 24=Thermocouple type T; 25=Thermocouple type S; 30=Thermocouple type C; 40=RTD model PT100; 41=RTD model PT500; 42=RTD model PT1000."
+      "description": "Specify the desired extended feature for this analog input with the index value. List of index values: 0=None(disabled); 1=Offset and Slope; 3=Max/Min/Avg; 4=Resistance; 5=Average and Threshold; 10=RMS Flex; 11=FlexRMS; 20=Thermocouple type E; 21=Thermocouple type J; 22=Thermocouple type K; 23=Thermocouple type R; 24=Thermocouple type T; 25=Thermocouple type S; 30=Thermocouple type C; 40=RTD model PT100; 41=RTD model PT500; 42=RTD model PT1000.",
+      "usesRAM": true
     },
     {
       "address": 9300,
@@ -4119,7 +4129,8 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["LUA", "USER_RAM"],
-      "description": "Allocate memory for a FIFO buffer. Number of bytes should be sufficient to store users max transfer array size.  Note that FLOAT32, INT32, and UINT32 require 4 bytes per value, and UINT16 require 2 bytes per value. Maximum size is limited by available memory. Care should be taken to conserve enough memory for other operations such as AIN_EF, Lua, Stream etc."
+      "description": "Allocate memory for a FIFO buffer. Number of bytes should be sufficient to store users max transfer array size.  Note that FLOAT32, INT32, and UINT32 require 4 bytes per value, and UINT16 require 2 bytes per value. Maximum size is limited by available memory. Care should be taken to conserve enough memory for other operations such as AIN_EF, Lua, Stream etc.",
+      "usesRAM": true
     },
     {
       "address": 47910,
@@ -4609,7 +4620,8 @@
       "readwrite": "W",
       "tags": ["FILE_IO"],
       "altnames": ["FILE_IO_NAME_WRITE_LEN"],
-      "description": "Write the length (in bytes) of the file path or directory to access."
+      "description": "Write the length (in bytes) of the file path or directory to access.",
+      "usesRAM": true
     },
     {
       "address": 60642,
