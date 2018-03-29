@@ -347,7 +347,7 @@
       ],
       "readwrite": "RW",
       "tags": ["DIO"],
-      "description": "Read or write the analog configuration of all digital I/O in a single binary-encoded value.  1=Analog mode and 0=Digital mode. When switching fron analog to digital, the lines will be set to input. Writes are filtered by the value in DIO_INHIBIT.",
+      "description": "Read or write the analog configuration of all digital I/O in a single binary-encoded value.  1=Analog mode and 0=Digital mode. When switching from analog to digital, the lines will be set to input. Writes are filtered by the value in DIO_INHIBIT.",
       "constants": [
         {"value": 0, "name": "Digital mode"},
         {"value": 1, "name": "Analog mode"}
@@ -392,10 +392,10 @@
         },
         {
           "device": "T4",
-          "fwmin": 1.1
+          "fwmin": 1.0008
         }
       ],
-      "readwrite": "RW",
+      "readwrite": "W",
       "tags": ["DIO"],
       "default": 0,
       "description": "Sets the state of the COMM LED when the LEDs are set to manual, see the POWER_LED register.",
@@ -415,10 +415,10 @@
         },
         {
           "device": "T4",
-          "fwmin": 1.1
+          "fwmin": 1.0008
         }
       ],
-      "readwrite": "RW",
+      "readwrite": "W",
       "tags": ["DIO"],
       "default": 0,
       "description": "Sets the state of the STATUS LED when the LEDs are set to manual, see the POWER_LED register.",
@@ -483,7 +483,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["STREAM"],
-      "description": "Time in microseconds to allow signals to settle after switching the mux. Default=0. When set to less than 1, automatic settling will be used. The automatic settling behavior varies by device." 
+      "description": "Time in microseconds to allow signals to settle after switching the mux. Does not apply to the 1st channel in the scan list, as that settling is controlled by scan rate (the time from the last channel until the start of the next scan). Default=0. When set to less than 1, automatic settling will be used. The automatic settling behavior varies by device." 
     },
     {
       "address": 4010,
@@ -523,7 +523,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["STREAM"],
-      "description": "Size of the stream data buffer in bytes. A value of 0 equates to the default value.  Must be a power of 2, as it takes 2 bytes to hold 1 sample. Size in samples is STREAM_BUFFER_SIZE_BYTES/2.  Size in scans is (STREAM_BUFFER_SIZE_BYTES/2)/STREAM_NUM_ADDRESSES. Changes while stream is running do not affect the currently running stream."
+      "description": "Size of the stream data buffer in bytes. A value of 0 equates to the default value.  Must be a power of 2. Size in samples is STREAM_BUFFER_SIZE_BYTES/2.  Size in scans is (STREAM_BUFFER_SIZE_BYTES/2)/STREAM_NUM_ADDRESSES. Changes while stream is running do not affect the currently running stream."
     },
     {
       "address": 4014,
@@ -643,7 +643,7 @@
           "fwmin": 1.0012
         },
         {
-            "device": "T4"
+          "device": "T4"
         }
       ],
       "readwrite": "R",
@@ -661,7 +661,7 @@
           "fwmin": 1.0012
         },
         {
-            "device": "T4"
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -679,7 +679,7 @@
           "fwmin": 0.93
         },
         {
-            "device": "T4"
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -698,7 +698,7 @@
           "fwmin": 0.93
         },
         {
-            "device": "T4"
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -717,7 +717,7 @@
           "fwmin": 0.93
         },
         {
-            "device": "T4"
+          "device": "T4"
         }
       ],
       "readwrite": "W",
@@ -735,7 +735,7 @@
           "fwmin": 0.93
         },
         {
-            "device": "T4"
+          "device": "T4"
         }
       ],
       "readwrite": "R",
@@ -753,7 +753,7 @@
           "fwmin": 0.93
         },
         {
-            "device": "T4"
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
@@ -773,7 +773,7 @@
           "fwmin": 0.93
         },
         {
-            "device": "T4"
+          "device": "T4"
         }
       ],
       "readwrite": "W",
@@ -792,7 +792,7 @@
           "fwmin": 0.93
         },
         {
-            "device": "T4"
+          "device": "T4"
         }
       ],
       "readwrite": "W",
@@ -811,7 +811,7 @@
           "fwmin": 0.93
         },
         {
-            "device": "T4"
+          "device": "T4"
         }
       ],
       "readwrite": "W",
@@ -841,7 +841,7 @@
           "fwmin": 1.0071
         },
         {
-            "device": "T4"
+          "device": "T4"
         }
       ],
       "readwrite": "R",
@@ -859,12 +859,12 @@
           "fwmin": 0.9421
         },
         {
-            "device": "T4"
+          "device": "T4"
         }
       ],
       "readwrite": "RW",
       "tags": ["STREAM"],
-      "description": "Write 1 to start stream. Write 0 to stop stream.",
+      "description": "Write 1 to start stream. Write 0 to stop stream. Reading this register returns 1 is stream is enabled. When using a triggered stream the stream is considered enabled while waiting for the trigger.",
       "usesRAM": true
     },
     {
@@ -3076,7 +3076,7 @@
         },
         {
           "device": "T4",
-          "fwmin": 1.1
+          "fwmin": 1.0008
         }
       ],
       "readwrite": "RW",
@@ -6115,7 +6115,7 @@
     {
       "error": 1306,
       "string": "LJME_SYNCHRONIZATION_TIMEOUT",
-      "description": "LJM did not receive data from the stream for long enough that reading from the LJM buffer timed out."
+      "description": "LJM did not receive data from the device for longer than the timeout specified by LJM_STREAM_RECEIVE_TIMEOUT_MS. Externally clocked stream setup is described here: http://labjack.com/support/software/api/ljm/function-reference/ljmestreamstart#externally-clocked"
     },
     {
       "error": 1307,
@@ -6166,6 +6166,11 @@
       "error": 1317,
       "string": "LJME_AUTO_IPS_FILE_INVALID",
       "description": "The LJM auto IPs file contents were not valid."
+    },
+    {
+      "error": 1318,
+      "string": "LJME_INVALID_INTERVAL_HANDLE",
+      "description": "The given interval handle did not exist."
     },
     {
       "error": 2300,
@@ -6545,6 +6550,11 @@
       "error": 2565,
       "string": "EF_VALUE_GREATER_THAN_PERIOD",
       "description": "Value specified is greater than clock source roll value."
+    },
+    {
+      "error": 2566,
+      "string": "EF_CAN_NOT_CAHNGE_INDEX_WHILE_ENALBED",
+      "description": "The index of a DIO_EF can not be changed while that DIO_EF is enabled."
     },
     {
       "error": 2580,
@@ -7389,6 +7399,7 @@
     "2017.10.25.A   Added descriptions for the AIN#(0:13)_EF_CONFIG_x and AIN#(0:13)_EF_READ_x registers.",
     "2017.11.28.A   Updated descriptions for TEMPERATURE_AIR_K and TEMPERATURE_DEVICE_K.",
     "2017.12.08.A   Added registers 2990 and 2991; LED control.",
+    "2018.03.29.A   Added error codes EF_CAN_NOT_CAHNGE_INDEX_WHILE_ENALBED and LJME_INVALID_INTERVAL_HANDLE. Various descriptions, fwmins, and readwrites.",
     "End Of Comments"
   ]
 }
