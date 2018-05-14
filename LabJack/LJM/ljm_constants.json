@@ -6313,7 +6313,7 @@
     {
       "error": 2375,
       "string": "AIN_RESOLUTION_INVALID",
-      "description": "Selected resoluion is invalid. Valid range is 0-5 for T4 and 0-12 for T7."
+      "description": "Selected resolution is invalid. Valid range is 0-5 for T4 and 0-12 for T7."
     },
     {
       "error": 2380,
@@ -6418,7 +6418,7 @@
     {
       "error": 2451,
       "string": "POWER_USB_NEEDS_20MHZ_OR_MORE",
-      "description": "Core must be running at at least 20MHz for USB to operate."
+      "description": "Core must be running at 20MHz minimum for USB to operate."
     },
     {
       "error": 2452,
