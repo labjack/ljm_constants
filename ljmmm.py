@@ -356,6 +356,7 @@ def parse_register_data(raw_register_dict, expand_names=False,
     description = apply_anchors(raw_register_dict.get("description", ""))
     default = raw_register_dict.get("default", None)
     streamable = raw_register_dict.get("streamable", False)
+    usesRAM = raw_register_dict.get("usesRAM", False)
     isBuffer = raw_register_dict.get("isBuffer", False)
     constants = raw_register_dict.get("constants", [])
     altnames = raw_register_dict.get("altnames", [])
@@ -386,6 +387,7 @@ def parse_register_data(raw_register_dict, expand_names=False,
                 "description": description,
                 "default": default,
                 "streamable": streamable,
+                "usesRAM" : usesRAM,
                 "isBuffer": isBuffer,
                 "constants": constants,
                 "altnames": inner_altnames,
