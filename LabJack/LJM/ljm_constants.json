@@ -1,7 +1,7 @@
 {
   "header": {
     "filename": "ljm_constants.json",
-    "version": "2017.12.08.A",
+    "version": "2018.06.06.A",
     "checksum": "-1",
     "support_url": "https://labjack.com/support/modbus",
     "tags_base_url": "https://labjack.com/support/modbus"
@@ -1224,7 +1224,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["ONEWIRE"],
-      "description": "Controls advanced features. Value is a bitmask. bit 0: reserved, bit 1: reserved, bit 2: 1=DPU Enabled 0=DPU Disabled, bit 3: DPU Polarity 1=Active state is high, 2=Active state is low (Dynamic Pull-Up)"
+      "description": "Controls advanced features. Value is a bitmask. bit 0: reserved, bit 1: reserved, bit 2: 1=DPU Enabled 0=DPU Disabled, bit 3: DPU Polarity 1=Active state is high, 0=Active state is low (Dynamic Pull-Up)"
     },
     {
       "address": 5307,
@@ -2207,7 +2207,7 @@
         }
       ],
       "readwrite": "RW",
-      "default": 0,
+      "default": 65516,
       "tags": ["TDAC"],
       "description": "Sets the I2C clock speed that will be used when communicating with the TDAC. Default value is 65516. See I2C_SPEED_THROTTLE for more detail."
     },
@@ -7400,6 +7400,8 @@
     "2017.11.28.A   Updated descriptions for TEMPERATURE_AIR_K and TEMPERATURE_DEVICE_K.",
     "2017.12.08.A   Added registers 2990 and 2991; LED control.",
     "2018.03.29.A   Added error codes EF_CAN_NOT_CAHNGE_INDEX_WHILE_ENALBED and LJME_INVALID_INTERVAL_HANDLE. Various descriptions, fwmins, and readwrites.",
+    "2015.05.21.A   Fixed incorrect description in ONEWIRE_OPTIONS.",
+    "2018.06.06.A   Fixed TDAC_SPEED_THROTTLE default.",
     "End Of Comments"
   ]
 }
