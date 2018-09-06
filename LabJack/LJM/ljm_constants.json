@@ -1,7 +1,7 @@
 {
   "header": {
     "filename": "ljm_constants.json",
-    "version": "2018.08.29.A",
+    "version": "2018.09.06.A",
     "checksum": "-1",
     "support_url": "https://labjack.com/support/modbus",
     "tags_base_url": "https://labjack.com/support/modbus"
@@ -4445,7 +4445,7 @@
       ],
       "readwrite": "W",
       "tags": ["FILE_IO"],
-      "description": "Write any value to this register to initiate iteration through files and directories in the CWD. Typical sequence: FILE_IO_DIR_FIRST(W), [FILE_IO_NAME_READ_LEN(R), FILE_IO_NAME_READ(R), FILE_IO_ATTRIBUTES(R), FILE_IO_SIZE_BYTES(R), FILE_IO_DIR_NEXT(W)] ..until error 8809."
+      "description": "Write any value to this register to initiate iteration through files and directories in the CWD. Typical sequence: FILE_IO_DIR_FIRST(W), then loop through: [FILE_IO_NAME_READ_LEN(R), FILE_IO_NAME_READ(R), FILE_IO_ATTRIBUTES(R), FILE_IO_SIZE_BYTES(R), FILE_IO_DIR_NEXT(W)] ..until any of the following error8FILE_IO_END_OF_CWD (2966), FILE_IO_INVALID_OBJECT (2809), or FILE_IO_NOT_FOUND (2960)."
     },
     {
       "address": 60611,
@@ -7195,8 +7195,6 @@
   ],
 
   "comments": [
-    "Use jslint.com to check validity of this JSON file after every change.",
-    "Try to go for noun_adjective_verb in register names.",
     "2013.01.28.A:  Removed plurals on port and all digital register names.",
     "2013.01.30.A:  Added this comments section at bottom.  Changed neg=>negative, res=>resolution, set=>settling.  Changed dio_all to just dio.",
     "2013.02.01.A:  Added DF constants to beta section.",
@@ -7400,6 +7398,7 @@
     "2015.05.21.A   Fixed incorrect description in ONEWIRE_OPTIONS.",
     "2018.06.06.A   Fixed TDAC_SPEED_THROTTLE default.",
     "2018.08.29.A   Removed erroneous T4 support of STREAM_CLOCK_SOURCE.",
+    "2018.09.06.A   Updated FILE_IO_DIR_FIRST description.",
     "End Of Comments"
   ]
 }
