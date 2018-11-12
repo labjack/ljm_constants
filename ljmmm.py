@@ -267,12 +267,12 @@ def apply_anchors(text):
         #     raise ValueError('expected to find URL %s in text %s' % (url, text))
         parts = string.split(text, url, 1)
         text = parts[0] + (
-            '<a target="_blank" href="%s">'
-            '%s'
-            '</a>'
-            '<img '
-            'style="margin-right: -1;" '
-            'src="https://ljsimpleregisterlookup.herokuapp.com/static/images/ui-icons-extlink.png" />'
+            "<a target='_blank' href='%s'>"
+            "%s"
+            "</a>"
+            "<img "
+            "style='margin-right: -1;' "
+            "src='https://ljsimpleregisterlookup.herokuapp.com/static/images/ui-icons-extlink.png' />"
         )  % (url, url) + parts[1]
 
 
