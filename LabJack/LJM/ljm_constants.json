@@ -7193,6 +7193,28 @@
       "description": "There are no more files in the current working directory."
     }
   ],
+  "tag_mappings":[
+    {  
+       "AIN":"/support/datasheets/t-series/ain",
+       "AIN_EF":"/support/datasheets/t-series/ain/extended-features",
+       "ASYNCH":"/support/datasheets/t-series/digital-io/asynchronous-serial",
+       "DAC":"/support/datasheets/t-series/dac",
+       "DIO":"/support/datasheets/t-series/digital-io/extended-features",
+       "DIO_EF":"/support/datasheets/t-series/digital-io/extended-features",
+       "ETHERNET":"/support/datasheets/t-series/ethernet",
+       "FILE_IO":"/support/datasheets/t-series/sd-card",
+       "I2C":"/support/datasheets/t-series/digital-io/i2c",
+       "LUA":"/support/datasheets/t-series/lua-scripting",
+       "ONEWIRE":"/support/datasheets/t-series/digital-io/1-wire",
+       "RTC":"/support/datasheets/t-series/rtc",
+       "SBUS":"/support/datasheets/t-series/digital-io/sbus",
+       "SPI":"/support/datasheets/t-series/digital-io/spi",
+       "TDAC":"/support/datasheets/t-series/appendix-c-2",
+       "USER_RAM":"/support/datasheets/t-series/hardware-overview/ram",
+       "WATCHDOG":"/support/datasheets/t-series/watchdog",
+       "WIFI":"/support/datasheets/t-series/wifi"
+    }
+  ],
 
   "comments": [
     "2013.01.28.A:  Removed plurals on port and all digital register names.",
