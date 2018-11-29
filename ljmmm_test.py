@@ -255,7 +255,9 @@ class LJMMMTests(unittest.TestCase):
             expand_names = False
         )
 
-        self.assertIterableContentsEqual(expected, result)
+        self.assertEqual(1, len(expected))
+        self.assertEqual(1, len(result))
+        self.assertTrue(cmp(expected[0], result[0]))
 
 
     def test_description_with_dots_should_not_yield_links(self):
