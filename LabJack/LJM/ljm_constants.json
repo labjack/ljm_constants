@@ -2033,7 +2033,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["AIN_EF", "AIN"],
-      "description": "Specify the desired extended feature for this analog input with the index value. List of index values: 0=None(disabled);</br> 1=Offset and Slope;</br> 3=Max/Min/Avg;</br> 4=Resistance;</br> 5=Average and Threshold;</br> 10=RMS Flex;</br> 11=FlexRMS;</br> 20=Thermocouple type E;</br> 21=Thermocouple type J;</br> 22=Thermocouple type K;</br> 23=Thermocouple type R;</br> 24=Thermocouple type T;</br> 25=Thermocouple type S;</br> 30=Thermocouple type C;</br> 40=RTD model PT100;</br> 41=RTD model PT500;</br> 42=RTD model PT1000.",
+      "description": "Specify the desired extended feature for this analog input with the index value. List of index values: 0=None(disabled); 1=Offset and Slope; 3=Max/Min/Avg; 4=Resistance; 5=Average and Threshold; 10=RMS Flex; 11=FlexRMS; 20=Thermocouple type E; 21=Thermocouple type J; 22=Thermocouple type K; 23=Thermocouple type R; 24=Thermocouple type T; 25=Thermocouple type S; 30=Thermocouple type C; 40=RTD model PT100; 41=RTD model PT500; 42=RTD model PT1000.",
       "usesRAM": true
     },
     {
@@ -5891,17 +5891,17 @@
     {
       "error": 1243,
       "string": "LJME_U3_NOT_SUPPORTED_BY_LJM",
-      "description": "LJM does not support UD-series LabJack devices;</br> use the UD driver (https://labjack.com/support/ud)"
+      "description": "LJM does not support UD-series LabJack devices; use the UD driver (https://labjack.com/support/ud)"
     },
     {
       "error": 1246,
       "string": "LJME_U6_NOT_SUPPORTED_BY_LJM",
-      "description": "LJM does not support UD-series LabJack devices;</br> use the UD driver (https://labjack.com/support/ud)"
+      "description": "LJM does not support UD-series LabJack devices; use the UD driver (https://labjack.com/support/ud)"
     },
     {
       "error": 1249,
       "string": "LJME_UE9_NOT_SUPPORTED_BY_LJM",
-      "description": "LJM does not support UD-series LabJack devices;</br> use the UD driver (https://labjack.com/support/ud)"
+      "description": "LJM does not support UD-series LabJack devices; use the UD driver (https://labjack.com/support/ud)"
     },
     {
       "error": 1250,
@@ -7255,28 +7255,6 @@
       "error": 2966,
       "string": "FILE_IO_END_OF_CWD",
       "description": "There are no more files in the current working directory."
-    }
-  ],
-  "tag_mappings":[
-    {  
-       "AIN":"/support/datasheets/t-series/ain",
-       "AIN_EF":"/support/datasheets/t-series/ain/extended-features",
-       "ASYNCH":"/support/datasheets/t-series/digital-io/asynchronous-serial",
-       "DAC":"/support/datasheets/t-series/dac",
-       "DIO":"/support/datasheets/t-series/digital-io/extended-features",
-       "DIO_EF":"/support/datasheets/t-series/digital-io/extended-features",
-       "ETHERNET":"/support/datasheets/t-series/ethernet",
-       "FILE_IO":"/support/datasheets/t-series/sd-card",
-       "I2C":"/support/datasheets/t-series/digital-io/i2c",
-       "LUA":"/support/datasheets/t-series/lua-scripting",
-       "ONEWIRE":"/support/datasheets/t-series/digital-io/1-wire",
-       "RTC":"/support/datasheets/t-series/rtc",
-       "SBUS":"/support/datasheets/t-series/digital-io/sbus",
-       "SPI":"/support/datasheets/t-series/digital-io/spi",
-       "TDAC":"/support/datasheets/t-series/appendix-c-2",
-       "USER_RAM":"/support/datasheets/t-series/hardware-overview/ram",
-       "WATCHDOG":"/support/datasheets/t-series/watchdog",
-       "WIFI":"/support/datasheets/t-series/wifi"
     }
   ],
 
