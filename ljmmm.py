@@ -60,7 +60,7 @@ URL_REGEX += r'(?::(\d{1,5}))?'
 URL_REGEX += r'(?:(\/\S+)*)'
 URL_REGEX += r')'
 FIND_URLS = re.compile(URL_REGEX, re.IGNORECASE)
-FIND_ENDING_PUNCTUATION = re.compile('.*([.,;])$')
+FIND_ENDING_PUNCTUATION = re.compile(r'.*([.,;\)])$')
 
 def read_file(src):
     """Read a file and return the contents."""
