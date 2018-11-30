@@ -93,6 +93,7 @@ class LJMMMTests(unittest.TestCase):
                 "default": None,
                 "isBuffer": False,
                 "altnames": ["DIO0", "TEST0"],
+                'usesRAM': False,
             },
             {
                 "address": 2001,
@@ -113,6 +114,7 @@ class LJMMMTests(unittest.TestCase):
                 "default": None,
                 "isBuffer": False,
                 "altnames": ["DIO1", "TEST1"],
+                'usesRAM': False,
             },
             {
                 "address": 2002,
@@ -133,6 +135,7 @@ class LJMMMTests(unittest.TestCase):
                 "default": None,
                 "isBuffer": False,
                 "altnames": ["DIO2", "TEST2"],
+                'usesRAM': False,
             },
         ]
 
@@ -150,7 +153,8 @@ class LJMMMTests(unittest.TestCase):
                 "readwrite":"RW",
                 "tags":["DIO"],
                 "altnames":["DIO#(0:2)", "TEST#(0:2)"],
-                "description": "test"
+                "description": "test",
+                'usesRAM': False
             },
             expand_names = True
         )
@@ -175,6 +179,7 @@ class LJMMMTests(unittest.TestCase):
                 "default": None,
                 "isBuffer": True,
                 "altnames": ["SPI_DATA_WRITE"],
+                'usesRAM': False,
             },
         ]
 
@@ -191,6 +196,7 @@ class LJMMMTests(unittest.TestCase):
                 "altnames":["SPI_DATA_WRITE"],
                 "description": "test",
                 "isBuffer": True,
+                'usesRAM': False,
             },
             expand_names = False
         )
@@ -225,6 +231,7 @@ class LJMMMTests(unittest.TestCase):
                 "default": None,
                 "isBuffer": False,
                 "altnames": ["DIO#(0:2)", "TEST#(0:2)"],
+                'usesRAM': False,
             },
         ]
 
@@ -242,12 +249,15 @@ class LJMMMTests(unittest.TestCase):
                 "readwrite":"RW",
                 "tags":["DIO"],
                 "altnames":["DIO#(0:2)", "TEST#(0:2)"],
-                "description": "test https://labjack.com/support/. http://imgur.com/gallery/zwK7XG6, end."
+                "description": "test https://labjack.com/support/. http://imgur.com/gallery/zwK7XG6, end.",
+                'usesRAM': False
             },
             expand_names = False
         )
 
-        self.assertIterableContentsEqual(expected, result)
+        self.assertEqual(1, len(expected))
+        self.assertEqual(1, len(result))
+        self.assertTrue(cmp(expected[0], result[0]))
 
 
     def test_description_with_dots_should_not_yield_links(self):
@@ -267,6 +277,7 @@ class LJMMMTests(unittest.TestCase):
             "default": None,
             "isBuffer": False,
             "altnames": [],
+            'usesRAM': False,
         }]
 
         result = ljmmm.parse_register_data({
@@ -331,7 +342,8 @@ class LJMMMTests(unittest.TestCase):
                         'address': 2990,
                         'type': 'UINT16',
                         'isBuffer': False,
-                        'name': 'LED_COMM'
+                        'name': 'LED_COMM',
+                        'usesRAM': False,
                     }
                 )
             ],
@@ -372,7 +384,8 @@ class LJMMMTests(unittest.TestCase):
                         'address': 2990,
                         'type': 'UINT16',
                         'isBuffer': False,
-                        'name': 'LED_COMM'
+                        'name': 'LED_COMM',
+                        'usesRAM': False,
                     }
                 )
             ]

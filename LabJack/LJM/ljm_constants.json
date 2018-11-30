@@ -1,10 +1,34 @@
 {
   "header": {
     "filename": "ljm_constants.json",
-    "version": "2018.09.06.A",
+    "version": "2018.11.30.A",
     "checksum": "-1",
     "support_url": "https://labjack.com/support/modbus",
     "tags_base_url": "https://labjack.com/support/modbus"
+  },
+
+  "tag_mappings": {
+    "AIN":                "/support/datasheets/t-series/ain",
+    "AIN_EF":             "/support/datasheets/t-series/ain/extended-features",
+    "ASYNCH":             "/support/datasheets/t-series/digital-io/asynchronous-serial",
+    "DAC":                "/support/datasheets/t-series/dac",
+    "DIO":                "/support/datasheets/t-series/digital-io/extended-features",
+    "DIO_EF":             "/support/datasheets/t-series/digital-io/extended-features",
+    "ETHERNET":           "/support/datasheets/t-series/ethernet",
+    "FILE_IO":            "/support/datasheets/t-series/sd-card",
+    "I2C":                "/support/datasheets/t-series/digital-io/i2c",
+    "INTFLASH":           "/support/datasheets/t-series/internal-flash",
+    "LUA":                "/support/datasheets/t-series/lua-scripting",
+    "ONEWIRE":            "/support/datasheets/t-series/digital-io/1-wire",
+    "RTC":                "/support/datasheets/t-series/rtc",
+    "SBUS":               "/support/datasheets/t-series/digital-io/sbus",
+    "SPI":                "/support/datasheets/t-series/digital-io/spi",
+    "STREAM":             "/support/datasheets/t-series/communication/stream-mode",
+    "TDAC":               "/support/datasheets/t-series/appendix-c-2",
+    "UART":               "/support/datasheets/t-series/digital-io/asynchronous-serial",
+    "USER_RAM":           "/support/datasheets/t-series/hardware-overview/ram",
+    "WATCHDOG":           "/support/datasheets/t-series/watchdog",
+    "WIFI":               "/support/datasheets/t-series/wifi"
   },
 
   "registers": [
@@ -618,6 +642,21 @@
       "description": "When stream is started the value of CORE_TIMER will be saved to this register. The first stream scan occurs one scan period after the time reported by this register."
     },
     {
+      "address": 4028,
+      "name": "STREAM_AUTORECOVER_DISABLE",
+      "type": "UINT32",
+      "devices": [
+        {
+          "device": "T7",
+          "fwmin": 1.0260
+        }
+      ],
+      "readwrite": "RW",
+      "default": 0,
+      "tags": ["STREAM"],
+      "description": "When the stream buffer becomes full the stream will be stopped. Same behavior as if STREAM_ENABLE is set to zero."
+    },
+    {
       "address": 4100,
       "name": "STREAM_SCANLIST_ADDRESS#(0:127)",
       "type": "UINT32",
@@ -683,7 +722,7 @@
       "default": 0,
       "tags": ["STREAM"],
       "altnames": ["STREAM_OUT#(0:3)_BUFFER_SIZE"],
-      "description": "Size of the buffer in bytes as a power of 2. Should be at least twice the size of updates that will be written. Before writing data to _BUFFER_###, you must write to _BUFFER_ALLOCATE_NUM_BYTES to allocate RAM for the data. Max is 16384."
+      "description": "Size of the buffer in bytes as a power of 2. Should be at least twice the size of updates that will be written and no less than 32. Before writing data to _BUFFER_###, you must write to _BUFFER_ALLOCATE_NUM_BYTES to allocate RAM for the data. Max is 16384."
     },
     {
       "address": 4060,
@@ -847,6 +886,21 @@
       "description": "If a channel produces 32-bits of data the upper 16 will be saved here."
     },
     {
+      "address": 4898,
+      "name": "STREAM_DEBUG_GET_SELF_INDEX",
+      "type": "UINT32",
+      "devices": [
+        {
+          "device": "T7",
+          "fwmin": 1.0254
+        }
+      ],
+      "readwrite": "RW",
+      "tags": ["STREAM"],
+      "streamable": true,
+      "description": "Returns the index of the channel. The index is the position in the scan list that the channel occupies."
+    },
+    {
       "address": 4990,
       "name": "STREAM_ENABLE",
       "type": "UINT32",
@@ -861,7 +915,7 @@
       ],
       "readwrite": "RW",
       "tags": ["STREAM"],
-      "description": "Write 1 to start stream. Write 0 to stop stream. Reading this register returns 1 is stream is enabled. When using a triggered stream the stream is considered enabled while waiting for the trigger.",
+      "description": "Write 1 to start stream. Write 0 to stop stream. Reading this register returns 1 when stream is enabled. When using a triggered stream the stream is considered enabled while waiting for the trigger.",
       "usesRAM": true
     },
     {
@@ -6170,6 +6224,11 @@
       "description": "The given interval handle did not exist."
     },
     {
+      "error": 1319,
+      "string": "LJME_NAMED_MUTEX_PERMISSION_DENIED",
+      "description": "There was a permission error while accessing a system-level named mutex. Try restarting your computer."
+    },
+    {
       "error": 2300,
       "string": "MODBUS_RSP_OVERFLOW",
       "description": "Response packet greater than max packet size."
@@ -6550,7 +6609,7 @@
     },
     {
       "error": 2566,
-      "string": "EF_CAN_NOT_CAHNGE_INDEX_WHILE_ENALBED",
+      "string": "EF_CAN_NOT_CHANGE_INDEX_WHILE_ENABLED",
       "description": "The index of a DIO_EF can not be changed while that DIO_EF is enabled."
     },
     {
@@ -7154,6 +7213,11 @@
       "string": "STREAM_BURST_COMPLETE"
     },
     {
+      "error": 2945,
+      "string": "STREAM_BUFFER_FULL",
+      "description": "Stream buffer filled up while autorecover was disabled. Stream stopped."
+    },
+    {
       "error": 2950,
       "string": "SELFDIAG_MAIN_OSC_FAIL"
     },
@@ -7416,11 +7480,15 @@
     "2017.10.25.A   Added descriptions for the AIN#(0:13)_EF_CONFIG_x and AIN#(0:13)_EF_READ_x registers.",
     "2017.11.28.A   Updated descriptions for TEMPERATURE_AIR_K and TEMPERATURE_DEVICE_K.",
     "2017.12.08.A   Added registers 2990 and 2991; LED control.",
-    "2018.03.29.A   Added error codes EF_CAN_NOT_CAHNGE_INDEX_WHILE_ENALBED and LJME_INVALID_INTERVAL_HANDLE. Various descriptions, fwmins, and readwrites.",
+    "2018.03.29.A   Added error codes EF_CAN_NOT_CHANGE_INDEX_WHILE_ENABLED and LJME_INVALID_INTERVAL_HANDLE. Various descriptions, fwmins, and readwrites.",
     "2015.05.21.A   Fixed incorrect description in ONEWIRE_OPTIONS.",
     "2018.06.06.A   Fixed TDAC_SPEED_THROTTLE default.",
     "2018.08.29.A   Removed erroneous T4 support of STREAM_CLOCK_SOURCE.",
     "2018.09.06.A   Updated FILE_IO_DIR_FIRST description.",
+    "2018.09.13.A   Updated description of Stream-Out buffer size allocation.",
+    "2018.11.08.A   Added STREAM_BUFFER_FULL AND STREAM_AUTORECOVER_DISABLE.",
+    "2018.11.29.A   Updated STREAM_DEBUG_GET_SELF_INDEX description.",
+    "2018.11.30.A   Added tag_mappings.",
     "End Of Comments"
   ]
 }
