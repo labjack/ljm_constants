@@ -1,7 +1,7 @@
 {
   "header": {
     "filename": "ljm_constants.json",
-    "version": "2018.11.30.A",
+    "version": "2019.02.08.A",
     "checksum": "-1",
     "support_url": "https://labjack.com/support/modbus",
     "tags_base_url": "https://labjack.com/support/modbus"
@@ -2440,7 +2440,7 @@
         },
         {
           "device": "T4",
-          "description": "Valid values/ranges:  0.0=Default=> 0-2.5 V on LV lines and ±10 V on HV lines."
+          "description": "Valid values/ranges:  0.0=Default=> 0-2.5 V on LV lines and Â±10 V on HV lines."
         }
       ],
       "readwrite": "RW",
@@ -6664,6 +6664,11 @@
       "description": "The data collection time (number of samples / scan_rate) is too big. Limit is set to 180 ms as of firmware 1.0170 "
     },
     {
+      "error": 2591,
+      "string": "AIN_EF_INVALID_EXCITATION_INDEX",
+      "description": "The set excitation circuit is not valid, use a different excitation circuit."
+    },
+    {
       "error": 2600,
       "string": "STREAM_NEED_AT_LEAST_ONE_CHN",
       "description": "The list of channels to stream is empty."
@@ -7468,6 +7473,7 @@
     "2018.11.29.A   Updated STREAM_DEBUG_GET_SELF_INDEX description.",
     "2018.11.30.A   Added tag_mappings.",
     "2018.12.05.A   Added <br>s to descriptions.",
+    "2019.02.08.A   Added a missing error code for T4 AIN_EF features.",
     "End Of Comments"
   ]
 }
