@@ -6229,6 +6229,16 @@
       "description": "There was a permission error while accessing a system-level named mutex. Try restarting your computer."
     },
     {
+      "error": 1320,
+      "string": "LJME_DIGITAL_AUTO_RECOVERY_ERROR_DETECTED",
+      "description": "During stream, the device buffer overflowed, causing auto-recovery to occur. See labjack.com/digital-auto-recovery-error-detection."
+    },
+    {
+      "error": 1321,
+      "string": "LJME_NEGATIVE_RECEIVE_BUFFER_SIZE",
+      "description": "During stream, the receive buffer size was negative. This is probably because LJM_STREAM_TCP_RECEIVE_BUFFER_SIZE was set to too large a number to be represented by the signed data type being used, int. Solution: Use a smaller LJM_STREAM_TCP_RECEIVE_BUFFER_SIZE."
+    },
+    {
       "error": 2300,
       "string": "MODBUS_RSP_OVERFLOW",
       "description": "Response packet greater than max packet size."
