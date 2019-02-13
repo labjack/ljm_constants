@@ -569,3 +569,8 @@ def get_errors(src=DEFAULT_FILE_NAME):
     """Load LJM and LJM-supported-device errors."""
     contents = read_file(src)
     return json.loads(contents)["errors"]
+
+def get_tag_mappings(src=DEFAULT_FILE_NAME):
+    """Load LJM and LJM-supported-tag mappings."""
+    contents = read_file(src)
+    return json.loads(contents)["tag_mappings"]
