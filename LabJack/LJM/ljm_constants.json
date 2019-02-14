@@ -5889,6 +5889,16 @@
       "description": "The device could not be contacted. LJM is configured to heal device connections and the reconnection attempt failed."
     },
     {
+      "error": 1240,
+      "string": "LJME_CONNECTION_HAS_YIELDED_RECONNECT_FAILED",
+      "description": "The device connection was yielded to another process and now cannot be contacted."
+    },
+    {
+      "error": 1241,
+      "string": "LJME_USB_FAILURE",
+      "description": "System USB communication failed fatally."
+    },
+    {
       "error": 1243,
       "string": "LJME_U3_NOT_SUPPORTED_BY_LJM",
       "description": "LJM does not support UD-series LabJack devices; use the UD driver (https://labjack.com/support/ud)"
