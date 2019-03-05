@@ -406,27 +406,6 @@ def parse_register_data(raw_register_dict, expand_names=False,
     return ret_list
 
 
-def interpret_tags(tags, tags_base_url='http://labjack.com/support/modbus/tags'):
-    """Converts a list of valid tag names into a list of html links.
-
-    Converts a list of valid tag names into a list of html links. For
-    example, interpret_tags(["AIN", "CONFIG"], 'labjack.com/path/to/tags/')
-    could become something like:
-    [
-        "<a class='tag-link' href='labjack.com/path/to/tags/AIN>AIN</a>",
-        "<a class='tag-link' href='labjack.com/path/to/tags/CONFIG>CONFIG</a>"
-    ]
-
-    @keyword tags: The list of tags to convert into links
-    @type tags: list of str
-    @keyword tags_base_url: The base url used to create the links
-    @type tags_base_url: str
-    @return: list of str html links
-    """
-    return map(lambda x: "<a class=\'tag-link\' href=" + tags_base_url +
-                "/" + x + ">" + x + "</a>", tags)
-
-
 def get_registers_data(src=DEFAULT_FILE_NAME, expand_names=False,
     inc_orig=False, expand_alt_names=False):
     """Load and parse information about registers from JSON constants file.
