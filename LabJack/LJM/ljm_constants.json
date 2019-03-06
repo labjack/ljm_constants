@@ -6820,6 +6820,11 @@
       "description": "The high resolution converter can not be used while stream out is used to update a DAC."
     },
     {
+      "error": 2627,
+      "string": "STREAM_OUT_NEEDS_TO_BE_ENABLED",
+      "description": "The STREAM_OUT#_ENABLE register must be set to 1 before writing STREAM_OUT#_LOOP_NUM_VALUES, STREAM_OUT#_SET_LOOP, or any of the STREAM_OUT#_BUFFER_ registers."
+    },
+    {
       "error": 2670,
       "string": "SWDT_ROLLT_INVALID"
     },
@@ -7494,6 +7499,7 @@
     "2018.11.30.A   Added tag_mappings.",
     "2018.12.05.A   Added <br>s to descriptions.",
     "2019.02.08.A   Added a missing error code for T4 AIN_EF features.",
+    "2019.03.06.A   Added an error code STREAM_OUT_NEEDS_TO_BE_ENABLED.",
     "End Of Comments"
   ]
 }
