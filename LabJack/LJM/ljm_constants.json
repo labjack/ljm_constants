@@ -795,8 +795,12 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["STREAM"],
-      "description": "Write 1 to enable, 0 to disable.  When enabled, you get 1 update per target per stream scan, so a stream must be active for updates to happen.",
-      "usesRAM": true
+      "description": "When STREAM_OUT#_ENABLE is enabled, the stream out target is generally updated by one value from the stream out buffer per stream scan. For example, there will generally be one instance of e.g. STREAM_OUT0 in the stream scan list, which will cause one STREAM_OUT0_BUFFER value to be consumed and written to STREAM_OUT0_TARGET for every stream scan. The stream scan list could also contain two instances of STREAM_OUT0, in which case two values from STREAM_OUT0_BUFFER value would be consumed and written for every stream scan.",
+      "usesRAM": true,
+      "constants": [
+        {"value": 0, "name": "DISABLED"},
+        {"value": 1, "name": "ENABLED"}
+      ]
     },
     {
       "address": 4400,
