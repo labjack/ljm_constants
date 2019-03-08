@@ -6595,8 +6595,8 @@
     },
     {
       "error": 2558,
-      "string": "EF_32BIT_REQUIRES_BOTH_CNT0and1",
-      "description": "Both counter 1 and counter 2 must be disabled before enabling counter 0."
+      "string": "EF_32BIT_REQUIRES_BOTH_CLOCK0and1",
+      "description": "Both Clock_Source 1 and Clock_Source 2 must be disabled before enabling Clock_Source 0."
     },
     {
       "error": 2559,
