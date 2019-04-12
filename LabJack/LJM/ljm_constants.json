@@ -6180,7 +6180,7 @@
     {
       "error": 1306,
       "string": "LJME_SYNCHRONIZATION_TIMEOUT",
-      "description": "LJM did not receive data from the device for longer than the timeout specified by LJM_STREAM_RECEIVE_TIMEOUT_MS. Externally clocked stream setup is described here: http://labjack.com/support/software/api/ljm/function-reference/ljmestreamstart#externally-clocked"
+      "description": "LJM did not receive data from the device for longer than the timeout specified by LJM_STREAM_RECEIVE_TIMEOUT_MS. Externally clocked stream setup is described here: https://labjack.com/support/software/api/ljm/function-reference/ljmestreamstart#externally-clocked"
     },
     {
       "error": 1307,
