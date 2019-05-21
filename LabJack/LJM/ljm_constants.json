@@ -3565,7 +3565,7 @@
       ],
       "readwrite": "R",
       "tags": ["CONFIG"],
-      "streamable": true,
+      "streamable": false,
       "description": "A 10 kHz counter synchronized to RTC_TIME_S. This register can be appended to RTC_TIME_S as the decimal portion to get 0.1 ms resolution."
     },
     {
