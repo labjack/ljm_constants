@@ -639,7 +639,7 @@
       "readwrite": "R",
       "default": 0,
       "tags": ["STREAM"],
-      "description": "When stream is started the value of CORE_TIMER will be saved to this register. The first stream scan occurs one scan period after the time reported by this register."
+      "description": "This register stores the value of CORE_TIMER at the start of the first stream scan.  Note that the first stream scan happens 1 scan period after STREAM_ENABLE is set to 1."
     },
     {
       "address": 4028,
