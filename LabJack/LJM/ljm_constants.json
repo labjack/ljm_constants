@@ -4968,7 +4968,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["WATCHDOG"],
-      "description": "The inhibit mask of the digital I/O after a Watchdog timeout. See DIO_INHIBIT"
+      "description": "This register can be used to prevent the watchdog from changing specific IO. See DIO_INHIBIT for more information."
     },
     {
       "address": 61640,
