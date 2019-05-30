@@ -2222,7 +2222,7 @@
     },
     {
       "address": 30000,
-      "name": "TDAC#(0:22)",
+      "name": "TDAC#(0:21)",
       "type": "FLOAT32",
       "devices": [
         "T7",
