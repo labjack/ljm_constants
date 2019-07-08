@@ -1806,7 +1806,7 @@
           "device": "T4"
         }
       ],
-      "readwrite": "RW",
+      "readwrite": "R",
       "tags": ["LUA"],
       "description": "The number of data bytes in the debug buffer waiting to be read."
     },
@@ -1945,7 +1945,7 @@
       ],
       "readwrite": "RW",
       "tags": ["LUA"],
-      "description": "This is the value that will be loaded into LUA_DEBUG_NUM_BYTES when the LabJack boots up."
+      "description": "This is the number of bytes that will be used for the lua debug buffer."
     },
     {
       "address": 7000,
@@ -7504,6 +7504,7 @@
     "2018.12.05.A   Added <br>s to descriptions.",
     "2019.02.08.A   Added a missing error code for T4 AIN_EF features.",
     "2019.03.06.A   Added an error code STREAM_OUT_NEEDS_TO_BE_ENABLED.",
+    "2019.08.07.A   Updated details for register 6022 and 6122 (lua debugging stuff).",
     "End Of Comments"
   ]
 }
