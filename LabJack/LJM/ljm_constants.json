@@ -6155,7 +6155,7 @@
     {
       "error": 1301,
       "string": "LJME_LJM_BUFFER_FULL",
-      "description": "The LJM stream buffer was filled with stream data and stream was stopped."
+      "description": "The LJM stream buffer was filled with stream data and stream was stopped. See https://labjack.com/support/software/api/ljm/streaming-lots-of-9999-values"
     },
     {
       "error": 1302,
