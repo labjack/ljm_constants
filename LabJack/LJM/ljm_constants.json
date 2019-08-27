@@ -5853,6 +5853,11 @@
       "description": "A device matching the requested device parameters could not be found and therefore could not be opened."
     },
     {
+      "error": 1228,
+      "string": "LJME_NON_LOOPING_STREAM_OUT_NOT_INITIALIZED",
+      "description": "There was an attempt to modify a non-looping stream-out prior to its initialization."
+    },
+    {
       "error": 1229,
       "string": "LJME_DEVICE_ALREADY_OPEN",
       "description": "The device being registered was already registered. Please contact LabJack support if you've received this error."
@@ -5866,6 +5871,11 @@
       "error": 1231,
       "string": "LJME_CANNOT_CONNECT",
       "description": "At least one device matching the requested device parameters was found, but a connection could not be established."
+    },
+    {
+      "error": 1232,
+      "string": "STREAM_OUT_INDEX_OUT_OF_RANGE",
+      "description": "An invalid index value was passed to a stream-out function."
     },
     {
       "error": 1233,
@@ -5956,6 +5966,11 @@
       "error": 1257,
       "string": "LJME_INVALID_TRANSACTION_ID",
       "description": "LJM received an unexpected Modbus transaction ID."
+    },
+    {
+      "error": 1258,
+      "string": "LJME_NUM_WRITES_LARGER_THAN_AVAILABLE_SPACE",
+      "description": "LJM recieved more values to stream out than are available in the LJM write queue."
     },
     {
       "error": 1259,
