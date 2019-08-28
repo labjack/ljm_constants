@@ -6816,7 +6816,7 @@
     {
       "error": 2622,
       "string": "STREAM_OUT_LOOP_TOO_BIG",
-      "description": "Loop size to big for the current buffer size."
+      "description": "Loop size too big for the current buffer size."
     },
     {
       "error": 2623,
