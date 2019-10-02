@@ -11428,10 +11428,6 @@ static const char * const LJM_TDAC21 = "TDAC21";
 enum { LJM_TDAC21_ADDRESS = 30042 };
 enum { LJM_TDAC21_TYPE = 3 };
 
-static const char * const LJM_TDAC22 = "TDAC22";
-enum { LJM_TDAC22_ADDRESS = 30044 };
-enum { LJM_TDAC22_TYPE = 3 };
-
 static const char * const LJM_TDAC_SERIAL_NUMBER = "TDAC_SERIAL_NUMBER";
 enum { LJM_TDAC_SERIAL_NUMBER_ADDRESS = 55200 };
 enum { LJM_TDAC_SERIAL_NUMBER_TYPE = 1 };
