@@ -91,6 +91,9 @@ def shorten_reg_name(name):
     index = ""
     use_indexing = False
     between_bad_chars = False
+    if (name[0:3] == "I2C"):
+        name = name[:1] + name[2:]
+
     for i in name:
         if (i in bad_chars):
             use_indexing = True
@@ -117,12 +120,13 @@ def extract_reg_data(reg, reg_dir, conflict_dir):
     conflict_mode = 0
     #  If there were numbers in the register name
     if (index != ""):
+        index_int = int(index)
         conflict_mode = 1
         table_name = "LJM_EC_Conflict_" + short_name
         if (table_name in conflict_dir):
             conflict_dir[table_name].append(
                 {
-                    "index": index,
+                    "index": index_int,
                     "address": address,
                     "data_type": data_type,
                     "conflict_mode": conflict_mode,
@@ -135,7 +139,7 @@ def extract_reg_data(reg, reg_dir, conflict_dir):
             if (use_indexing == False):
                 conflict_dt = "0xF0"
             else:
-                conflict_dt = "0x01"
+                conflict_dt = "0x00"
             reg_dir.append(
                 {
                     "crc": crc,
@@ -148,7 +152,7 @@ def extract_reg_data(reg, reg_dir, conflict_dir):
             conflict_dir[table_name] =  []
             conflict_dir[table_name].append(
                 {
-                    "index": index,
+                    "index": index_int,
                     "address": address,
                     "data_type": data_type,
                     "conflict_mode": conflict_mode,
@@ -198,14 +202,14 @@ def print_conflict_tables(file, conflict_dir):
         i = 0
         while i < len(conflict_table):
             if (i < len(conflict_table)-1):
-                file.write("\t{%s, %d, %d, %d},\n" % (
+                file.write("\t{%d, %d, %d, %d},\n" % (
                     conflict_table[i]["index"],
                     conflict_table[i]["address"],
                     conflict_table[i]["data_type"],
                     conflict_table[i]["conflict_mode"])
                 )
             else:
-                file.write("\t{%s, %d, %d, %d}\n" % (
+                file.write("\t{%d, %d, %d, %d}\n" % (
                     conflict_table[i]["index"],
                     conflict_table[i]["address"],
                     conflict_table[i]["data_type"],
