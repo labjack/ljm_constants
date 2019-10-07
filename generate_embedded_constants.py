@@ -139,7 +139,7 @@ def extract_reg_data(reg, reg_dir, conflict_dir):
             if (use_indexing == False):
                 conflict_dt = "0xF0"
             else:
-                conflict_dt = "0x00"
+                conflict_dt = "0x01"
             reg_dir.append(
                 {
                     "crc": crc,
