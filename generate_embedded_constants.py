@@ -11,7 +11,7 @@ from labjack import ljm
 SRC_FILE = 'LabJack/LJM/ljm_constants.json'
 OUTPUT_FILE = 'gen_output/EmbeddedConstants.h'
 
-def init(file, constants_version):
+def init(file, constants_version, num_registers):
     file.write("// LabJack Embedded Constants\n")
     file.write("\n")
     file.write("#ifndef LJM_EMBEDDED_CONSTANTS_H\n")
@@ -26,7 +26,7 @@ def init(file, constants_version):
     file.write("#include \"Defines.h\"\n")
     file.write("\n")
     file.write("#define LJM_EC_version  1\n")
-    file.write("#define LJM_EC_NumRegs  17\n")
+    file.write("#define LJM_EC_NumRegs  %d\n" % num_registers)
     file.write("\n")
 
 def finish(file):
@@ -89,9 +89,11 @@ def shorten_reg_name(name):
     bad_chars = '(:)#'
     short_name = ""
     index = ""
+    use_indexing = False
     between_bad_chars = False
     for i in name:
         if (i in bad_chars):
+            use_indexing = True
             between_bad_chars = True
         if (i.isdigit()):
             # Ignore any digits in (:)
@@ -104,10 +106,10 @@ def shorten_reg_name(name):
             # The shortened name should be any characters not in bad_chars and
             # not any digits
             short_name += i
-    return (short_name, index)
+    return (short_name, index, use_indexing)
 
 def extract_reg_data(reg, reg_dir, conflict_dir):
-    short_name, index = shorten_reg_name(reg["name"])
+    short_name, index, use_indexing = shorten_reg_name(reg["name"])
     crc_num = get_crc_val(short_name)
     crc = "{0:#0{1}x}".format(crc_num,10).upper()
     address = reg["address"]
@@ -130,12 +132,15 @@ def extract_reg_data(reg, reg_dir, conflict_dir):
         # We still need to add the register info to the register list and the
         # conflict directory
         else:
-            
+            if (use_indexing == False):
+                conflict_dt = "0xF0"
+            else:
+                conflict_dt = "0x01"
             reg_dir.append(
                 {
                     "crc": crc,
                     "address": len(conflict_dir),
-                    "data_type": -999, # TODO: FIGURE THIS OUT
+                    "data_type": conflict_dt, # TODO: FIGURE THIS OUT
                     "conflict_mode": conflict_mode,
                     "short_name": short_name,
                 }
@@ -168,7 +173,7 @@ def print_registers(file, sorted_registers):
     i = 0
     while i < len(sorted_registers):
         if (i < len(sorted_registers)-1):
-            file.write("\t{%s, %d, %d,\t%d},\t\t// %s\n" % (
+            file.write("\t{%s, %d, %s,\t%d},\t\t// %s\n" % (
                 sorted_registers[i]["crc"],
                 sorted_registers[i]["address"],
                 sorted_registers[i]["data_type"],
@@ -176,7 +181,7 @@ def print_registers(file, sorted_registers):
                 sorted_registers[i]["short_name"])
             )
         else:
-            file.write("\t{%s, %d, %d,\t%d}\t\t// %s\n" % (
+            file.write("\t{%s, %d, %s,\t%d}\t\t// %s\n" % (
                 sorted_registers[i]["crc"],
                 sorted_registers[i]["address"],
                 sorted_registers[i]["data_type"],
@@ -230,27 +235,27 @@ def generate():
     modbus_maps = ljmmm.get_device_modbus_maps(
         src=SRC_FILE,
         expand_names=False,
-        expand_alt_names=False
+        expand_alt_names=True
     )
 
     constants_contents = json.loads(ljmmm.read_file(src=SRC_FILE))
+    reg_names = []
+    reg_dir = []
+    conflict_dir = {}
+    for device in modbus_maps:
+        for reg in modbus_maps[device]:
+
+            # Remove duplication by name. By address would omit altnames
+            name = reg["name"]
+            if (not name in reg_names):
+                reg_names.append(name)
+                reg_dir, conflict_dir = extract_reg_data(reg, reg_dir, conflict_dir)
+            # else:
+            #     print "Duplicate: %s" % reg["name"]
+    num_registers = len(reg_dir)
 
     with open(OUTPUT_FILE, 'w') as file:
-        init(file, constants_contents["header"]["version"])
-
-        reg_names = []
-        reg_dir = []
-        conflict_dir = {}
-        for device in modbus_maps:
-            for reg in modbus_maps[device]:
-
-                # Remove duplication by name. By address would omit altnames
-                name = reg["name"]
-                if (not name in reg_names):
-                    reg_names.append(name)
-                    reg_dir, conflict_dir = extract_reg_data(reg, reg_dir, conflict_dir)
-                # else:
-                #     print "Duplicate: %s" % reg["name"]
+        init(file, constants_contents["header"]["version"], num_registers)
         # Sort register list by CRC value
         sorted_registers = sorted(reg_dir, key=lambda x: x["crc"])
         print_registers(file, sorted_registers)
