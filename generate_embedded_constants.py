@@ -9,7 +9,7 @@ import ljmmm
 from labjack import ljm
 
 SRC_FILE = 'LabJack/LJM/ljm_constants.json'
-OUTPUT_FILE = 'gen_output/EmbeddedConstants.h'
+OUTPUT_FILE = 'gen_output/LabJackEmbeddedConstants.h'
 
 def init(file, constants_version, num_registers):
     file.write("// LabJack Embedded Constants\n")
