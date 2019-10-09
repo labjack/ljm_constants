@@ -238,24 +238,30 @@ def check_conflict_tables(conflict_dir, reg_dir):
 
         # If the conflict table only has one entry there is not any actual
         # conflict
+        after_reg = False
         if (len(table) == 1):
-            for reg in list(
-                filter(
-                    lambda reg: reg["short_name"] == table[0]["short_name"],
-                    reg_dir
-                )
-            ):
-                # If the upper nibble of data_type is F then the register is
-                # not indexed and it should be safe to remove from the conflict
-                # table
-                if (reg["data_type"][2] == 'F'):
-                    # Fix the register back up to non-conflict mode
-                    reg["address"] = table[0]["address"]
-                    reg["data_type"] = table[0]["data_type"]
-                    reg["conflict_mode"] = 0
-                    # mark this conflict table for removal
-                    remove_conflict_table = True
-                    conflict_lists_to_remove.append(table_name)
+            for reg in reg_dir:
+                if (reg["short_name"] == table[0]["short_name"]):
+                    if(reg["data_type"][2] == 'F'):
+                        # If the upper nibble of data_type is F then the register is
+                        # not indexed and it should be safe to remove from the conflict
+                        # table
+                        # Fix the register back up to non-conflict mode
+                        reg["address"] = table[0]["address"]
+                        reg["data_type"] = table[0]["data_type"]
+                        reg["conflict_mode"] = 0
+                        # mark this conflict table for removal
+                        remove_conflict_table = True
+                        after_reg = True
+                        conflict_lists_to_remove.append(table_name)
+                # If looking at registers after the one we are removing from
+                # the conflict directory (who has conflicts) adjust the
+                # "address" so the conflict directory index is correct
+                # NOTE: This is fragile (relies on fact that registers are
+                # added to the register directory in the same order as they are
+                #  added to the conflict directory. Fix at some point
+                if (after_reg == True and reg["conflict_mode"] == 1):
+                        reg["address"] = reg["address"] - 1
 
         if (remove_conflict_table == False):
             # Keep searching the numbers pulled from the register name until the
@@ -369,6 +375,8 @@ def generate():
     with open(OUTPUT_FILE, 'w') as file:
         init(file, constants_contents["header"]["version"], num_registers)
         conflict_dir, reg_dir = check_conflict_tables(conflict_dir, reg_dir)
+        # NOTE: Need to sort after check_conflict_tables because of some
+        # fragile code
         # Sort register list by CRC value
         sorted_registers = sorted(reg_dir, key=lambda register: register["crc"])
         print_registers(file, sorted_registers)
