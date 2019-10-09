@@ -1665,7 +1665,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["ASYNCH", "UART"],
-      "description": "The number of stop bits. Values:<br>1 = one stop bit,<br>2 = two stop bits,<br>0 = one stop bit."
+      "description": "The number of stop bits. Values:<br>1 = one stop bit,<br>2 = two stop bits,<br>0 = zero stop bits."
     },
     {
       "address": 5460,
