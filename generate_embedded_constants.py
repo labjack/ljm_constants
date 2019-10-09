@@ -207,16 +207,20 @@ def fix_reg_data_type(reg_dir, short_name, conflict_location):
     #   upper nibble holds the location of the register number
     #   lower nibble holds the location of the conflict number
     # The data type already has the upper nibble, add on the lower nibble
-    for reg in reg_dir:
-        if (reg["short_name"] == short_name):
-            # If the location of the conflict number is after the register number in
-            # the register name
-            if (conflict_location >= int(reg["data_type"],16)):
-                conflict_num_index = conflict_location + 1
-            else:
-                conflict_num_index = conflict_location
-            reg["data_type"] += str(conflict_num_index)
-            return reg_dir
+    for reg in list(
+        filter(
+            lambda reg: reg["short_name"] == short_name,
+            reg_dir
+        )
+    ):
+        # If the location of the conflict number is after the register number in
+        # the register name
+        if (conflict_location >= int(reg["data_type"],16)):
+            conflict_num_index = conflict_location + 1
+        else:
+            conflict_num_index = conflict_location
+        reg["data_type"] += str(conflict_num_index)
+        return reg_dir
 
     # Should not ever get here
     return reg_dir
@@ -225,30 +229,57 @@ def fix_reg_data_type(reg_dir, short_name, conflict_location):
 def check_conflict_tables(conflict_dir, reg_dir):
     # Check the conflict tables for any bad conflict matches
     bad_conflict_name = True
+    conflict_lists_to_remove = []
     for table_name in conflict_dir:
         conflict_num = -9999999
         index_number =0
         table = conflict_dir[table_name]
-        # Keep searching the numbers pulled from the register name until the
-        # proper conflict numbers are found. Conflict numbers will always be at
-        # the same index in the list of numbers pulled from the register name
-        while (bad_conflict_name == True):
-            for i in range(0,len(table)):
-                # If the conflict num of two conflict table entries are the
-                # same they are not the actual conflict number
-                if (table[i]["conflict_num"] == conflict_num):
-                    bad_conflict_name = True
-                else:
-                    conflict_num = table[i]["conflict_num"]
-                    bad_conflict_name = False
-            if (bad_conflict_name == True):
-                index_number += 1
-                next_num = table[i]["all_nums"][index_number]
-                for i in table:
-                    table[i]["conflict_num"] = next_num
-        short_name = table[0]["short_name"]
-        reg_dir = fix_reg_data_type(reg_dir, short_name, index_number)
+        remove_conflict_table = False
 
+        # If the conflict table only has one entry there is not any actual
+        # conflict
+        if (len(table) == 1):
+            for reg in list(
+                filter(
+                    lambda reg: reg["short_name"] == table[0]["short_name"],
+                    reg_dir
+                )
+            ):
+                # If the upper nibble of data_type is F then the register is
+                # not indexed and it should be safe to remove from the conflict
+                # table
+                if (reg["data_type"][2] == 'F'):
+                    # Fix the register back up to non-conflict mode
+                    reg["address"] = table[0]["address"]
+                    reg["data_type"] = table[0]["data_type"]
+                    reg["conflict_mode"] = 0
+                    # mark this conflict table for removal
+                    remove_conflict_table = True
+                    conflict_lists_to_remove.append(table_name)
+
+        if (remove_conflict_table == False):
+            # Keep searching the numbers pulled from the register name until the
+            # proper conflict numbers are found. Conflict numbers will always be at
+            # the same index in the list of numbers pulled from the register name
+            while (bad_conflict_name == True):
+                for i in range(0,len(table)):
+                    # If the conflict num of two conflict table entries are the
+                    # same they are not the actual conflict number
+                    if (table[i]["conflict_num"] == conflict_num):
+                        bad_conflict_name = True
+                    else:
+                        conflict_num = table[i]["conflict_num"]
+                        bad_conflict_name = False
+                if (bad_conflict_name == True):
+                    index_number += 1
+                    next_num = table[i]["all_nums"][index_number]
+                    for i in table:
+                        table[i]["conflict_num"] = next_num
+            short_name = table[0]["short_name"]
+            reg_dir = fix_reg_data_type(reg_dir, short_name, index_number)
+    # Remove any conflict tables marked for deletion
+    for name in conflict_lists_to_remove:
+        del conflict_dir[name]
     return (conflict_dir, reg_dir)
 
 def print_registers(file, sorted_registers):
