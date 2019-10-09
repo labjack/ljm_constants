@@ -471,7 +471,7 @@ def get_registers_data(src=DEFAULT_FILE_NAME, expand_names=False,
 
 
 def get_device_modbus_maps(src=DEFAULT_FILE_NAME, expand_names=False,
-    inc_orig=False, expand_alt_names=False):
+    inc_orig=False, expand_alt_names=False,  remove_digit_reg=False):
     """Load register info from JSON constants file and structure by device.
 
     Loads and interprets registers information from the given JSON constants
@@ -529,7 +529,6 @@ def get_device_modbus_maps(src=DEFAULT_FILE_NAME, expand_names=False,
     for register in preped_registers_data:
         if inc_orig: reg_devices = register[1]["devices"]
         else: reg_devices = register["devices"]
-
         for device in reg_devices:
 
             device_name = device["device"]
@@ -561,11 +560,13 @@ def get_device_modbus_maps(src=DEFAULT_FILE_NAME, expand_names=False,
 
             # TODO: Something better
             new_entry.pop("numregs", None)
-
-            if inc_orig:
-                device_reg_list.append((register[0], new_entry))
-            else:
-                device_reg_list.append(new_entry)
+            # If we want to ignore digit registers, ignore them
+            # Otherwise add them to the register list
+            if (device["device"] != "DIGIT" or not remove_digit_reg):
+                if inc_orig:
+                    device_reg_list.append((register[0], new_entry))
+                else:
+                    device_reg_list.append(new_entry)
 
     return device_maps
 
