@@ -85,8 +85,8 @@ def get_crc_val(reg_name):
     # CRC returned as an integer
     return crc
 
-# Extracts and removes any numbers from the register name
 def shorten_reg_name(name):
+    # We need to extract and remove any numbers from the register name
     bad_chars = '(:)#'
     short_name = ""
     # all_nums holds all parsed out integers
@@ -160,8 +160,8 @@ def extract_reg_data(reg, reg_dir, conflict_dir):
                 print("Warning! register %s has more than 2 numbers in it" % reg["name"])
             # We have a conflict so change the data_type to hold number
             # location info
-            # If there was a register number in the register name add it as
-            # the upper nibble of the data_type entry.
+            # If there was a register number in the register name add its
+            # location as the upper nibble of the data_type entry.
             if (index_location >= 0):
                 conflict_dt = "0x" + str(index_location)
             # Otherwise the register does not have an index so the upper nibble
@@ -202,17 +202,44 @@ def extract_reg_data(reg, reg_dir, conflict_dir):
         )
     return (reg_dir, conflict_dir)
 
-def fix_reg_data_type(reg_dir, short_name, conflict_location):
+def check_is_removable_conflict_table(table_length, reg_dir, table_entry):
+    # If the conflict table only has one entry there is not any actual
+    # conflict
+    if (table_length == 1):
+        for reg in reg_dir:
+            if (reg["short_name"] == table_entry["short_name"]):
+                if(reg["data_type"][2] == 'F'):
+                    # If the upper nibble of data_type is F then the register
+                    # is not indexed and it should be safe to remove from the
+                    # conflict table
+                    # Fix the register back up to non-conflict mode
+                    reg["address"] = table_entry["address"]
+                    reg["data_type"] = table_entry["data_type"]
+                    reg["conflict_mode"] = 0
+                    return True
+                else:
+                    # this conflict table should not be removed. Although the
+                    # table only has one entry, it also has multiple numbers in
+                    # it so the register index could be in different locations
+                    # in the register name. As such, the register index
+                    # location still needs to be tracked
+                    return False
+
+    return False
+
+def fix_reg_data(reg_dir, name, conflict_location, conflict_dir_index):
     # Data type is replaced with two nibbles:
     #   upper nibble holds the location of the register number
     #   lower nibble holds the location of the conflict number
     # The data type already has the upper nibble, add on the lower nibble
+    # Also adjust the "address" so the conflict directory index is correct
     for reg in list(
         filter(
-            lambda reg: reg["short_name"] == short_name,
+            lambda reg: reg["short_name"] == name,
             reg_dir
         )
     ):
+        reg["address"] = conflict_dir_index
         # If the location of the conflict number is after the register number in
         # the register name
         if (conflict_location >= int(reg["data_type"],16)):
@@ -225,44 +252,23 @@ def fix_reg_data_type(reg_dir, short_name, conflict_location):
     # Should not ever get here
     return reg_dir
 
-
 def check_conflict_tables(conflict_dir, reg_dir):
     # Check the conflict tables for any bad conflict matches
-    bad_conflict_name = True
     conflict_lists_to_remove = []
+    updated_conflict_register_data = []
+    new_conflict_dir_index = 0
     for table_name in conflict_dir:
+        bad_conflict_name = True
         conflict_num = -9999999
-        index_number =0
+        conflict_number_location =0
         table = conflict_dir[table_name]
-        remove_conflict_table = False
-
-        # If the conflict table only has one entry there is not any actual
-        # conflict
-        after_reg = False
-        if (len(table) == 1):
-            for reg in reg_dir:
-                if (reg["short_name"] == table[0]["short_name"]):
-                    if(reg["data_type"][2] == 'F'):
-                        # If the upper nibble of data_type is F then the register is
-                        # not indexed and it should be safe to remove from the conflict
-                        # table
-                        # Fix the register back up to non-conflict mode
-                        reg["address"] = table[0]["address"]
-                        reg["data_type"] = table[0]["data_type"]
-                        reg["conflict_mode"] = 0
-                        # mark this conflict table for removal
-                        remove_conflict_table = True
-                        after_reg = True
-                        conflict_lists_to_remove.append(table_name)
-                # If looking at registers after the one we are removing from
-                # the conflict directory (who has conflicts) adjust the
-                # "address" so the conflict directory index is correct
-                # NOTE: This is fragile (relies on fact that registers are
-                # added to the register directory in the same order as they are
-                #  added to the conflict directory. Fix at some point
-                if (after_reg == True and reg["conflict_mode"] == 1):
-                        reg["address"] = reg["address"] - 1
-
+        # Some conflict tables only have one entry and therefore can be removed
+        remove_conflict_table = check_is_removable_conflict_table(
+                                    len(table),
+                                    reg_dir,
+                                    table[0]
+                                )
+        # Don't remove this table but ensure conflict number location is right
         if (remove_conflict_table == False):
             # Keep searching the numbers pulled from the register name until the
             # proper conflict numbers are found. Conflict numbers will always be at
@@ -277,15 +283,30 @@ def check_conflict_tables(conflict_dir, reg_dir):
                         conflict_num = table[i]["conflict_num"]
                         bad_conflict_name = False
                 if (bad_conflict_name == True):
-                    index_number += 1
-                    next_num = table[i]["all_nums"][index_number]
+                    conflict_number_location += 1
+                    next_num = table[i]["all_nums"][conflict_number_location]
                     for i in table:
                         table[i]["conflict_num"] = next_num
             short_name = table[0]["short_name"]
-            reg_dir = fix_reg_data_type(reg_dir, short_name, index_number)
+            updated_conflict_register_data.append(
+                (
+                    short_name,
+                    conflict_number_location,
+                    new_conflict_dir_index
+                )
+            )
+            new_conflict_dir_index += 1
+        # Mark this conflict table for removal
+        else:
+            conflict_lists_to_remove.append(table_name)
     # Remove any conflict tables marked for deletion
     for name in conflict_lists_to_remove:
         del conflict_dir[name]
+    # Fix register data entries so they reflect the changes made to conflict
+    # data/tables
+    for reg_data in updated_conflict_register_data:
+        name, conflict_location, conflict_dir_index = reg_data
+        fix_reg_data(reg_dir, name, conflict_location, conflict_dir_index)
     return (conflict_dir, reg_dir)
 
 def print_registers(file, sorted_registers):
@@ -374,9 +395,9 @@ def generate():
     num_registers = len(reg_dir)
     with open(OUTPUT_FILE, 'w') as file:
         init(file, constants_contents["header"]["version"], num_registers)
+        # Check for any conflict tables that only have one entry and can be
+        # removed. Change reg_dir and conflict_dir accordingly
         conflict_dir, reg_dir = check_conflict_tables(conflict_dir, reg_dir)
-        # NOTE: Need to sort after check_conflict_tables because of some
-        # fragile code
         # Sort register list by CRC value
         sorted_registers = sorted(reg_dir, key=lambda register: register["crc"])
         print_registers(file, sorted_registers)
