@@ -12,7 +12,7 @@ extern "C" {
 #include "Defines.h"
 
 #define LJM_EC_version  1
-#define LJM_EC_NumRegs  340
+#define LJM_EC_NumRegs  337
 
 const LJM_EC_Reg LJM_EC_Regs[] = {
 	{0X00734919, 5332, 1,	0},		// ONEWIRE_ROM_BRANCHS_FOUND_H
@@ -207,9 +207,6 @@ const LJM_EC_Reg LJM_EC_Regs[] = {
 	{0X9B2B2B84, 2603, 0,	0},		// MIO_DIRECTION
 	{0X9B39A6E7, 4020, 1,	0},		// STREAM_NUM_SCANS
 	{0X9B684F2B, 2000, 0,	0},		// DIO
-	{0X9B684F2B, 2008, 0,	0},		// DIO
-	{0X9B684F2B, 2016, 0,	0},		// DIO
-	{0X9B684F2B, 2020, 0,	0},		// DIO
 	{0X9C6C0072, 44300, 1,	0},		// DIO_EF_CONFIG_A
 	{0X9DF34400, 55100, 1,	0},		// TEST
 	{0X9E543E8E, 3600, 3,	0},		// DIO_EF_READ_A_F_AND_RESET

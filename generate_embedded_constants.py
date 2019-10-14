@@ -127,7 +127,13 @@ def shorten_reg_name(name):
 
     return (short_name, conflict_num, index_location, all_nums)
 
-def extract_reg_data(reg, reg_dir, conflict_dir):
+def check_same_crc(crc, reg_dir):
+    for reg in reg_dir:
+        if (reg["crc"] == crc):
+            return True
+    return False
+
+def extract_reg_data(reg, reg_dir, conflict_dir, num_dup_registers):
     short_name, conflict_num, index_location, all_nums = shorten_reg_name(reg["name"])
     # CRC as an integer
     crc_num = get_crc_val(short_name)
@@ -136,6 +142,7 @@ def extract_reg_data(reg, reg_dir, conflict_dir):
     address = reg["address"]
     data_type = get_reg_enum(reg)
     conflict_mode = 0
+    has_same_crc = check_same_crc(crc, reg_dir)
 
     #  If there were numbers in the register name
     if (len(all_nums) > 0):
@@ -168,15 +175,18 @@ def extract_reg_data(reg, reg_dir, conflict_dir):
             # should be F
             else:
                 conflict_dt = "0xF"
-            reg_dir.append(
-                {
-                    "crc": crc,
-                    "address": len(conflict_dir),
-                    "data_type": conflict_dt,
-                    "conflict_mode": conflict_mode,
-                    "short_name": short_name,
-                }
-            )
+            if (has_same_crc == False):
+                reg_dir.append(
+                    {
+                        "crc": crc,
+                        "address": len(conflict_dir),
+                        "data_type": conflict_dt,
+                        "conflict_mode": conflict_mode,
+                        "short_name": short_name,
+                    }
+                )
+            else:
+                num_dup_registers += 1
             conflict_dir[table_name] =  []
             conflict_dir[table_name].append(
                 {
@@ -190,7 +200,7 @@ def extract_reg_data(reg, reg_dir, conflict_dir):
             )
     # No numbers in the register name so there are no conflicts, only add the
     # register to the register directory
-    else:
+    elif(has_same_crc == False):
         reg_dir.append(
             {
                 "crc": crc,
@@ -200,7 +210,9 @@ def extract_reg_data(reg, reg_dir, conflict_dir):
                 "short_name": short_name,
             }
         )
-    return (reg_dir, conflict_dir)
+    else:
+        num_dup_registers += 1
+    return (reg_dir, conflict_dir, num_dup_registers)
 
 def check_is_removable_conflict_table(table_length, reg_dir, table_entry):
     # If the conflict table only has one entry there is not any actual
@@ -242,6 +254,7 @@ def fix_reg_data(reg_dir, name, conflict_location, conflict_dir_index):
         reg["address"] = conflict_dir_index
         # If the location of the conflict number is after the register number in
         # the register name
+        print(reg["data_type"])
         if (conflict_location >= int(reg["data_type"],16)):
             conflict_num_index = conflict_location + 1
         else:
@@ -309,6 +322,14 @@ def check_conflict_tables(conflict_dir, reg_dir):
         fix_reg_data(reg_dir, name, conflict_location, conflict_dir_index)
     return (conflict_dir, reg_dir)
 
+def check_and_sort_registers(conflict_dir, reg_dir):
+    # Check for any conflict tables that only have one entry and can be
+    # removed. Change reg_dir and conflict_dir accordingly
+    conflict_dir, reg_dir = check_conflict_tables(conflict_dir, reg_dir)
+    # Sort register list by CRC value
+    sorted_registers = sorted(reg_dir, key=lambda register: register["crc"])
+    return conflict_dir, sorted_registers
+
 def print_registers(file, sorted_registers):
     file.write("const LJM_EC_Reg LJM_EC_Regs[] = {\n")
     i = 0
@@ -372,7 +393,7 @@ def print_conflict_directory(file, conflict_dir):
         i +=1
     file.write("};\n")
 
-def generate():
+def generate(make_constants_header=True):
     modbus_maps = ljmmm.get_device_modbus_maps(
         src=SRC_FILE,
         expand_names=False,
@@ -384,28 +405,32 @@ def generate():
     reg_names = []
     reg_dir = []
     conflict_dir = {}
+    num_dup_registers = 0
     for device in modbus_maps:
         for reg in modbus_maps[device]:
             # Remove duplication by name. By address would omit altnames
             name = reg["name"]
             if (not name in reg_names):
                 reg_names.append(name)
-                reg_dir, conflict_dir = extract_reg_data(reg, reg_dir, conflict_dir)
+                reg_dir, conflict_dir, num_dup_registers = extract_reg_data(
+                    reg,
+                    reg_dir,
+                    conflict_dir,
+                    num_dup_registers
+                )
 
     num_registers = len(reg_dir)
-    with open(OUTPUT_FILE, 'w') as file:
-        init(file, constants_contents["header"]["version"], num_registers)
-        # Check for any conflict tables that only have one entry and can be
-        # removed. Change reg_dir and conflict_dir accordingly
-        conflict_dir, reg_dir = check_conflict_tables(conflict_dir, reg_dir)
-        # Sort register list by CRC value
-        sorted_registers = sorted(reg_dir, key=lambda register: register["crc"])
-        print_registers(file, sorted_registers)
-        print_conflict_tables(file, conflict_dir)
-        print_conflict_directory(file, conflict_dir)
-        file.write("\n\n")
-        finish(file)
+    conflict_dir, sorted_registers = check_and_sort_registers(conflict_dir, reg_dir)
 
+    if (make_constants_header):
+        with open(OUTPUT_FILE, 'w') as file:
+            init(file, constants_contents["header"]["version"], num_registers)
+            print_registers(file, sorted_registers)
+            print_conflict_tables(file, conflict_dir)
+            print_conflict_directory(file, conflict_dir)
+            file.write("\n\n")
+            finish(file)
+    return (sorted_registers, conflict_dir, num_dup_registers)
 
 if __name__ == "__main__":
     generate()
