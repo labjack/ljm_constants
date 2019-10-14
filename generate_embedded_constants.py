@@ -98,12 +98,13 @@ def shorten_reg_name(name):
     same_number = True
     # if (name[0:3] == "I2C"):
     #     name = name[:1] + name[2:]
-
     for i in name:
         # If we have any of the "bad chars" we will need to use indexing if
         # there are any conflicts
         if (i in bad_chars):
             index_location = len(all_nums)
+            if(number != ""):
+                index_location += 1
             between_bad_chars = True
         elif (i.isdigit()):
             # Ignore any digits in (:)
@@ -138,7 +139,9 @@ def extract_reg_data(reg, reg_dir, conflict_dir, num_dup_registers):
     # CRC as an integer
     crc_num = get_crc_val(short_name)
     # CRC as a hex string
-    crc = "{0:#0{1}x}".format(crc_num,10).upper()
+    temp_crc = "{0:#0{1}x}".format(crc_num,10)
+    # Change the hex string so that the hex numbers are uppercase
+    crc = temp_crc[0:2] + temp_crc[2:].upper()
     address = reg["address"]
     data_type = get_reg_enum(reg)
     conflict_mode = 0
@@ -254,7 +257,6 @@ def fix_reg_data(reg_dir, name, conflict_location, conflict_dir_index):
         reg["address"] = conflict_dir_index
         # If the location of the conflict number is after the register number in
         # the register name
-        print(reg["data_type"])
         if (conflict_location >= int(reg["data_type"],16)):
             conflict_num_index = conflict_location + 1
         else:
@@ -272,7 +274,6 @@ def check_conflict_tables(conflict_dir, reg_dir):
     new_conflict_dir_index = 0
     for table_name in conflict_dir:
         bad_conflict_name = True
-        conflict_num = -9999999
         conflict_number_location =0
         table = conflict_dir[table_name]
         # Some conflict tables only have one entry and therefore can be removed
@@ -283,22 +284,25 @@ def check_conflict_tables(conflict_dir, reg_dir):
                                 )
         # Don't remove this table but ensure conflict number location is right
         if (remove_conflict_table == False):
+            if (len(table) == 1 or len(table[0]["all_nums"]) == 1):
+                bad_conflict_name = False
             # Keep searching the numbers pulled from the register name until the
             # proper conflict numbers are found. Conflict numbers will always be at
             # the same index in the list of numbers pulled from the register name
             while (bad_conflict_name == True):
-                for i in range(0,len(table)):
+                conflict_num = table[0]["conflict_num"]
+                for i in range(1,len(table)):
                     # If the conflict num of two conflict table entries are the
                     # same they are not the actual conflict number
-                    if (table[i]["conflict_num"] == conflict_num):
+                    if (table[i]["all_nums"][conflict_number_location] == conflict_num):
                         bad_conflict_name = True
                     else:
-                        conflict_num = table[i]["conflict_num"]
+                        conflict_num = table[i]["all_nums"][conflict_number_location]
                         bad_conflict_name = False
                 if (bad_conflict_name == True):
                     conflict_number_location += 1
-                    next_num = table[i]["all_nums"][conflict_number_location]
-                    for i in table:
+                    next_num = table[0]["all_nums"][conflict_number_location]
+                    for i in range(0, len(table)):
                         table[i]["conflict_num"] = next_num
             short_name = table[0]["short_name"]
             updated_conflict_register_data.append(
@@ -322,13 +326,26 @@ def check_conflict_tables(conflict_dir, reg_dir):
         fix_reg_data(reg_dir, name, conflict_location, conflict_dir_index)
     return (conflict_dir, reg_dir)
 
+def check_same_conflict_num(conflict_dir):
+    num_duplicates = 0
+    for table in conflict_dir:
+        entries_to_delete = []
+        for i in range(1,len(conflict_dir[table])):
+            if (conflict_dir[table][i-1]["conflict_num"] == conflict_dir[table][i]["conflict_num"]):
+                entries_to_delete.append(i)
+                num_duplicates += 1
+        for entry in entries_to_delete:
+            del conflict_dir[table][i]
+    return (conflict_dir, num_duplicates)
+
 def check_and_sort_registers(conflict_dir, reg_dir):
     # Check for any conflict tables that only have one entry and can be
     # removed. Change reg_dir and conflict_dir accordingly
     conflict_dir, reg_dir = check_conflict_tables(conflict_dir, reg_dir)
+    conflict_dir, num_duplicates = check_same_conflict_num(conflict_dir)
     # Sort register list by CRC value
     sorted_registers = sorted(reg_dir, key=lambda register: register["crc"])
-    return conflict_dir, sorted_registers
+    return conflict_dir, sorted_registers, num_duplicates
 
 def print_registers(file, sorted_registers):
     file.write("const LJM_EC_Reg LJM_EC_Regs[] = {\n")
@@ -420,7 +437,9 @@ def generate(make_constants_header=True):
                 )
 
     num_registers = len(reg_dir)
-    conflict_dir, sorted_registers = check_and_sort_registers(conflict_dir, reg_dir)
+    new_duplicates = 0
+    conflict_dir, sorted_registers,conflict_table_duplicates = check_and_sort_registers(conflict_dir, reg_dir)
+    num_dup_registers += conflict_table_duplicates
 
     if (make_constants_header):
         with open(OUTPUT_FILE, 'w') as file:
