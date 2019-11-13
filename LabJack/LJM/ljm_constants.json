@@ -3699,8 +3699,10 @@
       "name": "ETHERNET_UDP_DISCOVERY_ONLY",
       "type": "UINT16",
       "devices": [
-        "device": "T7",
+        {
+          "device": "T7",
           "fwmin": 1.0284
+        }
       ],
       "readwrite": "R",
       "tags": ["ETHERNET"],
@@ -3783,8 +3785,10 @@
       "name": "ETHERNET_UDP_DISCOVERY_ONLY_DEFAULT",
       "type": "UINT16",
       "devices": [
-        "device": "T7",
+        {
+          "device": "T7",
           "fwmin": 1.0284
+        }
       ],
       "readwrite": "R",
       "tags": ["ETHERNET"],
@@ -3860,8 +3864,10 @@
       "name": "WIFI_UDP_DISCOVERY_ONLY",
       "type": "UINT16",
       "devices": [
-        "device": "T7",
+        {
+          "device": "T7",
           "fwmin": 1.0284
+        }
       ],
       "readwrite": "R",
       "tags": ["WIFI"],
@@ -3930,11 +3936,13 @@
       "name": "WIFI_UDP_DISCOVERY_ONLY_DEFAULT",
       "type": "UINT16",
       "devices": [
-        "device": "T7",
+        {
+          "device": "T7",
           "fwmin": 1.0284
+        }
       ],
       "readwrite": "R",
-      "tags": [WIFI"],
+      "tags": ["WIFI"],
       "description": "The Enabled/Disabled state of WIFI_UDP_DISCOVERY_ONLY after a power-cycle to the device."
     },
     {
