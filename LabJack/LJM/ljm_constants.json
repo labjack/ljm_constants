@@ -3695,6 +3695,18 @@
       "description": "Read the current Enabled/Disabled state of Ethernet DHCP."
     },
     {
+      "address": 49115,
+      "name": "ETHERNET_UDP_DISCOVERY_ONLY",
+      "type": "UINT16",
+      "devices": [
+        "device": "T7",
+          "fwmin": 1.0284
+      ],
+      "readwrite": "R",
+      "tags": ["ETHERNET"],
+      "description": "Restricts which modbus operations are allow over UDP. When set to 1, only the registers needed for discoverying units can be read. Any other operation will throw an error."
+    },
+    {
       "address": 49150,
       "name": "ETHERNET_IP_DEFAULT",
       "type": "UINT32",
@@ -3767,6 +3779,18 @@
       "description": "The Enabled/Disabled state of Ethernet DHCP after a power-cycle to the device."
     },
     {
+      "address": 49165,
+      "name": "ETHERNET_UDP_DISCOVERY_ONLY_DEFAULT",
+      "type": "UINT16",
+      "devices": [
+        "device": "T7",
+          "fwmin": 1.0284
+      ],
+      "readwrite": "R",
+      "tags": ["ETHERNET"],
+      "description": "The Enabled/Disabled state of ETHERNET_UDP_DISCOVERY_ONLY after a power-cycle to the device."
+    },
+    {
       "address": 49190,
       "name": "ETHERNET_APPLY_SETTINGS",
       "type": "UINT32",
@@ -3832,6 +3856,18 @@
       "description": "Read the current Enabled/Disabled state of WiFi DHCP."
     },
     {
+      "address": 49215,
+      "name": "WIFI_UDP_DISCOVERY_ONLY",
+      "type": "UINT16",
+      "devices": [
+        "device": "T7",
+          "fwmin": 1.0284
+      ],
+      "readwrite": "R",
+      "tags": ["WIFI"],
+      "description": "Restricts which modbus operations are allow over UDP. When set to 1, only the registers needed for discoverying units can be read. Any other operation will throw an error."
+    },
+    {
       "address": 49300,
       "name": "WIFI_SSID",
       "type": "STRING",
@@ -3888,6 +3924,18 @@
       "readwrite": "RW",
       "tags": ["WIFI"],
       "description": "The new Enabled/Disabled state of WiFi DHCP. Use WIFI_APPLY_SETTINGS"
+    },
+    {
+      "address": 49265,
+      "name": "WIFI_UDP_DISCOVERY_ONLY_DEFAULT",
+      "type": "UINT16",
+      "devices": [
+        "device": "T7",
+          "fwmin": 1.0284
+      ],
+      "readwrite": "R",
+      "tags": [WIFI"],
+      "description": "The Enabled/Disabled state of WIFI_UDP_DISCOVERY_ONLY after a power-cycle to the device."
     },
     {
       "address": 49325,
@@ -6327,6 +6375,11 @@
       "description": "Strings must be terminated with a null (\\0, 0x00)."
     },
     {
+      "error": 2317,
+      "string": "UDP_DISCOVERY_ONLY_MODE_IS_ENABLED",
+      "description": "The UDP discovery socket has been set to discovery only. Only a few registers may be read while in this mode."
+    },
+    {
       "error": 2330,
       "string": "STARTUP_CONFIG_INVALID_CODE"
     },
@@ -7539,6 +7592,7 @@
     "2019.03.06.A   Added an error code STREAM_OUT_NEEDS_TO_BE_ENABLED.",
     "2019.08.07.A   Updated details for register 6022 and 6122 (lua debugging stuff).",
     "2019.11.08.A   Updated error code info for 2408 and added register 60014.",
+    "2019.11.12.A   Added UDP DISCOVERY_ONLY registers and error code.",
     "End Of Comments"
   ]
 }
