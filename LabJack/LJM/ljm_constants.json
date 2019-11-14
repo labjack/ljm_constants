@@ -3706,7 +3706,7 @@
       ],
       "readwrite": "R",
       "tags": ["ETHERNET"],
-      "description": "Restricts which modbus operations are allow over UDP. When set to 1, only the registers needed for discoverying units can be read. Any other operation will throw an error."
+      "description": "Restricts which Modbus operations are allowed over UDP. When set to 1, only the registers needed for discoverying units can be read. Any other operation will throw an error."
     },
     {
       "address": 49150,
@@ -3871,7 +3871,7 @@
       ],
       "readwrite": "R",
       "tags": ["WIFI"],
-      "description": "Restricts which modbus operations are allow over UDP. When set to 1, only the registers needed for discoverying units can be read. Any other operation will throw an error."
+      "description": "Restricts which Modbus operations are allowed over UDP. When set to 1, only the registers needed for discoverying units can be read. Any other operation will throw an error."
     },
     {
       "address": 49300,
