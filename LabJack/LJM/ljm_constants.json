@@ -1899,7 +1899,7 @@
     {
       "address": 6050,
       "name": "LUA_NO_WARN_TRUNCATION",
-      "type": "UINT32",
+      "type": "UINT16",
       "devices": [
         {
           "device": "T7",
