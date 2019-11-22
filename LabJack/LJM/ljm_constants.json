@@ -1369,7 +1369,8 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["ONEWIRE"],
-      "description": "Upper 32-bits of the ROM to match."
+      "description": "Upper 32-bits of the ROM to match.",
+      "mxluawarning": true
     },
     {
       "address": 5322,
@@ -1387,7 +1388,8 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["ONEWIRE"],
-      "description": "Lower 32-bits of the ROM to match."
+      "description": "Lower 32-bits of the ROM to match.",
+      "mxluawarning": true
     },
     {
       "address": 5332,
@@ -1405,7 +1407,8 @@
       "readwrite": "R",
       "default": 0,
       "tags": ["ONEWIRE"],
-      "description": "Upper 32-bits of the branches detected during a search."
+      "description": "Upper 32-bits of the branches detected during a search.",
+      "mxluawarning": true
     },
     {
       "address": 5334,
@@ -1423,7 +1426,8 @@
       "readwrite": "R",
       "default": 0,
       "tags": ["ONEWIRE"],
-      "description": "Lower 32-bits of the branches detected during a search."
+      "description": "Lower 32-bits of the branches detected during a search.",
+      "mxluawarning": true
     },
     {
       "address": 5328,
@@ -1441,7 +1445,8 @@
       "readwrite": "R",
       "default": 0,
       "tags": ["ONEWIRE"],
-      "description": "Upper 32-bits of the search result."
+      "description": "Upper 32-bits of the search result.",
+      "mxluawarning": true
     },
     {
       "address": 5330,
@@ -1459,7 +1464,8 @@
       "readwrite": "R",
       "default": 0,
       "tags": ["ONEWIRE"],
-      "description": "Lower 32-bites of the search result."
+      "description": "Lower 32-bites of the search result.",
+      "mxluawarning": true
     },
     {
       "address": 5324,
@@ -1477,7 +1483,8 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["ONEWIRE"],
-      "description": "Upper 32-bits of the path to take during a search."
+      "description": "Upper 32-bits of the path to take during a search.",
+      "mxluawarning": true
     },
     {
       "address": 5326,
@@ -1495,7 +1502,8 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["ONEWIRE"],
-      "description": "Lower 32-bits of the path to take during a search."
+      "description": "Lower 32-bits of the path to take during a search.",
+      "mxluawarning": true
     },
     {
       "address": 5340,
@@ -2056,7 +2064,8 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["AIN_EF", "AIN"],
-      "description": "Function dependent on selected feature index."
+      "description": "Function dependent on selected feature index.",
+      "mxluawarning": true
     },
     {
       "address": 9600,
@@ -2074,7 +2083,8 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["AIN_EF", "AIN"],
-      "description": "Function dependent on selected feature index."
+      "description": "Function dependent on selected feature index.",
+      "mxluawarning": true
     },
     {
       "address": 9900,
@@ -2092,7 +2102,8 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["AIN_EF", "AIN"],
-      "description": "Function dependent on selected feature index."
+      "description": "Function dependent on selected feature index.",
+      "mxluawarning": true
     },
     {
       "address": 10200,
@@ -2245,7 +2256,8 @@
       "readwrite": "R",
       "default": 0,
       "tags": ["TDAC"],
-      "description": "Returns the serial number of an LJTick-DAC, and forces a re-read of the calibration constants. Which LJTDAC is determined by the last write to TDAC# ... whether it was successful or not."
+      "description": "Returns the serial number of an LJTick-DAC, and forces a re-read of the calibration constants. Which LJTDAC is determined by the last write to TDAC# ... whether it was successful or not.",
+      "mxluawarning": true
     },
     {
       "address": 55202,
@@ -2671,7 +2683,8 @@
       ],
       "readwrite": "RW",
       "tags": ["DIO_EF", "DIO"],
-      "description": "The clock will count to this value and then start over at zero. The clock pulses counted are those after the divisor. 0 results in the max roll value possible. This is a 32-bit value (0-4294967295) if using a 32-bit clock, and a 16-bit value (0-65535) if using a 16-bit clock."
+      "description": "The clock will count to this value and then start over at zero. The clock pulses counted are those after the divisor. 0 results in the max roll value possible. This is a 32-bit value (0-4294967295) if using a 32-bit clock, and a 16-bit value (0-65535) if using a 16-bit clock.",
+      "mxluawarning": true
     },
     {
       "address": 44910,
@@ -2739,7 +2752,8 @@
       ],
       "readwrite": "RW",
       "tags": ["DIO_EF", "DIO"],
-      "description": "The clock will count to this value and then start over at zero. The clock pulses counted are those after the divisor. 0 results in the max roll value possible. This is a 32-bit value (0-4294967295) if using a 32-bit clock, and a 16-bit value (0-65535) if using a 16-bit clock."
+      "description": "The clock will count to this value and then start over at zero. The clock pulses counted are those after the divisor. 0 results in the max roll value possible. This is a 32-bit value (0-4294967295) if using a 32-bit clock, and a 16-bit value (0-65535) if using a 16-bit clock.",
+      "mxluawarning": true
     },
     {
       "address": 44920,
@@ -2807,7 +2821,8 @@
       ],
       "readwrite": "RW",
       "tags": ["DIO_EF", "DIO"],
-      "description": "The clock will count to this value and then start over at zero. The clock pulses counted are those after the divisor. 0 results in the max roll value possible. This is a 32-bit value (0-4294967295) if using a 32-bit clock, and a 16-bit value (0-65535) if using a 16-bit clock."
+      "description": "The clock will count to this value and then start over at zero. The clock pulses counted are those after the divisor. 0 results in the max roll value possible. This is a 32-bit value (0-4294967295) if using a 32-bit clock, and a 16-bit value (0-65535) if using a 16-bit clock.",
+      "mxluawarning": true
     },
     {
       "address": 44908,
@@ -2824,7 +2839,8 @@
       ],
       "readwrite": "R",
       "tags": ["DIO_EF", "DIO"],
-      "description": "Current tick count of this clock.  Will read between 0 and ROLL_VALUE-1."
+      "description": "Current tick count of this clock.  Will read between 0 and ROLL_VALUE-1.",
+      "mxluawarning": true
     },
     {
       "address": 44918,
@@ -2841,7 +2857,8 @@
       ],
       "readwrite": "R",
       "tags": ["DIO_EF", "DIO"],
-      "description": "Current tick count of this clock.  Will read between 0 and ROLL_VALUE-1."
+      "description": "Current tick count of this clock.  Will read between 0 and ROLL_VALUE-1.",
+      "mxluawarning": true
     },
     {
       "address": 44928,
@@ -2858,7 +2875,8 @@
       ],
       "readwrite": "R",
       "tags": ["DIO_EF", "DIO"],
-      "description": "Current tick count of this clock.  Will read between 0 and ROLL_VALUE-1."
+      "description": "Current tick count of this clock.  Will read between 0 and ROLL_VALUE-1.",
+      "mxluawarning": true
     },
     {
       "address": 44000,
@@ -2928,7 +2946,8 @@
       "readwrite": "RW",
       "tags": ["DIO_EF", "DIO"],
       "altnames": ["DIO#(0:22)_EF_VALUE_A"],
-      "description": "Function dependent on selected feature index."
+      "description": "Function dependent on selected feature index.",
+      "mxluawarning": true
     },
     {
       "address": 44400,
@@ -2946,7 +2965,8 @@
       "readwrite": "RW",
       "tags": ["DIO_EF", "DIO"],
       "altnames": ["DIO#(0:22)_EF_VALUE_B"],
-      "description": "Function dependent on selected feature index."
+      "description": "Function dependent on selected feature index.",
+      "mxluawarning": true
     },
     {
       "address": 44500,
@@ -2964,7 +2984,8 @@
       "readwrite": "RW",
       "tags": ["DIO_EF", "DIO"],
       "altnames": ["DIO#(0:22)_EF_VALUE_C"],
-      "description": "Function dependent on selected feature index."
+      "description": "Function dependent on selected feature index.",
+      "mxluawarning": true
     },
     {
       "address": 44600,
@@ -2982,7 +3003,8 @@
       "readwrite": "RW",
       "tags": ["DIO_EF", "DIO"],
       "altnames": ["DIO#(0:22)_EF_VALUE_D"],
-      "description": "Function dependent on selected feature index."
+      "description": "Function dependent on selected feature index.",
+      "mxluawarning": true
     },
     {
       "address": 3000,
@@ -2996,7 +3018,8 @@
       "tags": ["DIO_EF", "DIO", "CORE"],
       "streamable": true,
       "displayname": ["DIO-EF Read A"],
-      "description": "Reads an unsigned integer value. The meaning of the integer is dependent on selected feature index."
+      "description": "Reads an unsigned integer value. The meaning of the integer is dependent on selected feature index.",
+      "mxluawarning": true
     },
     {
       "address": 3100,
@@ -3009,7 +3032,8 @@
       "readwrite": "R",
       "tags": ["DIO_EF", "DIO"],
       "streamable": true,
-      "description": "Reads the same value as DIO#(0:22)_EF_READ_A and forces a reset."
+      "description": "Reads the same value as DIO#(0:22)_EF_READ_A and forces a reset.",
+      "mxluawarning": true
     },
     {
       "address": 3200,
@@ -3022,7 +3046,8 @@
       "readwrite": "R",
       "tags": ["DIO_EF", "DIO"],
       "streamable": true,
-      "description": "Reads an unsigned integer value. The meaning of the integer is dependent on selected feature index."
+      "description": "Reads an unsigned integer value. The meaning of the integer is dependent on selected feature index.",
+      "mxluawarning": true
     },
     {
       "address": 3500,
@@ -3247,7 +3272,8 @@
         "T4"
       ],
       "readwrite": "RW",
-      "tags": ["CONFIG"]
+      "tags": ["CONFIG"],
+      "mxluawarning": true
     },
     {
       "address": 49008,
@@ -3269,7 +3295,8 @@
         "T4"
       ],
       "readwrite": "RW",
-      "tags": ["CONFIG"]
+      "tags": ["CONFIG"],
+      "mxluawarning": true
     },
     {
       "address": 49012,
@@ -3280,7 +3307,8 @@
         "T4"
       ],
       "readwrite": "R",
-      "tags": ["CONFIG"]
+      "tags": ["CONFIG"],
+      "mxluawarning": true
     },
     {
       "address": 49014,
@@ -3291,7 +3319,8 @@
         "T4"
       ],
       "readwrite": "RW",
-      "tags": ["CONFIG"]
+      "tags": ["CONFIG"],
+      "mxluawarning": true
     },
     {
       "address": 49016,
@@ -3302,7 +3331,8 @@
         "T4"
       ],
       "readwrite": "R",
-      "tags": ["CONFIG"]
+      "tags": ["CONFIG"],
+      "mxluawarning": true
     },
     {
       "address": 49018,
@@ -3313,7 +3343,8 @@
         "T4"
       ],
       "readwrite": "R",
-      "tags": ["CONFIG"]
+      "tags": ["CONFIG"],
+      "mxluawarning": true
     },
     {
       "address": 49020,
@@ -3330,7 +3361,8 @@
       ],
       "readwrite": "R",
       "tags": ["CONFIG"],
-      "description": "Collects the current IO configuration and calculates of a CRC32."
+      "description": "Collects the current IO configuration and calculates of a CRC32.",
+      "mxluawarning": true
     },
     {
       "address": 49090,
@@ -3360,7 +3392,8 @@
       "readwrite": "R",
       "tags": ["CONFIG"],
       "streamable": true,
-      "description": "Internal 32-bit system timer running at 1/2 core speed, thus normally 80M/2 => 40 MHz."
+      "description": "Internal 32-bit system timer running at 1/2 core speed, thus normally 80M/2 => 40 MHz.",
+      "mxluawarning": true
     },
     {
       "address": 61522,
@@ -3378,7 +3411,8 @@
       "readwrite": "R",
       "tags": ["CONFIG"],
       "streamable": true,
-      "description": "Internal 32-bit system timer running at 20Hz."
+      "description": "Internal 32-bit system timer running at 20Hz.",
+      "mxluawarning": true
     },
     {
       "address": 61530,
@@ -3548,7 +3582,8 @@
       ],
       "readwrite": "R",
       "tags": ["RTC"],
-      "description": "Read the current time in seconds since Jan, 1970, aka Epoch or Unix time. This value is calculated from the 80 MHz crystal, not the RTC 32 kHz crystal. Non-pro devices do not have a real time clock, so the reported time is either seconds since device startup or the time reported by the network time protocol over Ethernet. Pro devices have a real time clock that will be used to initialize this register at startup, the time can then be updated by NTP."
+      "description": "Read the current time in seconds since Jan, 1970, aka Epoch or Unix time. This value is calculated from the 80 MHz crystal, not the RTC 32 kHz crystal. Non-pro devices do not have a real time clock, so the reported time is either seconds since device startup or the time reported by the network time protocol over Ethernet. Pro devices have a real time clock that will be used to initialize this register at startup, the time can then be updated by NTP.",
+      "mxluawarning": true
     },
     {
       "address": 61502,
@@ -3632,7 +3667,8 @@
       ],
       "readwrite": "R",
       "tags": ["ETHERNET"],
-      "description": "Read the current IP address of wired Ethernet."
+      "description": "Read the current IP address of wired Ethernet.",
+      "mxluawarning": true
     },
     {
       "address": 49102,
@@ -3644,7 +3680,8 @@
       ],
       "readwrite": "R",
       "tags": ["ETHERNET"],
-      "description": "Read the current subnet of wired Ethernet."
+      "description": "Read the current subnet of wired Ethernet.",
+      "mxluawarning": true
     },
     {
       "address": 49104,
@@ -3656,7 +3693,8 @@
       ],
       "readwrite": "R",
       "tags": ["ETHERNET"],
-      "description": "Read the current gateway of wired Ethernet."
+      "description": "Read the current gateway of wired Ethernet.",
+      "mxluawarning": true
     },
     {
       "address": 49106,
@@ -3668,7 +3706,8 @@
       ],
       "readwrite": "R",
       "tags": ["ETHERNET"],
-      "description": "Read the current DNS of wired Ethernet."
+      "description": "Read the current DNS of wired Ethernet.",
+      "mxluawarning": true
     },
     {
       "address": 49108,
@@ -3680,7 +3719,8 @@
       ],
       "readwrite": "R",
       "tags": ["ETHERNET"],
-      "description": "Read the current Alt DNS of wired Ethernet."
+      "description": "Read the current Alt DNS of wired Ethernet.",
+      "mxluawarning": true
     },
     {
       "address": 49110,
@@ -3704,7 +3744,8 @@
       ],
       "readwrite": "RW",
       "tags": ["ETHERNET"],
-      "description": "The IP address of wired Ethernet after a power-cycle to the device."
+      "description": "The IP address of wired Ethernet after a power-cycle to the device.",
+      "mxluawarning": true
     },
     {
       "address": 49152,
@@ -3716,7 +3757,8 @@
       ],
       "readwrite": "RW",
       "tags": ["ETHERNET"],
-      "description": "The subnet of wired Ethernet after a power-cycle to the device."
+      "description": "The subnet of wired Ethernet after a power-cycle to the device.",
+      "mxluawarning": true
     },
     {
       "address": 49154,
@@ -3728,7 +3770,8 @@
       ],
       "readwrite": "RW",
       "tags": ["ETHERNET"],
-      "description": "The gateway of wired Ethernet after a power-cycle to the device."
+      "description": "The gateway of wired Ethernet after a power-cycle to the device.",
+      "mxluawarning": true
     },
     {
       "address": 49156,
@@ -3740,7 +3783,8 @@
       ],
       "readwrite": "RW",
       "tags": ["ETHERNET"],
-      "description": "The DNS of wired Ethernet after a power-cycle to the device."
+      "description": "The DNS of wired Ethernet after a power-cycle to the device.",
+      "mxluawarning": true
     },
     {
       "address": 49158,
@@ -3752,7 +3796,8 @@
       ],
       "readwrite": "RW",
       "tags": ["ETHERNET"],
-      "description": "The Alt DNS of wired Ethernet after a power-cycle to the device."
+      "description": "The Alt DNS of wired Ethernet after a power-cycle to the device.",
+      "mxluawarning": true
     },
     {
       "address": 49160,
@@ -3793,7 +3838,8 @@
       ],
       "readwrite": "R",
       "tags": ["WIFI"],
-      "description": "Read the current IP address of WiFi."
+      "description": "Read the current IP address of WiFi.",
+      "mxluawarning": true
     },
     {
       "address": 49202,
@@ -3804,7 +3850,8 @@
       ],
       "readwrite": "R",
       "tags": ["WIFI"],
-      "description": "Read the current subnet of WiFi."
+      "description": "Read the current subnet of WiFi.",
+      "mxluawarning": true
     },
     {
       "address": 49204,
@@ -3815,7 +3862,8 @@
       ],
       "readwrite": "R",
       "tags": ["WIFI"],
-      "description": "Read the current gateway of WiFi."
+      "description": "Read the current gateway of WiFi.",
+      "mxluawarning": true
     },
     {
       "address": 49210,
@@ -3851,7 +3899,8 @@
       ],
       "readwrite": "RW",
       "tags": ["WIFI"],
-      "description": "The new IP address of WiFi. Use WIFI_APPLY_SETTINGS."
+      "description": "The new IP address of WiFi. Use WIFI_APPLY_SETTINGS.",
+      "mxluawarning": true
     },
     {
       "address": 49252,
@@ -3862,7 +3911,8 @@
       ],
       "readwrite": "RW",
       "tags": ["WIFI"],
-      "description": "The new subnet of WiFi.  Use WIFI_APPLY_SETTINGS."
+      "description": "The new subnet of WiFi.  Use WIFI_APPLY_SETTINGS.",
+      "mxluawarning": true
     },
     {
       "address": 49254,
@@ -3873,7 +3923,8 @@
       ],
       "readwrite": "RW",
       "tags": ["WIFI"],
-      "description": "The new gateway of WiFi. Use WIFI_APPLY_SETTINGS."
+      "description": "The new gateway of WiFi. Use WIFI_APPLY_SETTINGS.",
+      "mxluawarning": true
     },
     {
       "address": 49260,
@@ -4008,7 +4059,8 @@
       "tags": ["AIN"],
       "streamable": false,
       "altnames": ["AIN#(0:254)_BIN"],
-      "description": "Returns the 24-bit binary representation of the specified analog input. If you prefer 16-bit representation, simply divide this by 256. This is for command-response only.  Stream always returns binary and LJM applies cal constants, so the LJM config flag LJM_STREAM_AIN_BINARY is used to get binary values."
+      "description": "Returns the 24-bit binary representation of the specified analog input. If you prefer 16-bit representation, simply divide this by 256. This is for command-response only.  Stream always returns binary and LJM applies cal constants, so the LJM config flag LJM_STREAM_AIN_BINARY is used to get binary values.",
+      "mxluawarning": true
     },
     {
       "address": 51000,
@@ -4073,7 +4125,8 @@
       ],
       "readwrite": "RW",
       "tags": ["LUA", "USER_RAM"],
-      "description": "Generic RAM registers. Useful for passing data between a host computer and a Lua script. Will not return an error if alternate data types are used."
+      "description": "Generic RAM registers. Useful for passing data between a host computer and a Lua script. Will not return an error if alternate data types are used.",
+      "mxluawarning": true
     },
     {
       "address": 46180,
@@ -4128,7 +4181,8 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["LUA", "USER_RAM"],
-      "description": "Generic FIFO buffer.  Useful for passing ORDERED or SEQUENTIAL data between various endpoints, such as between a host and a Lua script. Use up to 4 FIFO buffers simultaneously->1 of each data type, all 4 different data types, or a mixture. e.g. FIFO0_DATA_U16 points to the same memory as other FIFO0 registers, such that there are a total of 4 memory blocks: FIFO0, FIFO1, FIFO2 and FIFO3.  It is possible to write into a FIFO buffer using a different datatype than is being used to read out of it. This register is a buffer. Underrun behavior - throws an error."
+      "description": "Generic FIFO buffer.  Useful for passing ORDERED or SEQUENTIAL data between various endpoints, such as between a host and a Lua script. Use up to 4 FIFO buffers simultaneously->1 of each data type, all 4 different data types, or a mixture. e.g. FIFO0_DATA_U16 points to the same memory as other FIFO0 registers, such that there are a total of 4 memory blocks: FIFO0, FIFO1, FIFO2 and FIFO3.  It is possible to write into a FIFO buffer using a different datatype than is being used to read out of it. This register is a buffer. Underrun behavior - throws an error.",
+      "mxluawarning": true
     },
     {
       "address": 47020,
@@ -4147,7 +4201,8 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["LUA", "USER_RAM"],
-      "description": "Generic FIFO buffer.  Useful for passing ORDERED or SEQUENTIAL data between various endpoints, such as between a host and a Lua script. Use up to 4 FIFO buffers simultaneously->1 of each data type, all 4 different data types, or a mixture. e.g. FIFO0_DATA_U16 points to the same memory as other FIFO0 registers, such that there are a total of 4 memory blocks: FIFO0, FIFO1, FIFO2 and FIFO3.  It is possible to write into a FIFO buffer using a different datatype than is being used to read out of it. This register is a buffer. Underrun behavior - throws an error."
+      "description": "Generic FIFO buffer.  Useful for passing ORDERED or SEQUENTIAL data between various endpoints, such as between a host and a Lua script. Use up to 4 FIFO buffers simultaneously->1 of each data type, all 4 different data types, or a mixture. e.g. FIFO0_DATA_U16 points to the same memory as other FIFO0 registers, such that there are a total of 4 memory blocks: FIFO0, FIFO1, FIFO2 and FIFO3.  It is possible to write into a FIFO buffer using a different datatype than is being used to read out of it. This register is a buffer. Underrun behavior - throws an error.",
+      "mxluawarning": true
     },
     {
       "address": 47030,
@@ -4185,7 +4240,8 @@
       "default": 0,
       "tags": ["LUA", "USER_RAM"],
       "description": "Allocate memory for a FIFO buffer. Number of bytes should be sufficient to store users max transfer array size.  Note that FLOAT32, INT32, and UINT32 require 4 bytes per value, and UINT16 require 2 bytes per value. Maximum size is limited by available memory. Care should be taken to conserve enough memory for other operations such as AIN_EF, Lua, Stream etc.",
-      "usesRAM": true
+      "usesRAM": true,
+      "mxluawarning": true
     },
     {
       "address": 47910,
@@ -4203,7 +4259,8 @@
       "readwrite": "R",
       "default": 0,
       "tags": ["LUA", "USER_RAM"],
-      "description": "Poll this register to see when new data is available/ready. Each read of the FIFO buffer decreases this value, and each write to the FIFO buffer increases this value. At any point in time, the following equation holds: Nbytes = Nwritten - Nread."
+      "description": "Poll this register to see when new data is available/ready. Each read of the FIFO buffer decreases this value, and each write to the FIFO buffer increases this value. At any point in time, the following equation holds: Nbytes = Nwritten - Nread.",
+      "mxluawarning": true
     },
     {
       "address": 47930,
@@ -4221,7 +4278,8 @@
       "readwrite": "W",
       "default": 0,
       "tags": ["LUA", "USER_RAM"],
-      "description": "Write any value to this register to efficiently empty, flush, or otherwise clear data from the FIFO."
+      "description": "Write any value to this register to efficiently empty, flush, or otherwise clear data from the FIFO.",
+      "mxluawarning": true
     },
     {
       "address": 55100,
@@ -4234,7 +4292,8 @@
       "readwrite": "R",
       "default": 1122867,
       "tags": ["CONFIG"],
-      "description": "A read of this test register should always return 0x00112233 or d1122867. If your software has the word swap quirk, you will incorrectly read 0x22330011 or 573767697.  If your software has the address-1 quirk, a UINT16 (1-register) read from 55101 will incorrectly return 0x0011 (should read 0x2233).  This register is unlike others, in that it allows you can read a single word from 55100 or 55101, or of course 2 words from 55100."
+      "description": "A read of this test register should always return 0x00112233 or d1122867. If your software has the word swap quirk, you will incorrectly read 0x22330011 or 573767697.  If your software has the address-1 quirk, a UINT16 (1-register) read from 55101 will incorrectly return 0x0011 (should read 0x2233).  This register is unlike others, in that it allows you can read a single word from 55100 or 55101, or of course 2 words from 55100.",
+      "mxluawarning": true
     },
     {
       "address": 55110,
@@ -4398,7 +4457,8 @@
       ],
       "readwrite": "R",
       "tags": ["CONFIG"],
-      "description": "The serial number of the device."
+      "description": "The serial number of the device.",
+      "mxluawarning": true
     },
     {
       "address": 60500,
@@ -4588,7 +4648,8 @@
       "readwrite": "R",
       "tags": ["FILE_IO"],
       "altnames": ["FILE_IO_SIZE"],
-      "description": "The size of the file in bytes. Directories have 0 size."
+      "description": "The size of the file in bytes. Directories have 0 size.",
+      "mxluawarning": true
     },
     {
       "address": 60630,
@@ -4603,7 +4664,8 @@
       "readwrite": "R",
       "tags": ["FILE_IO"],
       "altnames": ["FILE_IO_DISK_SECTOR_SIZE"],
-      "description": "The size of each sector in the SD card in bytes. In Windows this is called the Allocation Size."
+      "description": "The size of each sector in the SD card in bytes. In Windows this is called the Allocation Size.",
+      "mxluawarning": true
     },
     {
       "address": 60632,
@@ -4617,7 +4679,8 @@
       ],
       "readwrite": "R",
       "tags": ["FILE_IO"],
-      "description": "The number of sectors in each cluster. Captured on read of FILE_IO_DISK_SECTOR_SIZE_BYTES."
+      "description": "The number of sectors in each cluster. Captured on read of FILE_IO_DISK_SECTOR_SIZE_BYTES.",
+      "mxluawarning": true
     },
     {
       "address": 60634,
@@ -4631,7 +4694,8 @@
       ],
       "readwrite": "R",
       "tags": ["FILE_IO"],
-      "description": "The total number of clusters in the SD card. Captured on read of FILE_IO_DISK_SECTOR_SIZE_BYTES."
+      "description": "The total number of clusters in the SD card. Captured on read of FILE_IO_DISK_SECTOR_SIZE_BYTES.",
+      "mxluawarning": true
     },
     {
       "address": 60636,
@@ -4645,7 +4709,8 @@
       ],
       "readwrite": "R",
       "tags": ["FILE_IO"],
-      "description": "Free (available) clusters in the SD card. Used to determine free space. Captured on read of FILE_IO_DISK_SECTOR_SIZE_BYTES."
+      "description": "Free (available) clusters in the SD card. Used to determine free space. Captured on read of FILE_IO_DISK_SECTOR_SIZE_BYTES.",
+      "mxluawarning": true
     },
     {
       "address": 60638,
@@ -4660,7 +4725,8 @@
       "readwrite": "R",
       "tags": ["FILE_IO"],
       "altnames": ["FILE_IO_DISK_FORMAT"],
-      "description": "Used to determine the format of the SD card.<br>0=None or Unknown,<br>1=FAT12,<br>2=FAT16(Windows FAT),<br>3=FAT32"
+      "description": "Used to determine the format of the SD card.<br>0=None or Unknown,<br>1=FAT12,<br>2=FAT16(Windows FAT),<br>3=FAT32",
+      "mxluawarning": true
     },
     {
       "address": 60640,
@@ -4676,7 +4742,8 @@
       "tags": ["FILE_IO"],
       "altnames": ["FILE_IO_NAME_WRITE_LEN"],
       "description": "Write the length (in bytes) of the file path or directory to access.",
-      "usesRAM": true
+      "usesRAM": true,
+      "mxluawarning": true
     },
     {
       "address": 60642,
@@ -4691,7 +4758,8 @@
       "readwrite": "R",
       "tags": ["FILE_IO"],
       "altnames": ["FILE_IO_NAME_READ_LEN"],
-      "description": "Read the length (in bytes) of the next file path or directory to access."
+      "description": "Read the length (in bytes) of the next file path or directory to access.",
+      "mxluawarning": true
     },
     {
       "address": 60650,
@@ -5052,7 +5120,8 @@
       ],
       "readwrite": "RW",
       "tags": ["INTFLASH"],
-      "description": "Sets the region of internal flash to which access is allowed."
+      "description": "Sets the region of internal flash to which access is allowed.",
+      "mxluawarning": true
     },
     {
       "address": 61810,
@@ -5064,7 +5133,8 @@
       ],
       "readwrite": "RW",
       "tags": ["INTFLASH"],
-      "description": "The address in internal flash that reads will start from."
+      "description": "The address in internal flash that reads will start from.",
+      "mxluawarning": true
     },
     {
       "address": 61812,
@@ -5076,7 +5146,8 @@
       ],
       "readwrite": "R",
       "tags": ["INTFLASH"],
-      "description": "Data read from internal flash."
+      "description": "Data read from internal flash.",
+      "mxluawarning": true
     },
     {
       "address": 61820,
@@ -5089,7 +5160,8 @@
       ],
       "readwrite": "W",
       "tags": ["INTFLASH"],
-      "description": "Erases a 4k section of internal flash starting at the specified address. This register is a buffer."
+      "description": "Erases a 4k section of internal flash starting at the specified address. This register is a buffer.",
+      "mxluawarning": true
     },
     {
       "address": 61830,
@@ -5101,7 +5173,8 @@
       ],
       "readwrite": "RW",
       "tags": ["INTFLASH"],
-      "description": "Address in internal flash where writes will begin."
+      "description": "Address in internal flash where writes will begin.",
+      "mxluawarning": true
     },
     {
       "address": 61832,
@@ -5114,7 +5187,8 @@
       ],
       "readwrite": "W",
       "tags": ["INTFLASH"],
-      "description": "Data written here will be written to internal flash. This register is a buffer."
+      "description": "Data written here will be written to internal flash. This register is a buffer.",
+      "mxluawarning": true
     },
     {
       "address": 22000,
@@ -5727,7 +5801,8 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["LUA", "USER_RAM"],
-      "description": "Saves or recalls data to or from the battery-backed SRAM. Only available on T7-Pros."
+      "description": "Saves or recalls data to or from the battery-backed SRAM. Only available on T7-Pros.",
+      "mxluawarning": true
     }
   ],
 
@@ -7538,7 +7613,8 @@
     "2019.02.08.A   Added a missing error code for T4 AIN_EF features.",
     "2019.03.06.A   Added an error code STREAM_OUT_NEEDS_TO_BE_ENABLED.",
     "2019.08.07.A   Updated details for register 6022 and 6122 (lua debugging stuff).",
-    "2019.11.08.A   Updated error code info for 2408 and added register 60014."
+    "2019.11.08.A   Updated error code info for 2408 and added register 60014.",
+    "2019.11.22.A   Added UINT32 precision-loss warning for particular registers read by Lua Scripts running with 32bit float data type.",
     "End Of Comments"
   ]
 }
