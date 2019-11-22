@@ -1897,6 +1897,24 @@
       "description": "Read script saved to flash from here."
     },
     {
+      "address": 6050,
+      "name": "LUA_NO_WARN_TRUCATION",
+      "type": "UINT32",
+      "devices": [
+        {
+          "device": "T7",
+          "fwmin": 1.0285
+        },
+        {
+          "device": "T4",
+          "fwmin": 1.0025
+        }
+      ],
+      "readwrite": "RW",
+      "tags": ["LUA"],
+      "description": "Writing a 1 to this regiser will prevent trucation warnings from being diplayed. This regiser will be cleared when every time Lua is started."
+    },
+    {
       "address": 6100,
       "name": "LUA_RUN_DEFAULT",
       "type": "UINT32",
@@ -7601,6 +7619,7 @@
     "2019.08.07.A   Updated details for register 6022 and 6122 (lua debugging stuff).",
     "2019.11.08.A   Updated error code info for 2408 and added register 60014.",
     "2019.11.12.A   Added UDP DISCOVERY_ONLY registers and error code.",
+    "2019.11.22.A   Added a register to suppress the Lua truncation warning.",
     "End Of Comments"
   ]
 }
