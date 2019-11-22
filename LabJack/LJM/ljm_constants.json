@@ -1898,7 +1898,7 @@
     },
     {
       "address": 6050,
-      "name": "LUA_NO_WARN_TRUCATION",
+      "name": "LUA_NO_WARN_TRUNCATION",
       "type": "UINT32",
       "devices": [
         {
