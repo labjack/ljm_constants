@@ -1665,7 +1665,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["ASYNCH", "UART"],
-      "description": "The number of stop bits. Values:<br>1 = one stop bit,<br>2 = two stop bits,<br>0 = zero stop bits."
+      "description": "The number of stop bits. Values:<br>0 = zero stop bits,<br>1 = one stop bit,<br>2 = two stop bits."
     },
     {
       "address": 5460,
@@ -3724,7 +3724,7 @@
       ],
       "readwrite": "R",
       "tags": ["ETHERNET"],
-      "description": "Restricts which Modbus operations are allowed over UDP. When set to 1, only the registers needed for discoverying units can be read. Any other operation will throw an error."
+      "description": "Restricts which Modbus operations are allowed over UDP. When set to 1, only the registers needed for discovering units can be read and any other operation will throw an error."
     },
     {
       "address": 49150,
@@ -3889,7 +3889,7 @@
       ],
       "readwrite": "R",
       "tags": ["WIFI"],
-      "description": "Restricts which Modbus operations are allowed over UDP. When set to 1, only the registers needed for discoverying units can be read. Any other operation will throw an error."
+      "description": "Restricts which Modbus operations are allowed over UDP. When set to 1, only the registers needed for discovering units can be read and any other operation will throw an error."
     },
     {
       "address": 49300,
@@ -5702,7 +5702,7 @@
       ],
       "readwrite": "R",
       "tags": ["CONFIG"],
-      "description": "Bitmask register that indicates why a device was last re-set. bit0: Power-on reset, bit1: Brown-out, bit2: Wake from idle, bit3: Wake from sleep, bit4: watchdog timer time-out, bit5: reserved, bit6: Software reset, bit7: external reset (MCLR), bit8: Voltage regulator standby, bit9: Configuration mismatch."
+      "description": "Bitmask register that indicates why a device was last re-set.<br>bit0: Power-on reset,<br>bit1: Brown-out,<br>bit2:<br>Wake from idle,<br>bit3: Wake from sleep,<br>bit4: watchdog timer time-out,<br>bit5: reserved,<br>bit6: Software reset,<br>bit7: external reset (MCLR),<br>bit8: Voltage regulator standby,<br>bit9: Configuration mismatch."
     }
   ],
 
