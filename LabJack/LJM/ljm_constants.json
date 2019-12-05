@@ -6352,7 +6352,7 @@
     {
       "error": 1320,
       "string": "LJME_DIGITAL_AUTO_RECOVERY_ERROR_DETECTED",
-      "description": "During stream, the device buffer overflowed, causing auto-recovery to occur. See labjack.com/digital-auto-recovery-error-detection."
+      "description": "During stream, the device buffer overflowed, causing auto-recovery to occur. See https://labjack.com/digital-auto-recovery-error-detection."
     },
     {
       "error": 1321,
