@@ -91,7 +91,9 @@ class EmbeddedConstantsTests(unittest.TestCase):
         test_reg_dir = []
         test_conflict_dir = {}
         num_conflicts = 0
+        num_type_2_conflicts = 0
         test_registers = [
+            # Hash conflict and index conflict
             {
                 "name":"TEST(0:3)_INDEX_32",
                 "address":42343,
@@ -107,6 +109,7 @@ class EmbeddedConstantsTests(unittest.TestCase):
                 "address":43242,
                 "type":"UINT16",
             },
+            # Hash and index conflict scenario 2
             {
                 "name":"TEST_64_INDEX(0:3)",
                 "address":4324,
@@ -117,6 +120,7 @@ class EmbeddedConstantsTests(unittest.TestCase):
                 "address":4325,
                 "type":"UINT16",
             },
+            # Index conflict
             {
                 "name":"TEST(0:3)",
                 "address":1233,
@@ -127,6 +131,7 @@ class EmbeddedConstantsTests(unittest.TestCase):
                 "address":1234,
                 "type":"UINT16",
             },
+            # Hash conflict
             {
                 "name":"TEST_F32",
                 "address":1,
@@ -137,6 +142,7 @@ class EmbeddedConstantsTests(unittest.TestCase):
                 "address":2,
                 "type":"UINT16",
             },
+            # Hash conflict scenario 2
             {
                 "name":"2TEST_NAME",
                 "address":5,
@@ -147,11 +153,13 @@ class EmbeddedConstantsTests(unittest.TestCase):
                 "address":6,
                 "type":"UINT16",
             },
+            # No conflict
             {
                 "name":"TEST_A",
                 "address":43,
                 "type":"UINT16",
             },
+            # Test duplicate entries (address and hash)
             {
                 "name":"TEST_B",
                 "address":44,
@@ -167,6 +175,30 @@ class EmbeddedConstantsTests(unittest.TestCase):
                 "address":44,
                 "type":"UINT16",
             },
+            # Conflict type 2
+            {
+                "name":"NEW1",
+                "address":88,
+                "type":"UINT16",
+            },
+            # Conflict type 2 scenario 2
+            {
+                "name":"1NEW_A",
+                "address":88,
+                "type":"UINT16",
+            },
+            # Test NOT conflict type 2, conflict type 1
+            {
+                "name":"NEW(0:4)_F32",
+                "address":87,
+                "type":"UINT16",
+            },
+            # Test NOT conflict type 2, conflict type 1 scenario 2
+            {
+                "name":"NEW32(0:4)_B",
+                "address":86,
+                "type":"UINT16",
+            },
         ]
         test_conflict_dir, test_reg_dir, test_dup_registers = generate_test_directories(
             test_registers,
@@ -176,9 +208,12 @@ class EmbeddedConstantsTests(unittest.TestCase):
         for reg in test_reg_dir:
             if (reg["conflict_mode"] == 1):
                 num_conflicts += 1
-        self.assertEqual(num_conflicts, 4)
-        self.assertEqual(len(test_conflict_dir), 4)
-        self.assertEqual(len(test_reg_dir), 8)
+            if (reg["conflict_mode"] == 2):
+                num_type_2_conflicts += 1
+        self.assertEqual(num_conflicts, 6)
+        self.assertEqual(num_type_2_conflicts, 2)
+        self.assertEqual(len(test_conflict_dir), 6)
+        self.assertEqual(len(test_reg_dir), 12)
         self.assertEqual(test_dup_registers, 3)
 
     # Check conflict dir size

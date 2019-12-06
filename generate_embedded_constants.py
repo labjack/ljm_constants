@@ -96,8 +96,6 @@ def shorten_reg_name(name):
     index_location = -999
     between_bad_chars = False
     same_number = True
-    # if (name[0:3] == "I2C"):
-    #     name = name[:1] + name[2:]
     for i in name:
         # If we have any of the "bad chars" we will need to use indexing if
         # there are any conflicts
@@ -227,10 +225,11 @@ def check_is_removable_conflict_table(table_length, reg_dir, table_entry):
                     # If the upper nibble of data_type is F then the register
                     # is not indexed and it should be safe to remove from the
                     # conflict table
-                    # Fix the register back up to non-conflict mode
+                    # Fix the register back up to be in the main directory,
+                    # Set the conflict mode to 2
                     reg["address"] = table_entry["address"]
                     reg["data_type"] = table_entry["data_type"]
-                    reg["conflict_mode"] = 0
+                    reg["conflict_mode"] = 2
                     return True
                 else:
                     # this conflict table should not be removed. Although the
