@@ -6062,7 +6062,7 @@
     {
       "error": 1258,
       "string": "LJME_NUM_WRITES_LARGER_THAN_AVAILABLE_SPACE",
-      "description": "LJM recieved more values to stream out than are available in the LJM write queue."
+      "description": "LJM received more values to stream out than are available in the LJM write queue."
     },
     {
       "error": 1259,
