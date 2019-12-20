@@ -3265,7 +3265,8 @@
         "T4"
       ],
       "readwrite": "RW",
-      "tags": ["CONFIG"]
+      "tags": ["CONFIG"],
+      "description": "The address in the factory configuration data which reads will start from."
     },
     {
       "address": 49008,
@@ -3276,7 +3277,8 @@
         "T4"
       ],
       "readwrite": "R",
-      "tags": ["CONFIG"]
+      "tags": ["CONFIG"],
+      "description": "Data read from factory configuration"
     },
     {
       "address": 49010,
@@ -3287,7 +3289,8 @@
         "T4"
       ],
       "readwrite": "RW",
-      "tags": ["CONFIG"]
+      "tags": ["CONFIG"],
+      "description": "The address in the configuration data which reads will start from."
     },
     {
       "address": 49012,
@@ -3298,7 +3301,8 @@
         "T4"
       ],
       "readwrite": "R",
-      "tags": ["CONFIG"]
+      "tags": ["CONFIG"],
+      "description": "Data read from the startup configuration"
     },
     {
       "address": 49014,
@@ -3309,7 +3313,8 @@
         "T4"
       ],
       "readwrite": "RW",
-      "tags": ["CONFIG"]
+      "tags": ["CONFIG"],
+      "description": "The address in the current 0configuration data which reads will start from."
     },
     {
       "address": 49016,
@@ -3320,7 +3325,8 @@
         "T4"
       ],
       "readwrite": "R",
-      "tags": ["CONFIG"]
+      "tags": ["CONFIG"],
+      "description": "Data read from the current configuration"
     },
     {
       "address": 49018,
@@ -3331,7 +3337,8 @@
         "T4"
       ],
       "readwrite": "R",
-      "tags": ["CONFIG"]
+      "tags": ["CONFIG"],
+      "description": "Returns 1 if the current configuration matches the default configuration."
     },
     {
       "address": 49020,
@@ -5718,7 +5725,8 @@
         }
       ],
       "readwrite": "W",
-      "tags": ["WIFI"]
+      "tags": ["WIFI"],
+      "description": "Currently unused."
     },
     {
       "address": 49406,
@@ -5731,7 +5739,8 @@
         }
       ],
       "readwrite": "W",
-      "tags": ["WIFI"]
+      "tags": ["WIFI"],
+      "description": "Currently unused."      
     },
     {
       "address": 49486,
@@ -5744,7 +5753,8 @@
         }
       ],
       "readwrite": "R",
-      "tags": ["WIFI"]
+      "tags": ["WIFI"],
+      "description": "Currently unused."
     },
     {
       "address": 49488,
@@ -5758,7 +5768,8 @@
         }
       ],
       "readwrite": "R",
-      "tags": ["WIFI"]
+      "tags": ["WIFI"],
+      "description": "Currently unused."
     },
     {
       "address": 6006,
