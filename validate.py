@@ -14,6 +14,7 @@ def validate(json_file_path):
             expand_names=True,
             inc_orig=True
         )
+
     except Exception as e:
         print '[ERROR] JSON file registers could not be parsed. (' + str(e) + ')'
         exit(1)
@@ -27,6 +28,9 @@ def validate(json_file_path):
     err_msgs = []
 
     print 'Checking register map duplicates and streamable validity...'
+    # Track all register names so we do not throw the same error twice for a
+    # register (if the register is used with multiple devices)
+    all_names = []
     for device in json_map:
         previous_names = []
         previous_addresses = {}
@@ -63,6 +67,21 @@ def validate(json_file_path):
                     )
                 )
             previous_addresses[reg_addr] = unresolved
+
+            if resolved.has_key('description') and \
+                len(resolved['description']) == 0 and \
+                reg_name not in all_names:
+                    err_msgs.append(
+                        'No register description for: %s\n'
+                        % str(reg_name)
+                    )
+            elif not resolved.has_key('description') and \
+                reg_name not in all_names:
+                err_msgs.append(
+                        'No register description field for: %s\n'
+                        % str(reg_name)
+                    )
+            all_names.append(reg_name)
 
     print 'Checking error duplicates...'
     dup_ierrs = []
