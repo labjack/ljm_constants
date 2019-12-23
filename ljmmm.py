@@ -1,15 +1,16 @@
 """Logic for loading LabJack Modbus Map Markup notation modbus maps.
-
 @author Sam Pottinger
 @license GNU GPL v3
 """
+
+from past.builtins import basestring
 
 
 import copy
 import json
 import re
 import string
-from sets import Set
+# from sets import Set
 
 DEFAULT_FILE_NAME = "ljm_constants/LabJack/LJM/ljm_constants.json"
 ACCESS_RESTRICTIONS_STRS = {
@@ -65,13 +66,13 @@ FIND_ENDING_PUNCTUATION = re.compile(r'.*([.,;\)])$')
 def read_file(src):
     """Read a file and return the contents."""
     with open(src) as f:
-        contents = f.read().decode("utf-8","ignore")
+        file_bytes = f.read().encode("utf-8","ignore")
+        contents = file_bytes.decode("utf-8","ignore")
     return contents
 
 
 def get_raw_registers_data(src=DEFAULT_FILE_NAME):
     """Load information about registers from constants JSON file.
-
     @keyword src: The name of the file to open. Defaults to DEFAULT_FILE_NAME.
     @type src: str
     @return: Raw JSON data dictionary loaded from source file.
@@ -86,11 +87,9 @@ def get_raw_registers_data(src=DEFAULT_FILE_NAME):
 
 def generate_int_enumeration(src):
     """Generate versions of a string with an enumerated sequence added in.
-
     Generate variations of a string as a list with an enumerated sequence of
     integers added in. For example (test#, 1, 3) would yield [test1, test2,
     test3] and (test#, 0, 4, 2) would yield [test0, test2, test4]
-
     @param src: The tuple to generate the enumeration from. First element should
                 be the string, the second element the starting integer, and the
                 third the ending integer (inclusive). Third optional value
@@ -108,13 +107,12 @@ def generate_int_enumeration(src):
         interval = 1
     afterwards = src[4]
 
-    numbers = range(start_num, end_num+1, interval)
-    return map(lambda x: "%s%d%s" % (template_str, x, afterwards), numbers)
+    numbers = list(range(start_num, end_num+1, interval))
+    return ["%s%d%s" % (template_str, x, afterwards) for x in numbers]
 
 
 def interpret_ljmmm_field(src):
     """Interpret a small string of LabJack Modbus Map Markup field notation.
-
     Supported notation features:
         "%s\#%s": Ignored
         "%s#(%d:%d): Generate strings with values from first to second number in
@@ -123,7 +121,6 @@ def interpret_ljmmm_field(src):
                         number in parentheses with an interval of third number
                         between them. See generate_int_enumeration for more
                         info.
-
     @param src: The code to execute.
     @type src: str
     @return: Result of running the snippet.
@@ -136,7 +133,7 @@ def interpret_ljmmm_field(src):
     if enumeration_results:
         enumeration_tuple = enumeration_results[0]
         result = generate_int_enumeration(enumeration_tuple)
-        return map(lambda x: interpret_ljmmm_field(x), result)
+        return [interpret_ljmmm_field(x) for x in result]
 
     src = src.replace("#pound", "#")
     return src
@@ -144,7 +141,6 @@ def interpret_ljmmm_field(src):
 
 def enumerate_addresses(start_address, num_addresses, reg_per_address):
     """Generate addresses through enumerating a sequence of numbers.
-
     @param start_address: The address to start the sequence on.
     @type start_address: int
     @param num_addresses: The number of addresses to generate in the sequence.
@@ -155,12 +151,11 @@ def enumerate_addresses(start_address, num_addresses, reg_per_address):
     @rtype: list of int
     """
     end_address = start_address + num_addresses * reg_per_address
-    return range(start_address, end_address+1, reg_per_address)
+    return list(range(start_address, end_address+1, reg_per_address))
 
 
 def get_datatype_size(datatype_name):
     """Get the number of registers a datatype requires.
-
     @param datatype_name: The name of the datatype to get the size for.
     @type datatype_name: str
     @return: Number of registers the given datatype takes up or None if the
@@ -178,7 +173,6 @@ def get_datatype_size(datatype_name):
 
 def get_datatype_type_index(datatype_name):
     """Get the type index of a datatype (generally an integer).
-
     @param datatype_name: The name of the datatype to get the type index of.
     @type datatype_name: str
     @return: String the type index.
@@ -195,12 +189,10 @@ def get_datatype_type_index(datatype_name):
 
 def interpret_firmware(firmware):
     """Turn a non-explicit firmware descriptor to an explicit descriptor.
-
     Interpret a device firmware descriptor, making a non-explicit one into an
     explicit one. So "U3" would return {"device": "U3", "fwmin": 0}. It
     assumes all dictionaries are already explicit descriptors and does not touch
     them. It also assumes all strings are device names.
-
     @param firmware: The firmware descriptor to interpret.
     @type firmware: dict or str
     @return: Explicit firmware descriptor.
@@ -219,11 +211,9 @@ def interpret_firmware(firmware):
 
 def interpret_access_descriptor(descriptor):
     """Interpret a string with info about the access restrictions to a register.
-
     Interpret a string with access restriction information for a register. For
     example R becomes {"read": True, "write": False}. Assumes all dictionaries
     are already valid dictionaries with access restriction information.
-
     @param descriptor: The descriptor to interpret.
     @type descriptor: str or dict
     @return: Dictionary with explicit read / write restrictions or the
@@ -244,14 +234,11 @@ def interpret_access_descriptor(descriptor):
 
 def apply_anchors(text):
     """Parses the given text, applying <a> tags to URLs and returning the result
-
     E.g.: If text is:
         "test https://labjack.com/support/. End."
     returns:
         "test <a href=\"https://labjack.com/support/\">https://labjack.com/support/</a>. End."
-
     URLs are not allowed to contain a trailing comma, period, or semi-colon.
-
     @param text: text to apply anchor tags to
     @type text: str
     """
@@ -260,12 +247,12 @@ def apply_anchors(text):
         url = url_tuple[0]
         end_punc = FIND_ENDING_PUNCTUATION.search(url)
         if end_punc:
-            url = string.rsplit(url, end_punc.group(1), 1)[0]
+            url = str.rsplit(url, end_punc.group(1), 1)[0]
 
         # pos = text.find(url)
         # if pos == -1:
         #     raise ValueError('expected to find URL %s in text %s' % (url, text))
-        parts = string.split(text, url, 1)
+        parts = str.split(text, url, 1)
         text = parts[0] + (
             "<a target='_blank' href='%s'>"
             "%s"
@@ -282,13 +269,11 @@ def apply_anchors(text):
 def parse_register_data(raw_register_dict, expand_names=False,
     expand_alt_names=False):
     """Parse information about a single register.
-
     Loads and interprets register information from the given dictionary
     which can contain LabJack Modbus Map Markup strings, device firmware
     descriptor shorthands, string access restriction descriptors, and other
     raw data. For more information see LabJack Constants Markup notation
     documentation.
-
     The dictionaries in the resulting list will be in the form of:
     {
         "address": int,
@@ -310,12 +295,10 @@ def parse_register_data(raw_register_dict, expand_names=False,
             {"name": str, "value": float / int}
         ]
     }
-
     If expand_names == True, all names will be enumerated such that
     DAC#(0:1) will result in two dictionaries, one with
     ret_dict["name"] == "DAC#0" and another with ret_dict["name"] == "DAC#1".
     Otherwise, DAC#(0:1) will result in one dictionary with an unmodified name.
-
     @param raw_register_dict: Raw dictionary of register information.
     @type raw_register_dict: dict.
     @param expand_names: Choose whether or not to expand the register names
@@ -333,7 +316,7 @@ def parse_register_data(raw_register_dict, expand_names=False,
     datatype_str = raw_register_dict["type"]
     datatype_size = get_datatype_size(datatype_str)
     type_index = get_datatype_type_index(datatype_str)
-    devices = map(lambda x: interpret_firmware(x), raw_register_dict["devices"])
+    devices = [interpret_firmware(x) for x in raw_register_dict["devices"]]
     access_restrictions = interpret_access_descriptor(
         raw_register_dict["readwrite"]
     )
@@ -351,7 +334,7 @@ def parse_register_data(raw_register_dict, expand_names=False,
             num_addresses,
             datatype_size
         )
-    name_address_pairs = zip(names, addresses)
+    name_address_pairs = list(zip(names, addresses))
 
     description = apply_anchors(raw_register_dict.get("description", ""))
     default = raw_register_dict.get("default", None)
@@ -361,7 +344,7 @@ def parse_register_data(raw_register_dict, expand_names=False,
     constants = raw_register_dict.get("constants", [])
     altnames = raw_register_dict.get("altnames", [])
     if expand_names:
-        altnames = map(lambda x: interpret_ljmmm_field(x), altnames)
+        altnames = [interpret_ljmmm_field(x) for x in altnames]
         if len(altnames) and isinstance(altnames[0], basestring):
             altnames = [altnames]
 
@@ -371,7 +354,7 @@ def parse_register_data(raw_register_dict, expand_names=False,
     for (name, address) in name_address_pairs:
         inner_altnames = altnames
         if expand_names:
-            inner_altnames = map(lambda x: x[altnames_count], altnames)
+            inner_altnames = [x[altnames_count] for x in altnames]
             altnames_count = altnames_count + 1
 
         ret_list.append(
@@ -399,27 +382,43 @@ def parse_register_data(raw_register_dict, expand_names=False,
         if len(alt_names) > 0:
             alt_names_dict = copy.deepcopy(raw_register_dict)
             del alt_names_dict["altnames"]
-            for name in filter(lambda x: x != "", alt_names):
+            for name in [x for x in alt_names if x != ""]:
                 alt_names_dict["name"] = name
                 ret_list.extend(parse_register_data(alt_names_dict, expand_names))
 
     return ret_list
 
 
+def interpret_tags(tags, tags_base_url='http://labjack.com/support/modbus/tags'):
+    """Converts a list of valid tag names into a list of html links.
+    Converts a list of valid tag names into a list of html links. For
+    example, interpret_tags(["AIN", "CONFIG"], 'labjack.com/path/to/tags/')
+    could become something like:
+    [
+        "<a class='tag-link' href='labjack.com/path/to/tags/AIN>AIN</a>",
+        "<a class='tag-link' href='labjack.com/path/to/tags/CONFIG>CONFIG</a>"
+    ]
+    @keyword tags: The list of tags to convert into links
+    @type tags: list of str
+    @keyword tags_base_url: The base url used to create the links
+    @type tags_base_url: str
+    @return: list of str html links
+    """
+    return ["<a class=\'tag-link\' href=" + tags_base_url +
+                "/" + x + ">" + x + "</a>" for x in tags]
+
+
+
 def get_registers_data(src=DEFAULT_FILE_NAME, expand_names=False,
     inc_orig=False, expand_alt_names=False):
     """Load and parse information about registers from JSON constants file.
-
     Loads and interprets registers information from the given JSON constants
     file, in the form output by parse_register_data.
-
     If expand_names, names will be enumerated such that DAC#(0:1) will result in
     two dictionaries, one with ret_dict["name"] == "DAC#0" and another with
     ret_dict["name"] == "DAC#1"
-
     For more information see LabJack Modbus Map Markup notation
     documentation.
-
     @keyword src: The name of the file to open. Defaults to DEFAULT_FILE_NAME.
     @type src: str
     @keyword expand_names: Flag to indicate if LJMMM fields should be
@@ -440,7 +439,7 @@ def get_registers_data(src=DEFAULT_FILE_NAME, expand_names=False,
             ret_list.extend(parse_register_data(entry, expand_names, expand_alt_names))
 
     if inc_orig:
-        return zip(raw_data, ret_list)
+        return list(zip(raw_data, ret_list))
     else:
         return ret_list
 
@@ -448,7 +447,6 @@ def get_registers_data(src=DEFAULT_FILE_NAME, expand_names=False,
 def get_device_modbus_maps(src=DEFAULT_FILE_NAME, expand_names=False,
     inc_orig=False, expand_alt_names=False):
     """Load register info from JSON constants file and structure by device.
-
     Loads and interprets registers information from the given JSON constants
     file and structures it by device in the form of:
     {
@@ -467,17 +465,14 @@ def get_device_modbus_maps(src=DEFAULT_FILE_NAME, expand_names=False,
         ]
     }
     The list of dictionaries for each device type will be sorted by address.
-
     TODO: Add param to specify this (currenly doesn't expand the register
     names in this way):
     All names will be enumerated such that DAC#(0:1) will result in two
     dictionaries, one with ret_dict["name"] == "DAC#0" and another with
     ret_dict["name"] == "DAC#1".
-
     All alternative names will be given their own individual entry so
     an address with two alternative names will correspond to three elements
     in the returned lists.
-
     @keyword src: The name of the file to open. Defaults to DEFAULT_FILE_NAME.
     @type src: str
     @keyword expand_names: Flag to indicate if LJMMM fields should be
