@@ -1,7 +1,5 @@
 language: python
 python:
   - "3.8"
-install:
-  - pip install future
 script:
   - python ljmmm_test.py && python validate.py LabJack/LJM/ljm_constants.json
