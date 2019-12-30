@@ -2,7 +2,6 @@ import os
 import unittest
 import subprocess
 
-from labjack import ljm
 import ljmmm
 import generate_embedded_constants as genconsts
 

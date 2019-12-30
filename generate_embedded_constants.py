@@ -6,8 +6,6 @@ import subprocess
 
 import ljmmm
 
-from labjack import ljm
-
 SRC_FILE = 'LabJack/LJM/ljm_constants.json'
 OUTPUT_FILE = 'gen_output/LabJackEmbeddedConstants.h'
 

@@ -4,8 +4,6 @@
 @license GNU GPL v3
 """
 
-from past.builtins import basestring
-
 
 import copy
 import json
@@ -210,7 +208,7 @@ def interpret_firmware(firmware):
     @rtype: dict
     @raise TypeError: Thrown if firmware is not a dict or a str.
     """
-    if isinstance(firmware, basestring):
+    if isinstance(firmware, str):
         return {"device": firmware, "fwmin": 0}
     elif isinstance(firmware, dict):
         return firmware
@@ -330,7 +328,7 @@ def parse_register_data(raw_register_dict, expand_names=False,
         names = interpret_ljmmm_field(raw_register_dict["name"])
     else:
         names = raw_register_dict["name"]
-    if isinstance(names, basestring):
+    if isinstance(names, str):
         names = [names]
 
     datatype_str = raw_register_dict["type"]
@@ -365,7 +363,7 @@ def parse_register_data(raw_register_dict, expand_names=False,
     altnames = raw_register_dict.get("altnames", [])
     if expand_names:
         altnames = [interpret_ljmmm_field(x) for x in altnames]
-        if len(altnames) and isinstance(altnames[0], basestring):
+        if len(altnames) and isinstance(altnames[0], str):
             altnames = [altnames]
 
     # Generate resulting dicts

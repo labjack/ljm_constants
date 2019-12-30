@@ -9,7 +9,9 @@ import os
 import unittest
 
 import ljmmm
-from past.builtins import cmp
+
+def cmp(a, b):
+    return (a > b) - (a < b)
 
 # TODO: This is still somewhat incomplete
 class LJMMMTests(unittest.TestCase):
