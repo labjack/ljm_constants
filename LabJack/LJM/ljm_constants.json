@@ -3314,7 +3314,7 @@
       ],
       "readwrite": "RW",
       "tags": ["CONFIG"],
-      "description": "The address in the current 0configuration data which reads will start from."
+      "description": "The address in the current configuration data which reads will start from."
     },
     {
       "address": 49016,
