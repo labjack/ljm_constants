@@ -1912,7 +1912,7 @@
       ],
       "readwrite": "RW",
       "tags": ["LUA"],
-      "description": "Writing a 1 to this regiser will prevent trucation warnings from being diplayed. This regiser will be cleared when every time Lua is started."
+      "description": "Writing a 1 to this register will prevent truncation warnings from being displayed. This register will be cleared every time Lua is started."
     },
     {
       "address": 6100,
