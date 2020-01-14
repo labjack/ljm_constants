@@ -3453,7 +3453,7 @@
       ],
       "readwrite": "RW",
       "tags": ["CONFIG"],
-      "description": "Delays for x microseconds. Range is 0-100000."
+      "description": "Delays for x microseconds. Range is 0-100000. This operation is Blocking. While a blocking function is running no other registers can be read / written."
     },
     {
       "address": 61990,
@@ -7631,6 +7631,7 @@
     "2019.11.08.A   Updated error code info for 2408 and added register 60014.",
     "2019.11.12.A   Added UDP DISCOVERY_ONLY registers and error code.",
     "2019.11.22.A   Added a register to suppress the Lua truncation warning.",
+    "2019.01.14.A   Updated the description of WAIT_US_BLOCKING. to explain the term \"blocking\"",
     "End Of Comments"
   ]
 }
