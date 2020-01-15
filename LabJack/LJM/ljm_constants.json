@@ -462,7 +462,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["STREAM"],
-      "description": "Write a value to specify the number of times per second that all channels in the stream scanlist will be read.  Max stream speeds are based on Sample Rate which is NumChannels*ScanRate.  Has no effect when using and external clock.  A read of this register returns the actual scan rate, which can be slightly different due to rounding.  For scan rates >152.588, the actual scan interval is multiples of 100 ns.  Assuming a core clock of 80 MHz the internal roll value is (80M/(8*DesiredScanRate))-1 and the actual scan rate is then 80M/(8*(RollValue+1).  For slower scan rates the scan interval resolution is changed to 1 us, 10 us, 100 us, or 1 ms as needed to achieve the longer intervals."
+      "description": "Write a value to specify the number of times per second that all channels in the stream scanlist will be read.  Max stream speeds are based on Sample Rate which is NumChannels*ScanRate.  Has no affect when using and external clock.  A read of this register returns the actual scan rate, which can be slightly different due to rounding.  For scan rates >152.588, the actual scan interval is multiples of 100 ns.  Assuming a core clock of 80 MHz the internal roll value is (80M/(8*DesiredScanRate))-1 and the actual scan rate is then 80M/(8*(RollValue+1).  For slower scan rates the scan interval resolution is changed to 1 us, 10 us, 100 us, or 1 ms as needed to achieve the longer intervals."
     },
     {
       "address": 4004,
