@@ -6098,12 +6098,12 @@
     {
       "error": 1263,
       "string": "LJME_NO_RESPONSE_BYTES_RECEIVED",
-      "description": "No Modbus response bytes could be received from the device."
+      "description": "No Modbus response bytes could be received from the device during the timeout period. See https://labjack.com/support/software/api/ljm/constants/timeout-configs"
     },
-    {
+    
       "error": 1264,
       "string": "LJME_INCORRECT_NUM_RESPONSE_BYTES_RECEIVED",
-      "description": "An incorrect/unexpected number of Modbus response bytes were received from the device."
+      "description": "An incorrect/unexpected number of Modbus response bytes were received from the device during the timeout period. See https://labjack.com/support/software/api/ljm/constants/timeout-configs"
     },
     {
       "error": 1265,
