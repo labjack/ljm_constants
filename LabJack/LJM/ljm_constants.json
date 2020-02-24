@@ -363,6 +363,17 @@
       ]
     },
     {
+      "address": 2870,
+      "name": "DIO_PULLDOWN_ENABLE",
+      "type": "UINT32",
+      "devices": [
+        "T8"
+      ],
+      "readwrite": "RW",
+      "tags": ["DIO"],
+      "description": "This register will enable pulldowns on DIO lines. This is a binary coded value where bit 0 represent FIO0, and bit 11 represents EIO3, etc. 1 = pulldown enabled, 0 = pulldown disabled. This register only affects flex-lines which can be configured as analog or digital. This register is not affected by the inhibit register."
+    },
+    {
       "address": 2880,
       "name": "DIO_ANALOG_ENABLE",
       "type": "UINT32",
@@ -7632,6 +7643,7 @@
     "2019.11.12.A   Added UDP DISCOVERY_ONLY registers and error code.",
     "2019.11.22.A   Added a register to suppress the Lua truncation warning.",
     "2019.01.14.A   Updated the description of WAIT_US_BLOCKING. to explain the term \"blocking\"",
+    "2019.02.24.A   Added Pull-down enable register.", 
     "End Of Comments"
   ]
 }
