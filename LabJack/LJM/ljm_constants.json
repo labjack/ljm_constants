@@ -5968,8 +5968,8 @@
     },
     {
       "error": 1228,
-      "string": "LJME_NON_LOOPING_STREAM_OUT_NOT_INITIALIZED",
-      "description": "There was an attempt to modify a non-looping stream-out prior to its initialization."
+      "string": "LJME_APERIODIC_STREAM_OUT_NOT_INITIALIZED",
+      "description": "There was an attempt to modify an aperiodic stream-out prior to its initialization."
     },
     {
       "error": 1229,
@@ -5988,7 +5988,7 @@
     },
     {
       "error": 1232,
-      "string": "STREAM_OUT_INDEX_OUT_OF_RANGE",
+      "string": "LJME_STREAM_OUT_INDEX_OUT_OF_RANGE",
       "description": "An invalid index value was passed to a stream-out function."
     },
     {
