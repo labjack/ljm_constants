@@ -5168,7 +5168,7 @@
       ],
       "readwrite": "R",
       "tags": ["INTFLASH"],
-      "description": "Data read from internal flash."
+      "description": "Data read from internal flash. Read size must be an even number of registers."
     },
     {
       "address": 61820,
@@ -5206,7 +5206,7 @@
       ],
       "readwrite": "W",
       "tags": ["INTFLASH"],
-      "description": "Data written here will be written to internal flash. This register is a buffer."
+      "description": "Data written here will be written to internal flash. Write size must be an even number of registers. This register is a buffer."
     },
     {
       "address": 22000,
