@@ -1,7 +1,7 @@
 {
   "header": {
     "filename": "ljm_constants.json",
-    "version": "2019.02.08.A",
+    "version": "2020.03.30.A",
     "checksum": "-1",
     "support_url": "https://labjack.com/support/modbus",
     "tags_base_url": "https://labjack.com/support/modbus"
@@ -7644,6 +7644,7 @@
     "2019.11.22.A   Added a register to suppress the Lua truncation warning.",
     "2019.01.14.A   Updated the description of WAIT_US_BLOCKING. to explain the term \"blocking\"",
     "2019.02.24.A   Added Pull-down enable register.", 
+    "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
 }
