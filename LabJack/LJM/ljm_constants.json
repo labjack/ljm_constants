@@ -5997,6 +5997,11 @@
       "description": "A TCP socket-level error occurred."
     },
     {
+      "error": 1234,
+      "string": "LJME_SCAN_RATE_INCONSISTENT",
+      "description": "The scan rate passed to a stream out function did not match the stream scan rate"
+    },
+    {
       "error": 1236,
       "string": "LJME_CANNOT_OPEN_DEVICE",
       "description": "The device could not be opened."
