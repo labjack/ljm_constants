@@ -3224,7 +3224,7 @@
         },
         {
           "device": "T4",
-          "fwmin": 1.1
+          "fwmin": 1.0008
         }
       ],
       "readwrite": "RW",
@@ -6698,6 +6698,10 @@
     {
       "error": 2523,
       "string": "HW_DAC1_NOT_AVAILABLE"
+    },
+    {
+      "error": 2524,
+      "string": "HW_LEDS_NOT_AVAILABLE"
     },
     {
       "error": 2550,
