@@ -48,7 +48,7 @@
     },
     	{
 	  "address": 600,
-	  "name": "TEMPERATURE#(0:499)",
+	  "name": "TEMPERATURE#(0:7)",
 	  "type": "FLOAT32",
 	  "devices": ["T8"],
 	  "readwrite": "R",
@@ -59,7 +59,7 @@
 	},
 	{
 	  "address": 650,
-	  "name": "AIN#(0:499)_CAPTURE",
+	  "name": "AIN#(0:7)_CAPTURE",
 	  "type": "FLOAT32",
 	  "devices": ["T8"],
 	  "readwrite": "R",
@@ -70,7 +70,7 @@
 	},
 	{
 	  "address": 700,
-	  "name": "TEMPERATURE#(0:499)_CAPTURE",
+	  "name": "TEMPERATURE#(0:7)_CAPTURE",
 	  "type": "FLOAT32",
 	  "devices": ["T8"],
 	  "readwrite": "R",
