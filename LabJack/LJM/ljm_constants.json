@@ -46,6 +46,39 @@
       "displayname": ["Analog In #"],
       "description": "Returns the voltage of the specified analog input."
     },
+    	{
+	  "address": 600,
+	  "name": "TEMPERATURE#(0:499)",
+	  "type": "FLOAT32",
+	  "devices": ["T8"],
+	  "readwrite": "R",
+	  "tags": ["AIN", "CORE"],
+	  "streamable": true,
+	  "displayname": ["Analog In #"],
+	  "description": "Returns the temperature of the specified analog input. And saves AIN and temperature inputs for all channels."
+	},
+	{
+	  "address": 650,
+	  "name": "AIN#(0:499)_CAPTURE",
+	  "type": "FLOAT32",
+	  "devices": ["T8"],
+	  "readwrite": "R",
+	  "tags": ["AIN", "CORE"],
+	  "streamable": true,
+	  "displayname": ["Analog In #"],
+	  "description": "Returns the saved voltage of the specified analog input."
+	},
+	{
+	  "address": 700,
+	  "name": "TEMPERATURE#(0:499)_CAPTURE",
+	  "type": "FLOAT32",
+	  "devices": ["T8"],
+	  "readwrite": "R",
+	  "tags": ["AIN", "CORE"],
+	  "streamable": true,
+	  "displayname": ["Analog In #"],
+	  "description": "Returns the saved temperature of the specified analog input."
+	},
     {
       "address": 1000,
       "name": "DAC#(0:1)",
@@ -4092,15 +4125,45 @@
       "address": 50000,
       "name": "AIN#(0:254)_BINARY",
       "type": "UINT32",
-      "devices": [
-        "T7",
-        "T4"
-      ],
+      "devices": ["T7","T4","T8"],
       "readwrite": "R",
       "tags": ["AIN"],
       "streamable": false,
       "altnames": ["AIN#(0:254)_BIN"],
       "description": "Returns the 24-bit binary representation of the specified analog input. If you prefer 16-bit representation, simply divide this by 256. This is for command-response only.  Stream always returns binary and LJM applies cal constants, so the LJM config flag LJM_STREAM_AIN_BINARY is used to get binary values."
+    },
+    {
+      "address": 50600,
+      "name": "TEMPERATURE#(0:7)_BINARY",
+      "type": "UINT32",
+      "devices": ["T8"],
+      "readwrite": "R",
+      "tags": ["AIN"],
+      "streamable": false,
+      "altnames": ["AIN#(0:254)_BIN"],
+      "description": "Returns the 24-bit binary representation of the voltage output of the temperature sensor for the specified analog input. If you prefer 16-bit representation, simply divide this by 256. This is for command-response only.  Stream always returns binary and LJM applies cal constants, so the LJM config flag LJM_STREAM_AIN_BINARY is used to get binary values."
+    },
+    {
+      "address": 50650,
+      "name": "AIN#(0:7)_BINARY_CAPTURE",
+      "type": "UINT32",
+      "devices": ["T8"],
+      "readwrite": "R",
+      "tags": ["AIN"],
+      "streamable": false,
+      "altnames": ["AIN#(0:254)_BIN"],
+      "description": "Returns the saved 24-bit binary representation of the specified analog input. If you prefer 16-bit representation, simply divide this by 256. This is for command-response only.  Stream always returns binary and LJM applies cal constants, so the LJM config flag LJM_STREAM_AIN_BINARY is used to get binary values."
+    },
+    {
+      "address": 50700,
+      "name": "TEMPERATURE#(0:7)_BINARY_CAPTURE",
+      "type": "UINT32",
+      "devices": ["T8"],
+      "readwrite": "R",
+      "tags": ["AIN"],
+      "streamable": false,
+      "altnames": ["AIN#(0:254)_BIN"],
+      "description": "Returns the saved 24-bit binary representation of the voltage output of the temperature sensor for the specified analog input. If you prefer 16-bit representation, simply divide this by 256. This is for command-response only.  Stream always returns binary and LJM applies cal constants, so the LJM config flag LJM_STREAM_AIN_BINARY is used to get binary values."
     },
     {
       "address": 51000,
@@ -7653,6 +7716,7 @@
     "2019.11.22.A   Added a register to suppress the Lua truncation warning.",
     "2019.01.14.A   Updated the description of WAIT_US_BLOCKING. to explain the term \"blocking\"",
     "2019.02.24.A   Added Pull-down enable register.", 
+    "2020.07.02.A   Added AIN temperature and capture Registers for T8.
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
