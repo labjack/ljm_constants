@@ -1082,7 +1082,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["SPI"],
-      "description": "The number of bytes to transfer."
+      "description": "The number of bytes to transfer. The maximum transfer size is 100 bytes."
     },
     {
       "address": 5010,
