@@ -478,11 +478,18 @@
       "name": "DIO_PULLUP_DISABLE",
       "type": "UINT32",
       "devices": [
-        "T4"
+        {
+          "device": "T8",
+          "description": "T8 description TBD"
+        },
+        {
+          "device": "T4",
+          "description": "This register only affects flex-lines which can be configured as analog or digital."
+        }
       ],
       "readwrite": "RW",
       "tags": ["DIO"],
-      "description": "This register will prevent pullups from being enabled on lines set to digital input. This is a binary coded value where bit 0 represent FIO0 and bit 11 represents EIO3. 1 = pullup disabled, 0 = pullup enabled. This register only affects flex-lines which can be configured as analog or digital. This register is not affected by the inhibit register."
+      "description": "This register will prevent pullups from being enabled on lines set to digital input. This is a binary coded value where bit 0 represent FIO0 and bit 11 represents EIO3. 1 = pullup disabled, 0 = pullup enabled. This register is not affected by the inhibit register."
     },
     {
       "address": 2900,
