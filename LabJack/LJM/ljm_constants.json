@@ -7820,7 +7820,7 @@
     {
       "error": 2565,
       "string": "EF_VALUE_GREATER_THAN_PERIOD",
-      "description": "Value specified is greater than clock source roll value."
+      "description": "The DIO_EF_CONFIG value written determines a DIO line transition point relative to the count of a ClockSource. To prevent signal glitches, the value must be less than the selected ClockSource's roll value."
     },
     {
       "error": 2566,
