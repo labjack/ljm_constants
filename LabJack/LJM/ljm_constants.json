@@ -1248,7 +1248,7 @@
         "T7",
         "T4"
       ],
-      "readwrite": "RW",
+      "readwrite": "W",
       "default": 0,
       "tags": ["SPI"],
       "description": "The number of bytes to transfer. The maximum transfer size is 100 bytes."
