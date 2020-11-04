@@ -4910,7 +4910,7 @@
       "readwrite": "W",
       "tags": ["DAC"],
       "streamable": false,
-      "description": "Writes binary values to the DACs. 0 = lowest output, 65535 = highest output."
+      "description": "Writes binary values to the DACs. Binary values are 16-bit. If the DAC's resolution is less than 16 then the lower bits are ignored. 0 = lowest output, 65535 = highest output. "
     },
     {
       "address": 46000,
