@@ -3046,7 +3046,7 @@
       "description": "Writing to this register sets the analog sampling rate. Not all rates are possible. Read AIN_SAMPLING_RATE_ACTUAL_HZ to get the actual rate."
     },
     {
-      "address": 43710,
+      "address": 43712,
       "name": "AIN_SAMPLING_RATE_ACTUAL_HZ",
       "type": "FLOAT32",
       "devices": [
