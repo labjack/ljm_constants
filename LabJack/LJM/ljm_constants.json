@@ -4300,8 +4300,8 @@
       "readwrite": "RW",
       "tags": ["AIN", "CORE"],
       "streamable": false,
-      "description": "Sets and reads the source of the current set of calibration constants. 0 = no calibration. 1 = binary calibration, 2 = Calibration set from Flash, 3 = Nominal Calibration."
-    }, 
+      "description": "Sets and reads the source of the current set of calibration constants. 0 = no calibration. 1 = binary calibration, 2 = Calibration set from Flash, 3 = Nominal Calibration. When setting to 2, the constants will be checked and if invalid 1 will be used instead."
+    },
     {
       "address": 49702,
       "name": "SNTP_UPDATE_INTERVAL",
@@ -5383,6 +5383,17 @@
       "default": 0,
       "tags": ["CONFIG"],
       "description": "Bitmask indicating installed hardware options.<br>bit0: High Resolution ADC,<br>bit1: WiFi,<br>bit2: RTC,<br>bit3: microSD."
+    },
+    {
+      "address": 60018,
+      "name": "LJMCOMMON_VERSION",
+      "type": "FLOAT32",
+      "devices": [
+        "T8",
+      ],
+      "readwrite": "R",
+      "tags": ["CONFIG"],
+      "description": "The MAC address of the wired Ethernet module."
     },
     {
       "address": 60020,
