@@ -4288,7 +4288,7 @@
       "description": "Returns the status of the calibration data saved in flash. 1 = calibration looks good. 0 = calibration invalid."
     },   
     {
-      "address": 60091,
+      "address": 60092,
       "name": "CALIBRATION_SOURCE",
       "type": "FLOAT32",
       "devices": [
