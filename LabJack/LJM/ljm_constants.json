@@ -5389,7 +5389,7 @@
       "name": "LJMCOMMON_VERSION",
       "type": "FLOAT32",
       "devices": [
-        "T8",
+        "T8"
       ],
       "readwrite": "R",
       "tags": ["CONFIG"],
