@@ -3016,6 +3016,52 @@
       "description": "Settling time for command-response and AIN-EF readings."
     },
     {
+      "address": 43700,
+      "name": "AIN_CHANNEL_ENABLE",
+      "type": "UINT32",
+      "devices": [
+        {
+          "device": "T8",
+          "fwmin": 0.0123
+        }
+      ],
+      "readwrite": "RW",
+      "default": 255,
+      "tags": ["AIN"],
+      "description": "This register is a bitmask represnting the enable states of the analog inputs."
+    },
+    {
+      "address": 43710,
+      "name": "AIN_SAMPLING_RATE_HZ",
+      "type": "FLOAT32",
+      "devices": [
+        {
+          "device": "T8",
+          "fwmin": 0.0123
+        }
+      ],
+      "readwrite": "RW",
+      "default": 255,
+      "tags": ["AIN"],
+      "description": "Writing to this register sets the analog sampling rate. Not all rates are possible. Read AIN_SAMPLING_RATE_ACTUAL_HZ to get the actual rate."
+    },
+    {
+      "address": 43710,
+      "name": "AIN_SAMPLING_RATE_ACTUAL_HZ",
+      "type": "FLOAT32",
+      "devices": [
+        {
+          "device": "T8",
+          "fwmin": 0.0123
+        }
+      ],
+      "readwrite": "R",
+      "default": 255,
+      "tags": ["AIN"],
+      "description": "Returns the AIN system's actual sampling rate."
+    },
+    
+    {
       "address": 43900,
       "name": "AIN_ALL_RANGE",
       "type": "FLOAT32",
@@ -4226,6 +4272,36 @@
       "displayname": ["Device Temperature [K]"],
       "description": "Takes a reading from the internal temperature sensor using range=+/-10V and resolution=8, and applies the formula Volts*-92.6+467.6 to return kelvins."
     },
+    {
+      "address": 60091,
+      "name": "CALIBRATION_CONSTANTS_STATUS",
+      "type": "FLOAT32",
+      "devices": [
+        {
+          "device": "T8",
+          "fwmin": 0.0123
+        }
+      ],
+      "readwrite": "R",
+      "tags": ["AIN", "CORE"],
+      "streamable": false,
+      "description": "Returns the status of the calibration data saved in flash. 1 = calibration looks good. 0 = calibration invalid."
+    },   
+    {
+      "address": 60091,
+      "name": "CALIBRATION_SOURCE",
+      "type": "FLOAT32",
+      "devices": [
+        {
+          "device": "T8",
+          "fwmin": 0.0123
+        }
+      ],
+      "readwrite": "RW",
+      "tags": ["AIN", "CORE"],
+      "streamable": false,
+      "description": "Sets and reads the source of the current set of calibration constants. 0 = no calibration. 1 = binary calibration, 2 = Calibration set from Flash, 3 = Nominal Calibration."
+    }, 
     {
       "address": 49702,
       "name": "SNTP_UPDATE_INTERVAL",
@@ -8702,6 +8778,7 @@
     "2019.01.14.A   Updated the description of WAIT_US_BLOCKING. to explain the term \"blocking\"",
     "2019.02.24.A   Added Pull-down enable register.",
     "2020.07.02.A   Added AIN temperature and capture Registers for T8.",
+    "2020.11.13.A   Added several registers for the T8",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
