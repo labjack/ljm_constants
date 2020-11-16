@@ -5435,6 +5435,28 @@
       "description": "The serial number of the device."
     },
     {
+      "address": 60030,
+      "name": "INTERNAL_VS_VOLTS",
+      "type": "FLOAT32",
+      "devices": [
+        "T8"
+      ],
+      "readwrite": "R",
+      "tags": ["CONFIG"],
+      "description": "The MAC address of the wired Ethernet module."
+    },
+    {
+      "address": 60032,
+      "name": "INTERNAL_IS_AMPS",
+      "type": "FLOAT32",
+      "devices": [
+        "T8"
+      ],
+      "readwrite": "R",
+      "tags": ["CONFIG"],
+      "description": "The MAC address of the wired Ethernet module."
+    },
+    {
       "address": 60500,
       "name": "DEVICE_NAME_DEFAULT",
       "type": "STRING",
@@ -8790,6 +8812,7 @@
     "2019.02.24.A   Added Pull-down enable register.",
     "2020.07.02.A   Added AIN temperature and capture Registers for T8.",
     "2020.11.13.A   Added several registers for the T8",
+    "2020.11.16.A   Added INTERNAL_VS_VOLTS and INTERNAL_IS_AMPS",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
