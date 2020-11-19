@@ -4151,7 +4151,7 @@
         }
       ],
       "readwrite": "W",
-      "description": "0 = off, 1 = output 10 Hz signal on DAC1. Note that writing to DAC1 or enabling a stream out which is targeting DAC1 will disable this feature."
+      "description": "0 = off, 1 = output 10 Hz signal on DAC1. The signal will be a square wave with peaks of 0 and 3.3V. Note that writing to DAC1 or enabling a stream out which is targeting DAC1 will disable this feature."
     },
     {
       "address": 61590,
@@ -8813,6 +8813,7 @@
     "2020.07.02.A   Added AIN temperature and capture Registers for T8.",
     "2020.11.13.A   Added several registers for the T8",
     "2020.11.16.A   Added INTERNAL_VS_VOLTS and INTERNAL_IS_AMPS",
+    "2020.11.19.A   Added to the description for DAC1_FREQUENCY_OUT_ENABLE.", 
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
