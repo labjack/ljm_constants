@@ -1,5 +1,5 @@
 language: python
 python:
-  - "2.7"
+  - "3.8"
 script:
-  - python ljmmm_test.py && python validate.py LabJack/LJM/ljm_constants.json
+  - python ljmmm_test.py && python test_embedded_constants.py && python validate.py LabJack/LJM/ljm_constants.json
