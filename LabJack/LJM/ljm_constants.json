@@ -2265,7 +2265,7 @@
         },
         {
           "device": "T4",
-          "fwmin": 1.0025
+          "fwmin": 1.0028
         }
       ],
       "readwrite": "RW",
