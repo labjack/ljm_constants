@@ -4290,7 +4290,7 @@
     {
       "address": 60092,
       "name": "CALIBRATION_SOURCE",
-      "type": "FLOAT32",
+      "type": "UINT16",
       "devices": [
         {
           "device": "T8",
