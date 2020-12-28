@@ -7,7 +7,7 @@ import subprocess
 import ljmmm
 
 SRC_FILE = 'LabJack/LJM/ljm_constants.json'
-OUTPUT_FILE = 'gen_output/LabJackEmbeddedConstants.h'
+OUTPUT_FILE = 'gen_output/LJM_EC.h'
 
 def init(file, constants_version, num_registers):
     file.write("// LabJack Embedded Constants\n")
