@@ -105,6 +105,7 @@
       ],
       "readwrite": "RW",
       "tags": ["DIO", "CORE"],
+      "streamable": true,
       "altnames": ["DIO#(0:7)"],
       "displayname": ["FIO Bit #"],
       "description": "Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output. Read 0=Low AND 1=High. Write 0=Low AND 1=High."
@@ -120,6 +121,7 @@
       ],
       "readwrite": "RW",
       "tags": ["DIO", "CORE"],
+      "streamable": true,
       "altnames": ["DIO#(8:15)"],
       "displayname": ["EIO Bit #"],
       "description": "Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output. Read 0=Low AND 1=High. Write 0=Low AND 1=High."
@@ -135,6 +137,7 @@
       ],
       "readwrite": "RW",
       "tags": ["DIO", "CORE"],
+      "streamable": true,
       "altnames": ["DIO#(16:19)"],
       "displayname": ["CIO Bit #"],
       "description": "Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output. Read 0=Low AND 1=High. Write 0=Low AND 1=High."
@@ -149,6 +152,7 @@
       ],
       "readwrite": "RW",
       "tags": ["DIO", "CORE"],
+      "streamable": true,
       "altnames": ["DIO#(20:22)"],
       "displayname": ["MIO Bit #"],
       "description": "Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output. Read 0=Low AND 1=High. Write 0=Low AND 1=High."
