@@ -674,6 +674,7 @@
       ],
       "readwrite": "RW",
       "default": 0,
+      "usesRAM": true,
       "tags": ["STREAM"],
       "description": "Size of the stream data buffer in bytes. A value of 0 equates to the default value.  Must be a power of 2. Size in samples is STREAM_BUFFER_SIZE_BYTES/2.  Size in scans is (STREAM_BUFFER_SIZE_BYTES/2)/STREAM_NUM_ADDRESSES. Changes while stream is running do not affect the currently running stream."
     },
