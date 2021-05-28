@@ -8326,7 +8326,7 @@
     },
     {
       "error": 2770,
-      "string": "ONEWIRE_UNSUPPORETD_FUNCTION",
+      "string": "ONEWIRE_UNSUPPORTED_FUNCTION",
       "description": "Unknown function specified."
     },
     {
