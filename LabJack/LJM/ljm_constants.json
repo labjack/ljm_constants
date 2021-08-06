@@ -1430,7 +1430,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["I2C"],
-      "description": "An array of bits used to observe ACKs from the slave device."
+      "description": "A binary encoded value (array of bits) used to observe ACKs from the slave device."
     },
     {
       "address": 5120,
