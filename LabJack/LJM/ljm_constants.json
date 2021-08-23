@@ -8134,6 +8134,11 @@
       "description": "The STREAM_OUT#_ENABLE register must be set to 1 before writing STREAM_OUT#_LOOP_NUM_VALUES, STREAM_OUT#_SET_LOOP, or any of the STREAM_OUT#_BUFFER_ registers."
     },
     {
+      "error": 2628,
+      "string": "STREAM_RATE_INVALID_TESTOUT",
+      "description": "DAC1_FREQUENCY_OUT_ENABLE should not be enabled for stream rates above 10kHz due to poor performance at higher rates."
+    },
+    {
       "error": 2670,
       "string": "SWDT_ROLLT_INVALID"
     },
