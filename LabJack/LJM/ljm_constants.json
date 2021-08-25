@@ -8135,8 +8135,13 @@
     },
     {
       "error": 2628,
-      "string": "STREAM_RATE_INVALID_TESTOUT",
-      "description": "DAC1_FREQUENCY_OUT_ENABLE should not be enabled for stream rates above 10kHz due to poor performance at higher rates."
+      "string": "CANNOT_STREAM_FAST_WITH_DAC1_FREQUENCY_OUT_ENABLED",
+      "description": "DAC1_FREQUENCY_OUT_ENABLE should be disabled before streaming at rates above 10kHz due to poor frequency output performance at higher stream rates."
+    },
+    {
+      "error": 2629,
+      "string": "CANNOT_ENABLE_DAC1_FREQUENCY_OUT_WITH_FAST_STREAM",
+      "description": "DAC1_FREQUENCY_OUT_ENABLE should not be enabled while streaming at rates above 10kHz due to poor frequency output performance at higher stream rates."
     },
     {
       "error": 2670,
