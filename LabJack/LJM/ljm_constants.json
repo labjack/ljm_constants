@@ -6339,7 +6339,7 @@
       "description": "Data written here will be written to internal flash. Write size must be an even number of registers. This register is a buffer."
     },
     {
-      "address": 61842
+      "address": 61842,
       "name": "INTERNAL_FLASH_CALCULATE_CRC",
       "type": "UINT32",
       "isBuffer": true,
