@@ -6348,7 +6348,7 @@
         "T7",
         "T4"
       ],
-      "readwrite": "W",
+      "readwrite": "R",
       "tags": ["INTFLASH"],
       "description": "Calculates the checksum of a 4096 byte flash page."
     },
