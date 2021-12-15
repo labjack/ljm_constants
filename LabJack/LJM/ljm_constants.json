@@ -6339,6 +6339,20 @@
       "description": "Data written here will be written to internal flash. Write size must be an even number of registers. This register is a buffer."
     },
     {
+      "address": 61842
+      "name": "INTERNAL_FLASH_CALCULATE_CRC",
+      "type": "UINT32",
+      "isBuffer": true,
+      "devices": [
+        "T8",
+        "T7",
+        "T4"
+      ],
+      "readwrite": "W",
+      "tags": ["INTFLASH"],
+      "description": "Calculates the checksum of a 4096 byte flash page."
+    },
+    {
       "address": 22000,
       "name": "DGT_TEMPERATURE_LATEST_RAW",
       "type": "UINT16",
@@ -8829,6 +8843,7 @@
     "2020.11.13.A   Added several registers for the T8",
     "2020.11.16.A   Added INTERNAL_VS_VOLTS and INTERNAL_IS_AMPS",
     "2020.11.19.A   Added to the description for DAC1_FREQUENCY_OUT_ENABLE.", 
+    "2021.12.15.A   Added INTERNAL_FLASH_CALCULATE_CRC.",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
