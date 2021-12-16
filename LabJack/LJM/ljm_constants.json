@@ -2686,7 +2686,7 @@
       "default": 0,
       "tags": ["TDAC", "CORE"],
       "displayname": ["LJTick-DAC #"],
-      "description": "Update a voltage output on a connected LJTick-DAC accessory.<br>Even TDAC# = DACA,<br>Odd TDAC# = DACB.<br>For instance, if LJTick-DAC accessory is connected to FIO2/FIO3 block on main device, TDAC2 corresponds with DACA, and TDAC3 corresponds with DACB."
+      "description": "Update a voltage output on a connected LJTick-DAC accessory. Even TDAC# = DACA, Odd TDAC# = DACB. For instance, if LJTick-DAC accessory is connected to FIO2/FIO3 block on main device, TDAC2 corresponds with DACA, and TDAC3 corresponds with DACB."
     },
     {
       "address": 55200,
