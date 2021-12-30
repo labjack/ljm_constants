@@ -56,7 +56,7 @@
       "tags": ["AIN", "CORE"],
       "streamable": true,
       "displayname": ["Analog In #"],
-      "description": "Returns the temperature of the specified analog input. And saves AIN and temperature inputs for all channels."
+      "description": "T8 Only. Returns the temperature of the specified analog input. And saves AIN and temperature inputs for all channels."
     },
     {
       "address": 650,
@@ -67,7 +67,7 @@
       "tags": ["AIN", "CORE"],
       "streamable": true,
       "displayname": ["Analog In #"],
-      "description": "Returns the saved voltage of the specified analog input."
+      "description": "T8 Only. Returns the saved voltage of the specified analog input."
     },
     {
       "address": 700,
@@ -78,7 +78,7 @@
       "tags": ["AIN", "CORE"],
       "streamable": true,
       "displayname": ["Analog In #"],
-      "description": "Returns the saved temperature of the specified analog input."
+      "description": "T8 Only. Returns the saved temperature of the specified analog input."
     },
     {
       "address": 1000,
@@ -460,7 +460,7 @@
       ],
       "readwrite": "RW",
       "tags": ["DIO"],
-      "description": "This register will enable pulldowns on DIO lines. This is a binary coded value where bit 0 represent FIO0, and bit 11 represents EIO3, etc. 1 = pulldown enabled, 0 = pulldown disabled. This register only affects flex-lines which can be configured as analog or digital. This register is not affected by the inhibit register."
+      "description": "T8 Only. This register will enable pulldowns on DIO lines. This is a binary coded value where bit 0 represent FIO0, and bit 11 represents EIO3, etc. 1 = pulldown enabled, 0 = pulldown disabled. This register only affects flex-lines which can be configured as analog or digital. This register is not affected by the inhibit register."
     },
     {
       "address": 2880,
@@ -2935,15 +2935,15 @@
       "devices": [
         {
           "device": "T8",
-          "description": "T8 description TBD"
+          "description": "Valid values/ranges: ±11V, ±9.7V, ±4.8V, ±2.4V,±1.2V, ±0.6V, ±0.3V, ±0.15V,±0.75V, ±0.36V, and ±0.18V"
         },
         {
           "device": "T7",
-          "description": "Valid values/ranges:<br>0.0=Default=> +/-10V, 10.0=> +/-10V,<br>1.0=> +/-1V,<br>0.1=> +/-0.1V, or<br>0.01=> +/-0.01V."
+          "description": "Valid values/ranges: 0.0=Default → ±10V. 10.0 → ±10V, 1.0 → ±1V, 0.1 → ±0.1V, and 0.01 → ±0.01V."
         },
         {
           "device": "T4",
-          "description": "Valid values/ranges:  0.0=Default=> 0-2.5 V on LV lines and ±10 V on HV lines."
+          "description": "Valid values/ranges: 0.0=Default → 0-2.5 V on LV lines and ±10 V on HV lines."
         }
       ],
       "readwrite": "RW",
@@ -2958,7 +2958,7 @@
       "devices": [
         {
           "device": "T8",
-          "description": "T8 description TBD"
+          "description": "Not applicable. Read returns the AIN number. Write does nothing."
         },
         {
           "device": "T7",
@@ -2980,7 +2980,7 @@
       "devices": [
         {
           "device": "T8",
-          "description": "T8 description TBD"
+          "description": "Valid values:  0-16.  Default value of 0 corresponds to an index of 16."
         },
         {
           "device": "T7",
@@ -3033,7 +3033,7 @@
       "readwrite": "RW",
       "default": 255,
       "tags": ["AIN"],
-      "description": "This register is a bitmask represnting the enable states of the analog inputs."
+      "description": "T8 Only. This register is a bitmask representing the enable states of the analog inputs."
     },
     {
       "address": 43710,
@@ -3048,7 +3048,7 @@
       "readwrite": "RW",
       "default": 255,
       "tags": ["AIN"],
-      "description": "Writing to this register sets the analog sampling rate. Not all rates are possible. Read AIN_SAMPLING_RATE_ACTUAL_HZ to get the actual rate."
+      "description": "T8 Only. Writing to this register sets the analog sampling rate. Not all rates are possible. Read AIN_SAMPLING_RATE_ACTUAL_HZ to get the actual rate."
     },
     {
       "address": 43712,
@@ -3063,7 +3063,7 @@
       "readwrite": "R",
       "default": 255,
       "tags": ["AIN"],
-      "description": "Returns the AIN system's actual sampling rate."
+      "description": "T8 Only. Returns the AIN system's actual sampling rate."
     },
     
     {
@@ -4290,7 +4290,7 @@
       "readwrite": "R",
       "tags": ["AIN", "CORE"],
       "streamable": false,
-      "description": "Returns the status of the calibration data saved in flash. 1 = calibration looks good. 0 = calibration invalid."
+      "description": "T8 Only. Returns the status of the calibration data saved in flash. 1 = calibration looks good. 0 = calibration invalid."
     },   
     {
       "address": 60092,
@@ -4305,7 +4305,7 @@
       "readwrite": "RW",
       "tags": ["AIN", "CORE"],
       "streamable": false,
-      "description": "Sets and reads the source of the current set of calibration constants. 0 = no calibration. 1 = binary calibration, 2 = Calibration set from Flash, 3 = Nominal Calibration. When setting to 2, the constants will be checked and if invalid 1 will be used instead."
+      "description": "T8 Only. Sets and reads the source of the current set of calibration constants. 0 = no calibration. 1 = binary calibration, 2 = Calibration set from Flash, 3 = Nominal Calibration. When setting to 2, the constants will be checked and if invalid 1 will be used instead."
     },
     {
       "address": 49702,
@@ -4955,7 +4955,7 @@
       "tags": ["AIN"],
       "streamable": false,
       "altnames": ["AIN#(0:254)_BIN"],
-      "description": "Returns the 24-bit binary representation of the voltage output of the temperature sensor for the specified analog input. If you prefer 16-bit representation, simply divide this by 256. This is for command-response only.  Stream always returns binary and LJM applies cal constants, so the LJM config flag LJM_STREAM_AIN_BINARY is used to get binary values."
+      "description": "T8 Only. Returns the 24-bit binary representation of the voltage output of the temperature sensor for the specified analog input. If you prefer 16-bit representation, simply divide this by 256. This is for command-response only.  Stream always returns binary and LJM applies cal constants, so the LJM config flag LJM_STREAM_AIN_BINARY is used to get binary values."
     },
     {
       "address": 50650,
@@ -4966,7 +4966,7 @@
       "tags": ["AIN"],
       "streamable": false,
       "altnames": ["AIN#(0:254)_BIN"],
-      "description": "Returns the saved 24-bit binary representation of the specified analog input. If you prefer 16-bit representation, simply divide this by 256. This is for command-response only.  Stream always returns binary and LJM applies cal constants, so the LJM config flag LJM_STREAM_AIN_BINARY is used to get binary values."
+      "description": "T8 Only. Returns the saved 24-bit binary representation of the specified analog input. If you prefer 16-bit representation, simply divide this by 256. This is for command-response only.  Stream always returns binary and LJM applies cal constants, so the LJM config flag LJM_STREAM_AIN_BINARY is used to get binary values."
     },
     {
       "address": 50700,
@@ -4977,7 +4977,7 @@
       "tags": ["AIN"],
       "streamable": false,
       "altnames": ["AIN#(0:254)_BIN"],
-      "description": "Returns the saved 24-bit binary representation of the voltage output of the temperature sensor for the specified analog input. If you prefer 16-bit representation, simply divide this by 256. This is for command-response only.  Stream always returns binary and LJM applies cal constants, so the LJM config flag LJM_STREAM_AIN_BINARY is used to get binary values."
+      "description": "T8 Only. Returns the saved 24-bit binary representation of the voltage output of the temperature sensor for the specified analog input. If you prefer 16-bit representation, simply divide this by 256. This is for command-response only.  Stream always returns binary and LJM applies cal constants, so the LJM config flag LJM_STREAM_AIN_BINARY is used to get binary values."
     },
     {
       "address": 51000,
@@ -5448,7 +5448,7 @@
       ],
       "readwrite": "R",
       "tags": ["CONFIG"],
-      "description": "The MAC address of the wired Ethernet module."
+      "description": "T8 Only. Returns the power supply voltage."
     },
     {
       "address": 60032,
@@ -5459,7 +5459,7 @@
       ],
       "readwrite": "R",
       "tags": ["CONFIG"],
-      "description": "The MAC address of the wired Ethernet module."
+      "description": "T8 Only. Returns the power supply current draw."
     },
     {
       "address": 60500,
@@ -8842,8 +8842,10 @@
     "2020.07.02.A   Added AIN temperature and capture Registers for T8.",
     "2020.11.13.A   Added several registers for the T8",
     "2020.11.16.A   Added INTERNAL_VS_VOLTS and INTERNAL_IS_AMPS",
-    "2020.11.19.A   Added to the description for DAC1_FREQUENCY_OUT_ENABLE.", 
+    "2020.11.19.A   Added to the description for DAC1_FREQUENCY_OUT_ENABLE.",
+    "2021.08.25.A   Added error codes 2628 and 2629; DAC1 frequency out stream errors.",
     "2021.12.15.A   Added INTERNAL_FLASH_CALCULATE_CRC.",
+    "2021.12.30.A   Updated T8 only register descriptions. Filled in some missing T8 descriptions.",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
