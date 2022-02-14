@@ -2450,7 +2450,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["AIN_EF", "AIN"],
-      "description": "Specify the desired extended feature for this analog input with the index value. List of index values:<br>0=None(disabled);<br>1=Offset and Slope;<br>3=Max/Min/Avg;<br>4=Resistance;<br>5=Average and Threshold;<br>10=RMS Flex;<br>11=FlexRMS;<br>20=Thermocouple type E;<br>21=Thermocouple type J;<br>22=Thermocouple type K;<br>23=Thermocouple type R;<br>24=Thermocouple type T;<br>25=Thermocouple type S;<br>30=Thermocouple type C;<br>40=RTD model PT100;<br>41=RTD model PT500;<br>42=RTD model PT1000.",
+      description": "Specify the desired extended feature for this analog input with the index value. List of index values:<br>0=None(disabled);<br>1=Offset and Slope;<br>3=Max/Min/Avg;<br>4=Resistance;<br>5=Average and Threshold;<br>10=RMS Flex;<br>11=FlexRMS;<br>20=Thermocouple type E;<br>21=Thermocouple type J;<br>22=Thermocouple type K;<br>23=Thermocouple type R;<br>24=Thermocouple type T;<br>25=Thermocouple type S;<br>27=Thermocouple type N;<br>28=Thermocouple type B;<br>30=Thermocouple type C;<br>40=RTD model PT100;<br>41=RTD model PT500;<br>42=RTD model PT1000;<br>50=Thermistor Steinhart-Hart;<br>51=Thermistor Beta.",
       "usesRAM": true
     },
     {
@@ -8846,6 +8846,7 @@
     "2021.08.25.A   Added error codes 2628 and 2629; DAC1 frequency out stream errors.",
     "2021.12.15.A   Added INTERNAL_FLASH_CALCULATE_CRC.",
     "2021.12.30.A   Updated T8 only register descriptions. Filled in some missing T8 descriptions.",
+    "2022.02.14.A   Updated AIN_EF description.",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
