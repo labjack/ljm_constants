@@ -5267,7 +5267,7 @@
     },
     {
       "address": 55002,
-      "name": "LAST_ERR_SEQ",
+      "name": "LAST_ERR_FRAME",
       "type": "UINT16",
       "devices": [
         "T8",
