@@ -5248,7 +5248,7 @@
       ],
       "readwrite": "R",
       "default": 0,
-      "tags": ["CONFIG"],
+      "tags": ["CORE"],
       "description": "Returns the last LabJack error code seen on the device."
     },
     {
@@ -5262,7 +5262,7 @@
       ],
       "readwrite": "R",
       "default": 0,
-      "tags": ["CONFIG"],
+      "tags": ["CORE"],
       "description": "Returns the last Modbus TCP error code seen on the device."
     },
     {
@@ -5276,7 +5276,7 @@
       ],
       "readwrite": "R",
       "default": 0,
-      "tags": ["CONFIG"],
+      "tags": ["CORE"],
       "description": "Returns the frame number that caused the last error."
     },
     {
@@ -5290,7 +5290,7 @@
       ],
       "readwrite": "R",
       "default": 0,
-      "tags": ["CONFIG"],
+      "tags": ["CORE"],
       "description": "Returns the transaction ID of the Modbus TCP packet that caused the last error."
     },
     {
