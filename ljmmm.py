@@ -4,7 +4,6 @@
 @license GNU GPL v3
 """
 
-
 import copy
 import json
 import re
@@ -60,8 +59,6 @@ URL_REGEX += r'(?:(\/\S+)*)'
 URL_REGEX += r')'
 FIND_URLS = re.compile(URL_REGEX, re.IGNORECASE)
 FIND_ENDING_PUNCTUATION = re.compile(r'.*([.,;\)])$')
-
-FIND_COMMENTS = re.compile(r'^\/\/.*')
 
 def read_file(src=DEFAULT_FILE_NAME):
     """Read a file and return the contents with a default file name.
@@ -172,7 +169,7 @@ def interpret_ljmmm_field(src):
     if enumeration_results:
         enumeration_tuple = enumeration_results[0]
         result = generate_int_enumeration(enumeration_tuple)
-        return list(map(lambda x: interpret_ljmmm_field(x), result))
+        return [interpret_ljmmm_field(x) for x in result]
 
     src = src.replace("#pound", "#")
     return src
@@ -191,7 +188,7 @@ def enumerate_addresses(start_address, num_addresses, reg_per_address):
     @rtype: list of int
     """
     end_address = start_address + num_addresses * reg_per_address
-    return range(start_address, end_address+1, reg_per_address)
+    return list(range(start_address, end_address+1, reg_per_address))
 
 
 def get_datatype_size(datatype_name):
@@ -369,7 +366,7 @@ def parse_register_data(raw_register_dict, expand_names=False,
     datatype_str = raw_register_dict["type"]
     datatype_size = get_datatype_size(datatype_str)
     type_index = get_datatype_type_index(datatype_str)
-    devices = list(map(lambda x: interpret_firmware(x), raw_register_dict["devices"]))
+    devices = [interpret_firmware(x) for x in raw_register_dict["devices"]]
     access_restrictions = interpret_access_descriptor(
         raw_register_dict["readwrite"]
     )
@@ -387,7 +384,7 @@ def parse_register_data(raw_register_dict, expand_names=False,
             num_addresses,
             datatype_size
         )
-    name_address_pairs = zip(names, addresses)
+    name_address_pairs = list(zip(names, addresses))
 
     description = apply_anchors(raw_register_dict.get("description", ""))
     default = raw_register_dict.get("default", None)
@@ -397,7 +394,7 @@ def parse_register_data(raw_register_dict, expand_names=False,
     constants = raw_register_dict.get("constants", [])
     altnames = raw_register_dict.get("altnames", [])
     if expand_names:
-        altnames = list(map(lambda x: interpret_ljmmm_field(x), altnames))
+        altnames = [interpret_ljmmm_field(x) for x in altnames]
         if len(altnames) and isinstance(altnames[0], str):
             altnames = [altnames]
 
@@ -407,7 +404,7 @@ def parse_register_data(raw_register_dict, expand_names=False,
     for (name, address) in name_address_pairs:
         inner_altnames = altnames
         if expand_names:
-            inner_altnames = list(map(lambda x: x[altnames_count], altnames))
+            inner_altnames = [x[altnames_count] for x in altnames]
             altnames_count = altnames_count + 1
 
         ret_list.append(
@@ -435,7 +432,7 @@ def parse_register_data(raw_register_dict, expand_names=False,
         if len(alt_names) > 0:
             alt_names_dict = copy.deepcopy(raw_register_dict)
             del alt_names_dict["altnames"]
-            for name in filter(lambda x: x != "", alt_names):
+            for name in [x for x in alt_names if x != ""]:
                 alt_names_dict["name"] = name
                 ret_list.extend(parse_register_data(alt_names_dict, expand_names))
 
@@ -459,8 +456,8 @@ def interpret_tags(tags, tags_base_url='http://labjack.com/support/modbus/tags')
     @type tags_base_url: str
     @return: list of str html links
     """
-    return list(map(lambda x: "<a class=\'tag-link\' href=" + tags_base_url +
-                "/" + x + ">" + x + "</a>", tags))
+    return ["<a class=\'tag-link\' href=" + tags_base_url +
+                "/" + x + ">" + x + "</a>" for x in tags]
 
 
 def get_registers_data(src=DEFAULT_FILE_NAME, expand_names=False,
@@ -498,7 +495,7 @@ def get_registers_data(src=DEFAULT_FILE_NAME, expand_names=False,
             ret_list.extend(parse_register_data(entry, expand_names, expand_alt_names))
 
     if inc_orig:
-        return zip(raw_data, ret_list)
+        return list(zip(raw_data, ret_list))
     else:
         return ret_list
 

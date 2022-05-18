@@ -10,18 +10,9 @@ from os import path
 
 import validate
 
-
-def save_changes():
+def save_changes(commit_message):
     cwd = os.chdir(path.dirname(path.abspath(__file__)))
     subprocess.call(['python3','ljmmm_test.py'], cwd=cwd)
-
-    if len(sys.argv) > 2:
-        print('Too many args. Commit message may be arg 0.')
-        sys.exit(1)
-        
-    commit_message = "Incremental JSON update."
-    if len(sys.argv) == 2:
-        commit_message = sys.argv[1]
         
     constants_repo_dir = os.path.dirname(os.path.abspath(__file__))
     json_file_path = os.path.join(constants_repo_dir, 'LabJack', 'LJM', 'ljm_constants.json')
@@ -44,5 +35,13 @@ def save_changes():
     print('Finished!')
 
 if __name__ == '__main__':
-    save_changes()
+    if len(sys.argv) > 2:
+        print('Too many args. Commit message may be arg 0.')
+        sys.exit(1)
+
+    commit_message = "Incremental JSON update."
+    if len(sys.argv) == 2:
+        commit_message = sys.argv[1]
+
+    save_changes(commit_message)
 

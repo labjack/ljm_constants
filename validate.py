@@ -21,6 +21,8 @@ def validate(json_file_path, raw_only=True):
     if not raw_only:
         return
 
+    print ('Checking ljm_constants JSON file...')
+
     try:
         json_map = ljmmm.get_device_modbus_maps(
             json_file_path,
@@ -42,11 +44,12 @@ def validate(json_file_path, raw_only=True):
         exit(1)
 
     err_msgs = []
-
+    
     print('Checking register map duplicates and streamable validity...')
     # Track all register names so we do not throw the same error twice for a
     # register (if the register is used with multiple devices)
     all_names = []
+
     for device in json_map:
         previous_names = []
         previous_addresses = {}
@@ -100,6 +103,7 @@ def validate(json_file_path, raw_only=True):
             all_names.append(reg_name)
 
     print('Checking error duplicates...')
+
     dup_ierrs = []
     dup_jerrs = []
     for i_it in range(0, len(errors)):
