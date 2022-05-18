@@ -10,10 +10,6 @@ import unittest
 
 import ljmmm
 
-def cmp(a, b):
-    return (a > b) - (a < b) 
-
-# TODO: This is still somewhat incomplete
 class LJMMMTests(unittest.TestCase):
     """Test case for reading LabJack Modbus Map Markup notation maps."""
 
@@ -208,7 +204,7 @@ class LJMMMTests(unittest.TestCase):
 
     def test_parse_register_data_compressed(self):
         """Test parsing a sample ljmmm register description."""
-        
+
         EXTLINK_ICON = "<img style='margin-right: -1;' src='https://ljsimpleregisterlookup.herokuapp.com/static/images/ui-icons-extlink.png' />"
 
         expected = [
