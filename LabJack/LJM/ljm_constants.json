@@ -5238,6 +5238,62 @@
       "description": "Write any value to this register to efficiently empty, flush, or otherwise clear data from the FIFO."
     },
     {
+      "address": 55000,
+      "name": "LAST_ERR_DETAIL",
+      "type": "UINT16",
+      "devices": [
+        "T8",
+        "T7",
+        "T4"
+      ],
+      "readwrite": "R",
+      "default": 0,
+      "tags": ["CORE"],
+      "description": "Returns the last LabJack error code seen on the device."
+    },
+    {
+      "address": 55001,
+      "name": "LAST_MB_ERR",
+      "type": "UINT16",
+      "devices": [
+        "T8",
+        "T7",
+        "T4"
+      ],
+      "readwrite": "R",
+      "default": 0,
+      "tags": ["CORE"],
+      "description": "Returns the last Modbus TCP error code seen on the device."
+    },
+    {
+      "address": 55002,
+      "name": "LAST_ERR_FRAME",
+      "type": "UINT16",
+      "devices": [
+        "T8",
+        "T7",
+        "T4"
+      ],
+      "readwrite": "R",
+      "default": 0,
+      "tags": ["CORE"],
+      "description": "Returns the frame number that caused the last error."
+    },
+    {
+      "address": 55003,
+      "name": "LAST_ERR_TRANSACTION_ID",
+      "type": "UINT16",
+      "devices": [
+        "T8",
+        "T7",
+        "T4"
+      ],
+      "readwrite": "R",
+      "default": 0,
+      "tags": ["CORE"],
+      "description": "Returns the transaction ID of the Modbus TCP packet that caused the last error."
+    },
+    {
       "address": 55100,
       "name": "TEST",
       "type": "UINT32",
