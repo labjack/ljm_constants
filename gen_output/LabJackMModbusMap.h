@@ -21092,6 +21092,22 @@ static const char * const LJM_USER_RAM_FIFO3_EMPTY = "USER_RAM_FIFO3_EMPTY";
 enum { LJM_USER_RAM_FIFO3_EMPTY_ADDRESS = 47936 };
 enum { LJM_USER_RAM_FIFO3_EMPTY_TYPE = 1 };
 
+static const char * const LJM_LAST_ERR_DETAIL = "LAST_ERR_DETAIL";
+enum { LJM_LAST_ERR_DETAIL_ADDRESS = 55000 };
+enum { LJM_LAST_ERR_DETAIL_TYPE = 0 };
+
+static const char * const LJM_LAST_MB_ERR = "LAST_MB_ERR";
+enum { LJM_LAST_MB_ERR_ADDRESS = 55001 };
+enum { LJM_LAST_MB_ERR_TYPE = 0 };
+
+static const char * const LJM_LAST_ERR_FRAME = "LAST_ERR_FRAME";
+enum { LJM_LAST_ERR_FRAME_ADDRESS = 55002 };
+enum { LJM_LAST_ERR_FRAME_TYPE = 0 };
+
+static const char * const LJM_LAST_ERR_TRANSACTION_ID = "LAST_ERR_TRANSACTION_ID";
+enum { LJM_LAST_ERR_TRANSACTION_ID_ADDRESS = 55003 };
+enum { LJM_LAST_ERR_TRANSACTION_ID_TYPE = 0 };
+
 static const char * const LJM_TEST = "TEST";
 enum { LJM_TEST_ADDRESS = 55100 };
 enum { LJM_TEST_TYPE = 1 };
