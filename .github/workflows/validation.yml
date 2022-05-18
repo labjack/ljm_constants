@@ -18,17 +18,17 @@ jobs:
         python-version: ["3.10"]
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python ${{ matrix.python-version }}
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v3
         with:
           python-version: ${{ matrix.python-version }}
-    - name: Validate the Validator
-      run: |
-        python ljmmm_test.py
-    - name: Validate ljm_constants.json
-      run: |
-        python validate.py ./LabJack/LJM/ljm_constants.json
-    - name: Validate ljm_constants.json
-      run: |
-        python validate.py ./LabJack/LJM/ljm_startup_configs.json
+      - name: Validate the Validator
+        run: |
+          python ljmmm_test.py
+      - name: Validate ljm_constants.json
+        run: |
+          python validate.py ./LabJack/LJM/ljm_constants.json
+      - name: Validate ljm_constants.json
+        run: |
+          python validate.py ./LabJack/LJM/ljm_startup_configs.json
