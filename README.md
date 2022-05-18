@@ -22,11 +22,6 @@ For a web app version of ljm_constants.json, see [LabJack's Modbus Map](https://
 generate_c_header.py outputs generated content to gen_output/. Currently, it's a C header file which contains a constants version of ljm_constants.json. Test code for gen_output/ is in gen_test/.
 
 
-## Continuous Integration
-
-CI is done by Travis CI. See .travis.yml.
-
-
 ## Contributing
 
 
