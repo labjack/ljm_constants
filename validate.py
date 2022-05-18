@@ -4,30 +4,46 @@ Verifies that ljm_constants.json is not obviously invalid.
 """
 import sys
 import ljmmm
+import traceback
+import os
+from os import path
 
-def validate(json_file_path):
+def validate(json_file_path, raw_only=True):
     """Validates json_file_path as ljm constants JSON. Exits with non-zero on error."""
-    print 'Checking JSON file...'
+    print('Checking JSON file...')
+    try:
+        jsonFile = ljmmm.load_json_file(json_file_path)
+    except Exception as e:
+        print('[ERROR] JSON file could not be parsed. (' + str(e) + ')')
+        traceback.print_exc()
+        exit(1)
+    
+    if not raw_only:
+        return
+
     try:
         json_map = ljmmm.get_device_modbus_maps(
             json_file_path,
             expand_names=True,
             inc_orig=True
         )
+        print('Loaded JSON file...')
 
     except Exception as e:
-        print '[ERROR] JSON file registers could not be parsed. (' + str(e) + ')'
+        print('[ERROR] JSON file registers could not be parsed. (' + str(e) + ')')
+        traceback.print_exc()
         exit(1)
 
     try:
         errors = ljmmm.get_errors(json_file_path)
     except Exception as e:
-        print '[ERROR] JSON file errors could not be parsed. (' + str(e) + ')'
+        print('[ERROR] JSON file errors could not be parsed. (' + str(e) + ')')
+        traceback.print_exc()
         exit(1)
 
     err_msgs = []
 
-    print 'Checking register map duplicates and streamable validity...'
+    print('Checking register map duplicates and streamable validity...')
     # Track all register names so we do not throw the same error twice for a
     # register (if the register is used with multiple devices)
     all_names = []
@@ -40,7 +56,7 @@ def validate(json_file_path):
             unresolved = register[0]
             resolved = register[1]
             if \
-                unresolved.has_key('streamable') and \
+                'streamable' in unresolved and \
                 unresolved['streamable'] and \
                 not resolved['read']:
                     err_msgs.append(
@@ -56,7 +72,7 @@ def validate(json_file_path):
             previous_names.append(reg_name)
 
             reg_addr = resolved['address']
-            if previous_addresses.has_key(reg_addr) and previous_addresses[reg_addr]['name'] != unresolved['name']:
+            if reg_addr in previous_addresses and previous_addresses[reg_addr]['name'] != unresolved['name']:
                 err_msgs.append(
                     'Duplicate address for %s found:\n'
                     '  %s\n'
@@ -68,14 +84,14 @@ def validate(json_file_path):
                 )
             previous_addresses[reg_addr] = unresolved
 
-            if resolved.has_key('description') and \
+            if 'description' in resolved and \
                 len(resolved['description']) == 0 and \
                 reg_name not in all_names:
                     err_msgs.append(
                         'No register description for: %s\n'
                         % str(reg_name)
                     )
-            elif not resolved.has_key('description') and \
+            elif not 'description' in resolved and \
                 reg_name not in all_names:
                 err_msgs.append(
                         'No register description field for: %s\n'
@@ -83,7 +99,7 @@ def validate(json_file_path):
                     )
             all_names.append(reg_name)
 
-    print 'Checking error duplicates...'
+    print('Checking error duplicates...')
     dup_ierrs = []
     dup_jerrs = []
     for i_it in range(0, len(errors)):
@@ -95,22 +111,22 @@ def validate(json_file_path):
                 dup_jerrs.append(jerr)
 
     if dup_ierrs:
-        print 'Duplicate errors:'
+        print('Duplicate errors:')
         for err in range(0, len(dup_ierrs)):
-            print '  ' + str(dup_ierrs[err]['error'])
+            print('  ' + str(dup_ierrs[err]['error']))
         err_msgs.append('Duplication errors were found (see above)')
 
     for err in err_msgs:
-        print err
+        print(err)
 
     if len(err_msgs) != 0:
         exit(1)
 
-    print json_file_path + ' seems fine.'
+    print(json_file_path + ' seems fine.')
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
-        print 'Usage: %s json_file_path' % sys.argv[0]
+        print('Usage: %s json_file_path' % sys.argv[0])
         exit(1)
 
-    validate(sys.argv[1])
+    validate(sys.argv[1], raw_only=(path.basename(sys.argv[1]) == 'ljm_constants.json'))
