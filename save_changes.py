@@ -6,35 +6,43 @@ pushes to origin.
 import os
 import subprocess
 import sys
+from os import path
 
 import validate
 
-subprocess.call('python3 ljmmm_test.py')
 
-if len(sys.argv) > 2:
-    print('Too many args. Commit message may be arg 0.')
-    sys.exit(1)
-    
-commit_message = "Incremental JSON update."
-if len(sys.argv) == 2:
-    commit_message = sys.argv[1]
-    
-constants_repo_dir = os.path.dirname(os.path.abspath(__file__))
-json_file_path = os.path.join(constants_repo_dir, 'LabJack', 'LJM', 'ljm_constants.json')
-validate.validate(json_file_path)
+def save_changes():
+    cwd = os.chdir(path.dirname(path.abspath(__file__)))
+    subprocess.call(['python3','ljmmm_test.py'], cwd=cwd)
 
-json_file_path = os.path.join(constants_repo_dir, 'LabJack', 'LJM', 'ljm_startup_configs.json')
-validate.validate(json_file_path)
+    if len(sys.argv) > 2:
+        print('Too many args. Commit message may be arg 0.')
+        sys.exit(1)
+        
+    commit_message = "Incremental JSON update."
+    if len(sys.argv) == 2:
+        commit_message = sys.argv[1]
+        
+    constants_repo_dir = os.path.dirname(os.path.abspath(__file__))
+    json_file_path = os.path.join(constants_repo_dir, 'LabJack', 'LJM', 'ljm_constants.json')
+    validate.validate(json_file_path)
 
-subprocess.call('python3 generate_c_header.py')
+    startup_configs_file_path = os.path.join(constants_repo_dir, 'LabJack', 'LJM', 'ljm_startup_configs.json')
+    validate.validate(startup_configs_file_path, raw_only=False)
 
-print('Saving to Git repository...')
+    subprocess.call(['python3','generate_c_header.py'], cwd=cwd)
 
-# Move to the repo
-os.chdir(constants_repo_dir)
+    print('Saving to Git repository...')
 
-subprocess.check_call('git pull', shell=True)
-subprocess.call('git commit -a -m "%s"' % commit_message, shell=True)
-subprocess.call('git push', shell=True)
+    # Move to the repo
+    os.chdir(constants_repo_dir)
 
-print('Finished!')
+    subprocess.check_call('git pull', shell=True, cwd=cwd)
+    subprocess.call('git commit -a -m %s' % commit_message, shell=True, cwd=cwd)
+    subprocess.call('git push', shell=True, cwd=cwd)
+
+    print('Finished!')
+
+if __name__ == '__main__':
+    save_changes()
+
