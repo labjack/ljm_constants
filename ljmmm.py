@@ -4,10 +4,12 @@
 @license GNU GPL v3
 """
 
+
 import copy
 import json
 import re
 import string
+from sets import Set
 
 DEFAULT_FILE_NAME = "ljm_constants/LabJack/LJM/ljm_constants.json"
 ACCESS_RESTRICTIONS_STRS = {
@@ -69,7 +71,7 @@ def read_file(src=DEFAULT_FILE_NAME):
     @rtype: str
     """
     contents = ''
-    with open(src, encoding='utf-8') as f:
+    with open(src) as f:
         contents = f.read()
     return contents
 
@@ -91,7 +93,7 @@ def parse_json_str_for_comments(src):
             contents = contents + line + '\n'
     return contents
 
-def load_json_file(src=DEFAULT_FILE_NAME):
+def load_json_file(src=DEFAULT_FILE_NAME, enable_utf8=False, enable_comments=False):
     """Load a .json file into memory with a default file name.
 
     @keyword src: The name of the file to open.
@@ -99,7 +101,35 @@ def load_json_file(src=DEFAULT_FILE_NAME):
     @return: Object representing the loaded .json file.
     @rtype: str
     """
-    return json.loads(parse_json_str_for_comments(read_file(src)))
+    json_contents = {}
+    file_data = read_file(src)
+    if enable_comments:
+        file_data = parse_json_str_for_comments(file_data)
+
+    if enable_utf8:
+        json_contents = json.JSONDecoder(encoding='utf-8').decode(file_data)
+    else:
+        json_contents = json.loads(file_data)
+    return json_contents
+
+def get_raw_registers_data(src=DEFAULT_FILE_NAME, enable_utf8=False):
+    """Load information about registers from constants JSON file.
+
+    @keyword src: The name of the file to open. Defaults to DEFAULT_FILE_NAME.
+    @type src: str
+    @return: Raw JSON data dictionary loaded from source file.
+    @rtype: dict
+    """
+    json_contents = {}
+    if enable_utf8:
+        json_contents = json.JSONDecoder(encoding='utf-8').decode(read_file(src))
+    else:
+        json_contents = json.loads(read_file(src))
+
+    regular_registers = json_contents["registers"]
+    if "registers_beta" in json_contents:
+        regular_registers.extend(json_contents["registers_beta"])
+    return regular_registers
 
 def get_combined_registers_list(json_contents):
     """Return an extend list of registers listed in a JSON file object.
@@ -132,7 +162,6 @@ def generate_int_enumeration(src):
     @return: Resulting string
     @rtype: iterable of str
     """
-    interval = None
     template_str = src[0]
     start_num = int(src[1])
     end_num = int(src[2])
@@ -143,7 +172,8 @@ def generate_int_enumeration(src):
     afterwards = src[4]
 
     numbers = range(start_num, end_num+1, interval)
-    return list(map(lambda x: "%s%d%s" % (template_str, x, afterwards), numbers))
+    return map(lambda x: "%s%d%s" % (template_str, x, afterwards), numbers)
+
 
 def interpret_ljmmm_field(src):
     """Interpret a small string of LabJack Modbus Map Markup field notation.
@@ -169,7 +199,7 @@ def interpret_ljmmm_field(src):
     if enumeration_results:
         enumeration_tuple = enumeration_results[0]
         result = generate_int_enumeration(enumeration_tuple)
-        return [interpret_ljmmm_field(x) for x in result]
+        return map(lambda x: interpret_ljmmm_field(x), result)
 
     src = src.replace("#pound", "#")
     return src
@@ -188,7 +218,7 @@ def enumerate_addresses(start_address, num_addresses, reg_per_address):
     @rtype: list of int
     """
     end_address = start_address + num_addresses * reg_per_address
-    return list(range(start_address, end_address+1, reg_per_address))
+    return range(start_address, end_address+1, reg_per_address)
 
 
 def get_datatype_size(datatype_name):
@@ -240,7 +270,7 @@ def interpret_firmware(firmware):
     @rtype: dict
     @raise TypeError: Thrown if firmware is not a dict or a str.
     """
-    if isinstance(firmware, str):
+    if isinstance(firmware, basestring):
         return {"device": firmware, "fwmin": 0}
     elif isinstance(firmware, dict):
         return firmware
@@ -293,12 +323,12 @@ def apply_anchors(text):
         url = url_tuple[0]
         end_punc = FIND_ENDING_PUNCTUATION.search(url)
         if end_punc:
-            url = url.rsplit(end_punc.group(1), 1)[0]
+            url = string.rsplit(url, end_punc.group(1), 1)[0]
 
         # pos = text.find(url)
         # if pos == -1:
         #     raise ValueError('expected to find URL %s in text %s' % (url, text))
-        parts = text.split(url, 1)
+        parts = string.split(text, url, 1)
         text = parts[0] + (
             "<a target='_blank' href='%s'>"
             "%s"
@@ -360,13 +390,13 @@ def parse_register_data(raw_register_dict, expand_names=False,
         names = interpret_ljmmm_field(raw_register_dict["name"])
     else:
         names = raw_register_dict["name"]
-    if isinstance(names, str):
+    if isinstance(names, basestring):
         names = [names]
 
     datatype_str = raw_register_dict["type"]
     datatype_size = get_datatype_size(datatype_str)
     type_index = get_datatype_type_index(datatype_str)
-    devices = [interpret_firmware(x) for x in raw_register_dict["devices"]]
+    devices = map(lambda x: interpret_firmware(x), raw_register_dict["devices"])
     access_restrictions = interpret_access_descriptor(
         raw_register_dict["readwrite"]
     )
@@ -384,7 +414,7 @@ def parse_register_data(raw_register_dict, expand_names=False,
             num_addresses,
             datatype_size
         )
-    name_address_pairs = list(zip(names, addresses))
+    name_address_pairs = zip(names, addresses)
 
     description = apply_anchors(raw_register_dict.get("description", ""))
     default = raw_register_dict.get("default", None)
@@ -394,8 +424,8 @@ def parse_register_data(raw_register_dict, expand_names=False,
     constants = raw_register_dict.get("constants", [])
     altnames = raw_register_dict.get("altnames", [])
     if expand_names:
-        altnames = [interpret_ljmmm_field(x) for x in altnames]
-        if len(altnames) and isinstance(altnames[0], str):
+        altnames = map(lambda x: interpret_ljmmm_field(x), altnames)
+        if len(altnames) and isinstance(altnames[0], basestring):
             altnames = [altnames]
 
     # Generate resulting dicts
@@ -404,7 +434,7 @@ def parse_register_data(raw_register_dict, expand_names=False,
     for (name, address) in name_address_pairs:
         inner_altnames = altnames
         if expand_names:
-            inner_altnames = [x[altnames_count] for x in altnames]
+            inner_altnames = map(lambda x: x[altnames_count], altnames)
             altnames_count = altnames_count + 1
 
         ret_list.append(
@@ -432,7 +462,7 @@ def parse_register_data(raw_register_dict, expand_names=False,
         if len(alt_names) > 0:
             alt_names_dict = copy.deepcopy(raw_register_dict)
             del alt_names_dict["altnames"]
-            for name in [x for x in alt_names if x != ""]:
+            for name in filter(lambda x: x != "", alt_names):
                 alt_names_dict["name"] = name
                 ret_list.extend(parse_register_data(alt_names_dict, expand_names))
 
@@ -456,12 +486,12 @@ def interpret_tags(tags, tags_base_url='http://labjack.com/support/modbus/tags')
     @type tags_base_url: str
     @return: list of str html links
     """
-    return ["<a class=\'tag-link\' href=" + tags_base_url +
-                "/" + x + ">" + x + "</a>" for x in tags]
+    return map(lambda x: "<a class=\'tag-link\' href=" + tags_base_url +
+                "/" + x + ">" + x + "</a>", tags)
 
 
 def get_registers_data(src=DEFAULT_FILE_NAME, expand_names=False,
-    inc_orig=False, expand_alt_names=False):
+    inc_orig=False, expand_alt_names=False, enable_utf8=False, enable_comments=False):
     """Load and parse information about registers from JSON constants file.
 
     Loads and interprets registers information from the given JSON constants
@@ -485,7 +515,8 @@ def get_registers_data(src=DEFAULT_FILE_NAME, expand_names=False,
     @type inc_orig: bool
     @return: dict
     """
-    raw_data = load_json_file(src=src)
+    # raw_data = get_raw_registers_data(src=src, enable_utf8=enable_utf8, enable_comments=enable_comments)
+    raw_data = load_json_file(src=src, enable_utf8=enable_utf8, enable_comments=enable_comments)
     raw_data = get_combined_registers_list(raw_data)
     ret_list = []
     for entry in raw_data:
@@ -495,13 +526,13 @@ def get_registers_data(src=DEFAULT_FILE_NAME, expand_names=False,
             ret_list.extend(parse_register_data(entry, expand_names, expand_alt_names))
 
     if inc_orig:
-        return list(zip(raw_data, ret_list))
+        return zip(raw_data, ret_list)
     else:
         return ret_list
 
 
 def get_device_modbus_maps(src=DEFAULT_FILE_NAME, expand_names=False,
-    inc_orig=False, expand_alt_names=False):
+    inc_orig=False, expand_alt_names=False, enable_utf8=False, enable_comments=False):
     """Load register info from JSON constants file and structure by device.
 
     Loads and interprets registers information from the given JSON constants
@@ -545,7 +576,7 @@ def get_device_modbus_maps(src=DEFAULT_FILE_NAME, expand_names=False,
     @return: dict
     """
     registers_data = get_registers_data(src=src, expand_names=expand_names,
-        inc_orig=inc_orig, expand_alt_names=expand_alt_names)
+        inc_orig=inc_orig, expand_alt_names=expand_alt_names, enable_utf8=enable_utf8, enable_comments=enable_comments)
     device_maps = {}
 
     if inc_orig:
