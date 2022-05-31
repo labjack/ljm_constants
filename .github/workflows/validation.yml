@@ -29,6 +29,6 @@ jobs:
       - name: Validate ljm_constants.json
         run: |
           python validate.py ./LabJack/LJM/ljm_constants.json
-      - name: Validate ljm_constants.json
+      - name: Validate ljm_startup_configs.json
         run: |
           python validate.py ./LabJack/LJM/ljm_startup_configs.json
