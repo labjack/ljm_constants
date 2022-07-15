@@ -6,12 +6,11 @@ pushes to origin.
 import os
 import subprocess
 import sys
-from os import path
 
 import validate
 
 def save_changes(commit_message):
-    cwd = os.chdir(path.dirname(path.abspath(__file__)))
+    cwd = os.chdir(os.path.dirname(os.path.abspath(__file__)))
     subprocess.call([sys.executable,'ljmmm_test.py'], cwd=cwd)
         
     constants_repo_dir = os.path.dirname(os.path.abspath(__file__))

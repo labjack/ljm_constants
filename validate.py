@@ -6,7 +6,6 @@ import sys
 import ljmmm
 import traceback
 import os
-from os import path
 
 def validate(json_file_path, raw_only=True):
     """Validates json_file_path as ljm constants JSON. Exits with non-zero on error."""
@@ -129,4 +128,4 @@ if __name__ == '__main__':
         print('Usage: %s json_file_path' % sys.argv[0])
         exit(1)
 
-    validate(sys.argv[1], raw_only=(path.basename(sys.argv[1]) == 'ljm_constants.json'))
+    validate(sys.argv[1], raw_only=(os.path.basename(sys.argv[1]) == 'ljm_constants.json'))
