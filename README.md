@@ -1,3 +1,10 @@
+<a href="https://github.com/labjack/ljm_constants">
+	<img 
+	 alt="tag:?"
+	 src="https://img.shields.io/github/workflow/status/labjack/ljm_constants/test"
+	>
+</a>
+
 # ljm_constants
 
 [LJM](https://labjack.com/ljm) constants files and related tools.
@@ -13,11 +20,6 @@ For a web app version of ljm_constants.json, see [LabJack's Modbus Map](https://
 ## Generated code
 
 generate_c_header.py outputs generated content to gen_output/. Currently, it's a C header file which contains a constants version of ljm_constants.json. Test code for gen_output/ is in gen_test/.
-
-
-## Continuous Integration
-
-CI is done by Travis CI. See .travis.yml.
 
 
 ## Contributing

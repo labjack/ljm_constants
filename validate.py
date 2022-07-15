@@ -4,10 +4,23 @@ Verifies that ljm_constants.json is not obviously invalid.
 """
 import sys
 import ljmmm
+import traceback
+import os
 
-def validate(json_file_path):
+def validate(json_file_path, raw_only=True):
     """Validates json_file_path as ljm constants JSON. Exits with non-zero on error."""
     print 'Checking JSON file...'
+    try:
+        jsonFile = ljmmm.load_json_file(json_file_path, enable_comments=(not raw_only))
+    except Exception as e:
+        print('[ERROR] JSON file could not be parsed. (' + str(e) + ')')
+        traceback.print_exc()
+        exit(1)
+    
+    if not raw_only:
+        return
+
+    print 'Checking ljm_constants JSON file...'
     try:
         json_map = ljmmm.get_device_modbus_maps(
             json_file_path,
@@ -17,12 +30,14 @@ def validate(json_file_path):
 
     except Exception as e:
         print '[ERROR] JSON file registers could not be parsed. (' + str(e) + ')'
+        traceback.print_exc()
         exit(1)
 
     try:
         errors = ljmmm.get_errors(json_file_path)
     except Exception as e:
         print '[ERROR] JSON file errors could not be parsed. (' + str(e) + ')'
+        traceback.print_exc()
         exit(1)
 
     err_msgs = []
@@ -110,7 +125,7 @@ def validate(json_file_path):
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
-        print 'Usage: %s json_file_path' % sys.argv[0]
+        print('Usage: %s json_file_path' % sys.argv[0])
         exit(1)
 
-    validate(sys.argv[1])
+    validate(sys.argv[1], raw_only=(os.path.basename(sys.argv[1]) == 'ljm_constants.json'))

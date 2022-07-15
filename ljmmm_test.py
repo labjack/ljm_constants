@@ -10,8 +10,6 @@ import unittest
 
 import ljmmm
 
-
-# TODO: This is still somewhat incomplete
 class LJMMMTests(unittest.TestCase):
     """Test case for reading LabJack Modbus Map Markup notation maps."""
 
@@ -207,8 +205,7 @@ class LJMMMTests(unittest.TestCase):
     def test_parse_register_data_compressed(self):
         """Test parsing a sample ljmmm register description."""
 
-        # Jeez. I should make this test less fragile.
-        EXTLINK_ICON = '<img style="margin-right: -1;" src="https://ljsimpleregisterlookup.herokuapp.com/static/images/ui-icons-extlink.png" />'
+        EXTLINK_ICON = "<img style='margin-right: -1;' src='https://ljsimpleregisterlookup.herokuapp.com/static/images/ui-icons-extlink.png' />"
 
         expected = [
             {
@@ -224,14 +221,14 @@ class LJMMMTests(unittest.TestCase):
                 ],
                 "readwrite": {"read": True, "write": True},
                 "tags": ["DIO"],
-                "description": "test <a target=\"_blank\" href=\"https://labjack.com/support/\">https://labjack.com/support/</a>%s. <a target=\"_blank\" href=\"http://imgur.com/gallery/zwK7XG6\">http://imgur.com/gallery/zwK7XG6</a>%s, end." %
+                "description": "test <a target='_blank' href='https://labjack.com/support/'>https://labjack.com/support/</a>%s. <a target='_blank' href='http://imgur.com/gallery/zwK7XG6'>http://imgur.com/gallery/zwK7XG6</a>%s, end." %
                     (EXTLINK_ICON, EXTLINK_ICON),
-                "constants": [],
-                "streamable": False,
                 "default": None,
-                "isBuffer": False,
-                "altnames": ["DIO#(0:2)", "TEST#(0:2)"],
+                "streamable": False,
                 'usesRAM': False,
+                "isBuffer": False,
+                "constants": [],
+                "altnames": ["DIO#(0:2)", "TEST#(0:2)"],
             },
         ]
 
@@ -248,8 +245,8 @@ class LJMMMTests(unittest.TestCase):
                 ],
                 "readwrite":"RW",
                 "tags":["DIO"],
-                "altnames":["DIO#(0:2)", "TEST#(0:2)"],
                 "description": "test https://labjack.com/support/. http://imgur.com/gallery/zwK7XG6, end.",
+                "altnames":["DIO#(0:2)", "TEST#(0:2)"],
                 'usesRAM': False
             },
             expand_names = False
@@ -257,7 +254,8 @@ class LJMMMTests(unittest.TestCase):
 
         self.assertEqual(1, len(expected))
         self.assertEqual(1, len(result))
-        self.assertTrue(cmp(expected[0], result[0]))
+        self.assertTrue(expected[0]["description"], result[0]["description"])
+        self.assertDictEqual(expected[0], result[0])
 
 
     def test_description_with_dots_should_not_yield_links(self):
