@@ -1616,7 +1616,7 @@
       "readwrite": "W",
       "default": 0,
       "tags": ["ONEWIRE"],
-      "description": "Instructs the T7 to perform the configured 1-wire transaction."
+      "description": "Instructs the device to perform the configured 1-wire transaction."
     },
     {
       "address": 5320,
