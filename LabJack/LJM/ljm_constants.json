@@ -3046,7 +3046,7 @@
         }
       ],
       "readwrite": "RW",
-      "default": 255,
+      "default": 100,
       "tags": ["AIN"],
       "description": "T8 Only. Writing to this register sets the analog sampling rate. Not all rates are possible. Read AIN_SAMPLING_RATE_ACTUAL_HZ to get the actual rate."
     },
