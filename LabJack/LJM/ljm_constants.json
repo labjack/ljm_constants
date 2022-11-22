@@ -890,7 +890,7 @@
       "default": 0,
       "tags": ["STREAM"],
       "altnames": ["STREAM_OUT#(0:3)_BUFFER_SIZE"],
-      "description": "Size of the buffer in bytes as a power of 2. Should be at least twice the size of updates that will be written and no less than 32. The usable buffer size will be equal to the value of this register minus one sample. Before writing data to _BUFFER_###, you must write to _BUFFER_ALLOCATE_NUM_BYTES to allocate RAM for the data. Max is 16384."
+      "description": "Size of the buffer in bytes as a power of 2. Should be at least twice the size of updates that will be written and no less than 32. The usable buffer size will be equal to the value of this register minus 2 bytes (one 16-bit sample). Before writing data to _BUFFER_###, you must write to _BUFFER_ALLOCATE_NUM_BYTES to allocate RAM for the data. Max is 16384."
     },
     {
       "address": 4060,
