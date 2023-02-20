@@ -4,12 +4,11 @@
 @license GNU GPL v3
 """
 
-
 import copy
 import json
 import re
 import string
-from sets import Set
+# from sets import Set
 
 DEFAULT_FILE_NAME = "ljm_constants/LabJack/LJM/ljm_constants.json"
 ACCESS_RESTRICTIONS_STRS = {
@@ -72,7 +71,8 @@ def read_file(src=DEFAULT_FILE_NAME):
     """
     contents = ''
     with open(src) as f:
-        contents = f.read()
+        file_bytes = f.read().encode("utf-8","ignore")
+        contents = file_bytes.decode("utf-8","ignore")
     return contents
 
 def parse_json_str_for_comments(src):
@@ -171,8 +171,8 @@ def generate_int_enumeration(src):
         interval = 1
     afterwards = src[4]
 
-    numbers = range(start_num, end_num+1, interval)
-    return map(lambda x: "%s%d%s" % (template_str, x, afterwards), numbers)
+    numbers = list(range(start_num, end_num+1, interval))
+    return ["%s%d%s" % (template_str, x, afterwards) for x in numbers]
 
 
 def interpret_ljmmm_field(src):
@@ -199,7 +199,7 @@ def interpret_ljmmm_field(src):
     if enumeration_results:
         enumeration_tuple = enumeration_results[0]
         result = generate_int_enumeration(enumeration_tuple)
-        return map(lambda x: interpret_ljmmm_field(x), result)
+        return [interpret_ljmmm_field(x) for x in result]
 
     src = src.replace("#pound", "#")
     return src
@@ -218,7 +218,7 @@ def enumerate_addresses(start_address, num_addresses, reg_per_address):
     @rtype: list of int
     """
     end_address = start_address + num_addresses * reg_per_address
-    return range(start_address, end_address+1, reg_per_address)
+    return list(range(start_address, end_address+1, reg_per_address))
 
 
 def get_datatype_size(datatype_name):
@@ -270,7 +270,7 @@ def interpret_firmware(firmware):
     @rtype: dict
     @raise TypeError: Thrown if firmware is not a dict or a str.
     """
-    if isinstance(firmware, basestring):
+    if isinstance(firmware, str):
         return {"device": firmware, "fwmin": 0}
     elif isinstance(firmware, dict):
         return firmware
@@ -323,12 +323,12 @@ def apply_anchors(text):
         url = url_tuple[0]
         end_punc = FIND_ENDING_PUNCTUATION.search(url)
         if end_punc:
-            url = string.rsplit(url, end_punc.group(1), 1)[0]
+            url = str.rsplit(url, end_punc.group(1), 1)[0]
 
         # pos = text.find(url)
         # if pos == -1:
         #     raise ValueError('expected to find URL %s in text %s' % (url, text))
-        parts = string.split(text, url, 1)
+        parts = str.split(text, url, 1)
         text = parts[0] + (
             "<a target='_blank' href='%s'>"
             "%s"
@@ -390,13 +390,13 @@ def parse_register_data(raw_register_dict, expand_names=False,
         names = interpret_ljmmm_field(raw_register_dict["name"])
     else:
         names = raw_register_dict["name"]
-    if isinstance(names, basestring):
+    if isinstance(names, str):
         names = [names]
 
     datatype_str = raw_register_dict["type"]
     datatype_size = get_datatype_size(datatype_str)
     type_index = get_datatype_type_index(datatype_str)
-    devices = map(lambda x: interpret_firmware(x), raw_register_dict["devices"])
+    devices = [interpret_firmware(x) for x in raw_register_dict["devices"]]
     access_restrictions = interpret_access_descriptor(
         raw_register_dict["readwrite"]
     )
@@ -414,7 +414,7 @@ def parse_register_data(raw_register_dict, expand_names=False,
             num_addresses,
             datatype_size
         )
-    name_address_pairs = zip(names, addresses)
+    name_address_pairs = list(zip(names, addresses))
 
     description = apply_anchors(raw_register_dict.get("description", ""))
     default = raw_register_dict.get("default", None)
@@ -424,8 +424,8 @@ def parse_register_data(raw_register_dict, expand_names=False,
     constants = raw_register_dict.get("constants", [])
     altnames = raw_register_dict.get("altnames", [])
     if expand_names:
-        altnames = map(lambda x: interpret_ljmmm_field(x), altnames)
-        if len(altnames) and isinstance(altnames[0], basestring):
+        altnames = [interpret_ljmmm_field(x) for x in altnames]
+        if len(altnames) and isinstance(altnames[0], str):
             altnames = [altnames]
 
     # Generate resulting dicts
@@ -434,7 +434,7 @@ def parse_register_data(raw_register_dict, expand_names=False,
     for (name, address) in name_address_pairs:
         inner_altnames = altnames
         if expand_names:
-            inner_altnames = map(lambda x: x[altnames_count], altnames)
+            inner_altnames = [x[altnames_count] for x in altnames]
             altnames_count = altnames_count + 1
 
         ret_list.append(
@@ -462,7 +462,7 @@ def parse_register_data(raw_register_dict, expand_names=False,
         if len(alt_names) > 0:
             alt_names_dict = copy.deepcopy(raw_register_dict)
             del alt_names_dict["altnames"]
-            for name in filter(lambda x: x != "", alt_names):
+            for name in [x for x in alt_names if x != ""]:
                 alt_names_dict["name"] = name
                 ret_list.extend(parse_register_data(alt_names_dict, expand_names))
 
@@ -486,8 +486,9 @@ def interpret_tags(tags, tags_base_url='http://labjack.com/support/modbus/tags')
     @type tags_base_url: str
     @return: list of str html links
     """
-    return map(lambda x: "<a class=\'tag-link\' href=" + tags_base_url +
-                "/" + x + ">" + x + "</a>", tags)
+    return ["<a class=\'tag-link\' href=" + tags_base_url +
+                "/" + x + ">" + x + "</a>" for x in tags]
+
 
 
 def get_registers_data(src=DEFAULT_FILE_NAME, expand_names=False,
@@ -526,7 +527,7 @@ def get_registers_data(src=DEFAULT_FILE_NAME, expand_names=False,
             ret_list.extend(parse_register_data(entry, expand_names, expand_alt_names))
 
     if inc_orig:
-        return zip(raw_data, ret_list)
+        return list(zip(raw_data, ret_list))
     else:
         return ret_list
 

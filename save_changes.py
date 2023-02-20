@@ -22,7 +22,7 @@ def save_changes(commit_message):
 
     subprocess.call([sys.executable,'generate_c_header.py'], cwd=cwd)
 
-    print 'Saving to Git repository...'
+    print('Saving to Git repository...')
 
     # Move to the repo
     os.chdir(constants_repo_dir)
@@ -31,11 +31,11 @@ def save_changes(commit_message):
     subprocess.call('git commit -a -m %s' % commit_message, shell=True, cwd=cwd)
     subprocess.call('git push', shell=True, cwd=cwd)
 
-    print 'Finished!'
+    print('Finished!')
 
 if __name__ == '__main__':
     if len(sys.argv) > 2:
-        print 'Too many args. Commit message may be arg 0.'
+        print('Too many args. Commit message may be arg 0.')
         sys.exit(1)
 
     commit_message = "Incremental JSON update."
@@ -43,4 +43,3 @@ if __name__ == '__main__':
         commit_message = sys.argv[1]
 
     save_changes(commit_message)
-
