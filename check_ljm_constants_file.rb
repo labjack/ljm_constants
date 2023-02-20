@@ -10,8 +10,8 @@ require 'pathname'
 require 'json'
 
 CUR_DIR = Pathname(__FILE__).dirname.realpath
-LJM_HEADER = "#{CUR_DIR}/../header_files/api/LabJackM.h"
-CONSTANTS_FILE = "#{CUR_DIR}/../../ljm_constants/LabJack/LJM/ljm_constants.json"
+LJM_HEADER = "#{CUR_DIR}/LabJackM.h"
+CONSTANTS_FILE = "#{CUR_DIR}/LabJack/LJM/ljm_constants.json"
 IGNORE_FILE = "error_codes_to_ignore.txt"
 
 # Error patterns
