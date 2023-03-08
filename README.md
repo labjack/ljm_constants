@@ -1,7 +1,7 @@
 <a href="https://github.com/labjack/ljm_constants">
 	<img 
 	 alt="tag:?"
-	 src="https://img.shields.io/github/workflow/status/labjack/ljm_constants/test"
+	 src="https://img.shields.io/github/actions/workflow/status/labjack/ljm_constants/validation.yml?branch=master"
 	>
 </a>
 
