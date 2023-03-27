@@ -7,8 +7,7 @@ on:
 jobs:
   export:
 
-    runs-on: self-hosted
-
+    runs-on: ubuntu-latest
     steps:
     - name: Clone Repo
       uses: actions/checkout@v3
