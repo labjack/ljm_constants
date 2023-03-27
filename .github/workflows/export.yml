@@ -1,0 +1,20 @@
+
+name: Export
+
+on:
+  workflow_dispatch:
+
+jobs:
+  export:
+
+    runs-on: self-hosted
+
+    steps:
+    - name: Clone Repo
+      uses: actions/checkout@v3
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: LJM_CONSTANTS
+        path: ${{github.workspace}}/LabJack/*
