@@ -7767,6 +7767,11 @@
       "description": "Selected resolution is invalid. Valid range is 0-5 for T4 and 0-12 for T7."
     },
     {
+      "error": 2376,
+      "string": "AIN_RATE_INVALID",
+      "description": "The selected AIN rate configuration is invalid for the desired resolution index or vise-versa."
+    },
+    {
       "error": 2380,
       "string": "LUA_VM_STATE_NO_CHANGE"
     },
