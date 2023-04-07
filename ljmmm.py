@@ -330,7 +330,7 @@ def apply_anchors(text):
         #     raise ValueError('expected to find URL %s in text %s' % (url, text))
         parts = str.split(text, url, 1)
         text = parts[0] + (
-            "<a target='_blank' href='%s'>"
+            "<a target='_blank' rel='noopener noreferrer' href='%s'>"
             "%s"
             "</a>"
             "<img "
