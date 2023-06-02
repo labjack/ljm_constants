@@ -520,7 +520,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0013
         },
         {
           "device": "T7",
@@ -547,7 +547,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0013
         },
         {
           "device": "T7",
@@ -3750,13 +3750,63 @@
       "description": "Deprecated. Automatically configures the associated DIO_EF for feature index 11. If already configured for index 11, reads the result and resets the DIO_EF."
     },
     {
+      "address": 48000,
+      "name": "POWER_MODE",
+      "type": "UINT16",
+      "devices": [
+        {
+          "device": "T7",
+          "fwmin": 1.0224
+        }
+      ],
+      "readwrite": "RW",
+      "tags": ["CONFIG"],
+      "description": "The current power management state."
+    },
+    {
+      "address": 48001,
+      "name": "POWER_CORE",
+      "type": "UINT16",
+      "devices": [
+        {
+          "device": "T7",
+          "fwmin": 1.0200
+        },
+        {
+          "device": "T4",
+          "fwmin": 1.0000
+        }
+      ],
+      "readwrite": "RW",
+      "tags": ["CONFIG"],
+      "description": "The core processor speed. 0=80MHz, 1=20MHz, 2=2MHz, 3=250kHz"
+    },
+    {
+      "address": 48002,
+      "name": "POWER_USB",
+      "type": "UINT16",
+      "devices": [
+        {
+          "device": "T7",
+          "fwmin": 1.0200
+        },
+        {
+          "device": "T4",
+          "fwmin": 1.0000
+        }
+      ],
+      "readwrite": "RW",
+      "tags": ["CONFIG"],
+      "description": "The current ON/OFF state of the USB module."
+    },
+    {
       "address": 48003,
       "name": "POWER_ETHERNET",
       "type": "UINT16",
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0013
         },
         {
           "device": "T7",
@@ -3796,7 +3846,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0013
         },
         {
           "device": "T7",
@@ -3814,7 +3864,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0013
         },
         {
           "device": "T7",
@@ -3830,13 +3880,63 @@
       "description": "Sets the LED operation:<br>0 = Off. Useful for lower power applications.<br>1 = normal.<br>2 = Lower power, LEDs will still blink but will normally be off.<br>3 = Reserved.<br>4 = Manual, in this mode the LEDs can be user controlled."
     },
     {
+      "address": 48050,
+      "name": "POWER_MODE_DEFAULT",
+      "type": "UINT16",
+      "devices": [
+        {
+          "device": "T7",
+          "fwmin": 1.0224
+        }
+      ],
+      "readwrite": "RW",
+      "tags": ["CONFIG"],
+      "description": "The power management state after a power-cycle to the device."
+    },
+    {
+      "address": 48051,
+      "name": "POWER_CORE_DEFAULT",
+      "type": "UINT16",
+      "devices": [
+        {
+          "device": "T7",
+          "fwmin": 1.0200
+        },
+        {
+          "device": "T4",
+          "fwmin": 1.0000
+        }
+      ],
+      "readwrite": "RW",
+      "tags": ["CONFIG"],
+      "description": "Controls the core processor speed after a power-cycle to the device. 0=80MHz, 1=20MHz, 2=2MHz, 3=250kHz"
+    },
+    {
+      "address": 48052,
+      "name": "POWER_USB_DEFAULT",
+      "type": "UINT16",
+      "devices": [
+        {
+          "device": "T7",
+          "fwmin": 1.0200
+        },
+        {
+          "device": "T4",
+          "fwmin": 1.0000
+        }
+      ],
+      "readwrite": "RW",
+      "tags": ["CONFIG"],
+      "description": "The current ON/OFF state of the USB module after a power-cycle to the device."
+    },
+    {
       "address": 48053,
       "name": "POWER_ETHERNET_DEFAULT",
       "type": "UINT16",
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0013
         },
         {
           "device": "T7",
@@ -3876,7 +3976,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0013
         },
         {
           "device": "T7",
@@ -3894,7 +3994,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0013
         },
         {
           "device": "T7",
@@ -3914,7 +4014,10 @@
       "name": "IO_CONFIG_CHECK_FOR_FACTORY",
       "type": "UINT32",
       "devices": [
-        "T8",
+        {
+          "device": "T8",
+          "fwmin": 1.0012
+        },
         "T7",
         "T4"
       ],
@@ -3927,7 +4030,10 @@
       "name": "IO_CONFIG_SET_DEFAULT_TO_CURRENT",
       "type": "UINT32",
       "devices": [
-        "T8",
+        {
+          "device": "T8",
+          "fwmin": 1.0012
+        },
         "T7",
         "T4"
       ],
@@ -3940,7 +4046,10 @@
       "name": "IO_CONFIG_SET_DEFAULT_TO_FACTORY",
       "type": "UINT32",
       "devices": [
-        "T8",
+        {
+          "device": "T8",
+          "fwmin": 1.0012
+        },
         "T7",
         "T4"
       ],
@@ -3953,7 +4062,10 @@
       "name": "IO_CONFIG_FACTORY_pREAD",
       "type": "UINT32",
       "devices": [
-        "T8",
+        {
+          "device": "T8",
+          "fwmin": 1.0012
+        },
         "T7",
         "T4"
       ],
@@ -3966,7 +4078,10 @@
       "name": "IO_CONFIG_FACTORY_READ",
       "type": "UINT32",
       "devices": [
-        "T8",
+        {
+          "device": "T8",
+          "fwmin": 1.0012
+        },
         "T7",
         "T4"
       ],
@@ -3979,7 +4094,10 @@
       "name": "IO_CONFIG_DEFAULT_pREAD",
       "type": "UINT32",
       "devices": [
-        "T8",
+        {
+          "device": "T8",
+          "fwmin": 1.0012
+        },
         "T7",
         "T4"
       ],
@@ -3992,7 +4110,10 @@
       "name": "IO_CONFIG_DEFAULT_READ",
       "type": "UINT32",
       "devices": [
-        "T8",
+        {
+          "device": "T8",
+          "fwmin": 1.0012
+        },
         "T7",
         "T4"
       ],
@@ -4005,7 +4126,10 @@
       "name": "IO_CONFIG_CURRENT_pREAD",
       "type": "UINT32",
       "devices": [
-        "T8",
+        {
+          "device": "T8",
+          "fwmin": 1.0012
+        },
         "T7",
         "T4"
       ],
@@ -4018,7 +4142,10 @@
       "name": "IO_CONFIG_CURRENT_READ",
       "type": "UINT32",
       "devices": [
-        "T8",
+        {
+          "device": "T8",
+          "fwmin": 1.0012
+        },
         "T7",
         "T4"
       ],
@@ -4031,7 +4158,10 @@
       "name": "IO_CONFIG_CHECK_FOR_DEFAULT",
       "type": "UINT32",
       "devices": [
-        "T8",
+        {
+          "device": "T8",
+          "fwmin": 1.0012
+        },
         "T7",
         "T4"
       ],
@@ -5970,7 +6100,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -5992,7 +6122,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -6014,7 +6144,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -6036,7 +6166,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -6058,7 +6188,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -6080,7 +6210,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -6102,7 +6232,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -6124,7 +6254,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -6146,7 +6276,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -6168,7 +6298,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -6190,7 +6320,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -6211,7 +6341,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -6233,7 +6363,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -6255,7 +6385,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -6277,7 +6407,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -6299,7 +6429,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -7878,12 +8008,33 @@
     },
     {
       "error": 2452,
-      "string": "POWER_NO_CHANGE"
+      "string": "POWER_ETH_NEEDS_20MHZ_OR_MORE",
+      "description": "Core must be running at 20MHz minimum for Ethernet to operate."
+    },
+    {
+      "error": 2453,
+      "string": "POWER_AIN_NEEDS_20MHZ_OR_MORE",
+      "description": "Core must be running at 20MHz minimum for AIN to operate."
+    },
+    {
+      "error": 2454,
+      "string": "POWER_STREAM_NEEDS_20MHZ_OR_MORE",
+      "description": "Core must be running at 20MHz minimum to use stream mode."
+    },
+    {
+      "error": 2455,
+      "string": "POWER_SD_NEEDS_20MHZ_OR_MORE",
+      "description": "Core must be running at 20MHz minimum to use the SD card."
     },
     {
       "error": 2456,
       "string": "POWER_CAN_NOT_CHANGE_USED_CONNECTION",
       "description": "Can not change the power level of the connected medium."
+    },
+    {
+      "error": 2459,
+      "string": "POWER_NO_CHANGE",
+      "description": "The written power mode is the same as the current setting."
     },
     {
       "error": 2460,
