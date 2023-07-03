@@ -1,34 +1,34 @@
 {
   "header": {
     "filename": "ljm_constants.json",
-    "version": "2023.03.08.A",
+    "version": "2023.07.03.A",
     "checksum": "-1",
-    "support_url": "https://labjack.com/support/modbus",
-    "tags_base_url": "https://labjack.com/support/modbus"
+    "support_url": "https://labjack.com/pages/support",
+    "tags_base_url": "https://labjack.com"
   },
 
   "tag_mappings": {
-    "AIN":                "/support/datasheets/t-series/ain",
-    "AIN_EF":             "/support/datasheets/t-series/ain/extended-features",
-    "ASYNCH":             "/support/datasheets/t-series/digital-io/asynchronous-serial",
-    "DAC":                "/support/datasheets/t-series/dac",
-    "DIO":                "/support/datasheets/t-series/digital-io/extended-features",
-    "DIO_EF":             "/support/datasheets/t-series/digital-io/extended-features",
-    "ETHERNET":           "/support/datasheets/t-series/ethernet",
-    "FILE_IO":            "/support/datasheets/t-series/sd-card",
-    "I2C":                "/support/datasheets/t-series/digital-io/i2c",
-    "INTFLASH":           "/support/datasheets/t-series/internal-flash",
-    "LUA":                "/support/datasheets/t-series/lua-scripting",
-    "ONEWIRE":            "/support/datasheets/t-series/digital-io/1-wire",
-    "RTC":                "/support/datasheets/t-series/rtc",
-    "SBUS":               "/support/datasheets/t-series/digital-io/sbus",
-    "SPI":                "/support/datasheets/t-series/digital-io/spi",
-    "STREAM":             "/support/datasheets/t-series/communication/stream-mode",
-    "TDAC":               "/support/datasheets/t-series/appendix-c-2",
-    "UART":               "/support/datasheets/t-series/digital-io/asynchronous-serial",
-    "USER_RAM":           "/support/datasheets/t-series/hardware-overview/ram",
-    "WATCHDOG":           "/support/datasheets/t-series/watchdog",
-    "WIFI":               "/support/datasheets/t-series/wifi"
+    "AIN":                "/pages/support?doc=/datasheets/t-series-datasheet/140-analog-inputs-t-series-datasheet",
+    "AIN_EF":             "/pages/support?doc=/datasheets/t-series-datasheet/141-ain-extended-features-t-series-datasheet",
+    "ASYNCH":             "/pages/support?doc=/datasheets/t-series-datasheet/137-asynchronous-serial-t-series-datasheet",
+    "DAC":                "/pages/support?doc=/datasheets/t-series-datasheet/150-dac-t-series-datasheet",
+    "DIO":                "/pages/support?doc=/datasheets/t-series-datasheet/130-digital-io-t-series-datasheet",
+    "DIO_EF":             "/pages/support?doc=/datasheets/t-series-datasheet/132-dio-extended-features-t-series-datasheet",
+    "ETHERNET":           "/pages/support?doc=/datasheets/t-series-datasheet/60-ethernet-t-series-datasheet",
+    "FILE_IO":            "/pages/support?doc=/datasheets/t-series-datasheet/210-sd-card-t7-only-t-series-datasheet",
+    "I2C":                "/pages/support?doc=/datasheets/t-series-datasheet/133-i2c-t-series-datasheet",
+    "INTFLASH":           "/pages/support?doc=/datasheets/t-series-datasheet/200-internal-flash-t-series-datasheet",
+    "LUA":                "/pages/support?doc=/datasheets/t-series-datasheet/250-standalone-lua-scripting-t-series-datasheet",
+    "ONEWIRE":            "/pages/support?doc=/datasheets/t-series-datasheet/136-1-wire-t-series-datasheet",
+    "RTC":                "/pages/support?doc=/datasheets/t-series-datasheet/190-rtc-t7-pro-only-t-series-datasheet",
+    "SBUS":               "/pages/support?doc=/datasheets/t-series-datasheet/135-sbus-t-series-datasheet",
+    "SPI":                "/pages/support?doc=/datasheets/t-series-datasheet/134-spi-t-series-datasheet",
+    "STREAM":             "/pages/support?doc=/datasheets/t-series-datasheet/32-stream-mode-t-series-datasheet",
+    "TDAC":               "/pages/support?doc=/datasheets/accessories/ljtick-dac-datasheet",
+    "UART":               "/pages/support?doc=/datasheets/t-series-datasheet/137-asynchronous-serial-t-series-datasheet",
+    "USER_RAM":           "/pages/support?doc=/datasheets/t-series-datasheet/40-hardware-overview-t-series-datasheet/#section-header-two-abk1g",
+    "WATCHDOG":           "/pages/support?doc=/datasheets/t-series-datasheet/230-watchdog-t-series-datasheet",
+    "WIFI":               "/pages/support?doc=/datasheets/t-series-datasheet/230-watchdog-t-series-datasheet"
   },
 
   "registers": [
@@ -507,7 +507,7 @@
       "readwrite": "RW",
       "tags": ["DIO"],
       "default": 0,
-      "description": "A single binary-encoded value where each bit determines whether _STATE, _DIRECTION or _ANALOG_ENABLE writes affect that bit of digital I/O.<br>0=Default=Affected,<br>1=Ignored.",
+      "description": "A single binary-encoded value where each bit determines whether _STATE, _DIRECTION or _ANALOG_ENABLE writes affect that bit of digital I/O. 0=Default=Affected, 1=Ignored.",
       "constants": [
         {"value": 0, "name": "Affected"},
         {"value": 1, "name": "Ignored"}
@@ -700,7 +700,7 @@
       "default": 0,
       "tags": ["STREAM"],
       "altnames": ["STREAM_OPTIONS"],
-      "description": "Controls which clock source will be used to run the main stream clock.<br>0 = Internal crystal,<br>2 = External clock source on CIO3.<br>Rising edges will increment a counter and trigger a stream scan after the number of edges specified in STREAM_EXTERNAL_CLOCK_DIVISOR. T7 will expect external stream clock on CIO3. All other values reserved."
+      "description": "Controls which clock source will be used to run the main stream clock. 0 = Internal crystal, 2 = External clock source on CIO3. Rising edges will increment a counter and trigger a stream scan after the number of edges specified in STREAM_EXTERNAL_CLOCK_DIVISOR. T7 will expect external stream clock on CIO3. All other values reserved."
     },
     {
       "address": 4016,
@@ -722,7 +722,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["STREAM"],
-      "description": "Controls where data will be sent. Value is a bitmask.<br>bit 0: 1 = Send to Ethernet 702 sockets,<br>bit 1: 1 = Send to USB,<br>bit 4: 1 = Command-Response mode.<br>All other bits are reserved."
+      "description": "Controls where data will be sent. Value is a bitmask. bit 0: 1 = Send to Ethernet 702 sockets, bit 1: 1 = Send to USB, bit 4: 1 = Command-Response mode. All other bits are reserved."
     },
     {
       "address": 4020,
@@ -768,7 +768,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["STREAM"],
-      "description": "Controls when stream scanning will start.<br>0 = Start when stream is enabled,<br>2000 = Start when DIO_EF0 detects an edge,<br>2001 = Start when DIO_EF1 detects an edge.<br>See the stream documentation for all supported values."
+      "description": "Controls when stream scanning will start. 0 = Start when stream is enabled, 2000 = Start when DIO_EF0 detects an edge, 2001 = Start when DIO_EF1 detects an edge. See the stream documentation for all supported values."
     },
     {
       "address": 4026,
@@ -935,7 +935,7 @@
       "readwrite": "W",
       "default": 0,
       "tags": ["STREAM"],
-      "description": "Controls when new data and loop size are used.<br>1=Use new data immediately.<br>2=Wait for synch. New data will not be used until a different stream-out channel is set to Synch.<br>3=Synch. This stream-out# as well as any stream-outs set to synch will start using new data immediately."
+      "description": "Controls when new data and loop size are used. 1=Use new data immediately. 2=Wait for synch. New data will not be used until a different stream-out channel is set to Synch. 3=Synch. This stream-out# as well as any stream-outs set to synch will start using new data immediately."
     },
     {
       "address": 4080,
@@ -1199,7 +1199,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["SPI"],
-      "description": "The SPI mode controls the clock idle state and which edge clocks the data. Bit 1 is CPOL and Bit 0 is CPHA, so CPOL/CPHA for different decimal values:<br>0 = 0/0 = b00,<br>1 = 0/1 = b01,<br>2 = 1/0 = b10,<br>3 = 1/1 = b11.<br>For CPOL and CPHA explanations, see Wikipedia article: https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus."
+      "description": "The SPI mode controls the clock idle state and which edge clocks the data. Bit 1 is CPOL and Bit 0 is CPHA, so CPOL/CPHA for different decimal values: 0 = 0/0 = b00, 1 = 0/1 = b01, 2 = 1/0 = b10, 3 = 1/1 = b11. For CPOL and CPHA explanations, see Wikipedia article: https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus."
     },
     {
       "address": 5005,
@@ -1213,7 +1213,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["SPI"],
-      "description": "This value controls the SPI clock frequency.  Pass 0-65535.  Default=0 corresponds to 65536 internally which results in ~800 kHz.<br>65500 = ~100 kHz,<br>65100 = ~10 kHz,<br>61100 = ~1 kHz,<br>21000 = ~100 Hz,<br>and 1 = ~67 Hz.<br>Avoid setting too low such that the entire transaction lasts longer than the 250 millisecond timeout of the internal watchdog timer."
+      "description": "This value controls the SPI clock frequency.  Pass 0-65535.  Default=0 corresponds to 65536 internally which results in ~800 kHz. 65500 = ~100 kHz, 65100 = ~10 kHz, 61100 = ~1 kHz, 21000 = ~100 Hz, and 1 = ~67 Hz. Avoid setting too low such that the entire transaction lasts longer than the 250 millisecond timeout of the internal watchdog timer."
     },
     {
       "address": 5006,
@@ -1227,7 +1227,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["SPI"],
-      "description": "Bit 0 is Auto-CS-Disable. When bit 0 is 0, CS is enabled. When bit 0 is 1, CS is disabled.<br>Bit 1: 0 = Set DIO directions before starting the SPI operations, 1 = Do not set DIO directions.<br>Bit 2: 0 = Transmit data MSB first, 1 = LSB first.<br>Bits 4-7: This value sets the number of bits that will be transmitted during the last byte of the SPI operation. Default is 8, valid options are 1-8."
+      "description": "Bit 0 is Auto-CS-Disable. When bit 0 is 0, CS is enabled. When bit 0 is 1, CS is disabled. Bit 1: 0 = Set DIO directions before starting the SPI operations, 1 = Do not set DIO directions. Bit 2: 0 = Transmit data MSB first, 1 = LSB first. Bits 4-7: This value sets the number of bits that will be transmitted during the last byte of the SPI operation. Default is 8, valid options are 1-8."
     },
     {
       "address": 5007,
@@ -1330,7 +1330,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["I2C"],
-      "description": "This value controls the I2C clock frequency.  Pass 0-65535.<br>Default=0 corresponds to 65536 internally which results in ~450 kHz.<br>1 results in ~40 Hz, 65516 is ~100 kHz."
+      "description": "This value controls the I2C clock frequency.  Pass 0-65535. Default=0 corresponds to 65536 internally which results in ~450 kHz. 1 results in ~40 Hz, 65516 is ~100 kHz."
     },
     {
       "address": 5103,
@@ -1344,7 +1344,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["I2C"],
-      "description": "Advanced. Controls details of the I2C protocol to improve device compatibility.<br>bit 0: 1 = Reset the I2C bus before attempting communication.<br>bit 1: 0 = Restarts will use a stop and a start, 1 = Restarts will not use a stop.<br>bit 2: 1 = disable clock stretching."
+      "description": "Advanced. Controls details of the I2C protocol to improve device compatibility. bit 0: 1 = Reset the I2C bus before attempting communication. bit 1: 0 = Restarts will use a stop and a start, 1 = Restarts will not use a stop. bit 2: 1 = disable clock stretching."
     },
     {
       "address": 5104,
@@ -1528,7 +1528,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["ONEWIRE"],
-      "description": "Controls advanced features. Value is a bitmask.<br>bit 0: reserved,<br>bit 1: reserved,<br>bit 2: 1=DPU Enabled 0=DPU Disabled,<br>bit 3: DPU Polarity 1=Active state is high, 0=Active state is low (Dynamic Pull-Up)"
+      "description": "Controls advanced features. Value is a bitmask. bit 0: reserved, bit 1: reserved, bit 2: 1=DPU Enabled 0=DPU Disabled, bit 3: DPU Polarity 1=Active state is high, 0=Active state is low (Dynamic Pull-Up)"
     },
     {
       "address": 5307,
@@ -1550,7 +1550,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["ONEWIRE"],
-      "description": "Set the ROM function to use.<br>0xF0=Search,<br>0xCC=Skip,<br>0x55=Match,<br>0x33=Read."
+      "description": "Set the ROM function to use. 0xF0=Search, 0xCC=Skip, 0x55=Match, 0x33=Read."
     },
     {
       "address": 5308,
@@ -1980,7 +1980,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["ASYNCH", "UART"],
-      "description": "The number of stop bits. Values:<br>0 = zero stop bits,<br>1 = one stop bit,<br>2 = two stop bits."
+      "description": "The number of stop bits. Values: 0 = zero stop bits, 1 = one stop bit, 2 = two stop bits."
     },
     {
       "address": 5460,
@@ -1994,7 +1994,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["ASYNCH", "UART"],
-      "description": "Parity setting:<br>0=none,<br>1=odd,<br>2=even."
+      "description": "Parity setting: 0=none, 1=odd, 2=even."
     },
     {
       "address": 5465,
@@ -2059,7 +2059,7 @@
       ],
       "readwrite": "RW",
       "tags": ["LUA"],
-      "description": "Writing 1 compiles and runs the Lua script that is loaded in RAM. Writing zero stops the script and begins cleaning up memory. Users may poll the register after writing a value of 0 to verify that the VM is unloaded, and garbage collection is complete.<br>0 = VM fully unloaded.<br>1 = Running/in-progress",
+      "description": "Writing 1 compiles and runs the Lua script that is loaded in RAM. Writing zero stops the script and begins cleaning up memory. Users may poll the register after writing a value of 0 to verify that the VM is unloaded, and garbage collection is complete. 0 = VM fully unloaded. 1 = Running/in-progress",
       "usesRAM": true
     },
     {
@@ -2450,7 +2450,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["AIN_EF", "AIN"],
-      "description": "Specify the desired extended feature for this analog input with the index value. List of index values:<br>0=None(disabled);<br>1=Offset and Slope;<br>3=Max/Min/Avg;<br>4=Resistance;<br>5=Average and Threshold;<br>10=RMS Flex;<br>11=FlexRMS;<br>20=Thermocouple type E;<br>21=Thermocouple type J;<br>22=Thermocouple type K;<br>23=Thermocouple type R;<br>24=Thermocouple type T;<br>25=Thermocouple type S;<br>27=Thermocouple type N;<br>28=Thermocouple type B;<br>30=Thermocouple type C;<br>40=RTD model PT100;<br>41=RTD model PT500;<br>42=RTD model PT1000;<br>50=Thermistor Steinhart-Hart;<br>51=Thermistor Beta.",
+      "description": "Specify the desired extended feature for this analog input with the index value. List of index values: 0=None(disabled); 1=Offset and Slope; 3=Max/Min/Avg; 4=Resistance; 5=Average and Threshold; 10=RMS Flex; 11=FlexRMS; 20=Thermocouple type E; 21=Thermocouple type J; 22=Thermocouple type K; 23=Thermocouple type R; 24=Thermocouple type T; 25=Thermocouple type S; 27=Thermocouple type N; 28=Thermocouple type B; 30=Thermocouple type C; 40=RTD model PT100; 41=RTD model PT500; 42=RTD model PT1000; 50=Thermistor Steinhart-Hart; 51=Thermistor Beta.",
       "usesRAM": true
     },
     {
@@ -3877,7 +3877,7 @@
       ],
       "readwrite": "RW",
       "tags": ["CONFIG"],
-      "description": "Sets the LED operation:<br>0 = Off. Useful for lower power applications.<br>1 = normal.<br>2 = Lower power, LEDs will still blink but will normally be off.<br>3 = Reserved.<br>4 = Manual, in this mode the LEDs can be user controlled."
+      "description": "Sets the LED operation: 0 = Off. Useful for lower power applications. 1 = normal. 2 = Lower power, LEDs will still blink but will normally be off. 3 = Reserved. 4 = Manual, in this mode the LEDs can be user controlled."
     },
     {
       "address": 48050,
@@ -5573,7 +5573,7 @@
       "readwrite": "R",
       "default": 0,
       "tags": ["CONFIG"],
-      "description": "Bitmask indicating installed hardware options.<br>bit0: High Resolution ADC,<br>bit1: WiFi,<br>bit2: RTC,<br>bit3: microSD."
+      "description": "Bitmask indicating installed hardware options. bit0: High Resolution ADC, bit1: WiFi, bit2: RTC, bit3: microSD."
     },
     {
       "address": 60018,
@@ -5773,7 +5773,7 @@
       ],
       "readwrite": "W",
       "tags": ["FILE_IO"],
-      "description": "Write any value to this register to initiate iteration through files and directories in the CWD. Typical sequence:<br>FILE_IO_DIR_FIRST(W), then loop through: [FILE_IO_NAME_READ_LEN(R), FILE_IO_NAME_READ(R), FILE_IO_ATTRIBUTES(R), FILE_IO_SIZE_BYTES(R), FILE_IO_DIR_NEXT(W)]<br>..until any of the following errors:<br>FILE_IO_END_OF_CWD (2966), FILE_IO_INVALID_OBJECT (2809), or FILE_IO_NOT_FOUND (2960)."
+      "description": "Write any value to this register to initiate iteration through files and directories in the CWD. Typical sequence: FILE_IO_DIR_FIRST(W), then loop through: [FILE_IO_NAME_READ_LEN(R), FILE_IO_NAME_READ(R), FILE_IO_ATTRIBUTES(R), FILE_IO_SIZE_BYTES(R), FILE_IO_DIR_NEXT(W)] ..until any of the following errors: FILE_IO_END_OF_CWD (2966), FILE_IO_INVALID_OBJECT (2809), or FILE_IO_NOT_FOUND (2960)."
     },
     {
       "address": 60611,
@@ -5863,7 +5863,7 @@
       ],
       "readwrite": "R",
       "tags": ["FILE_IO"],
-      "description": "Used to differentiate files from directories/folders.<br>Bitmask:<br>Bit0: Reserved,<br>Bit1: Reserved,<br>Bit2: Reserved,<br>Bit3: Reserved,<br>Bit4: 1=Directory,<br>Bit5: 1=File."
+      "description": "Used to differentiate files from directories/folders. Bitmask: Bit0: Reserved, Bit1: Reserved, Bit2: Reserved, Bit3: Reserved, Bit4: 1=Directory, Bit5: 1=File."
     },
     {
       "address": 60628,
@@ -5974,7 +5974,7 @@
       "readwrite": "R",
       "tags": ["FILE_IO"],
       "altnames": ["FILE_IO_DISK_FORMAT"],
-      "description": "Used to determine the format of the SD card.<br>0=None or Unknown,<br>1=FAT12,<br>2=FAT16(Windows FAT),<br>3=FAT32"
+      "description": "Used to determine the format of the SD card. 0=None or Unknown, 1=FAT12, 2=FAT16(Windows FAT), 3=FAT32"
     },
     {
       "address": 60640,
@@ -6583,7 +6583,7 @@
       ],
       "readwrite": "RW",
       "tags": [""],
-      "description": "Set the items to log. Value is a bitmask:<br>Bit0: 1 = Log Temperature,<br>Bit1: 1 = Log Light,<br>Bit2: 1 = Log Humidity.<br>All other bits reserved. Change implemented on next erase of dataset."
+      "description": "Set the items to log. Value is a bitmask: Bit0: 1 = Log Temperature, Bit1: 1 = Log Light, Bit2: 1 = Log Humidity. All other bits reserved. Change implemented on next erase of dataset."
     },
     {
       "address": 22019,
@@ -6597,7 +6597,7 @@
       ],
       "readwrite": "R",
       "tags": [""],
-      "description": "Read what is logged in the dataset. Value is a bitmask:<br>Bit0: 1 = Temperature logged,<br>Bit1: 1 = Light logged,<br>Bit2: 1 = Humidity logged.<br>In memory: T, TL, TH, THL."
+      "description": "Read what is logged in the dataset. Value is a bitmask: Bit0: 1 = Temperature logged, Bit1: 1 = Light logged, Bit2: 1 = Humidity logged. In memory: T, TL, TH, THL."
     },
     {
       "address": 22038,
@@ -6611,7 +6611,7 @@
       ],
       "readwrite": "RW",
       "tags": [""],
-      "description": "Set the time interval between log events. Index<br>0=10s,<br>1=30s,<br>2=1m,<br>3=10m,<br>4=30m,<br>5=1h,<br>6=6h<br>Change implemented on next erase of dataset."
+      "description": "Set the time interval between log events. Index 0=10s, 1=30s, 2=1m, 3=10m, 4=30m, 5=1h, 6=6h Change implemented on next erase of dataset."
     },
     {
       "address": 22039,
@@ -6625,7 +6625,7 @@
       ],
       "readwrite": "R",
       "tags": [""],
-      "description": "Read time interval between log events in the dataset. Index<br>0=10s,<br>1=30s,<br>2=1m,<br>3=10m,<br>4=30m,<br>5=1h,<br>6=6h"
+      "description": "Read time interval between log events in the dataset. Index 0=10s, 1=30s, 2=1m, 3=10m, 4=30m, 5=1h, 6=6h"
     },
     {
       "address": 22042,
@@ -7054,7 +7054,7 @@
       ],
       "readwrite": "R",
       "tags": ["CONFIG"],
-      "description": "Bitmask register that indicates why a device was last re-set.<br>bit0: Power-on reset,<br>bit1: Brown-out,<br>bit2:<br>Wake from idle,<br>bit3: Wake from sleep,<br>bit4: watchdog timer time-out,<br>bit5: reserved,<br>bit6: Software reset,<br>bit7: external reset (MCLR),<br>bit8: Voltage regulator standby,<br>bit9: Configuration mismatch."
+      "description": "Bitmask register that indicates why a device was last re-set. bit0: Power-on reset, bit1: Brown-out, bit2: Wake from idle, bit3: Wake from sleep, bit4: watchdog timer time-out, bit5: reserved, bit6: Software reset, bit7: external reset (MCLR), bit8: Voltage regulator standby, bit9: Configuration mismatch."
     }
   ],
 
@@ -9073,7 +9073,7 @@
     "2018.11.08.A   Added STREAM_BUFFER_FULL AND STREAM_AUTORECOVER_DISABLE.",
     "2018.11.29.A   Updated STREAM_DEBUG_GET_SELF_INDEX description.",
     "2018.11.30.A   Added tag_mappings.",
-    "2018.12.05.A   Added <br>s to descriptions.",
+    "2018.12.05.A   Added  s to descriptions.",
     "2019.02.08.A   Added a missing error code for T4 AIN_EF features.",
     "2019.03.06.A   Added an error code STREAM_OUT_NEEDS_TO_BE_ENABLED.",
     "2019.08.07.A   Updated details for register 6022 and 6122 (lua debugging stuff).",
@@ -9091,6 +9091,7 @@
     "2021.12.30.A   Updated T8 only register descriptions. Filled in some missing T8 descriptions.",
     "2022.02.14.A   Updated AIN_EF description.",
     "2023.03.08.A   Added and improved some error code descriptions.",
+    "2023.07.03.A   Removed <br>, updated tag links.",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
