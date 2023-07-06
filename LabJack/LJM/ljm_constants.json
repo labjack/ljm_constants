@@ -1,7 +1,7 @@
 {
   "header": {
     "filename": "ljm_constants.json",
-    "version": "2023.07.03.A",
+    "version": "2023.07.06.A",
     "checksum": "-1",
     "support_url": "https://labjack.com/pages/support",
     "tags_base_url": "https://labjack.com"
@@ -7392,6 +7392,11 @@
       "error": 1241,
       "string": "LJME_USB_FAILURE",
       "description": "System USB communication failed fatally."
+    },
+    {
+      "error": 1242,
+      "string": "LJME_STREAM_FLUSH_TIMEOUT",
+      "description": "Stream flushing did not resolve before the timeout."
     },
     {
       "error": 1243,
