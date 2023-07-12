@@ -2430,6 +2430,21 @@
       "description": "Function dependent on selected feature index."
     },
     {
+      "address": 8800,
+      "name": "AIN#(0:7)_EF_READ_A_CAPTURE",
+      "type": "FLOAT32",
+      "devices": [
+        {
+          "device": "T8",
+          "fwmin": 1.0014
+        }
+      ],
+      "readwrite": "R",
+      "default": 0,
+      "tags": ["AIN_EF", "AIN"],
+      "description": "(T8 only) Read AIN_EF with the last capture sampled, use AIN#(0:7)_EF_READ_A to read a new sample"
+    },
+    {
       "address": 9000,
       "name": "AIN#(0:149)_EF_INDEX",
       "type": "UINT32",
