@@ -7769,6 +7769,11 @@
       "description": "During stream, the receive buffer size was negative. This is probably because LJM_STREAM_TCP_RECEIVE_BUFFER_SIZE was set to too large a number to be represented by the signed data type being used, int. Solution: Use a smaller LJM_STREAM_TCP_RECEIVE_BUFFER_SIZE."
     },
     {
+      "error": 2012,
+      "string": "FEATURE_NOT_SUPPORTED",
+      "description": "Feature is not supported on this device."
+    },
+    {
       "error": 2300,
       "string": "MODBUS_RSP_OVERFLOW",
       "description": "Response packet greater than max packet size."
