@@ -1,7 +1,7 @@
 {
   "header": {
     "filename": "ljm_constants.json",
-    "version": "2023.08.03.A",
+    "version": "2023.09.07.A",
     "checksum": "-1",
     "support_url": "https://labjack.com/pages/support",
     "tags_base_url": "https://labjack.com"
@@ -4238,7 +4238,7 @@
       "readwrite": "R",
       "tags": ["CONFIG"],
       "streamable": true,
-      "description": "Internal 32-bit system timer running at 1/2 core speed, thus normally 80M/2 => 40 MHz."
+      "description": "Internal 32-bit system timer running at 1/2 core speed."
     },
     {
       "address": 61522,
@@ -9118,6 +9118,7 @@
     "2023.03.08.A   Added and improved some error code descriptions.",
     "2023.07.03.A   Removed <br>, updated tag links.",
     "2023.08.03.A   Added AIN_EF Capture registers and FEATURE_NOT_SUPPORTED register",
+    "2023.09.07.A   Removed mention of 80 MHz in the CORE_TIMER description",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
