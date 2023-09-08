@@ -3018,7 +3018,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "description": "Ignored. This register has no meaning on the T8."
         },
         {
           "device": "T7",
@@ -3156,7 +3156,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "description": "Ignored. This register has no meaning on the T8."
         },
         {
           "device": "T7",
@@ -9120,6 +9120,7 @@
     "2023.08.03.A   Added AIN_EF Capture registers and FEATURE_NOT_SUPPORTED register",
     "2023.09.07.A   Removed mention of 80 MHz in the CORE_TIMER description",
     "2023.09.08.A   Updated the description for AIN_ALL_NEGATIVE_CH",
+    "2023.09.08.B   Updated the description for the settling registers",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
