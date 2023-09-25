@@ -8397,6 +8397,11 @@
       "description": "DAC1_FREQUENCY_OUT_ENABLE should not be enabled while streaming at rates above 10kHz due to poor frequency output performance at higher stream rates."
     },
     {
+      "error": 2630,
+      "string": "STREAM_TRIGGER_INDEX_INVALID",
+      "description": "The stream trigger index is not valid for this device"
+    },
+    {
       "error": 2670,
       "string": "SWDT_ROLLT_INVALID",
       "description":"The specified Software Watchdog timeout is too short."
