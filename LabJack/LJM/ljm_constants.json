@@ -663,7 +663,7 @@
         {
           "device": "T8",
           "default": 0,
-          "description": "Max size is 262144T8. Default size is 4096."
+          "description": "Max size is 262144. Default size is 4096."
         },
         {
           "device": "T7",
@@ -9121,6 +9121,7 @@
     "2023.09.07.A   Removed mention of 80 MHz in the CORE_TIMER description",
     "2023.09.08.A   Updated the description for AIN_ALL_NEGATIVE_CH",
     "2023.09.08.B   Updated the description for the settling registers",
+    "2023.09.25.A   Added error code for when an invalid stream trigger is given",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
