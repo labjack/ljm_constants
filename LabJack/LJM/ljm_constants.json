@@ -1,7 +1,7 @@
 {
   "header": {
     "filename": "ljm_constants.json",
-    "version": "2023.09.07.A",
+    "version": "2023.10.02.A",
     "checksum": "-1",
     "support_url": "https://labjack.com/pages/support",
     "tags_base_url": "https://labjack.com"
@@ -9123,6 +9123,7 @@
     "2023.09.08.A   Updated the description for AIN_ALL_NEGATIVE_CH",
     "2023.09.08.B   Updated the description for the settling registers",
     "2023.09.25.A   Added error code for when an invalid stream trigger is given",
+    "2023.10.02.A   Edited STREAM_BUFFER_SIZE_BYTES, POWER_AIN_EDFAULT, EF_32BIT_DATA_INTO_16BIT_REG for T8",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
