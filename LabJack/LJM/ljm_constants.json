@@ -8142,7 +8142,7 @@
     {
       "error": 2555,
       "string": "EF_32BIT_DATA_INTO_16BIT_REG",
-      "description": "A number greater than 16-bits was written to a clock source configured for 16-bits."
+      "description": "A number greater than 16-bits was written to a clock source configured for 16-bits. Commonly occurs when an incorrect value is applied to CONFIG_A or CONFIG_B for an output feature such as PWM or pulse output."
     },
     {
       "error": 2556,
