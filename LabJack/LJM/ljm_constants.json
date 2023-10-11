@@ -3036,6 +3036,20 @@
       "description": "T8 Only. This register is a bitmask representing the enable states of the analog inputs."
     },
     {
+      "address": 43702,
+      "name": "AIN_ALL_RESOLUTION_INDEX_ACTUAL",
+      "type": "UINT32",
+      "devices": [
+        {
+          "device": "T8",
+          "fwmin": 0.0123
+        }
+      ],
+      "readwrite": "R",
+      "tags": ["AIN"],
+      "description": "T8 Only. Returns the AIN system's actual resolution index"
+    },
+    {
       "address": 43710,
       "name": "AIN_SAMPLING_RATE_HZ",
       "type": "FLOAT32",
@@ -7907,6 +7921,11 @@
       "description": "The selected AIN rate configuration is invalid for the desired resolution index or vise-versa."
     },
     {
+      "error": 2377,
+      "string": "AIN_CHN_DISABLED",
+      "description": "The AIN channel has been disabled"
+    },
+    {
       "error": 2380,
       "string": "LUA_VM_STATE_NO_CHANGE"
     },
@@ -9097,6 +9116,7 @@
     "2022.02.14.A   Updated AIN_EF description.",
     "2023.03.08.A   Added and improved some error code descriptions.",
     "2023.07.03.A   Removed <br>, updated tag links.",
+    "2023.10.11.A   Added T8 AIN_ALL_RESOLUTION_INDEX_ACTUAL register.",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
