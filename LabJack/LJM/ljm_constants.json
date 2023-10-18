@@ -3051,6 +3051,20 @@
       "description": "T8 Only. This register is a bitmask representing the enable states of the analog inputs."
     },
     {
+      "address": 43702,
+      "name": "AIN_ALL_RESOLUTION_INDEX_ACTUAL",
+      "type": "UINT32",
+      "devices": [
+        {
+          "device": "T8",
+          "fwmin": 0.0123
+        }
+      ],
+      "readwrite": "R",
+      "tags": ["AIN"],
+      "description": "T8 Only. Returns the AIN system's actual resolution index"
+    },
+    {
       "address": 43710,
       "name": "AIN_SAMPLING_RATE_HZ",
       "type": "FLOAT32",
@@ -7923,6 +7937,11 @@
       "description": "The selected AIN rate configuration is invalid for the desired resolution index or vise-versa."
     },
     {
+      "error": 2377,
+      "string": "AIN_CHN_DISABLED",
+      "description": "The AIN channel has been disabled"
+    },
+    {
       "error": 2380,
       "string": "LUA_VM_STATE_NO_CHANGE"
     },
@@ -9124,6 +9143,7 @@
     "2023.09.08.B   Updated the description for the settling registers",
     "2023.09.25.A   Added error code for when an invalid stream trigger is given",
     "2023.10.02.A   Edited STREAM_BUFFER_SIZE_BYTES, POWER_AIN_EDFAULT, EF_32BIT_DATA_INTO_16BIT_REG for T8",
+    "2023.10.11.A   Added T8 AIN_ALL_RESOLUTION_INDEX_ACTUAL register.",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
