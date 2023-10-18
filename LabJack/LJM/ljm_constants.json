@@ -1,7 +1,7 @@
 {
   "header": {
     "filename": "ljm_constants.json",
-    "version": "2023.10.02.A",
+    "version": "2023.10.18.A",
     "checksum": "-1",
     "support_url": "https://labjack.com/pages/support",
     "tags_base_url": "https://labjack.com"
@@ -164,7 +164,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -188,7 +188,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -212,7 +212,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -236,7 +236,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -260,7 +260,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -284,7 +284,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -308,7 +308,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -332,7 +332,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -355,7 +355,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -378,7 +378,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -401,7 +401,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -689,7 +689,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -709,7 +709,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -758,7 +758,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -777,7 +777,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -799,7 +799,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -832,7 +832,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -854,7 +854,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -876,7 +876,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -899,7 +899,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -922,7 +922,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -944,7 +944,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -966,7 +966,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -994,7 +994,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1017,7 +1017,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1040,7 +1040,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1075,7 +1075,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1097,7 +1097,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1116,7 +1116,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1395,7 +1395,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1417,7 +1417,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1471,7 +1471,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1493,7 +1493,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1515,7 +1515,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1537,7 +1537,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1559,7 +1559,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1581,7 +1581,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1603,7 +1603,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1625,7 +1625,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1647,7 +1647,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1669,7 +1669,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1691,7 +1691,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1713,7 +1713,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1735,7 +1735,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1757,7 +1757,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1779,7 +1779,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1802,7 +1802,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1825,7 +1825,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2047,7 +2047,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2069,7 +2069,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2092,7 +2092,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2113,7 +2113,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2135,7 +2135,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2157,7 +2157,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2178,7 +2178,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2199,7 +2199,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2220,7 +2220,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2241,7 +2241,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2262,7 +2262,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2284,7 +2284,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2305,7 +2305,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2326,7 +2326,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2347,7 +2347,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2370,7 +2370,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2392,7 +2392,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2414,7 +2414,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2451,7 +2451,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2475,7 +2475,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2497,7 +2497,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2519,7 +2519,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2541,7 +2541,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2563,7 +2563,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2585,7 +2585,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2607,7 +2607,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2629,7 +2629,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2651,7 +2651,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2673,7 +2673,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2724,7 +2724,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2747,7 +2747,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2769,7 +2769,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2791,7 +2791,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2815,7 +2815,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2839,7 +2839,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2861,7 +2861,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2883,7 +2883,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2905,7 +2905,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2928,7 +2928,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3042,7 +3042,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         }
       ],
       "readwrite": "RW",
@@ -3057,7 +3057,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         }
       ],
       "readwrite": "R",
@@ -3071,7 +3071,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         }
       ],
       "readwrite": "RW",
@@ -3086,7 +3086,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         }
       ],
       "readwrite": "R",
@@ -3102,7 +3102,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3146,7 +3146,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3194,7 +3194,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -3218,7 +3218,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3239,7 +3239,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3260,7 +3260,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3281,7 +3281,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3302,7 +3302,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3323,7 +3323,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3344,7 +3344,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3365,7 +3365,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3386,7 +3386,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3407,7 +3407,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3428,7 +3428,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3449,7 +3449,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3470,7 +3470,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3491,7 +3491,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3512,7 +3512,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3533,7 +3533,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3554,7 +3554,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3576,7 +3576,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3597,7 +3597,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3619,7 +3619,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3641,7 +3641,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3663,7 +3663,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3767,7 +3767,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4201,7 +4201,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4235,7 +4235,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4257,7 +4257,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4278,10 +4278,6 @@
       "type": "UINT32",
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 1.022
         },
@@ -4300,7 +4296,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4320,7 +4316,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4367,7 +4363,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4389,7 +4385,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4413,7 +4409,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4439,7 +4435,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         }
       ],
       "readwrite": "R",
@@ -4454,7 +4450,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         }
       ],
       "readwrite": "RW",
@@ -4469,7 +4465,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4491,7 +4487,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4513,7 +4509,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4535,7 +4531,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4557,7 +4553,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4579,7 +4575,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4679,7 +4675,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4775,7 +4771,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4793,7 +4789,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -5155,7 +5151,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -5177,7 +5173,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -5198,7 +5194,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -5219,7 +5215,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -5241,7 +5237,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -5264,7 +5260,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -5287,7 +5283,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -5310,7 +5306,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -5332,7 +5328,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -5355,7 +5351,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -5377,7 +5373,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -5716,10 +5712,6 @@
       "type": "UINT16",
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 1.0156
         }
@@ -5733,10 +5725,6 @@
       "name": "FILE_IO_DIR_CURRENT",
       "type": "UINT16",
       "devices": [
-        {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
         {
           "device": "T7",
           "fwmin": 1.0134
@@ -5752,10 +5740,6 @@
       "type": "UINT16",
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 99
         }
@@ -5769,10 +5753,6 @@
       "name": "FILE_IO_DIR_REMOVE",
       "type": "UINT16",
       "devices": [
-        {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
         {
           "device": "T7",
           "fwmin": 99
@@ -5788,10 +5768,6 @@
       "type": "UINT16",
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 1.0134
         }
@@ -5805,10 +5781,6 @@
       "name": "FILE_IO_DIR_NEXT",
       "type": "UINT16",
       "devices": [
-        {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
         {
           "device": "T7",
           "fwmin": 1.0134
@@ -5824,10 +5796,6 @@
       "type": "UINT16",
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 1.0134
         }
@@ -5841,10 +5809,6 @@
       "name": "FILE_IO_CLOSE",
       "type": "UINT16",
       "devices": [
-        {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
         {
           "device": "T7",
           "fwmin": 1.0134
@@ -5860,10 +5824,6 @@
       "type": "UINT16",
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 1.0134
         }
@@ -5878,10 +5838,6 @@
       "type": "UINT16",
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 1.0134
         }
@@ -5895,10 +5851,6 @@
       "name": "FILE_IO_SIZE_BYTES",
       "type": "UINT32",
       "devices": [
-        {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
         {
           "device": "T7",
           "fwmin": 1.0134
@@ -5915,10 +5867,6 @@
       "type": "UINT32",
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 1.0134
         }
@@ -5934,10 +5882,6 @@
       "type": "UINT32",
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 1.0134
         }
@@ -5951,10 +5895,6 @@
       "name": "FILE_IO_DISK_TOTAL_CLUSTERS",
       "type": "UINT32",
       "devices": [
-        {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
         {
           "device": "T7",
           "fwmin": 1.0134
@@ -5970,10 +5910,6 @@
       "type": "UINT32",
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 1.0134
         }
@@ -5987,10 +5923,6 @@
       "name": "FILE_IO_DISK_FORMAT_INDEX",
       "type": "UINT32",
       "devices": [
-        {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
         {
           "device": "T7",
           "fwmin": 1.016
@@ -6006,10 +5938,6 @@
       "name": "FILE_IO_PATH_WRITE_LEN_BYTES",
       "type": "UINT32",
       "devices": [
-        {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
         {
           "device": "T7",
           "fwmin": 1.0134
@@ -6027,10 +5955,6 @@
       "type": "UINT32",
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 1.0134
         }
@@ -6046,10 +5970,6 @@
       "type": "BYTE",
       "isBuffer": true,
       "devices": [
-        {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
         {
           "device": "T7",
           "fwmin": 1.0134
@@ -6067,10 +5987,6 @@
       "isBuffer": true,
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 1.0134
         }
@@ -6087,10 +6003,6 @@
       "isBuffer": true,
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 99
         }
@@ -6105,10 +6017,6 @@
       "type": "BYTE",
       "isBuffer": true,
       "devices": [
-        {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
         {
           "device": "T7",
           "fwmin": 1.0134
@@ -7066,7 +6974,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -7164,7 +7072,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -7181,10 +7089,6 @@
       "type": "UINT32",
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 1.0168
         }
@@ -7200,7 +7104,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -9144,6 +9048,7 @@
     "2023.09.25.A   Added error code for when an invalid stream trigger is given",
     "2023.10.02.A   Edited STREAM_BUFFER_SIZE_BYTES, POWER_AIN_EDFAULT, EF_32BIT_DATA_INTO_16BIT_REG for T8",
     "2023.10.11.A   Added T8 AIN_ALL_RESOLUTION_INDEX_ACTUAL register.",
+    "2023.10.18.A   Updated T8 minimum firmware values.",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
