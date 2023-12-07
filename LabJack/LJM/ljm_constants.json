@@ -1,7 +1,7 @@
 {
   "header": {
     "filename": "ljm_constants.json",
-    "version": "2023.10.18.A",
+    "version": "2023.12.07.A",
     "checksum": "-1",
     "support_url": "https://labjack.com/pages/support",
     "tags_base_url": "https://labjack.com"
@@ -5105,7 +5105,6 @@
       "readwrite": "R",
       "tags": ["AIN"],
       "streamable": false,
-      "altnames": ["AIN#(0:254)_BIN"],
       "description": "T8 Only. Returns the 24-bit binary representation of the voltage output of the temperature sensor for the specified analog input. If you prefer 16-bit representation, simply divide this by 256. This is for command-response only.  Stream always returns binary and LJM applies cal constants, so the LJM config flag LJM_STREAM_AIN_BINARY is used to get binary values."
     },
     {
@@ -5116,7 +5115,6 @@
       "readwrite": "R",
       "tags": ["AIN"],
       "streamable": false,
-      "altnames": ["AIN#(0:254)_BIN"],
       "description": "T8 Only. Returns the saved 24-bit binary representation of the specified analog input. If you prefer 16-bit representation, simply divide this by 256. This is for command-response only.  Stream always returns binary and LJM applies cal constants, so the LJM config flag LJM_STREAM_AIN_BINARY is used to get binary values."
     },
     {
@@ -5127,7 +5125,6 @@
       "readwrite": "R",
       "tags": ["AIN"],
       "streamable": false,
-      "altnames": ["AIN#(0:254)_BIN"],
       "description": "T8 Only. Returns the saved 24-bit binary representation of the voltage output of the temperature sensor for the specified analog input. If you prefer 16-bit representation, simply divide this by 256. This is for command-response only.  Stream always returns binary and LJM applies cal constants, so the LJM config flag LJM_STREAM_AIN_BINARY is used to get binary values."
     },
     {
@@ -9049,6 +9046,7 @@
     "2023.10.02.A   Edited STREAM_BUFFER_SIZE_BYTES, POWER_AIN_EDFAULT, EF_32BIT_DATA_INTO_16BIT_REG for T8",
     "2023.10.11.A   Added T8 AIN_ALL_RESOLUTION_INDEX_ACTUAL register.",
     "2023.10.18.A   Updated T8 minimum firmware values.",
+    "2023.12.07.A   Removed duplicated altnames from AIN_BINARY.",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
