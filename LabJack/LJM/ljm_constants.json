@@ -1,7 +1,7 @@
 {
   "header": {
     "filename": "ljm_constants.json",
-    "version": "2024.01.23.A",
+    "version": "2024.01.23.B",
     "checksum": "-1",
     "support_url": "https://labjack.com/pages/support",
     "tags_base_url": "https://labjack.com"
@@ -3571,7 +3571,7 @@
     },
     {
       "address": 44200,
-      "name": "DIO#(0:22)_EF_OPTIONS",
+      "name": "DIO#(0:22)_EF_CLOCK_SOURCE",
       "type": "UINT32",
       "devices": [
         {
@@ -3588,8 +3588,8 @@
       ],
       "readwrite": "RW",
       "tags": ["DIO_EF", "DIO"],
-      "altnames": ["DIO#(0:22)_EF_CLOCK_SOURCE"],
-      "description": "Function dependent on selected feature index."
+      "altnames": ["DIO#(0:22)_EF_OPTIONS"],
+      "description": "Set Clock Source to use for selected feature index."
     },
     {
       "address": 44300,
