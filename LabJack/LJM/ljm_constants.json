@@ -8080,8 +8080,8 @@
     },
     {
       "error": 2559,
-      "string": "EF_PRESCALE_VALUE_INVALID",
-      "description": "The specified prescale value is not supported. Supported values are 1,2,4,8,16,32,64, and 256"
+      "string": "EF_DIVISOR_VALUE_INVALID",
+      "description": "The specified divisor value is not supported. Supported values are 1,2,4,8,16,32,64, and 256"
     },
     {
       "error": 2560,
@@ -9049,6 +9049,7 @@
     "2023.10.18.A   Updated T8 minimum firmware values.",
     "2023.12.07.A   Removed duplicated altnames from AIN_BINARY.",
     "2024.01.23.A   Gave DIO_EF_OPTIONS an altname of DIO_EF_CLOCK_SOURCE",
+    "2024.01.29.A   Renamed EF_PRESCALE_VALUE_INVALID to EF_DIVISOR_VALUE_INVALID.",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
