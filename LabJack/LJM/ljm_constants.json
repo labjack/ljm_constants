@@ -8081,7 +8081,7 @@
     {
       "error": 2559,
       "string": "EF_DIVISOR_VALUE_INVALID",
-      "description": "The specified divisor value is not supported. Supported values are 1,2,4,8,16,32,64, and 256"
+      "description": "The specified divisor value is not supported. Supported values are: 1,2,4,8,16,32,64,256. This code was formerly named EF_PRESCALE_VALUE_INVALID"
     },
     {
       "error": 2560,
