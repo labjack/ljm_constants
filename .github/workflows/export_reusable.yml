@@ -1,0 +1,22 @@
+name: Export Reusable
+
+on:
+  workflow_call:
+    inputs:
+        working-directory:
+            type: string
+            required: true
+
+jobs:
+  export:
+
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clone Repo
+      uses: actions/checkout@v3
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: LJM_CONSTANTS
+        path: ${{github.workspace}}/LabJack/*
