@@ -3885,9 +3885,9 @@
       ],
       "readwrite": "RW",
       "tags": ["CONFIG", "AIN"],
-      "description": "The current ON/OFF state of the analog input module."
+      "description": "The current ON/OFF state of the analog input module. For T4 and T8, this register always returns 1. To control the T8's analog power configuration use POWER_AIN_CHANNEL_ENABLE."
     },
-    {
+     {
       "address": 48006,
       "name": "POWER_LED",
       "type": "UINT16",
@@ -3908,6 +3908,20 @@
       "readwrite": "RW",
       "tags": ["CONFIG"],
       "description": "Sets the LED operation: 0 = Off. Useful for lower power applications. 1 = normal. 2 = Lower power, LEDs will still blink but will normally be off. 3 = Reserved. 4 = Manual, in this mode the LEDs can be user controlled."
+    },
+    {
+      "address": 48007,
+      "name": "POWER_AIN_CHANNEL_ENABLE",
+      "type": "UINT16",
+      "devices": [
+        {
+          "device": "T8",
+          "fwmin": 1.0032
+        },
+      ],
+      "readwrite": "RW",
+      "tags": ["CONFIG", "AIN"],
+      "description": "Sets or reads the ON/OFF state of individual AIN channels. This register is a bitmask where each bit represents a channel. A 1 = on, 0 = off. Only available certain devices."
     },
     {
       "address": 48050,
@@ -4034,6 +4048,20 @@
       "readwrite": "RW",
       "tags": ["CONFIG"],
       "description": "The ON/OFF state of the LEDs after a power-cycle to the device."
+    },
+    {
+      "address": 48007,
+      "name": "POWER_AIN_CHANNEL_ENABLE_DEFAULT",
+      "type": "UINT16",
+      "devices": [
+        {
+          "device": "T8",
+          "fwmin": 1.0032
+        },
+      ],
+      "readwrite": "RW",
+      "tags": ["CONFIG", "AIN"],
+      "description": "Sets and reads the startup setting for POWER_AIN_CHANNEL_ENABLE"
     },
     {
       "address": 49000,
@@ -9050,6 +9078,7 @@
     "2023.12.07.A   Removed duplicated altnames from AIN_BINARY.",
     "2024.01.23.A   Gave DIO_EF_OPTIONS an altname of DIO_EF_CLOCK_SOURCE",
     "2024.01.29.A   Renamed EF_PRESCALE_VALUE_INVALID to EF_DIVISOR_VALUE_INVALID.",
+    "2024.04.18.A   Added POWER_AIN_CHANNEL_ENABLE and the default."
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
