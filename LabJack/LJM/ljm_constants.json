@@ -4050,7 +4050,7 @@
       "description": "The ON/OFF state of the LEDs after a power-cycle to the device."
     },
     {
-      "address": 48007,
+      "address": 48057,
       "name": "POWER_AIN_CHANNEL_ENABLE_DEFAULT",
       "type": "UINT16",
       "devices": [
