@@ -3917,7 +3917,7 @@
         {
           "device": "T8",
           "fwmin": 1.0032
-        },
+        }
       ],
       "readwrite": "RW",
       "tags": ["CONFIG", "AIN"],
@@ -4057,7 +4057,7 @@
         {
           "device": "T8",
           "fwmin": 1.0032
-        },
+        }
       ],
       "readwrite": "RW",
       "tags": ["CONFIG", "AIN"],
