@@ -9078,7 +9078,7 @@
     "2023.12.07.A   Removed duplicated altnames from AIN_BINARY.",
     "2024.01.23.A   Gave DIO_EF_OPTIONS an altname of DIO_EF_CLOCK_SOURCE",
     "2024.01.29.A   Renamed EF_PRESCALE_VALUE_INVALID to EF_DIVISOR_VALUE_INVALID.",
-    "2024.04.18.A   Added POWER_AIN_CHANNEL_ENABLE and the default."
+    "2024.04.18.A   Added POWER_AIN_CHANNEL_ENABLE and the default.",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
