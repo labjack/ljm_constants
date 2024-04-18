@@ -3885,7 +3885,7 @@
       ],
       "readwrite": "RW",
       "tags": ["CONFIG", "AIN"],
-      "description": "The current ON/OFF state of the analog input module. For T4 and T8, this register always returns 1. To control the T8's analog power configuration use POWER_AIN_CHANNEL_ENABLE."
+      "description": "The current ON/OFF state of the analog input module. For T4 this register always returns 1. For the T8, returns 1 if any AIN channels are enabled. To control the T8's analog power configuration use POWER_AIN_CHANNEL_ENABLE."
     },
      {
       "address": 48006,
