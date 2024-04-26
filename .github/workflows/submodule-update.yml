@@ -1,12 +1,13 @@
 ---
-    name: Submodule Updates
+    name: LJSimpleRegisterLookup Submodule Update
     
     #############################
     # Start the job on all push #
     #############################
     on:
       push:
-        branches-ignore: [master, main, ci_development]
+        # branches-ignore: [master, main]
+        branches: [ci_development]
       pull_request:
         branches: [master, main]
     
