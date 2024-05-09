@@ -5,11 +5,12 @@
     # Start the job on all push #
     #############################
     on:
-      push:
-        # branches-ignore: [master, main]
-        branches: [ci_development]
-      pull_request:
-        branches: [master, main]
+      workflow_dispatch:
+      # push:
+      #   # branches-ignore: [master, main]
+      #   branches: [ci_development]
+      # pull_request:
+      #   branches: [master, main]
     
     ###############
     # Set the Job #
