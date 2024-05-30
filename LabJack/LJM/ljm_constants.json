@@ -2950,7 +2950,7 @@
       "devices": [
         {
           "device": "T8",
-          "description": "Specify the maximum expected voltage. The T8 will select the best gain for the expected voltage. "
+          "description": "Specify the maximum expected voltage. The T8 will select the best gain for the expected voltage. Maximum: ±11.0V, Minimum: ±0.018V"
         },
         {
           "device": "T7",
@@ -3102,14 +3102,17 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 1.0000
+          "fwmin": 1.0000,
+          "description": "Specify the maximum expected voltage. The T8 will select the best gain for the expected voltage. Maximum: ±11.0V, Minimum: ±0.018V"
         },
         {
           "device": "T7",
-          "fwmin": 0.9328
+          "fwmin": 0.9328,
+          "description": "Valid values/ranges: 0.0=Default → ±10V. 10.0 → ±10V, 1.0 → ±1V, 0.1 → ±0.1V, and 0.01 → ±0.01V."
         },
         {
-          "device": "T4"
+          "device": "T4",
+          "description": "Valid values/ranges: 0.0=Default → 0-2.5 V on LV lines and ±10 V on HV lines."
         }
       ],
       "readwrite": "RW",
@@ -9079,6 +9082,7 @@
     "2024.01.23.A   Gave DIO_EF_OPTIONS an altname of DIO_EF_CLOCK_SOURCE",
     "2024.01.29.A   Renamed EF_PRESCALE_VALUE_INVALID to EF_DIVISOR_VALUE_INVALID.",
     "2024.04.18.A   Added POWER_AIN_CHANNEL_ENABLE and the default.",
+    "2024.05.30.A   Updated description for T8 range and add detailed description for AIN_ALL_RANGE for each device.",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
