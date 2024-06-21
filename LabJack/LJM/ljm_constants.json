@@ -1,7 +1,7 @@
 {
   "header": {
     "filename": "ljm_constants.json",
-    "version": "2024.06.04.A",
+    "version": "2024.06.21.A",
     "checksum": "-1",
     "support_url": "https://labjack.com/pages/support",
     "tags_base_url": "https://labjack.com"
@@ -8356,6 +8356,11 @@
       "description": "The stream trigger index is not valid for this device"
     },
     {
+      "error": 2631,
+      "string": "STREAM_RATE_INVALID_FOR_CJC",
+      "description": "Stream can only be run at a max of 250Hz when streaming TEMPERATURE(0:7) registers"
+    },
+    {
       "error": 2670,
       "string": "SWDT_ROLLT_INVALID",
       "description":"The specified Software Watchdog timeout is too short."
@@ -9086,6 +9091,7 @@
     "2024.04.18.A   Added POWER_AIN_CHANNEL_ENABLE and the default.",
     "2024.05.30.A   Updated description for T8 range and add detailed description for AIN_ALL_RANGE for each device.",
     "2024.06.04.A   STREAM_CLOCK_SOURCE description now reflects the difference between T7 and T8 pins",
+    "2024.06.21.A   Added STREAM_RATE_INVALID_FOR_CJC error code that is for limiting CJC streams to 250Hz",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
