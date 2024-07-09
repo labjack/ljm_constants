@@ -1,7 +1,7 @@
 {
   "header": {
     "filename": "ljm_constants.json",
-    "version": "2024.06.21.A",
+    "version": "2024.07.09.A",
     "checksum": "-1",
     "support_url": "https://labjack.com/pages/support",
     "tags_base_url": "https://labjack.com"
@@ -3096,7 +3096,21 @@
       "tags": ["AIN"],
       "description": "T8 Only. Returns the AIN system's actual sampling rate."
     },
-    
+    {
+      "address": 43722,
+      "name": "AIN_HEALTH",
+      "type": "UINT16",
+      "devices": [
+        {
+          "device": "T8",
+          "fwmin": 1.0036
+        }
+      ],
+      "readwrite": "R",
+      "default": 255,
+      "tags": ["AIN"],
+      "description": "T8 Only. Returns the status of each AIN channel where 1 is active and 0 deactivated."
+    },
     {
       "address": 43900,
       "name": "AIN_ALL_RANGE",
@@ -9092,6 +9106,7 @@
     "2024.05.30.A   Updated description for T8 range and add detailed description for AIN_ALL_RANGE for each device.",
     "2024.06.04.A   STREAM_CLOCK_SOURCE description now reflects the difference between T7 and T8 pins",
     "2024.06.21.A   Added STREAM_RATE_INVALID_FOR_CJC error code that is for limiting CJC streams to 250Hz",
+    "2024.07.09.A   Added AIN_HEALTH register.",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
