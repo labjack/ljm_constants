@@ -1,7 +1,7 @@
 {
   "header": {
     "filename": "ljm_constants.json",
-    "version": "2024.07.09.A",
+    "version": "2024.07.15.A",
     "checksum": "-1",
     "support_url": "https://labjack.com/pages/support",
     "tags_base_url": "https://labjack.com"
@@ -702,7 +702,7 @@
       "default": 0,
       "tags": ["STREAM"],
       "altnames": ["STREAM_OPTIONS"],
-      "description": "Controls which clock source will be used to run the main stream clock. 0 = Internal crystal, 2 = External clock source on CIO3. Rising edges will increment a counter and trigger a stream scan after the number of edges specified in STREAM_EXTERNAL_CLOCK_DIVISOR. All other values reserved."
+      "description": "Controls which clock source will be used to run the main stream clock. 0 = Internal crystal, 2 = External clock, 4 = Primary ESS, 8 = Secondary ESS"
     },
     {
       "address": 4016,
@@ -9107,6 +9107,7 @@
     "2024.06.04.A   STREAM_CLOCK_SOURCE description now reflects the difference between T7 and T8 pins",
     "2024.06.21.A   Added STREAM_RATE_INVALID_FOR_CJC error code that is for limiting CJC streams to 250Hz",
     "2024.07.09.A   Added AIN_HEALTH register.",
+    "2024.07.15.A   Updated STREAM_CLOCK_SOURCE to include ESS options.",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
