@@ -1,7 +1,7 @@
 {
   "header": {
     "filename": "ljm_constants.json",
-    "version": "2024.07.15.A",
+    "version": "2024.08.07.A",
     "checksum": "-1",
     "support_url": "https://labjack.com/pages/support",
     "tags_base_url": "https://labjack.com"
@@ -8573,6 +8573,11 @@
       "description": "The TDAC did not respond to communication attempts."
     },
     {
+      "error": 2765,
+      "string": "TDAC_NOT_INITIALIZED",
+      "description": "A TDAC has not been initialized, try writing to the the TDAC first with the TDAC# register."
+    },
+    {
       "error": 2770,
       "string": "ONEWIRE_UNSUPPORTED_FUNCTION",
       "description": "Unknown function specified."
@@ -9108,6 +9113,7 @@
     "2024.06.21.A   Added STREAM_RATE_INVALID_FOR_CJC error code that is for limiting CJC streams to 250Hz",
     "2024.07.09.A   Added AIN_HEALTH register.",
     "2024.07.15.A   Updated STREAM_CLOCK_SOURCE to include ESS options.",
+    "2024.08.07.A   Added a TDAC_NOT_INITIALIZED error code.",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
