@@ -1,7 +1,7 @@
 {
   "header": {
     "filename": "ljm_constants.json",
-    "version": "2024.08.07.A",
+    "version": "2024.10.28.A",
     "checksum": "-1",
     "support_url": "https://labjack.com/pages/support",
     "tags_base_url": "https://labjack.com"
@@ -6113,7 +6113,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["WATCHDOG"],
-      "description": "A single binary-encoded value where each bit is an advanced option. If bit 0 is set, IO_CONFIG_SET_CURRENT_TO_FACTORY will be done on timeout.  If bit 1 is set, IO_CONFIG_SET_CURRENT_TO_DEFAULT will be done on timeout."
+      "description": "Configure Watchdog behavior on timeout. 1 = IO_CONFIG_SET_CURRENT_TO_FACTORY, 2 = IO_CONFIG_SET_CURRENT_TO_DEFAULT."
     },
     {
       "address": 61604,
