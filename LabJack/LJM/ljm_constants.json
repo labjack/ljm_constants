@@ -2952,7 +2952,7 @@
       "devices": [
         {
           "device": "T8",
-          "description": "Specify the maximum expected voltage. The T8 will select the best gain for the expected voltage. Maximum: ±11.0V, Minimum: ±0.018V"
+          "description": "Valid values/ranges: 0.0=Default → ±11V. 11.0 → ±11.0, 9.6 → ±9.6, 4.8 → ±4.8, 2.4 → ±2.4, 1.2 → ±1.2, 0.6 → ±0.6, 0.3 → ±0.3, 0.15 → ±0.15, 0.075 → ±0.075, 0.036 → ±0.036, and 0.018 → ±0.018"
         },
         {
           "device": "T7",
@@ -2966,7 +2966,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["AIN"],
-      "description": "The range/span of each analog input. Write the highest expected input voltage."
+      "description": "The range/span of a single analog input. Select the desired range by writing a value from the device specific list."
     },
     {
       "address": 41000,
@@ -3119,7 +3119,7 @@
         {
           "device": "T8",
           "fwmin": 1.0000,
-          "description": "Specify the maximum expected voltage. The T8 will select the best gain for the expected voltage. Maximum: ±11.0V, Minimum: ±0.018V"
+          "description": "Valid values/ranges: 0.0=Default → ±11V. 11.0 → ±11.0, 9.6 → ±9.6, 4.8 → ±4.8, 2.4 → ±2.4, 1.2 → ±1.2, 0.6 → ±0.6, 0.3 → ±0.3, 0.15 → ±0.15, 0.075 → ±0.075, 0.036 → ±0.036, and 0.018 → ±0.018"
         },
         {
           "device": "T7",
@@ -3134,7 +3134,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["AIN"],
-      "description": "A write to this global parameter affects all AIN.  A read will return the correct setting if all channels are set the same, but otherwise will return -9999."
+      "description": "The range/span of a all analog inputs. Writing to this register will set the range for all analog inputs. Reading will return a range value if all channels are set to same range. Otherwise, -9999 will be returned."
     },
     {
       "address": 43902,
@@ -9114,6 +9114,7 @@
     "2024.07.09.A   Added AIN_HEALTH register.",
     "2024.07.15.A   Updated STREAM_CLOCK_SOURCE to include ESS options.",
     "2024.08.07.A   Added a TDAC_NOT_INITIALIZED error code.",
+    "2024.11.11.A   Updated the definitions of the _RANGE registers.",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
