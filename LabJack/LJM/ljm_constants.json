@@ -8469,6 +8469,11 @@
       "description":"The specified TX buffer size is too large."
     },
     {
+      "error": 2712,
+      "string": "SPI_NULL_BUFFER",
+      "description":"SPI buffer has not been initialized, please set SPI_NUM_BYTES before running SPI_GO."
+    },
+    {
       "error": 2720,
       "string": "I2C_BUS_BUSY",
       "description": "One or both of the I2C lines are held low. Check hardware and reset the bus."
