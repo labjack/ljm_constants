@@ -7938,6 +7938,16 @@
       "description": "The Lua VM is being closed, usually takes less than 100 ms."
     },
     {
+      "error": 2390,
+      "string": "LUA_NAME_INVALID",
+      "description": "An invalid register name was passed to the the Lua function. Register names must be strings, and include only valid characters, '_', and digits."
+    },
+    {
+      "error": 2391,
+      "string": "LUA_NAME_NOT_FOUND",
+      "description": "The register name passed to the Lua function could not be found. Check the Modbus Map for valid register names."
+    },
+    {
       "error": 2400,
       "string": "SYSTEM_MEMORY_BEREFT",
       "description": "Insufficient RAM to perform the requested action. Often occurs when a loaded Lua script is too large."
