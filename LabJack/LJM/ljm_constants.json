@@ -56,7 +56,7 @@
       "tags": ["AIN", "CORE"],
       "streamable": true,
       "displayname": ["Analog In #"],
-      "description": "T8 Only. Returns the temperature of the specified analog input. And saves AIN and temperature inputs for all channels."
+      "description": "T8 Only. Returns the temperature of the specified analog input. And saves AIN and temperature inputs for all channels. For other devices, use TEMPERATURE_DEVICE_K."
     },
     {
       "address": 650,
@@ -78,7 +78,7 @@
       "tags": ["AIN", "CORE"],
       "streamable": true,
       "displayname": ["Analog In #"],
-      "description": "T8 Only. Returns the saved temperature of the specified analog input."
+      "description": "T8 Only. Returns the last read temperature of the specified analog input. For other devices, use TEMPERATURE_DEVICE_K."
     },
     {
       "address": 1000,
@@ -4433,7 +4433,8 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 1.0000
+          "fwmin": 0.0123,
+          "description": "This register is not supported on the T8, please use TEMPERATURE_DEVICE_K or TEMPERATURE#(0:7) to measure the temperature at an AIN terminal."
         },
         {
           "device": "T7",
@@ -4457,7 +4458,8 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 1.0000
+          "fwmin": 1.0000,
+          "description": "The AIN0 temperature sensor connected to an LM94021 with GS=01 located right next to the AIN0 screw terminal."
         },
         {
           "device": "T7",
@@ -4474,7 +4476,7 @@
       "tags": ["AIN", "CORE"],
       "streamable": false,
       "displayname": ["Device Temperature [K]"],
-      "description": "Takes a reading from the internal temperature sensor using range=+/-10V and resolution=8, and applies the formula Volts*-92.6+467.6 to return kelvins."
+      "description": "Takes a reading from the internal temperature sensor and returns kelvins."
     },
     {
       "address": 60091,
@@ -9131,6 +9133,7 @@
     "2024.08.07.A   Added a TDAC_NOT_INITIALIZED error code.",
     "2024.11.11.A   Updated the definitions of the _RANGE registers.",
     "2024.12.04.A   Fixed a grammatical issue.",
+    "2024.12.19.A   Updated temperature register descriptions.",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
