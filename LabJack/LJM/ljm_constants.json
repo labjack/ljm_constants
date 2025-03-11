@@ -1,7 +1,7 @@
 {
   "header": {
     "filename": "ljm_constants.json",
-    "version": "2024.12.16.A",
+    "version": "2025.03.11.A",
     "checksum": "-1",
     "support_url": "https://labjack.com/pages/support",
     "tags_base_url": "https://labjack.com"
@@ -8276,7 +8276,8 @@
     },
     {
       "error": 2609,
-      "string": "STREAM_OUT_BUFF_TOO_BIG"
+      "string": "STREAM_OUT_BUFF_TOO_BIG",
+      "description": "Stream out buffer is larger then the maximum size."
     },
     {
       "error": 2610,
@@ -9134,6 +9135,7 @@
     "2024.11.11.A   Updated the definitions of the _RANGE registers.",
     "2024.12.04.A   Fixed a grammatical issue.",
     "2024.12.19.A   Updated temperature register descriptions.",
+    "2025.03.11.A   Added description to STREAM_OUT_BUFF_TOO_BIG.",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
