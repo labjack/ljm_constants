@@ -1,7 +1,7 @@
 {
   "header": {
     "filename": "ljm_constants.json",
-    "version": "2025.03.11.A",
+    "version": "2025.03.12.A",
     "checksum": "-1",
     "support_url": "https://labjack.com/pages/support",
     "tags_base_url": "https://labjack.com"
@@ -878,21 +878,24 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 1.0000
+          "fwmin": 1.0000,
+          "description": "Max Size: 32768"
         },
         {
           "device": "T7",
-          "fwmin": 0.93
+          "fwmin": 0.93,
+          "description": "Max Size: 16384"
         },
         {
-          "device": "T4"
+          "device": "T4",
+          "description": "Max Size: 16384"
         }
       ],
       "readwrite": "RW",
       "default": 0,
       "tags": ["STREAM"],
       "altnames": ["STREAM_OUT#(0:3)_BUFFER_SIZE"],
-      "description": "Size of the buffer in bytes as a power of 2. Should be at least twice the size of updates that will be written and no less than 32. The usable buffer size will be equal to the value of this register minus 2 bytes (one 16-bit sample). Before writing data to _BUFFER_###, you must write to _BUFFER_ALLOCATE_NUM_BYTES to allocate RAM for the data. Max is 16384."
+      "description": "Size of the buffer in bytes as a power of 2. Should be at least twice the size of updates that will be written and no less than 32. The usable buffer size will be equal to the value of this register minus 2 bytes (one 16-bit sample). Before writing data to _BUFFER_###, you must write to _BUFFER_ALLOCATE_NUM_BYTES to allocate RAM for the data."
     },
     {
       "address": 4060,
@@ -9136,6 +9139,7 @@
     "2024.12.04.A   Fixed a grammatical issue.",
     "2024.12.19.A   Updated temperature register descriptions.",
     "2025.03.11.A   Added description to STREAM_OUT_BUFF_TOO_BIG.",
+    "2025.03.12.A   Added device specific size limits for STREAM_OUT#(0:3)_BUFFER_ALLOCATE_NUM_BYTES.",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
