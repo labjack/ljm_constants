@@ -30,7 +30,7 @@
           # Checkout the code base #
           ##########################
           - name: Checkout Code
-            uses: actions/checkout@v2
+            uses: actions/checkout@v4
     
           ####################################
           # Run the action against code base #
