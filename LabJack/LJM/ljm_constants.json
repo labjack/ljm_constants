@@ -4462,7 +4462,8 @@
         {
           "device": "T8",
           "fwmin": 1.0000,
-          "description": "The AIN0 temperature sensor connected to an LM94021 with GS=01 located right next to the AIN0 screw terminal."
+          "description": "The AIN0 temperature sensor connected to an LM94021 with GS=01 located right next to the AIN0 screw terminal.",
+          "exception": "When AIN#_EF_CONFIG_B is set to 60052, for thermocouple CJC, the correct AIN# sensor is used for each channel."
         },
         {
           "device": "T7",
