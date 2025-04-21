@@ -2237,7 +2237,7 @@
       ],
       "readwrite": "RW",
       "tags": ["LUA"],
-      "description": "Address within the saved Lua script in Flash to begin reading from."
+      "description": "Deprecated: Address within the saved Lua script in Flash to begin reading from."
     },
     {
       "address": 6038,
@@ -2258,7 +2258,7 @@
       ],
       "readwrite": "R",
       "tags": ["LUA"],
-      "description": "Read script saved to flash from here."
+      "description": "Deprecated: Read script saved to flash from here."
     },
     {
       "address": 6050,
