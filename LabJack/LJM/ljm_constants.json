@@ -1,7 +1,7 @@
 {
   "header": {
     "filename": "ljm_constants.json",
-    "version": "2025.03.12.A",
+    "version": "2025.04.21.B",
     "checksum": "-1",
     "support_url": "https://labjack.com/pages/support",
     "tags_base_url": "https://labjack.com"
@@ -9141,6 +9141,8 @@
     "2024.12.19.A   Updated temperature register descriptions.",
     "2025.03.11.A   Added description to STREAM_OUT_BUFF_TOO_BIG.",
     "2025.03.12.A   Added device specific size limits for STREAM_OUT#(0:3)_BUFFER_ALLOCATE_NUM_BYTES.",
+    "2025.04.21.A   Added deprecation notices to Lua Read registers.",
+    "2025.04.21.B   Updated SPI pin selection registers descriptions.",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
