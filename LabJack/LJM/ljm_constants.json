@@ -1148,7 +1148,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["SPI"],
-      "description": "The DIO line for Chip-Select."
+      "description": "The number of the DIO line to be used for SPI Chip-Select. Ex: Writing 0 will set DIO0 to become SPI Chip-Select."
     },
     {
       "address": 5001,
@@ -1162,7 +1162,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["SPI"],
-      "description": "The DIO line for Clock."
+      "description": "The number of the DIO line to be used for SPI Clock. Ex: Writing 0 will set DIO0 to become SPI Clock."
     },
     {
       "address": 5002,
@@ -1176,7 +1176,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["SPI"],
-      "description": "The DIO line for Master-In-Slave-Out."
+      "description": "The number of the DIO line to be used for SPI Master-In-Slave-Out. Ex: Writing 0 will set DIO0 to become SPI Master-In-Slave-Out."
     },
     {
       "address": 5003,
@@ -1190,7 +1190,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["SPI"],
-      "description": "The DIO line for Master-Out-Slave-In."
+      "description": "The number of the DIO line to be used for SPI Master-Out-Slave-in. Ex: Writing 0 will set DIO0 to become SPI Master-Out-Slave-In."
     },
     {
       "address": 5004,
