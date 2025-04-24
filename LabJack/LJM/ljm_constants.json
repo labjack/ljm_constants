@@ -4427,7 +4427,7 @@
       ],
       "readwrite": "W",
       "tags": ["CONFIG"],
-      "description": "Issues a device reboot. Must write 0x4C4Axxxx, where xxxx is number of 50ms ticks to wait before reboot.  To reboot immediately write 0x4C4A0000 (d1279918080)."
+      "description": "Issues a device reboot. Must write 0x4C4Axxxx, where xxxx is number of 50ms ticks to wait before reboot. Waiting for a few hundred milliseconds will ensure that the device has time to send a response to the reboot command. Otherwise, the command will not get a response and will have to wait for a communication timeout. To reboot immediately write 0x4C4A0000 (d1279918080)."
     },
     {
       "address": 60050,
@@ -9143,6 +9143,7 @@
     "2025.03.12.A   Added device specific size limits for STREAM_OUT#(0:3)_BUFFER_ALLOCATE_NUM_BYTES.",
     "2025.04.21.A   Added deprecation notices to Lua Read registers.",
     "2025.04.21.B   Updated SPI pin selection registers descriptions.",
+    "2025.04.24.A   Added some info about the delay period to SYSTEM_REBOOT.",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
