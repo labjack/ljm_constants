@@ -7726,7 +7726,7 @@
     {
       "error": 1320,
       "string": "LJME_DIGITAL_AUTO_RECOVERY_ERROR_DETECTED",
-      "description": "During stream, the device buffer overflowed, causing auto-recovery to occur. See the digital stream information in the Stream Configs section of the LJM User's Guide."
+      "description": "During stream, the device buffer overflowed which caused an auto-recover condition. The stream channel configuration made it impossible to determine the excat location in the data stream where the auto-recover occurred. For more infomation, see the digital stream section of the \"LJM Stream Configs\" page."
     },
     {
       "error": 1321,
@@ -8271,7 +8271,7 @@
     {
       "error": 2607,
       "string": "STREAM_CHN_LIST_INVALID",
-      "description": "The channel list contains an unstreamable address."
+      "description": "An attempt was made to add a channel to the stream scan list which would have invalidated the list. There are two possible causes: 1) the channel does not support stream mode. See \"Streamable Registers\" on the \"Stream Mode\" datasheet page for more detail. 2) The scan list is full, T-Series devices support up to 128 channels in the scan list."
     },
     {
       "error": 2608,
@@ -9144,6 +9144,7 @@
     "2025.04.21.A   Added deprecation notices to Lua Read registers.",
     "2025.04.21.B   Updated SPI pin selection registers descriptions.",
     "2025.04.24.A   Added some info about the delay period to SYSTEM_REBOOT.",
+    "2025.05.02.A   Improved descriptions for errors 2607 and 1320",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
