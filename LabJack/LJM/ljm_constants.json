@@ -1,7 +1,7 @@
 {
   "header": {
     "filename": "ljm_constants.json",
-    "version": "2025.04.21.B",
+    "version": "2025.05.06.A",
     "checksum": "-1",
     "support_url": "https://labjack.com/pages/support",
     "tags_base_url": "https://labjack.com"
@@ -7997,6 +7997,11 @@
       "description": "The firmware image is not compatible with this device. Typically due to flash chip incompatibility."
     },
     {
+      "error": 2409,
+      "string": "SYSTEM_VS_TOO_LOW",
+      "description": "The device supply voltage is to low to function."
+    },
+    {
       "error": 2420,
       "string": "DEVICE_NAME_MUST_BE_ALPHANUM",
       "description": "Attempted to write a device name with invalid characters."
@@ -9145,6 +9150,7 @@
     "2025.04.21.B   Updated SPI pin selection registers descriptions.",
     "2025.04.24.A   Added some info about the delay period to SYSTEM_REBOOT.",
     "2025.05.02.A   Improved descriptions for errors 2607 and 1320",
+    "2025.05.06.A   Added error code for SYSTEM_VS_TOO_LOW",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
