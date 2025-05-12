@@ -2,7 +2,8 @@
 """
 import json
 import os
-import subprocess
+import subprocess as sp
+from sys import platform
 
 import ljmmm
 
@@ -49,14 +50,14 @@ def output_reg(file, reg):
 
 def sanity_test():
     include_dir = os.path.split(OUTPUT_FILE)[0]
-    subprocess.check_call([
+    sp.run([
         'gcc',
         '-o', 'gen_test/test_c_header',
         SANITY_TEST_FILE,
         '-I%s' % include_dir
     ])
 
-    ret = subprocess.call(['gen_test/test_c_header'])
+    ret = sp.run(['gen_test/test_c_header'])
     if ret != 0:
         raise Exception("Expected output to be 0, but was: %d" % ret)
 
@@ -86,7 +87,8 @@ def generate():
 
         finish(file)
 
-    sanity_test()
+    if platform != "win32":
+        sanity_test()
 
 if __name__ == "__main__":
     generate()

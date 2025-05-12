@@ -1,34 +1,34 @@
 {
   "header": {
     "filename": "ljm_constants.json",
-    "version": "2020.03.30.A",
+    "version": "2025.05.06.A",
     "checksum": "-1",
-    "support_url": "https://labjack.com/support/modbus",
-    "tags_base_url": "https://labjack.com/support/modbus"
+    "support_url": "https://labjack.com/pages/support",
+    "tags_base_url": "https://labjack.com"
   },
 
   "tag_mappings": {
-    "AIN":                "/support/datasheets/t-series/ain",
-    "AIN_EF":             "/support/datasheets/t-series/ain/extended-features",
-    "ASYNCH":             "/support/datasheets/t-series/digital-io/asynchronous-serial",
-    "DAC":                "/support/datasheets/t-series/dac",
-    "DIO":                "/support/datasheets/t-series/digital-io/extended-features",
-    "DIO_EF":             "/support/datasheets/t-series/digital-io/extended-features",
-    "ETHERNET":           "/support/datasheets/t-series/ethernet",
-    "FILE_IO":            "/support/datasheets/t-series/sd-card",
-    "I2C":                "/support/datasheets/t-series/digital-io/i2c",
-    "INTFLASH":           "/support/datasheets/t-series/internal-flash",
-    "LUA":                "/support/datasheets/t-series/lua-scripting",
-    "ONEWIRE":            "/support/datasheets/t-series/digital-io/1-wire",
-    "RTC":                "/support/datasheets/t-series/rtc",
-    "SBUS":               "/support/datasheets/t-series/digital-io/sbus",
-    "SPI":                "/support/datasheets/t-series/digital-io/spi",
-    "STREAM":             "/support/datasheets/t-series/communication/stream-mode",
-    "TDAC":               "/support/datasheets/t-series/appendix-c-2",
-    "UART":               "/support/datasheets/t-series/digital-io/asynchronous-serial",
-    "USER_RAM":           "/support/datasheets/t-series/hardware-overview/ram",
-    "WATCHDOG":           "/support/datasheets/t-series/watchdog",
-    "WIFI":               "/support/datasheets/t-series/wifi"
+    "AIN":                "/pages/support?doc=/datasheets/t-series-datasheet/140-analog-inputs-t-series-datasheet",
+    "AIN_EF":             "/pages/support?doc=/datasheets/t-series-datasheet/141-ain-extended-features-t-series-datasheet",
+    "ASYNCH":             "/pages/support?doc=/datasheets/t-series-datasheet/137-asynchronous-serial-t-series-datasheet",
+    "DAC":                "/pages/support?doc=/datasheets/t-series-datasheet/150-dac-t-series-datasheet",
+    "DIO":                "/pages/support?doc=/datasheets/t-series-datasheet/130-digital-io-t-series-datasheet",
+    "DIO_EF":             "/pages/support?doc=/datasheets/t-series-datasheet/132-dio-extended-features-t-series-datasheet",
+    "ETHERNET":           "/pages/support?doc=/datasheets/t-series-datasheet/60-ethernet-t-series-datasheet",
+    "FILE_IO":            "/pages/support?doc=/datasheets/t-series-datasheet/210-sd-card-t7-only-t-series-datasheet",
+    "I2C":                "/pages/support?doc=/datasheets/t-series-datasheet/133-i2c-t-series-datasheet",
+    "INTFLASH":           "/pages/support?doc=/datasheets/t-series-datasheet/200-internal-flash-t-series-datasheet",
+    "LUA":                "/pages/support?doc=/datasheets/t-series-datasheet/250-standalone-lua-scripting-t-series-datasheet",
+    "ONEWIRE":            "/pages/support?doc=/datasheets/t-series-datasheet/136-1-wire-t-series-datasheet",
+    "RTC":                "/pages/support?doc=/datasheets/t-series-datasheet/190-rtc-t7-pro-only-t-series-datasheet",
+    "SBUS":               "/pages/support?doc=/datasheets/t-series-datasheet/135-sbus-t-series-datasheet",
+    "SPI":                "/pages/support?doc=/datasheets/t-series-datasheet/134-spi-t-series-datasheet",
+    "STREAM":             "/pages/support?doc=/datasheets/t-series-datasheet/32-stream-mode-t-series-datasheet",
+    "TDAC":               "/pages/support?doc=/datasheets/accessories/ljtick-dac-datasheet",
+    "UART":               "/pages/support?doc=/datasheets/t-series-datasheet/137-asynchronous-serial-t-series-datasheet",
+    "USER_RAM":           "/pages/support?doc=/datasheets/t-series-datasheet/40-hardware-overview-t-series-datasheet/#section-header-two-abk1g",
+    "WATCHDOG":           "/pages/support?doc=/datasheets/t-series-datasheet/230-watchdog-t-series-datasheet",
+    "WIFI":               "/pages/support?doc=/datasheets/t-series-datasheet/230-watchdog-t-series-datasheet"
   },
 
   "registers": [
@@ -56,7 +56,7 @@
       "tags": ["AIN", "CORE"],
       "streamable": true,
       "displayname": ["Analog In #"],
-      "description": "Returns the temperature of the specified analog input. And saves AIN and temperature inputs for all channels."
+      "description": "T8 Only. Returns the temperature of the specified analog input. And saves AIN and temperature inputs for all channels. For other devices, use TEMPERATURE_DEVICE_K."
     },
     {
       "address": 650,
@@ -67,7 +67,7 @@
       "tags": ["AIN", "CORE"],
       "streamable": true,
       "displayname": ["Analog In #"],
-      "description": "Returns the saved voltage of the specified analog input."
+      "description": "T8 Only. Returns the saved voltage of the specified analog input."
     },
     {
       "address": 700,
@@ -78,7 +78,7 @@
       "tags": ["AIN", "CORE"],
       "streamable": true,
       "displayname": ["Analog In #"],
-      "description": "Returns the saved temperature of the specified analog input."
+      "description": "T8 Only. Returns the last read temperature of the specified analog input. For other devices, use TEMPERATURE_DEVICE_K."
     },
     {
       "address": 1000,
@@ -105,6 +105,7 @@
       ],
       "readwrite": "RW",
       "tags": ["DIO", "CORE"],
+      "streamable": true,
       "altnames": ["DIO#(0:7)"],
       "displayname": ["FIO Bit #"],
       "description": "Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output. Read 0=Low AND 1=High. Write 0=Low AND 1=High."
@@ -120,6 +121,7 @@
       ],
       "readwrite": "RW",
       "tags": ["DIO", "CORE"],
+      "streamable": true,
       "altnames": ["DIO#(8:15)"],
       "displayname": ["EIO Bit #"],
       "description": "Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output. Read 0=Low AND 1=High. Write 0=Low AND 1=High."
@@ -135,6 +137,7 @@
       ],
       "readwrite": "RW",
       "tags": ["DIO", "CORE"],
+      "streamable": true,
       "altnames": ["DIO#(16:19)"],
       "displayname": ["CIO Bit #"],
       "description": "Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output. Read 0=Low AND 1=High. Write 0=Low AND 1=High."
@@ -149,6 +152,7 @@
       ],
       "readwrite": "RW",
       "tags": ["DIO", "CORE"],
+      "streamable": true,
       "altnames": ["DIO#(20:22)"],
       "displayname": ["MIO Bit #"],
       "description": "Read or set the state of 1 bit of digital I/O.  Also configures the direction to input or output. Read 0=Low AND 1=High. Write 0=Low AND 1=High."
@@ -160,7 +164,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -184,7 +188,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -208,7 +212,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -232,7 +236,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -256,7 +260,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -280,7 +284,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -304,7 +308,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -328,7 +332,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -351,7 +355,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -374,7 +378,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -397,7 +401,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -456,7 +460,7 @@
       ],
       "readwrite": "RW",
       "tags": ["DIO"],
-      "description": "This register will enable pulldowns on DIO lines. This is a binary coded value where bit 0 represent FIO0, and bit 11 represents EIO3, etc. 1 = pulldown enabled, 0 = pulldown disabled. This register only affects flex-lines which can be configured as analog or digital. This register is not affected by the inhibit register."
+      "description": "T8 Only. This register will enable pulldowns on DIO lines. This is a binary coded value where bit 0 represent FIO0, and bit 11 represents EIO3, etc. 1 = pulldown enabled, 0 = pulldown disabled. This register only affects flex-lines which can be configured as analog or digital. This register is not affected by the inhibit register."
     },
     {
       "address": 2880,
@@ -480,7 +484,7 @@
       "devices": [
         {
           "device": "T8",
-          "description": "T8 description TBD"
+          "description": "Disables the pull-up resistors on DIOs."
         },
         {
           "device": "T4",
@@ -503,7 +507,7 @@
       "readwrite": "RW",
       "tags": ["DIO"],
       "default": 0,
-      "description": "A single binary-encoded value where each bit determines whether _STATE, _DIRECTION or _ANALOG_ENABLE writes affect that bit of digital I/O.<br>0=Default=Affected,<br>1=Ignored.",
+      "description": "A single binary-encoded value where each bit determines whether _STATE, _DIRECTION or _ANALOG_ENABLE writes affect that bit of digital I/O. 0=Default=Affected, 1=Ignored.",
       "constants": [
         {"value": 0, "name": "Affected"},
         {"value": 1, "name": "Ignored"}
@@ -516,7 +520,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0013
         },
         {
           "device": "T7",
@@ -543,7 +547,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0013
         },
         {
           "device": "T7",
@@ -612,7 +616,7 @@
       "devices": [
         {
           "device": "T8",
-          "description": "T8 description TBD"
+          "description": "Ignored. The T8's analog input chain does not rely on settling time."
         },
         {
           "device": "T7",
@@ -635,7 +639,7 @@
       "devices": [
         {
           "device": "T8",
-          "description": "T8 description TBD"
+          "description": "T8 description 0-16. A value of 0 will use the best resolution for the specified data rate."
         },
         {
           "device": "T7",
@@ -659,7 +663,7 @@
         {
           "device": "T8",
           "default": 0,
-          "description": "T8 description TBD"
+          "description": "Max size is 262144. Default size is 4096."
         },
         {
           "device": "T7",
@@ -674,6 +678,7 @@
       ],
       "readwrite": "RW",
       "default": 0,
+      "usesRAM": true,
       "tags": ["STREAM"],
       "description": "Size of the stream data buffer in bytes. A value of 0 equates to the default value.  Must be a power of 2. Size in samples is STREAM_BUFFER_SIZE_BYTES/2.  Size in scans is (STREAM_BUFFER_SIZE_BYTES/2)/STREAM_NUM_ADDRESSES. Changes while stream is running do not affect the currently running stream."
     },
@@ -684,18 +689,20 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000,
+          "description": "T8 will expect external stream clock on FIO2."
         },
         {
           "device": "T7",
-          "fwmin": 1.011
+          "fwmin": 1.011,
+          "description": "T7 will expect external stream clock on CIO3."
         }
       ],
       "readwrite": "RW",
       "default": 0,
       "tags": ["STREAM"],
       "altnames": ["STREAM_OPTIONS"],
-      "description": "Controls which clock source will be used to run the main stream clock.<br>0 = Internal crystal,<br>2 = External clock source on CIO3.<br>Rising edges will increment a counter and trigger a stream scan after the number of edges specified in STREAM_EXTERNAL_CLOCK_DIVISOR. T7 will expect external stream clock on CIO3. All other values reserved."
+      "description": "Controls which clock source will be used to run the main stream clock. 0 = Internal crystal, 2 = External clock, 4 = Primary ESS, 8 = Secondary ESS"
     },
     {
       "address": 4016,
@@ -704,7 +711,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -717,7 +724,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["STREAM"],
-      "description": "Controls where data will be sent. Value is a bitmask.<br>bit 0: 1 = Send to Ethernet 702 sockets,<br>bit 1: 1 = Send to USB,<br>bit 4: 1 = Command-Response mode.<br>All other bits are reserved."
+      "description": "Controls where data will be sent. Value is a bitmask. bit 0: 1 = Send to Ethernet 702 sockets, bit 1: 1 = Send to USB, bit 4: 1 = Command-Response mode. All other bits are reserved."
     },
     {
       "address": 4020,
@@ -753,7 +760,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -763,7 +770,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["STREAM"],
-      "description": "Controls when stream scanning will start.<br>0 = Start when stream is enabled,<br>2000 = Start when DIO_EF0 detects an edge,<br>2001 = Start when DIO_EF1 detects an edge.<br>See the stream documentation for all supported values."
+      "description": "Controls when stream scanning will start. 0 = Start when stream is enabled, 2000 = Start when DIO_EF0 detects an edge, 2001 = Start when DIO_EF1 detects an edge. See the stream documentation for all supported values."
     },
     {
       "address": 4026,
@@ -772,7 +779,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -794,7 +801,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -827,7 +834,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -849,7 +856,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -871,21 +878,24 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000,
+          "description": "Max Size: 32768"
         },
         {
           "device": "T7",
-          "fwmin": 0.93
+          "fwmin": 0.93,
+          "description": "Max Size: 16384"
         },
         {
-          "device": "T4"
+          "device": "T4",
+          "description": "Max Size: 16384"
         }
       ],
       "readwrite": "RW",
       "default": 0,
       "tags": ["STREAM"],
       "altnames": ["STREAM_OUT#(0:3)_BUFFER_SIZE"],
-      "description": "Size of the buffer in bytes as a power of 2. Should be at least twice the size of updates that will be written and no less than 32. Before writing data to _BUFFER_###, you must write to _BUFFER_ALLOCATE_NUM_BYTES to allocate RAM for the data. Max is 16384."
+      "description": "Size of the buffer in bytes as a power of 2. Should be at least twice the size of updates that will be written and no less than 32. The usable buffer size will be equal to the value of this register minus 2 bytes (one 16-bit sample). Before writing data to _BUFFER_###, you must write to _BUFFER_ALLOCATE_NUM_BYTES to allocate RAM for the data."
     },
     {
       "address": 4060,
@@ -894,7 +904,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -917,7 +927,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -930,7 +940,7 @@
       "readwrite": "W",
       "default": 0,
       "tags": ["STREAM"],
-      "description": "Controls when new data and loop size are used.<br>1=Use new data immediately.<br>2=Wait for synch. New data will not be used until a different stream-out channel is set to Synch.<br>3=Synch. This stream-out# as well as any stream-outs set to synch will start using new data immediately."
+      "description": "Controls when new data and loop size are used. 1=Use new data immediately. 2=Wait for synch. New data will not be used until a different stream-out channel is set to Synch. 3=Synch. This stream-out# as well as any stream-outs set to synch will start using new data immediately."
     },
     {
       "address": 4080,
@@ -939,7 +949,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -952,7 +962,7 @@
       "readwrite": "R",
       "default": 0,
       "tags": ["STREAM"],
-      "description": "The number of values in the buffer that are not currently being used."
+      "description": "The number of bytes left in the buffer, where each sample is two bytes. Used to monitor where the stream out is in processing the buffer."
     },
     {
       "address": 4090,
@@ -961,7 +971,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -989,7 +999,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1012,7 +1022,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1035,7 +1045,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1070,7 +1080,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1092,7 +1102,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1111,7 +1121,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1138,7 +1148,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["SPI"],
-      "description": "The DIO line for Chip-Select."
+      "description": "The number of the DIO line to be used for SPI Chip-Select. Ex: Writing 0 will set DIO0 to become SPI Chip-Select."
     },
     {
       "address": 5001,
@@ -1152,7 +1162,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["SPI"],
-      "description": "The DIO line for Clock."
+      "description": "The number of the DIO line to be used for SPI Clock. Ex: Writing 0 will set DIO0 to become SPI Clock."
     },
     {
       "address": 5002,
@@ -1166,7 +1176,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["SPI"],
-      "description": "The DIO line for Master-In-Slave-Out."
+      "description": "The number of the DIO line to be used for SPI Master-In-Slave-Out. Ex: Writing 0 will set DIO0 to become SPI Master-In-Slave-Out."
     },
     {
       "address": 5003,
@@ -1180,7 +1190,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["SPI"],
-      "description": "The DIO line for Master-Out-Slave-In."
+      "description": "The number of the DIO line to be used for SPI Master-Out-Slave-in. Ex: Writing 0 will set DIO0 to become SPI Master-Out-Slave-In."
     },
     {
       "address": 5004,
@@ -1194,7 +1204,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["SPI"],
-      "description": "The SPI mode controls the clock idle state and which edge clocks the data. Bit 1 is CPOL and Bit 0 is CPHA, so CPOL/CPHA for different decimal values:<br>0 = 0/0 = b00,<br>1 = 0/1 = b01,<br>2 = 1/0 = b10,<br>3 = 1/1 = b11.<br>For CPOL and CPHA explanations, see Wikipedia article: https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus."
+      "description": "The SPI mode controls the clock idle state and which edge clocks the data. Bit 1 is CPOL and Bit 0 is CPHA, so CPOL/CPHA for different decimal values: 0 = 0/0 = b00, 1 = 0/1 = b01, 2 = 1/0 = b10, 3 = 1/1 = b11. For CPOL and CPHA explanations, see Wikipedia article: https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus."
     },
     {
       "address": 5005,
@@ -1208,7 +1218,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["SPI"],
-      "description": "This value controls the SPI clock frequency.  Pass 0-65535.  Default=0 corresponds to 65536 internally which results in ~800 kHz.<br>65500 = ~100 kHz,<br>65100 = ~10 kHz,<br>61100 = ~1 kHz,<br>21000 = ~100 Hz,<br>and 1 = ~67 Hz.<br>Avoid setting too low such that the entire transaction lasts longer than the 250 millisecond timeout of the internal watchdog timer."
+      "description": "This value controls the SPI clock frequency.  Pass 0-65535.  Default=0 corresponds to 65536 internally which results in ~800 kHz. 65500 = ~100 kHz, 65100 = ~10 kHz, 61100 = ~1 kHz, 21000 = ~100 Hz, and 1 = ~67 Hz. Avoid setting too low such that the entire transaction lasts longer than the 250 millisecond timeout of the internal watchdog timer."
     },
     {
       "address": 5006,
@@ -1222,7 +1232,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["SPI"],
-      "description": "Bit 0 is Auto-CS-Disable. When bit 0 is 0, CS is enabled. When bit 0 is 1, CS is disabled.<br>Bit 1: 0 = Set DIO directions before starting the SPI operations, 1 = Do not set DIO directions.<br>Bit 2: 0 = Transmit data MSB first, 1 = LSB first.<br>Bits 4-7: This value sets the number of bits that will be transmitted during the last byte of the SPI operation. Default is 8, valid options are 1-8."
+      "description": "Bit 0 is Auto-CS-Disable. When bit 0 is 0, CS is enabled. When bit 0 is 1, CS is disabled. Bit 1: 0 = Set DIO directions before starting the SPI operations, 1 = Do not set DIO directions. Bit 2: 0 = Transmit data MSB first, 1 = LSB first. Bits 4-7: This value sets the number of bits that will be transmitted during the last byte of the SPI operation. Default is 8, valid options are 1-8."
     },
     {
       "address": 5007,
@@ -1325,7 +1335,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["I2C"],
-      "description": "This value controls the I2C clock frequency.  Pass 0-65535.<br>Default=0 corresponds to 65536 internally which results in ~450 kHz.<br>1 results in ~40 Hz, 65516 is ~100 kHz."
+      "description": "This value controls the I2C clock frequency.  Pass 0-65535. Default=0 corresponds to 65536 internally which results in ~450 kHz. 1 results in ~40 Hz, 65516 is ~100 kHz."
     },
     {
       "address": 5103,
@@ -1339,7 +1349,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["I2C"],
-      "description": "Advanced. Controls details of the I2C protocol to improve device compatibility.<br>bit 0: 1 = Reset the I2C bus before attempting communication.<br>bit 1: 0 = Restarts will use a stop and a start, 1 = Restarts will not use a stop.<br>bit 2: 1 = disable clock stretching."
+      "description": "Advanced. Controls details of the I2C protocol to improve device compatibility. bit 0: 1 = Reset the I2C bus before attempting communication. bit 1: 0 = Restarts will use a stop and a start, 1 = Restarts will not use a stop. bit 2: 1 = disable clock stretching."
     },
     {
       "address": 5104,
@@ -1390,7 +1400,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1412,7 +1422,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1425,7 +1435,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["I2C"],
-      "description": "An array of bits used to observe ACKs from the slave device."
+      "description": "A binary encoded value (array of bits) used to observe ACKs from the slave device."
     },
     {
       "address": 5120,
@@ -1466,7 +1476,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1488,7 +1498,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1510,7 +1520,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1523,7 +1533,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["ONEWIRE"],
-      "description": "Controls advanced features. Value is a bitmask.<br>bit 0: reserved,<br>bit 1: reserved,<br>bit 2: 1=DPU Enabled 0=DPU Disabled,<br>bit 3: DPU Polarity 1=Active state is high, 0=Active state is low (Dynamic Pull-Up)"
+      "description": "Controls advanced features. Value is a bitmask. bit 0: reserved, bit 1: reserved, bit 2: 1=DPU Enabled 0=DPU Disabled, bit 3: DPU Polarity 1=Active state is high, 0=Active state is low (Dynamic Pull-Up)"
     },
     {
       "address": 5307,
@@ -1532,7 +1542,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1545,7 +1555,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["ONEWIRE"],
-      "description": "Set the ROM function to use.<br>0xF0=Search,<br>0xCC=Skip,<br>0x55=Match,<br>0x33=Read."
+      "description": "Set the ROM function to use. 0xF0=Search, 0xCC=Skip, 0x55=Match, 0x33=Read."
     },
     {
       "address": 5308,
@@ -1554,7 +1564,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1576,7 +1586,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1598,7 +1608,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1611,7 +1621,7 @@
       "readwrite": "W",
       "default": 0,
       "tags": ["ONEWIRE"],
-      "description": "Instructs the T7 to perform the configured 1-wire transaction."
+      "description": "Instructs the device to perform the configured 1-wire transaction."
     },
     {
       "address": 5320,
@@ -1620,7 +1630,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1642,7 +1652,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1664,7 +1674,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1686,7 +1696,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1708,7 +1718,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1730,7 +1740,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1752,7 +1762,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1774,7 +1784,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1797,7 +1807,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1820,7 +1830,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -1975,7 +1985,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["ASYNCH", "UART"],
-      "description": "The number of stop bits. Values:<br>0 = zero stop bits,<br>1 = one stop bit,<br>2 = two stop bits."
+      "description": "The number of stop bits. Values: 0 = zero stop bits, 1 = one stop bit, 2 = two stop bits."
     },
     {
       "address": 5460,
@@ -1989,7 +1999,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["ASYNCH", "UART"],
-      "description": "Parity setting:<br>0=none,<br>1=odd,<br>2=even."
+      "description": "Parity setting: 0=none, 1=odd, 2=even."
     },
     {
       "address": 5465,
@@ -2042,7 +2052,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2054,7 +2064,7 @@
       ],
       "readwrite": "RW",
       "tags": ["LUA"],
-      "description": "Writing 1 compiles and runs the Lua script that is loaded in RAM. Writing zero stops the script and begins cleaning up memory. Users may poll the register after writing a value of 0 to verify that the VM is unloaded, and garbage collection is complete.<br>0 = VM fully unloaded.<br>1 = Running/in-progress",
+      "description": "Writing 1 compiles and runs the Lua script that is loaded in RAM. Writing zero stops the script and begins cleaning up memory. Users may poll the register after writing a value of 0 to verify that the VM is unloaded, and garbage collection is complete. 0 = VM fully unloaded. 1 = Running/in-progress",
       "usesRAM": true
     },
     {
@@ -2064,7 +2074,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2087,7 +2097,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2108,7 +2118,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2130,7 +2140,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2152,7 +2162,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2173,7 +2183,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2194,7 +2204,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2215,7 +2225,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2227,7 +2237,7 @@
       ],
       "readwrite": "RW",
       "tags": ["LUA"],
-      "description": "Address within the saved Lua script in Flash to begin reading from."
+      "description": "Deprecated: Address within the saved Lua script in Flash to begin reading from."
     },
     {
       "address": 6038,
@@ -2236,7 +2246,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2248,7 +2258,7 @@
       ],
       "readwrite": "R",
       "tags": ["LUA"],
-      "description": "Read script saved to flash from here."
+      "description": "Deprecated: Read script saved to flash from here."
     },
     {
       "address": 6050,
@@ -2257,7 +2267,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2265,7 +2275,7 @@
         },
         {
           "device": "T4",
-          "fwmin": 1.0025
+          "fwmin": 1.0028
         }
       ],
       "readwrite": "RW",
@@ -2279,7 +2289,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2300,7 +2310,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2321,7 +2331,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2342,7 +2352,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2365,7 +2375,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2387,7 +2397,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2409,7 +2419,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2425,13 +2435,28 @@
       "description": "Function dependent on selected feature index."
     },
     {
+      "address": 8800,
+      "name": "AIN#(0:7)_EF_READ_A_CAPTURE",
+      "type": "FLOAT32",
+      "devices": [
+        {
+          "device": "T8",
+          "fwmin": 1.0014
+        }
+      ],
+      "readwrite": "R",
+      "default": 0,
+      "tags": ["AIN_EF", "AIN"],
+      "description": "(T8 only) Read AIN_EF with the last capture sampled, use AIN#(0:7)_EF_READ_A to read a new sample"
+    },
+    {
       "address": 9000,
       "name": "AIN#(0:149)_EF_INDEX",
       "type": "UINT32",
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2445,7 +2470,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["AIN_EF", "AIN"],
-      "description": "Specify the desired extended feature for this analog input with the index value. List of index values:<br>0=None(disabled);<br>1=Offset and Slope;<br>3=Max/Min/Avg;<br>4=Resistance;<br>5=Average and Threshold;<br>10=RMS Flex;<br>11=FlexRMS;<br>20=Thermocouple type E;<br>21=Thermocouple type J;<br>22=Thermocouple type K;<br>23=Thermocouple type R;<br>24=Thermocouple type T;<br>25=Thermocouple type S;<br>30=Thermocouple type C;<br>40=RTD model PT100;<br>41=RTD model PT500;<br>42=RTD model PT1000.",
+      "description": "Specify the desired extended feature for this analog input with the index value. List of index values: 0=None(disabled); 1=Offset and Slope; 3=Max/Min/Avg; 4=Resistance; 5=Average and Threshold; 10=RMS Flex; 11=FlexRMS; 20=Thermocouple type E; 21=Thermocouple type J; 22=Thermocouple type K; 23=Thermocouple type R; 24=Thermocouple type T; 25=Thermocouple type S; 27=Thermocouple type N; 28=Thermocouple type B; 30=Thermocouple type C; 40=RTD model PT100; 41=RTD model PT500; 42=RTD model PT1000; 50=Thermistor Steinhart-Hart; 51=Thermistor Beta.",
       "usesRAM": true
     },
     {
@@ -2455,7 +2480,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2477,7 +2502,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2499,7 +2524,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2521,7 +2546,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2543,7 +2568,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2565,7 +2590,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2587,7 +2612,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2609,7 +2634,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2631,7 +2656,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2653,7 +2678,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -2681,7 +2706,7 @@
       "default": 0,
       "tags": ["TDAC", "CORE"],
       "displayname": ["LJTick-DAC #"],
-      "description": "Update a voltage output on a connected LJTick-DAC accessory.<br>Even TDAC# = DACA,<br>Odd TDAC# = DACB.<br>For instance, if LJTick-DAC accessory is connected to FIO2/FIO3 block on main device, TDAC2 corresponds with DACA, and TDAC3 corresponds with DACB."
+      "description": "Update a voltage output on a connected LJTick-DAC accessory. Even TDAC# = DACA, Odd TDAC# = DACB. For instance, if LJTick-DAC accessory is connected to FIO2/FIO3 block on main device, TDAC2 corresponds with DACA, and TDAC3 corresponds with DACB."
     },
     {
       "address": 55200,
@@ -2704,7 +2729,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2727,7 +2752,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2749,7 +2774,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2771,7 +2796,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2795,7 +2820,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2819,7 +2844,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2841,7 +2866,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2863,7 +2888,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2885,7 +2910,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2908,7 +2933,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -2930,21 +2955,21 @@
       "devices": [
         {
           "device": "T8",
-          "description": "T8 description TBD"
+          "description": "Valid values/ranges: 0.0=Default → ±11V. 11.0 → ±11.0, 9.6 → ±9.6, 4.8 → ±4.8, 2.4 → ±2.4, 1.2 → ±1.2, 0.6 → ±0.6, 0.3 → ±0.3, 0.15 → ±0.15, 0.075 → ±0.075, 0.036 → ±0.036, and 0.018 → ±0.018"
         },
         {
           "device": "T7",
-          "description": "Valid values/ranges:<br>0.0=Default=> +/-10V, 10.0=> +/-10V,<br>1.0=> +/-1V,<br>0.1=> +/-0.1V, or<br>0.01=> +/-0.01V."
+          "description": "Valid values/ranges: 0.0=Default → ±10V. 10.0 → ±10V, 1.0 → ±1V, 0.1 → ±0.1V, and 0.01 → ±0.01V."
         },
         {
           "device": "T4",
-          "description": "Valid values/ranges:  0.0=Default=> 0-2.5 V on LV lines and ±10 V on HV lines."
+          "description": "Valid values/ranges: 0.0=Default → 0-2.5 V on LV lines and ±10 V on HV lines."
         }
       ],
       "readwrite": "RW",
       "default": 0,
       "tags": ["AIN"],
-      "description": "The range/span of each analog input. Write the highest expected input voltage."
+      "description": "The range/span of a single analog input. Select the desired range by writing a value from the device specific list."
     },
     {
       "address": 41000,
@@ -2953,7 +2978,7 @@
       "devices": [
         {
           "device": "T8",
-          "description": "T8 description TBD"
+          "description": "Ignored. This register has no meaning on the T8."
         },
         {
           "device": "T7",
@@ -2975,7 +3000,7 @@
       "devices": [
         {
           "device": "T8",
-          "description": "T8 description TBD"
+          "description": "Valid values:  0-16. A value of 0 will instruct the T8 to use the best resolution for the rate specified."
         },
         {
           "device": "T7",
@@ -2998,7 +3023,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "description": "Ignored. This register has no meaning on the T8."
         },
         {
           "device": "T7",
@@ -3022,13 +3047,27 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         }
       ],
       "readwrite": "RW",
       "default": 255,
       "tags": ["AIN"],
-      "description": "This register is a bitmask represnting the enable states of the analog inputs."
+      "description": "T8 Only. This register is a bitmask representing the enable states of the analog inputs."
+    },
+    {
+      "address": 43702,
+      "name": "AIN_ALL_RESOLUTION_INDEX_ACTUAL",
+      "type": "UINT32",
+      "devices": [
+        {
+          "device": "T8",
+          "fwmin": 1.0000
+        }
+      ],
+      "readwrite": "R",
+      "tags": ["AIN"],
+      "description": "T8 Only. Returns the AIN system's actual resolution index"
     },
     {
       "address": 43710,
@@ -3037,13 +3076,13 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         }
       ],
       "readwrite": "RW",
-      "default": 255,
+      "default": 100,
       "tags": ["AIN"],
-      "description": "Writing to this register sets the analog sampling rate. Not all rates are possible. Read AIN_SAMPLING_RATE_ACTUAL_HZ to get the actual rate."
+      "description": "T8 Only. Writing to this register sets the analog sampling rate. Not all rates are possible. Read AIN_SAMPLING_RATE_ACTUAL_HZ to get the actual rate."
     },
     {
       "address": 43712,
@@ -3052,15 +3091,29 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         }
       ],
       "readwrite": "R",
       "default": 255,
       "tags": ["AIN"],
-      "description": "Returns the AIN system's actual sampling rate."
+      "description": "T8 Only. Returns the AIN system's actual sampling rate."
     },
-    
+    {
+      "address": 43722,
+      "name": "AIN_HEALTH",
+      "type": "UINT16",
+      "devices": [
+        {
+          "device": "T8",
+          "fwmin": 1.0036
+        }
+      ],
+      "readwrite": "R",
+      "default": 255,
+      "tags": ["AIN"],
+      "description": "T8 Only. Returns the status of each AIN channel where 1 is active and 0 deactivated."
+    },
     {
       "address": 43900,
       "name": "AIN_ALL_RANGE",
@@ -3068,20 +3121,23 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000,
+          "description": "Valid values/ranges: 0.0=Default → ±11V. 11.0 → ±11.0, 9.6 → ±9.6, 4.8 → ±4.8, 2.4 → ±2.4, 1.2 → ±1.2, 0.6 → ±0.6, 0.3 → ±0.3, 0.15 → ±0.15, 0.075 → ±0.075, 0.036 → ±0.036, and 0.018 → ±0.018"
         },
         {
           "device": "T7",
-          "fwmin": 0.9328
+          "fwmin": 0.9328,
+          "description": "Valid values/ranges: 0.0=Default → ±10V. 10.0 → ±10V, 1.0 → ±1V, 0.1 → ±0.1V, and 0.01 → ±0.01V."
         },
         {
-          "device": "T4"
+          "device": "T4",
+          "description": "Valid values/ranges: 0.0=Default → 0-2.5 V on LV lines and ±10 V on HV lines."
         }
       ],
       "readwrite": "RW",
       "default": 0,
       "tags": ["AIN"],
-      "description": "A write to this global parameter affects all AIN.  A read will return the correct setting if all channels are set the same, but otherwise will return -9999."
+      "description": "The range/span of a all analog inputs. Writing to this register will set the range for all analog inputs. Reading will return a range value if all channels are set to same range. Otherwise, -9999 will be returned."
     },
     {
       "address": 43902,
@@ -3090,7 +3146,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "description": "Ignored. This register has no meaning on the T8."
         },
         {
           "device": "T7",
@@ -3112,7 +3168,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3136,7 +3192,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "description": "Ignored. This register has no meaning on the T8."
         },
         {
           "device": "T7",
@@ -3160,7 +3216,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0025
         },
         {
           "device": "T7",
@@ -3184,7 +3240,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3205,7 +3261,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3226,7 +3282,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3247,7 +3303,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3259,7 +3315,7 @@
       ],
       "readwrite": "RW",
       "tags": ["DIO_EF", "DIO"],
-      "description": "The clock will count to this value and then start over at zero. The clock pulses counted are those after the divisor. 0 results in the max roll value possible. This is a 32-bit value (0-4294967295) if using a 32-bit clock, and a 16-bit value (0-65535) if using a 16-bit clock."
+      "description": "The clock count will increment continuously and then start over at zero as it reaches the roll value. DIO_EF_CLOCK0 is a 32-bit clock, valid values are 0 to (2^32 - 1). 0 results in the max roll value (2^32)."
     },
     {
       "address": 44910,
@@ -3268,7 +3324,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3289,7 +3345,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3310,7 +3366,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3331,7 +3387,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3352,7 +3408,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3373,7 +3429,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3394,7 +3450,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3415,7 +3471,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3436,7 +3492,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3457,7 +3513,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3478,7 +3534,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3499,7 +3555,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3520,7 +3576,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3537,12 +3593,12 @@
     },
     {
       "address": 44200,
-      "name": "DIO#(0:22)_EF_OPTIONS",
+      "name": "DIO#(0:22)_EF_CLOCK_SOURCE",
       "type": "UINT32",
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3554,7 +3610,8 @@
       ],
       "readwrite": "RW",
       "tags": ["DIO_EF", "DIO"],
-      "description": "Function dependent on selected feature index."
+      "altnames": ["DIO#(0:22)_EF_OPTIONS"],
+      "description": "Set Clock Source to use for selected feature index."
     },
     {
       "address": 44300,
@@ -3563,7 +3620,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3585,7 +3642,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3607,7 +3664,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3629,7 +3686,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3733,7 +3790,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -3745,13 +3802,63 @@
       "description": "Deprecated. Automatically configures the associated DIO_EF for feature index 11. If already configured for index 11, reads the result and resets the DIO_EF."
     },
     {
+      "address": 48000,
+      "name": "POWER_MODE",
+      "type": "UINT16",
+      "devices": [
+        {
+          "device": "T7",
+          "fwmin": 1.0224
+        }
+      ],
+      "readwrite": "RW",
+      "tags": ["CONFIG"],
+      "description": "The current power management state."
+    },
+    {
+      "address": 48001,
+      "name": "POWER_CORE",
+      "type": "UINT16",
+      "devices": [
+        {
+          "device": "T7",
+          "fwmin": 1.0200
+        },
+        {
+          "device": "T4",
+          "fwmin": 1.0000
+        }
+      ],
+      "readwrite": "RW",
+      "tags": ["CONFIG"],
+      "description": "The core processor speed. 0=80MHz, 1=20MHz, 2=2MHz, 3=250kHz"
+    },
+    {
+      "address": 48002,
+      "name": "POWER_USB",
+      "type": "UINT16",
+      "devices": [
+        {
+          "device": "T7",
+          "fwmin": 1.0200
+        },
+        {
+          "device": "T4",
+          "fwmin": 1.0000
+        }
+      ],
+      "readwrite": "RW",
+      "tags": ["CONFIG"],
+      "description": "The current ON/OFF state of the USB module."
+    },
+    {
       "address": 48003,
       "name": "POWER_ETHERNET",
       "type": "UINT16",
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0013
         },
         {
           "device": "T7",
@@ -3791,7 +3898,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0013
         },
         {
           "device": "T7",
@@ -3800,16 +3907,16 @@
       ],
       "readwrite": "RW",
       "tags": ["CONFIG", "AIN"],
-      "description": "The current ON/OFF state of the analog input module."
+      "description": "The current ON/OFF state of the analog input module. For T4 this register always returns 1. For the T8, returns 1 if any AIN channels are enabled. To control the T8's analog power configuration use POWER_AIN_CHANNEL_ENABLE."
     },
-    {
+     {
       "address": 48006,
       "name": "POWER_LED",
       "type": "UINT16",
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0013
         },
         {
           "device": "T7",
@@ -3822,7 +3929,71 @@
       ],
       "readwrite": "RW",
       "tags": ["CONFIG"],
-      "description": "Sets the LED operation:<br>0 = Off. Useful for lower power applications.<br>1 = normal.<br>2 = Lower power, LEDs will still blink but will normally be off.<br>3 = Reserved.<br>4 = Manual, in this mode the LEDs can be user controlled."
+      "description": "Sets the LED operation: 0 = Off. Useful for lower power applications. 1 = normal. 2 = Lower power, LEDs will still blink but will normally be off. 3 = Reserved. 4 = Manual, in this mode the LEDs can be user controlled."
+    },
+    {
+      "address": 48007,
+      "name": "POWER_AIN_CHANNEL_ENABLE",
+      "type": "UINT16",
+      "devices": [
+        {
+          "device": "T8",
+          "fwmin": 1.0032
+        }
+      ],
+      "readwrite": "RW",
+      "tags": ["CONFIG", "AIN"],
+      "description": "Sets or reads the ON/OFF state of individual AIN channels. This register is a bitmask where each bit represents a channel. A 1 = on, 0 = off. Only available on certain devices."
+    },
+    {
+      "address": 48050,
+      "name": "POWER_MODE_DEFAULT",
+      "type": "UINT16",
+      "devices": [
+        {
+          "device": "T7",
+          "fwmin": 1.0224
+        }
+      ],
+      "readwrite": "RW",
+      "tags": ["CONFIG"],
+      "description": "The power management state after a power-cycle to the device."
+    },
+    {
+      "address": 48051,
+      "name": "POWER_CORE_DEFAULT",
+      "type": "UINT16",
+      "devices": [
+        {
+          "device": "T7",
+          "fwmin": 1.0200
+        },
+        {
+          "device": "T4",
+          "fwmin": 1.0000
+        }
+      ],
+      "readwrite": "RW",
+      "tags": ["CONFIG"],
+      "description": "Controls the core processor speed after a power-cycle to the device. 0=80MHz, 1=20MHz, 2=2MHz, 3=250kHz"
+    },
+    {
+      "address": 48052,
+      "name": "POWER_USB_DEFAULT",
+      "type": "UINT16",
+      "devices": [
+        {
+          "device": "T7",
+          "fwmin": 1.0200
+        },
+        {
+          "device": "T4",
+          "fwmin": 1.0000
+        }
+      ],
+      "readwrite": "RW",
+      "tags": ["CONFIG"],
+      "description": "The current ON/OFF state of the USB module after a power-cycle to the device."
     },
     {
       "address": 48053,
@@ -3831,7 +4002,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0013
         },
         {
           "device": "T7",
@@ -3870,10 +4041,6 @@
       "type": "UINT16",
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 0.86
         }
@@ -3889,7 +4056,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0013
         },
         {
           "device": "T7",
@@ -3905,11 +4072,28 @@
       "description": "The ON/OFF state of the LEDs after a power-cycle to the device."
     },
     {
+      "address": 48057,
+      "name": "POWER_AIN_CHANNEL_ENABLE_DEFAULT",
+      "type": "UINT16",
+      "devices": [
+        {
+          "device": "T8",
+          "fwmin": 1.0032
+        }
+      ],
+      "readwrite": "RW",
+      "tags": ["CONFIG", "AIN"],
+      "description": "Sets and reads the startup setting for POWER_AIN_CHANNEL_ENABLE"
+    },
+    {
       "address": 49000,
       "name": "IO_CONFIG_CHECK_FOR_FACTORY",
       "type": "UINT32",
       "devices": [
-        "T8",
+        {
+          "device": "T8",
+          "fwmin": 1.0012
+        },
         "T7",
         "T4"
       ],
@@ -3922,7 +4106,10 @@
       "name": "IO_CONFIG_SET_DEFAULT_TO_CURRENT",
       "type": "UINT32",
       "devices": [
-        "T8",
+        {
+          "device": "T8",
+          "fwmin": 1.0012
+        },
         "T7",
         "T4"
       ],
@@ -3935,7 +4122,10 @@
       "name": "IO_CONFIG_SET_DEFAULT_TO_FACTORY",
       "type": "UINT32",
       "devices": [
-        "T8",
+        {
+          "device": "T8",
+          "fwmin": 1.0012
+        },
         "T7",
         "T4"
       ],
@@ -3948,7 +4138,10 @@
       "name": "IO_CONFIG_FACTORY_pREAD",
       "type": "UINT32",
       "devices": [
-        "T8",
+        {
+          "device": "T8",
+          "fwmin": 1.0012
+        },
         "T7",
         "T4"
       ],
@@ -3961,7 +4154,10 @@
       "name": "IO_CONFIG_FACTORY_READ",
       "type": "UINT32",
       "devices": [
-        "T8",
+        {
+          "device": "T8",
+          "fwmin": 1.0012
+        },
         "T7",
         "T4"
       ],
@@ -3974,7 +4170,10 @@
       "name": "IO_CONFIG_DEFAULT_pREAD",
       "type": "UINT32",
       "devices": [
-        "T8",
+        {
+          "device": "T8",
+          "fwmin": 1.0012
+        },
         "T7",
         "T4"
       ],
@@ -3987,7 +4186,10 @@
       "name": "IO_CONFIG_DEFAULT_READ",
       "type": "UINT32",
       "devices": [
-        "T8",
+        {
+          "device": "T8",
+          "fwmin": 1.0012
+        },
         "T7",
         "T4"
       ],
@@ -4000,7 +4202,10 @@
       "name": "IO_CONFIG_CURRENT_pREAD",
       "type": "UINT32",
       "devices": [
-        "T8",
+        {
+          "device": "T8",
+          "fwmin": 1.0012
+        },
         "T7",
         "T4"
       ],
@@ -4013,7 +4218,10 @@
       "name": "IO_CONFIG_CURRENT_READ",
       "type": "UINT32",
       "devices": [
-        "T8",
+        {
+          "device": "T8",
+          "fwmin": 1.0012
+        },
         "T7",
         "T4"
       ],
@@ -4026,7 +4234,10 @@
       "name": "IO_CONFIG_CHECK_FOR_DEFAULT",
       "type": "UINT32",
       "devices": [
-        "T8",
+        {
+          "device": "T8",
+          "fwmin": 1.0012
+        },
         "T7",
         "T4"
       ],
@@ -4041,7 +4252,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4075,7 +4286,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4088,7 +4299,7 @@
       "readwrite": "R",
       "tags": ["CONFIG"],
       "streamable": true,
-      "description": "Internal 32-bit system timer running at 1/2 core speed, thus normally 80M/2 => 40 MHz."
+      "description": "Internal 32-bit system timer running at 1/2 core speed."
     },
     {
       "address": 61522,
@@ -4097,7 +4308,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4118,10 +4329,6 @@
       "type": "UINT32",
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 1.022
         },
@@ -4140,7 +4347,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4160,7 +4367,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4207,7 +4414,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4220,7 +4427,7 @@
       ],
       "readwrite": "W",
       "tags": ["CONFIG"],
-      "description": "Issues a device reboot. Must write 0x4C4Axxxx, where xxxx is number of 50ms ticks to wait before reboot.  To reboot immediately write 0x4C4A0000 (d1279918080)."
+      "description": "Issues a device reboot. Must write 0x4C4Axxxx, where xxxx is number of 50ms ticks to wait before reboot. Waiting for a few hundred milliseconds will ensure that the device has time to send a response to the reboot command. Otherwise, the command will not get a response and will have to wait for a communication timeout. To reboot immediately write 0x4C4A0000 (d1279918080)."
     },
     {
       "address": 60050,
@@ -4229,7 +4436,8 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 0.0123,
+          "description": "This register is not supported on the T8, please use TEMPERATURE_DEVICE_K or TEMPERATURE#(0:7) to measure the temperature at an AIN terminal."
         },
         {
           "device": "T7",
@@ -4253,7 +4461,9 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000,
+          "description": "The AIN0 temperature sensor connected to an LM94021 with GS=01 located right next to the AIN0 screw terminal.",
+          "exception": "When AIN#_EF_CONFIG_B is set to 60052, for thermocouple CJC, the correct AIN# sensor is used for each channel."
         },
         {
           "device": "T7",
@@ -4270,7 +4480,7 @@
       "tags": ["AIN", "CORE"],
       "streamable": false,
       "displayname": ["Device Temperature [K]"],
-      "description": "Takes a reading from the internal temperature sensor using range=+/-10V and resolution=8, and applies the formula Volts*-92.6+467.6 to return kelvins."
+      "description": "Takes a reading from the internal temperature sensor and returns kelvins."
     },
     {
       "address": 60091,
@@ -4279,28 +4489,28 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         }
       ],
       "readwrite": "R",
       "tags": ["AIN", "CORE"],
       "streamable": false,
-      "description": "Returns the status of the calibration data saved in flash. 1 = calibration looks good. 0 = calibration invalid."
+      "description": "T8 Only. Returns the status of the calibration data saved in flash. 1 = calibration looks good. 0 = calibration invalid."
     },   
     {
       "address": 60092,
       "name": "CALIBRATION_SOURCE",
-      "type": "FLOAT32",
+      "type": "UINT16",
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         }
       ],
       "readwrite": "RW",
       "tags": ["AIN", "CORE"],
       "streamable": false,
-      "description": "Sets and reads the source of the current set of calibration constants. 0 = no calibration. 1 = binary calibration, 2 = Calibration set from Flash, 3 = Nominal Calibration. When setting to 2, the constants will be checked and if invalid 1 will be used instead."
+      "description": "T8 Only. Sets and reads the source of the current set of calibration constants. 0 = no calibration. 1 = binary calibration, 2 = Calibration set from Flash, 3 = Nominal Calibration. When setting to 2, the constants will be checked and if invalid 1 will be used instead."
     },
     {
       "address": 49702,
@@ -4309,7 +4519,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4331,7 +4541,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4353,7 +4563,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4375,7 +4585,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4397,7 +4607,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4419,7 +4629,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4519,7 +4729,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4615,7 +4825,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4633,7 +4843,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -4949,8 +5159,7 @@
       "readwrite": "R",
       "tags": ["AIN"],
       "streamable": false,
-      "altnames": ["AIN#(0:254)_BIN"],
-      "description": "Returns the 24-bit binary representation of the voltage output of the temperature sensor for the specified analog input. If you prefer 16-bit representation, simply divide this by 256. This is for command-response only.  Stream always returns binary and LJM applies cal constants, so the LJM config flag LJM_STREAM_AIN_BINARY is used to get binary values."
+      "description": "T8 Only. Returns the 24-bit binary representation of the voltage output of the temperature sensor for the specified analog input. If you prefer 16-bit representation, simply divide this by 256. This is for command-response only.  Stream always returns binary and LJM applies cal constants, so the LJM config flag LJM_STREAM_AIN_BINARY is used to get binary values."
     },
     {
       "address": 50650,
@@ -4960,8 +5169,7 @@
       "readwrite": "R",
       "tags": ["AIN"],
       "streamable": false,
-      "altnames": ["AIN#(0:254)_BIN"],
-      "description": "Returns the saved 24-bit binary representation of the specified analog input. If you prefer 16-bit representation, simply divide this by 256. This is for command-response only.  Stream always returns binary and LJM applies cal constants, so the LJM config flag LJM_STREAM_AIN_BINARY is used to get binary values."
+      "description": "T8 Only. Returns the saved 24-bit binary representation of the specified analog input. If you prefer 16-bit representation, simply divide this by 256. This is for command-response only.  Stream always returns binary and LJM applies cal constants, so the LJM config flag LJM_STREAM_AIN_BINARY is used to get binary values."
     },
     {
       "address": 50700,
@@ -4971,8 +5179,7 @@
       "readwrite": "R",
       "tags": ["AIN"],
       "streamable": false,
-      "altnames": ["AIN#(0:254)_BIN"],
-      "description": "Returns the saved 24-bit binary representation of the voltage output of the temperature sensor for the specified analog input. If you prefer 16-bit representation, simply divide this by 256. This is for command-response only.  Stream always returns binary and LJM applies cal constants, so the LJM config flag LJM_STREAM_AIN_BINARY is used to get binary values."
+      "description": "T8 Only. Returns the saved 24-bit binary representation of the voltage output of the temperature sensor for the specified analog input. If you prefer 16-bit representation, simply divide this by 256. This is for command-response only.  Stream always returns binary and LJM applies cal constants, so the LJM config flag LJM_STREAM_AIN_BINARY is used to get binary values."
     },
     {
       "address": 51000,
@@ -4995,7 +5202,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -5017,7 +5224,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -5038,7 +5245,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -5059,7 +5266,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -5081,7 +5288,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -5104,7 +5311,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -5127,7 +5334,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -5150,7 +5357,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -5172,7 +5379,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -5195,7 +5402,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -5217,7 +5424,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -5231,6 +5438,62 @@
       "default": 0,
       "tags": ["LUA", "USER_RAM"],
       "description": "Write any value to this register to efficiently empty, flush, or otherwise clear data from the FIFO."
+    },
+    {
+      "address": 55000,
+      "name": "LAST_ERR_DETAIL",
+      "type": "UINT16",
+      "devices": [
+        "T8",
+        "T7",
+        "T4"
+      ],
+      "readwrite": "R",
+      "default": 0,
+      "tags": ["CORE"],
+      "description": "Returns the last LabJack error code seen on the device."
+    },
+    {
+      "address": 55001,
+      "name": "LAST_MB_ERR",
+      "type": "UINT16",
+      "devices": [
+        "T8",
+        "T7",
+        "T4"
+      ],
+      "readwrite": "R",
+      "default": 0,
+      "tags": ["CORE"],
+      "description": "Returns the last Modbus TCP error code seen on the device."
+    },
+    {
+      "address": 55002,
+      "name": "LAST_ERR_FRAME",
+      "type": "UINT16",
+      "devices": [
+        "T8",
+        "T7",
+        "T4"
+      ],
+      "readwrite": "R",
+      "default": 0,
+      "tags": ["CORE"],
+      "description": "Returns the frame number that caused the last error."
+    },
+    {
+      "address": 55003,
+      "name": "LAST_ERR_TRANSACTION_ID",
+      "type": "UINT16",
+      "devices": [
+        "T8",
+        "T7",
+        "T4"
+      ],
+      "readwrite": "R",
+      "default": 0,
+      "tags": ["CORE"],
+      "description": "Returns the transaction ID of the Modbus TCP packet that caused the last error."
     },
     {
       "address": 55100,
@@ -5382,7 +5645,7 @@
       "readwrite": "R",
       "default": 0,
       "tags": ["CONFIG"],
-      "description": "Bitmask indicating installed hardware options.<br>bit0: High Resolution ADC,<br>bit1: WiFi,<br>bit2: RTC,<br>bit3: microSD."
+      "description": "Bitmask indicating installed hardware options. bit0: High Resolution ADC, bit1: WiFi, bit2: RTC, bit3: microSD."
     },
     {
       "address": 60018,
@@ -5443,7 +5706,7 @@
       ],
       "readwrite": "R",
       "tags": ["CONFIG"],
-      "description": "The MAC address of the wired Ethernet module."
+      "description": "T8 Only. Returns the power supply voltage."
     },
     {
       "address": 60032,
@@ -5454,7 +5717,7 @@
       ],
       "readwrite": "R",
       "tags": ["CONFIG"],
-      "description": "The MAC address of the wired Ethernet module."
+      "description": "T8 Only. Returns the power supply current draw."
     },
     {
       "address": 60500,
@@ -5500,10 +5763,6 @@
       "type": "UINT16",
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 1.0156
         }
@@ -5517,10 +5776,6 @@
       "name": "FILE_IO_DIR_CURRENT",
       "type": "UINT16",
       "devices": [
-        {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
         {
           "device": "T7",
           "fwmin": 1.0134
@@ -5536,10 +5791,6 @@
       "type": "UINT16",
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 99
         }
@@ -5553,10 +5804,6 @@
       "name": "FILE_IO_DIR_REMOVE",
       "type": "UINT16",
       "devices": [
-        {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
         {
           "device": "T7",
           "fwmin": 99
@@ -5572,27 +5819,19 @@
       "type": "UINT16",
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 1.0134
         }
       ],
       "readwrite": "W",
       "tags": ["FILE_IO"],
-      "description": "Write any value to this register to initiate iteration through files and directories in the CWD. Typical sequence:<br>FILE_IO_DIR_FIRST(W), then loop through: [FILE_IO_NAME_READ_LEN(R), FILE_IO_NAME_READ(R), FILE_IO_ATTRIBUTES(R), FILE_IO_SIZE_BYTES(R), FILE_IO_DIR_NEXT(W)]<br>..until any of the following errors:<br>FILE_IO_END_OF_CWD (2966), FILE_IO_INVALID_OBJECT (2809), or FILE_IO_NOT_FOUND (2960)."
+      "description": "Write any value to this register to initiate iteration through files and directories in the CWD. Typical sequence: FILE_IO_DIR_FIRST(W), then loop through: [FILE_IO_NAME_READ_LEN(R), FILE_IO_NAME_READ(R), FILE_IO_ATTRIBUTES(R), FILE_IO_SIZE_BYTES(R), FILE_IO_DIR_NEXT(W)] ..until any of the following errors: FILE_IO_END_OF_CWD (2966), FILE_IO_INVALID_OBJECT (2809), or FILE_IO_NOT_FOUND (2960)."
     },
     {
       "address": 60611,
       "name": "FILE_IO_DIR_NEXT",
       "type": "UINT16",
       "devices": [
-        {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
         {
           "device": "T7",
           "fwmin": 1.0134
@@ -5608,10 +5847,6 @@
       "type": "UINT16",
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 1.0134
         }
@@ -5625,10 +5860,6 @@
       "name": "FILE_IO_CLOSE",
       "type": "UINT16",
       "devices": [
-        {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
         {
           "device": "T7",
           "fwmin": 1.0134
@@ -5644,10 +5875,6 @@
       "type": "UINT16",
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 1.0134
         }
@@ -5662,27 +5889,19 @@
       "type": "UINT16",
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 1.0134
         }
       ],
       "readwrite": "R",
       "tags": ["FILE_IO"],
-      "description": "Used to differentiate files from directories/folders.<br>Bitmask:<br>Bit0: Reserved,<br>Bit1: Reserved,<br>Bit2: Reserved,<br>Bit3: Reserved,<br>Bit4: 1=Directory,<br>Bit5: 1=File."
+      "description": "Used to differentiate files from directories/folders. Bitmask: Bit0: Reserved, Bit1: Reserved, Bit2: Reserved, Bit3: Reserved, Bit4: 1=Directory, Bit5: 1=File."
     },
     {
       "address": 60628,
       "name": "FILE_IO_SIZE_BYTES",
       "type": "UINT32",
       "devices": [
-        {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
         {
           "device": "T7",
           "fwmin": 1.0134
@@ -5699,10 +5918,6 @@
       "type": "UINT32",
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 1.0134
         }
@@ -5718,10 +5933,6 @@
       "type": "UINT32",
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 1.0134
         }
@@ -5735,10 +5946,6 @@
       "name": "FILE_IO_DISK_TOTAL_CLUSTERS",
       "type": "UINT32",
       "devices": [
-        {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
         {
           "device": "T7",
           "fwmin": 1.0134
@@ -5754,10 +5961,6 @@
       "type": "UINT32",
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 1.0134
         }
@@ -5772,10 +5975,6 @@
       "type": "UINT32",
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 1.016
         }
@@ -5783,17 +5982,13 @@
       "readwrite": "R",
       "tags": ["FILE_IO"],
       "altnames": ["FILE_IO_DISK_FORMAT"],
-      "description": "Used to determine the format of the SD card.<br>0=None or Unknown,<br>1=FAT12,<br>2=FAT16(Windows FAT),<br>3=FAT32"
+      "description": "Used to determine the format of the SD card. 0=None or Unknown, 1=FAT12, 2=FAT16(Windows FAT), 3=FAT32"
     },
     {
       "address": 60640,
       "name": "FILE_IO_PATH_WRITE_LEN_BYTES",
       "type": "UINT32",
       "devices": [
-        {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
         {
           "device": "T7",
           "fwmin": 1.0134
@@ -5811,10 +6006,6 @@
       "type": "UINT32",
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 1.0134
         }
@@ -5830,10 +6021,6 @@
       "type": "BYTE",
       "isBuffer": true,
       "devices": [
-        {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
         {
           "device": "T7",
           "fwmin": 1.0134
@@ -5851,10 +6038,6 @@
       "isBuffer": true,
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 1.0134
         }
@@ -5871,10 +6054,6 @@
       "isBuffer": true,
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 99
         }
@@ -5889,10 +6068,6 @@
       "type": "BYTE",
       "isBuffer": true,
       "devices": [
-        {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
         {
           "device": "T7",
           "fwmin": 1.0134
@@ -5909,7 +6084,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -5931,7 +6106,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -5944,7 +6119,7 @@
       "readwrite": "RW",
       "default": 0,
       "tags": ["WATCHDOG"],
-      "description": "A single binary-encoded value where each bit is an advanced option. If bit 0 is set, IO_CONFIG_SET_CURRENT_TO_FACTORY will be done on timeout.  If bit 1 is set, IO_CONFIG_SET_CURRENT_TO_DEFAULT will be done on timeout."
+      "description": "Configure Watchdog behavior on timeout. 1 = IO_CONFIG_SET_CURRENT_TO_FACTORY, 2 = IO_CONFIG_SET_CURRENT_TO_DEFAULT."
     },
     {
       "address": 61604,
@@ -5953,7 +6128,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -5975,7 +6150,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -5997,7 +6172,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -6019,7 +6194,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -6041,7 +6216,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -6063,7 +6238,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -6085,7 +6260,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -6107,7 +6282,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -6129,7 +6304,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -6150,7 +6325,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -6172,7 +6347,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -6194,7 +6369,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -6216,7 +6391,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -6238,7 +6413,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0012
         },
         {
           "device": "T7",
@@ -6334,6 +6509,20 @@
       "description": "Data written here will be written to internal flash. Write size must be an even number of registers. This register is a buffer."
     },
     {
+      "address": 61842,
+      "name": "INTERNAL_FLASH_CALCULATE_CRC",
+      "type": "UINT32",
+      "isBuffer": true,
+      "devices": [
+        "T8",
+        "T7",
+        "T4"
+      ],
+      "readwrite": "R",
+      "tags": ["INTFLASH"],
+      "description": "Calculates the checksum of a 4096 byte flash page."
+    },
+    {
       "address": 22000,
       "name": "DGT_TEMPERATURE_LATEST_RAW",
       "type": "UINT16",
@@ -6378,7 +6567,7 @@
       ],
       "readwrite": "RW",
       "tags": [""],
-      "description": "Set the items to log. Value is a bitmask:<br>Bit0: 1 = Log Temperature,<br>Bit1: 1 = Log Light,<br>Bit2: 1 = Log Humidity.<br>All other bits reserved. Change implemented on next erase of dataset."
+      "description": "Set the items to log. Value is a bitmask: Bit0: 1 = Log Temperature, Bit1: 1 = Log Light, Bit2: 1 = Log Humidity. All other bits reserved. Change implemented on next erase of dataset."
     },
     {
       "address": 22019,
@@ -6392,7 +6581,7 @@
       ],
       "readwrite": "R",
       "tags": [""],
-      "description": "Read what is logged in the dataset. Value is a bitmask:<br>Bit0: 1 = Temperature logged,<br>Bit1: 1 = Light logged,<br>Bit2: 1 = Humidity logged.<br>In memory: T, TL, TH, THL."
+      "description": "Read what is logged in the dataset. Value is a bitmask: Bit0: 1 = Temperature logged, Bit1: 1 = Light logged, Bit2: 1 = Humidity logged. In memory: T, TL, TH, THL."
     },
     {
       "address": 22038,
@@ -6406,7 +6595,7 @@
       ],
       "readwrite": "RW",
       "tags": [""],
-      "description": "Set the time interval between log events. Index<br>0=10s,<br>1=30s,<br>2=1m,<br>3=10m,<br>4=30m,<br>5=1h,<br>6=6h<br>Change implemented on next erase of dataset."
+      "description": "Set the time interval between log events. Index 0=10s, 1=30s, 2=1m, 3=10m, 4=30m, 5=1h, 6=6h Change implemented on next erase of dataset."
     },
     {
       "address": 22039,
@@ -6420,7 +6609,7 @@
       ],
       "readwrite": "R",
       "tags": [""],
-      "description": "Read time interval between log events in the dataset. Index<br>0=10s,<br>1=30s,<br>2=1m,<br>3=10m,<br>4=30m,<br>5=1h,<br>6=6h"
+      "description": "Read time interval between log events in the dataset. Index 0=10s, 1=30s, 2=1m, 3=10m, 4=30m, 5=1h, 6=6h"
     },
     {
       "address": 22042,
@@ -6836,7 +7025,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -6849,7 +7038,7 @@
       ],
       "readwrite": "R",
       "tags": ["CONFIG"],
-      "description": "Bitmask register that indicates why a device was last re-set.<br>bit0: Power-on reset,<br>bit1: Brown-out,<br>bit2:<br>Wake from idle,<br>bit3: Wake from sleep,<br>bit4: watchdog timer time-out,<br>bit5: reserved,<br>bit6: Software reset,<br>bit7: external reset (MCLR),<br>bit8: Voltage regulator standby,<br>bit9: Configuration mismatch."
+      "description": "Bitmask register that indicates why a device was last re-set. bit0: Power-on reset, bit1: Brown-out, bit2: Wake from idle, bit3: Wake from sleep, bit4: watchdog timer time-out, bit5: reserved, bit6: Software reset, bit7: external reset (MCLR), bit8: Voltage regulator standby, bit9: Configuration mismatch."
     }
   ],
 
@@ -6888,7 +7077,7 @@
       ],
       "readwrite": "W",
       "tags": ["WIFI"],
-      "description": "Currently unused."      
+      "description": "Currently unused."
     },
     {
       "address": 49486,
@@ -6934,7 +7123,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -6951,10 +7140,6 @@
       "type": "UINT32",
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 0.0123
-        },
-        {
           "device": "T7",
           "fwmin": 1.0168
         }
@@ -6970,7 +7155,7 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 0.0123
+          "fwmin": 1.0000
         },
         {
           "device": "T7",
@@ -7041,7 +7226,7 @@
     {
       "error": 1202,
       "string": "LJME_MBE2_ILLEGAL_DATA_ADDRESS",
-      "description": "The device received an invalid address."
+      "description": "The device received an invalid address. Alternatively, this error could indicate illegal access to a device register such as trying to write to a read only register."
     },
     {
       "error": 1203,
@@ -7096,17 +7281,17 @@
     {
       "error": 1222,
       "string": "LJME_INVALID_DEVICE_TYPE",
-      "description": "LJM received an unexpected device type."
+      "description": "LJM received an unsupported device type during device open or discovery."
     },
     {
       "error": 1223,
       "string": "LJME_INVALID_HANDLE",
-      "description": "LJM reached an invalid state."
+      "description": "LJM reached an invalid state due to an issue with an invalid handle reference."
     },
     {
       "error": 1224,
       "string": "LJME_DEVICE_NOT_OPEN",
-      "description": "The requested handle did not refer to an open device. Perhaps the Open call failed but you still tried to use the returned handle.  Perhaps your code called Close somewhere and then after tried to use the handle."
+      "description": "The requested handle did not refer to an open device. Perhaps the Open call failed but you still tried to use the returned handle. Perhaps your code called Close somewhere and then after tried to use the handle."
     },
     {
       "error": 1225,
@@ -7121,7 +7306,7 @@
     {
       "error": 1227,
       "string": "LJME_DEVICE_NOT_FOUND",
-      "description": "A device matching the requested device parameters could not be found and therefore could not be opened."
+      "description": "A device matching the requested device parameters could not be found and therefore could not be opened. This could indicate an invalid parameter to a device open function or that the desired connection is already claimed/unavailable."
     },
     {
       "error": 1228,
@@ -7141,7 +7326,7 @@
     {
       "error": 1231,
       "string": "LJME_CANNOT_CONNECT",
-      "description": "At least one device matching the requested device parameters was found, but a connection could not be established."
+      "description": "At least one device matching the requested device parameters was found, but a connection could not be established. Typically indicates a TCP socket connection issue."
     },
     {
       "error": 1232,
@@ -7189,29 +7374,34 @@
       "description": "System USB communication failed fatally."
     },
     {
+      "error": 1242,
+      "string": "LJME_STREAM_FLUSH_TIMEOUT",
+      "description": "Stream flushing did not resolve before the timeout."
+    },
+    {
       "error": 1243,
       "string": "LJME_U3_NOT_SUPPORTED_BY_LJM",
-      "description": "LJM does not support UD-series LabJack devices; use the UD driver (https://labjack.com/support/ud)"
+      "description": "LJM does not support UD-series LabJack devices; use the UD driver"
     },
     {
       "error": 1246,
       "string": "LJME_U6_NOT_SUPPORTED_BY_LJM",
-      "description": "LJM does not support UD-series LabJack devices; use the UD driver (https://labjack.com/support/ud)"
+      "description": "LJM does not support UD-series LabJack devices; use the UD driver"
     },
     {
       "error": 1249,
       "string": "LJME_UE9_NOT_SUPPORTED_BY_LJM",
-      "description": "LJM does not support UD-series LabJack devices; use the UD driver (https://labjack.com/support/ud)"
+      "description": "LJM does not support UD-series LabJack devices; use the UD driver"
     },
     {
       "error": 1250,
       "string": "LJME_INVALID_ADDRESS",
-      "description": "The requested address was not found."
+      "description": "The requested address did not match any address known to LJM (included in ljm_constants.json)"
     },
     {
       "error": 1251,
       "string": "LJME_INVALID_CONNECTION_TYPE",
-      "description": "LJM received an unexpected connection type."
+      "description": "LJM received an unexpected connection type during device open or discovery."
     },
     {
       "error": 1252,
@@ -7271,12 +7461,12 @@
     {
       "error": 1263,
       "string": "LJME_NO_RESPONSE_BYTES_RECEIVED",
-      "description": "No Modbus response bytes could be received from the device during the timeout period. See https://labjack.com/support/software/api/ljm/constants/timeout-configs"
+      "description": "No Modbus response bytes could be received from the device during the timeout period. Likely indicates some failure/unreliability with the communication method. See the Timeout Configs page in the LJM User's Guide for related information."
     },
     {
       "error": 1264,
       "string": "LJME_INCORRECT_NUM_RESPONSE_BYTES_RECEIVED",
-      "description": "An incorrect/unexpected number of Modbus response bytes were received from the device during the timeout period. See https://labjack.com/support/software/api/ljm/constants/timeout-configs"
+      "description": "An incorrect/unexpected number of Modbus response bytes were received from the device during the timeout period. Likely indicates some failure/unreliability with the communication method. See the Timeout Configs page in the LJM User's Guide for related information."
     },
     {
       "error": 1265,
@@ -7286,12 +7476,12 @@
     {
       "error": 1266,
       "string": "LJME_UNKNOWN_IDENTIFIER",
-      "description": "LJM received an unknown identifier type."
+      "description": "LJM received an unknown identifier type during device open or discovery."
     },
     {
       "error": 1267,
       "string": "LJME_NOT_IMPLEMENTED",
-      "description": "An unimplemented functionality was attempted. Please contact LabJack support if you've received this error so we can implement it for you!"
+      "description": "An unimplemented functionality was attempted to be used. Please contact LabJack support if you've received this error so we can implement it for you!"
     },
     {
       "error": 1268,
@@ -7431,7 +7621,7 @@
     {
       "error": 1298,
       "string": "LJME_ATTR_LOAD_COMM_FAILURE",
-      "description": "A device matching the requested device parameters was found, claimed, and connected, but a communication error prevented device attributes from being loaded to LJM. The device was not opened."
+      "description": "A device matching the requested device parameters was found, claimed, and connected, but a communication error prevented device attributes from being loaded to LJM. The device was not opened. Likely indicates some failure/unreliability with the communication method."
     },
     {
       "error": 1299,
@@ -7456,7 +7646,7 @@
     {
       "error": 1303,
       "string": "LJME_STREAM_NOT_RUNNING",
-      "description": "LJM is not streaming data from the device."
+      "description": "Stream data was attempted to be accessed when LJM was not streaming data to/from the device."
     },
     {
       "error": 1304,
@@ -7471,7 +7661,7 @@
     {
       "error": 1306,
       "string": "LJME_SYNCHRONIZATION_TIMEOUT",
-      "description": "LJM did not receive data from the device for longer than the timeout specified by LJM_STREAM_RECEIVE_TIMEOUT_MS. Externally clocked stream setup is described here: https://labjack.com/support/software/api/ljm/function-reference/ljmestreamstart#externally-clocked"
+      "description": "LJM did not receive data from the device for longer than the timeout specified by LJM_STREAM_RECEIVE_TIMEOUT_MS. Often returned in relation to externally clocked stream modes. See the eStreamStart documentation in the LJM User's Guide."
     },
     {
       "error": 1307,
@@ -7536,12 +7726,17 @@
     {
       "error": 1320,
       "string": "LJME_DIGITAL_AUTO_RECOVERY_ERROR_DETECTED",
-      "description": "During stream, the device buffer overflowed, causing auto-recovery to occur. See https://labjack.com/digital-auto-recovery-error-detection."
+      "description": "During stream, the device buffer overflowed which caused an auto-recover condition. The stream channel configuration made it impossible to determine the excat location in the data stream where the auto-recover occurred. For more infomation, see the digital stream section of the \"LJM Stream Configs\" page."
     },
     {
       "error": 1321,
       "string": "LJME_NEGATIVE_RECEIVE_BUFFER_SIZE",
       "description": "During stream, the receive buffer size was negative. This is probably because LJM_STREAM_TCP_RECEIVE_BUFFER_SIZE was set to too large a number to be represented by the signed data type being used, int. Solution: Use a smaller LJM_STREAM_TCP_RECEIVE_BUFFER_SIZE."
+    },
+    {
+      "error": 2012,
+      "string": "FEATURE_NOT_SUPPORTED",
+      "description": "Feature is not supported on this device."
     },
     {
       "error": 2300,
@@ -7692,6 +7887,16 @@
       "description": "Selected resolution is invalid. Valid range is 0-5 for T4 and 0-12 for T7."
     },
     {
+      "error": 2376,
+      "string": "AIN_RATE_INVALID",
+      "description": "The selected AIN rate configuration is invalid for the desired resolution index or vise-versa."
+    },
+    {
+      "error": 2377,
+      "string": "AIN_CHN_DISABLED",
+      "description": "The AIN channel has been disabled"
+    },
+    {
       "error": 2380,
       "string": "LUA_VM_STATE_NO_CHANGE"
     },
@@ -7739,9 +7944,19 @@
       "description": "The Lua VM is being closed, usually takes less than 100 ms."
     },
     {
+      "error": 2390,
+      "string": "LUA_NAME_INVALID",
+      "description": "An invalid register name was passed to the the Lua function. Register names must be strings, and include only valid characters, '_', and digits."
+    },
+    {
+      "error": 2391,
+      "string": "LUA_NAME_NOT_FOUND",
+      "description": "The register name passed to the Lua function could not be found. Check the Modbus Map for valid register names."
+    },
+    {
       "error": 2400,
       "string": "SYSTEM_MEMORY_BEREFT",
-      "description": "Insufficient memory to perform the requested action."
+      "description": "Insufficient RAM to perform the requested action. Often occurs when a loaded Lua script is too large."
     },
     {
       "error": 2401,
@@ -7779,7 +7994,12 @@
     {
       "error": 2408,
       "string": "SYSTEM_INCOMPATIBLE_FIRMWARE_VERSION",
-      "description": "The firmware image is not compatible with this device typically due to flash chip incompatibility."
+      "description": "The firmware image is not compatible with this device. Typically due to flash chip incompatibility."
+    },
+    {
+      "error": 2409,
+      "string": "SYSTEM_VS_TOO_LOW",
+      "description": "The device supply voltage is to low to function."
     },
     {
       "error": 2420,
@@ -7798,12 +8018,33 @@
     },
     {
       "error": 2452,
-      "string": "POWER_NO_CHANGE"
+      "string": "POWER_ETH_NEEDS_20MHZ_OR_MORE",
+      "description": "Core must be running at 20MHz minimum for Ethernet to operate."
+    },
+    {
+      "error": 2453,
+      "string": "POWER_AIN_NEEDS_20MHZ_OR_MORE",
+      "description": "Core must be running at 20MHz minimum for AIN to operate."
+    },
+    {
+      "error": 2454,
+      "string": "POWER_STREAM_NEEDS_20MHZ_OR_MORE",
+      "description": "Core must be running at 20MHz minimum to use stream mode."
+    },
+    {
+      "error": 2455,
+      "string": "POWER_SD_NEEDS_20MHZ_OR_MORE",
+      "description": "Core must be running at 20MHz minimum to use the SD card."
     },
     {
       "error": 2456,
       "string": "POWER_CAN_NOT_CHANGE_USED_CONNECTION",
       "description": "Can not change the power level of the connected medium."
+    },
+    {
+      "error": 2459,
+      "string": "POWER_NO_CHANGE",
+      "description": "The written power mode is the same as the current setting."
     },
     {
       "error": 2460,
@@ -7822,17 +8063,17 @@
     {
       "error": 2501,
       "string": "DIO_SET_TO_ANALOG",
-      "description": "The digital line addressed is set to analog. Digital operations can not be performed."
+      "description": "The digital line addressed is set to analog. Digital operations cannot be performed."
     },
     {
       "error": 2508,
       "string": "HW_CNTRA_NOT_AVAILABLE",
-      "description": "Counter A is being used by another system."
+      "description": "Counter A is being used by another system. Typically this is due to a high speed counter being enabled while trying to enable a DIO_EF clock that requires the same resource or vise-versa"
     },
     {
       "error": 2509,
       "string": "HW_CNTRB_NOT_AVAILABLE",
-      "description": "Counter B is being used by another system."
+      "description": "Counter B is being used by another system. Typically this is due to a high speed counter being enabled while trying to enable a DIO_EF clock that requires the same resource or vise-versa"
     },
     {
       "error": 2510,
@@ -7842,7 +8083,7 @@
     {
       "error": 2511,
       "string": "HW_CNTRD_NOT_AVAILABLE",
-      "description": "Counter D is being used by another system."
+      "description": "Counter D is being used by another system. Typically this is due to a high speed counter that shares a resource with the stream clock being enabled while trying to enable stream mode or vise-versa"
     },
     {
       "error": 2520,
@@ -7854,15 +8095,18 @@
     },
     {
       "error": 2523,
-      "string": "HW_DAC1_NOT_AVAILABLE"
+      "string": "HW_DAC1_NOT_AVAILABLE",
+      "description":"DAC1 is an active stream out target and therefore unavailable."
     },
     {
       "error": 2524,
-      "string": "HW_LEDS_NOT_AVAILABLE"
+      "string": "HW_LEDS_NOT_AVAILABLE",
+      "description":"The LEDs cannot be controlled when the LED power mode is not set to manual."
     },
     {
       "error": 2550,
-      "string": "EF_DIO_HAS_NO_TNC_FEATURES"
+      "string": "EF_DIO_HAS_NO_TNC_FEATURES",
+      "description":"The DIO accessed does not support any extended features."
     },
     {
       "error": 2551,
@@ -7887,7 +8131,7 @@
     {
       "error": 2555,
       "string": "EF_32BIT_DATA_INTO_16BIT_REG",
-      "description": "A number greater than 16-bits was written to a clock source configured for 16-bits."
+      "description": "A number greater than 16-bits was written to a clock source configured for 16-bits. Commonly occurs when an incorrect value is applied to CONFIG_A or CONFIG_B for an output feature such as PWM or pulse output."
     },
     {
       "error": 2556,
@@ -7904,18 +8148,18 @@
     },
     {
       "error": 2559,
-      "string": "EF_PRESCALE_VALUE_INVALID",
-      "description": "Specified prescale value is not supported. Supported values are 1,2,4,8,16,32,64, and 256"
+      "string": "EF_DIVISOR_VALUE_INVALID",
+      "description": "The specified divisor value is not supported. Supported values are: 1,2,4,8,16,32,64,256. This code was formerly named EF_PRESCALE_VALUE_INVALID"
     },
     {
       "error": 2560,
       "string": "EF_PIN_RESERVED",
-      "description": "Pin is already used by another system."
+      "description": "The pin is already in use by another system."
     },
     {
       "error": 2561,
       "string": "EF_INVALID_DIO_NUMBER",
-      "description": "DIO addresses is not supported on this device."
+      "description": "The specified DIO_EF address is not supported on this device."
     },
     {
       "error": 2563,
@@ -7939,7 +8183,7 @@
     {
       "error": 2580,
       "string": "AIN_EF_INVALID_TYPE",
-      "description": "The type index specified is not supported."
+      "description": "The specified type index is not supported."
     },
     {
       "error": 2581,
@@ -7953,19 +8197,22 @@
     {
       "error": 2583,
       "string": "AIN_EF_CHANNEL_INACTIVE",
-      "description": "AIN_EF channel has not been initialized. To initialize, set the index to a non-zero value."
+      "description": "The AIN_EF channel has not been initialized. To initialize, set the index configuration to a non-zero value."
     },
     {
       "error": 2584,
-      "string": "AIN_EF_CALCULATION_OUT_OF_RANGE"
+      "string": "AIN_EF_CALCULATION_OUT_OF_RANGE",
+      "description":"The final value calculated for the AIN_EF is outside of the range the feature supports. This often indicates that there is some configuration issue."
     },
     {
       "error": 2585,
-      "string": "AIN_EF_INVALID_CHANNEL"
+      "string": "AIN_EF_INVALID_CHANNEL",
+      "description":"AIN_EF is not supported on the specified channel, or the specified channel does not exist."
     },
     {
       "error": 2586,
-      "string": "AIN_EF_INVALID_CJC_REGISTER"
+      "string": "AIN_EF_INVALID_CJC_REGISTER",
+      "description":"The register address specified for CJC measurement is not supported."
     },
     {
       "error": 2587,
@@ -7985,12 +8232,12 @@
     {
       "error": 2590,
       "string": "AIN_EF_SCAN_TIME_TOO_LONG",
-      "description": "The data collection time (number of samples / scan_rate) is too big. Limit is set to 180 ms as of firmware 1.0170 "
+      "description": "The data collection time (number of samples / scan_rate) is too big. Limit is set to 180 ms."
     },
     {
       "error": 2591,
       "string": "AIN_EF_INVALID_EXCITATION_INDEX",
-      "description": "The set excitation circuit is not valid, use a different excitation circuit."
+      "description": "The excitation circuit index specified is not valid, use a different excitation circuit."
     },
     {
       "error": 2600,
@@ -8000,7 +8247,7 @@
     {
       "error": 2601,
       "string": "STREAM_CLOCK_BASE_NOT_WRITABLE",
-      "description": "Stream clock base is read only."
+      "description": "The stream clock base is read only."
     },
     {
       "error": 2602,
@@ -8013,7 +8260,8 @@
     },
     {
       "error": 2604,
-      "string": "STREAM_USB_PKT_OVERFLOW"
+      "string": "STREAM_USB_PKT_OVERFLOW",
+      "description":"STREAM_SAMPLES_PER_PACKET is set to a value greater than the USB interface can support."
     },
     {
       "error": 2605,
@@ -8028,7 +8276,7 @@
     {
       "error": 2607,
       "string": "STREAM_CHN_LIST_INVALID",
-      "description": "The channel list contains an unstreamable address."
+      "description": "An attempt was made to add a channel to the stream scan list which would have invalidated the list. There are two possible causes: 1) the channel does not support stream mode. See \"Streamable Registers\" on the \"Stream Mode\" datasheet page for more detail. 2) The scan list is full, T-Series devices support up to 128 channels in the scan list."
     },
     {
       "error": 2608,
@@ -8037,7 +8285,8 @@
     },
     {
       "error": 2609,
-      "string": "STREAM_OUT_BUFF_TOO_BIG"
+      "string": "STREAM_OUT_BUFF_TOO_BIG",
+      "description": "Stream out buffer is larger then the maximum size."
     },
     {
       "error": 2610,
@@ -8062,12 +8311,12 @@
     {
       "error": 2614,
       "string": "STREAM_OUT_TARGET_INVALID",
-      "description": "Specified address can not be a stream out target."
+      "description": "The specified address cannot be a stream out target."
     },
     {
       "error": 2615,
       "string": "STREAM_BUFF_SIZE_INVALID",
-      "description": "Specified buffer was either too large or not a power of 2."
+      "description": "The specified buffer was either too large or was not a power of 2."
     },
     {
       "error": 2616,
@@ -8085,13 +8334,12 @@
     },
     {
       "error": 2619,
-      "string": "STREAM_BUFFER_DNE",
-      "description": ""
+      "string": "STREAM_BUFFER_DNE"
     },
     {
       "error": 2620,
       "string": "STREAM_NOT_RUNNING",
-      "description": ""
+      "description": "Stream was already disabled."
     },
     {
       "error": 2621,
@@ -8101,12 +8349,12 @@
     {
       "error": 2622,
       "string": "STREAM_OUT_LOOP_TOO_BIG",
-      "description": "Loop size too big for the current buffer size."
+      "description": "The loop size is too big for the current buffer size."
     },
     {
       "error": 2623,
       "string": "STREAM_OUT_DATA_TRGT_MISSMATCH",
-      "description": ""
+      "description": "There is a mismatch between the stream out buffer type and target register."
     },
     {
       "error": 2624,
@@ -8121,7 +8369,7 @@
     {
       "error": 2626,
       "string": "STREAM_OUT_DAC_IN_USE",
-      "description": "The high resolution converter can not be used while stream out is used to update a DAC."
+      "description": "The high resolution converter cannot be used while stream out is used to update a DAC."
     },
     {
       "error": 2627,
@@ -8129,8 +8377,29 @@
       "description": "The STREAM_OUT#_ENABLE register must be set to 1 before writing STREAM_OUT#_LOOP_NUM_VALUES, STREAM_OUT#_SET_LOOP, or any of the STREAM_OUT#_BUFFER_ registers."
     },
     {
+      "error": 2628,
+      "string": "CANNOT_STREAM_FAST_WITH_DAC1_FREQUENCY_OUT_ENABLED",
+      "description": "DAC1_FREQUENCY_OUT_ENABLE should be disabled before streaming at rates above 10kHz due to poor frequency output performance at higher stream rates."
+    },
+    {
+      "error": 2629,
+      "string": "CANNOT_ENABLE_DAC1_FREQUENCY_OUT_WITH_FAST_STREAM",
+      "description": "DAC1_FREQUENCY_OUT_ENABLE should not be enabled while streaming at rates above 10kHz due to poor frequency output performance at higher stream rates."
+    },
+    {
+      "error": 2630,
+      "string": "STREAM_TRIGGER_INDEX_INVALID",
+      "description": "The stream trigger index is not valid for this device"
+    },
+    {
+      "error": 2631,
+      "string": "STREAM_RATE_INVALID_FOR_CJC",
+      "description": "Stream can only be run at a max of 250Hz when streaming TEMPERATURE(0:7) registers"
+    },
+    {
       "error": 2670,
-      "string": "SWDT_ROLLT_INVALID"
+      "string": "SWDT_ROLLT_INVALID",
+      "description":"The specified Software Watchdog timeout is too short."
     },
     {
       "error": 2671,
@@ -8140,17 +8409,17 @@
     {
       "error": 2672,
       "string": "SWDT_DIO_SETTINGS_INVALID",
-      "description": ""
+      "description":"The specified Software Watchdog DIO configurations are not valid."
     },
     {
       "error": 2673,
       "string": "SWDT_DAC0_SETTINGS_INVALID",
-      "description": ""
+      "description":"The specified Software Watchdog DAC0 configurations are not valid."
     },
     {
       "error": 2674,
       "string": "SWDT_DAC1_SETTINGS_INVALID",
-      "description": ""
+      "description":"The specified Software Watchdog DAC1 configurations are not valid."
     },
     {
       "error": 2690,
@@ -8158,7 +8427,8 @@
     },
     {
       "error": 2691,
-      "string": "RTC_SNTP_TIME_INVALID"
+      "string": "RTC_SNTP_TIME_INVALID",
+      "description":"The specified SNTP update interval is too short."
     },
     {
       "error": 2692,
@@ -8172,7 +8442,8 @@
     },
     {
       "error": 2701,
-      "string": "SPI_NO_DATA_AVAILABLE"
+      "string": "SPI_NO_DATA_AVAILABLE",
+      "description":"SPI RX data is not available in the RX buffer."
     },
     {
       "error": 2702,
@@ -8216,7 +8487,13 @@
     },
     {
       "error": 2710,
-      "string": "SPI_TRANSFER_SIZE_TOO_LARGE"
+      "string": "SPI_TRANSFER_SIZE_TOO_LARGE",
+      "description":"The specified TX buffer size is too large."
+    },
+    {
+      "error": 2712,
+      "string": "SPI_NULL_BUFFER",
+      "description":"SPI buffer has not been initialized, please set SPI_NUM_BYTES before running SPI_GO."
     },
     {
       "error": 2720,
@@ -8241,24 +8518,27 @@
     {
       "error": 2724,
       "string": "I2C_SDA_PIN_RESERVED",
-      "description": "Selected pin is not available."
+      "description": "The selected pin is not available."
     },
     {
       "error": 2725,
       "string": "I2C_SCL_PIN_RESERVED",
-      "description": "Selected pin is not available."
+      "description": "The selected pin is not available."
     },
     {
       "error": 2726,
-      "string": "I2C_TX_SIZE_TOO_LARGE"
+      "string": "I2C_TX_SIZE_TOO_LARGE",
+      "description":"The specified TX buffer size is too large."
     },
     {
       "error": 2727,
-      "string": "I2C_RX_SIZE_TOO_LARGE"
+      "string": "I2C_RX_SIZE_TOO_LARGE",
+      "description":"The specified RX buffer size is too large."
     },
     {
       "error": 2728,
-      "string": "I2C_BUFFER_OVERRUN"
+      "string": "I2C_BUFFER_OVERRUN",
+      "description":"The data that was attempted to be written to the I2C TX buffer exceeded the maximum TX buffer size. Only data up to the maximum buffer size was placed in the TX buffer."
     },
     {
       "error": 2729,
@@ -8307,12 +8587,12 @@
     {
       "error": 2762,
       "string": "TDAC_INVALID_CHANNEL",
-      "description": "Specified channel not supported on this device."
+      "description": "The specified channel not supported on this device."
     },
     {
       "error": 2763,
       "string": "TDAC_CAL_READ_FAILURE",
-      "description": "Failed to read TDAC calibration."
+      "description": "Failed to read the TDAC calibration."
     },
     {
       "error": 2764,
@@ -8320,8 +8600,13 @@
       "description": "The TDAC did not respond to communication attempts."
     },
     {
+      "error": 2765,
+      "string": "TDAC_NOT_INITIALIZED",
+      "description": "A TDAC has not been initialized, try writing to the the TDAC first with the TDAC# register."
+    },
+    {
       "error": 2770,
-      "string": "ONEWIRE_UNSUPPORETD_FUNCTION",
+      "string": "ONEWIRE_UNSUPPORTED_FUNCTION",
       "description": "Unknown function specified."
     },
     {
@@ -8347,22 +8632,22 @@
     {
       "error": 2783,
       "string": "ASYNCH_BAUD_TOO_HIGH",
-      "description": "Baud rate too high for this device."
+      "description": "The baud rate is too high for this device."
     },
     {
       "error": 2784,
       "string": "ASYNCH_IS_ENABLED",
-      "description": "Specified operation can not be performed while enabled."
+      "description": "The specified operation can not be performed while enabled."
     },
     {
       "error": 2785,
       "string": "ASYNCH_IS_NOT_ENABLED",
-      "description": "Specified operation can not be performed while disabled."
+      "description": "The specified operation can not be performed while disabled."
     },
     {
       "error": 2786,
       "string": "ASYNCH_TX_BUFFER_FULL",
-      "description": "Transmit buffer is full."
+      "description": "The transmit buffer is full."
     },
     {
       "error": 2787,
@@ -8372,7 +8657,7 @@
     {
       "error": 2788,
       "string": "ASYNCH_BAUD_ZERO",
-      "description": "Baud rate is zero. Please specify a baud rate."
+      "description": "The baud rate is zero. Please specify a baud rate."
     },
     {
       "error": 2801,
@@ -8401,13 +8686,13 @@
     },
     {
       "error": 2806,
-      "string": "FILE_IO_INVALID_NAME",
+      "string": "FILE_IO_PATH_NAME_INVALID",
       "description": "The path name format is invalid."
     },
     {
       "error": 2807,
       "string": "FILE_IO_DENIED",
-      "description": "Access denied due to prohibited access or directory full."
+      "description": "Access denied due to prohibited access or the directory is full."
     },
     {
       "error": 2808,
@@ -8417,7 +8702,7 @@
     {
       "error": 2809,
       "string": "FILE_IO_INVALID_OBJECT",
-      "description": "The file/directory object is invalid. Under the context of getting performing a \"ls\" command 2809 indicates that there are no more files."
+      "description": "The file/directory object is invalid. In the context of performing an \"ls\" command, this indicates that there are no more files."
     },
     {
       "error": 2810,
@@ -8442,12 +8727,12 @@
     {
       "error": 2814,
       "string": "FILE_IO_MKFS_ABORTED",
-      "description": "The f_mkfs() aborted due to any parameter error."
+      "description": "The f_mkfs() function aborted due to any parameter error."
     },
     {
       "error": 2815,
       "string": "FILE_IO_TIMEOUT",
-      "description": "Could not get a grant to access the volume within defined period."
+      "description": "Could not get granted access to the volume within the defined timeout period."
     },
     {
       "error": 2816,
@@ -8462,76 +8747,92 @@
     {
       "error": 2818,
       "string": "FILE_IO_TOO_MANY_OPEN_FILES",
-      "description": "Number of open files greater than allowable limit (files > _FS_SHARE)."
+      "description": "The number of open files is greater than the allowable limit (files > _FS_SHARE)."
     },
     {
       "error": 2819,
       "string": "FILE_IO_INVALID_PARAMETER",
-      "description": "Given parameter is invalid."
+      "description": "The given parameter is invalid."
     },
     {
       "error": 2900,
-      "string": "WIFI_ASSOCIATED"
+      "string": "WIFI_ASSOCIATED",
+      "description": "The WiFi module associated to the network."
     },
     {
       "error": 2901,
-      "string": "WIFI_ASSOCIATING"
+      "string": "WIFI_ASSOCIATING",
+      "description": "The WiFi module is attempting to associate to the network."
     },
     {
       "error": 2902,
-      "string": "WIFI_ASSOCIATION_FAILED"
+      "string": "WIFI_ASSOCIATION_FAILED",
+      "description": "The WiFi module failed to associate to the network."
     },
     {
       "error": 2903,
-      "string": "WIFI_UNPOWERED"
+      "string": "WIFI_UNPOWERED",
+      "description": "The WiFi module is not currently powered."
     },
     {
       "error": 2904,
-      "string": "WIFI_BOOTING_UP"
+      "string": "WIFI_BOOTING_UP",
+      "description": "The WiFi module is initializing."
     },
     {
       "error": 2905,
-      "string": "WIFI_COULD_NOT_START"
+      "string": "WIFI_COULD_NOT_START",
+      "description": "The WiFi module was unable to properly initialize."
     },
     {
       "error": 2906,
-      "string": "WIFI_APPLYING_SETTINGS"
+      "string": "WIFI_APPLYING_SETTINGS",
+      "description": "The WiFi module is attempting to apply the desired network settings."
     },
     {
       "error": 2907,
-      "string": "WIFI_DHCP_STARTED"
+      "string": "WIFI_DHCP_STARTED",
+      "description": "The WiFi module has begun the process of claiming a DHCP lease."
     },
     {
       "error": 2909,
-      "string": "WIFI_OTHER"
+      "string": "WIFI_OTHER",
+      "description": "The WiFi module is in an unspecified state."
     },
     {
       "error": 2920,
-      "string": "WIFI_UPDATE_CONFIG"
+      "string": "WIFI_UPDATE_CONFIG",
+      "description": "The WiFi module is getting ready to start an update."
     },
     {
       "error": 2921,
-      "string": "WIFI_UPDATE_IN_PROG"
+      "string": "WIFI_UPDATE_IN_PROG",
+      "description": "The WiFi module is in the process of updating."
     },
     {
       "error": 2923,
-      "string": "WIFI_UPDATE_REBOOT"
+      "string": "WIFI_UPDATE_REBOOT",
+      "description": "The WiFi module has updated and will restart to apply the new changes."
     },
     {
       "error": 2924,
-      "string": "WIFI_UPDATE_SUCCESS"
+      "string": "WIFI_UPDATE_SUCCESS",
+      "description": "The WiFi module was successfully updated."
     },
     {
       "error": 2925,
-      "string": "WIFI_UPDATE_FAILED"
+      "string": "WIFI_UPDATE_FAILED",
+      "description": "The WiFi module was not successfully updated."
     },
     {
       "error": 2940,
-      "string": "STREAM_AUTO_RECOVER_ACTIVE"
+      "string": "STREAM_AUTO_RECOVER_ACTIVE",
+      "description": "The stream buffer reached its capacity and auto-recovery has begun to avoid an overflow. No new samples will be saved until there is free space in the buffer."
     },
     {
       "error": 2941,
-      "string": "STREAM_AUTO_RECOVER_END"
+      "string": "STREAM_AUTO_RECOVER_END",
+      "description": "There is space available in the stream buffer for new samples again and auto-recovery has ended."
     },
     {
       "error": 2942,
@@ -8540,16 +8841,18 @@
     },
     {
       "error": 2943,
-      "string": "STREAM_AUTO_RECOVER_END_OVERFLOW"
+      "string": "STREAM_AUTO_RECOVER_END_OVERFLOW",
+      "description": "During stream auto-recovery, the variable tracking the number of skipped scans has reached an overflow condition."
     },
     {
       "error": 2944,
-      "string": "STREAM_BURST_COMPLETE"
+      "string": "STREAM_BURST_COMPLETE",
+      "description": "The specified number of stream scans have been acquired, stream will be stopped automatically."
     },
     {
       "error": 2945,
       "string": "STREAM_BUFFER_FULL",
-      "description": "Stream buffer filled up while autorecover was disabled. Stream stopped."
+      "description": "The stream buffer reached capacity while auto-recovery was disabled. Stream has been stopped."
     },
     {
       "error": 2950,
@@ -8801,7 +9104,7 @@
     "2018.11.08.A   Added STREAM_BUFFER_FULL AND STREAM_AUTORECOVER_DISABLE.",
     "2018.11.29.A   Updated STREAM_DEBUG_GET_SELF_INDEX description.",
     "2018.11.30.A   Added tag_mappings.",
-    "2018.12.05.A   Added <br>s to descriptions.",
+    "2018.12.05.A   Added  s to descriptions.",
     "2019.02.08.A   Added a missing error code for T4 AIN_EF features.",
     "2019.03.06.A   Added an error code STREAM_OUT_NEEDS_TO_BE_ENABLED.",
     "2019.08.07.A   Updated details for register 6022 and 6122 (lua debugging stuff).",
@@ -8813,7 +9116,41 @@
     "2020.07.02.A   Added AIN temperature and capture Registers for T8.",
     "2020.11.13.A   Added several registers for the T8",
     "2020.11.16.A   Added INTERNAL_VS_VOLTS and INTERNAL_IS_AMPS",
-    "2020.11.19.A   Added to the description for DAC1_FREQUENCY_OUT_ENABLE.", 
+    "2020.11.19.A   Added to the description for DAC1_FREQUENCY_OUT_ENABLE.",
+    "2021.08.25.A   Added error codes 2628 and 2629; DAC1 frequency out stream errors.",
+    "2021.12.15.A   Added INTERNAL_FLASH_CALCULATE_CRC.",
+    "2021.12.30.A   Updated T8 only register descriptions. Filled in some missing T8 descriptions.",
+    "2022.02.14.A   Updated AIN_EF description.",
+    "2023.03.08.A   Added and improved some error code descriptions.",
+    "2023.07.03.A   Removed <br>, updated tag links.",
+    "2023.08.03.A   Added AIN_EF Capture registers and FEATURE_NOT_SUPPORTED register",
+    "2023.09.07.A   Removed mention of 80 MHz in the CORE_TIMER description",
+    "2023.09.08.A   Updated the description for AIN_ALL_NEGATIVE_CH",
+    "2023.09.08.B   Updated the description for the settling registers",
+    "2023.09.25.A   Added error code for when an invalid stream trigger is given",
+    "2023.10.02.A   Edited STREAM_BUFFER_SIZE_BYTES, POWER_AIN_EDFAULT, EF_32BIT_DATA_INTO_16BIT_REG for T8",
+    "2023.10.11.A   Added T8 AIN_ALL_RESOLUTION_INDEX_ACTUAL register.",
+    "2023.10.18.A   Updated T8 minimum firmware values.",
+    "2023.12.07.A   Removed duplicated altnames from AIN_BINARY.",
+    "2024.01.23.A   Gave DIO_EF_OPTIONS an altname of DIO_EF_CLOCK_SOURCE",
+    "2024.01.29.A   Renamed EF_PRESCALE_VALUE_INVALID to EF_DIVISOR_VALUE_INVALID.",
+    "2024.04.18.A   Added POWER_AIN_CHANNEL_ENABLE and the default.",
+    "2024.05.30.A   Updated description for T8 range and add detailed description for AIN_ALL_RANGE for each device.",
+    "2024.06.04.A   STREAM_CLOCK_SOURCE description now reflects the difference between T7 and T8 pins",
+    "2024.06.21.A   Added STREAM_RATE_INVALID_FOR_CJC error code that is for limiting CJC streams to 250Hz",
+    "2024.07.09.A   Added AIN_HEALTH register.",
+    "2024.07.15.A   Updated STREAM_CLOCK_SOURCE to include ESS options.",
+    "2024.08.07.A   Added a TDAC_NOT_INITIALIZED error code.",
+    "2024.11.11.A   Updated the definitions of the _RANGE registers.",
+    "2024.12.04.A   Fixed a grammatical issue.",
+    "2024.12.19.A   Updated temperature register descriptions.",
+    "2025.03.11.A   Added description to STREAM_OUT_BUFF_TOO_BIG.",
+    "2025.03.12.A   Added device specific size limits for STREAM_OUT#(0:3)_BUFFER_ALLOCATE_NUM_BYTES.",
+    "2025.04.21.A   Added deprecation notices to Lua Read registers.",
+    "2025.04.21.B   Updated SPI pin selection registers descriptions.",
+    "2025.04.24.A   Added some info about the delay period to SYSTEM_REBOOT.",
+    "2025.05.02.A   Improved descriptions for errors 2607 and 1320",
+    "2025.05.06.A   Added error code for SYSTEM_VS_TOO_LOW",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]

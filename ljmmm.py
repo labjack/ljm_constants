@@ -4,7 +4,6 @@
 @license GNU GPL v3
 """
 
-
 import copy
 import json
 import re
@@ -62,15 +61,58 @@ URL_REGEX += r')'
 FIND_URLS = re.compile(URL_REGEX, re.IGNORECASE)
 FIND_ENDING_PUNCTUATION = re.compile(r'.*([.,;\)])$')
 
-def read_file(src):
-    """Read a file and return the contents."""
+def read_file(src=DEFAULT_FILE_NAME):
+    """Read a file and return the contents with a default file name.
+
+    @keyword src: The name of the file to open.
+    @type src: str
+    @return contents: utf-8 file string
+    @rtype: str
+    """
+    contents = ''
     with open(src) as f:
         file_bytes = f.read().encode("utf-8","ignore")
         contents = file_bytes.decode("utf-8","ignore")
     return contents
 
+def parse_json_str_for_comments(src):
+    """Prepare a .json file that could potentially have comments in it for parsing.
 
-def get_raw_registers_data(src=DEFAULT_FILE_NAME):
+    @keyword src: The raw .json string.
+    @type src: str
+    @return contents: String ready to be parsed by a JSON parser
+    @rtype: str
+    """
+    contents = ""
+    lines = src.split('\n')
+    for line in lines:
+        if len(line) >= 2:
+            if line[0] != '/' and line[1] != '/': 
+                contents = contents + line + '\n'
+        else:
+            contents = contents + line + '\n'
+    return contents
+
+def load_json_file(src=DEFAULT_FILE_NAME, enable_utf8=False, enable_comments=False):
+    """Load a .json file into memory with a default file name.
+
+    @keyword src: The name of the file to open.
+    @type src: str
+    @return: Object representing the loaded .json file.
+    @rtype: str
+    """
+    json_contents = {}
+    file_data = read_file(src)
+    if enable_comments:
+        file_data = parse_json_str_for_comments(file_data)
+
+    if enable_utf8:
+        json_contents = json.JSONDecoder(encoding='utf-8').decode(file_data)
+    else:
+        json_contents = json.loads(file_data)
+    return json_contents
+
+def get_raw_registers_data(src=DEFAULT_FILE_NAME, enable_utf8=False):
     """Load information about registers from constants JSON file.
 
     @keyword src: The name of the file to open. Defaults to DEFAULT_FILE_NAME.
@@ -78,12 +120,32 @@ def get_raw_registers_data(src=DEFAULT_FILE_NAME):
     @return: Raw JSON data dictionary loaded from source file.
     @rtype: dict
     """
-    json_contents = json.loads(read_file(src))
+    json_contents = {}
+    if enable_utf8:
+        json_contents = json.JSONDecoder(encoding='utf-8').decode(read_file(src))
+    else:
+        json_contents = json.loads(read_file(src))
+
     regular_registers = json_contents["registers"]
     if "registers_beta" in json_contents:
         regular_registers.extend(json_contents["registers_beta"])
     return regular_registers
 
+def get_combined_registers_list(json_contents):
+    """Return an extend list of registers listed in a JSON file object.
+
+    @keyword json_contents: A parsed JSON file object.
+    @type src: str
+    @return: List of registers to be parsed.
+    @rtype: List
+    """
+    if 'registers' in json_contents:
+        regular_registers = json_contents["registers"]
+        if "registers_beta" in json_contents:
+            regular_registers.extend(json_contents["registers_beta"])
+        return regular_registers
+    else:
+        return []
 
 def generate_int_enumeration(src):
     """Generate versions of a string with an enumerated sequence added in.
@@ -268,7 +330,7 @@ def apply_anchors(text):
         #     raise ValueError('expected to find URL %s in text %s' % (url, text))
         parts = str.split(text, url, 1)
         text = parts[0] + (
-            "<a target='_blank' href='%s'>"
+            "<a target='_blank' rel='noopener noreferrer' href='%s'>"
             "%s"
             "</a>"
             "<img "
@@ -430,7 +492,7 @@ def interpret_tags(tags, tags_base_url='http://labjack.com/support/modbus/tags')
 
 
 def get_registers_data(src=DEFAULT_FILE_NAME, expand_names=False,
-    inc_orig=False, expand_alt_names=False):
+    inc_orig=False, expand_alt_names=False, enable_utf8=False, enable_comments=False):
     """Load and parse information about registers from JSON constants file.
 
     Loads and interprets registers information from the given JSON constants
@@ -454,7 +516,9 @@ def get_registers_data(src=DEFAULT_FILE_NAME, expand_names=False,
     @type inc_orig: bool
     @return: dict
     """
-    raw_data = get_raw_registers_data(src=src)
+    # raw_data = get_raw_registers_data(src=src, enable_utf8=enable_utf8, enable_comments=enable_comments)
+    raw_data = load_json_file(src=src, enable_utf8=enable_utf8, enable_comments=enable_comments)
+    raw_data = get_combined_registers_list(raw_data)
     ret_list = []
     for entry in raw_data:
         if inc_orig:
@@ -469,7 +533,7 @@ def get_registers_data(src=DEFAULT_FILE_NAME, expand_names=False,
 
 
 def get_device_modbus_maps(src=DEFAULT_FILE_NAME, expand_names=False,
-    inc_orig=False, expand_alt_names=False,  remove_digit_reg=False):
+    inc_orig=False, expand_alt_names=False, enable_utf8=False, enable_comments=False):
     """Load register info from JSON constants file and structure by device.
 
     Loads and interprets registers information from the given JSON constants
@@ -513,7 +577,7 @@ def get_device_modbus_maps(src=DEFAULT_FILE_NAME, expand_names=False,
     @return: dict
     """
     registers_data = get_registers_data(src=src, expand_names=expand_names,
-        inc_orig=inc_orig, expand_alt_names=expand_alt_names)
+        inc_orig=inc_orig, expand_alt_names=expand_alt_names, enable_utf8=enable_utf8, enable_comments=enable_comments)
     device_maps = {}
 
     if inc_orig:

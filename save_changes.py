@@ -9,25 +9,37 @@ import sys
 
 import validate
 
-if len(sys.argv) > 2:
-    print ('Too many args. Commit message may be arg 0.')
-    sys.exit(1)
-    
-commit_message = "Incremental JSON update."
-if len(sys.argv) == 2:
-    commit_message = sys.argv[1]
-    
-constants_repo_dir = os.path.dirname(os.path.abspath(__file__))
-json_file_path = os.path.join(constants_repo_dir, 'LabJack', 'LJM', 'ljm_constants.json')
-validate.validate(json_file_path)
+def save_changes(commit_message):
+    cwd = os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    subprocess.call([sys.executable,'ljmmm_test.py'], cwd=cwd)
+        
+    constants_repo_dir = os.path.dirname(os.path.abspath(__file__))
+    json_file_path = os.path.join(constants_repo_dir, 'LabJack', 'LJM', 'ljm_constants.json')
+    validate.validate(json_file_path)
 
-print ('Saving to Git repository...')
+    startup_configs_file_path = os.path.join(constants_repo_dir, 'LabJack', 'LJM', 'ljm_startup_configs.json')
+    validate.validate(startup_configs_file_path, raw_only=False)
 
-# Move to the repo
-os.chdir(constants_repo_dir)
+    subprocess.call([sys.executable,'generate_c_header.py'], cwd=cwd)
 
-subprocess.check_call('git pull', shell=True)
-subprocess.call('git commit -a -m "%s"' % commit_message, shell=True)
-subprocess.call('git push', shell=True)
-    
-print ('Finished!')
+    print('Saving to Git repository...')
+
+    # Move to the repo
+    os.chdir(constants_repo_dir)
+
+    subprocess.check_call('git pull', shell=True, cwd=cwd)
+    subprocess.call('git commit -a -m %s' % commit_message, shell=True, cwd=cwd)
+    subprocess.call('git push', shell=True, cwd=cwd)
+
+    print('Finished!')
+
+if __name__ == '__main__':
+    if len(sys.argv) > 2:
+        print('Too many args. Commit message may be arg 0.')
+        sys.exit(1)
+
+    commit_message = "Incremental JSON update."
+    if len(sys.argv) == 2:
+        commit_message = sys.argv[1]
+
+    save_changes(commit_message)

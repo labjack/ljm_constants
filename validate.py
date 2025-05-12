@@ -4,8 +4,10 @@ Verifies that ljm_constants.json is not obviously invalid.
 """
 import sys
 import ljmmm
+import traceback
+import os
 
-def validate(json_file_path):
+def validate(json_file_path, raw_only=True):
     """Validates json_file_path as ljm constants JSON. Exits with non-zero on error."""
     print ('Checking JSON file...')
     try:
@@ -27,7 +29,7 @@ def validate(json_file_path):
 
     err_msgs = []
 
-    print 'Checking register map duplicates and streamable validity...'
+    print('Checking register map duplicates and streamable validity...')
     # Track all register names so we do not throw the same error twice for a
     # register (if the register is used with multiple devices)
     all_names = []
@@ -68,14 +70,14 @@ def validate(json_file_path):
                 )
             previous_addresses[reg_addr] = unresolved
 
-            if resolved.has_key('description') and \
+            if 'description' in resolved and \
                 len(resolved['description']) == 0 and \
                 reg_name not in all_names:
                     err_msgs.append(
                         'No register description for: %s\n'
                         % str(reg_name)
                     )
-            elif not resolved.has_key('description') and \
+            elif not 'description' in resolved and \
                 reg_name not in all_names:
                 err_msgs.append(
                         'No register description field for: %s\n'
@@ -83,7 +85,7 @@ def validate(json_file_path):
                     )
             all_names.append(reg_name)
 
-    print ('Checking error duplicates...')
+    print('Checking error duplicates...')
     dup_ierrs = []
     dup_jerrs = []
     for i_it in range(0, len(errors)):
@@ -113,4 +115,4 @@ if __name__ == '__main__':
         print ('Usage: %s json_file_path' % sys.argv[0])
         exit(1)
 
-    validate(sys.argv[1])
+    validate(sys.argv[1], raw_only=(os.path.basename(sys.argv[1]) == 'ljm_constants.json'))
