@@ -624,7 +624,7 @@ def get_device_modbus_maps(src=DEFAULT_FILE_NAME, expand_names=False,
             new_entry.pop("numregs", None)
             # If we want to ignore digit registers, ignore them
             # Otherwise add them to the register list
-            if (device["device"] != "DIGIT" or not remove_digit_reg):
+            if (device["device"] != "DIGIT"):
                 if inc_orig:
                     device_reg_list.append((register[0], new_entry))
                 else:

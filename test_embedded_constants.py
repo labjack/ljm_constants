@@ -229,7 +229,6 @@ class EmbeddedConstantsTests(unittest.TestCase):
         src='LabJack/LJM/ljm_constants.json',
         expand_names=False,
         expand_alt_names=True,
-        remove_digit_reg=True,
         )
         all_reg_names = []
         for device in modbus_maps:

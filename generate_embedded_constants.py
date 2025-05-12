@@ -412,7 +412,6 @@ def generate(make_constants_header=True):
         src=SRC_FILE,
         expand_names=False,
         expand_alt_names=True,
-        remove_digit_reg=True,
     )
 
     constants_contents = json.loads(ljmmm.read_file(src=SRC_FILE))
