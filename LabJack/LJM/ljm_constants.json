@@ -8057,6 +8057,21 @@
       "description": "WiFi needs to be connected to a network before the requested action can be performed."
     },
     {
+      "error": 2493,
+      "string": "WIFI_CONTROL_CHAR_NOT_ALLOWED",
+      "description": "WiFi password had an ASCII control character in it which is not supported."
+    },
+    {
+      "error": 2494,
+      "string": "WIFI_SPECIAL_CHAR_NOT_ALLOWED",
+      "description": "WiFi password had an ASCII special character in it which is not supported."
+    },
+    {
+      "error": 2495,
+      "string": "WIFI_EXTENDED_CHAR_NOT_ALLOWED",
+      "description": "WiFi password had an ASCII extended character in it which is not supported."
+    },
+    {
       "error": 2500,
       "string": "HW_DIO_NOT_AVAILABLE"
     },
