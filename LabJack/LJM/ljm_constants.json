@@ -3149,7 +3149,7 @@
       "description": "The range/span of a all analog inputs. Writing to this register will set the range for all analog inputs. Reading will return a range value if all channels are set to same range. Otherwise, -9999 will be returned."
     },
         {
-      "address": 43900,
+      "address": 43908,
       "name": "AIN_ALL_NEGATIVE_RANGE",
       "type": "FLOAT32",
       "readwrite": "RW",
@@ -9170,6 +9170,7 @@
     "2025.05.02.A   Improved descriptions for errors 2607 and 1320",
     "2025.05.06.A   Added error code for SYSTEM_VS_TOO_LOW",
     "2025.06.06.A   Added registers for negative range.",
+    "2025.06.06.A   Fixed address of AIN_ALL_NEGATIVE_RANGE.",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
