@@ -2972,6 +2972,15 @@
       "description": "The range/span of a single analog input. Select the desired range by writing a value from the device specific list."
     },
     {
+      "address": 42500,
+      "name": "AIN#(0:254)_NEGATIVE_RANGE",
+      "type": "FLOAT32",
+      "readwrite": "RW",
+      "default": 0,
+      "tags": ["AIN"],
+      "description": "Write 0: If the analog input supports a unipolar range which corresponds to the currently select range, then it will be set to unipolar. If unipoler is not supported, AIN_RANGE_INVALID will be returned. Reads will return the negative extent of the currently selected range."
+    },
+    {
       "address": 41000,
       "name": "AIN#(0:254)_NEGATIVE_CH",
       "type": "UINT16",
@@ -3138,6 +3147,15 @@
       "default": 0,
       "tags": ["AIN"],
       "description": "The range/span of a all analog inputs. Writing to this register will set the range for all analog inputs. Reading will return a range value if all channels are set to same range. Otherwise, -9999 will be returned."
+    },
+        {
+      "address": 43900,
+      "name": "AIN_ALL_NEGATIVE_RANGE",
+      "type": "FLOAT32",
+      "readwrite": "RW",
+      "default": 0,
+      "tags": ["AIN"],
+      "description": "If all analog inputs are configured to the same range, then the negative extent of that range will be returned. Otherwise, -9999 will be returned."
     },
     {
       "address": 43902,
@@ -9151,6 +9169,7 @@
     "2025.04.24.A   Added some info about the delay period to SYSTEM_REBOOT.",
     "2025.05.02.A   Improved descriptions for errors 2607 and 1320",
     "2025.05.06.A   Added error code for SYSTEM_VS_TOO_LOW",
+    "2025.06.06.A   Added registers for negative range.",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
