@@ -1,7 +1,7 @@
 {
   "header": {
     "filename": "ljm_constants.json",
-    "version": "2025.05.06.A",
+    "version": "2025.06.13.A",
     "checksum": "-1",
     "support_url": "https://labjack.com/pages/support",
     "tags_base_url": "https://labjack.com"
@@ -1072,6 +1072,50 @@
       "readwrite": "R",
       "tags": ["STREAM"],
       "description": "Address to read stream data from when operating in C-R mode."
+    },
+    {
+      "address": 4750,
+      "name": "STREAM_SUB_AIN#(0:7)",
+      "type": "UINT16",
+      "devices": [
+        "T8"
+      ],
+      "readwrite": "RW",
+      "tags": ["STREAM"],
+      "description": "Enable Sub Stream Mode for AIN#."
+    },
+    {
+      "address": 4760,
+      "name": "STREAM_SUB_AIN_MASK",
+      "type": "UINT16",
+      "devices": [
+        "T8"
+      ],
+      "readwrite": "RW",
+      "tags": ["STREAM"],
+      "description": "Enable Sub Stream Mode for AIN0-7 with a bitmask."
+    },
+    {
+      "address": 4761,
+      "name": "STREAM_SUB_AIN_RATE",
+      "type": "UINT16",
+      "devices": [
+        "T8"
+      ],
+      "readwrite": "R",
+      "tags": ["STREAM"],
+      "description": "Using the current Stream settings, determine the sub stream rate."
+    },
+    {
+      "address": 4762,
+      "name": "STREAM_SUB_AIN_RESOLUTION_INDEX",
+      "type": "UINT16",
+      "devices": [
+        "T8"
+      ],
+      "readwrite": "R",
+      "tags": ["STREAM"],
+      "description": "Using the current Stream settings, determine the sub stream resolution index."
     },
     {
       "address": 4899,
@@ -8426,8 +8470,13 @@
     },
     {
       "error": 2631,
-      "string": "STREAM_RATE_INVALID_FOR_CJC",
-      "description": "Stream can only be run at a max of 250Hz when streaming TEMPERATURE(0:7) registers"
+      "string": "STREAM_RATE_INVALID_FOR_TEMPERATURE_SENSOR",
+      "description": "Temperature sensor do not work properly when sampled above 250Hz, see Sub Stream feature"
+    },
+    {
+      "error": 2632,
+      "string": "STREAM_SUB_SOLUTION_NOT_FOUND",
+      "description": "Sub stream mode was not able to find a valid solution."
     },
     {
       "error": 2670,
@@ -9186,6 +9235,7 @@
     "2025.05.06.A   Added error code for SYSTEM_VS_TOO_LOW",
     "2025.06.06.A   Added registers for negative range.",
     "2025.06.06.A   Fixed address of AIN_ALL_NEGATIVE_RANGE.",
+    "2025.06.13.A   Added Sub Stream registers and errors.",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
