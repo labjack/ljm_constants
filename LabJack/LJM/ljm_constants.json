@@ -34,7 +34,7 @@
   "registers": [
     {
       "address": 0,
-      "name": "AIN#(0:254)",
+      "name": "AIN#(0:249)",
       "type": "FLOAT32",
       "devices": [
         "T8",
@@ -2994,7 +2994,7 @@
     },
     {
       "address": 40000,
-      "name": "AIN#(0:254)_RANGE",
+      "name": "AIN#(0:249)_RANGE",
       "type": "FLOAT32",
       "devices": [
         {
@@ -3017,7 +3017,7 @@
     },
     {
       "address": 42500,
-      "name": "AIN#(0:254)_NEGATIVE_RANGE",
+      "name": "AIN#(0:249)_NEGATIVE_RANGE",
       "type": "FLOAT32",
       "devices": [
         {
@@ -3035,7 +3035,7 @@
     },
     {
       "address": 41000,
-      "name": "AIN#(0:254)_NEGATIVE_CH",
+      "name": "AIN#(0:249)_NEGATIVE_CH",
       "type": "UINT16",
       "devices": [
         {
@@ -3057,7 +3057,7 @@
     },
     {
       "address": 41500,
-      "name": "AIN#(0:254)_RESOLUTION_INDEX",
+      "name": "AIN#(0:249)_RESOLUTION_INDEX",
       "type": "UINT16",
       "devices": [
         {
@@ -3080,7 +3080,7 @@
     },
     {
       "address": 42000,
-      "name": "AIN#(0:254)_SETTLING_US",
+      "name": "AIN#(0:249)_SETTLING_US",
       "type": "FLOAT32",
       "devices": [
         {
@@ -5226,13 +5226,13 @@
     },
     {
       "address": 50000,
-      "name": "AIN#(0:254)_BINARY",
+      "name": "AIN#(0:249)_BINARY",
       "type": "UINT32",
       "devices": ["T7","T4","T8"],
       "readwrite": "R",
       "tags": ["AIN"],
       "streamable": false,
-      "altnames": ["AIN#(0:254)_BIN"],
+      "altnames": ["AIN#(0:249)_BIN"],
       "description": "Returns the 24-bit binary representation of the specified analog input. If you prefer 16-bit representation, simply divide this by 256. This is for command-response only.  Stream always returns binary and LJM applies cal constants, so the LJM config flag LJM_STREAM_AIN_BINARY is used to get binary values."
     },
     {
@@ -9260,6 +9260,7 @@
     "2025.06.13.A   Added Sub Stream registers and errors.",
     "2025.06.19.A   Changed IO_CONFIG registers from DEFAULT to BOOTUP.",
     "2025.06.19.B   Added Devices section to NEGATIVE_RANGE registers.",
+    "2025.06.19.C   Changed AIN ranges from 0-254 to 0-249.",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
