@@ -3024,7 +3024,9 @@
           "device": "T8",
           "fwmin": 1.0050
         },
-        "T2"
+        {
+          "device": "T2"
+        }
       ],
       "readwrite": "RW",
       "default": 0,
@@ -3208,7 +3210,9 @@
           "device": "T8",
           "fwmin": 1.0050
         },
-        "T2"
+        {
+          "device": "T2"
+        }
       ],
       "readwrite": "RW",
       "default": 0,
