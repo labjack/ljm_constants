@@ -3019,6 +3019,13 @@
       "address": 42500,
       "name": "AIN#(0:254)_NEGATIVE_RANGE",
       "type": "FLOAT32",
+      "devices": [
+        {
+          "device": "T8",
+          "fwmin": 1.0050
+        },
+        "T2"
+      ],
       "readwrite": "RW",
       "default": 0,
       "tags": ["AIN"],
@@ -3196,6 +3203,13 @@
       "address": 43908,
       "name": "AIN_ALL_NEGATIVE_RANGE",
       "type": "FLOAT32",
+      "devices": [
+        {
+          "device": "T8",
+          "fwmin": 1.0050
+        },
+        "T2"
+      ],
       "readwrite": "RW",
       "default": 0,
       "tags": ["AIN"],
@@ -9241,6 +9255,7 @@
     "2025.06.06.A   Fixed address of AIN_ALL_NEGATIVE_RANGE.",
     "2025.06.13.A   Added Sub Stream registers and errors.",
     "2025.06.19.A   Changed IO_CONFIG registers from DEFAULT to BOOTUP.",
+    "2025.06.19.B   Added Devices section to NEGATIVE_RANGE registers.",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
