@@ -4165,7 +4165,7 @@
     },
     {
       "address": 49002,
-      "name": "IO_CONFIG_SET_DEFAULT_TO_CURRENT",
+      "name": "IO_CONFIG_SET_BOOTUP_TO_CURRENT",
       "type": "UINT32",
       "devices": [
         {
@@ -4177,11 +4177,12 @@
       ],
       "readwrite": "W",
       "tags": ["CONFIG"],
+      "altnames": ["IO_CONFIG_SET_DEFAULT_TO_CURRENT"],
       "description": "Write a 1 to cause new default (reboot/power-up) values to be saved to flash.  Current values are retrieved and saved as the new defaults. Systems affected: AIN, DIO, DAC, AIN_EF, DIO_EF."
     },
     {
       "address": 49004,
-      "name": "IO_CONFIG_SET_DEFAULT_TO_FACTORY",
+      "name": "IO_CONFIG_SET_BOOTUP_TO_FACTORY",
       "type": "UINT32",
       "devices": [
         {
@@ -4193,6 +4194,7 @@
       ],
       "readwrite": "W",
       "tags": ["CONFIG"],
+      "altnames": ["IO_CONFIG_SET_DEFAULT_TO_FACTORY"],
       "description": "Write a 1 to cause new default (reboot/power-up) values to be saved to flash.  Factory values are retrieved and saved as the new defaults. Systems affected: AIN, DIO, DAC, AIN_EF, DIO_EF."
     },
     {
@@ -4293,7 +4295,7 @@
     },
     {
       "address": 49018,
-      "name": "IO_CONFIG_CHECK_FOR_DEFAULT",
+      "name": "IO_CONFIG_CHECK_FOR_BOOTUP",
       "type": "UINT32",
       "devices": [
         {
@@ -4305,6 +4307,7 @@
       ],
       "readwrite": "R",
       "tags": ["CONFIG"],
+      "altnames": ["IO_CONFIG_CHECK_FOR_DEFAULT"],
       "description": "Returns 1 if the current configuration matches the default configuration."
     },
     {
@@ -4458,7 +4461,7 @@
     },
     {
       "address": 61991,
-      "name": "IO_CONFIG_SET_CURRENT_TO_DEFAULT",
+      "name": "IO_CONFIG_SET_CURRENT_TO_BOOTUP",
       "type": "UINT16",
       "devices": [
         "T8",
@@ -4467,6 +4470,7 @@
       ],
       "readwrite": "W",
       "tags": ["CONFIG"],
+      "altnames": ["IO_CONFIG_SET_DEFAULT_TO_FACTORY"],
       "description": "Write a 1 to set current values to default configuration.  The default values are retrieved from flash and written to the current configuration registers, thus this behaves similar to reboot/power-up. Systems affected: AIN, DIO, DAC, AIN_EF, DIO_EF."
     },
     {
@@ -9236,6 +9240,7 @@
     "2025.06.06.A   Added registers for negative range.",
     "2025.06.06.A   Fixed address of AIN_ALL_NEGATIVE_RANGE.",
     "2025.06.13.A   Added Sub Stream registers and errors.",
+    "2025.06.19.A   Changed IO_CONFIG registers from DEFAULT to BOOTUP.",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
