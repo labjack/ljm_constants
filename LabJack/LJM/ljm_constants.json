@@ -7810,7 +7810,7 @@
     {
       "error": 1320,
       "string": "LJME_DIGITAL_AUTO_RECOVERY_ERROR_DETECTED",
-      "description": "During stream, the device buffer overflowed which caused an auto-recover condition. The stream channel configuration made it impossible to determine the excat location in the data stream where the auto-recover occurred. For more infomation, see the digital stream section of the \"LJM Stream Configs\" page."
+      "description": "During stream, the device buffer overflowed which caused an auto-recover condition. The stream channel configuration made it impossible to determine the exact location in the data stream where the auto-recover occurred. For more infomation, see the digital stream section of the \"LJM Stream Configs\" page."
     },
     {
       "error": 1321,
@@ -9261,6 +9261,7 @@
     "2025.06.19.A   Changed IO_CONFIG registers from DEFAULT to BOOTUP.",
     "2025.06.19.B   Added Devices section to NEGATIVE_RANGE registers.",
     "2025.06.19.C   Changed AIN ranges from 0-254 to 0-249.",
+    "2025.07.15.A   Fixed an typo in error 1320.", 
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
