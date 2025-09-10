@@ -1,10 +1,22 @@
 
-name: Export
+name: Export Constants
 
 on:
   workflow_dispatch:
+    inputs:
+      branch:
+        type: string
+        description: "Branch to export"
+        required: true
+        default: "installer_ci"
 
   workflow_call:
+    inputs:
+      branch:
+        type: string
+        description: "Branch to export"
+        required: true
+        default: "installer_ci"
 
 jobs:
   export:
@@ -12,10 +24,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Clone Repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v5
+      with: 
+        ref: ${{ inputs.branch }}
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: LJM_CONSTANTS
+        name: LJM_CONSTANTS_${{ inputs.branch }}
         path: ${{github.workspace}}/LabJack/*
