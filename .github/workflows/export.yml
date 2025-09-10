@@ -18,6 +18,11 @@ on:
         required: true
         default: "installer_ci"
 
+permissions:
+  contents: read
+  actions: read
+secrets: inherit
+
 jobs:
   export:
 
