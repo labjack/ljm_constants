@@ -3248,7 +3248,8 @@
       "devices": [
         {
           "device": "T8",
-          "fwmin": 1.0000
+          "fwmin": 1.0000,
+          "description": "Valid value: 0-16, The default value is 0. When this is set to 0, the device will select the highest reoslution that works with the specified rate."
         },
         {
           "device": "T7",
@@ -9262,7 +9263,9 @@
     "2025.06.19.B   Added Devices section to NEGATIVE_RANGE registers.",
     "2025.06.19.C   Changed AIN ranges from 0-254 to 0-249.",
     "2025.07.15.A   Fixed an typo in error 1320.", 
+    "2025.10.16.A   Added T8 specific description to AIN_ALL_RESOLUTION_INDEX. ",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
 }
+
