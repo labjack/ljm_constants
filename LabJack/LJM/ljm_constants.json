@@ -7896,7 +7896,12 @@
     {
       "error": 2345,
       "string": "USER_RAM_FIFO_SIZE_MUST_BE_EVEN",
-      "description": "The number of bytes allocated to the FIFO must be even.."
+      "description": "The number of bytes allocated to the FIFO must be even."
+    },
+    {
+      "error": 2348,
+      "string": "FLASH_CHECKSUM_FAILED",
+      "description": "A section of flash had an invalid checksum."
     },
     {
       "error": 2350,
@@ -9264,8 +9269,10 @@
     "2025.06.19.C   Changed AIN ranges from 0-254 to 0-249.",
     "2025.07.15.A   Fixed an typo in error 1320.", 
     "2025.10.16.A   Added T8 specific description to AIN_ALL_RESOLUTION_INDEX. ",
+    "2025.10.24.A   Added flash checksum failure error code.",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
 }
+
 
