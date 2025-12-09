@@ -1063,8 +1063,8 @@
     {
       "address": 4490,
       "name": "STREAM_SETTLING_US_ACTUAL",
-      "type": "UINT32",
-      "readwrite": "RW",
+      "type": "FLOAT32",
+      "readwrite": "R",
       "default": 0,
       "tags": ["STREAM"],
       "description": "Returns the actual settling selected during the most recent stream start (STREAM_ENABLE = 1)."
@@ -1073,10 +1073,19 @@
       "address": 4492,
       "name": "STREAM_RESOLUTION_INDEX_ACTUAL",
       "type": "UINT32",
-      "readwrite": "RW",
+      "readwrite": "W",
       "default": 0,
       "tags": ["STREAM"],
       "description": "Returns the actual resolution selected during the most recent stream start (STREAM_ENABLE = 1)."
+    },
+    {
+      "address": 4494,
+      "name": "STREAM_SCANRATE_HZ_ACTUAL",
+      "type": "FLOAT32",
+      "readwrite": "R",
+      "default": 0,
+      "tags": ["STREAM"],
+      "description": "Returns the actual stream scan rate. The T8 will calculate this value when stream is started. Other devices calculate the value when STREAM_SCANRATE_HZ is written."
     },
     {
       "address": 4500,
@@ -9288,11 +9297,14 @@
     "2025.07.15.A   Fixed an typo in error 1320.", 
     "2025.10.16.A   Added T8 specific description to AIN_ALL_RESOLUTION_INDEX. ",
     "2025.10.24.A   Added flash checksum failure error code.",
-    "2025.12.08.A    Added stream actual registesr.",
+    "2025.12.08.A   Added stream actual registesr.",
+    "2025.12.08.B   Fixed a data type error.", 
+    "2025.12.09.A   Added Stream ScanRate actual.",
     "See https://github.com/labjack/ljm_constants for further comments.",
     "End Of Comments"
   ]
 }
+
 
 
 
