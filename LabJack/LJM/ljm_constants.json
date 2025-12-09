@@ -1064,6 +1064,12 @@
       "address": 4490,
       "name": "STREAM_SETTLING_US_ACTUAL",
       "type": "FLOAT32",
+      "devices": [
+        {
+          "device": "T7",
+          "fwmin": 1.0331
+        },
+      ],
       "readwrite": "R",
       "default": 0,
       "tags": ["STREAM"],
@@ -1073,6 +1079,12 @@
       "address": 4492,
       "name": "STREAM_RESOLUTION_INDEX_ACTUAL",
       "type": "UINT32",
+      "devices": [
+        {
+          "device": "T7",
+          "fwmin": 1.0331
+        },
+      ],
       "readwrite": "W",
       "default": 0,
       "tags": ["STREAM"],
@@ -1082,6 +1094,12 @@
       "address": 4494,
       "name": "STREAM_SCANRATE_HZ_ACTUAL",
       "type": "FLOAT32",
+      "devices": [
+        {
+          "device": "T7",
+          "fwmin": 1.0331
+        },
+      ],
       "readwrite": "R",
       "default": 0,
       "tags": ["STREAM"],
@@ -9304,6 +9322,7 @@
     "End Of Comments"
   ]
 }
+
 
 
 
