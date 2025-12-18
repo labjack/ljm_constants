@@ -1,20 +1,3 @@
-// ljm_startup_configs.json:
-//   This is the configurations file that is loaded when LJM is started up.
-//   Distributed with LJM version 1.2100.
-//
-//   Use the string "default" to load the default value for each config
-//   parameter. Otherwise, see the "type" for each config parameter for what
-//   kinds of values can be accepted. Please see LabJackM.h for more information
-//   about what each config parameter does.
-//
-//   Windows file paths must escape \ characters with \. For example, the path
-//       C:\ljm.log
-//   must be escaped as
-//       C:\\ljm.log
-//
-//   Report bugs to support@labjack.com
-//   LabJack's LJM driver/library: https://labjack.com/support/ljm
-
 {
   "LJM_CONFIG_VALUES":
   [

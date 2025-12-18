@@ -1068,7 +1068,7 @@
         {
           "device": "T7",
           "fwmin": 1.0331
-        },
+        }
       ],
       "readwrite": "R",
       "default": 0,
@@ -1083,7 +1083,7 @@
         {
           "device": "T7",
           "fwmin": 1.0331
-        },
+        }
       ],
       "readwrite": "W",
       "default": 0,
@@ -1098,7 +1098,7 @@
         {
           "device": "T7",
           "fwmin": 1.0331
-        },
+        }
       ],
       "readwrite": "R",
       "default": 0,
