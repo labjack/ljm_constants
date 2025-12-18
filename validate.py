@@ -11,6 +11,19 @@ def validate(json_file_path, raw_only=True):
     """Validates json_file_path as ljm constants JSON. Exits with non-zero on error."""
     print ('Checking JSON file...')
     try:
+        jsonFile = ljmmm.load_json_file(json_file_path, enable_comments=(not raw_only))
+    except Exception as e:
+        print('[ERROR] JSON file could not be parsed. (' + str(e) + ')')
+        traceback.print_exc()
+        exit(1)
+        
+    """ If raw_only is False, skip further validation checks intended for LJM Constants. They do not work on startup configs."""
+    if not raw_only:
+        print('Skipping further validation checks, raw JSON parsing not required for ' + json_file_path)
+        return
+
+    print('Checking ljm_constants JSON file...')
+    try:
         json_map = ljmmm.get_device_modbus_maps(
             json_file_path,
             expand_names=True,
