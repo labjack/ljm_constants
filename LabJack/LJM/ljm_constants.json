@@ -4736,10 +4736,6 @@
       "type": "UINT32",
       "devices": [
         {
-          "device": "T8",
-          "fwmin": 1.0000
-        },
-        {
           "device": "T7",
           "fwmin": 1.0128
         },
