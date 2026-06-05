@@ -8548,6 +8548,26 @@
       "description": "Sub stream mode was not able to find a valid solution."
     },
     {
+      "error": 2633,
+      "string": "STREAM_ESS_INTERNAL_CLK_ERROR",
+      "description": "Reference Clocks failed to reconfigure, it is recommended to restart the Labjack device."
+    },
+    {
+      "error": 2634,
+      "string": "STREAM_ESS_GENERATOR_NO_IN_CLK",
+      "description": "ESS Stream mode Generator has no input clock, verify FIO1 is connected to FIO3."
+    },
+    {
+      "error": 2635,
+      "string": "STREAM_ESS_RECEIVER_NO_IN_CLK",
+      "description": "ESS Stream mode Receiver has no input clock, verify an external ESS Stream mode Generator is supplying a clock to FIO1."
+    },
+    {
+      "error": 2637,
+      "string": "STREAM_CLKSRC_INVALID",
+      "description": "The specified Stream Clock Source configuration is not valid."
+    },
+    {
       "error": 2670,
       "string": "SWDT_ROLLT_INVALID",
       "description":"The specified Software Watchdog timeout is too short."
